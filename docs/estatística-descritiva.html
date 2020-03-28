@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Estatística Descritiva | Métodos quantitativos em Psicologia com R e Rstudio</title>
+  <meta name="description" content="This GitBook is an example of a GitBook for teaching. It can be adapted for specific courses. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Estatística Descritiva | Métodos quantitativos em Psicologia com R e Rstudio" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This GitBook is an example of a GitBook for teaching. It can be adapted for specific courses. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="cjvanlissa/gitbook-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Estatística Descritiva | Métodos quantitativos em Psicologia com R e Rstudio" />
+  
+  <meta name="twitter:description" content="This GitBook is an example of a GitBook for teaching. It can be adapted for specific courses. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
+
+
+<meta name="date" content="2020-03-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="prerequisites.html"/>
+<link rel="next" href="getgitbook.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/viz-0.3/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.1/grViz.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A GitBook for Teaching</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introdução</a></li>
+<li class="chapter" data-level="2" data-path="prerequisites.html"><a href="prerequisites.html"><i class="fa fa-check"></i><b>2</b> Prerequisites</a></li>
+<li class="chapter" data-level="3" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html"><i class="fa fa-check"></i><b>3</b> Estatística Descritiva</a><ul>
+<li class="chapter" data-level="3.1" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#pesquisa"><i class="fa fa-check"></i><b>3.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="3.2" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>3.2</b> Verbos do dplyr</a></li>
+<li class="chapter" data-level="3.3" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#tabelas"><i class="fa fa-check"></i><b>3.3</b> Tabelas</a></li>
+<li class="chapter" data-level="3.4" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#gráficos"><i class="fa fa-check"></i><b>3.4</b> Gráficos</a></li>
+<li class="chapter" data-level="3.5" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-discreta"><i class="fa fa-check"></i><b>3.5</b> 1 variável discreta</a></li>
+<li class="chapter" data-level="3.6" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-contínua"><i class="fa fa-check"></i><b>3.6</b> 1 variável contínua</a></li>
+<li class="chapter" data-level="3.7" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-vi-discreta"><i class="fa fa-check"></i><b>3.7</b> 2 variáveis (VI discreta)</a></li>
+<li class="chapter" data-level="3.8" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-vi-contínua"><i class="fa fa-check"></i><b>3.8</b> 2 variáveis (VI contínua)</a></li>
+<li class="chapter" data-level="3.9" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#outros-gráficos"><i class="fa fa-check"></i><b>3.9</b> Outros gráficos</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="getgitbook.html"><a href="getgitbook.html"><i class="fa fa-check"></i><b>4</b> Get your GitBook</a></li>
+<li class="chapter" data-level="5" data-path="editing-the-book.html"><a href="editing-the-book.html"><i class="fa fa-check"></i><b>5</b> Editing the book</a><ul>
+<li class="chapter" data-level="5.1" data-path="editing-the-book.html"><a href="editing-the-book.html#creating-new-chapters"><i class="fa fa-check"></i><b>5.1</b> Creating new chapters</a></li>
+<li class="chapter" data-level="5.2" data-path="editing-the-book.html"><a href="editing-the-book.html#linking-across-chapters"><i class="fa fa-check"></i><b>5.2</b> Linking across chapters</a></li>
+<li class="chapter" data-level="5.3" data-path="editing-the-book.html"><a href="editing-the-book.html#advanced-editing"><i class="fa fa-check"></i><b>5.3</b> Advanced editing</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="figtab.html"><a href="figtab.html"><i class="fa fa-check"></i><b>6</b> Figures and tables</a></li>
+<li class="chapter" data-level="7" data-path="examples.html"><a href="examples.html"><i class="fa fa-check"></i><b>7</b> Examples</a><ul>
+<li class="chapter" data-level="7.1" data-path="examples.html"><a href="examples.html#doing-meta-analysis-in-r"><i class="fa fa-check"></i><b>7.1</b> Doing Meta-Analysis in R</a></li>
+<li class="chapter" data-level="7.2" data-path="examples.html"><a href="examples.html#theory-construction-and-statistical-modeling"><i class="fa fa-check"></i><b>7.2</b> Theory Construction and Statistical Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="open-educational-resources.html"><a href="open-educational-resources.html"><i class="fa fa-check"></i><b>8</b> Open Educational Resources</a></li>
+<li class="chapter" data-level="9" data-path="license-your-gitbook.html"><a href="license-your-gitbook.html"><i class="fa fa-check"></i><b>9</b> License your GitBook</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Métodos quantitativos em Psicologia com R e Rstudio</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="estatística-descritiva" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Estatística Descritiva</h1>
+<div class="objectives">
+<p>
+<strong>Objetivos do capítulo</strong><br />
+1. Apresentar os verbos do dplyr e funções do ggplot.<br />
+2. Revisitar conceitos básicos de estatística descritiva<br />
+3. Ensinar a construção de tabelas e gráficos
+</p>
+</div>
+<p>A apresentação dos resultados de uma pesquisa a partir de gráficos e tabelas é fundamental para disseminação dos resultados tanto entre pares como para sociedade em geral. No geral, o R é uma excelente ferramenta para aspectos descritivos. No entanto, algumas apresentações relativamente simples trazem uma dificuldade computacional, o que pode gerar alguma desvantagem na utilização do R para tais apresentações. Em outras palavras, parece haver uma curva inversamente proporcional em relação à dificuldade da tarefa e à necessidade de codificação imposta pelo R. Assim, tarefas relativamente fáceis frequentemente impõem mais densidade computacional do que tarefas mais complexas, como estimar os parâmetros em um modelo de regressão múltipla.</p>
+<p>Posto isso, todo resultado estatístico começa pela apresentação de <strong>tabelas</strong> e <strong>gráficos</strong>. Da mesma forma que a construção de um prédio depende que andaimes sejam colocados, um relatório técnico depende dessas condições. Aproveitando um pouco mais esse exemplo, da mesma maneira que a conclusão da construção de um prédio, necessariamente, cursa com a retirada dos andaimes, artigos científicos frequentemente tem espaço limitado para publicação e, consequentemente, os autores se veem na situação de aproveitar apenas parte (ou quase nada) dos relatórios originais.</p>
+<div id="pesquisa" class="section level2">
+<h2><span class="header-section-number">3.1</span> Pesquisa</h2>
+<p>Vamos utilizar a pesquisa intitulada “Sintomas de depressão e ansiedade em universitários espanhóis, portugueses e brasileiros”, com previsão de publicação pela Revista Psicologia: Teoria e Pesquisa em 2019. Nessa pesquisa, sou o coautor e o pesquisador responsável para correspondência.</p>
+<p>O objetivo dessa pesquisa foi explorar sintomas de ansiedade e depressão em universitários, bem como investigar possíveis relações entre tais traços latentes e fatores sociodemográficos. Um diferencial importante dessa pesquisa foi a seleção amostral. Partiu-se de uma amostra representativa dos estudantes de três universidades, PUC-Rio (Brasil), Universidade de Extremadura (Espanha) e Universidade de Coimbra (Portugal). Isso permitiu ter maior validade externa dos resultados.</p>
+<p>Todo documento acadêmico e científico é composto de <strong>aspectos textuais</strong>, <strong>aspectos tabulares</strong> e <strong>gráficos</strong> que devem caminhar na mesma direção e <strong>sempre associados às perguntas e objetivos traçados na pesquisa</strong>. Assim, é possível concluir que a parte principal de qualquer trabalho acadêmico não é necessariamente os aspectos estatísticos, mas sim os objetivos e possíveis hipóteses investigadas pelos pesquisadores. A estatística é uma ferramenta de trabalho (ou uma atividade de meio) para que as perguntas sejam respondidas de forma válida.</p>
+<p>Conforme já explicitado, a estatística pode ser dividida em duas áreas interligadas: estatística descritiva e estatística inferencial. O objetivo da estatística descritiva é apresentar sínteses e resumos dos resultados a partir de gráficos e tabelas. Não é intenção dessa área fazer generalizações ou extrapolar os resultados obtidos em uma pesquisa a pessoas não investigadas durante a coleta de dados. Por contraste, a estatística inferencial visa extrapolar os dados e fazer generalizações que toquem toda população de onde aquela mostra foi retirada e é representativa. Dessa maneira, o principal objetivo da estatística inferencial é, de fato, fazer inferências.</p>
+<p>Apesar de livros e aulas unirem ambas as áreas da estatística, alguns pontos merecem destaque, que são:</p>
+<ol style="list-style-type: decimal">
+<li><p>A estatística descritiva surgiu antes que a inferencial. A etimologia da palavra talvez ajude a entender, uma vez que estatística vem da palavra estado e este sempre teve interesse em saber quantos eram os cidadãos de um determinado local para, entre outras atividades, taxá-los. Dessa maneira, aspectos descritivos antecedem os inferenciais. Por sua vez, a estatística inferencial guarda origem e proximidade com a teoria dos jogos e, consequentemente, isso ajuda a entender o motivo pelo qual a maioria dos exemplos inferenciais envolvem jogos de azar.</p></li>
+<li><p>A estatística tem duas “escolas” ou “formas de pensamento”. A estatística frequentista e a estatística bayesiana. Aspectos fundamentais que tocam à definição de probabilidade são diferentes, bem como a definição de dados e parâmetros também o são. Pela perspectiva histórica, a estatística bayesiana é mais antiga que a frequentista. No entanto, se for comparado a proporção de uso entre os pesquisadores, a estatística frequentista é ainda a mais frequente e justifica a ênfase deste livro nesta área.</p></li>
+<li><p>A relação entre estatística e Machine Learning (ML) é relativamente recente. Apesar de grande interface, e do fato que as análises realizadas em estatística e ML encontram resultados virtualmente idênticos, as áreas têm objetivos diferentes. Ainda sob perspectiva histórica, a estatística, como uma área do conhecimento, é anterior à ML e, também por isso, justifica a ênfase do livro.</p></li>
+</ol>
+</div>
+<div id="verbos-do-dplyr" class="section level2">
+<h2><span class="header-section-number">3.2</span> Verbos do dplyr</h2>
+<p>O dplyr funciona de maneira muito intuitiva. O padrão original do R considera que as operações são realizadas a partir de uma lógica do tipo <code>verbo(sujeito, complemento)</code> enquanto o ambiente tidyverse opta por <code>sujeito %&gt;% verbo(complemento)</code>, tornando-se o ato de programar mais natural e associado à maneira que organizamos as ideias.</p>
+<p>Os verbos principais do pacote estão listados na tabela a seguir e as sintaxes deixadas no decorrer deste capítulo (e do livro) permitem uma melhor apreensão das funcionalidades. É importante lembrar que, em alguns momentos, em função da praticidade computacional, algumas sintaxes vão contar com o formato base do R.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Verbo</th>
+<th align="center">Ação</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">glimpse</td>
+<td align="center">Inspeciona os dados</td>
+</tr>
+<tr class="even">
+<td align="left">count</td>
+<td align="center">Conta os níveis de uma variável</td>
+</tr>
+<tr class="odd">
+<td align="left">select</td>
+<td align="center">seleciona uma variável específica</td>
+</tr>
+<tr class="even">
+<td align="left">filter</td>
+<td align="center">Filtra os resultados por um nível específico de uma variável</td>
+</tr>
+<tr class="odd">
+<td align="left">group_by</td>
+<td align="center">Agrupa os resultados por níveis de uma variávei específica</td>
+</tr>
+<tr class="even">
+<td align="left">summarise</td>
+<td align="center">Apresenta sumários (com medidas estatísticas)</td>
+</tr>
+<tr class="odd">
+<td align="left">mutate</td>
+<td align="center">Cria novas variáveis ou altera as existentes</td>
+</tr>
+<tr class="even">
+<td align="left">arrange</td>
+<td align="center">Organiza a apresentação dos resultados</td>
+</tr>
+<tr class="odd">
+<td align="left">left_join</td>
+<td align="center">Junta bases ou colunas</td>
+</tr>
+<tr class="even">
+<td align="left">gather</td>
+<td align="center">Transforma uma base larga em longa</td>
+</tr>
+<tr class="odd">
+<td align="left">spread</td>
+<td align="center">Transforma uma base longa em larga</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabelas" class="section level2">
+<h2><span class="header-section-number">3.3</span> Tabelas</h2>
+<p>Tabelas apresentam as informações de uma pesquisa de maneira reunida e objetiva. Como os verbos do dplyr possibilitam que os mesmos resultados sejam encontrados por vias diferentes, os códigos a seguir tentarão manter uma uniformidade lógica. Em alguns momentos, para ampliar as possibilidades de codificação, sintaxes extras serão oferecidas.</p>
+<p>A tabela a seguir apresenta a quantidade de participantes em cada país.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">Dataset <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(country) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="st">  </span><span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="st">  </span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="kw">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</a></code></pre></div>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+country
+</th>
+<th style="text-align:right;">
+n
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Espanha
+</td>
+<td style="text-align:right;">
+1216
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Portugal
+</td>
+<td style="text-align:right;">
+426
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Brasil
+</td>
+<td style="text-align:right;">
+315
+</td>
+</tr>
+</tbody>
+</table>
+<p>É também possível adicionar proporções relativas à tabela, o que é uma escolha adequada para apresentação dos resultados.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">Dataset <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(country) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">n</span>(), <span class="dt">Prop =</span> n<span class="op">/</span><span class="kw">nrow</span>(.)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="st">  </span><span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="st">  </span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="kw">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</a></code></pre></div>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+country
+</th>
+<th style="text-align:right;">
+n
+</th>
+<th style="text-align:right;">
+Prop
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Espanha
+</td>
+<td style="text-align:right;">
+1216
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Portugal
+</td>
+<td style="text-align:right;">
+426
+</td>
+<td style="text-align:right;">
+0.22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Brasil
+</td>
+<td style="text-align:right;">
+315
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+</tr>
+</tbody>
+</table>
+<p>O pacote <code>janitor</code> oferece complementos úteis à família tidyverse e um deles justamente adiciona os totais, de maneira mais rápida. Repare que para utilizar o pacote sem tê-lo previamente carregado ao ambiente, basta usar o nome do pacote seguido de ::</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">Dataset <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(country) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">n</span>(), <span class="dt">prop =</span> n<span class="op">/</span><span class="kw">nrow</span>(.)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="st">  </span><span class="kw">bind_rows</span>(<span class="kw">summarise_all</span>(., <span class="kw">list</span>(<span class="op">~</span><span class="cf">if</span>(<span class="kw">is.numeric</span>(.)) <span class="kw">sum</span>(.) <span class="cf">else</span> <span class="st">&quot;Total&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="st">  </span><span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="st">  </span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="kw">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</a></code></pre></div>
+<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector</code></pre>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+country
+</th>
+<th style="text-align:right;">
+n
+</th>
+<th style="text-align:right;">
+prop
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Espanha
+</td>
+<td style="text-align:right;">
+1216
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Portugal
+</td>
+<td style="text-align:right;">
+426
+</td>
+<td style="text-align:right;">
+0.22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Brasil
+</td>
+<td style="text-align:right;">
+315
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:right;">
+1957
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">Dataset <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(country) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">n</span>(), <span class="dt">prop =</span> n<span class="op">/</span><span class="kw">nrow</span>(.)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="st">  </span>janitor<span class="op">::</span><span class="kw">adorn_totals</span>(<span class="st">&quot;row&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="st">  </span><span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="st">  </span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="kw">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</a></code></pre></div>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+country
+</th>
+<th style="text-align:right;">
+n
+</th>
+<th style="text-align:right;">
+prop
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Espanha
+</td>
+<td style="text-align:right;">
+1216
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Portugal
+</td>
+<td style="text-align:right;">
+426
+</td>
+<td style="text-align:right;">
+0.22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Brasil
+</td>
+<td style="text-align:right;">
+315
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:right;">
+1957
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+</tr>
+</tbody>
+</table>
+<p>O mesmo que foi realizado com os países, pode também ser realizado com o sexo do participante.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">Dataset <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">n</span>(), <span class="dt">prop =</span> n<span class="op">/</span><span class="kw">nrow</span>(.)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="st">  </span>janitor<span class="op">::</span><span class="kw">adorn_totals</span>(<span class="st">&quot;row&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="st">  </span><span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="st">  </span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="kw">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</a></code></pre></div>
+<pre><code>## Warning: Factor `sex` contains implicit NA, consider using
+## `forcats::fct_explicit_na`</code></pre>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+sex
+</th>
+<th style="text-align:right;">
+n
+</th>
+<th style="text-align:right;">
+prop
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+M
+</td>
+<td style="text-align:right;">
+736
+</td>
+<td style="text-align:right;">
+0.38
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+1214
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:right;">
+1957
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+</tr>
+</tbody>
+</table>
+<p>A adição do argumento para filtrar os participantes com dados ausentes sobre sexo auxilia a apresentar melhor os resultados. É importante atentar que essa análise tem finalidade descritiva e que omitir a apresentação de variáveis ausentes não significa excluir ou remover os participantes das análises que serão feitas posteriormente. Somente em possibilidades remotas se retira participantes das análises de maneira definitiva.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">Dataset <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(sex)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="st">  </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">n</span>(), <span class="dt">prop =</span> n<span class="op">/</span><span class="kw">nrow</span>(.)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="st">  </span><span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb9-6" title="6"><span class="st">  </span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="kw">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</a></code></pre></div>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+sex
+</th>
+<th style="text-align:right;">
+n
+</th>
+<th style="text-align:right;">
+prop
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+M
+</td>
+<td style="text-align:right;">
+736
+</td>
+<td style="text-align:right;">
+0.38
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+1214
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+</tbody>
+</table>
+<p>Para fazer uma tabela cruzada, em que seja possível apresentar a quantidade de homens e mulheres por país, a função <code>spread</code> vai ser utilizada.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">Dataset <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(sex)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb10-3" title="3"><span class="st">  </span><span class="kw">group_by</span>(country,sex) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb10-4" title="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb10-5" title="5"><span class="st">  </span><span class="kw">spread</span>(sex, n) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb10-6" title="6"><span class="st">  </span><span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb10-7" title="7"><span class="st">  </span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="kw">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</a></code></pre></div>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+country
+</th>
+<th style="text-align:right;">
+M
+</th>
+<th style="text-align:right;">
+F
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Espanha
+</td>
+<td style="text-align:right;">
+384
+</td>
+<td style="text-align:right;">
+825
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Portugal
+</td>
+<td style="text-align:right;">
+203
+</td>
+<td style="text-align:right;">
+223
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Brasil
+</td>
+<td style="text-align:right;">
+149
+</td>
+<td style="text-align:right;">
+166
+</td>
+</tr>
+</tbody>
+</table>
+<p>Finalmente, para apresentar a quantidade de participantes totais, bem como separar a quantidade e a porcentagem de homens e mulheres por país, a codificação torna-se mais densa. O código abaixo apresenta os comentários para auxiliar no entendimento da rotina. Uma vez que a produção de rotinas assim costuma ser bastante demorada e o processo frequentemente gera erros, costumo recomendar utilizar pacotes que exportam os resultados diretamente para o excel. Essa recomendação é feita com cautela, pois o excel não foi feito para lidar com dados dessa natureza e, frequentemente, a probabilidade de ter falhas aumenta.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">Dataset <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#get data</span></a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="st">  </span><span class="co">#filter </span></a>
+<a class="sourceLine" id="cb11-3" title="3"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(sex)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-4" title="4"><span class="st">  </span></a>
+<a class="sourceLine" id="cb11-5" title="5"><span class="st">  </span><span class="co">#agrupar</span></a>
+<a class="sourceLine" id="cb11-6" title="6"><span class="st">  </span><span class="kw">group_by</span>(country, <span class="dt">add=</span><span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-7" title="7"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">participantes =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-8" title="8"></a>
+<a class="sourceLine" id="cb11-9" title="9"><span class="st">  </span><span class="co">#adicionar a relacao de quantidade de pais e sexo</span></a>
+<a class="sourceLine" id="cb11-10" title="10"><span class="st">  </span><span class="kw">group_by</span>(country, sex, participantes, <span class="dt">add=</span><span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-11" title="11"></a>
+<a class="sourceLine" id="cb11-12" title="12"><span class="st">  </span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb11-13" title="13">    <span class="co">#cria a contagem de sexo</span></a>
+<a class="sourceLine" id="cb11-14" title="14">    <span class="dt">sex_count =</span> <span class="kw">n</span>(), </a>
+<a class="sourceLine" id="cb11-15" title="15">    <span class="co">#cria a porcentagem de sexo por pais</span></a>
+<a class="sourceLine" id="cb11-16" title="16">    <span class="dt">sex_percentage =</span> <span class="kw">round</span>(sex_count<span class="op">/</span><span class="kw">first</span>(participantes),<span class="dv">2</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb11-17" title="17"><span class="st">  </span><span class="co"># cria uma variável agrupada</span></a>
+<a class="sourceLine" id="cb11-18" title="18"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">n_percentage =</span> <span class="kw">paste0</span>(sex_count,<span class="st">&quot; (&quot;</span>,sex_percentage,<span class="st">&quot;)&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-19" title="19"><span class="st">  </span><span class="co">#seleciona apenas as variaveis de interesse</span></a>
+<a class="sourceLine" id="cb11-20" title="20"><span class="st">  </span><span class="kw">select</span>(country, sex, n_percentage, participantes)  <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb11-21" title="21"><span class="st">  </span><span class="co">#Muda para formato largo de apresentação</span></a>
+<a class="sourceLine" id="cb11-22" title="22"><span class="st">    </span><span class="kw">spread</span>(sex, n_percentage, <span class="dt">fill=</span><span class="st">&quot;-&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-23" title="23"><span class="st">  </span><span class="co">#coloca os totais</span></a>
+<a class="sourceLine" id="cb11-24" title="24"><span class="st">  </span>janitor<span class="op">::</span><span class="kw">adorn_totals</span>(<span class="st">&quot;row&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-25" title="25"><span class="st">  </span><span class="kw">kable</span>(., <span class="dt">digits =</span> <span class="dv">2</span>,  <span class="dt">booktabs =</span> T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb11-26" title="26"><span class="st">  </span><span class="kw">kable_styling</span>(<span class="dt">position =</span> <span class="st">&quot;center&quot;</span>, <span class="dt">full_width =</span> F, <span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>)</a></code></pre></div>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+country
+</th>
+<th style="text-align:right;">
+participantes
+</th>
+<th style="text-align:left;">
+M
+</th>
+<th style="text-align:left;">
+F
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Espanha
+</td>
+<td style="text-align:right;">
+1209
+</td>
+<td style="text-align:left;">
+384 (0.32)
+</td>
+<td style="text-align:left;">
+825 (0.68)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Portugal
+</td>
+<td style="text-align:right;">
+426
+</td>
+<td style="text-align:left;">
+203 (0.48)
+</td>
+<td style="text-align:left;">
+223 (0.52)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Brasil
+</td>
+<td style="text-align:right;">
+315
+</td>
+<td style="text-align:left;">
+149 (0.47)
+</td>
+<td style="text-align:left;">
+166 (0.53)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:right;">
+1950
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+</ul>
+</div>
+<div id="gráficos" class="section level2">
+<h2><span class="header-section-number">3.4</span> Gráficos</h2>
+<p>A máquina gráfica do tidyverse é o ggplot. Pelo menos 3 argumentos são necessários para criação de gráficos, que são:</p>
+<ol style="list-style-type: decimal">
+<li>O banco dados ‘(data = )’, que pode ser omitido da sintaxe,<br />
+</li>
+<li>O aspecto estético, que permite diferentes complementos <code>aes(x = , y = , fill = , color = )</code>,<br />
+</li>
+<li>O aspecto geométrico, que varia em função do gráfico a ser apresentado</li>
+</ol>
+<p>O ggplot também permite realizar transformações dos resultados, alterar o posicionamento dos objetos, quebrar apresentações em função de uma variável, customizar o tema principal e alterar os rótulos de todos os elementos gráficos. É importante notar que apesar dos argumentos utilizados na sintaxe serem similares aos utilizados em toda família tidyverse, a ligação <code>%&gt;%</code> é substituída pelo <code>+</code>.</p>
+<p>Quando bem feitos, os gráficos são extremamente úteis. Eles possibilitam buscar padrões e relações entre variáveis, confirmar ou não certas expectativas sobre os dados e descobrir novos fenômenos que poderão ser investigados futuramente <span class="citation">(<span class="citeproc-not-found" data-reference-id="morettin_bussab_2010"><strong>???</strong></span>)</span>.</p>
+<p>Todo gráfico deve ter um título e uma escala e a maioria dos gráficos são apresentados em um plano com um eixo horizontal (abcissas) e um vertical (ordenadas). Por sua vez, tais planos se referem, nessa ordem, ou aos níveis da variável que está sendo medida e as contagens ou proporções encontradas ou aos níveis da variável independente e os resultados médios da variável dependente.</p>
+<p>Para eleger que gráfico será realizado, é necessário responder a duas perguntas:
+1. Quantas variáveis serão apresentadas ?<br />
+2. Qual o nível de medida da variával independente ?</p>
+<p>O diagrama abaixo oferece uma árvore de decisão funcional.</p>
+<div id="htmlwidget-c1793cbe915b4695c2cd" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c1793cbe915b4695c2cd">{"x":{"diagram":"digraph flowchart {\n      # node definitions with substituted label text\n      \n      node [\n      fontname = Helvetica,\n      fillcolor = \"Orange\", \n      shape = rectangle,\n      style = filled]\n      \n      A[label = \"Quantas variáveis vão ser apresentadas?\"]\n      B[label = \"Nivel de medida da VI\"]\n      C[label = \"Nivel de medida da VI\"]\n      \n\n      node [fillcolor = \"white\", style = filled]\n      A -> \"Apenas 1\";\n      A -> \"2 ou +\";\n\n      \"Apenas 1\" -> B -> { \"Discreta\" \"Contínua\" };\n      \"2 ou +\" -> C -> { \"Discreta \" \"Contínua \"};\n       \n       Discreta -> { Setor Barras }\n       Contínua -> { Histograma Densidade Boxplot }\n       \n       \n       \"Discreta \" -> { \"Barras \" Colunas \"Boxplot \" }\n       \"Contínua \" -> { Linhas Dispersão }\n       \n       \n     }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="variável-discreta" class="section level2">
+<h2><span class="header-section-number">3.5</span> 1 variável discreta</h2>
+<p>Quando há apenas uma variável categórica, tratada como discreta, os gráficos são criados para apresentar as contagens e/ou as proporções. Nesse caso, é recomendado utilização de um <strong>gráfico de barras</strong> ou <strong>gráfico de setor</strong>. Apesar de ser possível apresentar as frequências absolutas, esses resultados podem gerar distorção da informação e, portanto, é preferível sempre apresentar as proporções de ocorrência de uma determinada variável ou valor. Por definição, quando se trabalha com proporções, o valor máximo da soma das proporções é 100.</p>
+<p>O gráfico de barras abaixo apresenta a contagem absoluta dos participantes pesquisados em cada país.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> country)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb12-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stats =</span> identity) <span class="op">+</span></a>
+<a class="sourceLine" id="cb12-3" title="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;País&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;Número de participantes nos países investigados&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning: Ignoring unknown parameters: stats</code></pre>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>Já abaixo, as barras são utilizadas para apresentar as proporções. Um recurso do pacote <code>scales</code> foi utilizado para adequar a visualização das proporções.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> country, <span class="dt">y =</span> ..prop.., <span class="dt">group =</span> <span class="dv">1</span>)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;count&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb14-3" title="3"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> scales<span class="op">::</span><span class="kw">percent_format</span>()) <span class="op">+</span></a>
+<a class="sourceLine" id="cb14-4" title="4"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;País&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;Proporção de participantes em cada país investigado&quot;</span>)</a></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>É também possível apresentar as proporções em uma única barra, cujas cores variam em função dos grupos.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x=</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;perc&quot;</span>, <span class="dt">fill =</span> country)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb15-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;stack&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb15-3" title="3"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>Finalmente, o gráfico de setor (as vezes chamado de pizza ou torta) pode também ser utilizado. O aspecto principal desse gráfico é apresentar os setores de maneira proporcional às frequências.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x=</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;perc&quot;</span>, <span class="dt">fill =</span> country)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>, <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb16-3" title="3"><span class="st">  </span><span class="kw">coord_polar</span>(<span class="dt">theta=</span><span class="st">&quot;y&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb16-4" title="4"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Proporção de participantes em cada país&quot;</span>)</a></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+<div id="variável-contínua" class="section level2">
+<h2><span class="header-section-number">3.6</span> 1 variável contínua</h2>
+<p>Quando uma única variável é apresentada no gráfico e ela é continua, os gráficos adequados são o histograma, densidade e o boxplot.</p>
+<p>Abaixo um histograma da idade dos participantes:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> age)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb17-2" title="2"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">30</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;lightgrey&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb17-3" title="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Distribuição da idade dos participantes&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning: Removed 28 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>Abaixo um gráfico de densidade da idade:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> age)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">fill =</span> <span class="st">&quot;lightgray&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb19-3" title="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Distribuição da idade dos participantes&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning: Removed 28 rows containing non-finite values (stat_density).</code></pre>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>Por sua vez, abaixo o boxplot dessa mesma variável:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">y =</span> age, <span class="dt">x =</span> <span class="st">&quot;&quot;</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb21-2" title="2"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb21-3" title="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Distribuição da idade dos participantes&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning: Removed 28 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>O boxplot tem vantagens em comparação com os outros gráficos apresentados até agora. A caixa reúne 50% da distribuição (Q1, Mediana e Q3) e os bigodes são construídos com base em <code>Q1 - 1.5*IQR</code> e <code>Q3 + 1.5*IQR</code>.</p>
+<p>Apesar de algo difícil de visualizar ao início, a informação apresentada no boxplot e no gráfico de densidade são iguais.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1">a &lt;-<span class="st"> </span><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> age)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb23-2" title="2"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">fill =</span> <span class="st">&quot;lightgray&quot;</span>)</a>
+<a class="sourceLine" id="cb23-3" title="3"></a>
+<a class="sourceLine" id="cb23-4" title="4">b &lt;-<span class="st"> </span><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">y =</span> age, <span class="dt">x =</span> <span class="st">&quot;&quot;</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb23-5" title="5"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb23-6" title="6"><span class="st">  </span><span class="kw">coord_flip</span>()</a>
+<a class="sourceLine" id="cb23-7" title="7"></a>
+<a class="sourceLine" id="cb23-8" title="8"><span class="kw">grid.arrange</span>(a,b, <span class="dt">top =</span> <span class="st">&quot;Distribuição da idade dos participantes&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning: Removed 28 rows containing non-finite values (stat_density).</code></pre>
+<pre><code>## Warning: Removed 28 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+</div>
+<div id="variáveis-vi-discreta" class="section level2">
+<h2><span class="header-section-number">3.7</span> 2 variáveis (VI discreta)</h2>
+<p>Por definição, os gráficos de barras ou colunas (considerando aqui as barras de erro) e o boxplot são adequados para apresentar essa relação. Basicamente, esses gráficos permitem verificar a <strong>diferença</strong> entre os grupos.</p>
+<p>O gráfico abaixo mostra os resultados do Inventário Beck de Ansiedade entre 3 países investigados. As barras de erro são importantes para verificar, inicialmente, as possíveis diferenças significativas entre os países.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> country, <span class="dt">y =</span> bai_sum)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb26-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb26-3" title="3"><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>,<span class="dt">fun.data =</span> mean_se) <span class="op">+</span></a>
+<a class="sourceLine" id="cb26-4" title="4"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Resultados da escala de ansiedade em função do país investigado&quot;</span>)</a></code></pre></div>
+<pre><code>## No summary function supplied, defaulting to `mean_se()</code></pre>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p>O boxplot a seguir também é um gráfico indicado:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> country, <span class="dt">y =</span> bai_sum)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb28-2" title="2"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+</div>
+<div id="variáveis-vi-contínua" class="section level2">
+<h2><span class="header-section-number">3.8</span> 2 variáveis (VI contínua)</h2>
+<p>Assumindo que a VI é contínua e a VD também, o gráfico de pontos e de dispersão são virtualmente identicos e indicados. Esses gráficos permitem verificar a <strong>associação</strong> entre as variáveis. No ggoplot, o argumento <code>geom_point</code> e <code>geom_jitter</code> são possíveis. Abaixo, utilizando os pontos.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> bai_sum)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-3" title="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Resultados da escala de ansiedade em função da idade do participante&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning: Removed 28 rows containing missing values (geom_point).</code></pre>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p>Abaixo, utilizando o jitter</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> bai_sum)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb31-2" title="2"><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb31-3" title="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Resultados da escala de ansiedade em função da idade do participante&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning: Removed 28 rows containing missing values (geom_point).</code></pre>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p>Tradicionalmente, de maneira análoga às barras de erros apresentadas em gráficos cujas VIs são discretas, adiciona-se uma linha de regressão amostral quando a VI é contínua, tal como apresentado a seguir.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> bai_sum)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb33-2" title="2"><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb33-3" title="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb33-4" title="4"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Resultados da escala de ansiedade em função da idade do participante&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning: Removed 28 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning: Removed 28 rows containing missing values (geom_point).</code></pre>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+</div>
+<div id="outros-gráficos" class="section level2">
+<h2><span class="header-section-number">3.9</span> Outros gráficos</h2>
+<p>Evidentemente, é possível apresentar mais informações nos gráficos com mais de um variável apresentada, desde que elas sejam relacionadas ao problema de pesquisa estudado e não sobrecarreguem a visualização dos resultados. Frequentemente, as informações adicionais são feitas pela inclusão de <strong>clusters</strong> ou <strong>agrupamentos</strong>. Isso é tanto possível em gráficos cuja VI seja discreta quanto contínua.</p>
+<p>No exemplo abaixo, o gráfico dos resultados do Inventário Beck de Ansiedade entre os 3 países investigados (VI discreta) agora está agrupado pelo sexo do participante.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1">Dataset <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb36-2" title="2"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(sex)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb36-3" title="3"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> country, <span class="dt">y =</span> bai_sum, <span class="dt">fill =</span> sex)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb36-4" title="4"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb36-5" title="5"><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">geom=</span><span class="st">&quot;errorbar&quot;</span>, <span class="dt">fun.data =</span> mean_se, <span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="fl">0.95</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb36-6" title="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Resultados da escala de ansiedade em função da idade e sexo do participante&quot;</span>)</a></code></pre></div>
+<pre><code>## No summary function supplied, defaulting to `mean_se()</code></pre>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p>Já no exemplo abaixo, a relação entre idade e pontuação no Inventário Beck de Ansiedade está agora agrupada pelo sexo do participante.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1">Dataset <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb38-2" title="2"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(sex)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb38-3" title="3"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> bai_sum, <span class="dt">color =</span> sex)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb38-4" title="4"><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb38-5" title="5"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb38-6" title="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Resultados da escala de ansiedade em função da idade e sexo do participante&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning: Removed 24 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning: Removed 24 rows containing missing values (geom_point).</code></pre>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p>Em situações onde existe uma grande quantidade de informação para ser apresentada, os resultados começam a se tornar difíceis de serem entendidos. O gráfico abaixo, por exemplo, é excessivamente carregado de informação e, consequentemente, inadequado.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1">Dataset <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb41-2" title="2"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(sex)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb41-3" title="3"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> bai_sum, <span class="dt">color =</span> sex, <span class="dt">shape =</span> country)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb41-4" title="4"><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb41-5" title="5"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb41-6" title="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Resultados da escala de ansiedade em função da idade, país e sexo do participante&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning: Removed 24 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning: Removed 24 rows containing missing values (geom_point).</code></pre>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<p>Em outro sentido, o gráfico a seguir quebra a apresentação dos resultados por país e, com isso, potencializa que a informação seja melhor compreendida.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1">Dataset <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb44-2" title="2"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(sex)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb44-3" title="3"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> bai_sum, <span class="dt">color =</span> sex)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb44-4" title="4"><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb44-5" title="5"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb44-6" title="6"><span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>country) <span class="op">+</span></a>
+<a class="sourceLine" id="cb44-7" title="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Resultados da escala de ansiedade em função da idade, país e sexo do participante&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning: Removed 24 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning: Removed 24 rows containing missing values (geom_point).</code></pre>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="prerequisites.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="getgitbook.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/prerequisites.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["gitbook-demo.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

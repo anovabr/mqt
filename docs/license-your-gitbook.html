@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8 License your GitBook | Métodos quantitativos em Psicologia com R e Rstudio</title>
+  <title>Chapter 9 License your GitBook | Métodos quantitativos em Psicologia com R e Rstudio</title>
   <meta name="description" content="This GitBook is an example of a GitBook for teaching. It can be adapted for specific courses. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 8 License your GitBook | Métodos quantitativos em Psicologia com R e Rstudio" />
+  <meta property="og:title" content="Chapter 9 License your GitBook | Métodos quantitativos em Psicologia com R e Rstudio" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="cjvanlissa/gitbook-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 License your GitBook | Métodos quantitativos em Psicologia com R e Rstudio" />
+  <meta name="twitter:title" content="Chapter 9 License your GitBook | Métodos quantitativos em Psicologia com R e Rstudio" />
   
   <meta name="twitter:description" content="This GitBook is an example of a GitBook for teaching. It can be adapted for specific courses. The output format for this example is bookdown::gitbook." />
   
@@ -50,6 +50,11 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/viz-0.3/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.1/grViz.js"></script>
 
 
 <style type="text/css">
@@ -133,19 +138,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introdução</a></li>
 <li class="chapter" data-level="2" data-path="prerequisites.html"><a href="prerequisites.html"><i class="fa fa-check"></i><b>2</b> Prerequisites</a></li>
-<li class="chapter" data-level="3" data-path="getgitbook.html"><a href="getgitbook.html"><i class="fa fa-check"></i><b>3</b> Get your GitBook</a></li>
-<li class="chapter" data-level="4" data-path="editing-the-book.html"><a href="editing-the-book.html"><i class="fa fa-check"></i><b>4</b> Editing the book</a><ul>
-<li class="chapter" data-level="4.1" data-path="editing-the-book.html"><a href="editing-the-book.html#creating-new-chapters"><i class="fa fa-check"></i><b>4.1</b> Creating new chapters</a></li>
-<li class="chapter" data-level="4.2" data-path="editing-the-book.html"><a href="editing-the-book.html#linking-across-chapters"><i class="fa fa-check"></i><b>4.2</b> Linking across chapters</a></li>
-<li class="chapter" data-level="4.3" data-path="editing-the-book.html"><a href="editing-the-book.html#advanced-editing"><i class="fa fa-check"></i><b>4.3</b> Advanced editing</a></li>
+<li class="chapter" data-level="3" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html"><i class="fa fa-check"></i><b>3</b> Estatística Descritiva</a><ul>
+<li class="chapter" data-level="3.1" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#pesquisa"><i class="fa fa-check"></i><b>3.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="3.2" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>3.2</b> Verbos do dplyr</a></li>
+<li class="chapter" data-level="3.3" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#tabelas"><i class="fa fa-check"></i><b>3.3</b> Tabelas</a></li>
+<li class="chapter" data-level="3.4" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#gráficos"><i class="fa fa-check"></i><b>3.4</b> Gráficos</a></li>
+<li class="chapter" data-level="3.5" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-discreta"><i class="fa fa-check"></i><b>3.5</b> 1 variável discreta</a></li>
+<li class="chapter" data-level="3.6" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-contínua"><i class="fa fa-check"></i><b>3.6</b> 1 variável contínua</a></li>
+<li class="chapter" data-level="3.7" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-vi-discreta"><i class="fa fa-check"></i><b>3.7</b> 2 variáveis (VI discreta)</a></li>
+<li class="chapter" data-level="3.8" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-vi-contínua"><i class="fa fa-check"></i><b>3.8</b> 2 variáveis (VI contínua)</a></li>
+<li class="chapter" data-level="3.9" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#outros-gráficos"><i class="fa fa-check"></i><b>3.9</b> Outros gráficos</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="figtab.html"><a href="figtab.html"><i class="fa fa-check"></i><b>5</b> Figures and tables</a></li>
-<li class="chapter" data-level="6" data-path="examples.html"><a href="examples.html"><i class="fa fa-check"></i><b>6</b> Examples</a><ul>
-<li class="chapter" data-level="6.1" data-path="examples.html"><a href="examples.html#doing-meta-analysis-in-r"><i class="fa fa-check"></i><b>6.1</b> Doing Meta-Analysis in R</a></li>
-<li class="chapter" data-level="6.2" data-path="examples.html"><a href="examples.html#theory-construction-and-statistical-modeling"><i class="fa fa-check"></i><b>6.2</b> Theory Construction and Statistical Modeling</a></li>
+<li class="chapter" data-level="4" data-path="getgitbook.html"><a href="getgitbook.html"><i class="fa fa-check"></i><b>4</b> Get your GitBook</a></li>
+<li class="chapter" data-level="5" data-path="editing-the-book.html"><a href="editing-the-book.html"><i class="fa fa-check"></i><b>5</b> Editing the book</a><ul>
+<li class="chapter" data-level="5.1" data-path="editing-the-book.html"><a href="editing-the-book.html#creating-new-chapters"><i class="fa fa-check"></i><b>5.1</b> Creating new chapters</a></li>
+<li class="chapter" data-level="5.2" data-path="editing-the-book.html"><a href="editing-the-book.html#linking-across-chapters"><i class="fa fa-check"></i><b>5.2</b> Linking across chapters</a></li>
+<li class="chapter" data-level="5.3" data-path="editing-the-book.html"><a href="editing-the-book.html#advanced-editing"><i class="fa fa-check"></i><b>5.3</b> Advanced editing</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="open-educational-resources.html"><a href="open-educational-resources.html"><i class="fa fa-check"></i><b>7</b> Open Educational Resources</a></li>
-<li class="chapter" data-level="8" data-path="license-your-gitbook.html"><a href="license-your-gitbook.html"><i class="fa fa-check"></i><b>8</b> License your GitBook</a></li>
+<li class="chapter" data-level="6" data-path="figtab.html"><a href="figtab.html"><i class="fa fa-check"></i><b>6</b> Figures and tables</a></li>
+<li class="chapter" data-level="7" data-path="examples.html"><a href="examples.html"><i class="fa fa-check"></i><b>7</b> Examples</a><ul>
+<li class="chapter" data-level="7.1" data-path="examples.html"><a href="examples.html#doing-meta-analysis-in-r"><i class="fa fa-check"></i><b>7.1</b> Doing Meta-Analysis in R</a></li>
+<li class="chapter" data-level="7.2" data-path="examples.html"><a href="examples.html#theory-construction-and-statistical-modeling"><i class="fa fa-check"></i><b>7.2</b> Theory Construction and Statistical Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="open-educational-resources.html"><a href="open-educational-resources.html"><i class="fa fa-check"></i><b>8</b> Open Educational Resources</a></li>
+<li class="chapter" data-level="9" data-path="license-your-gitbook.html"><a href="license-your-gitbook.html"><i class="fa fa-check"></i><b>9</b> License your GitBook</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -168,7 +184,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="license-your-gitbook" class="section level1">
-<h1><span class="header-section-number">Chapter 8</span> License your GitBook</h1>
+<h1><span class="header-section-number">Chapter 9</span> License your GitBook</h1>
 <p>In the spirit of Open Science, it is good to think about making your course materials Open Source. That means that other people can use them. In principle, if you publish materials online without license information, you hold the copyright to those materials. If you want them to be Open Source, you must include a license.</p>
 <p>The Creative Commons licenses are typically suitable for course materials. This GitBook, for example, is licensed under CC-BY 4.0. That means you can use and remix it as you like, but you must credit the original source.</p>
 <p>You can find <a href="https://creativecommons.org/share-your-work/licensing-examples">more information about the Creative Commons Licenses here</a>. Specific licenses that might be useful are:</p>
