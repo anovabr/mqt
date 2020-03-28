@@ -1,53 +1,439 @@
 # Prerequisites
 
-This GitBook is created in Rstudio, using the `bookdown` package. To get your system set up correctly, you have to install several software packages, and register on GitHub. You only have to perform these steps once, and the entire process should take approximately 1 hour if you start from scratch. In case some software is already installed on your system, you can skip related steps. Follow these steps in order:
+```{r base pesquisa_espanha e pacotes, include = FALSE }
 
-1. Install R from [cloud.r-project.org](https://cloud.r-project.org/)
-2. Install Rstudio Desktop (Free) from [rstudio.com](https://rstudio.com/products/rstudio/download/#download)
-<!-- ALWAYS RUN AS ADMIN -->
-<!-- install rtools -->
-3. Install Git from [git-scm.com](https://git-scm.com/downloads). Use the default, recommended settings. It is especially important to leave these settings selected:
-    + Git from the command line and also from third party software  
-    + Use the OpenSSL library  
-    <!--*For secure data transfer with GitHub*-->
-    + Checkout Windows-style, commit Unix-style line endings  
-    <!--*This is the preferred setting when collaborating with others on different platforms. Be prepared that, on windows, you will receive harmless notifications about LF to CRLF line endings.  *-->
-    + Enable Git Credential Manager  
-    <!--*For logging in to GitHub*-->
-    + If you run into any trouble, a more comprehensive tutorial on installing Git is available at [happygitwithr.com](https://happygitwithr.com/install-git.html).
-4. Register on GitHub
-    + Go to [github.com](https://github.com/) and click "Sign up". Choose an "Individual", "Free" plan.
-    + Request a [free academic upgrade](https://help.github.com/en/articles/applying-for-an-educator-or-researcher-discount). This allows you to create *private repositories*, which are only visible to you and selected collaborators, and can be made public when your work is published.
-5. Connect Rstudio to Git and Github (for more support, see [this Rstudio article](https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN), and [this blog post](https://www.r-bloggers.com/rstudio-and-github/))
-    a. Open Rstudio, open the Tools menu, click *Global Options*, and click *Git/SVN*
-    b. Verify that *Enable version control interface for RStudio projects* is selected
-    c. Verify that *Git executable:* shows the location of git.exe. If it is missing, manually fix the location of the file.
-    d. Click *Create RSA Key*. Do not enter a passphrase. Press *Create*. A window with some information will open, which you can close.
-    e. Click *View public key*, and copy the entire text to the clipboard.
-    f. Close Rstudio (it might offer to restart by itself; this is fine)
-    g. Go to [www.github.com](https://www.github.com)
-    h. Click your user icon, click *Settings*, and then select the *SSH and GPG keys* tab.
-    i. Click *New SSH key*. Give it an arbitrary name (e.g., your computer ID), and paste the public key from your clipboard into the box labeled "*Key*".
-    j. Open Rstudio again (unless it restarted by itself)
-6. Install all required packages by running the following code in the Rstudio console. Be prepared for three contingencies:  
-    + If you receive any error saying *There is no package called XYZ*, then run the code `install.packages("XYZ")`  
-    + If you are prompted to update packages, just press `3: None`. Updating packages this way in an interactive session sometimes leads to errors, if the packages are loaded.  
-    + If you see a pop-up dialog asking *Do you want to install from sources the package which needs compilation?*, click *No*. If this leads to errors, then please follow *Step 3* from [this online guide](https://cjvanlissa.github.io/worcs/articles/setup.html), and run `install.packages("devtools")`. This will take a long time, but will allow you to install packages from source.
+load(file="C:/Users/luisf/OneDrive/Documentos/anovabr/mqt/bases/Dados - Brasil e espanha fusionados.RData")
 
-Run the following code to install the required packages:
-
-```{r eval=FALSE}
-install.packages("bookdown")
-install.packages("tinytex")
-tinytex::install_tinytex()
-git2r::config(global = TRUE, user.name = "your.name", user.email = "your.email")
+library(tidyverse)
+library(knitr) #tables and graphs
+library(kableExtra) #tables with different styles
+library(DiagrammeR) #flowcharts
+library(gridExtra) #plot together
 ```
 
-That's it! Everything should be installed and connected now.
 
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'packages.bib')
+# Estatística Descritiva
+
+
+```{block, type="objectives"}
+**Objetivos do capítulo**  
+1. Apresentar os verbos do dplyr e funções do ggplot.  
+2. Revisitar conceitos básicos de estatística descritiva  
+3. Ensinar a construção de tabelas e gráficos 
+
 ```
+
+A apresentação dos resultados de uma pesquisa a partir de gráficos e tabelas é fundamental para disseminação dos resultados tanto entre pares como para sociedade em geral. No geral, o R é uma excelente ferramenta para aspectos descritivos. No entanto, algumas apresentações relativamente simples trazem uma dificuldade computacional, o que pode gerar alguma desvantagem na utilização do R para tais apresentações. Em outras palavras, parece haver uma curva inversamente proporcional em relação à dificuldade da tarefa e à necessidade de codificação imposta pelo R. Assim, tarefas relativamente fáceis frequentemente impõem mais densidade computacional do que tarefas mais complexas, como estimar os parâmetros em um modelo de regressão múltipla.
+
+
+Posto isso, todo resultado estatístico começa pela apresentação de **tabelas** e **gráficos**. Da mesma forma que a construção de um prédio depende que andaimes sejam colocados, um relatório técnico depende dessas condições. Aproveitando um pouco mais esse exemplo, da mesma maneira que a conclusão da construção de um prédio, necessariamente, cursa com a retirada dos andaimes, artigos científicos frequentemente tem espaço limitado para publicação e, consequentemente, os autores se veem na situação de aproveitar apenas parte (ou quase nada) dos relatórios originais.
+
+
+## Pesquisa
+
+Vamos utilizar a pesquisa intitulada "Sintomas de depressão e ansiedade em universitários espanhóis, portugueses e brasileiros", com previsão de publicação pela Revista Psicologia: Teoria e Pesquisa em 2019. Nessa pesquisa, sou o coautor e o pesquisador responsável para correspondência.
+
+
+O objetivo dessa pesquisa foi explorar sintomas de ansiedade e depressão em universitários, bem como investigar possíveis relações entre tais traços latentes e fatores sociodemográficos. Um diferencial importante dessa pesquisa foi a seleção amostral. Partiu-se de uma amostra representativa dos estudantes de três universidades, PUC-Rio (Brasil), Universidade de Extremadura (Espanha) e Universidade de Coimbra (Portugal). Isso permitiu ter maior validade externa dos resultados.
+
+Todo documento acadêmico e científico é composto de **aspectos textuais**, **aspectos tabulares** e **gráficos** que devem caminhar na mesma direção e **sempre associados às perguntas e objetivos traçados na pesquisa**. Assim, é possível concluir que a parte principal de qualquer trabalho acadêmico não é necessariamente os aspectos estatísticos, mas sim os objetivos e possíveis hipóteses investigadas pelos pesquisadores. A estatística é uma ferramenta de trabalho (ou uma atividade de meio) para que as perguntas sejam respondidas de forma válida.
+
+Conforme já explicitado, a estatística pode ser dividida em duas áreas interligadas: estatística descritiva e estatística inferencial. O objetivo da estatística descritiva é apresentar sínteses e resumos dos resultados a partir de gráficos e tabelas. Não é intenção dessa área fazer generalizações ou extrapolar os resultados obtidos em uma pesquisa a pessoas não investigadas durante a coleta de dados. Por contraste, a estatística inferencial visa extrapolar os dados e fazer generalizações que toquem toda população de onde aquela mostra foi retirada e é representativa. Dessa maneira, o principal objetivo da estatística inferencial é, de fato, fazer inferências. 
+
+Apesar de livros e aulas unirem ambas as áreas da estatística, alguns pontos merecem destaque, que são:  
+
+1. A estatística descritiva surgiu antes que a inferencial. A etimologia da palavra talvez ajude a entender, uma vez que estatística vem da palavra estado e este sempre teve interesse em saber quantos eram os cidadãos de um determinado local para, entre outras atividades, taxá-los. Dessa maneira, aspectos descritivos antecedem os inferenciais. Por sua vez, a estatística inferencial guarda origem e proximidade com a teoria dos jogos e, consequentemente, isso ajuda a entender o motivo pelo qual a maioria dos exemplos inferenciais envolvem jogos de azar.
+
+2. A estatística tem duas "escolas" ou "formas de pensamento". A estatística frequentista e a estatística bayesiana. Aspectos fundamentais que tocam à definição de probabilidade são diferentes, bem como a definição de dados e parâmetros também o são. Pela perspectiva histórica, a estatística bayesiana é mais antiga que a frequentista. No entanto, se for comparado a proporção de uso entre os pesquisadores, a estatística frequentista é ainda a mais frequente e justifica a ênfase deste livro nesta área.
+
+3. A relação entre estatística e Machine Learning (ML) é relativamente recente. Apesar de grande interface, e do fato que as análises realizadas em estatística e ML encontram resultados virtualmente idênticos, as áreas têm objetivos diferentes. Ainda sob perspectiva histórica, a estatística, como uma área do conhecimento, é anterior à ML e, também por isso, justifica a ênfase do livro.
+
+## Verbos do dplyr
+
+O dplyr funciona de maneira muito intuitiva. O padrão original do R considera que as operações são realizadas a partir de uma lógica do tipo `verbo(sujeito, complemento)` enquanto o ambiente tidyverse opta por `sujeito %>% verbo(complemento)`, tornando-se o ato de programar mais natural e associado à maneira que organizamos as ideias. 
+
+Os verbos principais do pacote estão listados na tabela a seguir e as sintaxes deixadas no decorrer deste capítulo (e do livro) permitem uma melhor apreensão das funcionalidades. É importante lembrar que, em alguns momentos, em função da praticidade computacional, algumas sintaxes vão contar com o formato base do R.
+
+
+
+| Verbo         | Ação          |
+| :------------ | :-----------: |
+| glimpse        | Inspeciona os dados |
+| count          | Conta os níveis de uma variável |
+| select        | seleciona uma variável específica |
+| filter        | Filtra os resultados por um nível específico de uma variável |
+| group_by      | Agrupa os resultados por níveis de uma variávei específica |
+| summarise     | Apresenta sumários (com medidas estatísticas)  |
+| mutate        | Cria novas variáveis ou altera as existentes  |
+| arrange       | Organiza a apresentação dos resultados  |
+| left_join     | Junta bases ou colunas  |
+| gather        | Transforma uma base larga em longa  |
+| spread        | Transforma uma base longa em larga  |
+
+
+
+## Tabelas
+
+Tabelas apresentam as informações de uma pesquisa de maneira reunida e objetiva. Como os verbos do dplyr possibilitam que os mesmos resultados sejam encontrados por vias diferentes, os códigos a seguir tentarão manter uma uniformidade lógica. Em alguns momentos, para ampliar as possibilidades de codificação, sintaxes extras serão oferecidas.  
+
+A tabela a seguir apresenta a quantidade de participantes em cada país.
+
+```{r}
+Dataset %>% 
+  group_by(country) %>% 
+  summarise(n=n()) %>% 
+  kable(digits = 2) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
+```
+
+É também possível adicionar proporções relativas à tabela, o que é uma escolha adequada para apresentação dos resultados.
+
+
+```{r}
+Dataset %>% 
+  group_by(country) %>% 
+  summarise(n=n(), Prop = n/nrow(.)) %>% 
+  kable(digits = 2) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
+```
+O pacote `janitor` oferece complementos úteis à família tidyverse e um deles justamente adiciona os totais, de maneira mais rápida. Repare que para utilizar o pacote sem tê-lo previamente carregado ao ambiente, basta usar o nome do pacote seguido de ::
+
+```{r}
+Dataset %>% 
+  group_by(country) %>% 
+  summarise(n=n(), prop = n/nrow(.)) %>% 
+  bind_rows(summarise_all(., list(~if(is.numeric(.)) sum(.) else "Total"))) %>% 
+  kable(digits = 2) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
+
+```
+
+```{r}
+Dataset %>% 
+  group_by(country) %>% 
+  summarise(n=n(), prop = n/nrow(.)) %>% 
+  janitor::adorn_totals("row") %>% 
+  kable(digits = 2) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
+
+```
+
+O mesmo que foi realizado com os países, pode também ser realizado com o sexo do participante.
+
+
+```{r}
+Dataset %>% 
+  group_by(sex) %>% 
+  summarise(n=n(), prop = n/nrow(.)) %>% 
+  janitor::adorn_totals("row") %>% 
+  kable(digits = 2) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
+
+```
+
+A adição do argumento para filtrar os participantes com dados ausentes sobre sexo auxilia a apresentar melhor os resultados. É importante atentar que essa análise tem finalidade descritiva e que omitir a apresentação de variáveis ausentes não significa excluir ou remover os participantes das análises que serão feitas posteriormente. Somente em possibilidades remotas se retira participantes das análises de maneira definitiva.
+
+```{r}
+Dataset %>% 
+  filter(!is.na(sex)) %>% 
+  group_by(sex) %>%
+  summarise(n=n(), prop = n/nrow(.)) %>% 
+  kable(digits = 2) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
+
+```
+Para fazer uma tabela cruzada, em que seja possível apresentar a quantidade de homens e mulheres por país, a função `spread` vai ser utilizada.
+
+
+```{r}
+Dataset %>% 
+  filter(!is.na(sex)) %>% 
+  group_by(country,sex) %>%
+  summarise(n=n()) %>% 
+  spread(sex, n) %>% 
+  kable(digits = 2) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
+
+```
+
+Finalmente, para apresentar a quantidade de participantes totais, bem como separar a quantidade e a porcentagem de homens e mulheres por país, a codificação torna-se mais densa. O código abaixo apresenta os comentários para auxiliar no entendimento da rotina. Uma vez que a produção de rotinas assim costuma ser bastante demorada e o processo frequentemente gera erros, costumo recomendar utilizar pacotes que exportam os resultados diretamente para o excel. Essa recomendação é feita com cautela, pois o excel não foi feito para lidar com dados dessa natureza e, frequentemente, a probabilidade de ter falhas aumenta. 
+
+```{r}
+Dataset %>% #get data
+  #filter 
+  filter(!is.na(sex)) %>% 
+  
+  #agrupar
+  group_by(country, add=TRUE) %>% 
+  mutate(participantes = n()) %>% 
+
+  #adicionar a relacao de quantidade de pais e sexo
+  group_by(country, sex, participantes, add=TRUE) %>% 
+
+  summarise(
+    #cria a contagem de sexo
+    sex_count = n(), 
+    #cria a porcentagem de sexo por pais
+    sex_percentage = round(sex_count/first(participantes),2)) %>%
+  # cria uma variável agrupada
+    mutate(n_percentage = paste0(sex_count," (",sex_percentage,")")) %>% 
+  #seleciona apenas as variaveis de interesse
+  select(country, sex, n_percentage, participantes)  %>%
+  #Muda para formato largo de apresentação
+    spread(sex, n_percentage, fill="-") %>% 
+  #coloca os totais
+  janitor::adorn_totals("row") %>% 
+  kable(., digits = 2,  booktabs = T) %>%
+  kable_styling(position = "center", full_width = F, bootstrap_options = "striped")
+
+```
+
+
+## Gráficos
+
+A máquina gráfica do tidyverse é o ggplot. Pelo menos 3 argumentos são necessários para criação de gráficos, que são:
+
+1. O banco dados '(data = )', que pode ser omitido da sintaxe,    
+2. O aspecto estético, que permite diferentes complementos `aes(x = , y = , fill = , color = )`,  
+3. O aspecto geométrico, que varia em função do gráfico a ser apresentado  
+
+O ggplot também permite realizar transformações dos resultados, alterar o posicionamento dos objetos, quebrar apresentações em função de uma variável, customizar o tema principal e alterar os rótulos de todos os elementos gráficos. É importante notar que apesar dos argumentos utilizados na sintaxe serem similares aos utilizados em toda família tidyverse, a ligação `%>%` é substituída pelo `+`. 
+
+Quando bem feitos, os gráficos são extremamente úteis. Eles possibilitam buscar padrões e relações entre variáveis, confirmar ou não certas expectativas sobre os dados e descobrir novos fenômenos que poderão ser investigados futuramente [@morettin_bussab_2010]. 
+
+Todo gráfico deve ter um título e uma escala e a maioria dos gráficos são apresentados em um plano com um eixo horizontal (abcissas) e um vertical (ordenadas). Por sua vez, tais planos se referem, nessa ordem, ou aos níveis da variável que está sendo medida e as contagens ou proporções encontradas ou aos níveis da variável independente e os resultados médios da variável dependente.
+
+Para eleger que gráfico será realizado, é necessário responder a duas perguntas:
+1. Quantas variáveis serão apresentadas ?  
+2. Qual o nível de medida da variával independente ?  
+
+O diagrama abaixo oferece uma árvore de decisão funcional.
+
+```{r, echo=FALSE}
+
+grViz("digraph flowchart {
+      # node definitions with substituted label text
+      
+      node [
+      fontname = Helvetica,
+      fillcolor = 'Orange', 
+      shape = rectangle,
+      style = filled]
+      
+      A[label = 'Quantas variáveis vão ser apresentadas?']
+      B[label = 'Nivel de medida da VI']
+      C[label = 'Nivel de medida da VI']
+      
+
+      node [fillcolor = 'white', style = filled]
+      A -> 'Apenas 1';
+      A -> '2 ou +';
+
+      'Apenas 1' -> B -> { 'Discreta' 'Contínua' };
+      '2 ou +' -> C -> { 'Discreta ' 'Contínua '};
+       
+       Discreta -> { Setor Barras }
+       Contínua -> { Histograma Densidade Boxplot }
+       
+       
+       'Discreta ' -> { 'Barras ' Colunas 'Boxplot ' }
+       'Contínua ' -> { Linhas Dispersão }
+       
+       
+     }")
+
+
+```
+
+
+## 1 variável discreta
+
+Quando há apenas uma variável categórica, tratada como discreta, os gráficos são criados para apresentar as contagens e/ou as proporções. Nesse caso, é recomendado utilização de um **gráfico de barras** ou **gráfico de setor**. Apesar de ser possível apresentar as frequências absolutas, esses resultados podem gerar distorção da informação e, portanto, é preferível sempre apresentar as proporções de ocorrência de uma determinada variável ou valor. Por definição, quando se trabalha com proporções, o valor máximo da soma das proporções é 100.
+
+O gráfico de barras abaixo apresenta a contagem absoluta dos participantes pesquisados em cada país.
+
+```{r}
+ggplot(Dataset, aes(x = country)) +
+  geom_bar(stats = identity) +
+  labs(x = "País", title = "Número de participantes nos países investigados")
+
+```
+
+Já abaixo, as barras são utilizadas para apresentar as proporções. Um recurso do pacote `scales` foi utilizado para adequar a visualização das proporções.
+
+```{r}
+ggplot(Dataset, aes(x = country, y = ..prop.., group = 1)) + 
+  geom_bar(stat = "count") +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(x = "País", title = "Proporção de participantes em cada país investigado")
+```
+
+É também possível apresentar as proporções em uma única barra, cujas cores variam em função dos grupos.
+
+```{r}
+ggplot(Dataset, aes(x= "", y = "perc", fill = country)) +
+  geom_bar(stat = "identity", position = "stack") +
+  coord_flip()
+
+```
+
+
+Finalmente, o gráfico de setor (as vezes chamado de pizza ou torta) pode também ser utilizado. O aspecto principal desse gráfico é apresentar os setores de maneira proporcional às frequências.
+
+```{r}
+ggplot(Dataset, aes(x= "", y = "perc", fill = country)) +
+  geom_bar(width = 1, stat = "identity") + 
+  coord_polar(theta="y") +
+  labs(title = "Proporção de participantes em cada país")
+```
+
+## 1 variável contínua
+
+Quando uma única variável é apresentada no gráfico e ela é continua, os gráficos adequados são o histograma, densidade e o boxplot.
+
+Abaixo um histograma da idade dos participantes:
+
+```{r}
+ggplot(Dataset, aes(x = age)) +
+  geom_histogram(bins = 30, color = "black", fill = "lightgrey") +
+  labs(title = "Distribuição da idade dos participantes")
+```
+
+Abaixo um gráfico de densidade da idade:
+
+```{r}
+ggplot(Dataset, aes(x = age)) +
+  geom_density(fill = "lightgray") +
+  labs(title = "Distribuição da idade dos participantes")
+```
+
+Por sua vez, abaixo o boxplot dessa mesma variável: 
+
+```{r}
+ggplot(Dataset, aes(y = age, x = "")) +
+  geom_boxplot() +
+  labs(title = "Distribuição da idade dos participantes")
+```
+
+O boxplot tem vantagens em comparação com os outros gráficos apresentados até agora. A caixa reúne 50% da distribuição (Q1, Mediana e Q3) e os bigodes são construídos com base em `Q1 - 1.5*IQR` e `Q3 + 1.5*IQR`.
+
+Apesar de algo difícil de visualizar ao início, a informação apresentada no boxplot e no gráfico de densidade são iguais. 
+
+```{r}
+
+a <- ggplot(Dataset, aes(x = age)) +
+  geom_density(fill = "lightgray")
+
+b <- ggplot(Dataset, aes(y = age, x = "")) +
+  geom_boxplot() +
+  coord_flip()
+
+grid.arrange(a,b, top = "Distribuição da idade dos participantes")
+
+```
+
+
+## 2 variáveis (VI discreta)
+
+Por definição, os gráficos de barras ou colunas (considerando aqui as barras de erro) e o boxplot são adequados para apresentar essa relação. Basicamente, esses gráficos permitem verificar a **diferença** entre os grupos. 
+
+O gráfico abaixo mostra os resultados do Inventário Beck de Ansiedade entre 3 países investigados. As barras de erro são importantes para verificar, inicialmente, as possíveis diferenças significativas entre os países.
+
+```{r}
+ggplot(Dataset, aes(x = country, y = bai_sum)) +
+  geom_bar(stat = "summary") +
+  stat_summary(geom = "errorbar",fun.data = mean_se) +
+  labs(title = "Resultados da escala de ansiedade em função do país investigado")
+
+```
+
+O boxplot a seguir também é um gráfico indicado:
+
+```{r}
+ggplot(Dataset, aes(x = country, y = bai_sum)) +
+  geom_boxplot()
+```
+
+
+## 2 variáveis (VI contínua)
+
+Assumindo que a VI é contínua e a VD também, o gráfico de pontos e de dispersão são virtualmente identicos e indicados. Esses gráficos permitem verificar a **associação** entre as variáveis. No ggoplot, o argumento `geom_point` e `geom_jitter` são possíveis. Abaixo, utilizando os pontos.
+
+```{r}
+ggplot(Dataset, aes(x = age, y = bai_sum)) +
+  geom_point() +
+  labs(title = "Resultados da escala de ansiedade em função da idade do participante")
+```
+
+Abaixo, utilizando o jitter
+
+```{r}
+ggplot(Dataset, aes(x = age, y = bai_sum)) +
+  geom_jitter() +
+  labs(title = "Resultados da escala de ansiedade em função da idade do participante")
+  
+```
+
+Tradicionalmente, de maneira análoga às barras de erros apresentadas em gráficos cujas VIs são discretas, adiciona-se uma linha de regressão amostral quando a VI é contínua, tal como apresentado a seguir.
+
+```{r}
+ggplot(Dataset, aes(x = age, y = bai_sum)) +
+  geom_jitter() +
+  geom_smooth(method = "lm") +
+  labs(title = "Resultados da escala de ansiedade em função da idade do participante")
+```
+
+## Outros gráficos
+
+Evidentemente, é possível apresentar mais informações nos gráficos com mais de um variável apresentada, desde que elas sejam relacionadas ao problema de pesquisa estudado e não sobrecarreguem a visualização dos resultados. Frequentemente, as informações adicionais são feitas pela inclusão de **clusters** ou **agrupamentos**. Isso é tanto possível em gráficos cuja VI seja discreta quanto contínua.
+
+No exemplo abaixo, o gráfico dos resultados do Inventário Beck de Ansiedade entre os 3 países investigados (VI discreta) agora está agrupado pelo sexo do participante.
+
+```{r}
+Dataset %>% 
+  filter(!is.na(sex)) %>% 
+  ggplot(., aes(x = country, y = bai_sum, fill = sex)) +
+  geom_bar(stat = "summary", position = "dodge") +
+  stat_summary(geom="errorbar", fun.data = mean_se, position = position_dodge(0.95)) +
+  labs(title = "Resultados da escala de ansiedade em função da idade e sexo do participante")
+
+```
+
+Já no exemplo abaixo, a relação entre idade e pontuação no Inventário Beck de Ansiedade está agora agrupada pelo sexo do participante.
+
+```{r}
+Dataset %>% 
+  filter(!is.na(sex)) %>% 
+  ggplot(., aes(x = age, y = bai_sum, color = sex)) +
+  geom_jitter() +
+  geom_smooth(method = "lm") +
+  labs(title = "Resultados da escala de ansiedade em função da idade e sexo do participante")
+
+```
+
+Em situações onde existe uma grande quantidade de informação para ser apresentada, os resultados começam a se tornar difíceis de serem entendidos. O gráfico abaixo, por exemplo, é excessivamente carregado de informação e, consequentemente, inadequado.
+
+```{r}
+
+Dataset %>% 
+  filter(!is.na(sex)) %>% 
+  ggplot(., aes(x = age, y = bai_sum, color = sex, shape = country)) +
+  geom_jitter() +
+  geom_smooth(method = "lm") +
+  labs(title = "Resultados da escala de ansiedade em função da idade, país e sexo do participante")
+
+```
+
+Em outro sentido, o gráfico a seguir quebra a apresentação dos resultados por país e, com isso, potencializa que a informação seja melhor compreendida.
+
+```{r}
+Dataset %>% 
+  filter(!is.na(sex)) %>% 
+  ggplot(., aes(x = age, y = bai_sum, color = sex)) +
+  geom_jitter() +
+  geom_smooth(method = "lm") +
+  facet_wrap( ~ country) +
+  labs(title = "Resultados da escala de ansiedade em função da idade, país e sexo do participante")
+
+```
+
