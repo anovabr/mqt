@@ -2,6 +2,7 @@
 title: "Métodos quantitativos em Psicologia com R e Rstudio"
 author: "[Luis Anunciação (PUC-Rio), PhD](mailto: luisfca@gmail.com)"
 date: "`r Sys.Date()`"
+always_allow_html: yes
 description: This GitBook is an example of a GitBook for teaching. It can be 
   adapted for specific courses. The output format for this example
   is bookdown::gitbook.
@@ -26,7 +27,6 @@ Por diversas razões, as pesquisas feitas em Psicologia apresentam muitas inform
 
 # Estatística Descritiva
 
-
 ```{r base pesquisa_espanha e pacotes, include = FALSE }
 
 load(file="C:/Users/luisf/OneDrive/Documentos/anovabr/mqt/bases/Dados - Brasil e espanha fusionados.RData")
@@ -39,7 +39,6 @@ library(gridExtra) #plot together
 ```
 
 
-
 ```{block, type="objectives"}
 **Objetivos do capítulo**  
 1. Apresentar os verbos do dplyr e funções do ggplot.  
@@ -48,7 +47,15 @@ library(gridExtra) #plot together
 
 ```
 
-A apresentação dos resultados de uma pesquisa a partir de gráficos e tabelas é fundamental para disseminação dos resultados tanto entre pares como para sociedade em geral. No geral, o R é uma excelente ferramenta para aspectos descritivos. No entanto, algumas apresentações relativamente simples trazem uma dificuldade computacional, o que pode gerar alguma desvantagem na utilização do R para tais apresentações. Em outras palavras, parece haver uma curva inversamente proporcional em relação à dificuldade da tarefa e à necessidade de codificação imposta pelo R. Assim, tarefas relativamente fáceis frequentemente impõem mais densidade computacional do que tarefas mais complexas, como estimar os parâmetros em um modelo de regressão múltipla.
+
+<div class="alert alert-info" role="alert">
+  <strong>Base usada:</strong> Dados - Brasil e espanha fusionados 
+  AFONSO JR, ARMANDO ; PORTUGAL, A. C. A. ; SANTOS, E. J. R. ; BULLON, F. F. ; VILHENA, J. ; ANUNCIAÇÃO, LUIS . Sintomas de depressão e ansiedade em universitários espanhóis, portugueses e brasileiros. PSICOLOGIA: TEORIA E PESQUISA (UNB. IMPRESSO), 2020.
+</div>
+
+A apresentação dos resultados de uma pesquisa a partir de gráficos e tabelas é fundamental para disseminação dos achados tanto entre pares acadêmicos como para sociedade em geral. No geral, o R e seus pacotes oferecem excelentes ferramentas para aspectos descritivos. No entanto, algumas apresentações relativamente simples trazem uma dificuldade computacional, o que pode gerar alguma desvantagem na utilização do R para tais apresentações quando comparados com programas mais acessíveis, como o Excel. Apesar dessa condição, a relação entre dificuldade e complexidade favorece o R àquelas tarefas mais complicadas, como realizar análises inferenciais e psicométricas, como apresentado a seguir.
+
+![Excel vs R](./img/excel_r.PNG)
 
 
 Posto isso, todo resultado estatístico começa pela apresentação de **tabelas** e **gráficos**. Da mesma forma que a construção de um prédio depende que andaimes sejam colocados, um relatório técnico depende dessas condições. Aproveitando um pouco mais esse exemplo, da mesma maneira que a conclusão da construção de um prédio, necessariamente, cursa com a retirada dos andaimes, artigos científicos frequentemente tem espaço limitado para publicação e, consequentemente, os autores se veem na situação de aproveitar apenas parte (ou quase nada) dos relatórios originais.
