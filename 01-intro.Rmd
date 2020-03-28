@@ -4,18 +4,6 @@ You can label chapter and section titles using `{#label}` after them, e.g., we c
 
 Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
 
-```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
-par(mar = c(4, 4, .1, .1))
-plot(pressure, type = 'b', pch = 19)
-```
 
-Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
-
-```{r nice-tab, tidy=FALSE}
-knitr::kable(
-  head(iris, 20), caption = 'Here is a nice table!',
-  booktabs = TRUE
-)
-```
 
 Talvez uma das coisas mais importantes para se ter em mente neste livro é que ele foi, propositalmente, escrito de forma pouco linear. Apesar de toda metodologia estatística ser apresentada de forma estruturada, alguns capítulos fazem ampla interface com outros, mesmo que essa interface seja exposta de maneira incipente em função do interesse principal do momento. Por exemplo, o capítulo sobre o Teste T expõe uma pequena parte sobre modelos de regressão, conteúdo que somente é abordado posteriormente. Se em um primeiro momento isso pode gerar alguma (pequena) confusão, a releitura do capítulo após o término da sequência do livro frequentemente se traduz em um resultado mais positivo e uma melhor percepção da integração que existe entre diferentes modelos estatísticos. 
