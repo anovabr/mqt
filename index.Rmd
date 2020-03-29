@@ -31,3 +31,20 @@ Por diversas razões, as pesquisas feitas em Psicologia apresentam muitas inform
 ## Objetivo 
 
 Talvez uma das coisas mais importantes para se ter em mente neste livro é que ele foi, propositalmente, escrito de forma pouco linear. Apesar de toda metodologia estatística ser apresentada de forma estruturada, alguns capítulos fazem ampla interface com outros, mesmo que essa interface seja exposta de maneira incipente em função do interesse principal do momento. Por exemplo, o capítulo sobre o Teste T expõe uma pequena parte sobre modelos de regressão, conteúdo que somente é abordado posteriormente. Se em um primeiro momento isso pode gerar alguma (pequena) confusão, a releitura do capítulo após o término da sequência do livro frequentemente se traduz em um resultado mais positivo e uma melhor percepção da integração que existe entre diferentes modelos estatísticos. 
+
+
+## Pacotes e sintaxes
+
+Este livro utiliza majoritariamente o ambiente [tidyverse](https://www.tidyverse.org/) para realização das análises. Entretanto, sempre que necessário, funções R-base e uso de outros pacotes serão utilizados. Toda sintaxe utilizada no livro está disponível gratuitamente neste (GitHub)[https://github.com/anovabr/mqt].  
+
+## Aspectos gerais
+
+Conforme já explicitado, a estatística pode ser dividida em duas áreas interligadas: estatística descritiva e estatística inferencial. O objetivo da estatística descritiva é apresentar sínteses e resumos dos resultados a partir de gráficos e tabelas. Não é intenção dessa área fazer generalizações ou extrapolar os resultados obtidos em uma pesquisa a pessoas não investigadas durante a coleta de dados. Por contraste, a estatística inferencial visa extrapolar os dados e fazer generalizações que toquem toda população de onde aquela mostra foi retirada e é representativa. Dessa maneira, o principal objetivo da estatística inferencial é, de fato, fazer inferências. 
+
+Apesar de livros e aulas unirem ambas as áreas da estatística, alguns pontos merecem destaque, que são:  
+
+1. A estatística descritiva surgiu antes que a inferencial. A etimologia da palavra talvez ajude a entender, uma vez que estatística vem da palavra estado e este sempre teve interesse em saber quantos eram os cidadãos de um determinado local para, entre outras atividades, taxá-los. Dessa maneira, aspectos descritivos antecedem os inferenciais. Por sua vez, a estatística inferencial guarda origem e proximidade com a teoria dos jogos e, consequentemente, isso ajuda a entender o motivo pelo qual a maioria dos exemplos inferenciais envolvem jogos de azar.
+
+2. A estatística tem duas "escolas" ou "formas de pensamento". A estatística frequentista e a estatística bayesiana. Aspectos fundamentais que tocam à definição de probabilidade são diferentes, bem como a definição de dados e parâmetros também o são. Pela perspectiva histórica, a estatística bayesiana é mais antiga que a frequentista. No entanto, se for comparado a proporção de uso entre os pesquisadores, a estatística frequentista é ainda a mais frequente e justifica a ênfase deste livro nesta área.
+
+3. A relação entre estatística e Machine Learning (ML) é relativamente recente. Apesar de grande interface, e do fato que as análises realizadas em estatística e ML encontram resultados virtualmente idênticos, as áreas têm objetivos diferentes. Ainda sob perspectiva histórica, a estatística, como uma área do conhecimento, é anterior à ML e, também por isso, justifica a ênfase do livro.
