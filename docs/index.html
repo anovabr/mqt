@@ -153,6 +153,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.9" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-contínua"><i class="fa fa-check"></i><b>2.9</b> 2 variáveis com VI contínua</a></li>
 <li class="chapter" data-level="2.10" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#outros-gráficos"><i class="fa fa-check"></i><b>2.10</b> Outros gráficos</a></li>
 </ul></li>
+<li class="chapter" data-level="3" data-path="teste-t.html"><a href="teste-t.html"><i class="fa fa-check"></i><b>3</b> Teste T</a><ul>
+<li class="chapter" data-level="3.1" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito"><i class="fa fa-check"></i><b>3.1</b> Tamanho do efeito</a></li>
+<li class="chapter" data-level="3.2" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>3.2</b> Teste T e regressão</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="http://www.puc-rio.br/" target="blank">PUC-Rio</a></li>
 
@@ -258,6 +262,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
