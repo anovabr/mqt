@@ -1,14 +1,25 @@
 # Teste T
 
-O Teste T é um teste estatístico frequentemente utilizado para testar hipóteses sobre diferenças entre médias. Dessa maneira, por oferecer uma estimativa à um parâmetro, ele é um teste parâmetrico. Apenas por um preâmbulo histórico, a origem do Teste T remonta o artigo publicado em 1908 por William Gosset. Na época, em função de seu trabalho na cervejaria Guiness, ele não assinou o artigo, mas apenas usou seu pseudônimo *Student*, motivo pelo qual o teste T também é chamado de Teste T de Student.
+O Teste T é um teste estatístico frequentemente utilizado para testar hipóteses sobre diferenças entre médias. Dessa maneira, por utilizar dados amostrais para estimar um parâmetro, ele é um teste parâmetrico. Apenas por um preâmbulo histórico, a origem do Teste T remonta o artigo publicado em 1908 por William Gosset. Na época, em função de seu trabalho na cervejaria Guiness, ele não assinou o artigo, mas apenas usou seu pseudônimo *Student*, motivo pelo qual o teste T também é chamado de Teste T de Student.
 
-Assume-se os seguintes pressupostos na execução de um Teste T:  
-*(i)* Os dados são representativos da população  
-*(ii)* Os valores foram selecionados aleatoriamente  
+É possível estipular que o Teste T pode ser utilizado para comparar a média de uma amostra com a média populacional (*one sample t test*), ou quando se deseja comparar duas médias amostrais (*two samples t test*) ou um quando se compara duas médias de uma mesma amostra que foi investigada em dois momentos do tempo (*paired ou matched t test*). 
+
+Se assume os seguintes pressupostos funcionais à execução de um Teste T:  
+
+*(i)* Os dados são representativos da população
+*(ii)* a variável dependente é contínua
 *(iii)* A distribuição dos resultados populacionais é assumida como normal  
-*(iv)* As variâncias dos grupos é homogênea  
 
-É possível estipular que o Teste T pode ser utilizado para comparar a média de uma amostra com a média populacional (*one sample t test*), ou quando se deseja comparar duas médias amostrais (*two samples t test*) ou um quando se compara duas médias de uma mesma amostra que foi investigada em dois momentos do tempo (*paired t test*). Eventualmente, quando os pressupos são violados, versões não-paramétricas podem ser implementadas e a tabela abaixo concatena os testes estatísticos relacionados.  
+Quando se utiliza o Teste T para comparar os resultados de dois grupos, é também necessário que 
+
+*(iv)* As variâncias dos grupos seja homogênea (princípio da homocedasticidade)
+*(v)* ambos os grupos sejam independentes
+
+Quando se utiliza o Teste T pareado, se viola o princípio da independência, mas é necessário que:
+*(vi)* o tamanho amostral seja o mesmo
+
+
+Eventualmente, quando os pressupos são violados, versões não-paramétricas podem ser implementadas e a tabela abaixo concatena os testes estatísticos relacionados.  
 
   | Nível de medida | Um grupo           | Dois grupos independentes |  Grupos pareados    
   | :-----------    | :-----------       | :-----------              |  :-----------      
