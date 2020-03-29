@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2020-03-28" />
+<meta name="date" content="2020-03-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -179,13 +179,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="teste-t" class="section level1">
 <h1><span class="header-section-number">Capítulo 3</span> Teste T</h1>
-<p>O Teste T é um teste estatístico frequentemente utilizado para testar hipóteses sobre diferenças entre médias. Dessa maneira, por oferecer uma estimativa à um parâmetro, ele é um teste parâmetrico. Apenas por um preâmbulo histórico, a origem do Teste T remonta o artigo publicado em 1908 por William Gosset. Na época, em função de seu trabalho na cervejaria Guiness, ele não assinou o artigo, mas apenas usou seu pseudônimo <em>Student</em>, motivo pelo qual o teste T também é chamado de Teste T de Student.</p>
-<p>Assume-se os seguintes pressupostos na execução de um Teste T:<br />
-<em>(i)</em> Os dados são representativos da população<br />
-<em>(ii)</em> Os valores foram selecionados aleatoriamente<br />
-<em>(iii)</em> A distribuição dos resultados populacionais é assumida como normal<br />
-<em>(iv)</em> As variâncias dos grupos é homogênea</p>
-<p>É possível estipular que o Teste T pode ser utilizado para comparar a média de uma amostra com a média populacional (<em>one sample t test</em>), ou quando se deseja comparar duas médias amostrais (<em>two samples t test</em>) ou um quando se compara duas médias de uma mesma amostra que foi investigada em dois momentos do tempo (<em>paired t test</em>). Eventualmente, quando os pressupos são violados, versões não-paramétricas podem ser implementadas e a tabela abaixo concatena os testes estatísticos relacionados.</p>
+<p>O Teste T é um teste estatístico frequentemente utilizado para testar hipóteses sobre diferenças entre médias. Dessa maneira, por utilizar dados amostrais para estimar um parâmetro, ele é um teste parâmetrico. Apenas por um preâmbulo histórico, a origem do Teste T remonta o artigo publicado em 1908 por William Gosset. Na época, em função de seu trabalho na cervejaria Guiness, ele não assinou o artigo, mas apenas usou seu pseudônimo <em>Student</em>, motivo pelo qual o teste T também é chamado de Teste T de Student.</p>
+<p>É possível estipular que o Teste T pode ser utilizado para comparar a média de uma amostra com a média populacional (<em>one sample t test</em>), ou quando se deseja comparar duas médias amostrais (<em>two samples t test</em>) ou um quando se compara duas médias de uma mesma amostra que foi investigada em dois momentos do tempo (<em>paired ou matched t test</em>).</p>
+<p>Se assume os seguintes pressupostos funcionais à execução de um Teste T:</p>
+<p><em>(i)</em> Os dados são representativos da população
+<em>(ii)</em> a variável dependente é contínua
+<em>(iii)</em> A distribuição dos resultados populacionais é assumida como normal</p>
+<p>Quando se utiliza o Teste T para comparar os resultados de dois grupos, é também necessário que</p>
+<p><em>(iv)</em> As variâncias dos grupos seja homogênea (princípio da homocedasticidade)
+<em>(v)</em> ambos os grupos sejam independentes</p>
+<p>Quando se utiliza o Teste T pareado, se viola o princípio da independência, mas é necessário que:
+<em>(vi)</em> o tamanho amostral seja o mesmo</p>
+<p>Eventualmente, quando os pressupos são violados, versões não-paramétricas podem ser implementadas e a tabela abaixo concatena os testes estatísticos relacionados.</p>
 <table>
 <thead>
 <tr class="header">
