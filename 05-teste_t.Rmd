@@ -1,12 +1,33 @@
 # Teste T
 
-O Teste T é um teste estatístico frequentemente utilizado para testar hipóteses sobre diferenças entre médias. Dessa maneira, por utilizar dados amostrais para estimar um parâmetro, ele é um teste parâmetrico. Apenas por um preâmbulo histórico, a origem do Teste T remonta o artigo publicado em 1908 por William Gosset. Na época, em função de seu trabalho na cervejaria Guiness, ele não assinou o artigo, mas apenas usou seu pseudônimo *Student*, motivo pelo qual o teste T também é chamado de Teste T de Student.
+```{r base e pacotes teste t, include = FALSE }
+
+load(file="C:/Users/luisf/OneDrive/Documentos/anovabr/MQT/bases/Livro - R - ASQ SE all age intervals.RData")
+
+library(tidyverse)
+library(knitr) #tables and graphs
+library(kableExtra) #tables with different styles
+
+
+```
+
+```{block, type="objectives"}
+**Objetivos do capítulo**  
+1. Apresentar o teste T  
+2. Discutir os pressupostos de execução do teste T  
+3. Realizar gráficos relacionados à comparação de médias  
+4. Apresentar e interpretar métricas de tamanho do efeito  
+5. Dar exemplos relacionados à escrita dos resultados 
+6. Apresentar versões não paramétricas
+```
+
+O Teste T é um teste estatístico frequentemente utilizado para testar hipóteses sobre <u>diferenças entre médias</u>. Por utilizar dados amostrais para estimar um parâmetro ($\mu$), ele é um teste parâmetrico. Apenas por um preâmbulo histórico, a origem do Teste T remonta o artigo publicado em 1908 por William Gosset. Na época, em função de seu trabalho na cervejaria Guiness, ele não assinou o artigo, mas apenas usou seu pseudônimo *Student*, motivo pelo qual o teste T também é chamado de Teste T de Student. Estudantes de Psicologia e profissionais que trabalham com avaliação psicológica costumam ser deparados com uma métrica chamada "T score", desenvolvido em 1939 por um professor de Psicologia (William Anderson McCall). É importante avisar que esta métrica não ter relação com os procedimentos inferenciais relacionados ao teste T [@McCall1939; @Krus1977]. 
 
 É possível estipular que o Teste T pode ser utilizado para comparar a média de uma amostra com a média populacional (*one sample t test*), ou quando se deseja comparar duas médias amostrais (*two samples t test*) ou um quando se compara duas médias de uma mesma amostra que foi investigada em dois momentos do tempo (*paired ou matched t test*). 
 
 Se assume os seguintes pressupostos funcionais à execução de um Teste T:  
 
-*(i)* Os dados são representativos da população
+*(i)* Os dados são aleatórios e representativos da população
 *(ii)* a variável dependente é contínua
 *(iii)* A distribuição dos resultados populacionais é assumida como normal  
 
@@ -19,51 +40,76 @@ Quando se utiliza o Teste T pareado, se viola o princípio da independência, ma
 *(vi)* o tamanho amostral seja o mesmo
 
 
-Eventualmente, quando os pressupos são violados, versões não-paramétricas podem ser implementadas e a tabela abaixo concatena os testes estatísticos relacionados.  
+Eventualmente, quando os pressupos são violados, versões não-paramétricas podem ser implementadas. A tabela abaixo concatena os testes estatísticos relacionados e, para fins de comparação com outros trabalhos, há autores que sugerem que se use sempre as versões não-paramétricas em resultados obtidos por processos de avaliação psicológica, arguindo que os dados tem nível de medida "ordinal".
 
-  | Nível de medida | Um grupo           | Dois grupos independentes |  Grupos pareados    
+
+  | Versão do teste | Um grupo           | Dois grupos independentes |  Grupos pareados    
   | :-----------    | :-----------       | :-----------              |  :-----------      
-  | Intervalar      | One-sample  t test | Two-samples t test        |  Paired t test
-  | Ordinal         | Signed rank test   | Mann-whitney              |  Wilcoxon
+  | Paramétrica     | One-sample  t test | Two-samples t test        |  Paired t test
+  | Não-paramétrica | Signed rank test   | Mann-whitney              |  Wilcoxon
 
+
+
+## Pesquisa
   
+<div class="alert alert-info" role="alert">
+  <strong>Base</strong> Livro - R - ASQ SE all age intervals
+</div>  
 
-```{r base e pacotes teste t, include = FALSE }
 
-load(file="C:/Users/luisf/OneDrive/Documentos/anovabr/MQT/bases/R - ASQ SE all age intervals.RData")
+Neste capítulo,  vamos utilizar a pesquisa intitulada “Confirmatory analysis and normative tables for the Brazilian Ages and Stages Questionnaires: Social–Emotional”, publciada em 2019 no Child Care Health Development. O objetivo da pesquisa se quebrou em dois eixos. O primeiro visando confirmar a estrutura fatorial de um instrumento utilizado para avaliar competências sociais e emocionais relacionadas ao desenvolvimento infantil e o segundo para gerar tabelas normativas ao desempenho obtido pelos meninos e meninas avaliados. Essa é uma pesquisa muito importante, uma vez que conta com uma base de dados robusta (mais de 50 mil participantes) e costura psicometria, avaliação psicológica e políticas públicas
 
-library(tidyverse)
-library(knitr) #tables and graphs
-library(kableExtra) #tables with different styles
+## Execução no R  
 
-backup_original_12 <- original_12
-backup_original_18 <- original_18
 
-```
-
-Para calcular a soma de todas os itens da escala, é necessário utilizar a integração da função `mutate` com a `select`
+O teste T trabalha com variáveis contínuas e nessa base de dados, isso será feito pela soma de todos os itens da escala. No dplyr, isso é feito pela integração da função `mutate` com a `select`
 
 ```{r}
-original_12 <- original_12 %>% 
-  mutate(total_12 = rowSums(select(., starts_with("q_"))))
-  
+asq_12months <- asq_12months %>% 
+  mutate(total_12 = rowSums(select(., starts_with("q_")), na.rm = TRUE))
 ```
 
-Para comparar os resultados médios obtidos por meninos e meninas aos 12 meses, o teste T é necessário. Inicialmente, a organização da estratégia analítica assume a eleição das hipóteses. Dessa maneira:
+Para comparar os resultados médios obtidos por meninos e meninas aos 12 meses, o teste T é uma opção frequente. Em relação à formalidade analítica, é necessário escrita adequada das hipóteses e o nível de significância adotado nesta análise. Dessa maneira:
 
 $$H_0 = \mu_{meninos} - \mu_{meninas} = 0 \\ H_a = \mu_{meninos} - \mu_{meninas} \neq 0 \\ \alpha = 0.05$$
 
-Em seguida, tanto o gráfico de colunas como o de densidade auxiliam na observação dos padrões.
+Em seguida, o processo de testagem da hipótese é feito preliminarmente de maneira gráfica e, em seguida, pela implementação do teste específico. Apesar do gráfico não ser decisivo na tomada de decisão, ele auxilia a visualilzação da distribuição da variável que temos interesse, bem como oferece já um entendimento inicial dos resultados.
+
+Uma vez que a VI é discreta e a VD é continua (exposta no capítulo \@ref(01-estatistica_descritiva)) tanto o gráfico de colunas/barras como o de densidade são úteis.
 
 ```{r}
-plot_1 <- ggplot(original_12, aes(x = sex, y = total_12, fill = sex)) +
-  geom_bar(stat = "summary") +
-  stat_summary(fun.data = mean_se, geom = "errorbar", width = .2)
-plot_2 <- ggplot(original_12, aes(x = total_12, fill = sex)) + 
-  geom_density(color = NA, alpha=.6)
-
-gridExtra::grid.arrange(plot_1, plot_2)
+gridExtra::grid.arrange(
+  #plot 1 
+  ggplot(asq_12months, aes(x = sex, y = total_12, fill = sex)) +
+    geom_bar(stat = "summary") +
+    stat_summary(fun.data = mean_se, geom = "errorbar", width = .2),
+  #plot 2
+    ggplot(asq_12months, aes(x = total_12, fill = sex)) + 
+    geom_density(color = NA, alpha=.6)
+)
+  
 ```
+
+Posto isso, o próximo passo é a testagem formal da hipótese. Como exposto, o teste T de duas amostras independentes assume que os resultados da variável de interesse se distribua normalmente e que variância entre os grupos seja homocedástica. Tecnicamente, como o teste T é um caso especial de um modelo de regressão, a normalidade da variável de interesse se refere aos resíduos do modelo e, neste caso pode ser testada pela distribuição marginal dos resultados de ambos os grupos.  
+
+A normalidade pode ser avaliada graficamente por QQ-plots e por testes específicos, como o Shapiro-wilk, Anderson-Darling e Jarque Bera.
+
+O QQ plot é um gráfico que reúne a distribuição empírica ordenada dos quantis conta os quantis da distribuição teórica (aqui, normal). Se os dados e a linha diagonal se soprepuserem, isso é uma evidencia de que a distribuição empírica é a mesma da distribuição teórica. Caso haja discrepância, isso aponta para desvio da normalidade.
+
+```{r}
+ggplot(asq_12months, aes(sample = total_12)) + 
+  stat_qq()  + stat_qq_line() +
+  facet_wrap(~sex)
+```
+
+Apesar do gráfico já ter sido bastante claro e sugerir fortemente desvio da normalidade em ambos os grupos, o teste formal é necessário. O Shapiro-wilk costuma ser utilizado neste caso, uma vez que ele reúne diferentes características positivas no balanço entre erro do tipo 1 e 2.
+
+```{r}
+asq_12months %>% 
+  group_by(sex) %>% 
+  summarise(shapiro = shapiro.test(total_12)$p.value)
+```
+
 
 
 ```{r}
@@ -158,3 +204,4 @@ lm(score ~ sex, data = original_18) %>%
   stargazer::stargazer(., type = "text")
 ```
 
+## Aspectos matemáticos
