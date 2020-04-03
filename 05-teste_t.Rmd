@@ -113,7 +113,7 @@ asq_12months %>%
 
 
 ```{r}
-t_test_12m <- t.test(total_12 ~ sex, data = original_12)
+t_test_12m <- t.test(total_12 ~ sex, data = asq_12months)
 ```
 
 Como frequentemente o pressuposto da homogeneidade das variâncias é violado, o R já executa por padrão a versão robusta do teste T (Welch test). Nesse caso, o valor de P do teste T é de `r t_test_12m$p.value`, indicando pela não rejeição da hipótese nula. A apresentação abaixo traz o output do teste T.
@@ -138,10 +138,10 @@ O gráfico novamente deve ser realizado
 
 
 ```{r}
-plot_3 <- ggplot(original_18, aes(x = sex, y = score, fill = sex)) +
+plot_3 <- ggplot(asq_18months, aes(x = sex, y = score, fill = sex)) +
   geom_bar(stat = "summary") +
   stat_summary(fun.data = mean_se, geom = "errorbar", width = .2)
-plot_4 <- ggplot(original_18, aes(x = score, fill = sex)) + 
+plot_4 <- ggplot(asq_18months, aes(x = score, fill = sex)) + 
   geom_density(color = NA, alpha=.6)
 
 gridExtra::grid.arrange(plot_3, plot_4)
@@ -150,7 +150,7 @@ gridExtra::grid.arrange(plot_3, plot_4)
 E o teste formal computado:
 
 ```{r}
-t_test_18m <- t.test(score ~ sex, data = original_18)
+t_test_18m <- t.test(score ~ sex, data = asq_18months)
 t_test_18m
 ```
 
@@ -182,7 +182,7 @@ A interpretação é a seguinte:
 
 ```{r}
 library(effsize)
-cohen.d(score ~ sex, data = original_18)
+cohen.d(score ~ sex, data = asq_18months)
 ```
 
 Agora é possível agregar ambos os resultados e a escrita iria por esse caminho.
@@ -200,7 +200,7 @@ Conforme alertado, o Teste T nada mais é do que um modelo de regressão que ass
 Nesse caso, o R atribuiu os meninos como intercepto o valor médio dos meninos e a inclinação $b_1$ é justamente a diferença entre os valores (*24.95-27.53)*. Nesse caso, -2.58. A estatística F é equivalente a $t^2$ do teste t em sua versão tradicional (assumindo que as variâncias dos grupos são igual, adicionando `var.equal = T` ao argumento)
 
 ```{r}
-lm(score ~ sex, data = original_18) %>% 
+lm(score ~ sex, data = asq_18months) %>% 
   stargazer::stargazer(., type = "text")
 ```
 
