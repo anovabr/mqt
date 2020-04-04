@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2020-03-29" />
+<meta name="date" content="2020-04-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -138,8 +138,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introdução</a><ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#objetivo"><i class="fa fa-check"></i><b>1.1</b> Objetivo</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#pacotes-e-sintaxes"><i class="fa fa-check"></i><b>1.2</b> Pacotes e sintaxes</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#aspectos-gerais"><i class="fa fa-check"></i><b>1.3</b> Aspectos gerais</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#bases"><i class="fa fa-check"></i><b>1.2</b> Bases</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#pacotes-e-sintaxes"><i class="fa fa-check"></i><b>1.3</b> Pacotes e sintaxes</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#aspectos-gerais"><i class="fa fa-check"></i><b>1.4</b> Aspectos gerais</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html"><i class="fa fa-check"></i><b>2</b> Estatística Descritiva</a><ul>
 <li class="chapter" data-level="2.1" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#pesquisa"><i class="fa fa-check"></i><b>2.1</b> Pesquisa</a></li>
@@ -154,8 +155,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.10" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#outros-gráficos"><i class="fa fa-check"></i><b>2.10</b> Outros gráficos</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="teste-t.html"><a href="teste-t.html"><i class="fa fa-check"></i><b>3</b> Teste T</a><ul>
-<li class="chapter" data-level="3.1" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito"><i class="fa fa-check"></i><b>3.1</b> Tamanho do efeito</a></li>
-<li class="chapter" data-level="3.2" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>3.2</b> Teste T e regressão</a></li>
+<li class="chapter" data-level="3.1" data-path="teste-t.html"><a href="teste-t.html#pesquisa-1"><i class="fa fa-check"></i><b>3.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="3.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-r"><i class="fa fa-check"></i><b>3.2</b> Execução no R</a></li>
+<li class="chapter" data-level="3.3" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito"><i class="fa fa-check"></i><b>3.3</b> Tamanho do efeito</a></li>
+<li class="chapter" data-level="3.4" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>3.4</b> Teste T e regressão</a></li>
+<li class="chapter" data-level="3.5" data-path="teste-t.html"><a href="teste-t.html#aspectos-matemáticos"><i class="fa fa-check"></i><b>3.5</b> Aspectos matemáticos</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="http://www.puc-rio.br/" target="blank">PUC-Rio</a></li>
@@ -179,10 +183,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="teste-t" class="section level1">
 <h1><span class="header-section-number">Capítulo 3</span> Teste T</h1>
-<p>O Teste T é um teste estatístico frequentemente utilizado para testar hipóteses sobre diferenças entre médias. Dessa maneira, por utilizar dados amostrais para estimar um parâmetro, ele é um teste parâmetrico. Apenas por um preâmbulo histórico, a origem do Teste T remonta o artigo publicado em 1908 por William Gosset. Na época, em função de seu trabalho na cervejaria Guiness, ele não assinou o artigo, mas apenas usou seu pseudônimo <em>Student</em>, motivo pelo qual o teste T também é chamado de Teste T de Student.</p>
+<div class="objectives">
+<p>
+<strong>Objetivos do capítulo</strong><br />
+1. Apresentar o teste T<br />
+2. Discutir os pressupostos de execução do teste T<br />
+3. Realizar gráficos relacionados à comparação de médias<br />
+4. Apresentar e interpretar métricas de tamanho do efeito<br />
+5. Dar exemplos relacionados à escrita dos resultados 6. Apresentar versões não paramétricas
+</p>
+</div>
+<p>O Teste T é um teste estatístico frequentemente utilizado para testar hipóteses sobre <u>diferenças entre médias</u>. Por utilizar dados amostrais para estimar um parâmetro (<span class="math inline">\(\mu\)</span>), ele é um teste parâmetrico. Apenas por um preâmbulo histórico, a origem do Teste T remonta o artigo publicado em 1908 por William Gosset. Na época, em função de seu trabalho na cervejaria Guiness, ele não assinou o artigo, mas apenas usou seu pseudônimo <em>Student</em>, motivo pelo qual o teste T também é chamado de Teste T de Student. Estudantes de Psicologia e profissionais que trabalham com avaliação psicológica costumam ser deparados com uma métrica chamada “T score”, desenvolvido em 1939 por um professor de Psicologia (William Anderson McCall). É importante avisar que esta métrica não ter relação com os procedimentos inferenciais relacionados ao teste T <span class="citation">(<span class="citeproc-not-found" data-reference-id="McCall1939"><strong>???</strong></span>; <span class="citeproc-not-found" data-reference-id="Krus1977"><strong>???</strong></span>)</span>.</p>
 <p>É possível estipular que o Teste T pode ser utilizado para comparar a média de uma amostra com a média populacional (<em>one sample t test</em>), ou quando se deseja comparar duas médias amostrais (<em>two samples t test</em>) ou um quando se compara duas médias de uma mesma amostra que foi investigada em dois momentos do tempo (<em>paired ou matched t test</em>).</p>
 <p>Se assume os seguintes pressupostos funcionais à execução de um Teste T:</p>
-<p><em>(i)</em> Os dados são representativos da população
+<p><em>(i)</em> Os dados são aleatórios e representativos da população
 <em>(ii)</em> a variável dependente é contínua
 <em>(iii)</em> A distribuição dos resultados populacionais é assumida como normal</p>
 <p>Quando se utiliza o Teste T para comparar os resultados de dois grupos, é também necessário que</p>
@@ -190,11 +204,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <em>(v)</em> ambos os grupos sejam independentes</p>
 <p>Quando se utiliza o Teste T pareado, se viola o princípio da independência, mas é necessário que:
 <em>(vi)</em> o tamanho amostral seja o mesmo</p>
-<p>Eventualmente, quando os pressupos são violados, versões não-paramétricas podem ser implementadas e a tabela abaixo concatena os testes estatísticos relacionados.</p>
+<p>Eventualmente, quando os pressupos são violados, versões não-paramétricas podem ser implementadas. A tabela abaixo concatena os testes estatísticos relacionados e, para fins de comparação com outros trabalhos, há autores que sugerem que se use sempre as versões não-paramétricas em resultados obtidos por processos de avaliação psicológica, arguindo que os dados tem nível de medida “ordinal”.</p>
 <table>
 <thead>
 <tr class="header">
-<th align="left">Nível de medida</th>
+<th align="left">Versão do teste</th>
 <th align="left">Um grupo</th>
 <th align="left">Dois grupos independentes</th>
 <th align="left">Grupos pareados</th>
@@ -202,37 +216,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Intervalar</td>
+<td align="left">Paramétrica</td>
 <td align="left">One-sample t test</td>
 <td align="left">Two-samples t test</td>
 <td align="left">Paired t test</td>
 </tr>
 <tr class="even">
-<td align="left">Ordinal</td>
+<td align="left">Não-paramétrica</td>
 <td align="left">Signed rank test</td>
 <td align="left">Mann-whitney</td>
 <td align="left">Wilcoxon</td>
 </tr>
 </tbody>
 </table>
-<p>Para calcular a soma de todas os itens da escala, é necessário utilizar a integração da função <code>mutate</code> com a <code>select</code></p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1">original_<span class="dv">12</span> &lt;-<span class="st"> </span>original_<span class="dv">12</span> <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb45-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total_12 =</span> <span class="kw">rowSums</span>(<span class="kw">select</span>(., <span class="kw">starts_with</span>(<span class="st">&quot;q_&quot;</span>))))</a></code></pre></div>
-<p>Para comparar os resultados médios obtidos por meninos e meninas aos 12 meses, o teste T é necessário. Inicialmente, a organização da estratégia analítica assume a eleição das hipóteses. Dessa maneira:</p>
+<div id="pesquisa-1" class="section level2">
+<h2><span class="header-section-number">3.1</span> Pesquisa</h2>
+<div class="alert alert-info" role="alert">
+<p><strong>Base</strong> Livro - R - ASQ SE all age intervals</p>
+</div>
+<p>Neste capítulo, vamos utilizar a pesquisa intitulada “Confirmatory analysis and normative tables for the Brazilian Ages and Stages Questionnaires: Social–Emotional”, publciada em 2019 no Child Care Health Development. O objetivo da pesquisa se quebrou em dois eixos. O primeiro visando confirmar a estrutura fatorial de um instrumento utilizado para avaliar competências sociais e emocionais relacionadas ao desenvolvimento infantil e o segundo para gerar tabelas normativas ao desempenho obtido pelos meninos e meninas avaliados. Essa é uma pesquisa muito importante, uma vez que conta com uma base de dados robusta (mais de 50 mil participantes) e costura psicometria, avaliação psicológica e políticas públicas</p>
+</div>
+<div id="execução-no-r" class="section level2">
+<h2><span class="header-section-number">3.2</span> Execução no R</h2>
+<p>O teste T trabalha com variáveis contínuas e nessa base de dados, isso será feito pela soma de todos os itens da escala. No dplyr, isso é feito pela integração da função <code>mutate</code> com a <code>select</code></p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1">asq_12months &lt;-<span class="st"> </span>asq_12months <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb45-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total_12 =</span> <span class="kw">rowSums</span>(<span class="kw">select</span>(., <span class="kw">starts_with</span>(<span class="st">&quot;q_&quot;</span>)), <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<p>Para comparar os resultados médios obtidos por meninos e meninas aos 12 meses, o teste T é uma opção frequente. Em relação à formalidade analítica, é necessário escrita adequada das hipóteses e o nível de significância adotado nesta análise. Dessa maneira:</p>
 <p><span class="math display">\[H_0 = \mu_{meninos} - \mu_{meninas} = 0 \\ H_a = \mu_{meninos} - \mu_{meninas} \neq 0 \\ \alpha = 0.05\]</span></p>
-<p>Em seguida, tanto o gráfico de colunas como o de densidade auxiliam na observação dos padrões.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1">plot_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">ggplot</span>(original_<span class="dv">12</span>, <span class="kw">aes</span>(<span class="dt">x =</span> sex, <span class="dt">y =</span> total_<span class="dv">12</span>, <span class="dt">fill =</span> sex)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb46-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb46-3" title="3"><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="dt">width =</span> <span class="fl">.2</span>)</a>
-<a class="sourceLine" id="cb46-4" title="4">plot_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">ggplot</span>(original_<span class="dv">12</span>, <span class="kw">aes</span>(<span class="dt">x =</span> total_<span class="dv">12</span>, <span class="dt">fill =</span> sex)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb46-5" title="5"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">color =</span> <span class="ot">NA</span>, <span class="dt">alpha=</span>.<span class="dv">6</span>)</a>
-<a class="sourceLine" id="cb46-6" title="6"></a>
-<a class="sourceLine" id="cb46-7" title="7">gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(plot_<span class="dv">1</span>, plot_<span class="dv">2</span>)</a></code></pre></div>
+<p>Em seguida, o processo de testagem da hipótese é feito preliminarmente de maneira gráfica e, em seguida, pela implementação do teste específico. Apesar do gráfico não ser decisivo na tomada de decisão, ele auxilia a visualilzação da distribuição da variável que temos interesse, bem como oferece já um entendimento inicial dos resultados.</p>
+<p>Uma vez que a VI é discreta e a VD é continua (exposta no capítulo @ref(01-estatistica_descritiva)) tanto o gráfico de colunas/barras como o de densidade são úteis.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1">gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(</a>
+<a class="sourceLine" id="cb46-2" title="2">  <span class="co">#plot 1 </span></a>
+<a class="sourceLine" id="cb46-3" title="3">  <span class="kw">ggplot</span>(asq_12months, <span class="kw">aes</span>(<span class="dt">x =</span> sex, <span class="dt">y =</span> total_<span class="dv">12</span>, <span class="dt">fill =</span> sex)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb46-4" title="4"><span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb46-5" title="5"><span class="st">    </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="dt">width =</span> <span class="fl">.2</span>),</a>
+<a class="sourceLine" id="cb46-6" title="6">  <span class="co">#plot 2</span></a>
+<a class="sourceLine" id="cb46-7" title="7">    <span class="kw">ggplot</span>(asq_12months, <span class="kw">aes</span>(<span class="dt">x =</span> total_<span class="dv">12</span>, <span class="dt">fill =</span> sex)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb46-8" title="8"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">color =</span> <span class="ot">NA</span>, <span class="dt">alpha=</span>.<span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb46-9" title="9">)</a></code></pre></div>
 <pre><code>## No summary function supplied, defaulting to `mean_se()</code></pre>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1">t_test_12m &lt;-<span class="st"> </span><span class="kw">t.test</span>(total_<span class="dv">12</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> original_<span class="dv">12</span>)</a></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Posto isso, o próximo passo é a testagem formal da hipótese. Como exposto, o teste T de duas amostras independentes assume que os resultados da variável de interesse se distribua normalmente e que variância entre os grupos seja homocedástica. Tecnicamente, como o teste T é um caso especial de um modelo de regressão, a normalidade da variável de interesse se refere aos resíduos do modelo e, neste caso pode ser testada pela distribuição marginal dos resultados de ambos os grupos.</p>
+<p>A normalidade pode ser avaliada graficamente por QQ-plots e por testes específicos, como o Shapiro-wilk, Anderson-Darling e Jarque Bera.</p>
+<p>O QQ plot é um gráfico que reúne a distribuição empírica ordenada dos quantis conta os quantis da distribuição teórica (aqui, normal). Se os dados e a linha diagonal se soprepuserem, isso é uma evidencia de que a distribuição empírica é a mesma da distribuição teórica. Caso haja discrepância, isso aponta para desvio da normalidade.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="kw">ggplot</span>(asq_12months, <span class="kw">aes</span>(<span class="dt">sample =</span> total_<span class="dv">12</span>)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb48-2" title="2"><span class="st">  </span><span class="kw">stat_qq</span>()  <span class="op">+</span><span class="st"> </span><span class="kw">stat_qq_line</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb48-3" title="3"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>sex)</a></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-32-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Apesar do gráfico já ter sido bastante claro e sugerir fortemente desvio da normalidade em ambos os grupos, o teste formal é necessário. O Shapiro-wilk costuma ser utilizado neste caso, uma vez que ele reúne diferentes características positivas no balanço entre erro do tipo 1 e 2.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1">asq_12months <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb49-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb49-3" title="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">shapiro =</span> <span class="kw">shapiro.test</span>(total_<span class="dv">12</span>)<span class="op">$</span>p.value)</a></code></pre></div>
+<pre><code>## # A tibble: 2 x 2
+##   sex    shapiro
+##   &lt;fct&gt;    &lt;dbl&gt;
+## 1 M     1.98e-19
+## 2 F     4.80e-17</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1">t_test_12m &lt;-<span class="st"> </span><span class="kw">t.test</span>(total_<span class="dv">12</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_12months)</a></code></pre></div>
 <p>Como frequentemente o pressuposto da homogeneidade das variâncias é violado, o R já executa por padrão a versão robusta do teste T (Welch test). Nesse caso, o valor de P do teste T é de 0.7124907, indicando pela não rejeição da hipótese nula. A apresentação abaixo traz o output do teste T.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1">t_test_12m</a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1">t_test_12m</a></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -255,18 +297,18 @@ Os dados foram analisados por um Teste T para investigar as diferenças médias 
 <p>No entanto, é também possível verificar se existem diferenças em idades mais avançadas. A sintaxe é customizável e torna-se fácil testar a hipótese da diferença, por exemplo, aos 2 anos. Nesse sentido, o teste de hipóteses deve ser normalmente escrito:</p>
 <p><span class="math display">\[H_0 = \mu_{meninos} - \mu_{meninas} = 0 \\ H_a = \mu_{meninos} - \mu_{meninas} \neq 0 \\ \alpha = 0.05\]</span></p>
 <p>O gráfico novamente deve ser realizado</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1">plot_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">ggplot</span>(original_<span class="dv">18</span>, <span class="kw">aes</span>(<span class="dt">x =</span> sex, <span class="dt">y =</span> score, <span class="dt">fill =</span> sex)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb51-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb51-3" title="3"><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="dt">width =</span> <span class="fl">.2</span>)</a>
-<a class="sourceLine" id="cb51-4" title="4">plot_<span class="dv">4</span> &lt;-<span class="st"> </span><span class="kw">ggplot</span>(original_<span class="dv">18</span>, <span class="kw">aes</span>(<span class="dt">x =</span> score, <span class="dt">fill =</span> sex)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb51-5" title="5"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">color =</span> <span class="ot">NA</span>, <span class="dt">alpha=</span>.<span class="dv">6</span>)</a>
-<a class="sourceLine" id="cb51-6" title="6"></a>
-<a class="sourceLine" id="cb51-7" title="7">gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(plot_<span class="dv">3</span>, plot_<span class="dv">4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1">plot_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">ggplot</span>(asq_18months, <span class="kw">aes</span>(<span class="dt">x =</span> sex, <span class="dt">y =</span> score, <span class="dt">fill =</span> sex)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb54-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb54-3" title="3"><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="dt">width =</span> <span class="fl">.2</span>)</a>
+<a class="sourceLine" id="cb54-4" title="4">plot_<span class="dv">4</span> &lt;-<span class="st"> </span><span class="kw">ggplot</span>(asq_18months, <span class="kw">aes</span>(<span class="dt">x =</span> score, <span class="dt">fill =</span> sex)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb54-5" title="5"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">color =</span> <span class="ot">NA</span>, <span class="dt">alpha=</span>.<span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb54-6" title="6"></a>
+<a class="sourceLine" id="cb54-7" title="7">gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(plot_<span class="dv">3</span>, plot_<span class="dv">4</span>)</a></code></pre></div>
 <pre><code>## No summary function supplied, defaulting to `mean_se()</code></pre>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-34-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-37-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>E o teste formal computado:</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1">t_test_18m &lt;-<span class="st"> </span><span class="kw">t.test</span>(score <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> original_<span class="dv">18</span>)</a>
-<a class="sourceLine" id="cb53-2" title="2">t_test_18m</a></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1">t_test_18m &lt;-<span class="st"> </span><span class="kw">t.test</span>(score <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_18months)</a>
+<a class="sourceLine" id="cb56-2" title="2">t_test_18m</a></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -288,8 +330,9 @@ Os dados foram analisados por um Teste T para investigar as diferenças médias 
 </p>
 </div>
 <p>É importante ter uma atenção especial à significância estatística. De forma alguma, um resultado que rejeita a hipótese nula (como o de agora) deve ser entendido como “aceitação da hipótese alternativa”, tampouco como evidência de causalidade. É fundamental lembrar que o valor de P se refere à probabilidade de encontrar a estatística de teste calculada, ou uma ainda mais exterma, assumindo que a hipótese nula é verdadeira. Apesar de algo contra-intuitivo (e talvez desanimador), é assim que a estatística frequentista funciona.</p>
+</div>
 <div id="tamanho-do-efeito" class="section level2">
-<h2><span class="header-section-number">3.1</span> Tamanho do efeito</h2>
+<h2><span class="header-section-number">3.3</span> Tamanho do efeito</h2>
 <p>Resultados significativos não são nenhum pouco claros em relação ao tamanho do efeito. Essa métrica tem mais contato com as perguntas originalmente realizadas em uma pesquisa e é entendida como uma medida objetiva e padronizada da magnitude de um efeito observado independente da significância estatística.</p>
 <p>Existem duas famílias principais no framework do tamanho do efeito, que são a família <code>d</code>e a família <code>r</code>. Tecnicamente, quando comparamos médias, usamos o d de cohen para calcular a distância entre as médias das distribuições normais sobrepostas.</p>
 <p>A interpretação é a seguinte:</p>
@@ -319,8 +362,8 @@ Os dados foram analisados por um Teste T para investigar as diferenças médias 
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1"><span class="kw">library</span>(effsize)</a>
-<a class="sourceLine" id="cb55-2" title="2"><span class="kw">cohen.d</span>(score <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> original_<span class="dv">18</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1"><span class="kw">library</span>(effsize)</a>
+<a class="sourceLine" id="cb58-2" title="2"><span class="kw">cohen.d</span>(score <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_18months)</a></code></pre></div>
 <pre><code>## 
 ## Cohen&#39;s d
 ## 
@@ -339,11 +382,11 @@ Os dados foram analisados por um Teste T para investigar as diferenças médias 
 </div>
 </div>
 <div id="teste-t-e-regressão" class="section level2">
-<h2><span class="header-section-number">3.2</span> Teste T e regressão</h2>
+<h2><span class="header-section-number">3.4</span> Teste T e regressão</h2>
 <p>Conforme alertado, o Teste T nada mais é do que um modelo de regressão que assume que a variável independente é uma dummy. Assim, <span class="math inline">\(b_0\)</span> é o grupo que recebeu o valor 0 e <span class="math inline">\(b_1\)</span> é o grupo que recebeu o valor 1. Caso isso não tenha sido definido inicialmente, basta estipular que a variável é um <em>fator</em>, mesmo que de maneira implícita, e o R cuidará de todo o resto.</p>
 <p>Nesse caso, o R atribuiu os meninos como intercepto o valor médio dos meninos e a inclinação <span class="math inline">\(b_1\)</span> é justamente a diferença entre os valores (<em>24.95-27.53)</em>. Nesse caso, -2.58. A estatística F é equivalente a <span class="math inline">\(t^2\)</span> do teste t em sua versão tradicional (assumindo que as variâncias dos grupos são igual, adicionando <code>var.equal = T</code> ao argumento)</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1"><span class="kw">lm</span>(score <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> original_<span class="dv">18</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb57-2" title="2"><span class="st">  </span>stargazer<span class="op">::</span><span class="kw">stargazer</span>(., <span class="dt">type =</span> <span class="st">&quot;text&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1"><span class="kw">lm</span>(score <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_18months) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb60-2" title="2"><span class="st">  </span>stargazer<span class="op">::</span><span class="kw">stargazer</span>(., <span class="dt">type =</span> <span class="st">&quot;text&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ## ===============================================
 ##                         Dependent variable:    
@@ -364,6 +407,9 @@ Os dados foram analisados por um Teste T para investigar as diferenças médias 
 ## F Statistic          21.331*** (df = 1; 5725)  
 ## ===============================================
 ## Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+</div>
+<div id="aspectos-matemáticos" class="section level2">
+<h2><span class="header-section-number">3.5</span> Aspectos matemáticos</h2>
 
 <div id="refs" class="references">
 <div>
