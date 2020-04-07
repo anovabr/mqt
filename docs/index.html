@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2020-04-03" />
+<meta name="date" content="2020-04-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -150,16 +150,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#gráficos"><i class="fa fa-check"></i><b>2.5</b> Gráficos</a></li>
 <li class="chapter" data-level="2.6" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-discreta"><i class="fa fa-check"></i><b>2.6</b> 1 variável discreta</a></li>
 <li class="chapter" data-level="2.7" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-contínua"><i class="fa fa-check"></i><b>2.7</b> 1 variável contínua</a></li>
-<li class="chapter" data-level="2.8" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-discreta"><i class="fa fa-check"></i><b>2.8</b> 2 variáveis com VI discreta</a></li>
-<li class="chapter" data-level="2.9" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-contínua"><i class="fa fa-check"></i><b>2.9</b> 2 variáveis com VI contínua</a></li>
-<li class="chapter" data-level="2.10" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#outros-gráficos"><i class="fa fa-check"></i><b>2.10</b> Outros gráficos</a></li>
+<li class="chapter" data-level="2.8" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-discreta-e-vd-contínua"><i class="fa fa-check"></i><b>2.8</b> 2 variáveis com VI discreta (e VD contínua)</a></li>
+<li class="chapter" data-level="2.9" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-contínua-e-vd-contínua"><i class="fa fa-check"></i><b>2.9</b> 2 variáveis com VI contínua (e VD contínua)</a></li>
+<li class="chapter" data-level="2.10" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#outros-gráficos-e-configurações"><i class="fa fa-check"></i><b>2.10</b> Outros gráficos e configurações</a></li>
+<li class="chapter" data-level="2.11" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#resumo"><i class="fa fa-check"></i><b>2.11</b> Resumo</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="teste-t.html"><a href="teste-t.html"><i class="fa fa-check"></i><b>3</b> Teste T</a><ul>
 <li class="chapter" data-level="3.1" data-path="teste-t.html"><a href="teste-t.html#pesquisa-1"><i class="fa fa-check"></i><b>3.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="3.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-r"><i class="fa fa-check"></i><b>3.2</b> Execução no R</a></li>
 <li class="chapter" data-level="3.3" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito"><i class="fa fa-check"></i><b>3.3</b> Tamanho do efeito</a></li>
-<li class="chapter" data-level="3.4" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>3.4</b> Teste T e regressão</a></li>
-<li class="chapter" data-level="3.5" data-path="teste-t.html"><a href="teste-t.html#aspectos-matemáticos"><i class="fa fa-check"></i><b>3.5</b> Aspectos matemáticos</a></li>
+<li class="chapter" data-level="3.4" data-path="teste-t.html"><a href="teste-t.html#versão-robusta-do-teste-t"><i class="fa fa-check"></i><b>3.4</b> Versão robusta do teste T</a></li>
+<li class="chapter" data-level="3.5" data-path="teste-t.html"><a href="teste-t.html#mann-whitney"><i class="fa fa-check"></i><b>3.5</b> Mann-whitney</a></li>
+<li class="chapter" data-level="3.6" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>3.6</b> Teste T e regressão</a></li>
+<li class="chapter" data-level="3.7" data-path="teste-t.html"><a href="teste-t.html#aspectos-matemáticos"><i class="fa fa-check"></i><b>3.7</b> Aspectos matemáticos</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="http://www.puc-rio.br/" target="blank">PUC-Rio</a></li>
@@ -184,7 +187,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Métodos quantitativos em Psicologia com R e Rstudio</h1>
 <p class="author"><em><a href="mailto:%20luisfca@gmail.com">Luis Anunciação (PUC-Rio), PhD</a></em></p>
-<p class="date"><em>2020-04-03</em></p>
+<p class="date"><em>2020-04-07</em></p>
 </div>
 <div id="introdução" class="section level1">
 <h1><span class="header-section-number">Capítulo 1</span> Introdução</h1>
@@ -192,7 +195,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Por diversas razões, as pesquisas feitas em Psicologia apresentam muitas informações misturadas e sobrepostas e a utilização da estatística é fundamental para conseguir separar e filtrar àquelas informações que temos interesse (sinal) daquelas que apenas distorcem estas primeiras (ruído).</p>
 <div id="objetivo" class="section level2">
 <h2><span class="header-section-number">1.1</span> Objetivo</h2>
-<p>Talvez uma das coisas mais importantes para se ter em mente neste livro é que ele foi, propositalmente, escrito de forma pouco linear. Apesar de toda metodologia estatística ser apresentada de forma estruturada, alguns capítulos fazem ampla interface com outros, mesmo que essa interface seja exposta de maneira incipente em função do interesse principal do momento. Por exemplo, o capítulo sobre o Teste T expõe uma pequena parte sobre modelos de regressão, conteúdo que somente é abordado posteriormente. Se em um primeiro momento isso pode gerar alguma (pequena) confusão, a releitura do capítulo após o término da sequência do livro frequentemente se traduz em um resultado mais positivo e uma melhor percepção da integração que existe entre diferentes modelos estatísticos.</p>
+<p>Talvez uma das coisas mais importantes para se ter em mente neste livro é que ele foi, propositalmente, escrito de forma pouco linear. Apesar de toda metodologia estatística ser apresentada de forma estruturada, os capítulos podem também ser acessados apenas para responder questões específicas, particulares e pontuais. Assim, penso que o livro consegue atender tanto aqueles leitores com interesse em ler a obra por completo, como aqueles que buscam apenas informações mais específicas de uma das partes.</p>
+<p>Evidentemente, como muitos testes estatísticos podem ser entendidos como casos particulares de outros, alguns fragmentos que podem parecer destoantes em alguns capítulos tornam-se fáceis e acessíveis àqueles que se dispuserem a fazer uma releitura após ter terminado uma leitura integral do livro. Para ilustrar, o capítulo sobre o Teste T expõe uma pequena parte sobre modelos de regressão, conteúdo que somente é abordado posteriormente. Se em um primeiro momento isso pode gerar alguma (pequena) confusão, a releitura do capítulo após o término da sequência do livro frequentemente se traduz em um resultado mais positivo e uma melhor percepção da integração que existe entre diferentes modelos estatísticos.</p>
 </div>
 <div id="bases" class="section level2">
 <h2><span class="header-section-number">1.2</span> Bases</h2>

@@ -28,10 +28,10 @@ library(janitor) #descritipve stats
 ## Pesquisa
   
 <div class="alert alert-info" role="alert">
-  <strong>Base</strong> Dados - Brasil e espanha fusionados
+  <strong>Base:</strong> Dados - Brasil e espanha fusionados
 </div>  
 
-Neste capítulo (e em algum outros), vamos utilizar a pesquisa intitulada "Sintomas de depressão e ansiedade em universitários espanhóis, portugueses e brasileiros", com previsão de publicação pela Revista Psicologia: Teoria e Pesquisa em 2020. Nessa pesquisa, sou o coautor e o pesquisador responsável para correspondência.
+Neste capítulo (e em alguns outros), vamos utilizar a pesquisa intitulada "Sintomas de depressão e ansiedade em universitários espanhóis, portugueses e brasileiros", com previsão de publicação pela Revista Psicologia: Teoria e Pesquisa em 2020. Nessa pesquisa, sou o coautor e o pesquisador responsável para correspondência.
 
 
 O objetivo da pesquisa foi explorar sintomas de ansiedade e depressão em universitários, bem como investigar possíveis relações entre tais traços latentes e fatores sociodemográficos. Um diferencial importante do trabalho foi a seleção amostral. Partiu-se de uma amostra estratificada (probabilística) dos estudantes de três universidades, PUC-Rio (Brasil), Universidade de Extremadura (Espanha) e Universidade de Coimbra (Portugal). Isso permitiu ter maior validade externa dos resultados.
@@ -208,22 +208,28 @@ Dataset %>%
 
 A máquina gráfica do tidyverse é o ggplot. <u>Pelo menos</u> 3 argumentos são necessários para criação de gráficos, que são:
 
-1. O banco dados '(data = )', que pode ser omitido da sintaxe,    
+1. O banco dados `(data = )`, que pode ser omitido da sintaxe,    
 2. O aspecto estético, que permite diferentes complementos `aes(x = , y = , fill = , color = )`,  
-3. O aspecto geométrico, que varia em função do gráfico a ser apresentado  
+3. O aspecto geométrico, que varia em função do gráfico a ser apresentado `geom_ ` 
 
-O ggplot também permite realizar transformações dos resultados, alterar o posicionamento dos objetos, quebrar apresentações em função de uma variável, customizar o tema principal e alterar os rótulos de todos os elementos gráficos. É importante notar que apesar dos argumentos utilizados na sintaxe serem similares aos utilizados em toda família tidyverse, a ligação `%>%` é substituída pelo `+`. 
+É também possível adicionar outros argumentos, como:  
+4. Transformações estatísticas `stat_summary`  
+5. Facetas para dividir a visualização `facet_`  
+6. Sistema de coordenadas `coord_`  
+7. Temas específicos `theme_ `  
 
-Quando bem feitos, os gráficos são extremamente úteis. Como aponta Morettin e Bussab [@morettin_bussab_2010], eles possibilitam:  
-(a) buscar padrões e relações;    
-(b) confirmar (ou não) certas expectativas que se tinha sobre os dados;  
+É importante notar que apesar dos argumentos utilizados na sintaxe serem similares aos utilizados em toda família tidyverse, a ligação `%>%` é substituída pelo `+`. 
+
+Quando bem feitos, os gráficos são extremamente úteis. Como aponta Morettin e Bussab [@morettin_bussab_2010], eles possibilitam:   
+(a) buscar padrões e relações;     
+(b) confirmar (ou não) certas expectativas que se tinha sobre os dados;   
 (c) descobrir novos fenômenos;  
 (d) confirmar (ou não) suposições feitas sobre os procedimentos estatísticos usados; e  
 (e) apresentar resultados de modo mais rápido e fácil.  
 
-É importante que o gráfico tenha um título e uma escala. A maioria dos gráficos são apresentados em um plano com um eixo horizontal (abcissas) e um vertical (ordenadas). Por sua vez, tais planos se referem, nessa ordem, ou aos níveis da variável que está sendo medida (eixo x) e as contagens ou proporções encontradas (eixo y) ou aos níveis da variável independente (eixo x) e os resultados médios da variável dependente (eixo y).
+É sempre bom que o gráfico tenha um título e uma escala. A maioria dos gráficos são apresentados em um plano com um eixo horizontal (abcissas) e um vertical (ordenadas). Por sua vez, tais planos se referem, nessa ordem, ou aos níveis da variável que está sendo medida (eixo x) e as contagens ou proporções encontradas (eixo y) ou aos níveis da variável independente (eixo x) e os resultados médios da variável dependente (eixo y).
 
-Para eleger que gráfico será realizado, é necessário responder a duas perguntas:  
+Para eleger que gráfico será realizado, é necessário responder a duas perguntas que são atreladas às pesquisas em Psicologia e áreas congêneres:  
 1. Quantas variáveis serão apresentadas ?  
 2. Qual o nível de medida da variával independente ?  
 
@@ -268,7 +274,7 @@ grViz("digraph flowchart {
 
 ## 1 variável discreta
 
-Quando há apenas uma variável discreta (incluindo aqui as categóricas), os gráficos são criados para apresentar as contagens e/ou as proporções. Nesse caso, é recomendado utilização de um <u>gráfico de barras</u> ou <u>gráfico de setor</u>. Apesar de ser possível apresentar as frequências absolutas, esses resultados podem gerar distorção da informação e, portanto, é preferível sempre apresentar as proporções de ocorrência de uma determinada variável ou valor. Por definição, quando se trabalha com proporções, o valor máximo da soma das proporções é 100.
+Quando há apenas uma variável discreta (incluindo aqui as categóricas), os gráficos são criados para apresentar as contagens e/ou suas proporções. Nesse caso, é recomendado utilização de um <u>gráfico de barras</u> ou <u>gráfico de setor</u>. Apesar de ser possível apresentar as frequências absolutas, esses resultados podem gerar distorção da informação e, portanto, é preferível sempre apresentar as proporções de ocorrência de uma determinada variável ou valor. Por definição, quando se trabalha com proporções, o valor máximo da soma das proporções é 100.
 
 O gráfico de barras abaixo apresenta a contagem absoluta dos participantes pesquisados em cada país.
 
@@ -290,7 +296,7 @@ ggplot(Dataset, aes(x = country, y = ..prop.., group = 1)) +
   labs(x = "País", title = "Proporção de participantes em cada país investigado")
 ```
 
-Finalmente, o gráfico de setor (as vezes chamado de pizza ou torta) pode também ser utilizado. O aspecto principal desse gráfico é apresentar os setores de maneira proporcional às frequências.
+O gráfico de setor (as vezes chamado de pizza ou torta) pode também ser utilizado. O aspecto principal desse gráfico é apresentar os setores de maneira proporcional às frequências.
 
 ```{r}
 ggplot(Dataset, aes(x=factor(1), fill=country))+
@@ -349,17 +355,16 @@ gridExtra::grid.arrange(
 ```
 
 
-## 2 variáveis com VI discreta
+## 2 variáveis com VI discreta (e VD contínua)  
 
-Por definição, os gráficos de barras ou colunas (considerando aqui as barras de erro) e o boxplot são adequados para apresentar essa relação. Basicamente, esses gráficos permitem verificar a <u>diferença</u> entre os grupos. 
+Gráficos de barras ou colunas (considerando aqui as barras de erro) e o boxplot são adequados para apresentar essa relação. Basicamente, esses gráficos permitem verificar a <u>diferença</u> entre os grupos. 
 
-O gráfico abaixo mostra os resultados do Inventário Beck de Ansiedade entre 3 países investigados. As barras de erro são importantes para verificar, inicialmente, as possíveis diferenças significativas entre os países.
+Como exemplo, o gráfico abaixo mostra os resultados do Inventário Beck de Ansiedade entre 3 países investigados. As barras de erro são importantes para verificar, inicialmente, as possíveis diferenças significativas entre os países.
 
 ```{r}
 ggplot(Dataset, aes(x = country, y = bai_sum)) +
   geom_bar(stat = "summary") +
-  stat_summary(geom = "errorbar",fun.data = mean_se, width = .5) +
-  labs(title = "Resultados da escala de ansiedade em função do país investigado")
+  stat_summary(geom = "errorbar",fun.data = mean_se, width = .5) 
 ```
 
 O boxplot a seguir também é um gráfico indicado:
@@ -370,23 +375,20 @@ ggplot(Dataset, aes(x = country, y = bai_sum)) +
 ```
 
 
-## 2 variáveis com VI contínua
+## 2 variáveis com VI contínua (e VD contínua)  
 
 Assumindo que a VI é contínua e a VD também, o gráfico de pontos e de dispersão são virtualmente identicos e indicados. Esses gráficos permitem verificar a **associação** entre as variáveis. No ggoplot, o argumento `geom_point` e `geom_jitter` são possíveis. Abaixo, utilizando os pontos.
 
 ```{r}
 ggplot(Dataset, aes(x = age, y = bai_sum)) +
-  geom_point() +
-  labs(title = "Resultados da escala de ansiedade em função da idade do participante")
+  geom_point()
 ```
 
 Abaixo, utilizando o jitter
 
 ```{r}
 ggplot(Dataset, aes(x = age, y = bai_sum)) +
-  geom_jitter() +
-  labs(title = "Resultados da escala de ansiedade em função da idade do participante")
-  
+  geom_jitter()
 ```
 
 Tradicionalmente, de maneira análoga às barras de erros apresentadas em gráficos cujas VIs são discretas, adiciona-se uma reta de regressão amostral (fra) quando a VI é contínua, tal como apresentado a seguir.
@@ -394,11 +396,10 @@ Tradicionalmente, de maneira análoga às barras de erros apresentadas em gráfi
 ```{r}
 ggplot(Dataset, aes(x = age, y = bai_sum)) +
   geom_jitter() +
-  geom_smooth(method = "lm") +
-  labs(title = "Resultados da escala de ansiedade em função da idade do participante")
+  geom_smooth(method = "lm")
 ```
 
-## Outros gráficos
+## Outros gráficos e configurações
 
 Evidentemente, é possível apresentar mais informações nos gráficos com mais de um variável apresentada, desde que elas sejam relacionadas ao problema de pesquisa estudado e não sobrecarreguem a visualização dos resultados. Frequentemente, as informações adicionais são feitas pela inclusão de **clusters** ou **agrupamentos**. Isso é tanto possível em gráficos cuja VI seja discreta quanto contínua.
 
@@ -409,9 +410,7 @@ Dataset %>%
   filter(!is.na(sex)) %>% 
   ggplot(., aes(x = country, y = bai_sum, fill = sex)) +
   geom_bar(stat = "summary", position = "dodge") +
-  stat_summary(geom="errorbar", fun.data = mean_se, position = position_dodge(0.95), width = .5) +
-  labs(title = "Resultados da escala de ansiedade em função da idade e sexo do participante")
-
+  stat_summary(geom="errorbar", fun.data = mean_se, position = position_dodge(0.95), width = .5) 
 ```
 
 Já no exemplo abaixo, a relação entre idade e pontuação no Inventário Beck de Ansiedade está agora agrupada pelo sexo do participante.
@@ -421,9 +420,7 @@ Dataset %>%
   filter(!is.na(sex)) %>% 
   ggplot(., aes(x = age, y = bai_sum, color = sex)) +
   geom_jitter() +
-  geom_smooth(method = "lm") +
-  labs(title = "Resultados da escala de ansiedade em função da idade e sexo do participante")
-
+  geom_smooth(method = "lm") 
 ```
 
 Em situações onde existe uma grande quantidade de informação para ser apresentada, os resultados começam a se tornar difíceis de serem entendidos. O gráfico abaixo, por exemplo, é excessivamente carregado de informação e, consequentemente, inadequado.
@@ -433,9 +430,7 @@ Dataset %>%
   filter(!is.na(sex)) %>% 
   ggplot(., aes(x = age, y = bai_sum, color = sex, shape = country)) +
   geom_jitter() +
-  geom_smooth(method = "lm") +
-  labs(title = "Resultados da escala de ansiedade em função da idade, país e sexo do participante")
-
+  geom_smooth(method = "lm") 
 ```
 
 Em outro sentido, o gráfico a seguir quebra a apresentação dos resultados por país e, com isso, potencializa que a informação seja melhor compreendida.
@@ -446,8 +441,10 @@ Dataset %>%
   ggplot(., aes(x = age, y = bai_sum, color = sex)) +
   geom_jitter() +
   geom_smooth(method = "lm") +
-  facet_wrap( ~ country) +
-  labs(title = "Resultados da escala de ansiedade em função da idade, país e sexo do participante")
-
+  facet_wrap( ~ country)
 ```
 
+
+## Resumo  
+
+Este capítulo apresentou os aspectos tabulares e gráficos corriqueiramente encontrados em pesquisas de Psicologia e áreas congêneres. Entre os pontos principais, a heurística típica de construção de gráficos é um conteúdo importante para ser sempre lembrado.

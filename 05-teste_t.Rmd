@@ -21,9 +21,11 @@ library(kableExtra) #tables with different styles
 6. Apresentar versões não paramétricas
 ```
 
-O Teste T é um teste estatístico frequentemente utilizado para testar hipóteses sobre <u>diferenças entre médias</u>. Por utilizar dados amostrais para estimar um parâmetro ($\mu$), ele é um teste parâmetrico. Apenas por um preâmbulo histórico, a origem do Teste T remonta o artigo publicado em 1908 por William Gosset. Na época, em função de seu trabalho na cervejaria Guiness, ele não assinou o artigo, mas apenas usou seu pseudônimo *Student*, motivo pelo qual o teste T também é chamado de Teste T de Student. Estudantes de Psicologia e profissionais que trabalham com avaliação psicológica costumam ser deparados com uma métrica chamada "T score", desenvolvido em 1939 por um professor de Psicologia (William Anderson McCall). É importante avisar que esta métrica não ter relação com os procedimentos inferenciais relacionados ao teste T [@McCall1939; @Krus1977]. 
+O Teste T é um teste estatístico frequentemente utilizado para testar hipóteses sobre <u>diferenças entre médias</u>. Por utilizar dados amostrais para estimar um parâmetro ($\mu$), ele é um teste parâmetrico. Apenas por um preâmbulo histórico, a origem do Teste T remonta o artigo publicado em 1908 por William Gosset. Na época, em função de seu trabalho na cervejaria Guiness, ele não assinou o artigo, mas apenas usou seu pseudônimo *Student*, motivo pelo qual o teste T também é chamado de Teste T de Student.   
 
-É possível estipular que o Teste T pode ser utilizado para comparar a média de uma amostra com a média populacional (*one sample t test*), ou quando se deseja comparar duas médias amostrais (*two samples t test*) ou um quando se compara duas médias de uma mesma amostra que foi investigada em dois momentos do tempo (*paired ou matched t test*). 
+É importante notar que estudantes de Psicologia e profissionais que trabalham com avaliação psicológica costumam ser deparados com uma métrica chamada "T score" (Escore T, as vezes), desenvolvido em 1939 por um professor de Psicologia (William Anderson McCall). Tenha em mente que essa métrica não ter relação com os procedimentos inferenciais relacionados ao teste T a não ser uma similaridade de nome [@McCall1939; @Krus1977]. 
+
+É possível estipular que o Teste T pode ser utilizado para comparar a média de uma amostra com a média populacional (*one sample t test*), para comparar duas médias amostrais (*two sample t test*), ou para  comparar duas médias de uma mesma amostra que foi investigada em dois momentos do tempo (*paired ou matched t test*). 
 
 Se assume os seguintes pressupostos funcionais à execução de um Teste T:  
 
@@ -31,16 +33,17 @@ Se assume os seguintes pressupostos funcionais à execução de um Teste T:
 *(ii)* a variável dependente é contínua
 *(iii)* A distribuição dos resultados populacionais é assumida como normal  
 
-Quando se utiliza o Teste T para comparar os resultados de dois grupos, é também necessário que 
+Quando há o interesse de utilizar o Teste T para comparar os resultados de dois grupos, é também necessário que: 
 
 *(iv)* As variâncias dos grupos seja homogênea (princípio da homocedasticidade)
 *(v)* ambos os grupos sejam independentes
 
-Quando se utiliza o Teste T pareado, se viola o princípio da independência, mas é necessário que:
+Quando se utiliza o Teste T pareado, se viola o princípio da independência, mas é necessário que:  
+
 *(vi)* o tamanho amostral seja o mesmo
 
 
-Eventualmente, quando os pressupos são violados, versões não-paramétricas podem ser implementadas. A tabela abaixo concatena os testes estatísticos relacionados e, para fins de comparação com outros trabalhos, há autores que sugerem que se use sempre as versões não-paramétricas em resultados obtidos por processos de avaliação psicológica, arguindo que os dados tem nível de medida "ordinal".
+Eventualmente, quando os pressupos são violados, versões não-paramétricas podem ser implementadas. A tabela abaixo concatena os testes estatísticos relacionados e, para fins de comparação com outros trabalhos, há autores que sugerem que se use sempre as versões não-paramétricas em resultados obtidos por processos de avaliação psicológica, arguindo que os dados têm nível de medida "ordinal".
 
 
   | Versão do teste | Um grupo           | Dois grupos independentes |  Grupos pareados    
@@ -53,29 +56,28 @@ Eventualmente, quando os pressupos são violados, versões não-paramétricas po
 ## Pesquisa
   
 <div class="alert alert-info" role="alert">
-  <strong>Base</strong> Livro - R - ASQ SE all age intervals
+  <strong>Base: </strong> Livro - R - ASQ SE all age intervals
 </div>  
 
 
-Neste capítulo,  vamos utilizar a pesquisa intitulada “Confirmatory analysis and normative tables for the Brazilian Ages and Stages Questionnaires: Social–Emotional”, publicada em 2019 no Child Care Health Development. O objetivo da pesquisa se quebrou em dois eixos. O primeiro visando confirmar a estrutura fatorial de um instrumento utilizado para avaliar competências sociais e emocionais relacionadas ao desenvolvimento infantil e o segundo para gerar tabelas normativas ao desempenho obtido pelos meninos e meninas avaliados. Essa é uma pesquisa muito importante, uma vez que conta com uma base de dados robusta (mais de 50 mil participantes) e costura psicometria, avaliação psicológica e políticas públicas
+Neste capítulo,  vamos utilizar a pesquisa intitulada “Confirmatory analysis and normative tables for the Brazilian Ages and Stages Questionnaires: Social–Emotional”, publicada em 2019 na Child Care Health Development. Esse trabalho teve dois objetivos. O primeiro visou confirmar a estrutura fatorial de um instrumento utilizado para avaliar competências sociais e emocionais relacionadas ao desenvolvimento infantil (ASQ:SE) e o segundo visou desenvolver tabelas normativas para comparar meninos e meninas. Essa é uma pesquisa muito importante, visto que conta com uma base de dados robusta (mais de 50 mil participantes) e costura psicometria, avaliação psicológica e políticas públicas
 
 ## Execução no R  
 
-
-O teste T trabalha com variáveis contínuas e nessa base de dados, isso será feito pela soma de todos os itens da escala. No dplyr, isso é feito pela integração da função `mutate` com a `select`
+Como exemplo, a variável dependente do teste T tem de ser contínua. Na base de dados específica às crianças de 12 meses (`asq_12months`), essa variável será computada pela soma de todos os itens da escala. No dplyr, isso é feito pela integração da função `mutate` com a `select`
 
 ```{r}
 asq_12months <- asq_12months %>% 
   mutate(total_12 = rowSums(select(., starts_with("q_")), na.rm = TRUE))
 ```
 
-Para comparar os resultados médios obtidos por meninos e meninas aos 12 meses, o teste T é uma opção frequente. Em relação à formalidade analítica, é necessário escrita adequada das hipóteses e o nível de significância adotado nesta análise. Dessa maneira:
+Uma vez que o interesse é o de comparar os resultados médios obtidos por meninos e meninas aos 12 meses, é necessário a escrita adequada das hipóteses e o nível de significância adotado na análise. Dessa maneira:
 
 $$H_0 = \mu_{meninos} - \mu_{meninas} = 0 \\ H_a = \mu_{meninos} - \mu_{meninas} \neq 0 \\ \alpha = 0.05$$
 
 Em seguida, o processo de testagem da hipótese é feito preliminarmente de maneira gráfica e, em seguida, pela implementação do teste específico. Apesar do gráfico não ser decisivo na tomada de decisão, ele auxilia a visualilzação da distribuição da variável que temos interesse, bem como oferece já um entendimento inicial dos resultados.
 
-Uma vez que a VI é discreta e a VD é continua (exposta no capítulo \@ref(01-estatistica_descritiva)) tanto o gráfico de colunas/barras como o de densidade são úteis.
+Posto que a VI é discreta e a VD é continua (exposta no capítulo \@ref(01-estatistica_descritiva)) tanto o gráfico de colunas/barras como o de densidade são úteis. O gráfico de barras tem uma vantagem de ser possível adicionar barras de erros, que serão melhores descritas futuramente.
 
 ```{r}
 gridExtra::grid.arrange(
@@ -90,7 +92,7 @@ gridExtra::grid.arrange(
   
 ```
 
-Posto isso, o próximo passo é a testagem formal da hipótese. Como exposto, o teste T de duas amostras independentes assume que os resultados da variável de interesse se distribua normalmente e que variância entre os grupos seja homocedástica. Tecnicamente, como o teste T é um caso especial de um modelo de regressão, a normalidade da variável de interesse se refere aos resíduos do modelo e, neste caso pode ser testada pela distribuição marginal dos resultados de ambos os grupos.  
+Feito isso, o próximo passo é a testagem formal da hipótese. Como exposto, o teste T de duas amostras independentes assume que os resultados da variável de interesse se distribua normalmente e que variância entre os grupos seja homocedástica. Tecnicamente, como o teste T é um caso especial de um modelo de regressão, a normalidade da variável de interesse se refere aos resíduos do modelo e, neste caso pode ser testada pela distribuição marginal dos resultados de ambos os grupos.  
 
 A normalidade pode ser avaliada graficamente por QQ-plots e por testes específicos, como o Shapiro-wilk, Anderson-Darling e Jarque Bera.
 
@@ -102,7 +104,7 @@ ggplot(asq_12months, aes(sample = total_12)) +
   facet_wrap(~sex)
 ```
 
-Apesar do gráfico já ter sido bastante claro e sugerir fortemente desvio da normalidade em ambos os grupos, o teste formal é necessário. O Shapiro-wilk costuma ser utilizado neste caso, uma vez que ele reúne diferentes características positivas no balanço entre erro do tipo 1 e 2.
+Apesar do gráfico já ter sido bastante claro e sugerir fortemente desvio da normalidade em ambos os grupos, o teste formal é necessário. O Shapiro-wilk costuma ser utilizado neste caso, uma vez que ele reúne diferentes características positivas no balanço entre erro do tipo 1 e 2. a Hipótese nula desse teste assume que a variável de interesse tem distribuiÇào (aproximadamente) normal. Assim, rejeitar a hipótese nula sugere que esse princípio foi violado e, com isso, o teste T pode ter resultados distorcidos.
 
 ```{r}
 asq_12months %>% 
@@ -110,26 +112,33 @@ asq_12months %>%
   summarise(shapiro = shapiro.test(total_12)$p.value)
 ```
 
+De maneira convergente ao gráfico, o Shapiro-wilk também apontou que o princípio da normalidade foi violado. Entretanto, por finalidades didáticas, as análises continuarão.
+
+A homogeneidade das variâncias pode ser testada pelo teste de Bartlett e Levene. De maneira análoga ao Shapiro-wilk, esses testes assumem como Hipótese nula a homogeneidade das variâncias. Consequemente, a rejeição desse pressuposto pode também trazer resultados distorcidos ao resultado do teste T. Abaixo, o teste de Bartlett.
 
 
 ```{r}
-t_test_12m <- t.test(total_12 ~ sex, data = asq_12months)
+bartlett.test(total_12 ~ sex, data = asq_12months)
 ```
 
-Como frequentemente o pressuposto da homogeneidade das variâncias é violado, o R já executa por padrão a versão robusta do teste T (Welch test). Nesse caso, o valor de P do teste T é de `r t_test_12m$p.value`, indicando pela não rejeição da hipótese nula. A apresentação abaixo traz o output do teste T.
+Diferentemente do pressuposto da normalidade, o pressuposto da homocedasticidade foi preservado.  
+Agora, finalmente, o teste t.
 
 ```{r}
-t_test_12m
-
+(t_test_12m <- t.test(total_12 ~ sex, var.equal = T, data = asq_12months))
 ```
+
+Os resultados trazem a média de ambos os grupos (`r t_test_12m$estimate[1]` e `r t_test_12m$estimate[2]`), a estatística do teste (`r t_test_12m$statistic`, as vezes chamada de T calculado), os graus de liberdade 
+(`r t_test_12m$parameter`) e o valor de p `r t_test_12m$p.value`. Repare que como o valor de p é superior ao valor estipulado do nível de significância (0.05), falha-se eem rejeitar a Hipótese nula, indicando que, apesar de numericamente distintos, os resultados não são estatisticamente significativos. A apresentação abaixo traz o output do teste T.
+
 
 ```{block, type="writing"}
 **Como escrever os resultados**  
 
-Os dados foram analisados por um Teste T para investigar as diferenças médias nos resultados do desenvolvimento entre meninos e meninas. Os resultados mostraram que os valores médios de meninos e meninas não não são significativamente diferentes (t(1037.4) = 0.368, p = 0.71). **Dessa forma, as diferenças podem ser mais bem explicadas por outras fontes de variações.** 
+Os dados foram analisados por um Teste T de amostras independentes para investigar as diferenças médias nos resultados do desenvolvimento entre meninos e meninas. Os resultados mostraram que os valores médios de meninos e meninas não não são significativamente diferentes (t(1039) = 0.37, p = 0.71). Dessa maneira, as diferenças encontradas podem ser mais bem explicadas por outras fontes de variações. 
 ```
 
-No entanto, é também possível verificar se existem diferenças em idades mais avançadas. A sintaxe é customizável e torna-se fácil testar a hipótese da diferença, por exemplo, aos 2 anos. Nesse sentido, o teste de hipóteses deve ser normalmente escrito:
+Com isto concluído, é também possível verificar se existem diferenças em idades mais avançadas. A sintaxe é customizável e torna-se fácil testar a hipótese da diferença, por exemplo, aos 18 meses. Nesse sentido, o teste de hipóteses deve ser normalmente escrito:
 
 
 $$H_0 = \mu_{meninos} - \mu_{meninas} = 0 \\ H_a = \mu_{meninos} - \mu_{meninas} \neq 0 \\ \alpha = 0.05$$
@@ -138,20 +147,19 @@ O gráfico novamente deve ser realizado
 
 
 ```{r}
-plot_3 <- ggplot(asq_18months, aes(x = sex, y = score, fill = sex)) +
+gridExtra::grid.arrange(
+  ggplot(asq_18months, aes(x = sex, y = score, fill = sex)) +
   geom_bar(stat = "summary") +
-  stat_summary(fun.data = mean_se, geom = "errorbar", width = .2)
-plot_4 <- ggplot(asq_18months, aes(x = score, fill = sex)) + 
-  geom_density(color = NA, alpha=.6)
+  stat_summary(fun.data = mean_se, geom = "errorbar", width = .2),
 
-gridExtra::grid.arrange(plot_3, plot_4)
+  ggplot(asq_18months, aes(x = score, fill = sex)) + 
+  geom_density(color = NA, alpha=.6))
 ```
 
-E o teste formal computado:
+Bem como a verificação do pressuposto de normalidade e homocedasticidade, seguidos pelo teste formal.
 
 ```{r}
-t_test_18m <- t.test(score ~ sex, data = asq_18months)
-t_test_18m
+(t_test_18m <- t.test(score ~ sex, var.equal = T,data = asq_18months))
 ```
 
 Diferentemente do anterior, agora o resultado foi significativo (p < 0.01) e deve ser reportado:
@@ -160,15 +168,15 @@ Diferentemente do anterior, agora o resultado foi significativo (p < 0.01) e dev
 ```{block, type="writing"}
 **Como escrever os resultados**  
 
-Os dados foram analisados por um Teste T para investigar as diferenças médias nos resultados do desenvolvimento entre meninos e meninas com 2 anos de idade. Os resultados mostraram que os valores médios de meninos (M = 27.5, SD = 21.8) e meninas (M = 24.9, SD = 20.3) são significativamente diferentes (t(5724.3) = -4.63, p < 0.01). 
+Os dados foram analisados por um Teste T de amostras independentes para investigar as diferenças médias nos resultados do desenvolvimento entre meninos e meninas com 18 meses idade. Os resultados mostraram que os valores médios de meninos (M = 27.5, SD = 21.8) e meninas (M = 24.9, SD = 20.3) são significativamente diferentes (t(5725) = 4.62, p < 0.01). 
 ```
 
-É importante ter uma atenção especial à significância estatística. De forma alguma, um resultado que rejeita a hipótese nula (como o de agora) deve ser entendido como "aceitação da hipótese alternativa", tampouco como evidência de causalidade. É fundamental lembrar que o valor de P se refere à probabilidade de encontrar a estatística de teste calculada, ou uma ainda mais exterma, assumindo que a hipótese nula é verdadeira. Apesar de algo contra-intuitivo (e talvez desanimador), é assim que a estatística frequentista funciona.
+É importante ter uma atenção especial à significância estatística. <u>De forma alguma</u>, um resultado que rejeita a hipótese nula (como o de agora) deve ser entendido como "aceitação da hipótese alternativa", tampouco como evidência de causalidade. É fundamental lembrar que o valor de P se refere à probabilidade de encontrar a estatística de teste calculada, ou uma ainda mais exterma, assumindo que a hipótese nula é verdadeira. Apesar de algo contra-intuitivo (e talvez desanimador), é assim que a estatística frequentista funciona.
 
 ## Tamanho do efeito 
 Resultados significativos não são nenhum pouco claros em relação ao tamanho do efeito. Essa métrica tem mais contato com as perguntas originalmente realizadas em uma pesquisa e é entendida como uma medida objetiva e padronizada da magnitude de um efeito observado independente da significância estatística.
 
-Existem duas famílias principais no framework do tamanho do efeito, que são a família `d`e a família `r`. Tecnicamente, quando comparamos médias, usamos o d de cohen para calcular a distância entre as médias das distribuições normais sobrepostas.
+Existem duas famílias principais no framework do tamanho do efeito, que são a família `d` e a família `r`. Tecnicamente, quando comparamos médias, usamos o d de cohen para calcular a distância entre as médias das distribuições normais sobrepostas.
 
 A interpretação é a seguinte:
 
@@ -190,8 +198,29 @@ Agora é possível agregar ambos os resultados e a escrita iria por esse caminho
 ```{block, type="writing"}
 **Como escrever os resultados**  
 
-Os dados foram analisados por um Teste T para investigar as diferenças médias nos resultados do desenvolvimento entre meninos e meninas com 2 anos de idade. Os resultados mostraram que os valores médios de meninos (M = 27.5, SD = 21.8) e meninas (M = 24.9, SD = 20.3) são significativamente diferentes (t(5724.3) = -4.63, p < 0.01), apesar do tamanho do efeito ser negligenciável (d = 0.12) 
+Os dados foram analisados por um Teste T de amostras independentes para investigar as diferenças médias nos resultados do desenvolvimento entre meninos e meninas com 2 anos de idade. Os resultados mostraram que os valores médios de meninos (M = 27.5, SD = 21.8) e meninas (M = 24.9, SD = 20.3) são significativamente diferentes (t(5725) = 4.62, p < 0.01), apesar do tamanho do efeito ser negligenciável (d = 0.12). 
 ```  
+
+## Versão robusta do teste T
+
+Em muitas situações, os pressupostos do teste T são violados e parte da literatura argumenta que o teste T é robusto o suficiente para lidar com isso [@Lumley2002], equanto outra parte sugere que é melhor optar por versões com médias aparadas ou não-paramétricas [@Field2017]. No entanto, o que não costuma ser discutido com tanta frequência é que a modificação do teste estatístico utilizado, necessariamente, modifica a hipótese da pesquisa. Nesse sentido, a decisão de alterar o teste estatístico deve ser feito com justificativa teórica por parte do pesquisador.
+
+O pacote `WRS` apresenta versões robusta do Teste T. Ainda, o próprio R base oferece uma solução para condições em que a homogeneidade dos grupos não é aceita, que é o Welch-test. Esse teste é feito assumindo estipulando `var.equal = F` na sintaxe previamente exposta ou removendo este argumento por completo.
+
+## Mann-whitney
+
+A chamada versão paramétrica do teste T é o teste de Wilcoxon-Mann-Whitney. 
+
+```{r}
+(mann_whiyney_18m <- wilcox.test(score ~ sex, data = asq_18months))
+```
+
+O tamanho do efeito também pode ser calculado ao implementar $Z/sqrt(n)$. O pacote `coin` traz essa métrica
+
+```{r}
+#coin::wilcox_test(score ~ sex, data = asq_18months)[[teststatistic]]
+```
+
 
 ## Teste T e regressão
 

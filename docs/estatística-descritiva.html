@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2020-04-03" />
+<meta name="date" content="2020-04-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -150,16 +150,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#gráficos"><i class="fa fa-check"></i><b>2.5</b> Gráficos</a></li>
 <li class="chapter" data-level="2.6" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-discreta"><i class="fa fa-check"></i><b>2.6</b> 1 variável discreta</a></li>
 <li class="chapter" data-level="2.7" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-contínua"><i class="fa fa-check"></i><b>2.7</b> 1 variável contínua</a></li>
-<li class="chapter" data-level="2.8" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-discreta"><i class="fa fa-check"></i><b>2.8</b> 2 variáveis com VI discreta</a></li>
-<li class="chapter" data-level="2.9" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-contínua"><i class="fa fa-check"></i><b>2.9</b> 2 variáveis com VI contínua</a></li>
-<li class="chapter" data-level="2.10" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#outros-gráficos"><i class="fa fa-check"></i><b>2.10</b> Outros gráficos</a></li>
+<li class="chapter" data-level="2.8" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-discreta-e-vd-contínua"><i class="fa fa-check"></i><b>2.8</b> 2 variáveis com VI discreta (e VD contínua)</a></li>
+<li class="chapter" data-level="2.9" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-contínua-e-vd-contínua"><i class="fa fa-check"></i><b>2.9</b> 2 variáveis com VI contínua (e VD contínua)</a></li>
+<li class="chapter" data-level="2.10" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#outros-gráficos-e-configurações"><i class="fa fa-check"></i><b>2.10</b> Outros gráficos e configurações</a></li>
+<li class="chapter" data-level="2.11" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#resumo"><i class="fa fa-check"></i><b>2.11</b> Resumo</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="teste-t.html"><a href="teste-t.html"><i class="fa fa-check"></i><b>3</b> Teste T</a><ul>
 <li class="chapter" data-level="3.1" data-path="teste-t.html"><a href="teste-t.html#pesquisa-1"><i class="fa fa-check"></i><b>3.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="3.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-r"><i class="fa fa-check"></i><b>3.2</b> Execução no R</a></li>
 <li class="chapter" data-level="3.3" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito"><i class="fa fa-check"></i><b>3.3</b> Tamanho do efeito</a></li>
-<li class="chapter" data-level="3.4" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>3.4</b> Teste T e regressão</a></li>
-<li class="chapter" data-level="3.5" data-path="teste-t.html"><a href="teste-t.html#aspectos-matemáticos"><i class="fa fa-check"></i><b>3.5</b> Aspectos matemáticos</a></li>
+<li class="chapter" data-level="3.4" data-path="teste-t.html"><a href="teste-t.html#versão-robusta-do-teste-t"><i class="fa fa-check"></i><b>3.4</b> Versão robusta do teste T</a></li>
+<li class="chapter" data-level="3.5" data-path="teste-t.html"><a href="teste-t.html#mann-whitney"><i class="fa fa-check"></i><b>3.5</b> Mann-whitney</a></li>
+<li class="chapter" data-level="3.6" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>3.6</b> Teste T e regressão</a></li>
+<li class="chapter" data-level="3.7" data-path="teste-t.html"><a href="teste-t.html#aspectos-matemáticos"><i class="fa fa-check"></i><b>3.7</b> Aspectos matemáticos</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="http://www.puc-rio.br/" target="blank">PUC-Rio</a></li>
@@ -194,9 +197,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="pesquisa" class="section level2">
 <h2><span class="header-section-number">2.1</span> Pesquisa</h2>
 <div class="alert alert-info" role="alert">
-<p><strong>Base</strong> Dados - Brasil e espanha fusionados</p>
+<p><strong>Base:</strong> Dados - Brasil e espanha fusionados</p>
 </div>
-<p>Neste capítulo (e em algum outros), vamos utilizar a pesquisa intitulada “Sintomas de depressão e ansiedade em universitários espanhóis, portugueses e brasileiros”, com previsão de publicação pela Revista Psicologia: Teoria e Pesquisa em 2020. Nessa pesquisa, sou o coautor e o pesquisador responsável para correspondência.</p>
+<p>Neste capítulo (e em alguns outros), vamos utilizar a pesquisa intitulada “Sintomas de depressão e ansiedade em universitários espanhóis, portugueses e brasileiros”, com previsão de publicação pela Revista Psicologia: Teoria e Pesquisa em 2020. Nessa pesquisa, sou o coautor e o pesquisador responsável para correspondência.</p>
 <p>O objetivo da pesquisa foi explorar sintomas de ansiedade e depressão em universitários, bem como investigar possíveis relações entre tais traços latentes e fatores sociodemográficos. Um diferencial importante do trabalho foi a seleção amostral. Partiu-se de uma amostra estratificada (probabilística) dos estudantes de três universidades, PUC-Rio (Brasil), Universidade de Extremadura (Espanha) e Universidade de Coimbra (Portugal). Isso permitiu ter maior validade externa dos resultados.</p>
 </div>
 <div id="condições-gerais" class="section level2">
@@ -897,21 +900,26 @@ Total
 <h2><span class="header-section-number">2.5</span> Gráficos</h2>
 <p>A máquina gráfica do tidyverse é o ggplot. <u>Pelo menos</u> 3 argumentos são necessários para criação de gráficos, que são:</p>
 <ol style="list-style-type: decimal">
-<li>O banco dados ‘(data = )’, que pode ser omitido da sintaxe,<br />
+<li>O banco dados <code>(data = )</code>, que pode ser omitido da sintaxe,<br />
 </li>
 <li>O aspecto estético, que permite diferentes complementos <code>aes(x = , y = , fill = , color = )</code>,<br />
 </li>
-<li>O aspecto geométrico, que varia em função do gráfico a ser apresentado</li>
+<li>O aspecto geométrico, que varia em função do gráfico a ser apresentado <code>geom_</code></li>
 </ol>
-<p>O ggplot também permite realizar transformações dos resultados, alterar o posicionamento dos objetos, quebrar apresentações em função de uma variável, customizar o tema principal e alterar os rótulos de todos os elementos gráficos. É importante notar que apesar dos argumentos utilizados na sintaxe serem similares aos utilizados em toda família tidyverse, a ligação <code>%&gt;%</code> é substituída pelo <code>+</code>.</p>
+<p>É também possível adicionar outros argumentos, como:<br />
+4. Transformações estatísticas <code>stat_summary</code><br />
+5. Facetas para dividir a visualização <code>facet_</code><br />
+6. Sistema de coordenadas <code>coord_</code><br />
+7. Temas específicos <code>theme_</code></p>
+<p>É importante notar que apesar dos argumentos utilizados na sintaxe serem similares aos utilizados em toda família tidyverse, a ligação <code>%&gt;%</code> é substituída pelo <code>+</code>.</p>
 <p>Quando bem feitos, os gráficos são extremamente úteis. Como aponta Morettin e Bussab <span class="citation">(Morettin and Bussab <a href="#ref-morettin_bussab_2010">2010</a>)</span>, eles possibilitam:<br />
 (a) buscar padrões e relações;<br />
 (b) confirmar (ou não) certas expectativas que se tinha sobre os dados;<br />
 (c) descobrir novos fenômenos;<br />
 (d) confirmar (ou não) suposições feitas sobre os procedimentos estatísticos usados; e<br />
 (e) apresentar resultados de modo mais rápido e fácil.</p>
-<p>É importante que o gráfico tenha um título e uma escala. A maioria dos gráficos são apresentados em um plano com um eixo horizontal (abcissas) e um vertical (ordenadas). Por sua vez, tais planos se referem, nessa ordem, ou aos níveis da variável que está sendo medida (eixo x) e as contagens ou proporções encontradas (eixo y) ou aos níveis da variável independente (eixo x) e os resultados médios da variável dependente (eixo y).</p>
-<p>Para eleger que gráfico será realizado, é necessário responder a duas perguntas:<br />
+<p>É sempre bom que o gráfico tenha um título e uma escala. A maioria dos gráficos são apresentados em um plano com um eixo horizontal (abcissas) e um vertical (ordenadas). Por sua vez, tais planos se referem, nessa ordem, ou aos níveis da variável que está sendo medida (eixo x) e as contagens ou proporções encontradas (eixo y) ou aos níveis da variável independente (eixo x) e os resultados médios da variável dependente (eixo y).</p>
+<p>Para eleger que gráfico será realizado, é necessário responder a duas perguntas que são atreladas às pesquisas em Psicologia e áreas congêneres:<br />
 1. Quantas variáveis serão apresentadas ?<br />
 2. Qual o nível de medida da variával independente ?</p>
 <p>O diagrama abaixo oferece uma árvore de decisão funcional.</p>
@@ -920,7 +928,7 @@ Total
 </div>
 <div id="variável-discreta" class="section level2">
 <h2><span class="header-section-number">2.6</span> 1 variável discreta</h2>
-<p>Quando há apenas uma variável discreta (incluindo aqui as categóricas), os gráficos são criados para apresentar as contagens e/ou as proporções. Nesse caso, é recomendado utilização de um <u>gráfico de barras</u> ou <u>gráfico de setor</u>. Apesar de ser possível apresentar as frequências absolutas, esses resultados podem gerar distorção da informação e, portanto, é preferível sempre apresentar as proporções de ocorrência de uma determinada variável ou valor. Por definição, quando se trabalha com proporções, o valor máximo da soma das proporções é 100.</p>
+<p>Quando há apenas uma variável discreta (incluindo aqui as categóricas), os gráficos são criados para apresentar as contagens e/ou suas proporções. Nesse caso, é recomendado utilização de um <u>gráfico de barras</u> ou <u>gráfico de setor</u>. Apesar de ser possível apresentar as frequências absolutas, esses resultados podem gerar distorção da informação e, portanto, é preferível sempre apresentar as proporções de ocorrência de uma determinada variável ou valor. Por definição, quando se trabalha com proporções, o valor máximo da soma das proporções é 100.</p>
 <p>O gráfico de barras abaixo apresenta a contagem absoluta dos participantes pesquisados em cada país.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> country)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb11-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stats =</span> identity) <span class="op">+</span></a>
@@ -935,7 +943,7 @@ Total
 <a class="sourceLine" id="cb13-5" title="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> scales<span class="op">::</span><span class="kw">percent_format</span>()) <span class="op">+</span></a>
 <a class="sourceLine" id="cb13-6" title="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;País&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;Proporção de participantes em cada país investigado&quot;</span>)</a></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Finalmente, o gráfico de setor (as vezes chamado de pizza ou torta) pode também ser utilizado. O aspecto principal desse gráfico é apresentar os setores de maneira proporcional às frequências.</p>
+<p>O gráfico de setor (as vezes chamado de pizza ou torta) pode também ser utilizado. O aspecto principal desse gráfico é apresentar os setores de maneira proporcional às frequências.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">factor</span>(<span class="dv">1</span>), <span class="dt">fill=</span>country))<span class="op">+</span></a>
 <a class="sourceLine" id="cb14-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb14-3" title="3"><span class="st">  </span><span class="kw">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="op">+</span></a>
@@ -981,14 +989,13 @@ Total
 <pre><code>## Warning: Removed 28 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
-<div id="variáveis-com-vi-discreta" class="section level2">
-<h2><span class="header-section-number">2.8</span> 2 variáveis com VI discreta</h2>
-<p>Por definição, os gráficos de barras ou colunas (considerando aqui as barras de erro) e o boxplot são adequados para apresentar essa relação. Basicamente, esses gráficos permitem verificar a <u>diferença</u> entre os grupos.</p>
-<p>O gráfico abaixo mostra os resultados do Inventário Beck de Ansiedade entre 3 países investigados. As barras de erro são importantes para verificar, inicialmente, as possíveis diferenças significativas entre os países.</p>
+<div id="variáveis-com-vi-discreta-e-vd-contínua" class="section level2">
+<h2><span class="header-section-number">2.8</span> 2 variáveis com VI discreta (e VD contínua)</h2>
+<p>Gráficos de barras ou colunas (considerando aqui as barras de erro) e o boxplot são adequados para apresentar essa relação. Basicamente, esses gráficos permitem verificar a <u>diferença</u> entre os grupos.</p>
+<p>Como exemplo, o gráfico abaixo mostra os resultados do Inventário Beck de Ansiedade entre 3 países investigados. As barras de erro são importantes para verificar, inicialmente, as possíveis diferenças significativas entre os países.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> country, <span class="dt">y =</span> bai_sum)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb24-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb24-3" title="3"><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>,<span class="dt">fun.data =</span> mean_se, <span class="dt">width =</span> <span class="fl">.5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb24-4" title="4"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Resultados da escala de ansiedade em função do país investigado&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb24-3" title="3"><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>,<span class="dt">fun.data =</span> mean_se, <span class="dt">width =</span> <span class="fl">.5</span>) </a></code></pre></div>
 <pre><code>## No summary function supplied, defaulting to `mean_se()</code></pre>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O boxplot a seguir também é um gráfico indicado:</p>
@@ -996,39 +1003,35 @@ Total
 <a class="sourceLine" id="cb26-2" title="2"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
-<div id="variáveis-com-vi-contínua" class="section level2">
-<h2><span class="header-section-number">2.9</span> 2 variáveis com VI contínua</h2>
+<div id="variáveis-com-vi-contínua-e-vd-contínua" class="section level2">
+<h2><span class="header-section-number">2.9</span> 2 variáveis com VI contínua (e VD contínua)</h2>
 <p>Assumindo que a VI é contínua e a VD também, o gráfico de pontos e de dispersão são virtualmente identicos e indicados. Esses gráficos permitem verificar a <strong>associação</strong> entre as variáveis. No ggoplot, o argumento <code>geom_point</code> e <code>geom_jitter</code> são possíveis. Abaixo, utilizando os pontos.</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> bai_sum)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb27-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb27-3" title="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Resultados da escala de ansiedade em função da idade do participante&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb27-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 28 rows containing missing values (geom_point).</code></pre>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-22-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Abaixo, utilizando o jitter</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> bai_sum)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb29-2" title="2"><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb29-3" title="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Resultados da escala de ansiedade em função da idade do participante&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb29-2" title="2"><span class="st">  </span><span class="kw">geom_jitter</span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 28 rows containing missing values (geom_point).</code></pre>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Tradicionalmente, de maneira análoga às barras de erros apresentadas em gráficos cujas VIs são discretas, adiciona-se uma reta de regressão amostral (fra) quando a VI é contínua, tal como apresentado a seguir.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> bai_sum)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb31-2" title="2"><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb31-3" title="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb31-4" title="4"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Resultados da escala de ansiedade em função da idade do participante&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb31-3" title="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning: Removed 28 rows containing non-finite values (stat_smooth).</code></pre>
 <pre><code>## Warning: Removed 28 rows containing missing values (geom_point).</code></pre>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
-<div id="outros-gráficos" class="section level2">
-<h2><span class="header-section-number">2.10</span> Outros gráficos</h2>
+<div id="outros-gráficos-e-configurações" class="section level2">
+<h2><span class="header-section-number">2.10</span> Outros gráficos e configurações</h2>
 <p>Evidentemente, é possível apresentar mais informações nos gráficos com mais de um variável apresentada, desde que elas sejam relacionadas ao problema de pesquisa estudado e não sobrecarreguem a visualização dos resultados. Frequentemente, as informações adicionais são feitas pela inclusão de <strong>clusters</strong> ou <strong>agrupamentos</strong>. Isso é tanto possível em gráficos cuja VI seja discreta quanto contínua.</p>
 <p>No exemplo abaixo, o gráfico dos resultados do Inventário Beck de Ansiedade entre os 3 países investigados (VI discreta) agora está agrupado pelo sexo do participante.</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1">Dataset <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb34-2" title="2"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(sex)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb34-3" title="3"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> country, <span class="dt">y =</span> bai_sum, <span class="dt">fill =</span> sex)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb34-4" title="4"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb34-5" title="5"><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">geom=</span><span class="st">&quot;errorbar&quot;</span>, <span class="dt">fun.data =</span> mean_se, <span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="fl">0.95</span>), <span class="dt">width =</span> <span class="fl">.5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb34-6" title="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Resultados da escala de ansiedade em função da idade e sexo do participante&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb34-5" title="5"><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">geom=</span><span class="st">&quot;errorbar&quot;</span>, <span class="dt">fun.data =</span> mean_se, <span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="fl">0.95</span>), <span class="dt">width =</span> <span class="fl">.5</span>) </a></code></pre></div>
 <pre><code>## No summary function supplied, defaulting to `mean_se()</code></pre>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Já no exemplo abaixo, a relação entre idade e pontuação no Inventário Beck de Ansiedade está agora agrupada pelo sexo do participante.</p>
@@ -1036,8 +1039,7 @@ Total
 <a class="sourceLine" id="cb36-2" title="2"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(sex)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb36-3" title="3"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> bai_sum, <span class="dt">color =</span> sex)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb36-4" title="4"><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb36-5" title="5"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb36-6" title="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Resultados da escala de ansiedade em função da idade e sexo do participante&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb36-5" title="5"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) </a></code></pre></div>
 <pre><code>## Warning: Removed 24 rows containing non-finite values (stat_smooth).</code></pre>
 <pre><code>## Warning: Removed 24 rows containing missing values (geom_point).</code></pre>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
@@ -1046,8 +1048,7 @@ Total
 <a class="sourceLine" id="cb39-2" title="2"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(sex)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb39-3" title="3"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> bai_sum, <span class="dt">color =</span> sex, <span class="dt">shape =</span> country)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb39-4" title="4"><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb39-5" title="5"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb39-6" title="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Resultados da escala de ansiedade em função da idade, país e sexo do participante&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb39-5" title="5"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) </a></code></pre></div>
 <pre><code>## Warning: Removed 24 rows containing non-finite values (stat_smooth).</code></pre>
 <pre><code>## Warning: Removed 24 rows containing missing values (geom_point).</code></pre>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /></p>
@@ -1057,11 +1058,14 @@ Total
 <a class="sourceLine" id="cb42-3" title="3"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> bai_sum, <span class="dt">color =</span> sex)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb42-4" title="4"><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb42-5" title="5"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb42-6" title="6"><span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>country) <span class="op">+</span></a>
-<a class="sourceLine" id="cb42-7" title="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Resultados da escala de ansiedade em função da idade, país e sexo do participante&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb42-6" title="6"><span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>country)</a></code></pre></div>
 <pre><code>## Warning: Removed 24 rows containing non-finite values (stat_smooth).</code></pre>
 <pre><code>## Warning: Removed 24 rows containing missing values (geom_point).</code></pre>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-28-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="resumo" class="section level2">
+<h2><span class="header-section-number">2.11</span> Resumo</h2>
+<p>Este capítulo apresentou os aspectos tabulares e gráficos corriqueiramente encontrados em pesquisas de Psicologia e áreas congêneres. Entre os pontos principais, a heurística típica de construção de gráficos é um conteúdo importante para ser sempre lembrado.</p>
 
 </div>
 </div>
