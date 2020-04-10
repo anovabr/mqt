@@ -209,24 +209,33 @@ O pacote `WRS` apresenta versões robusta do Teste T. Ainda, o próprio R base o
 
 ## Mann-whitney
 
-A chamada versão paramétrica do teste T é o teste de Wilcoxon-Mann-Whitney. 
+A chamada versão paramétrica do teste T é o teste de Wilcoxon-Mann-Whitney. Quando os pressupostos do teste T são violados, o Mann-Whitney é um candidato para substituição. Se de um lado esse teste supera tais pressupostos, por outro ele responde a uma hipótese diferente daquela que o teste T trabalha. Enquanto o teste T compara médias, o Mann-whitney compara os valores ranqueados (postos). Nota-se que ele não é um teste para comparar medianas e que isso só ocorre em condições restritas.
 
 ```{r}
 (mann_whiyney_18m <- wilcox.test(score ~ sex, data = asq_18months))
 ```
 
-O tamanho do efeito também pode ser calculado ao implementar $Z/sqrt(n)$. O pacote `coin` traz essa métrica
+
+Os resultados foram convergentes ao previamente encontrado e, em outras palavras, tambem apoiam a rejeição da hipótese nula. O tamanho do efeito também pode ser calculado ao implementar $Z/sqrt(n)$. O output padrão do R não oferece essa informação, mas o pacote `coin` dispõe dessa métrica.
 
 ```{r}
-#coin::wilcox_test(score ~ sex, data = asq_18months)[[teststatistic]]
+coin::statistic(coin::wilcox_test(score ~ sex, data = asq_18months))
 ```
 
+Assim, implementando a fórmula, o tamanho do efeito seria aproximadamete 0.06.
+
+
+```{block, type="writing"}
+**Como escrever os resultados**  
+
+Os dados foram analisados pelo teste Wilcoxon-Mann-Whitney para investigar as diferenças nos resultados do desenvolvimento entre meninos (Mdn = 25, IQR = 30, M = 27.53, SD = 21.61) e meninas (Mdn = 20, IQR = 25, M = 24.95, SD = 20.34) com 18 meses de idade. Os resultados indicaram que os resultados foram significativos (W = 4368187, p < 0.01), mas com efeito negligenciável (0.12). 
+```  
 
 ## Teste T e regressão
 
-Conforme alertado, o Teste T nada mais é do que um modelo de regressão que assume que a variável independente é uma dummy. Assim, $b_0$ é o grupo que recebeu o valor 0 e  $b_1$ é o grupo que recebeu o valor 1. Caso isso não tenha sido definido inicialmente, basta estipular que a variável é um *fator*, mesmo que de maneira implícita, e o R cuidará de todo o resto.
+Conforme alertado, o Teste T é um caso particular deum modelo de regressão que assume que a variável independente é uma dummy. Assim, $b_0$ (intercepto) é o grupo que recebeu o valor 0 e  $b_1$ (inclinação) é o grupo que recebeu o valor 1. Caso isso não tenha sido definido inicialmente, basta estipular que a variável é um <u>fator<u> e o R cuidará de todo o resto.
 
-Nesse caso, o R atribuiu os meninos como intercepto o valor médio dos meninos e a inclinação $b_1$ é justamente a diferença entre os valores (*24.95-27.53)*. Nesse caso, -2.58. A estatística F é equivalente a $t^2$ do teste t em sua versão tradicional (assumindo que as variâncias dos grupos são igual, adicionando `var.equal = T` ao argumento)
+Nesse caso, o R atribuiu os meninos como intercepto o valor médio dos meninos e a inclinação $b_1$ é justamente a diferença entre os valores (*24.95-27.53)*. Nesse caso, -2.58. A estatística F é equivalente a $t^2$ do teste t em sua versão tradicional (assumindo variâncias iguais entre grupos, adicionando `var.equal = T` à função).
 
 ```{r}
 lm(score ~ sex, data = asq_18months) %>% 
@@ -234,3 +243,6 @@ lm(score ~ sex, data = asq_18months) %>%
 ```
 
 ## Aspectos matemáticos
+
+
+[Em desenvolvimento]
