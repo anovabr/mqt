@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 4 ANOVA | Métodos quantitativos em Psicologia com R e Rstudio</title>
+  <meta name="description" content="This GitBook is an example of a GitBook for teaching. It can be adapted for specific courses. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 4 ANOVA | Métodos quantitativos em Psicologia com R e Rstudio" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This GitBook is an example of a GitBook for teaching. It can be adapted for specific courses. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="cjvanlissa/gitbook-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 4 ANOVA | Métodos quantitativos em Psicologia com R e Rstudio" />
+  
+  <meta name="twitter:description" content="This GitBook is an example of a GitBook for teaching. It can be adapted for specific courses. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
+
+
+<meta name="date" content="2020-04-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="teste-t.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/viz-0.3/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.1/grViz.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MQT em Psicologia com R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introdução</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#objetivo"><i class="fa fa-check"></i><b>1.1</b> Objetivo</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#bases"><i class="fa fa-check"></i><b>1.2</b> Bases</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#pacotes-e-sintaxes"><i class="fa fa-check"></i><b>1.3</b> Pacotes e sintaxes</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#aspectos-gerais"><i class="fa fa-check"></i><b>1.4</b> Aspectos gerais</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html"><i class="fa fa-check"></i><b>2</b> Estatística Descritiva</a><ul>
+<li class="chapter" data-level="2.1" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#pesquisa"><i class="fa fa-check"></i><b>2.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="2.2" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#condições-gerais"><i class="fa fa-check"></i><b>2.2</b> Condições gerais</a></li>
+<li class="chapter" data-level="2.3" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>2.3</b> Verbos do dplyr</a></li>
+<li class="chapter" data-level="2.4" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#tabelas"><i class="fa fa-check"></i><b>2.4</b> Tabelas</a></li>
+<li class="chapter" data-level="2.5" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#gráficos"><i class="fa fa-check"></i><b>2.5</b> Gráficos</a></li>
+<li class="chapter" data-level="2.6" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-discreta"><i class="fa fa-check"></i><b>2.6</b> 1 variável discreta</a></li>
+<li class="chapter" data-level="2.7" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-contínua"><i class="fa fa-check"></i><b>2.7</b> 1 variável contínua</a></li>
+<li class="chapter" data-level="2.8" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-discreta-e-vd-contínua"><i class="fa fa-check"></i><b>2.8</b> 2 variáveis com VI discreta (e VD contínua)</a></li>
+<li class="chapter" data-level="2.9" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-contínua-e-vd-contínua"><i class="fa fa-check"></i><b>2.9</b> 2 variáveis com VI contínua (e VD contínua)</a></li>
+<li class="chapter" data-level="2.10" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#outros-gráficos-e-configurações"><i class="fa fa-check"></i><b>2.10</b> Outros gráficos e configurações</a></li>
+<li class="chapter" data-level="2.11" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#resumo"><i class="fa fa-check"></i><b>2.11</b> Resumo</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="teste-t.html"><a href="teste-t.html"><i class="fa fa-check"></i><b>3</b> Teste T</a><ul>
+<li class="chapter" data-level="3.1" data-path="teste-t.html"><a href="teste-t.html#pesquisa-1"><i class="fa fa-check"></i><b>3.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="3.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-r"><i class="fa fa-check"></i><b>3.2</b> Execução no R</a></li>
+<li class="chapter" data-level="3.3" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito"><i class="fa fa-check"></i><b>3.3</b> Tamanho do efeito</a></li>
+<li class="chapter" data-level="3.4" data-path="teste-t.html"><a href="teste-t.html#versão-robusta-do-teste-t"><i class="fa fa-check"></i><b>3.4</b> Versão robusta do teste T</a></li>
+<li class="chapter" data-level="3.5" data-path="teste-t.html"><a href="teste-t.html#mann-whitney"><i class="fa fa-check"></i><b>3.5</b> Mann-whitney</a></li>
+<li class="chapter" data-level="3.6" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>3.6</b> Teste T e regressão</a></li>
+<li class="chapter" data-level="3.7" data-path="teste-t.html"><a href="teste-t.html#aspectos-matemáticos"><i class="fa fa-check"></i><b>3.7</b> Aspectos matemáticos</a></li>
+<li class="chapter" data-level="3.8" data-path="teste-t.html"><a href="teste-t.html#resumo-1"><i class="fa fa-check"></i><b>3.8</b> Resumo</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>4</b> ANOVA</a><ul>
+<li class="chapter" data-level="4.1" data-path="anova.html"><a href="anova.html#legenda"><i class="fa fa-check"></i><b>4.1</b> Legenda</a></li>
+<li class="chapter" data-level="4.2" data-path="anova.html"><a href="anova.html#pesquisa-2"><i class="fa fa-check"></i><b>4.2</b> Pesquisa</a></li>
+<li class="chapter" data-level="4.3" data-path="anova.html"><a href="anova.html#anova-de-1-via"><i class="fa fa-check"></i><b>4.3</b> ANOVA de 1 via</a></li>
+<li class="chapter" data-level="4.4" data-path="anova.html"><a href="anova.html#pacote-emmeans"><i class="fa fa-check"></i><b>4.4</b> Pacote emmeans</a></li>
+<li class="chapter" data-level="4.5" data-path="anova.html"><a href="anova.html#anova-de-2-vias"><i class="fa fa-check"></i><b>4.5</b> ANOVA de 2 vias</a></li>
+<li class="chapter" data-level="4.6" data-path="anova.html"><a href="anova.html#anova-fatorial"><i class="fa fa-check"></i><b>4.6</b> ANOVA Fatorial</a></li>
+<li class="chapter" data-level="4.7" data-path="anova.html"><a href="anova.html#outra-coisa"><i class="fa fa-check"></i><b>4.7</b> outra coisa</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="http://www.puc-rio.br/" target="blank">PUC-Rio</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Métodos quantitativos em Psicologia com R e Rstudio</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="anova" class="section level1">
+<h1><span class="header-section-number">Capítulo 4</span> ANOVA</h1>
+<p>A ANOVA é um teste estatístico desenhado para verificar diferença entre diversos grupos e, funcionalmente, é possível entender ANOVA como um super Teste T. Conceitualmente, no entanto, ela é um caso especial de um modelo de regressão em que a variável independente é categórica. Em Psicologia, provavelmente a ANOVA é a técnica inferencial mais utilizada <span class="citation">(Chartier and Faulkner <a href="#ref-Chartier2008">2008</a>; Howell <a href="#ref-Howell2011">2011</a>)</span>. Por um aspecto, isso é extremamente vantajoso, dado que essa técnica estreita a relação entre Psicologia e Estatística. Em outro, isso parece ter contribuído para criação e manutenção de diferentes conceitos equivocados sobre a ANOVA.</p>
+<p>Conceitualmente, a ANOVA é um modelo linear, tal que:</p>
+<p><span class="math display">\[y_i = b_0 + b_1X{_1}_i + \epsilon_{i}\]</span></p>
+<p><span class="math inline">\(y_i\)</span> representa a variável dependente<br />
+<span class="math inline">\(b_0\)</span> é o intercepto (coeficiente linear)<br />
+<span class="math inline">\(b_1\)</span> é a inclinação (coeficiente angular)<br />
+<span class="math inline">\(\epsilon_{i}\)</span> é o erro/resíduo</p>
+<p>Todos os pressupostos dos modelos linares são mantidos (LINE). Dessa maneira, assume-se que o erro é independente e identicamente distribuído (<span class="math inline">\(iid\)</span>), distribuído normalmente com média 0 e variância constante <span class="math inline">\(\sigma^2\)</span>, ou seja, <span class="math display">\[ \epsilon\stackrel{iid}{\sim} \mathcal{N}(\mu,\,\sigma^{2})\,\]</span> Além de homocedástico <span class="math display">\[ VAR(\epsilon |x_1,x_2,...,x_k)=\sigma^2 \]</span>.<br />
+<code>iid</code>ainda signica erros descorrelacionado <span class="math display">\[ COV(\epsilon_1,\epsilon_j)=0 \]</span>.</p>
+<p>É importante atentar que assumir média 0 <span class="math inline">\(E(\epsilon|x)=0\)</span>, também implica que a correlação do erro com as variáveis é nula. Operacionalmente, o erro representa <u>todos os fatores de pesquisa</u> e problemas de medição que afetam o resultado além das variáveis independentes consideradas na modelagem.</p>
+<p>A ANOVA tem diversas características de modelagem que serão descritas na seção a seguir,</p>
+<div id="legenda" class="section level2">
+<h2><span class="header-section-number">4.1</span> Legenda</h2>
+<p>Diferentes termos são empregados em uma ANOVA. A legenda a seguir visa auxiliar no entendimento de cada um deles e aproximar o leitor a conceitos amplos utilizados em modelos lineares:</p>
+<div class="writing">
+<p>
+<strong>Fator</strong>: Variável independente, variável fonte, variável preditora, tratamento<br />
+<strong>Desfecho</strong>: Variável dependente, variável critério<br />
+<strong>Níveis</strong>: Grupos, condições, categorias da variável independente<br />
+<strong>Efeito principal</strong>: Efeito da variável independente, sem considerar outras caracterísitcas do modelo<br />
+<strong>Efeito de interação</strong>: Efeito do termo de interação entre duas ou mais variáveis independentes.Quando significativo, não se interpreta os efeitos principais. <strong>Efeito simples</strong>: Efeito de uma variável independente em um nível (específico) de outra variável independente.
+</p>
+</div>
+<p>Por heurística, se escreve os delinementos estudados por uma ANOVA com <span class="math inline">\(\eta\)</span>. Se, por exemplo, o interesse seja o de verificar o efeito do sexo (masculino ou feminino) e da escolaridade (fundamental, médio e superior), a representação será <span class="math inline">\(\eta = 2 \times 3\)</span>. Isso significa que a ANOVA tem dois fatores (sexo e escolaridade) e o primeiro fator tem dois níveis e o segundo tem 3 níveis.</p>
+</div>
+<div id="pesquisa-2" class="section level2">
+<h2><span class="header-section-number">4.2</span> Pesquisa</h2>
+<div class="alert alert-info" role="alert">
+<p><strong>Base: </strong> Livro - R- TEG</p>
+</div>
+<p>Neste capítulo, vamos utilizar a pesquisa intitulada “A relação entre o nível de Empreendedorismo (TEG) e os aspectos sociodemográficos dos Taxistas cooperados da cidade de Santo André/São Paulo, Brasil”, publicada em 2016 na Revista Eletrônica de Gestão e Serviços, que sou co-autor.</p>
+<p>O objetivo dessa pesquisa foi identificar o nível de empreendedorismo em 147 taxistas de Santo André/SP, bem como averiguá-lo em associação aos aspectos sociodemográficos. A base contém 14 variáveis, sendo 6 variáveis da escala utilizada para avaliação do empreendedorismo e 8 variáveis gerais, incluindo aqui os aspectos sociodemográficos, como sexo e escolaridade.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1">dados_teg <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">names</span>()</a></code></pre></div>
+<pre><code>##  [1] &quot;sexo&quot;                   &quot;estado_civil&quot;          
+##  [3] &quot;escolaridade&quot;           &quot;tempo_empresa&quot;         
+##  [5] &quot;esta_satisfeito&quot;        &quot;carga_horaria&quot;         
+##  [7] &quot;outra_atividade&quot;        &quot;pensa_desitir&quot;         
+##  [9] &quot;teg&quot;                    &quot;tendencia_risco&quot;       
+## [11] &quot;tendencia_criativa&quot;     &quot;necessidade_realizacao&quot;
+## [13] &quot;tendencia_autonomia&quot;    &quot;tendencia_determinacao&quot;</code></pre>
+<p>A pergunta que temos agora é sobre o possível efeito da <code>escolaridade</code> na Tendência Empreendedora Geral (<code>teg</code>). Trata-se de uma ANOVA de uma via, dado que existe apenas uma VI.</p>
+</div>
+<div id="anova-de-1-via" class="section level2">
+<h2><span class="header-section-number">4.3</span> ANOVA de 1 via</h2>
+<p>Ao trabalhar no R, é <u>fundamental</u> se certificar que os tipos das variávais estão corretamente definidos em função da escala de medida utilizada. Erros nessa etapa podem gerar resultados absolutamente incorretos. A escolaridade é uma variável categórica (ordinal, tratada como discreta) e é necessário definir claramente isso ao R antes da análise propriamente dita.</p>
+<p>Isso pode ser feito pela função <code>case_when</code> e <code>levels</code>. O <code>case_when</code> irá substituir os valores originalmente presentes nessa variável e o <code>levels</code> deixará claro a ordem de cada categoria, o que é útil para que os gráficos sejam feitos corretamente.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1">dados_teg &lt;-<span class="st"> </span>dados_teg <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb69-2" title="2"><span class="st">  </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(escolaridade), </a>
+<a class="sourceLine" id="cb69-3" title="3">    <span class="op">~</span><span class="kw">factor</span>(<span class="kw">case_when</span>(</a>
+<a class="sourceLine" id="cb69-4" title="4">      . <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">~</span><span class="st"> &quot;Primário&quot;</span>,</a>
+<a class="sourceLine" id="cb69-5" title="5">      . <span class="op">==</span><span class="st"> </span><span class="dv">2</span> <span class="op">~</span><span class="st"> &quot;Ginásio&quot;</span>,</a>
+<a class="sourceLine" id="cb69-6" title="6">      . <span class="op">==</span><span class="st"> </span><span class="dv">3</span> <span class="op">~</span><span class="st"> &quot;Colegial&quot;</span>,</a>
+<a class="sourceLine" id="cb69-7" title="7">      . <span class="op">==</span><span class="st"> </span><span class="dv">4</span> <span class="op">~</span><span class="st"> &quot;Superior&quot;</span>), </a>
+<a class="sourceLine" id="cb69-8" title="8">      <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;Primário&quot;</span>,<span class="st">&quot;Ginásio&quot;</span>,<span class="st">&quot;Colegial&quot;</span>,<span class="st">&quot;Superior&quot;</span>)))</a></code></pre></div>
+<p>Conforme foi comentado, os itens em um instrumento sociodemográfico devem levar em consideração o contexto das pessoas avaliadas e, por isso, as categorias de escolaridade foram definidas como as apresentadas. Primário significa escolaridade até o 5 ano, ginásio significa escolaridade até o 9 ano e colegial é equivalente ao ensino médio.</p>
+<p>vamos iniciar as análises a partir de tabelas e gráficos.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1">dados_teg <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb70-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(escolaridade) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb70-3" title="3"><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(teg), <span class="kw">funs</span>(<span class="kw">n</span>(),mean, sd)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb70-4" title="4"><span class="st">   </span><span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="kw">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</a></code></pre></div>
+<pre><code>## Warning: funs() is soft deprecated as of dplyr 0.8.0
+## Please use a list of either functions or lambdas: 
+## 
+##   # Simple named list: 
+##   list(mean = mean, median = median)
+## 
+##   # Auto named with `tibble::lst()`: 
+##   tibble::lst(mean, median)
+## 
+##   # Using lambdas
+##   list(~ mean(., trim = .2), ~ median(., na.rm = TRUE))
+## This warning is displayed once per session.</code></pre>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+escolaridade
+</th>
+<th style="text-align:right;">
+n
+</th>
+<th style="text-align:right;">
+mean
+</th>
+<th style="text-align:right;">
+sd
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Primário
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+24.67
+</td>
+<td style="text-align:right;">
+4.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ginásio
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+26.76
+</td>
+<td style="text-align:right;">
+3.86
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Colegial
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:right;">
+28.87
+</td>
+<td style="text-align:right;">
+4.11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Superior
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+31.83
+</td>
+<td style="text-align:right;">
+5.23
+</td>
+</tr>
+</tbody>
+</table>
+<p>Uma vez que a escolaridade (VI) é tratada como discreta e a TEG (VD) é contínua, um gráfico de barras é adequado. A inclusão das barras de erro permite uma compreensão inferencial inicial.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="kw">ggplot</span>(dados_teg, <span class="kw">aes</span>(<span class="dt">x=</span>escolaridade, <span class="dt">y =</span> teg, <span class="dt">fill =</span> escolaridade)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb72-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb72-3" title="3"><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>)</a></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-51-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>O gráfico permite identificar algumas caracteríticas gerais dos resultados. Primeiro, quão maior a escolaridade, maior o o valor obtido na escala. Segundo, algumas barras de erros estão superpostas e outras não, o que nos leva à conclusão de que resultados significativos estarão presentes na próxima etapa, que é a modelagem formal dessa hipótese.</p>
+<p>A modelagem formal irá contemplar n-1 níveis dos preditores e estipulará no intercepto o nível de referência. Dessa maneira:</p>
+<p><span class="math display">\[y_{i} = b_{0} + b_1Esc_{ginasio_i} + b_2Esc_{colegial_i} + b_1Esc_{superior_i} + \epsilon_{i}\]</span></p>
+<p><span class="math inline">\(b_0\)</span> representa o intercepto, que aqui é o valor médio da Escolaridade primária<br />
+<span class="math inline">\(b_i\)</span> representa os outros preditores<br />
+<span class="math inline">\(\epsilon_{it}\)</span> representa o erro</p>
+<p>A função <code>lm</code> será utilizada e o objeto <code>mod_escolaridade</code> será armazenado.</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1">mod_escolaridade &lt;-<span class="st"> </span><span class="kw">lm</span>(teg <span class="op">~</span><span class="st"> </span>escolaridade, dados_teg)</a></code></pre></div>
+<p>Antes de checar os resultados, é necessário verificar os pressupostos da ANOVA, que pedem que os resíduos sejam normalmente distribuídos e homocedásticos. Essa apresentação será feita somente agora para que os outros tópicos sejam mais claros e assertivos.</p>
+<p>Gráficos e testes formais são muito úteis para verificar ambos os casos e vamos começar pela normalidade.</p>
+<p>O gráfico abaixo apresenta a distribuição dos resíduos:</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="kw">ggplot</span>(<span class="kw">fortify</span>(mod_escolaridade), <span class="kw">aes</span>(.resid)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb74-2" title="2"><span class="st">      </span><span class="kw">geom_histogram</span>(<span class="dt">colour=</span><span class="st">&quot;black&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;grey&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb74-3" title="3"><span class="st">      </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(<span class="dt">y=</span> ..count..))</a></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-53-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>E o teste formal pode ser feito via <code>shapiro wilk</code>. Lembre-se que a <span class="math inline">\(H_0\)</span> desse teste estipula normalidade e, idealmente, não deve ser rejeitada.</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1"><span class="kw">shapiro.test</span>(<span class="kw">residuals</span>(mod_escolaridade))</a></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  residuals(mod_escolaridade)
+## W = 0.97502, p-value = 0.008721</code></pre>
+<p>É possível concluir que o pressuposto da normalidade foi violado. situações como essa são muito frequentes. Na literatura, são presentes recomendações de ajuste dos dados por alguma função <code>g(.)</code> ou tornar mais severo o valor de p na interpretação dos resultados. Por exemplo, em vez de 0.05, usar 0.01.</p>
+<p>A homocedasticidade pode ser verificada por um gráfico dos resíduos dado valores previstos.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1"><span class="kw">ggplot</span>(<span class="kw">fortify</span>(mod_escolaridade), <span class="kw">aes</span>(<span class="dt">x=</span>.fitted, <span class="dt">y=</span>.resid)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb77-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb77-3" title="3"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>)</a></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-55-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Além do teste de <code>Levene</code>, que estipula <span class="math inline">\(H_0\)</span> como homocedasticidade e, idealmente, não deve ser rejeitada.</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1">car<span class="op">::</span><span class="kw">leveneTest</span>(mod_escolaridade)</a></code></pre></div>
+<pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = median)
+##        Df F value Pr(&gt;F)
+## group   3  1.1372 0.3362
+##       143</code></pre>
+<p>A homocedasticidade foi garantida. Dessa maneira, mesmo com a violação da normalidade, o modelo será utilizado e seu sumário geral será apresentado pela função Anova do pacote <code>car</code>. Isso é importante para garantir resultados programas tipicamente utilizados, como o SPSS e o STATA. Repare que como o pacote não foi formalmente carregado, ele será acionado indiretamente incluindo <code>::</code> após seu nome.</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1">car<span class="op">::</span><span class="kw">Anova</span>(mod_escolaridade, <span class="dt">type =</span> <span class="dv">3</span>)</a></code></pre></div>
+<pre><code>## Anova Table (Type III tests)
+## 
+## Response: teg
+##              Sum Sq  Df  F value    Pr(&gt;F)    
+## (Intercept)  3650.7   1 200.6112 &lt; 2.2e-16 ***
+## escolaridade  449.3   3   8.2305 4.328e-05 ***
+## Residuals    2602.3 143                       
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>A leitura desse resultado é similar a de um modelo de regressão. Dessa maneira, esse modelo aumentado (MA), ao ser comparado com o modelo compaco/nulo (MC), foi significativo (F(3,143) = 8.231, p &lt; 0.01). Isso significa que a adição do preditor foi significativamente capaz de reduzir o erro do modelo nulo. De fato, quando isso ocorre, a busca por possíveis diferenças entre <strong>todas as comparações possíveis</strong> é feita.</p>
+<p>É importante mencionar que isso não significa que se uma ANOVA é significativa, haverá alguma diferença entre as médias de grupos. Tecnicamente, a diferença pode ocorrer em qualquer comparação possível, como grupo 1 contra grupos 2 + grupo 3. Dessa maneira, o resultado geral da ANOVA e testes post-hoc respondem questões diferentes e é possível realizar qualquer comparação múltipla sem sequer realizar a ANOVA, desde que os resultados sejam devidamente corrigidos.</p>
+<p>Uma vez que a<code>escolaridade</code> foi significativa (F(3, 143) = 8.231, p &lt; 0.01) mesmo em uma significância mais estrita (0.01), vamos checar as comparações principais. Estas são aquelas relacionadas a cada um dos níveis presentes nessa variável. Uma vez que comparações serão realizadas, é necessário ajustar o valor de P. Repare que a quantidade de comparações pode ser calculada da seguinte forma:</p>
+<p><span class="math display">\[ J*(\frac{J-1}2) \]</span> , onde
+<span class="math inline">\(J\)</span> é a quantidade de níveis da variável</p>
+<p>Nesse caso:</p>
+<p><span class="math display">\[ 4*(\frac{3}2) = 6 \]</span>.</p>
+<p>Dessa maneira, as técnicas de ajuste utilizarão esse valor como referência. Para a comparação pareada, o pacote <code>emmeans</code> será utilizado.</p>
+</div>
+<div id="pacote-emmeans" class="section level2">
+<h2><span class="header-section-number">4.4</span> Pacote emmeans</h2>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1"><span class="kw">library</span>(emmeans)</a></code></pre></div>
+<pre><code>## Warning: package &#39;emmeans&#39; was built under R version 3.6.3</code></pre>
+<p>Para comparação pareada, o resultado será armazenado em um objeto específico nomeado como <code>post_hoc_escolaridade</code>. Isso será útil para apresentar sumários e gráficos. O sumário ajustará o valor de p pela técnica Bonferroni, que multiplica o valor bruto encontrado pela quantidade de comparações.</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1">post_hoc_escolaridade &lt;-<span class="st"> </span><span class="kw">emmeans</span>(mod_escolaridade, <span class="st">&quot;escolaridade&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pairs</span>(., <span class="dt">reverse =</span> <span class="ot">TRUE</span>, <span class="dt">adjust =</span> <span class="st">&quot;bonferroni&quot;</span>)</a></code></pre></div>
+<p>Os resultados são significativos na comparação <code>Superior - Primário</code>, <code>Superior - Ginásio</code> e <code>Superior - Colegial</code> e o gráfico a seguir será feito pelo <code>ggplot2</code>, com adição das barras de erro. Apesar de ambas as apresentações terem o mesmo conteúdo, o gráfico tem interpretação mais rápida e simples para todas as audiências.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1">CI &lt;-<span class="st"> </span><span class="kw">confint</span>(post_hoc_escolaridade)</a>
+<a class="sourceLine" id="cb85-2" title="2"><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(contrast, estimate)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb85-3" title="3"><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> lower.CL, <span class="dt">ymax =</span> upper.CL), <span class="dt">data =</span> CI) <span class="op">+</span></a>
+<a class="sourceLine" id="cb85-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">summary</span>(post_hoc_escolaridade)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb85-5" title="5"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb85-6" title="6"><span class="st">  </span><span class="kw">scale_size</span>(<span class="dt">trans =</span> <span class="st">&quot;reverse&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb85-7" title="7"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-60-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>A esse momento, a escrita é fundamental:</p>
+<div class="writing">
+<p>
+<strong>Como escrever os resultados</strong>
+</p>
+<p>
+Os dados foram analisados a partir de uma ANOVA de uma via investigando o efeito da escolaridade no empreendedorismo. Foi possível concluir que a escolaridade é significativa (F(3, 143) = 8.23, p &lt; 0.01) e as comparações pareadas, ajustadas pela técnica de Bonferroni, mostraram que os participantes com ensino superior tem pontuação mais alta do que àqueles com o primário (p &lt; 0.01), ginásio (p &lt; 0.01) e colegial (p &lt; 0.05).
+</p>
+</div>
+</div>
+<div id="anova-de-2-vias" class="section level2">
+<h2><span class="header-section-number">4.5</span> ANOVA de 2 vias</h2>
+<p>Frequentemente, o interesse do pesquisador está em investigar como múltiplos fatores afetam a variável de interesse. Ao aumentar o número de variáveis independentes no modelo, se aumenta a quantidade de vias que a ANOVA possui. Nesse caso, por exemplo, a investigação será sbobre sobre o efeito da <code>escolaridade</code> e do <code>sexo</code> no <code>empreendedorismo</code>. Por definição, uma ANOVA de duas vias tem apenas efeitos principais e não considera uma possível interação entre os preditores.</p>
+<p>A modelagem segue o mesmo padrão da feita anteriormente, iniciando pela definição correta do tipo de variável em relação à sua escala de medida.</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1">dados_teg &lt;-<span class="st"> </span>dados_teg <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb86-2" title="2"><span class="st">  </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(sexo), <span class="kw">funs</span>(</a>
+<a class="sourceLine" id="cb86-3" title="3">    <span class="kw">factor</span>(<span class="kw">case_when</span>(</a>
+<a class="sourceLine" id="cb86-4" title="4">      . <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">~</span><span class="st"> &quot;Masculino&quot;</span>,</a>
+<a class="sourceLine" id="cb86-5" title="5">      . <span class="op">==</span><span class="st"> </span><span class="dv">2</span> <span class="op">~</span><span class="st"> &quot;Feminino&quot;</span>), <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;Masculino&quot;</span>,<span class="st">&quot;Feminino&quot;</span>))))</a></code></pre></div>
+<p>Tabelas e gráficos também devem ser apresentadas.</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1">dados_teg <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb87-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(escolaridade, sexo) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb87-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">rn =</span> <span class="kw">row_number</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb87-4" title="4"><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(teg), <span class="kw">funs</span>(<span class="kw">n</span>(), mean, sd)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb87-5" title="5"><span class="st">  </span><span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="kw">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</a></code></pre></div>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+escolaridade
+</th>
+<th style="text-align:left;">
+sexo
+</th>
+<th style="text-align:right;">
+n
+</th>
+<th style="text-align:right;">
+mean
+</th>
+<th style="text-align:right;">
+sd
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Primário
+</td>
+<td style="text-align:left;">
+Masculino
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+24.67
+</td>
+<td style="text-align:right;">
+4.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ginásio
+</td>
+<td style="text-align:left;">
+Masculino
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+27.03
+</td>
+<td style="text-align:right;">
+3.91
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ginásio
+</td>
+<td style="text-align:left;">
+Feminino
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+24.00
+</td>
+<td style="text-align:right;">
+2.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Colegial
+</td>
+<td style="text-align:left;">
+Masculino
+</td>
+<td style="text-align:right;">
+73
+</td>
+<td style="text-align:right;">
+28.63
+</td>
+<td style="text-align:right;">
+3.83
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Colegial
+</td>
+<td style="text-align:left;">
+Feminino
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+30.33
+</td>
+<td style="text-align:right;">
+5.48
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Superior
+</td>
+<td style="text-align:left;">
+Masculino
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+31.59
+</td>
+<td style="text-align:right;">
+5.23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Superior
+</td>
+<td style="text-align:left;">
+Feminino
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+37.00
+</td>
+<td style="text-align:right;">
+NaN
+</td>
+</tr>
+</tbody>
+</table>
+<p>Repare que não há desvio-padrão para mulheres com o ensino superior. Isso ocorre pela quantidade de participantes que satisfazem essas condições. Tecnicamente, isso ou impossibilitaria essa análise ou tornaria a interpretação altamente viesada. No entanto, por condição pedagógica, vamos seguir com o procedimento.</p>
+<p>Como o objetivo é verificar duas variáveis isoladamente, os gráficos também podem ser isolados. Para organizar adequadamente a visualização, vamos armazenar cada gráfico em um objeto próprio e usar a função <code>grid.arrange</code> do pacote <code>gridExtra</code>, que será chamado indiretamente.</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1">plot_escolaridade &lt;-<span class="st"> </span><span class="kw">ggplot</span>(dados_teg, <span class="kw">aes</span>(<span class="dt">x=</span>escolaridade, <span class="dt">y =</span> teg, <span class="dt">fill =</span> escolaridade)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb88-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb88-3" title="3"><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>)</a>
+<a class="sourceLine" id="cb88-4" title="4"></a>
+<a class="sourceLine" id="cb88-5" title="5">plot_sexo &lt;-<span class="st"> </span><span class="kw">ggplot</span>(dados_teg, <span class="kw">aes</span>(<span class="dt">x =</span> sexo, <span class="dt">y =</span> teg, <span class="dt">fill =</span> sexo)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb88-6" title="6"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb88-7" title="7"><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>)</a>
+<a class="sourceLine" id="cb88-8" title="8"></a>
+<a class="sourceLine" id="cb88-9" title="9">gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(plot_escolaridade,plot_sexo)</a></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-64-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Agora, formalmente a modelagem será feita. Os passos devem ser exatamente os mesmos, inciando pela construção do modelo, seguida de sua execução, verificação de pressupostos e interpretação. No entanto, uma vez que os pressupostos foram expostos inicialmente, a esse momento ele será omitido.</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1">mod_escolaridade_sexo &lt;-<span class="st"> </span><span class="kw">lm</span>(teg <span class="op">~</span><span class="st"> </span>escolaridade <span class="op">+</span><span class="st"> </span>sexo, dados_teg)</a>
+<a class="sourceLine" id="cb89-2" title="2">car<span class="op">::</span><span class="kw">Anova</span>(mod_escolaridade_sexo, <span class="dt">type =</span> <span class="dv">3</span>)</a></code></pre></div>
+<pre><code>## Anova Table (Type III tests)
+## 
+## Response: teg
+##              Sum Sq  Df  F value    Pr(&gt;F)    
+## (Intercept)  3650.7   1 200.3581 &lt; 2.2e-16 ***
+## escolaridade  450.5   3   8.2416 4.293e-05 ***
+## sexo           14.9   1   0.8196    0.3668    
+## Residuals    2587.3 142                       
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Os resultados continuam constantando o efeito da escolaridade (F(3, 142) = 8.241, p &lt; 0.01) no empreendedorismo, mas também conclui que o efeito do sexo não é significativo (F(1, 142) = 0.816, p = 0.36). Situações como essa são frequentes e pedem que a análise realizada e é importante ter atenção à forma de reportar os resultados: mesmo que eles tenham interpretações identicas, os coeficientes são diferentes.</p>
+<p>A esse momento, técnicamente, o intercepto é o valor médio dos Homens com escolaridade primária, que são ambas as categorias de referência. Repare que isso pode ser rapidamente provado. O intercepto do modelo é:</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1"><span class="kw">summary</span>(<span class="kw">lm</span>(teg <span class="op">~</span><span class="st"> </span>escolaridade <span class="op">+</span><span class="st"> </span>sexo, dados_teg))<span class="op">$</span>coefficients[<span class="dv">1</span>,<span class="dv">1</span>] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">round</span>(.,<span class="dv">1</span>)</a></code></pre></div>
+<pre><code>## [1] 24.7</code></pre>
+<p>E a média de homens com primário é:</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1">dados_teg <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(sexo <span class="op">==</span><span class="st"> &quot;Masculino&quot;</span> <span class="op">&amp;</span><span class="st"> </span>escolaridade <span class="op">==</span><span class="st"> &quot;Primário&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="kw">mean</span>(teg))</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 1
+##   `mean(teg)`
+##         &lt;dbl&gt;
+## 1        24.7</code></pre>
+<p>Isto posto, a escrita:</p>
+<div class="writing">
+<p>
+<strong>Como escrever os resultados</strong>
+</p>
+<p>
+Os dados foram analisados a partir de uma ANOVA de duas vias investigando o efeito da escolaridade e do sexo no empreendedorismo. Foi possível concluir que a escolaridade é significativa (F(3, 142) = 8.24, p &lt; 0.01), mas que o sexo não é significativo nessa relação (F(1, 142) = 0.81, p = 0.36).
+</p>
+</div>
+</div>
+<div id="anova-fatorial" class="section level2">
+<h2><span class="header-section-number">4.6</span> ANOVA Fatorial</h2>
+<p>A ideia da ANOVA fatorial é provavelmente uma das mais frequentes em perguntas de pesquisas, que consistem em tentar saber se os fatores tem alguma interação entre si. Nesse sentido, a modelagem envolve o cálculo de um terceiro parâmetro para investigar essa relação. Dessa maneira:</p>
+<p><span class="math display">\[y_i = b_0 + b_1X{_1}_i + b_2X{_2}_i + b_3(X{_1}_i * X{_2}_i) + \epsilon_{i}\]</span></p>
+<p>Os coeficientes <span class="math inline">\(b_0\)</span> e <span class="math inline">\(b_1\)</span> se é plugado nos efeitos principais, enquanto o <span class="math inline">\(b_3\)</span> é plugado no efeito da interação.</p>
+<p>Dessa vez, é importante ressaltar alguns aspectos:
+1. A interação é adicionada fortemente relacionada à teoria. Ou seja, a modelagem é frequentemente confirmatória
+2. A análise gráfica é especialmente útil e, provavelmente, mais necessária nessa técnica do que em qualquer outra
+3. A interpretação sempre começa pela interação. Caso ela seja significativa, não se interpreta os efeitos principais</p>
+<p>Nessa pesquisa, temos o interesse em saber se o nível de empreendedorismo varia em função de uma interação entre <code>sexo</code> e <code>estado civil</code> (solteiro ou casado) dos participantes. Por exemplo, se o nível de empreendedorismo de pessoas solteiras e casadas depende tanto de seu sexo.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1">base_interacao &lt;-<span class="st"> </span>dados_teg <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(estado_civil <span class="op">==</span><span class="st"> &quot;1&quot;</span> <span class="op">|</span><span class="st"> </span>estado_civil <span class="op">==</span><span class="st"> &quot;2&quot;</span>)</a>
+<a class="sourceLine" id="cb95-2" title="2">base_interacao &lt;-<span class="st"> </span>base_interacao <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb95-3" title="3"><span class="st">  </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(estado_civil), <span class="kw">funs</span>(</a>
+<a class="sourceLine" id="cb95-4" title="4">    <span class="kw">factor</span>(<span class="kw">case_when</span>(</a>
+<a class="sourceLine" id="cb95-5" title="5">      . <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">~</span><span class="st"> &quot;Solteiro&quot;</span>,</a>
+<a class="sourceLine" id="cb95-6" title="6">      . <span class="op">==</span><span class="st"> </span><span class="dv">2</span> <span class="op">~</span><span class="st"> &quot;Casado&quot;</span>), <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;Solteiro&quot;</span>,<span class="st">&quot;Casado&quot;</span>))))</a></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1"><span class="kw">ggplot</span>(base_interacao, <span class="kw">aes</span>(<span class="dt">x =</span> estado_civil, <span class="dt">y =</span> teg, <span class="dt">group =</span> sexo, <span class="dt">col=</span> sexo)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb96-2" title="2"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">size=</span><span class="dv">1</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb96-3" title="3"><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="dt">width=</span><span class="fl">0.1</span>, <span class="dt">size=</span><span class="dv">1</span>)</a></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-70-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>O gráfico indica que existe um efeito de interação, uma vez que as linhas se cruzam. No entanto, o teste formal deve ser feito. Da mesma forma do realizado anteriormente, a modelagem omitirá a verificação dos pressupostos, que foi apresentada em etapa inicial.</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1">mod_int_sexo_civil &lt;-<span class="st"> </span><span class="kw">lm</span>(teg <span class="op">~</span><span class="st"> </span>sexo <span class="op">*</span><span class="st"> </span>estado_civil, base_interacao)</a>
+<a class="sourceLine" id="cb97-2" title="2">car<span class="op">::</span><span class="kw">Anova</span>(mod_int_sexo_civil, <span class="dt">type =</span> <span class="dv">3</span>)</a></code></pre></div>
+<pre><code>## Anova Table (Type III tests)
+## 
+## Response: teg
+##                   Sum Sq  Df   F value  Pr(&gt;F)    
+## (Intercept)        35206   1 1696.9864 &lt; 2e-16 ***
+## sexo                 114   1    5.4873 0.02069 *  
+## estado_civil          13   1    0.6284 0.42938    
+## sexo:estado_civil     88   1    4.2362 0.04158 *  
+## Residuals           2676 129                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>A leitura da tabela começa pela interação, que é significativa (F1, 129) = 4.23, p &lt; 0.05). Quando isso acontece, não se deve interpretar os efeitos principais, mesmo que eles sejam significativos. No caso, à pergunta “o sexo tem efeito no empreendedorismo”, a resposta adequada seria “depende”, uma vez que ele varia em função do estado civil do participante.O post hoc vez será também feito pelo pacote <code>emmeans</code>, que já foi carregado anteriormente.</p>
+<p>Para deixar a rotina clara, vamos armazenar os resultados no objeto <code>post_hoc_int</code> e, em seguida, explorar os coeficientes.Repare que dessa vez, os valores de p ajustados ou não são os mesmos, dado que há apenas duas categorias em cada grupo.</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1">post_hoc_int &lt;-<span class="st"> </span><span class="kw">emmeans</span>(mod_int_sexo_civil, pairwise <span class="op">~</span><span class="st"> </span>sexo <span class="op">*</span><span class="st"> </span>estado_civil, <span class="dt">adjust =</span> <span class="st">&quot;none&quot;</span>)</a></code></pre></div>
+<p>O resultado deve ser acessado via contrastes.</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1">post_hoc_int<span class="op">$</span>contrasts</a></code></pre></div>
+<pre><code>##  contrast                               estimate    SE  df t.ratio p.value
+##  Masculino,Solteiro - Feminino,Solteiro   -5.048 2.155 129 -2.342  0.0207 
+##  Masculino,Solteiro - Masculino,Casado     0.693 0.874 129  0.793  0.4294 
+##  Masculino,Solteiro - Feminino,Casado      1.175 1.673 129  0.702  0.4839 
+##  Feminino,Solteiro - Masculino,Casado      5.740 2.102 129  2.731  0.0072 
+##  Feminino,Solteiro - Feminino,Casado       6.222 2.541 129  2.449  0.0157 
+##  Masculino,Casado - Feminino,Casado        0.482 1.605 129  0.300  0.7644</code></pre>
+<p>Repare que as informações repetem aquilo já visualizado no gráfico anterior: quando solteiros, os homens são significativamente menos empreendedores do que as mulheres (&lt; 0.01), o que não ocorre quando eles são casados (p = 0.7). Existe também uma diferença significativa entre mulheres solteiras e homens casados, além de mulheres solteiras e casadas. Mulheres solteiras tem um nível mais elevado de empreendedorismo do que homens (p &lt; 0.01) e mulheres (p , 0.05) casados.</p>
+<p>post_hoc_int
+ggstatsplot e emmeans
+É também possível modelar os dados via aov, no entanto, deu-se predileção à função lm para deixar claro que a ANOVA é um modelo linear</p>
+</div>
+<div id="outra-coisa" class="section level2">
+<h2><span class="header-section-number">4.7</span> outra coisa</h2>
+
+<div id="refs" class="references">
+<div>
+<p>Chartier, Sylvain, and Andrew Faulkner. 2008. “General Linear Models: An Integrated Approach to Statistics.” <em>Tutorials in Quantitative Methods for Psychology</em> 4 (2): 65–78. <a href="https://doi.org/10.20982/tqmp.04.2.p065">https://doi.org/10.20982/tqmp.04.2.p065</a>.</p>
+</div>
+<div>
+<p>Field, Andy P., and Rand R. Wilcox. 2017. “Robust Statistical Methods: A Primer for Clinical Psychology and Experimental Psychopathology Researchers.” <em>Behaviour Research and Therapy</em> 98 (November): 19–38. <a href="https://doi.org/10.1016/j.brat.2017.05.013">https://doi.org/10.1016/j.brat.2017.05.013</a>.</p>
+</div>
+<div>
+<p>Howell, David C. 2011. <em>Fundamental Statistics for the Behavioral Sciences</em>. Belmont: CA: Wadsworth Cengage Learning.</p>
+</div>
+<div>
+<p>Lumley, Thomas, Paula Diehr, Scott Emerson, and Lu Chen. 2002. “The Importance of the Normality Assumption in Large Public Health Data Sets.” <em>Annual Review of Public Health</em> 23 (1): 151–69. <a href="https://doi.org/10.1146/annurev.publhealth.23.100901.140546">https://doi.org/10.1146/annurev.publhealth.23.100901.140546</a>.</p>
+</div>
+<div>
+<p>Morettin, Pedro Alberto, and Wilton de Oliveira Bussab. 2010. <em>Estatistica Basica</em>. Saraiva.</p>
+</div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Chartier2008">
+<p>Chartier, Sylvain, and Andrew Faulkner. 2008. “General Linear Models: An Integrated Approach to Statistics.” <em>Tutorials in Quantitative Methods for Psychology</em> 4 (2): 65–78. <a href="https://doi.org/10.20982/tqmp.04.2.p065">https://doi.org/10.20982/tqmp.04.2.p065</a>.</p>
+</div>
+<div id="ref-Howell2011">
+<p>Howell, David C. 2011. <em>Fundamental Statistics for the Behavioral Sciences</em>. Belmont: CA: Wadsworth Cengage Learning.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="teste-t.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/06-anova.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["gitbook-demo.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

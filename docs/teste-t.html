@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2020-04-09" />
+<meta name="date" content="2020-04-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="estatística-descritiva.html"/>
-
+<link rel="next" href="anova.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -163,6 +163,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="teste-t.html"><a href="teste-t.html#mann-whitney"><i class="fa fa-check"></i><b>3.5</b> Mann-whitney</a></li>
 <li class="chapter" data-level="3.6" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>3.6</b> Teste T e regressão</a></li>
 <li class="chapter" data-level="3.7" data-path="teste-t.html"><a href="teste-t.html#aspectos-matemáticos"><i class="fa fa-check"></i><b>3.7</b> Aspectos matemáticos</a></li>
+<li class="chapter" data-level="3.8" data-path="teste-t.html"><a href="teste-t.html#resumo-1"><i class="fa fa-check"></i><b>3.8</b> Resumo</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>4</b> ANOVA</a><ul>
+<li class="chapter" data-level="4.1" data-path="anova.html"><a href="anova.html#legenda"><i class="fa fa-check"></i><b>4.1</b> Legenda</a></li>
+<li class="chapter" data-level="4.2" data-path="anova.html"><a href="anova.html#pesquisa-2"><i class="fa fa-check"></i><b>4.2</b> Pesquisa</a></li>
+<li class="chapter" data-level="4.3" data-path="anova.html"><a href="anova.html#anova-de-1-via"><i class="fa fa-check"></i><b>4.3</b> ANOVA de 1 via</a></li>
+<li class="chapter" data-level="4.4" data-path="anova.html"><a href="anova.html#pacote-emmeans"><i class="fa fa-check"></i><b>4.4</b> Pacote emmeans</a></li>
+<li class="chapter" data-level="4.5" data-path="anova.html"><a href="anova.html#anova-de-2-vias"><i class="fa fa-check"></i><b>4.5</b> ANOVA de 2 vias</a></li>
+<li class="chapter" data-level="4.6" data-path="anova.html"><a href="anova.html#anova-fatorial"><i class="fa fa-check"></i><b>4.6</b> ANOVA Fatorial</a></li>
+<li class="chapter" data-level="4.7" data-path="anova.html"><a href="anova.html#outra-coisa"><i class="fa fa-check"></i><b>4.7</b> outra coisa</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="http://www.puc-rio.br/" target="blank">PUC-Rio</a></li>
@@ -277,7 +287,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 1 M     1.98e-19
 ## 2 F     4.80e-17</code></pre>
 <p>De maneira convergente ao gráfico, o Shapiro-wilk também apontou que o princípio da normalidade foi violado. Entretanto, por finalidades didáticas, as análises continuarão.</p>
-<p>A homogeneidade das variâncias pode ser testada pelo teste de Bartlett e Levene. De maneira análoga ao Shapiro-wilk, esses testes assumem como Hipótese nula a homogeneidade das variâncias. Consequemente, a rejeição desse pressuposto pode também trazer resultados distorcidos ao resultado do teste T. Abaixo, o teste de Bartlett.</p>
+<p>A homogeneidade das variâncias pode ser testada pelo teste de Bartlett e Levene. De maneira análoga ao Shapiro-wilk, esses testes assumem como Hipótese nula a homogeneidade das variâncias. Consequemente, a rejeição desse pressuposto pode também trazer resultados distorcidos ao resultado do teste T.</p>
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1"><span class="kw">bartlett.test</span>(total_<span class="dv">12</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_12months)</a></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
@@ -285,7 +295,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## data:  total_12 by sex
 ## Bartlett&#39;s K-squared = 1.1357, df = 1, p-value = 0.2866</code></pre>
 <p>Diferentemente do pressuposto da normalidade, o pressuposto da homocedasticidade foi preservado.<br />
-Agora, finalmente, o teste t.</p>
+Agora, finalmente, o teste T.</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1">(t_test_12m &lt;-<span class="st"> </span><span class="kw">t.test</span>(total_<span class="dv">12</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">var.equal =</span> T, <span class="dt">data =</span> asq_12months))</a></code></pre></div>
 <pre><code>## 
 ##  Two Sample t-test
@@ -299,7 +309,7 @@ Agora, finalmente, o teste t.</p>
 ## mean in group M mean in group F 
 ##        24.91713        24.43775</code></pre>
 <p>Os resultados trazem a média de ambos os grupos (24.9171271 e 24.437751), a estatística do teste (0.3678679, as vezes chamada de T calculado), os graus de liberdade
-(1039) e o valor de p 0.7130467. Repare que como o valor de p é superior ao valor estipulado do nível de significância (0.05), falha-se eem rejeitar a Hipótese nula, indicando que, apesar de numericamente distintos, os resultados não são estatisticamente significativos. A apresentação abaixo traz o output do teste T.</p>
+(1039) e o valor de p 0.7130467. Repare que como o valor de p é superior ao valor estipulado do nível de significância (0.05), falha-se em rejeitar a Hipótese nula, indicando que, apesar de numericamente distintos, os resultados não são estatisticamente significativos.</p>
 <div class="writing">
 <p>
 <strong>Como escrever os resultados</strong>
@@ -346,8 +356,8 @@ Os dados foram analisados por um Teste T de amostras independentes para investig
 </div>
 <div id="tamanho-do-efeito" class="section level2">
 <h2><span class="header-section-number">3.3</span> Tamanho do efeito</h2>
-<p>Resultados significativos não são nenhum pouco claros em relação ao tamanho do efeito. Essa métrica tem mais contato com as perguntas originalmente realizadas em uma pesquisa e é entendida como uma medida objetiva e padronizada da magnitude de um efeito observado independente da significância estatística.</p>
-<p>Existem duas famílias principais no framework do tamanho do efeito, que são a família <code>d</code> e a família <code>r</code>. Tecnicamente, quando comparamos médias, usamos o d de cohen para calcular a distância entre as médias das distribuições normais sobrepostas.</p>
+<p>Resultados significativos não são nenhum pouco informativos em relação ao tamanho do efeito. Essa métrica tem mais contato com as perguntas originalmente realizadas em uma pesquisa e é entendida como uma medida objetiva e padronizada da magnitude de um efeito observado independente da significância estatística. Assim, o tamanho do efeito pode ser considerado um indicador da <u>relevância clínica</u> dos grupos (em cenário biométrico, do tratamento ou condiçào).</p>
+<p>Existem duas famílias principais no framework do tamanho do efeito, que são a família “d” e a família “r”. Tecnicamente, quando comparamos médias, usamos o d de cohen para calcular a distância entre as médias das distribuições normais sobrepostas.</p>
 <p>A interpretação é a seguinte:</p>
 <table>
 <thead>
@@ -401,7 +411,7 @@ Os dados foram analisados por um Teste T de amostras independentes para investig
 </div>
 <div id="mann-whitney" class="section level2">
 <h2><span class="header-section-number">3.5</span> Mann-whitney</h2>
-<p>A chamada versão paramétrica do teste T é o teste de Wilcoxon-Mann-Whitney. Quando os pressupostos do teste T são violados, o Mann-Whitney é um candidato para substituição. Se de um lado esse teste supera tais pressupostos, por outro ele responde a uma hipótese diferente daquela que o teste T trabalha. Enquanto o teste T compara médias, o Mann-whitney compara os valores ranqueados (postos). Nota-se que ele não é um teste para comparar medianas e que isso só ocorre em condições restritas.</p>
+<p>A chamada versão não paramétrica do teste T é o teste de Wilcoxon-Mann-Whitney. Quando os pressupostos do teste T são violados, o Mann-Whitney é um forte candidato para sua substituição. Se de um lado esse teste supera tais pressupostos, por outro ele responde a uma hipótese diferente daquela que o teste T trabalha. Enquanto o teste T compara médias, o Mann-whitney compara os valores ranqueados (postos). Nota-se que ele não é um teste para comparar medianas e que isso só ocorre em condições restritas.</p>
 <div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" title="1">(mann_whiyney_18m &lt;-<span class="st"> </span><span class="kw">wilcox.test</span>(score <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_18months))</a></code></pre></div>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
@@ -409,7 +419,7 @@ Os dados foram analisados por um Teste T de amostras independentes para investig
 ## data:  score by sex
 ## W = 4368187, p-value = 9.902e-06
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
-<p>Os resultados foram convergentes ao previamente encontrado e, em outras palavras, tambem apoiam a rejeição da hipótese nula. O tamanho do efeito também pode ser calculado ao implementar <span class="math inline">\(Z/sqrt(n)\)</span>. O output padrão do R não oferece essa informação, mas o pacote <code>coin</code> dispõe dessa métrica.</p>
+<p>Os resultados foram convergentes ao previamente encontrado e, em outras palavras, tambem apoiam a rejeição da hipótese nula. O tamanho do efeito também pode ser calculado ao implementar <span class="math inline">\(Z/\sqrt{(n)}\)</span>. O output padrão do R não oferece essa informação, mas o pacote <code>coin</code> dispõe dessa métrica.</p>
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1">coin<span class="op">::</span><span class="kw">statistic</span>(coin<span class="op">::</span><span class="kw">wilcox_test</span>(score <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_18months))</a></code></pre></div>
 <pre><code>## [1] 4.41932</code></pre>
 <p>Assim, implementando a fórmula, o tamanho do efeito seria aproximadamete 0.06.</p>
@@ -424,7 +434,7 @@ Os dados foram analisados pelo teste Wilcoxon-Mann-Whitney para investigar as di
 </div>
 <div id="teste-t-e-regressão" class="section level2">
 <h2><span class="header-section-number">3.6</span> Teste T e regressão</h2>
-<p>Conforme alertado, o Teste T é um caso particular deum modelo de regressão que assume que a variável independente é uma dummy. Assim, <span class="math inline">\(b_0\)</span> (intercepto) é o grupo que recebeu o valor 0 e <span class="math inline">\(b_1\)</span> (inclinação) é o grupo que recebeu o valor 1. Caso isso não tenha sido definido inicialmente, basta estipular que a variável é um <u>fator<u> e o R cuidará de todo o resto.</p>
+<p>Conforme alertado, o Teste T é um caso particular deum modelo de regressão que assume que a variável independente é uma dummy. Assim, <span class="math inline">\(b_0\)</span> (intercepto) é o grupo que recebeu o valor 0 e <span class="math inline">\(b_1\)</span> (inclinação) é o grupo que recebeu o valor 1. Caso isso não tenha sido definido inicialmente, basta estipular que a variável é um <u>fator</u> e o R cuidará de todo o resto.</p>
 <p>Nesse caso, o R atribuiu os meninos como intercepto o valor médio dos meninos e a inclinação <span class="math inline">\(b_1\)</span> é justamente a diferença entre os valores (<em>24.95-27.53)</em>. Nesse caso, -2.58. A estatística F é equivalente a <span class="math inline">\(t^2\)</span> do teste t em sua versão tradicional (assumindo variâncias iguais entre grupos, adicionando <code>var.equal = T</code> à função).</p>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1"><span class="kw">lm</span>(score <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_18months) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb65-2" title="2"><span class="st">  </span>stargazer<span class="op">::</span><span class="kw">stargazer</span>(., <span class="dt">type =</span> <span class="st">&quot;text&quot;</span>)</a></code></pre></div>
@@ -452,18 +462,11 @@ Os dados foram analisados pelo teste Wilcoxon-Mann-Whitney para investigar as di
 <div id="aspectos-matemáticos" class="section level2">
 <h2><span class="header-section-number">3.7</span> Aspectos matemáticos</h2>
 <p>[Em desenvolvimento]</p>
+</div>
+<div id="resumo-1" class="section level2">
+<h2><span class="header-section-number">3.8</span> Resumo</h2>
+<p>Este capítulo introdução à lógica por detrás do Teste T, ensinou sua execução, interpretaçào e escrita dos resultados. Frequentemente, os pressupostos que são exigidos à execução desse teste são violados e o teste de Wilcoxon-Mann-Whitney costuma ser implementado em substituição. Nesse sentido, este capítulo também apresentou os aspectos básicos deste teste. Finalmente, métricas relacionados ao tamanho do efeito foram calculadas e discutidas. É importante levar deste capítuloq que o Mann-Whitney e o teste T testam hipóteses diferentes e que significância estatística não é sinônimo de relevância clínica.</p>
 
-<div id="refs" class="references">
-<div>
-<p>Field, Andy P., and Rand R. Wilcox. 2017. “Robust Statistical Methods: A Primer for Clinical Psychology and Experimental Psychopathology Researchers.” <em>Behaviour Research and Therapy</em> 98 (November): 19–38. <a href="https://doi.org/10.1016/j.brat.2017.05.013">https://doi.org/10.1016/j.brat.2017.05.013</a>.</p>
-</div>
-<div>
-<p>Lumley, Thomas, Paula Diehr, Scott Emerson, and Lu Chen. 2002. “The Importance of the Normality Assumption in Large Public Health Data Sets.” <em>Annual Review of Public Health</em> 23 (1): 151–69. <a href="https://doi.org/10.1146/annurev.publhealth.23.100901.140546">https://doi.org/10.1146/annurev.publhealth.23.100901.140546</a>.</p>
-</div>
-<div>
-<p>Morettin, Pedro Alberto, and Wilton de Oliveira Bussab. 2010. <em>Estatistica Basica</em>. Saraiva.</p>
-</div>
-</div>
 </div>
 </div>
 <h3>References</h3>
@@ -480,8 +483,8 @@ Os dados foram analisados pelo teste Wilcoxon-Mann-Whitney para investigar as di
           </div>
         </div>
       </div>
-<a href="estatística-descritiva.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="estatística-descritiva.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="anova.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

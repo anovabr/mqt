@@ -114,7 +114,7 @@ asq_12months %>%
 
 De maneira convergente ao gráfico, o Shapiro-wilk também apontou que o princípio da normalidade foi violado. Entretanto, por finalidades didáticas, as análises continuarão.
 
-A homogeneidade das variâncias pode ser testada pelo teste de Bartlett e Levene. De maneira análoga ao Shapiro-wilk, esses testes assumem como Hipótese nula a homogeneidade das variâncias. Consequemente, a rejeição desse pressuposto pode também trazer resultados distorcidos ao resultado do teste T. Abaixo, o teste de Bartlett.
+A homogeneidade das variâncias pode ser testada pelo teste de Bartlett e Levene. De maneira análoga ao Shapiro-wilk, esses testes assumem como Hipótese nula a homogeneidade das variâncias. Consequemente, a rejeição desse pressuposto pode também trazer resultados distorcidos ao resultado do teste T. 
 
 
 ```{r}
@@ -122,14 +122,14 @@ bartlett.test(total_12 ~ sex, data = asq_12months)
 ```
 
 Diferentemente do pressuposto da normalidade, o pressuposto da homocedasticidade foi preservado.  
-Agora, finalmente, o teste t.
+Agora, finalmente, o teste T.
 
 ```{r}
 (t_test_12m <- t.test(total_12 ~ sex, var.equal = T, data = asq_12months))
 ```
 
 Os resultados trazem a média de ambos os grupos (`r t_test_12m$estimate[1]` e `r t_test_12m$estimate[2]`), a estatística do teste (`r t_test_12m$statistic`, as vezes chamada de T calculado), os graus de liberdade 
-(`r t_test_12m$parameter`) e o valor de p `r t_test_12m$p.value`. Repare que como o valor de p é superior ao valor estipulado do nível de significância (0.05), falha-se eem rejeitar a Hipótese nula, indicando que, apesar de numericamente distintos, os resultados não são estatisticamente significativos. A apresentação abaixo traz o output do teste T.
+(`r t_test_12m$parameter`) e o valor de p `r t_test_12m$p.value`. Repare que como o valor de p é superior ao valor estipulado do nível de significância (0.05), falha-se em rejeitar a Hipótese nula, indicando que, apesar de numericamente distintos, os resultados não são estatisticamente significativos.  
 
 
 ```{block, type="writing"}
@@ -173,10 +173,11 @@ Os dados foram analisados por um Teste T de amostras independentes para investig
 
 É importante ter uma atenção especial à significância estatística. <u>De forma alguma</u>, um resultado que rejeita a hipótese nula (como o de agora) deve ser entendido como "aceitação da hipótese alternativa", tampouco como evidência de causalidade. É fundamental lembrar que o valor de P se refere à probabilidade de encontrar a estatística de teste calculada, ou uma ainda mais exterma, assumindo que a hipótese nula é verdadeira. Apesar de algo contra-intuitivo (e talvez desanimador), é assim que a estatística frequentista funciona.
 
-## Tamanho do efeito 
-Resultados significativos não são nenhum pouco claros em relação ao tamanho do efeito. Essa métrica tem mais contato com as perguntas originalmente realizadas em uma pesquisa e é entendida como uma medida objetiva e padronizada da magnitude de um efeito observado independente da significância estatística.
+## Tamanho do efeito  
 
-Existem duas famílias principais no framework do tamanho do efeito, que são a família `d` e a família `r`. Tecnicamente, quando comparamos médias, usamos o d de cohen para calcular a distância entre as médias das distribuições normais sobrepostas.
+Resultados significativos não são nenhum pouco informativos em relação ao tamanho do efeito. Essa métrica tem mais contato com as perguntas originalmente realizadas em uma pesquisa e é entendida como uma medida objetiva e padronizada da magnitude de um efeito observado independente da significância estatística. Assim, o tamanho do efeito pode ser considerado um indicador da <u>relevância clínica</u> dos grupos (em cenário biométrico, do tratamento ou condiçào).
+
+Existem duas famílias principais no framework do tamanho do efeito, que são a família "d" e a família "r". Tecnicamente, quando comparamos médias, usamos o d de cohen para calcular a distância entre as médias das distribuições normais sobrepostas.
 
 A interpretação é a seguinte:
 
@@ -209,14 +210,14 @@ O pacote `WRS` apresenta versões robusta do Teste T. Ainda, o próprio R base o
 
 ## Mann-whitney
 
-A chamada versão paramétrica do teste T é o teste de Wilcoxon-Mann-Whitney. Quando os pressupostos do teste T são violados, o Mann-Whitney é um candidato para substituição. Se de um lado esse teste supera tais pressupostos, por outro ele responde a uma hipótese diferente daquela que o teste T trabalha. Enquanto o teste T compara médias, o Mann-whitney compara os valores ranqueados (postos). Nota-se que ele não é um teste para comparar medianas e que isso só ocorre em condições restritas.
+A chamada versão não paramétrica do teste T é o teste de Wilcoxon-Mann-Whitney. Quando os pressupostos do teste T são violados, o Mann-Whitney é um forte candidato para sua substituição. Se de um lado esse teste supera tais pressupostos, por outro ele responde a uma hipótese diferente daquela que o teste T trabalha. Enquanto o teste T compara médias, o Mann-whitney compara os valores ranqueados (postos). Nota-se que ele não é um teste para comparar medianas e que isso só ocorre em condições restritas.
 
 ```{r}
 (mann_whiyney_18m <- wilcox.test(score ~ sex, data = asq_18months))
 ```
 
 
-Os resultados foram convergentes ao previamente encontrado e, em outras palavras, tambem apoiam a rejeição da hipótese nula. O tamanho do efeito também pode ser calculado ao implementar $Z/sqrt(n)$. O output padrão do R não oferece essa informação, mas o pacote `coin` dispõe dessa métrica.
+Os resultados foram convergentes ao previamente encontrado e, em outras palavras, tambem apoiam a rejeição da hipótese nula. O tamanho do efeito também pode ser calculado ao implementar $Z/\sqrt{(n)}$. O output padrão do R não oferece essa informação, mas o pacote `coin` dispõe dessa métrica.
 
 ```{r}
 coin::statistic(coin::wilcox_test(score ~ sex, data = asq_18months))
@@ -233,7 +234,7 @@ Os dados foram analisados pelo teste Wilcoxon-Mann-Whitney para investigar as di
 
 ## Teste T e regressão
 
-Conforme alertado, o Teste T é um caso particular deum modelo de regressão que assume que a variável independente é uma dummy. Assim, $b_0$ (intercepto) é o grupo que recebeu o valor 0 e  $b_1$ (inclinação) é o grupo que recebeu o valor 1. Caso isso não tenha sido definido inicialmente, basta estipular que a variável é um <u>fator<u> e o R cuidará de todo o resto.
+Conforme alertado, o Teste T é um caso particular deum modelo de regressão que assume que a variável independente é uma dummy. Assim, $b_0$ (intercepto) é o grupo que recebeu o valor 0 e $b_1$ (inclinação) é o grupo que recebeu o valor 1. Caso isso não tenha sido definido inicialmente, basta estipular que a variável é um <u>fator</u> e o R cuidará de todo o resto.
 
 Nesse caso, o R atribuiu os meninos como intercepto o valor médio dos meninos e a inclinação $b_1$ é justamente a diferença entre os valores (*24.95-27.53)*. Nesse caso, -2.58. A estatística F é equivalente a $t^2$ do teste t em sua versão tradicional (assumindo variâncias iguais entre grupos, adicionando `var.equal = T` à função).
 
@@ -246,3 +247,9 @@ lm(score ~ sex, data = asq_18months) %>%
 
 
 [Em desenvolvimento]
+
+
+## Resumo  
+
+Este capítulo introdução à lógica por detrás do Teste T, ensinou sua execução, interpretaçào e escrita dos resultados. Frequentemente, os pressupostos que são exigidos à execução desse teste são violados e o teste de Wilcoxon-Mann-Whitney costuma ser implementado em substituição. Nesse sentido, este capítulo também apresentou os aspectos básicos deste teste. Finalmente, métricas relacionados ao tamanho do efeito foram calculadas e discutidas. É importante levar deste capítuloq que o Mann-Whitney e o teste T testam hipóteses diferentes e que significância estatística não é sinônimo de relevância clínica.  
+
