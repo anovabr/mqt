@@ -168,8 +168,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>4</b> ANOVA</a><ul>
 <li class="chapter" data-level="4.1" data-path="anova.html"><a href="anova.html#legenda"><i class="fa fa-check"></i><b>4.1</b> Legenda</a></li>
 <li class="chapter" data-level="4.2" data-path="anova.html"><a href="anova.html#pesquisa-2"><i class="fa fa-check"></i><b>4.2</b> Pesquisa</a></li>
-<li class="chapter" data-level="4.3" data-path="anova.html"><a href="anova.html#anova-de-1-via"><i class="fa fa-check"></i><b>4.3</b> ANOVA de 1 via</a></li>
-<li class="chapter" data-level="4.4" data-path="anova.html"><a href="anova.html#pacote-emmeans"><i class="fa fa-check"></i><b>4.4</b> Pacote emmeans</a></li>
+<li class="chapter" data-level="4.3" data-path="anova.html"><a href="anova.html#execução-no-r-1"><i class="fa fa-check"></i><b>4.3</b> Execução no R</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="anova.html"><a href="anova.html#anova-de-1-via"><i class="fa fa-check"></i><b>4.3.1</b> ANOVA de 1 via</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="anova.html"><a href="anova.html#post-hoc"><i class="fa fa-check"></i><b>4.4</b> Post-hoc</a></li>
 <li class="chapter" data-level="4.5" data-path="anova.html"><a href="anova.html#anova-de-2-vias"><i class="fa fa-check"></i><b>4.5</b> ANOVA de 2 vias</a></li>
 <li class="chapter" data-level="4.6" data-path="anova.html"><a href="anova.html#anova-fatorial"><i class="fa fa-check"></i><b>4.6</b> ANOVA Fatorial</a></li>
 <li class="chapter" data-level="4.7" data-path="anova.html"><a href="anova.html#outra-coisa"><i class="fa fa-check"></i><b>4.7</b> outra coisa</a></li>
@@ -238,8 +240,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [13] &quot;tendencia_autonomia&quot;    &quot;tendencia_determinacao&quot;</code></pre>
 <p>A pergunta que temos agora é sobre o possível efeito da <code>escolaridade</code> na Tendência Empreendedora Geral (<code>teg</code>). Trata-se de uma ANOVA de uma via, dado que existe apenas uma VI.</p>
 </div>
-<div id="anova-de-1-via" class="section level2">
-<h2><span class="header-section-number">4.3</span> ANOVA de 1 via</h2>
+<div id="execução-no-r-1" class="section level2">
+<h2><span class="header-section-number">4.3</span> Execução no R</h2>
+<div id="anova-de-1-via" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> ANOVA de 1 via</h3>
 <p>Ao trabalhar no R, é <u>fundamental</u> se certificar que os tipos das variávais estão corretamente definidos em função da escala de medida utilizada. Erros nessa etapa podem gerar resultados absolutamente incorretos. A escolaridade é uma variável categórica (ordinal, tratada como discreta) e é necessário definir claramente isso ao R antes da análise propriamente dita.</p>
 <p>Isso pode ser feito pela função <code>case_when</code> e <code>levels</code>. O <code>case_when</code> irá substituir os valores originalmente presentes nessa variável e o <code>levels</code> deixará claro a ordem de cada categoria, o que é útil para que os gráficos sejam feitos corretamente.</p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1">dados_teg &lt;-<span class="st"> </span>dados_teg <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -250,24 +254,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb69-6" title="6">      . <span class="op">==</span><span class="st"> </span><span class="dv">3</span> <span class="op">~</span><span class="st"> &quot;Colegial&quot;</span>,</a>
 <a class="sourceLine" id="cb69-7" title="7">      . <span class="op">==</span><span class="st"> </span><span class="dv">4</span> <span class="op">~</span><span class="st"> &quot;Superior&quot;</span>), </a>
 <a class="sourceLine" id="cb69-8" title="8">      <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;Primário&quot;</span>,<span class="st">&quot;Ginásio&quot;</span>,<span class="st">&quot;Colegial&quot;</span>,<span class="st">&quot;Superior&quot;</span>)))</a></code></pre></div>
-<p>Conforme foi comentado, os itens em um instrumento sociodemográfico devem levar em consideração o contexto das pessoas avaliadas e, por isso, as categorias de escolaridade foram definidas como as apresentadas. Primário significa escolaridade até o 5 ano, ginásio significa escolaridade até o 9 ano e colegial é equivalente ao ensino médio.</p>
-<p>vamos iniciar as análises a partir de tabelas e gráficos.</p>
+<p>Conforme foi comentado, os itens em um instrumento sociodemográfico devem levar em consideração o contexto das pessoas avaliadas e, por isso, as categorias de escolaridade foram definidas como as apresentadas. Primário significa escolaridade até o 5º ano, ginásio significa escolaridade até o 9º ano e colegial é equivalente ao ensino médio.</p>
+<p>As hipóteses precisam ser descritas:</p>
+<p><span class="math display">\[H_0 = \mu_{escolaridade_i} - \mu_{escolaridae_j} = 0 \\ H_a = c.c \\ \alpha = 0.05\]</span>
+Aqui, o subscrito <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span> foi utilizado para apresentar a diferença entre todas as combinações lineares possívies.</p>
+<p>Em seguida, a análise gráfica pode ser realizada.</p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1">dados_teg <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb70-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(escolaridade) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb70-3" title="3"><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(teg), <span class="kw">funs</span>(<span class="kw">n</span>(),mean, sd)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb70-4" title="4"><span class="st">   </span><span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="kw">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</a></code></pre></div>
-<pre><code>## Warning: funs() is soft deprecated as of dplyr 0.8.0
-## Please use a list of either functions or lambdas: 
-## 
-##   # Simple named list: 
-##   list(mean = mean, median = median)
-## 
-##   # Auto named with `tibble::lst()`: 
-##   tibble::lst(mean, median)
-## 
-##   # Using lambdas
-##   list(~ mean(., trim = .2), ~ median(., na.rm = TRUE))
-## This warning is displayed once per session.</code></pre>
+<a class="sourceLine" id="cb70-3" title="3"><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(teg), <span class="kw">lst</span>(<span class="dt">n=</span><span class="op">~</span><span class="kw">n</span>(),mean,sd)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb70-4" title="4"><span class="st">  </span><span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="kw">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</a></code></pre></div>
 <table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -345,27 +340,27 @@ Superior
 </tbody>
 </table>
 <p>Uma vez que a escolaridade (VI) é tratada como discreta e a TEG (VD) é contínua, um gráfico de barras é adequado. A inclusão das barras de erro permite uma compreensão inferencial inicial.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="kw">ggplot</span>(dados_teg, <span class="kw">aes</span>(<span class="dt">x=</span>escolaridade, <span class="dt">y =</span> teg, <span class="dt">fill =</span> escolaridade)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb72-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb72-3" title="3"><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1"><span class="kw">ggplot</span>(dados_teg, <span class="kw">aes</span>(<span class="dt">x=</span>escolaridade, <span class="dt">y =</span> teg, <span class="dt">fill =</span> escolaridade)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb71-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb71-3" title="3"><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>)</a></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-51-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>O gráfico permite identificar algumas caracteríticas gerais dos resultados. Primeiro, quão maior a escolaridade, maior o o valor obtido na escala. Segundo, algumas barras de erros estão superpostas e outras não, o que nos leva à conclusão de que resultados significativos estarão presentes na próxima etapa, que é a modelagem formal dessa hipótese.</p>
+<p>O gráfico permite identificar algumas caracteríticas gerais dos resultados. Primeiro, quão maior a escolaridade, maior o o valor obtido na escala. Segundo, algumas barras de erros estão superpostas e outras não, o que nos leva à conclusão preliminar de que resultados significativos estarão presentes na próxima etapa, que é a modelagem formal dessa hipótese.</p>
 <p>A modelagem formal irá contemplar n-1 níveis dos preditores e estipulará no intercepto o nível de referência. Dessa maneira:</p>
 <p><span class="math display">\[y_{i} = b_{0} + b_1Esc_{ginasio_i} + b_2Esc_{colegial_i} + b_1Esc_{superior_i} + \epsilon_{i}\]</span></p>
 <p><span class="math inline">\(b_0\)</span> representa o intercepto, que aqui é o valor médio da Escolaridade primária<br />
 <span class="math inline">\(b_i\)</span> representa os outros preditores<br />
 <span class="math inline">\(\epsilon_{it}\)</span> representa o erro</p>
 <p>A função <code>lm</code> será utilizada e o objeto <code>mod_escolaridade</code> será armazenado.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1">mod_escolaridade &lt;-<span class="st"> </span><span class="kw">lm</span>(teg <span class="op">~</span><span class="st"> </span>escolaridade, dados_teg)</a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1">mod_escolaridade &lt;-<span class="st"> </span><span class="kw">lm</span>(teg <span class="op">~</span><span class="st"> </span>escolaridade, dados_teg)</a></code></pre></div>
 <p>Antes de checar os resultados, é necessário verificar os pressupostos da ANOVA, que pedem que os resíduos sejam normalmente distribuídos e homocedásticos. Essa apresentação será feita somente agora para que os outros tópicos sejam mais claros e assertivos.</p>
-<p>Gráficos e testes formais são muito úteis para verificar ambos os casos e vamos começar pela normalidade.</p>
+<p>Tal como previamente exposto no teste T, gráficos e testes formais são muito úteis para verificar ambos os casos e vamos começar pela normalidade.</p>
 <p>O gráfico abaixo apresenta a distribuição dos resíduos:</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="kw">ggplot</span>(<span class="kw">fortify</span>(mod_escolaridade), <span class="kw">aes</span>(.resid)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb74-2" title="2"><span class="st">      </span><span class="kw">geom_histogram</span>(<span class="dt">colour=</span><span class="st">&quot;black&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;grey&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb74-3" title="3"><span class="st">      </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(<span class="dt">y=</span> ..count..))</a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1"><span class="kw">ggplot</span>(<span class="kw">fortify</span>(mod_escolaridade), <span class="kw">aes</span>(.resid)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb73-2" title="2"><span class="st">      </span><span class="kw">geom_histogram</span>(<span class="dt">colour=</span><span class="st">&quot;black&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;grey&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb73-3" title="3"><span class="st">      </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(<span class="dt">y=</span> ..count..))</a></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-53-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>E o teste formal pode ser feito via <code>shapiro wilk</code>. Lembre-se que a <span class="math inline">\(H_0\)</span> desse teste estipula normalidade e, idealmente, não deve ser rejeitada.</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1"><span class="kw">shapiro.test</span>(<span class="kw">residuals</span>(mod_escolaridade))</a></code></pre></div>
+<p>E o teste formal pode ser feito via <code>shapiro wilk</code>. Lembre-se que a <span class="math inline">\(H_0\)</span> desse teste assume normalidade e, idealmente, não deve ser rejeitada.</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="kw">shapiro.test</span>(<span class="kw">residuals</span>(mod_escolaridade))</a></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -373,28 +368,34 @@ Superior
 ## W = 0.97502, p-value = 0.008721</code></pre>
 <p>É possível concluir que o pressuposto da normalidade foi violado. situações como essa são muito frequentes. Na literatura, são presentes recomendações de ajuste dos dados por alguma função <code>g(.)</code> ou tornar mais severo o valor de p na interpretação dos resultados. Por exemplo, em vez de 0.05, usar 0.01.</p>
 <p>A homocedasticidade pode ser verificada por um gráfico dos resíduos dado valores previstos.</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1"><span class="kw">ggplot</span>(<span class="kw">fortify</span>(mod_escolaridade), <span class="kw">aes</span>(<span class="dt">x=</span>.fitted, <span class="dt">y=</span>.resid)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb77-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb77-3" title="3"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1"><span class="kw">ggplot</span>(<span class="kw">fortify</span>(mod_escolaridade), <span class="kw">aes</span>(<span class="dt">x=</span>.fitted, <span class="dt">y=</span>.resid)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb76-3" title="3"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>)</a></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-55-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Além do teste de <code>Levene</code>, que estipula <span class="math inline">\(H_0\)</span> como homocedasticidade e, idealmente, não deve ser rejeitada.</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1">car<span class="op">::</span><span class="kw">leveneTest</span>(mod_escolaridade)</a></code></pre></div>
+<p>Além do teste de Bartlett ou Levene, em que estipulam <span class="math inline">\(H_0\)</span> como homocedasticidade e, idealmente, não deve ser rejeitada.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1">car<span class="op">::</span><span class="kw">leveneTest</span>(mod_escolaridade)</a></code></pre></div>
 <pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = median)
 ##        Df F value Pr(&gt;F)
 ## group   3  1.1372 0.3362
 ##       143</code></pre>
-<p>A homocedasticidade foi garantida. Dessa maneira, mesmo com a violação da normalidade, o modelo será utilizado e seu sumário geral será apresentado pela função Anova do pacote <code>car</code>. Isso é importante para garantir resultados programas tipicamente utilizados, como o SPSS e o STATA. Repare que como o pacote não foi formalmente carregado, ele será acionado indiretamente incluindo <code>::</code> após seu nome.</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1">car<span class="op">::</span><span class="kw">Anova</span>(mod_escolaridade, <span class="dt">type =</span> <span class="dv">3</span>)</a></code></pre></div>
-<pre><code>## Anova Table (Type III tests)
+<p>A homocedasticidade foi assumida. Dessa maneira, mesmo com a violação da normalidade, o modelo será utilizado e seu sumário geral será apresentado pela função apa.aov do pacote <code>apaTables</code>. Isso é importante para garantir resultados programas tipicamente utilizados, como o SPSS e o STATA. Repare que como o pacote não foi formalmente carregado, ele será acionado indiretamente incluindo <code>::</code> após seu nome.</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1">apaTables<span class="op">::</span><span class="kw">apa.aov.table</span>(mod_escolaridade)</a></code></pre></div>
+<pre><code>## 
 ## 
-## Response: teg
-##              Sum Sq  Df  F value    Pr(&gt;F)    
-## (Intercept)  3650.7   1 200.6112 &lt; 2.2e-16 ***
-## escolaridade  449.3   3   8.2305 4.328e-05 ***
-## Residuals    2602.3 143                       
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p>A leitura desse resultado é similar a de um modelo de regressão. Dessa maneira, esse modelo aumentado (MA), ao ser comparado com o modelo compaco/nulo (MC), foi significativo (F(3,143) = 8.231, p &lt; 0.01). Isso significa que a adição do preditor foi significativamente capaz de reduzir o erro do modelo nulo. De fato, quando isso ocorre, a busca por possíveis diferenças entre <strong>todas as comparações possíveis</strong> é feita.</p>
+## ANOVA results using teg as the dependent variable
+##  
+## 
+##     Predictor      SS  df      MS      F    p partial_eta2
+##   (Intercept) 3650.67   1 3650.67 200.61 .000             
+##  escolaridade  449.33   3  149.78   8.23 .000          .15
+##         Error 2602.27 143   18.20                         
+##  CI_90_partial_eta2
+##                    
+##          [.06, .22]
+##                    
+## 
+## Note: Values in square brackets indicate the bounds of the 90% confidence interval for partial eta-squared</code></pre>
+<p>A leitura desse resultado é similar a de um modelo de regressão. Dessa maneira, esse modelo aumentado (MA), ao ser comparado com o modelo compaco/nulo (MC), foi significativo (F(3,143) = 8.231, p &lt; 0.01). Isso significa que a adição do preditor foi significativamente capaz de reduzir o erro do modelo nulo. De fato, quando isso ocorre, a busca por possíveis diferenças entre <u>todas as comparações possíveis</u> é feita.</p>
 <p>É importante mencionar que isso não significa que se uma ANOVA é significativa, haverá alguma diferença entre as médias de grupos. Tecnicamente, a diferença pode ocorrer em qualquer comparação possível, como grupo 1 contra grupos 2 + grupo 3. Dessa maneira, o resultado geral da ANOVA e testes post-hoc respondem questões diferentes e é possível realizar qualquer comparação múltipla sem sequer realizar a ANOVA, desde que os resultados sejam devidamente corrigidos.</p>
 <p>Uma vez que a<code>escolaridade</code> foi significativa (F(3, 143) = 8.231, p &lt; 0.01) mesmo em uma significância mais estrita (0.01), vamos checar as comparações principais. Estas são aquelas relacionadas a cada um dos níveis presentes nessa variável. Uma vez que comparações serão realizadas, é necessário ajustar o valor de P. Repare que a quantidade de comparações pode ser calculada da seguinte forma:</p>
 <p><span class="math display">\[ J*(\frac{J-1}2) \]</span> , onde
@@ -403,20 +404,21 @@ Superior
 <p><span class="math display">\[ 4*(\frac{3}2) = 6 \]</span>.</p>
 <p>Dessa maneira, as técnicas de ajuste utilizarão esse valor como referência. Para a comparação pareada, o pacote <code>emmeans</code> será utilizado.</p>
 </div>
-<div id="pacote-emmeans" class="section level2">
-<h2><span class="header-section-number">4.4</span> Pacote emmeans</h2>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1"><span class="kw">library</span>(emmeans)</a></code></pre></div>
+</div>
+<div id="post-hoc" class="section level2">
+<h2><span class="header-section-number">4.4</span> Post-hoc</h2>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1"><span class="kw">library</span>(emmeans)</a></code></pre></div>
 <pre><code>## Warning: package &#39;emmeans&#39; was built under R version 3.6.3</code></pre>
 <p>Para comparação pareada, o resultado será armazenado em um objeto específico nomeado como <code>post_hoc_escolaridade</code>. Isso será útil para apresentar sumários e gráficos. O sumário ajustará o valor de p pela técnica Bonferroni, que multiplica o valor bruto encontrado pela quantidade de comparações.</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1">post_hoc_escolaridade &lt;-<span class="st"> </span><span class="kw">emmeans</span>(mod_escolaridade, <span class="st">&quot;escolaridade&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pairs</span>(., <span class="dt">reverse =</span> <span class="ot">TRUE</span>, <span class="dt">adjust =</span> <span class="st">&quot;bonferroni&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1">post_hoc_escolaridade &lt;-<span class="st"> </span><span class="kw">emmeans</span>(mod_escolaridade, <span class="st">&quot;escolaridade&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pairs</span>(., <span class="dt">reverse =</span> <span class="ot">TRUE</span>, <span class="dt">adjust =</span> <span class="st">&quot;bonferroni&quot;</span>)</a></code></pre></div>
 <p>Os resultados são significativos na comparação <code>Superior - Primário</code>, <code>Superior - Ginásio</code> e <code>Superior - Colegial</code> e o gráfico a seguir será feito pelo <code>ggplot2</code>, com adição das barras de erro. Apesar de ambas as apresentações terem o mesmo conteúdo, o gráfico tem interpretação mais rápida e simples para todas as audiências.</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1">CI &lt;-<span class="st"> </span><span class="kw">confint</span>(post_hoc_escolaridade)</a>
-<a class="sourceLine" id="cb85-2" title="2"><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(contrast, estimate)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb85-3" title="3"><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> lower.CL, <span class="dt">ymax =</span> upper.CL), <span class="dt">data =</span> CI) <span class="op">+</span></a>
-<a class="sourceLine" id="cb85-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">summary</span>(post_hoc_escolaridade)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb85-5" title="5"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb85-6" title="6"><span class="st">  </span><span class="kw">scale_size</span>(<span class="dt">trans =</span> <span class="st">&quot;reverse&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb85-7" title="7"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1">CI &lt;-<span class="st"> </span><span class="kw">confint</span>(post_hoc_escolaridade)</a>
+<a class="sourceLine" id="cb84-2" title="2"><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(contrast, estimate)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb84-3" title="3"><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> lower.CL, <span class="dt">ymax =</span> upper.CL), <span class="dt">data =</span> CI) <span class="op">+</span></a>
+<a class="sourceLine" id="cb84-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">summary</span>(post_hoc_escolaridade)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb84-5" title="5"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb84-6" title="6"><span class="st">  </span><span class="kw">scale_size</span>(<span class="dt">trans =</span> <span class="st">&quot;reverse&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb84-7" title="7"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-60-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>A esse momento, a escrita é fundamental:</p>
 <div class="writing">
@@ -432,17 +434,29 @@ Os dados foram analisados a partir de uma ANOVA de uma via investigando o efeito
 <h2><span class="header-section-number">4.5</span> ANOVA de 2 vias</h2>
 <p>Frequentemente, o interesse do pesquisador está em investigar como múltiplos fatores afetam a variável de interesse. Ao aumentar o número de variáveis independentes no modelo, se aumenta a quantidade de vias que a ANOVA possui. Nesse caso, por exemplo, a investigação será sbobre sobre o efeito da <code>escolaridade</code> e do <code>sexo</code> no <code>empreendedorismo</code>. Por definição, uma ANOVA de duas vias tem apenas efeitos principais e não considera uma possível interação entre os preditores.</p>
 <p>A modelagem segue o mesmo padrão da feita anteriormente, iniciando pela definição correta do tipo de variável em relação à sua escala de medida.</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1">dados_teg &lt;-<span class="st"> </span>dados_teg <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb86-2" title="2"><span class="st">  </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(sexo), <span class="kw">funs</span>(</a>
-<a class="sourceLine" id="cb86-3" title="3">    <span class="kw">factor</span>(<span class="kw">case_when</span>(</a>
-<a class="sourceLine" id="cb86-4" title="4">      . <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">~</span><span class="st"> &quot;Masculino&quot;</span>,</a>
-<a class="sourceLine" id="cb86-5" title="5">      . <span class="op">==</span><span class="st"> </span><span class="dv">2</span> <span class="op">~</span><span class="st"> &quot;Feminino&quot;</span>), <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;Masculino&quot;</span>,<span class="st">&quot;Feminino&quot;</span>))))</a></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1">dados_teg &lt;-<span class="st"> </span>dados_teg <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb85-2" title="2"><span class="st">  </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(sexo), <span class="kw">funs</span>(</a>
+<a class="sourceLine" id="cb85-3" title="3">    <span class="kw">factor</span>(<span class="kw">case_when</span>(</a>
+<a class="sourceLine" id="cb85-4" title="4">      . <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">~</span><span class="st"> &quot;Masculino&quot;</span>,</a>
+<a class="sourceLine" id="cb85-5" title="5">      . <span class="op">==</span><span class="st"> </span><span class="dv">2</span> <span class="op">~</span><span class="st"> &quot;Feminino&quot;</span>), <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;Masculino&quot;</span>,<span class="st">&quot;Feminino&quot;</span>))))</a></code></pre></div>
 <p>Tabelas e gráficos também devem ser apresentadas.</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1">dados_teg <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb87-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(escolaridade, sexo) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb87-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">rn =</span> <span class="kw">row_number</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb87-4" title="4"><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(teg), <span class="kw">funs</span>(<span class="kw">n</span>(), mean, sd)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb87-5" title="5"><span class="st">  </span><span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="kw">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1">dados_teg <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb86-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(escolaridade, sexo) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb86-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">rn =</span> <span class="kw">row_number</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb86-4" title="4"><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(teg), <span class="kw">funs</span>(<span class="kw">n</span>(), mean, sd)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb86-5" title="5"><span class="st">  </span><span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="kw">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</a></code></pre></div>
+<pre><code>## Warning: funs() is soft deprecated as of dplyr 0.8.0
+## Please use a list of either functions or lambdas: 
+## 
+##   # Simple named list: 
+##   list(mean = mean, median = median)
+## 
+##   # Auto named with `tibble::lst()`: 
+##   tibble::lst(mean, median)
+## 
+##   # Using lambdas
+##   list(~ mean(., trim = .2), ~ median(., na.rm = TRUE))
+## This warning is displayed once per session.</code></pre>
 <table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -642,10 +656,10 @@ Os dados foram analisados a partir de uma ANOVA de duas vias investigando o efei
 <p>Nessa pesquisa, temos o interesse em saber se o nível de empreendedorismo varia em função de uma interação entre <code>sexo</code> e <code>estado civil</code> (solteiro ou casado) dos participantes. Por exemplo, se o nível de empreendedorismo de pessoas solteiras e casadas depende tanto de seu sexo.</p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1">base_interacao &lt;-<span class="st"> </span>dados_teg <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(estado_civil <span class="op">==</span><span class="st"> &quot;1&quot;</span> <span class="op">|</span><span class="st"> </span>estado_civil <span class="op">==</span><span class="st"> &quot;2&quot;</span>)</a>
 <a class="sourceLine" id="cb95-2" title="2">base_interacao &lt;-<span class="st"> </span>base_interacao <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb95-3" title="3"><span class="st">  </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(estado_civil), <span class="kw">funs</span>(</a>
-<a class="sourceLine" id="cb95-4" title="4">    <span class="kw">factor</span>(<span class="kw">case_when</span>(</a>
+<a class="sourceLine" id="cb95-3" title="3"><span class="st">  </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(estado_civil), </a>
+<a class="sourceLine" id="cb95-4" title="4">    <span class="op">~</span><span class="kw">factor</span>(<span class="kw">case_when</span>(</a>
 <a class="sourceLine" id="cb95-5" title="5">      . <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">~</span><span class="st"> &quot;Solteiro&quot;</span>,</a>
-<a class="sourceLine" id="cb95-6" title="6">      . <span class="op">==</span><span class="st"> </span><span class="dv">2</span> <span class="op">~</span><span class="st"> &quot;Casado&quot;</span>), <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;Solteiro&quot;</span>,<span class="st">&quot;Casado&quot;</span>))))</a></code></pre></div>
+<a class="sourceLine" id="cb95-6" title="6">      . <span class="op">==</span><span class="st"> </span><span class="dv">2</span> <span class="op">~</span><span class="st"> &quot;Casado&quot;</span>), <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;Solteiro&quot;</span>,<span class="st">&quot;Casado&quot;</span>)))</a></code></pre></div>
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1"><span class="kw">ggplot</span>(base_interacao, <span class="kw">aes</span>(<span class="dt">x =</span> estado_civil, <span class="dt">y =</span> teg, <span class="dt">group =</span> sexo, <span class="dt">col=</span> sexo)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb96-2" title="2"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">size=</span><span class="dv">1</span>) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb96-3" title="3"><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="dt">width=</span><span class="fl">0.1</span>, <span class="dt">size=</span><span class="dv">1</span>)</a></code></pre></div>

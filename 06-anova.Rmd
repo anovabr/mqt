@@ -62,7 +62,9 @@ dados_teg %>% names()
 
 A pergunta que temos agora é sobre o possível efeito da `escolaridade` na Tendência Empreendedora Geral (`teg`). Trata-se de uma ANOVA de uma via, dado que existe apenas uma VI.
 
-## ANOVA de 1 via
+## Execução no R
+
+### ANOVA de 1 via
 
 Ao trabalhar no R, é <u>fundamental</u> se certificar que os tipos das variávais estão corretamente definidos em função da escala de medida utilizada. Erros nessa etapa podem gerar resultados absolutamente incorretos. A escolaridade é uma variável categórica (ordinal, tratada como discreta) e é necessário definir claramente isso ao R antes da análise propriamente dita. 
 
@@ -80,16 +82,20 @@ dados_teg <- dados_teg %>%
 ```
 
 
-Conforme foi comentado, os itens em um instrumento sociodemográfico devem levar em consideração o contexto das pessoas avaliadas e, por isso, as categorias de escolaridade foram definidas como as apresentadas. Primário significa escolaridade até o 5 ano, ginásio significa escolaridade até o 9 ano e colegial é equivalente ao ensino médio.
+Conforme foi comentado, os itens em um instrumento sociodemográfico devem levar em consideração o contexto das pessoas avaliadas e, por isso, as categorias de escolaridade foram definidas como as apresentadas. Primário significa escolaridade até o 5º ano, ginásio significa escolaridade até o 9º ano e colegial é equivalente ao ensino médio.
 
+As hipóteses precisam ser descritas:
 
-vamos iniciar as análises a partir de tabelas e gráficos. 
+$$H_0 = \mu_{escolaridade_i} - \mu_{escolaridae_j} = 0 \\ H_a = c.c \\ \alpha = 0.05$$
+Aqui, o subscrito $i$ e $j$ foi utilizado para apresentar a diferença entre todas as combinações lineares possívies.
+
+Em seguida, a análise gráfica pode ser realizada.
 
 ```{r}
 dados_teg %>% 
   group_by(escolaridade) %>% 
-  summarise_at(vars(teg), funs(n(),mean, sd)) %>% 
-   kable(digits = 2) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
+  summarise_at(vars(teg), lst(n=~n(),mean,sd)) %>% 
+  kable(digits = 2) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
 ```
 
 
@@ -102,8 +108,7 @@ ggplot(dados_teg, aes(x=escolaridade, y = teg, fill = escolaridade)) +
 ```
 
 
-
-O gráfico permite identificar algumas caracteríticas gerais dos resultados. Primeiro, quão maior a escolaridade, maior o o valor obtido na escala. Segundo, algumas barras de erros estão superpostas e outras não, o que nos leva à conclusão de que resultados significativos estarão presentes na próxima etapa, que é a modelagem formal dessa hipótese.
+O gráfico permite identificar algumas caracteríticas gerais dos resultados. Primeiro, quão maior a escolaridade, maior o o valor obtido na escala. Segundo, algumas barras de erros estão superpostas e outras não, o que nos leva à conclusão preliminar de que resultados significativos estarão presentes na próxima etapa, que é a modelagem formal dessa hipótese.
 
 A modelagem formal irá contemplar n-1 níveis dos preditores e estipulará no intercepto o nível de referência. Dessa maneira:
 
@@ -122,7 +127,7 @@ mod_escolaridade <- lm(teg ~ escolaridade, dados_teg)
 
 Antes de checar os resultados, é necessário verificar os pressupostos da ANOVA, que pedem que os resíduos sejam normalmente distribuídos e homocedásticos. Essa apresentação será feita somente agora para que os outros tópicos sejam mais claros e assertivos. 
 
-Gráficos e testes formais são muito úteis para verificar ambos os casos e vamos começar pela normalidade.
+Tal como previamente exposto no teste T, gráficos e testes formais são muito úteis para verificar ambos os casos e vamos começar pela normalidade.
 
 O gráfico abaixo apresenta a distribuição dos resíduos:   
 
@@ -132,7 +137,7 @@ ggplot(fortify(mod_escolaridade), aes(.resid)) +
       geom_density(aes(y= ..count..))
 ```
 
-E o teste formal pode ser feito via `shapiro wilk`. Lembre-se que a $H_0$ desse teste estipula normalidade e, idealmente, não deve ser rejeitada.
+E o teste formal pode ser feito via `shapiro wilk`. Lembre-se que a $H_0$ desse teste assume normalidade e, idealmente, não deve ser rejeitada.
 
 ```{r}
 shapiro.test(residuals(mod_escolaridade))
@@ -148,20 +153,20 @@ ggplot(fortify(mod_escolaridade), aes(x=.fitted, y=.resid)) +
   geom_hline(yintercept = 0)
 ```
 
-Além do teste de `Levene`, que estipula $H_0$ como homocedasticidade e, idealmente, não deve ser rejeitada.
+Além do teste de Bartlett ou Levene, em que estipulam $H_0$ como homocedasticidade e, idealmente, não deve ser rejeitada.
 
 ```{r}
 car::leveneTest(mod_escolaridade)
 ```
 
 
-A homocedasticidade foi garantida. Dessa maneira, mesmo com a violação da normalidade, o modelo será utilizado e seu sumário geral será apresentado pela função Anova do pacote `car`. Isso é importante para garantir resultados programas tipicamente utilizados, como o SPSS e o STATA. Repare que como o pacote não foi formalmente carregado, ele será acionado indiretamente incluindo `::` após seu nome.
+A homocedasticidade foi assumida. Dessa maneira, mesmo com a violação da normalidade, o modelo será utilizado e seu sumário geral será apresentado pela função apa.aov do pacote `apaTables`. Isso é importante para garantir resultados programas tipicamente utilizados, como o SPSS e o STATA. Repare que como o pacote não foi formalmente carregado, ele será acionado indiretamente incluindo `::` após seu nome.
 
 ```{r}
-car::Anova(mod_escolaridade, type = 3)
+apaTables::apa.aov.table(mod_escolaridade)
 ```
 
-A leitura desse resultado é similar a de um modelo de regressão. Dessa maneira, esse modelo aumentado (MA), ao ser comparado com o modelo compaco/nulo (MC), foi significativo (F(3,143) = 8.231, p < 0.01). Isso significa que a adição do preditor foi significativamente capaz de reduzir o erro do modelo nulo. De fato, quando isso ocorre, a busca por possíveis diferenças entre **todas as comparações possíveis** é feita.
+A leitura desse resultado é similar a de um modelo de regressão. Dessa maneira, esse modelo aumentado (MA), ao ser comparado com o modelo compaco/nulo (MC), foi significativo (F(3,143) = 8.231, p < 0.01). Isso significa que a adição do preditor foi significativamente capaz de reduzir o erro do modelo nulo. De fato, quando isso ocorre, a busca por possíveis diferenças entre <u>todas as comparações possíveis</u> é feita.
 
 É importante mencionar que isso não significa que se uma ANOVA é significativa, haverá alguma diferença entre as médias de grupos. Tecnicamente, a diferença pode ocorrer em qualquer comparação possível, como grupo 1 contra grupos 2 + grupo 3. Dessa maneira, o resultado geral da ANOVA e testes post-hoc respondem questões diferentes e é possível realizar qualquer comparação múltipla sem sequer realizar a ANOVA, desde que os resultados sejam devidamente corrigidos.
 
@@ -176,7 +181,7 @@ Nesse caso:
 
 Dessa maneira, as técnicas de ajuste utilizarão esse valor como referência. Para a comparação pareada, o pacote `emmeans` será utilizado.
 
-## Pacote emmeans
+## Post-hoc
 
 
 ```{r, message=FALSE}
@@ -314,10 +319,10 @@ Nessa pesquisa, temos o interesse em saber se o nível de empreendedorismo varia
 ```{r}
 base_interacao <- dados_teg %>% filter(estado_civil == "1" | estado_civil == "2")
 base_interacao <- base_interacao %>% 
-  mutate_at(vars(estado_civil), funs(
-    factor(case_when(
+  mutate_at(vars(estado_civil), 
+    ~factor(case_when(
       . == 1 ~ "Solteiro",
-      . == 2 ~ "Casado"), levels=c("Solteiro","Casado"))))
+      . == 2 ~ "Casado"), levels=c("Solteiro","Casado")))
 ```
 
 
