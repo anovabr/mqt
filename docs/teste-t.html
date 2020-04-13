@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2020-04-11" />
+<meta name="date" content="2020-04-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -205,7 +205,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 2. Discutir os pressupostos de execução do teste T<br />
 3. Realizar gráficos relacionados à comparação de médias<br />
 4. Apresentar e interpretar métricas de tamanho do efeito<br />
-5. Dar exemplos relacionados à escrita dos resultados 6. Apresentar versões não paramétricas
+5. Dar exemplos relacionados à escrita dos resultados 6. Apresentar versões não paramétricas do teste T (Wilcoxon-Mann-Whitney)
 </p>
 </div>
 <p>O Teste T é um teste estatístico frequentemente utilizado para testar hipóteses sobre <u>diferenças entre médias</u>. Por utilizar dados amostrais para estimar um parâmetro (<span class="math inline">\(\mu\)</span>), ele é um teste parâmetrico. Apenas por um preâmbulo histórico, a origem do Teste T remonta o artigo publicado em 1908 por William Gosset. Na época, em função de seu trabalho na cervejaria Guiness, ele não assinou o artigo, mas apenas usou seu pseudônimo <em>Student</em>, motivo pelo qual o teste T também é chamado de Teste T de Student.</p>
@@ -289,7 +289,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 1 M     1.98e-19
 ## 2 F     4.80e-17</code></pre>
 <p>De maneira convergente ao gráfico, o Shapiro-wilk também apontou que o princípio da normalidade foi violado. Entretanto, por finalidades didáticas, as análises continuarão.</p>
-<p>A homogeneidade das variâncias pode ser testada pelo teste de Bartlett e Levene. De maneira análoga ao Shapiro-wilk, esses testes assumem como Hipótese nula a homogeneidade das variâncias. Consequemente, a rejeição desse pressuposto pode também trazer resultados distorcidos ao resultado do teste T.</p>
+<p>A homogeneidade das variâncias pode ser testada visualmente e pelo teste de Bartlett ou Levene. De maneira análoga ao Shapiro-wilk, esses testes assumem como Hipótese nula a homogeneidade das variâncias. Consequemente, a rejeição desse pressuposto pode também trazer resultados distorcidos ao resultado do teste T.</p>
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1"><span class="kw">bartlett.test</span>(total_<span class="dv">12</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_12months)</a></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances

@@ -18,7 +18,7 @@ library(kableExtra) #tables with different styles
 3. Realizar gráficos relacionados à comparação de médias  
 4. Apresentar e interpretar métricas de tamanho do efeito  
 5. Dar exemplos relacionados à escrita dos resultados 
-6. Apresentar versões não paramétricas
+6. Apresentar versões não paramétricas do teste T (Wilcoxon-Mann-Whitney)
 ```
 
 O Teste T é um teste estatístico frequentemente utilizado para testar hipóteses sobre <u>diferenças entre médias</u>. Por utilizar dados amostrais para estimar um parâmetro ($\mu$), ele é um teste parâmetrico. Apenas por um preâmbulo histórico, a origem do Teste T remonta o artigo publicado em 1908 por William Gosset. Na época, em função de seu trabalho na cervejaria Guiness, ele não assinou o artigo, mas apenas usou seu pseudônimo *Student*, motivo pelo qual o teste T também é chamado de Teste T de Student.   
@@ -114,7 +114,7 @@ asq_12months %>%
 
 De maneira convergente ao gráfico, o Shapiro-wilk também apontou que o princípio da normalidade foi violado. Entretanto, por finalidades didáticas, as análises continuarão.
 
-A homogeneidade das variâncias pode ser testada pelo teste de Bartlett e Levene. De maneira análoga ao Shapiro-wilk, esses testes assumem como Hipótese nula a homogeneidade das variâncias. Consequemente, a rejeição desse pressuposto pode também trazer resultados distorcidos ao resultado do teste T. 
+A homogeneidade das variâncias pode ser testada visualmente e pelo teste de Bartlett ou Levene. De maneira análoga ao Shapiro-wilk, esses testes assumem como Hipótese nula a homogeneidade das variâncias. Consequemente, a rejeição desse pressuposto pode também trazer resultados distorcidos ao resultado do teste T. 
 
 
 ```{r}

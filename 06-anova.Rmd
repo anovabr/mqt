@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # ANOVA
 
 
@@ -9,7 +14,21 @@ library(knitr) #tables and graphs
 library(kableExtra) #tables with different styles
 ```
 
-A ANOVA é um teste estatístico desenhado para verificar diferença entre diversos grupos e, funcionalmente, é possível entender ANOVA como um super Teste T. Conceitualmente, no entanto, ela é um caso especial de um modelo de regressão em que a variável independente é categórica. Em Psicologia, provavelmente a ANOVA é a técnica inferencial mais utilizada [@Chartier2008; @Howell2011]. Por um aspecto, isso é extremamente vantajoso, dado que essa técnica estreita a relação entre Psicologia e Estatística. Em outro, isso parece ter contribuído para criação e manutenção de diferentes conceitos equivocados sobre a ANOVA. 
+```{block, type="objectives"}
+**Objetivos do capítulo**  
+1. Apresentar a ANOVA  
+2. Discutir os pressupostos de execução da ANOVA  
+3. Realizar gráficos relacionados à comparação de médias  
+4. Apresentar e interpretar métricas de tamanho do efeito  
+5. Dar exemplos relacionados à escrita dos resultados 
+6. Discutir os testes post-hoc  
+7. Apresentar versões não paramétricas da teste ANOVA (Kruskal-Wallis)  
+```
+
+
+A ANOVA é um teste estatístico desenvolvimento para verificar diferença entre diversos grupos. Pragmaticamente, é possível entender ANOVA como um super Teste T, onde o que está em jogo não é somente o quanto as médias amostras estão distantes, mas o quão distantes estão relativamente à variabilidade de observações individuais. Conceitualmente, ela é um caso especial de um modelo de regressão em que a variável independente é discreta/categórica. 
+
+Em Psicologia, provavelmente a ANOVA é a técnica inferencial mais utilizada [@Chartier2008; @Howell2011]. Se por um aspecto, isso é extremamente vantajoso por estreitar a relação entre Psicologia e Estatística, por outro, isso parece ter contribuído para criação e manutenção de diferentes conceitos equivocados sobre a ANOVA. 
 
 Conceitualmente, a ANOVA é um modelo linear, tal que:
 
@@ -20,8 +39,8 @@ $b_0$ é o intercepto (coeficiente linear)
 $b_1$ é a inclinação (coeficiente angular)  
 $\epsilon_{i}$ é o erro/resíduo   
 
-Todos os pressupostos dos modelos linares são mantidos (LINE). Dessa maneira, assume-se que o erro é independente e identicamente distribuído ($iid$), distribuído normalmente com média 0 e variância constante $\sigma^2$, ou seja, \[ \epsilon\stackrel{iid}{\sim} \mathcal{N}(\mu,\,\sigma^{2})\,\] Além de homocedástico \[ VAR(\epsilon |x_1,x_2,...,x_k)=\sigma^2 \].   
-`iid`ainda signica erros descorrelacionado \[ COV(\epsilon_1,\epsilon_j)=0 \].  
+Todos os pressupostos dos modelos linares são mantidos e o mnemônico LINE auxilia a resgatar todos eles. Assume-se que o erro é independente e identicamente distribuído ($iid$), distribuído normalmente com média 0 e variância constante $\sigma^2$, ou seja:  \[ \epsilon\stackrel{iid}{\sim} \mathcal{N}(\mu,\,\sigma^{2})\,\] Além de homocedástico: \[ VAR(\epsilon |x_1,x_2,...,x_k)=\sigma^2 \].   
+`iid`ainda signica erros descorrelatados \[ COV(\epsilon_1,\epsilon_j)=0 \].  
 
 É importante atentar que assumir média 0 $E(\epsilon|x)=0$, também implica que a correlação do erro com as variáveis é nula. Operacionalmente, o erro representa <u>todos os fatores de pesquisa</u> e problemas de medição que afetam o resultado além das variáveis independentes consideradas na modelagem.
 
@@ -36,7 +55,7 @@ Diferentes termos são empregados em uma ANOVA. A legenda a seguir visa auxiliar
 **Desfecho**: Variável dependente, variável critério    
 **Níveis**: Grupos, condições, categorias da variável independente  
 **Efeito principal**: Efeito da variável independente, sem considerar outras caracterísitcas do modelo   
-**Efeito de interação**: Efeito do termo de interação entre duas ou mais variáveis independentes.Quando significativo, não se interpreta os efeitos principais. 
+**Efeito de interação**: Efeito do termo de interação entre duas ou mais variáveis independentes.Quando significativo, não se interpreta os efeitos principais.   
 **Efeito simples**: Efeito de uma variável independente em um nível (específico) de outra variável independente.  
 ```
 
@@ -51,16 +70,12 @@ Por heurística, se escreve os delinementos estudados por uma ANOVA com $\eta$. 
 </div>  
 
 
-Neste capítulo, vamos utilizar a pesquisa intitulada "A relação entre o nível de Empreendedorismo (TEG) e os aspectos sociodemográficos dos Taxistas cooperados da cidade de Santo André/São Paulo, Brasil", publicada em 2016 na Revista Eletrônica de Gestão e Serviços, que sou co-autor.
+Neste capítulo, vamos utilizar a pesquisa intitulada "A relação entre o nível de Empreendedorismo (TEG) e os aspectos sociodemográficos dos Taxistas cooperados da cidade de Santo André/São Paulo, Brasil", publicada em 2016 na Revista Eletrônica de Gestão e Serviços, em que sou co-autor.
 
 
 O objetivo dessa pesquisa foi identificar o nível de empreendedorismo em 147 taxistas de Santo André/SP, bem como averiguá-lo em associação aos aspectos sociodemográficos. A base contém 14 variáveis, sendo 6 variáveis da escala utilizada para avaliação do empreendedorismo e 8 variáveis gerais, incluindo aqui os aspectos sociodemográficos, como sexo e escolaridade. 
 
-```{r}
-dados_teg %>% names()
-```
-
-A pergunta que temos agora é sobre o possível efeito da `escolaridade` na Tendência Empreendedora Geral (`teg`). Trata-se de uma ANOVA de uma via, dado que existe apenas uma VI.
+A pergunta que temos agora é sobre o possível efeito da `escolaridade` na Tendência Empreendedora Geral (`teg`). Trata-se de uma ANOVA de uma via, dado que existe apenas uma VI, com mais de 2 níveis.
 
 ## Execução no R
 
@@ -89,7 +104,7 @@ As hipóteses precisam ser descritas:
 $$H_0 = \mu_{escolaridade_i} - \mu_{escolaridae_j} = 0 \\ H_a = c.c \\ \alpha = 0.05$$
 Aqui, o subscrito $i$ e $j$ foi utilizado para apresentar a diferença entre todas as combinações lineares possívies.
 
-Em seguida, a análise gráfica pode ser realizada.
+Em seguida, a apresentação tabularr das médias e desvios-padrão pode ser realizada.
 
 ```{r}
 dados_teg %>% 
@@ -99,12 +114,13 @@ dados_teg %>%
 ```
 
 
-Uma vez que a escolaridade (VI) é tratada como discreta e a TEG (VD) é contínua, um gráfico de barras é adequado. A inclusão das barras de erro permite uma compreensão inferencial inicial.
+Tal como ilustrado no decorrer dos outros capítulos, gráficos são fundamentais para entendimento do relacionamento entre as variáveis. Uma vez que a escolaridade (VI) é tratada como discreta e a TEG (VD) é contínua, um gráfico de barras é adequado. A inclusão das barras de erro permite uma compreensão inferencial inicial.
 
 ```{r, message=FALSE}
 ggplot(dados_teg, aes(x=escolaridade, y = teg, fill = escolaridade)) +
   geom_bar(stat = "summary") +
-  stat_summary(fun.data = mean_se, geom = "errorbar")
+  stat_summary(fun.data = mean_se, geom = "errorbar") +
+  theme(legend.position = "bottom")
 ```
 
 
@@ -118,12 +134,11 @@ $b_0$ representa o intercepto, que aqui é o valor médio da Escolaridade primá
 $b_i$ representa os outros preditores  
 $\epsilon_{it}$ representa o erro
 
-A função `lm` será utilizada e o objeto `mod_escolaridade` será armazenado.
+A função `lm` será utilizada e o objeto `mod_escolaridade` será armazenado. É também possível utilizar a função `aov` e a escolha da `lm` foi apenas por conveniência.
 
 ```{r}
 mod_escolaridade <- lm(teg ~ escolaridade, dados_teg)
 ```
-
 
 Antes de checar os resultados, é necessário verificar os pressupostos da ANOVA, que pedem que os resíduos sejam normalmente distribuídos e homocedásticos. Essa apresentação será feita somente agora para que os outros tópicos sejam mais claros e assertivos. 
 
@@ -145,7 +160,7 @@ shapiro.test(residuals(mod_escolaridade))
 
 É possível concluir que o pressuposto da normalidade foi violado. situações como essa são muito frequentes. Na literatura, são presentes recomendações de ajuste dos dados por alguma função `g(.)` ou tornar mais severo o valor de p na interpretação dos resultados. Por exemplo, em vez de 0.05, usar 0.01.
 
-A homocedasticidade pode ser verificada por um gráfico dos resíduos dado valores previstos. 
+A homocedasticidade pode ser verificada por um gráfico dos resíduos dado valores previstos.  O ideal é não encontrar padrões
 
 ```{r}
 ggplot(fortify(mod_escolaridade), aes(x=.fitted, y=.resid)) + 
@@ -166,9 +181,14 @@ A homocedasticidade foi assumida. Dessa maneira, mesmo com a violação da norma
 apaTables::apa.aov.table(mod_escolaridade)
 ```
 
-A leitura desse resultado é similar a de um modelo de regressão. Dessa maneira, esse modelo aumentado (MA), ao ser comparado com o modelo compaco/nulo (MC), foi significativo (F(3,143) = 8.231, p < 0.01). Isso significa que a adição do preditor foi significativamente capaz de reduzir o erro do modelo nulo. De fato, quando isso ocorre, a busca por possíveis diferenças entre <u>todas as comparações possíveis</u> é feita.
+A leitura desse resultado é similar a de um modelo de regressão. Em linhas gerais, quase sempre apenas se diz que o modelo foi significativo (F(3,143) = 8.231, p < 0.01). No entanto, o detalhamento desta condição impõe comentar que a adição da variável "escolaridade" no  modelo testado (chamado de modelo aumentado - MA) foi significativamente capaz de reduzir o erro do modelo nulo, que e o modelo que apenas utiliza a média como preditor (também chamado de modelo nulo ou compacto neste caso - MC). 
 
-É importante mencionar que isso não significa que se uma ANOVA é significativa, haverá alguma diferença entre as médias de grupos. Tecnicamente, a diferença pode ocorrer em qualquer comparação possível, como grupo 1 contra grupos 2 + grupo 3. Dessa maneira, o resultado geral da ANOVA e testes post-hoc respondem questões diferentes e é possível realizar qualquer comparação múltipla sem sequer realizar a ANOVA, desde que os resultados sejam devidamente corrigidos.
+De fato, quando isso ocorre, a busca por possíveis diferenças entre <u>todas as comparações possíveis</u> é feita.
+
+Entretanto, é importante mencionar que que se uma ANOVA é significativa, isso não significa necessariamente que haverá alguma diferença <u>entre as médias dos grupos</u>. Tecnicamente, a diferença pode ocorrer em qualquer comparação possível, como grupo 1 contra grupos 2 + grupo 3 ou grupo 2 contra grupo 1+3. Dessa forma, o resultado geral da ANOVA e testes post-hoc respondem questões diferentes e é possível realizar qualquer comparação múltipla sem sequer realizar a ANOVA, desde que os resultados sejam devidamente corrigidos. 
+
+
+Uma vez que realizar uma ANOVA não é tecnicamente necessário para realização de comparações pareadas, é possível que alguém se pergunte qual é, então, a necessidade da realização deste primeiro teste. De fato, hoje em dia, a realização da ANOVA ocorre mais para que o pesquisador (i) consiga realizar computacionalmente todas as comparações pareads entre as categorias da variável e, em seguida, (ii) corrigir adequadamente o valor de P obtido em cada computação.
 
 Uma vez que a`escolaridade` foi significativa (F(3, 143) = 8.231, p < 0.01) mesmo em uma significância mais estrita (0.01), vamos checar as comparações principais. Estas são aquelas relacionadas a cada um dos níveis presentes nessa variável. Uma vez que comparações serão realizadas, é necessário ajustar o valor de P. Repare que a quantidade de comparações pode ser calculada da seguinte forma:
 
