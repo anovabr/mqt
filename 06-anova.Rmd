@@ -8,7 +8,7 @@ editor_options:
 
 ```{r, include = FALSE }
 
-load(file="C:/Users/luisf/OneDrive/Documentos/anovabr/MQT/bases/Livro - R- TEG.RData")
+load(file="C:/Users/luisf/OneDrive/Documentos/anovabr/MQT/bases/Livro - R - TEG.RData")
 library(tidyverse)
 library(knitr) #tables and graphs
 library(kableExtra) #tables with different styles
@@ -26,7 +26,9 @@ library(kableExtra) #tables with different styles
 ```
 
 
-A ANOVA é um teste estatístico desenvolvimento para verificar diferença entre diversos grupos. Pragmaticamente, é possível entender ANOVA como um super Teste T, onde o que está em jogo não é somente o quanto as médias amostras estão distantes, mas o quão distantes estão relativamente à variabilidade de observações individuais. Conceitualmente, ela é um caso especial de um modelo de regressão em que a variável independente é discreta/categórica. 
+A ANOVA é um teste estatístico desenvolvimento para verificar diferença entre diversos grupos. Pragmaticamente, é possível entender ANOVA como um super teste T, onde o que está em jogo não é somente o quanto as médias amostrais estão distantes, mas o quão distantes estão relativamente à variabilidade de observações individuais.  
+
+Conceitualmente, similar ao teste T, a ANOVA é um caso especial de um modelo de regressão em que a variável independente é discreta/categórica. 
 
 Em Psicologia, provavelmente a ANOVA é a técnica inferencial mais utilizada [@Chartier2008; @Howell2011]. Se por um aspecto, isso é extremamente vantajoso por estreitar a relação entre Psicologia e Estatística, por outro, isso parece ter contribuído para criação e manutenção de diferentes conceitos equivocados sobre a ANOVA. 
 
@@ -66,7 +68,7 @@ Por heurística, se escreve os delinementos estudados por uma ANOVA com $\eta$. 
 ## Pesquisa
   
 <div class="alert alert-info" role="alert">
-  <strong>Base: </strong> Livro - R- TEG
+  <strong>Base: </strong> Livro - R - TEG
 </div>  
 
 
@@ -81,7 +83,7 @@ A pergunta que temos agora é sobre o possível efeito da `escolaridade` na Tend
 
 ### ANOVA de 1 via
 
-Ao trabalhar no R, é <u>fundamental</u> se certificar que os tipos das variávais estão corretamente definidos em função da escala de medida utilizada. Erros nessa etapa podem gerar resultados absolutamente incorretos. A escolaridade é uma variável categórica (ordinal, tratada como discreta) e é necessário definir claramente isso ao R antes da análise propriamente dita. 
+Ao trabalhar no R, é <u>fundamental</u> se certificar que os tipos das variáveis estão corretamente definidos em função da escala de medida utilizada. Erros nessa etapa podem gerar resultados absolutamente incorretos. A escolaridade é uma variável categórica (ordinal, tratada como discreta) e é necessário definir claramente isso ao R antes da análise propriamente dita. 
 
 Isso pode ser feito pela função `case_when` e `levels`. O `case_when` irá substituir os valores originalmente presentes nessa variável e o `levels` deixará claro a ordem de cada categoria, o que é útil para que os gráficos sejam feitos corretamente.
 
@@ -97,14 +99,14 @@ dados_teg <- dados_teg %>%
 ```
 
 
-Conforme foi comentado, os itens em um instrumento sociodemográfico devem levar em consideração o contexto das pessoas avaliadas e, por isso, as categorias de escolaridade foram definidas como as apresentadas. Primário significa escolaridade até o 5º ano, ginásio significa escolaridade até o 9º ano e colegial é equivalente ao ensino médio.
+Uma vez que os itens de um instrumento sociodemográfico devem levar em consideração o contexto das pessoas avaliadas e, as categorias de escolaridade foram definidas como as apresentadas. Primário significa escolaridade até o 5º ano, ginásio significa escolaridade até o 9º ano e colegial é equivalente ao ensino médio.
 
 As hipóteses precisam ser descritas:
 
 $$H_0 = \mu_{escolaridade_i} - \mu_{escolaridae_j} = 0 \\ H_a = c.c \\ \alpha = 0.05$$
 Aqui, o subscrito $i$ e $j$ foi utilizado para apresentar a diferença entre todas as combinações lineares possívies.
 
-Em seguida, a apresentação tabularr das médias e desvios-padrão pode ser realizada.
+Em seguida, a apresentação tabular das médias e desvios-padrão pode ser realizada.
 
 ```{r}
 dados_teg %>% 
@@ -124,7 +126,7 @@ ggplot(dados_teg, aes(x=escolaridade, y = teg, fill = escolaridade)) +
 ```
 
 
-O gráfico permite identificar algumas caracteríticas gerais dos resultados. Primeiro, quão maior a escolaridade, maior o o valor obtido na escala. Segundo, algumas barras de erros estão superpostas e outras não, o que nos leva à conclusão preliminar de que resultados significativos estarão presentes na próxima etapa, que é a modelagem formal dessa hipótese.
+A visualização dos resultados já permite identificar algumas caracteríticas gerais. Primeiro, quão maior a escolaridade, maior o o valor obtido na escala. Segundo, algumas barras de erros estão superpostas e outras não, o que nos leva à conclusão preliminar de que resultados significativos estarão presentes na próxima etapa, que é a modelagem formal dessa hipótese.
 
 A modelagem formal irá contemplar n-1 níveis dos preditores e estipulará no intercepto o nível de referência. Dessa maneira:
 
@@ -140,9 +142,7 @@ A função `lm` será utilizada e o objeto `mod_escolaridade` será armazenado. 
 mod_escolaridade <- lm(teg ~ escolaridade, dados_teg)
 ```
 
-Antes de checar os resultados, é necessário verificar os pressupostos da ANOVA, que pedem que os resíduos sejam normalmente distribuídos e homocedásticos. Essa apresentação será feita somente agora para que os outros tópicos sejam mais claros e assertivos. 
-
-Tal como previamente exposto no teste T, gráficos e testes formais são muito úteis para verificar ambos os casos e vamos começar pela normalidade.
+Antes de checar os resultados, é necessário verificar se os pressupostos da ANOVA foram atendidos. Esses pedem que os resíduos sejam normalmente distribuídos e homocedásticos. Tal como previamente exposto no teste T, a investigação dessas condições é tanto feita por gráficos e testes formais e ambos são muito úteis. A análise da normalidade dos resíduos será inicialmente feita.
 
 O gráfico abaixo apresenta a distribuição dos resíduos:   
 
@@ -152,15 +152,15 @@ ggplot(fortify(mod_escolaridade), aes(.resid)) +
       geom_density(aes(y= ..count..))
 ```
 
-E o teste formal pode ser feito via `shapiro wilk`. Lembre-se que a $H_0$ desse teste assume normalidade e, idealmente, não deve ser rejeitada.
+O teste formal pode ser feito via `shapiro wilk`. Tal como no teste T, a $H_0$ desse teste assume normalidade e, idealmente, não deve ser rejeitada.
 
 ```{r}
 shapiro.test(residuals(mod_escolaridade))
 ```
 
-É possível concluir que o pressuposto da normalidade foi violado. situações como essa são muito frequentes. Na literatura, são presentes recomendações de ajuste dos dados por alguma função `g(.)` ou tornar mais severo o valor de p na interpretação dos resultados. Por exemplo, em vez de 0.05, usar 0.01.
+Uma vez que o valor foi menor do que o previamente estipulado ao $\alpha$, é possível concluir que o pressuposto da normalidade foi violado. situações como essa são muito frequentes. Na literatura, são presentes recomendações de ajuste dos dados por alguma função `g(.)` ou tornar mais severo o valor de p na interpretação dos resultados. Por exemplo, em vez de 0.05, usar 0.01.
 
-A homocedasticidade pode ser verificada por um gráfico dos resíduos dado valores previstos.  O ideal é não encontrar padrões
+A homocedasticidade pode ser verificada por um gráfico dos resíduos dado valores previstos. O ideal é não encontrar padrões no gráfico.
 
 ```{r}
 ggplot(fortify(mod_escolaridade), aes(x=.fitted, y=.resid)) + 
@@ -175,22 +175,35 @@ car::leveneTest(mod_escolaridade)
 ```
 
 
-A homocedasticidade foi assumida. Dessa maneira, mesmo com a violação da normalidade, o modelo será utilizado e seu sumário geral será apresentado pela função apa.aov do pacote `apaTables`. Isso é importante para garantir resultados programas tipicamente utilizados, como o SPSS e o STATA. Repare que como o pacote não foi formalmente carregado, ele será acionado indiretamente incluindo `::` após seu nome.
+A homocedasticidade foi assumida. Dessa maneira, mesmo com a violação da normalidade, o modelo será utilizado e seu sumário geral será apresentado pela função apa.aov do pacote `apaTables`. Isso é importante para garantir resultados programas tipicamente utilizados, como o SPSS e o STATA. Essa tabela é padronizada e muito similar na maioria dos programas estatísticos. Ela traz as seguintes informações principais:
+
+
+  | Preditor          | Soma dos Quadrados| Graus de liberdade  |  Quadrado médio | Estat. F      | 
+  | :-----------      | :-----------      | :-----------        |  :-----------   | :-----------  |  
+  | Fator             | Entre (SSB)       | K-1                 |  MSB = SSB/ N-1 | F = MSB/MSW   | 
+  | Resíduo           | Dentro (SSW)      | N-k                 |  MSW = SSW/ N-K |               |
+  | Total             | Total (SQT)       | N-1                 |  
+
+Repare que,a este momento, os aspectos são apenas apresentados conceitualmente e não matematicamente. Em outro momento, aspectos da decomposição da variância serão também descritos.
+
 
 ```{r}
 apaTables::apa.aov.table(mod_escolaridade)
 ```
 
-A leitura desse resultado é similar a de um modelo de regressão. Em linhas gerais, quase sempre apenas se diz que o modelo foi significativo (F(3,143) = 8.231, p < 0.01). No entanto, o detalhamento desta condição impõe comentar que a adição da variável "escolaridade" no  modelo testado (chamado de modelo aumentado - MA) foi significativamente capaz de reduzir o erro do modelo nulo, que e o modelo que apenas utiliza a média como preditor (também chamado de modelo nulo ou compacto neste caso - MC). 
 
-De fato, quando isso ocorre, a busca por possíveis diferenças entre <u>todas as comparações possíveis</u> é feita.
+A leitura desse resultado é similar a de um modelo de regressão e a de outros modelos lineares e, em linhas gerais, quase sempre apenas se diz que o modelo foi significativo e se indica as principais estatísticas obtidas: F(3,143) = 8.231, p < 0.01.  
 
-Entretanto, é importante mencionar que que se uma ANOVA é significativa, isso não significa necessariamente que haverá alguma diferença <u>entre as médias dos grupos</u>. Tecnicamente, a diferença pode ocorrer em qualquer comparação possível, como grupo 1 contra grupos 2 + grupo 3 ou grupo 2 contra grupo 1+3. Dessa forma, o resultado geral da ANOVA e testes post-hoc respondem questões diferentes e é possível realizar qualquer comparação múltipla sem sequer realizar a ANOVA, desde que os resultados sejam devidamente corrigidos. 
+No entanto, o que essa constatação está realmente dizendo é que houve uma comparação entre dois modelos, um que usou os resultados da variável "escolaridade" para prever os resultados obtidos pelo TEG (chamado de Modelo aumentado) e outro que usou apenas a média que o TEG (chamado de modelo compacto ou nulo neste caso). O resultado significativo indica que a inclusão da "escolaridade" no  modelo testadofoi significativamente capaz de reduzir o erro de previsão que o modelo nulo obteve (em ingles Proportional Reduction in Error ou PRE).
+
+De fato, quando isso ocorre, a busca por possíveis diferenças entre <u>todas as comparações possíveis</u> costuma ser feita por testes post hocs.
+
+Entretanto, é importante mencionar que que se uma ANOVA é significativa, isso não significa necessariamente que haverá alguma diferença <u>entre as médias dos grupos</u>. Tecnicamente, a diferença pode ocorrer em qualquer comparação possível, como grupo 1 contra grupos 2 + grupo 3 ou grupo 2 contra grupo 1+3. Dessa forma, o resultado geral da ANOVA e testes post-hoc respondem questões diferentes e é possível realizar qualquer comparação múltipla sem sequer realizar a ANOVA, desde que os resultados sejam devidamente corrigidos se alguns pressupostos sobre os constrastes forem aceitos.
 
 
-Uma vez que realizar uma ANOVA não é tecnicamente necessário para realização de comparações pareadas, é possível que alguém se pergunte qual é, então, a necessidade da realização deste primeiro teste. De fato, hoje em dia, a realização da ANOVA ocorre mais para que o pesquisador (i) consiga realizar computacionalmente todas as comparações pareads entre as categorias da variável e, em seguida, (ii) corrigir adequadamente o valor de P obtido em cada computação.
+Uma vez que realizar uma ANOVA não é tecnicamente necessário para realização de comparações pareadas, é possível que alguém se pergunte qual é, então, a necessidade da realização deste primeiro teste. De fato, hoje em dia, a realização da ANOVA ocorre mais para que o pesquisador (i) consiga realizar computacionalmente todas as comparações pareadas entre as categorias da variável e, em seguida, (ii) corrigir adequadamente o valor de P obtido em cada computação.
 
-Uma vez que a`escolaridade` foi significativa (F(3, 143) = 8.231, p < 0.01) mesmo em uma significância mais estrita (0.01), vamos checar as comparações principais. Estas são aquelas relacionadas a cada um dos níveis presentes nessa variável. Uma vez que comparações serão realizadas, é necessário ajustar o valor de P. Repare que a quantidade de comparações pode ser calculada da seguinte forma:
+Isso dito, uma vez que a`escolaridade` foi significativa, as principais comparações serão testadas dois a dois. Sempre que múltiplas que comparações são realizadas, é necessário ajustar o valor de P. Repare que a quantidade de comparações pode ser calculada da seguinte forma:
 
  \[ J*(\frac{J-1}2) \] , onde
 $J$ é a quantidade de níveis da variável
@@ -201,23 +214,23 @@ Nesse caso:
 
 Dessa maneira, as técnicas de ajuste utilizarão esse valor como referência. Para a comparação pareada, o pacote `emmeans` será utilizado.
 
-## Post-hoc
+## Post hoc
 
+Assim como exposto, a mecanica do por detrás do post hoc é a comparação pareada das commbinações do fator, seguida pelo ajuste do valor de P. Existem muitas técnicas para tal ajuste e elas costumam ser agrupadas em função da sua robustez à violação da homocedasticidade. 
+
+O resultado das comparações dois a dois será armazenado em um objeto específico, nomeado como `post_hoc_escolaridade`. Isso será útil para apresentar sumários e gráficos. O sumário ajustará o valor de p pela técnica Bonferroni, que multiplica o valor bruto encontrado pela quantidade de comparações.
 
 ```{r, message=FALSE}
 library(emmeans)
 
 ```
 
-Para comparação pareada, o resultado será armazenado em um objeto específico nomeado como `post_hoc_escolaridade`. Isso será útil para apresentar sumários e gráficos. O sumário ajustará o valor de p pela técnica Bonferroni, que multiplica o valor bruto encontrado pela quantidade de comparações.
 
 ```{r}
-
 post_hoc_escolaridade <- emmeans(mod_escolaridade, "escolaridade") %>% pairs(., reverse = TRUE, adjust = "bonferroni")
-
 ```
 
-Os resultados são significativos na comparação `Superior - Primário`, `Superior - Ginásio` e `Superior - Colegial` e o gráfico a seguir será feito pelo `ggplot2`, com adição das barras de erro. Apesar de ambas as apresentações terem o mesmo conteúdo, o gráfico tem interpretação mais rápida e simples para todas as audiências.
+Tal como feito até agora, o gráfico inicial dsa comparações será realizado.
 
 ```{r}
 CI <- confint(post_hoc_escolaridade)
@@ -229,6 +242,8 @@ ggplot(mapping = aes(contrast, estimate)) +
   coord_flip()
 
 ```
+
+Os resultados são significativos na comparação `Superior - Primário`, `Superior - Ginásio` e `Superior - Colegial` e o gráfico a seguir será feito pelo `ggplot2`, com adição das barras de erro. Apesar de ambas as apresentações terem o mesmo conteúdo, o gráfico tem interpretação mais rápida e simples para todas as audiências.
 
 
 A esse momento, a escrita é fundamental:
