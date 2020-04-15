@@ -171,7 +171,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="anova.html"><a href="anova.html#execução-no-r-1"><i class="fa fa-check"></i><b>4.3</b> Execução no R</a><ul>
 <li class="chapter" data-level="4.3.1" data-path="anova.html"><a href="anova.html#anova-de-1-via"><i class="fa fa-check"></i><b>4.3.1</b> ANOVA de 1 via</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="anova.html"><a href="anova.html#post-hoc"><i class="fa fa-check"></i><b>4.4</b> Post-hoc</a></li>
+<li class="chapter" data-level="4.4" data-path="anova.html"><a href="anova.html#post-hoc"><i class="fa fa-check"></i><b>4.4</b> Post hoc</a></li>
 <li class="chapter" data-level="4.5" data-path="anova.html"><a href="anova.html#anova-de-2-vias"><i class="fa fa-check"></i><b>4.5</b> ANOVA de 2 vias</a></li>
 <li class="chapter" data-level="4.6" data-path="anova.html"><a href="anova.html#anova-fatorial"><i class="fa fa-check"></i><b>4.6</b> ANOVA Fatorial</a></li>
 <li class="chapter" data-level="4.7" data-path="anova.html"><a href="anova.html#outra-coisa"><i class="fa fa-check"></i><b>4.7</b> outra coisa</a></li>
@@ -201,14 +201,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="objectives">
 <p>
 <strong>Objetivos do capítulo</strong><br />
-1. Apresentar a ANOVA 2. Discutir os pressupostos de execução da ANOVA<br />
+1. Apresentar a ANOVA<br />
+2. Discutir os pressupostos de execução da ANOVA<br />
 3. Realizar gráficos relacionados à comparação de médias<br />
 4. Apresentar e interpretar métricas de tamanho do efeito<br />
 5. Dar exemplos relacionados à escrita dos resultados 6. Discutir os testes post-hoc<br />
 7. Apresentar versões não paramétricas da teste ANOVA (Kruskal-Wallis)
 </p>
 </div>
-<p>A ANOVA é um teste estatístico desenvolvimento para verificar diferença entre diversos grupos. Pragmaticamente, é possível entender ANOVA como um super Teste T, onde o que está em jogo não é somente o quanto as médias amostras estão distantes, mas o quão distantes estão relativamente à variabilidade de observações individuais. Conceitualmente, ela é um caso especial de um modelo de regressão em que a variável independente é discreta/categórica.</p>
+<p>A ANOVA é um teste estatístico desenvolvimento para verificar diferença entre diversos grupos. Pragmaticamente, é possível entender ANOVA como um super teste T, onde o que está em jogo não é somente o quanto as médias amostrais estão distantes, mas o quão distantes estão relativamente à variabilidade de observações individuais.</p>
+<p>Conceitualmente, similar ao teste T, a ANOVA é um caso especial de um modelo de regressão em que a variável independente é discreta/categórica.</p>
 <p>Em Psicologia, provavelmente a ANOVA é a técnica inferencial mais utilizada <span class="citation">(Chartier and Faulkner <a href="#ref-Chartier2008">2008</a>; Howell <a href="#ref-Howell2011">2011</a>)</span>. Se por um aspecto, isso é extremamente vantajoso por estreitar a relação entre Psicologia e Estatística, por outro, isso parece ter contribuído para criação e manutenção de diferentes conceitos equivocados sobre a ANOVA.</p>
 <p>Conceitualmente, a ANOVA é um modelo linear, tal que:</p>
 <p><span class="math display">\[y_i = b_0 + b_1X{_1}_i + \epsilon_{i}\]</span></p>
@@ -238,7 +240,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="pesquisa-2" class="section level2">
 <h2><span class="header-section-number">4.2</span> Pesquisa</h2>
 <div class="alert alert-info" role="alert">
-<p><strong>Base: </strong> Livro - R- TEG</p>
+<p><strong>Base: </strong> Livro - R - TEG</p>
 </div>
 <p>Neste capítulo, vamos utilizar a pesquisa intitulada “A relação entre o nível de Empreendedorismo (TEG) e os aspectos sociodemográficos dos Taxistas cooperados da cidade de Santo André/São Paulo, Brasil”, publicada em 2016 na Revista Eletrônica de Gestão e Serviços, em que sou co-autor.</p>
 <p>O objetivo dessa pesquisa foi identificar o nível de empreendedorismo em 147 taxistas de Santo André/SP, bem como averiguá-lo em associação aos aspectos sociodemográficos. A base contém 14 variáveis, sendo 6 variáveis da escala utilizada para avaliação do empreendedorismo e 8 variáveis gerais, incluindo aqui os aspectos sociodemográficos, como sexo e escolaridade.</p>
@@ -248,7 +250,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.3</span> Execução no R</h2>
 <div id="anova-de-1-via" class="section level3">
 <h3><span class="header-section-number">4.3.1</span> ANOVA de 1 via</h3>
-<p>Ao trabalhar no R, é <u>fundamental</u> se certificar que os tipos das variávais estão corretamente definidos em função da escala de medida utilizada. Erros nessa etapa podem gerar resultados absolutamente incorretos. A escolaridade é uma variável categórica (ordinal, tratada como discreta) e é necessário definir claramente isso ao R antes da análise propriamente dita.</p>
+<p>Ao trabalhar no R, é <u>fundamental</u> se certificar que os tipos das variáveis estão corretamente definidos em função da escala de medida utilizada. Erros nessa etapa podem gerar resultados absolutamente incorretos. A escolaridade é uma variável categórica (ordinal, tratada como discreta) e é necessário definir claramente isso ao R antes da análise propriamente dita.</p>
 <p>Isso pode ser feito pela função <code>case_when</code> e <code>levels</code>. O <code>case_when</code> irá substituir os valores originalmente presentes nessa variável e o <code>levels</code> deixará claro a ordem de cada categoria, o que é útil para que os gráficos sejam feitos corretamente.</p>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1">dados_teg &lt;-<span class="st"> </span>dados_teg <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb67-2" title="2"><span class="st">  </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(escolaridade), </a>
@@ -258,11 +260,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb67-6" title="6">      . <span class="op">==</span><span class="st"> </span><span class="dv">3</span> <span class="op">~</span><span class="st"> &quot;Colegial&quot;</span>,</a>
 <a class="sourceLine" id="cb67-7" title="7">      . <span class="op">==</span><span class="st"> </span><span class="dv">4</span> <span class="op">~</span><span class="st"> &quot;Superior&quot;</span>), </a>
 <a class="sourceLine" id="cb67-8" title="8">      <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;Primário&quot;</span>,<span class="st">&quot;Ginásio&quot;</span>,<span class="st">&quot;Colegial&quot;</span>,<span class="st">&quot;Superior&quot;</span>)))</a></code></pre></div>
-<p>Conforme foi comentado, os itens em um instrumento sociodemográfico devem levar em consideração o contexto das pessoas avaliadas e, por isso, as categorias de escolaridade foram definidas como as apresentadas. Primário significa escolaridade até o 5º ano, ginásio significa escolaridade até o 9º ano e colegial é equivalente ao ensino médio.</p>
+<p>Uma vez que os itens de um instrumento sociodemográfico devem levar em consideração o contexto das pessoas avaliadas e, as categorias de escolaridade foram definidas como as apresentadas. Primário significa escolaridade até o 5º ano, ginásio significa escolaridade até o 9º ano e colegial é equivalente ao ensino médio.</p>
 <p>As hipóteses precisam ser descritas:</p>
 <p><span class="math display">\[H_0 = \mu_{escolaridade_i} - \mu_{escolaridae_j} = 0 \\ H_a = c.c \\ \alpha = 0.05\]</span>
 Aqui, o subscrito <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span> foi utilizado para apresentar a diferença entre todas as combinações lineares possívies.</p>
-<p>Em seguida, a apresentação tabularr das médias e desvios-padrão pode ser realizada.</p>
+<p>Em seguida, a apresentação tabular das médias e desvios-padrão pode ser realizada.</p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1">dados_teg <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb68-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(escolaridade) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb68-3" title="3"><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(teg), <span class="kw">lst</span>(<span class="dt">n=</span><span class="op">~</span><span class="kw">n</span>(),mean,sd)) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -349,7 +351,7 @@ Superior
 <a class="sourceLine" id="cb69-3" title="3"><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb69-4" title="4"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</a></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-51-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>O gráfico permite identificar algumas caracteríticas gerais dos resultados. Primeiro, quão maior a escolaridade, maior o o valor obtido na escala. Segundo, algumas barras de erros estão superpostas e outras não, o que nos leva à conclusão preliminar de que resultados significativos estarão presentes na próxima etapa, que é a modelagem formal dessa hipótese.</p>
+<p>A visualização dos resultados já permite identificar algumas caracteríticas gerais. Primeiro, quão maior a escolaridade, maior o o valor obtido na escala. Segundo, algumas barras de erros estão superpostas e outras não, o que nos leva à conclusão preliminar de que resultados significativos estarão presentes na próxima etapa, que é a modelagem formal dessa hipótese.</p>
 <p>A modelagem formal irá contemplar n-1 níveis dos preditores e estipulará no intercepto o nível de referência. Dessa maneira:</p>
 <p><span class="math display">\[y_{i} = b_{0} + b_1Esc_{ginasio_i} + b_2Esc_{colegial_i} + b_1Esc_{superior_i} + \epsilon_{i}\]</span></p>
 <p><span class="math inline">\(b_0\)</span> representa o intercepto, que aqui é o valor médio da Escolaridade primária<br />
@@ -357,22 +359,21 @@ Superior
 <span class="math inline">\(\epsilon_{it}\)</span> representa o erro</p>
 <p>A função <code>lm</code> será utilizada e o objeto <code>mod_escolaridade</code> será armazenado. É também possível utilizar a função <code>aov</code> e a escolha da <code>lm</code> foi apenas por conveniência.</p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1">mod_escolaridade &lt;-<span class="st"> </span><span class="kw">lm</span>(teg <span class="op">~</span><span class="st"> </span>escolaridade, dados_teg)</a></code></pre></div>
-<p>Antes de checar os resultados, é necessário verificar os pressupostos da ANOVA, que pedem que os resíduos sejam normalmente distribuídos e homocedásticos. Essa apresentação será feita somente agora para que os outros tópicos sejam mais claros e assertivos.</p>
-<p>Tal como previamente exposto no teste T, gráficos e testes formais são muito úteis para verificar ambos os casos e vamos começar pela normalidade.</p>
+<p>Antes de checar os resultados, é necessário verificar se os pressupostos da ANOVA foram atendidos. Esses pedem que os resíduos sejam normalmente distribuídos e homocedásticos. Tal como previamente exposto no teste T, a investigação dessas condições é tanto feita por gráficos e testes formais e ambos são muito úteis. A análise da normalidade dos resíduos será inicialmente feita.</p>
 <p>O gráfico abaixo apresenta a distribuição dos resíduos:</p>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1"><span class="kw">ggplot</span>(<span class="kw">fortify</span>(mod_escolaridade), <span class="kw">aes</span>(.resid)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb71-2" title="2"><span class="st">      </span><span class="kw">geom_histogram</span>(<span class="dt">colour=</span><span class="st">&quot;black&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;grey&quot;</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb71-3" title="3"><span class="st">      </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(<span class="dt">y=</span> ..count..))</a></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-53-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>E o teste formal pode ser feito via <code>shapiro wilk</code>. Lembre-se que a <span class="math inline">\(H_0\)</span> desse teste assume normalidade e, idealmente, não deve ser rejeitada.</p>
+<p>O teste formal pode ser feito via <code>shapiro wilk</code>. Tal como no teste T, a <span class="math inline">\(H_0\)</span> desse teste assume normalidade e, idealmente, não deve ser rejeitada.</p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="kw">shapiro.test</span>(<span class="kw">residuals</span>(mod_escolaridade))</a></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  residuals(mod_escolaridade)
 ## W = 0.97502, p-value = 0.008721</code></pre>
-<p>É possível concluir que o pressuposto da normalidade foi violado. situações como essa são muito frequentes. Na literatura, são presentes recomendações de ajuste dos dados por alguma função <code>g(.)</code> ou tornar mais severo o valor de p na interpretação dos resultados. Por exemplo, em vez de 0.05, usar 0.01.</p>
-<p>A homocedasticidade pode ser verificada por um gráfico dos resíduos dado valores previstos. O ideal é não encontrar padrões</p>
+<p>Uma vez que o valor foi menor do que o previamente estipulado ao <span class="math inline">\(\alpha\)</span>, é possível concluir que o pressuposto da normalidade foi violado. situações como essa são muito frequentes. Na literatura, são presentes recomendações de ajuste dos dados por alguma função <code>g(.)</code> ou tornar mais severo o valor de p na interpretação dos resultados. Por exemplo, em vez de 0.05, usar 0.01.</p>
+<p>A homocedasticidade pode ser verificada por um gráfico dos resíduos dado valores previstos. O ideal é não encontrar padrões no gráfico.</p>
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="kw">ggplot</span>(<span class="kw">fortify</span>(mod_escolaridade), <span class="kw">aes</span>(<span class="dt">x=</span>.fitted, <span class="dt">y=</span>.resid)) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb74-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb74-3" title="3"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>)</a></code></pre></div>
@@ -383,7 +384,42 @@ Superior
 ##        Df F value Pr(&gt;F)
 ## group   3  1.1372 0.3362
 ##       143</code></pre>
-<p>A homocedasticidade foi assumida. Dessa maneira, mesmo com a violação da normalidade, o modelo será utilizado e seu sumário geral será apresentado pela função apa.aov do pacote <code>apaTables</code>. Isso é importante para garantir resultados programas tipicamente utilizados, como o SPSS e o STATA. Repare que como o pacote não foi formalmente carregado, ele será acionado indiretamente incluindo <code>::</code> após seu nome.</p>
+<p>A homocedasticidade foi assumida. Dessa maneira, mesmo com a violação da normalidade, o modelo será utilizado e seu sumário geral será apresentado pela função apa.aov do pacote <code>apaTables</code>. Isso é importante para garantir resultados programas tipicamente utilizados, como o SPSS e o STATA. Essa tabela é padronizada e muito similar na maioria dos programas estatísticos. Ela traz as seguintes informações principais:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Preditor</th>
+<th align="left">Soma dos Quadrados</th>
+<th align="left">Graus de liberdade</th>
+<th align="left">Quadrado médio</th>
+<th align="left">Estat. F</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Fator</td>
+<td align="left">Entre (SSB)</td>
+<td align="left">K-1</td>
+<td align="left">MSB = SSB/ N-1</td>
+<td align="left">F = MSB/MSW</td>
+</tr>
+<tr class="even">
+<td align="left">Resíduo</td>
+<td align="left">Dentro (SSW)</td>
+<td align="left">N-k</td>
+<td align="left">MSW = SSW/ N-K</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left">Total (SQT)</td>
+<td align="left">N-1</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Repare que,a este momento, os aspectos são apenas apresentados conceitualmente e não matematicamente. Em outro momento, aspectos da decomposição da variância serão também descritos.</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1">apaTables<span class="op">::</span><span class="kw">apa.aov.table</span>(mod_escolaridade)</a></code></pre></div>
 <pre><code>## 
 ## 
@@ -400,11 +436,12 @@ Superior
 ##                    
 ## 
 ## Note: Values in square brackets indicate the bounds of the 90% confidence interval for partial eta-squared</code></pre>
-<p>A leitura desse resultado é similar a de um modelo de regressão. Em linhas gerais, quase sempre apenas se diz que o modelo foi significativo (F(3,143) = 8.231, p &lt; 0.01). No entanto, o detalhamento desta condição impõe comentar que a adição da variável “escolaridade” no modelo testado (chamado de modelo aumentado - MA) foi significativamente capaz de reduzir o erro do modelo nulo, que e o modelo que apenas utiliza a média como preditor (também chamado de modelo nulo ou compacto neste caso - MC).</p>
-<p>De fato, quando isso ocorre, a busca por possíveis diferenças entre <u>todas as comparações possíveis</u> é feita.</p>
-<p>Entretanto, é importante mencionar que que se uma ANOVA é significativa, isso não significa necessariamente que haverá alguma diferença <u>entre as médias dos grupos</u>. Tecnicamente, a diferença pode ocorrer em qualquer comparação possível, como grupo 1 contra grupos 2 + grupo 3 ou grupo 2 contra grupo 1+3. Dessa forma, o resultado geral da ANOVA e testes post-hoc respondem questões diferentes e é possível realizar qualquer comparação múltipla sem sequer realizar a ANOVA, desde que os resultados sejam devidamente corrigidos.</p>
-<p>Uma vez que realizar uma ANOVA não é tecnicamente necessário para realização de comparações pareadas, é possível que alguém se pergunte qual é, então, a necessidade da realização deste primeiro teste. De fato, hoje em dia, a realização da ANOVA ocorre mais para que o pesquisador (i) consiga realizar computacionalmente todas as comparações pareads entre as categorias da variável e, em seguida, (ii) corrigir adequadamente o valor de P obtido em cada computação.</p>
-<p>Uma vez que a<code>escolaridade</code> foi significativa (F(3, 143) = 8.231, p &lt; 0.01) mesmo em uma significância mais estrita (0.01), vamos checar as comparações principais. Estas são aquelas relacionadas a cada um dos níveis presentes nessa variável. Uma vez que comparações serão realizadas, é necessário ajustar o valor de P. Repare que a quantidade de comparações pode ser calculada da seguinte forma:</p>
+<p>A leitura desse resultado é similar a de um modelo de regressão e a de outros modelos lineares e, em linhas gerais, quase sempre apenas se diz que o modelo foi significativo e se indica as principais estatísticas obtidas: F(3,143) = 8.231, p &lt; 0.01.</p>
+<p>No entanto, o que essa constatação está realmente dizendo é que houve uma comparação entre dois modelos, um que usou os resultados da variável “escolaridade” para prever os resultados obtidos pelo TEG (chamado de Modelo aumentado) e outro que usou apenas a média que o TEG (chamado de modelo compacto ou nulo neste caso). O resultado significativo indica que a inclusão da “escolaridade” no modelo testadofoi significativamente capaz de reduzir o erro de previsão que o modelo nulo obteve (em ingles Proportional Reduction in Error ou PRE).</p>
+<p>De fato, quando isso ocorre, a busca por possíveis diferenças entre <u>todas as comparações possíveis</u> costuma ser feita por testes post hocs.</p>
+<p>Entretanto, é importante mencionar que que se uma ANOVA é significativa, isso não significa necessariamente que haverá alguma diferença <u>entre as médias dos grupos</u>. Tecnicamente, a diferença pode ocorrer em qualquer comparação possível, como grupo 1 contra grupos 2 + grupo 3 ou grupo 2 contra grupo 1+3. Dessa forma, o resultado geral da ANOVA e testes post-hoc respondem questões diferentes e é possível realizar qualquer comparação múltipla sem sequer realizar a ANOVA, desde que os resultados sejam devidamente corrigidos se alguns pressupostos sobre os constrastes forem aceitos.</p>
+<p>Uma vez que realizar uma ANOVA não é tecnicamente necessário para realização de comparações pareadas, é possível que alguém se pergunte qual é, então, a necessidade da realização deste primeiro teste. De fato, hoje em dia, a realização da ANOVA ocorre mais para que o pesquisador (i) consiga realizar computacionalmente todas as comparações pareadas entre as categorias da variável e, em seguida, (ii) corrigir adequadamente o valor de P obtido em cada computação.</p>
+<p>Isso dito, uma vez que a<code>escolaridade</code> foi significativa, as principais comparações serão testadas dois a dois. Sempre que múltiplas que comparações são realizadas, é necessário ajustar o valor de P. Repare que a quantidade de comparações pode ser calculada da seguinte forma:</p>
 <p><span class="math display">\[ J*(\frac{J-1}2) \]</span> , onde
 <span class="math inline">\(J\)</span> é a quantidade de níveis da variável</p>
 <p>Nesse caso:</p>
@@ -413,12 +450,13 @@ Superior
 </div>
 </div>
 <div id="post-hoc" class="section level2">
-<h2><span class="header-section-number">4.4</span> Post-hoc</h2>
+<h2><span class="header-section-number">4.4</span> Post hoc</h2>
+<p>Assim como exposto, a mecanica do por detrás do post hoc é a comparação pareada das commbinações do fator, seguida pelo ajuste do valor de P. Existem muitas técnicas para tal ajuste e elas costumam ser agrupadas em função da sua robustez à violação da homocedasticidade.</p>
+<p>O resultado das comparações dois a dois será armazenado em um objeto específico, nomeado como <code>post_hoc_escolaridade</code>. Isso será útil para apresentar sumários e gráficos. O sumário ajustará o valor de p pela técnica Bonferroni, que multiplica o valor bruto encontrado pela quantidade de comparações.</p>
 <div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1"><span class="kw">library</span>(emmeans)</a></code></pre></div>
 <pre><code>## Warning: package &#39;emmeans&#39; was built under R version 3.6.3</code></pre>
-<p>Para comparação pareada, o resultado será armazenado em um objeto específico nomeado como <code>post_hoc_escolaridade</code>. Isso será útil para apresentar sumários e gráficos. O sumário ajustará o valor de p pela técnica Bonferroni, que multiplica o valor bruto encontrado pela quantidade de comparações.</p>
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1">post_hoc_escolaridade &lt;-<span class="st"> </span><span class="kw">emmeans</span>(mod_escolaridade, <span class="st">&quot;escolaridade&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pairs</span>(., <span class="dt">reverse =</span> <span class="ot">TRUE</span>, <span class="dt">adjust =</span> <span class="st">&quot;bonferroni&quot;</span>)</a></code></pre></div>
-<p>Os resultados são significativos na comparação <code>Superior - Primário</code>, <code>Superior - Ginásio</code> e <code>Superior - Colegial</code> e o gráfico a seguir será feito pelo <code>ggplot2</code>, com adição das barras de erro. Apesar de ambas as apresentações terem o mesmo conteúdo, o gráfico tem interpretação mais rápida e simples para todas as audiências.</p>
+<p>Tal como feito até agora, o gráfico inicial dsa comparações será realizado.</p>
 <div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1">CI &lt;-<span class="st"> </span><span class="kw">confint</span>(post_hoc_escolaridade)</a>
 <a class="sourceLine" id="cb82-2" title="2"><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(contrast, estimate)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb82-3" title="3"><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> lower.CL, <span class="dt">ymax =</span> upper.CL), <span class="dt">data =</span> CI) <span class="op">+</span></a>
@@ -427,6 +465,7 @@ Superior
 <a class="sourceLine" id="cb82-6" title="6"><span class="st">  </span><span class="kw">scale_size</span>(<span class="dt">trans =</span> <span class="st">&quot;reverse&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb82-7" title="7"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-60-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Os resultados são significativos na comparação <code>Superior - Primário</code>, <code>Superior - Ginásio</code> e <code>Superior - Colegial</code> e o gráfico a seguir será feito pelo <code>ggplot2</code>, com adição das barras de erro. Apesar de ambas as apresentações terem o mesmo conteúdo, o gráfico tem interpretação mais rápida e simples para todas as audiências.</p>
 <p>A esse momento, a escrita é fundamental:</p>
 <div class="writing">
 <p>
