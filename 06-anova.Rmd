@@ -46,6 +46,14 @@ Todos os pressupostos dos modelos linares são mantidos e o mnemônico LINE auxi
 
 É importante atentar que assumir média 0 $E(\epsilon|x)=0$, também implica que a correlação do erro com as variáveis é nula. Operacionalmente, o erro representa <u>todos os fatores de pesquisa</u> e problemas de medição que afetam o resultado além das variáveis independentes consideradas na modelagem.
 
+
+Da mesma forma que feito em outros capítulos, a tabela abaixo concatena os testes estatísticos relacionados quando os pressupostos são violados. Para fins de comparação com outros trabalhos, há autores que sugerem que se use sempre as versões não-paramétricas em resultados obtidos por processos de avaliação psicológica, arguindo que os dados têm nível de medida "ordinal".
+
+  | Versão do teste | Um ou mais fatores |  Momentos repetidos             |  
+  | :-----------    | :-----------       | :-----------                    |        
+  | Paramétrica     | Anova de k via(s)  |  Anova de medidas repetidas     |   
+  | Não-paramétrica | Kruskal-Wallis     |  Teste de Friedman ou Page Test |   
+
 A ANOVA tem diversas características de modelagem que serão descritas na seção a seguir,
 
 ## Legenda
@@ -104,7 +112,7 @@ Uma vez que os itens de um instrumento sociodemográfico devem levar em consider
 As hipóteses precisam ser descritas:
 
 $$H_0 = \mu_{escolaridade_i} - \mu_{escolaridae_j} = 0 \\ H_a = c.c \\ \alpha = 0.05$$
-Aqui, o subscrito $i$ e $j$ foi utilizado para apresentar a diferença entre todas as combinações lineares possívies.
+Aqui, o subscrito $i$ e $j$ foi utilizado de maneira liberal para apresentar a diferença entre todas as combinações lineares possíveis.
 
 Em seguida, a apresentação tabular das médias e desvios-padrão pode ser realizada.
 
@@ -122,7 +130,7 @@ Tal como ilustrado no decorrer dos outros capítulos, gráficos são fundamentai
 ggplot(dados_teg, aes(x=escolaridade, y = teg, fill = escolaridade)) +
   geom_bar(stat = "summary") +
   stat_summary(fun.data = mean_se, geom = "errorbar") +
-  theme(legend.position = "bottom")
+  theme(legend.position = "none")
 ```
 
 
@@ -152,7 +160,7 @@ ggplot(fortify(mod_escolaridade), aes(.resid)) +
       geom_density(aes(y= ..count..))
 ```
 
-O teste formal pode ser feito via `shapiro wilk`. Tal como no teste T, a $H_0$ desse teste assume normalidade e, idealmente, não deve ser rejeitada.
+O teste formal pode ser feito via shapiro-wilk. Tal como no teste T, a $H_0$ desse teste assume normalidade e, idealmente, não deve ser rejeitada.
 
 ```{r}
 shapiro.test(residuals(mod_escolaridade))
@@ -160,7 +168,7 @@ shapiro.test(residuals(mod_escolaridade))
 
 Uma vez que o valor foi menor do que o previamente estipulado ao $\alpha$, é possível concluir que o pressuposto da normalidade foi violado. situações como essa são muito frequentes. Na literatura, são presentes recomendações de ajuste dos dados por alguma função `g(.)` ou tornar mais severo o valor de p na interpretação dos resultados. Por exemplo, em vez de 0.05, usar 0.01.
 
-A homocedasticidade pode ser verificada por um gráfico dos resíduos dado valores previstos. O ideal é não encontrar padrões no gráfico.
+A homocedasticidade pode ser verificada por um gráfico dos resíduos contra os valores previstos. O ideal é não encontrar padrões no gráfico.
 
 ```{r}
 ggplot(fortify(mod_escolaridade), aes(x=.fitted, y=.resid)) + 
@@ -184,7 +192,8 @@ A homocedasticidade foi assumida. Dessa maneira, mesmo com a violação da norma
   | Resíduo           | Dentro (SSW)      | N-k                 |  MSW = SSW/ N-K |               |
   | Total             | Total (SQT)       | N-1                 |  
 
-Repare que,a este momento, os aspectos são apenas apresentados conceitualmente e não matematicamente. Em outro momento, aspectos da decomposição da variância serão também descritos.
+
+Aqui, K significa quantidade de categorias dentro de um fator e N significa a quantidade de observações consideradas. As siglas em inglês são comumeiramente utilizadas falar falar da "Soma dos quadrados entre os grupos" (SSB), "Soma dos quadrados dentro dos grupos" (SSW), "Quadrado médio entre grupos" (MSB) e "Quadrado médio dentro dos grupos" (MSW). Repare também que,a este momento, os aspectos são apenas apresentados conceitualmente e não matematicamente. Em outro momento, aspectos da decomposição da variância serão também descritos.
 
 
 ```{r}
