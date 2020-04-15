@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 4 ANOVA | Métodos quantitativos em Psicologia com R e Rstudio</title>
-  <meta name="description" content="This GitBook is an example of a GitBook for teaching. It can be adapted for specific courses. The output format for this example is bookdown::gitbook." />
+  <title>Capítulo 4 ANOVA | Métodos quantitativos em Psicologia com R</title>
+  <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 4 ANOVA | Métodos quantitativos em Psicologia com R e Rstudio" />
+  <meta property="og:title" content="Capítulo 4 ANOVA | Métodos quantitativos em Psicologia com R" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This GitBook is an example of a GitBook for teaching. It can be adapted for specific courses. The output format for this example is bookdown::gitbook." />
+  <meta property="og:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   <meta name="github-repo" content="cjvanlissa/gitbook-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 4 ANOVA | Métodos quantitativos em Psicologia com R e Rstudio" />
+  <meta name="twitter:title" content="Capítulo 4 ANOVA | Métodos quantitativos em Psicologia com R" />
   
-  <meta name="twitter:description" content="This GitBook is an example of a GitBook for teaching. It can be adapted for specific courses. The output format for this example is bookdown::gitbook." />
+  <meta name="twitter:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   
 
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2020-04-13" />
+<meta name="date" content="2020-04-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -188,7 +188,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Métodos quantitativos em Psicologia com R e Rstudio</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Métodos quantitativos em Psicologia com R</a>
           </h1>
         </div>
 
@@ -221,6 +221,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Todos os pressupostos dos modelos linares são mantidos e o mnemônico LINE auxilia a resgatar todos eles. Assume-se que o erro é independente e identicamente distribuído (<span class="math inline">\(iid\)</span>), distribuído normalmente com média 0 e variância constante <span class="math inline">\(\sigma^2\)</span>, ou seja: <span class="math display">\[ \epsilon\stackrel{iid}{\sim} \mathcal{N}(\mu,\,\sigma^{2})\,\]</span> Além de homocedástico: <span class="math display">\[ VAR(\epsilon |x_1,x_2,...,x_k)=\sigma^2 \]</span>.<br />
 <code>iid</code>ainda signica erros descorrelatados <span class="math display">\[ COV(\epsilon_1,\epsilon_j)=0 \]</span>.</p>
 <p>É importante atentar que assumir média 0 <span class="math inline">\(E(\epsilon|x)=0\)</span>, também implica que a correlação do erro com as variáveis é nula. Operacionalmente, o erro representa <u>todos os fatores de pesquisa</u> e problemas de medição que afetam o resultado além das variáveis independentes consideradas na modelagem.</p>
+<p>Da mesma forma que feito em outros capítulos, a tabela abaixo concatena os testes estatísticos relacionados quando os pressupostos são violados. Para fins de comparação com outros trabalhos, há autores que sugerem que se use sempre as versões não-paramétricas em resultados obtidos por processos de avaliação psicológica, arguindo que os dados têm nível de medida “ordinal”.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Versão do teste</th>
+<th align="left">Um ou mais fatores</th>
+<th align="left">Momentos repetidos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Paramétrica</td>
+<td align="left">Anova de k via(s)</td>
+<td align="left">Anova de medidas repetidas</td>
+</tr>
+<tr class="even">
+<td align="left">Não-paramétrica</td>
+<td align="left">Kruskal-Wallis</td>
+<td align="left">Teste de Friedman ou Page Test</td>
+</tr>
+</tbody>
+</table>
 <p>A ANOVA tem diversas características de modelagem que serão descritas na seção a seguir,</p>
 <div id="legenda" class="section level2">
 <h2><span class="header-section-number">4.1</span> Legenda</h2>
@@ -263,7 +285,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Uma vez que os itens de um instrumento sociodemográfico devem levar em consideração o contexto das pessoas avaliadas e, as categorias de escolaridade foram definidas como as apresentadas. Primário significa escolaridade até o 5º ano, ginásio significa escolaridade até o 9º ano e colegial é equivalente ao ensino médio.</p>
 <p>As hipóteses precisam ser descritas:</p>
 <p><span class="math display">\[H_0 = \mu_{escolaridade_i} - \mu_{escolaridae_j} = 0 \\ H_a = c.c \\ \alpha = 0.05\]</span>
-Aqui, o subscrito <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span> foi utilizado para apresentar a diferença entre todas as combinações lineares possívies.</p>
+Aqui, o subscrito <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span> foi utilizado de maneira liberal para apresentar a diferença entre todas as combinações lineares possíveis.</p>
 <p>Em seguida, a apresentação tabular das médias e desvios-padrão pode ser realizada.</p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1">dados_teg <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb68-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(escolaridade) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -349,7 +371,7 @@ Superior
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1"><span class="kw">ggplot</span>(dados_teg, <span class="kw">aes</span>(<span class="dt">x=</span>escolaridade, <span class="dt">y =</span> teg, <span class="dt">fill =</span> escolaridade)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb69-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb69-3" title="3"><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb69-4" title="4"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb69-4" title="4"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-51-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>A visualização dos resultados já permite identificar algumas caracteríticas gerais. Primeiro, quão maior a escolaridade, maior o o valor obtido na escala. Segundo, algumas barras de erros estão superpostas e outras não, o que nos leva à conclusão preliminar de que resultados significativos estarão presentes na próxima etapa, que é a modelagem formal dessa hipótese.</p>
 <p>A modelagem formal irá contemplar n-1 níveis dos preditores e estipulará no intercepto o nível de referência. Dessa maneira:</p>
@@ -365,7 +387,7 @@ Superior
 <a class="sourceLine" id="cb71-2" title="2"><span class="st">      </span><span class="kw">geom_histogram</span>(<span class="dt">colour=</span><span class="st">&quot;black&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;grey&quot;</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb71-3" title="3"><span class="st">      </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(<span class="dt">y=</span> ..count..))</a></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-53-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>O teste formal pode ser feito via <code>shapiro wilk</code>. Tal como no teste T, a <span class="math inline">\(H_0\)</span> desse teste assume normalidade e, idealmente, não deve ser rejeitada.</p>
+<p>O teste formal pode ser feito via shapiro-wilk. Tal como no teste T, a <span class="math inline">\(H_0\)</span> desse teste assume normalidade e, idealmente, não deve ser rejeitada.</p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="kw">shapiro.test</span>(<span class="kw">residuals</span>(mod_escolaridade))</a></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
@@ -373,7 +395,7 @@ Superior
 ## data:  residuals(mod_escolaridade)
 ## W = 0.97502, p-value = 0.008721</code></pre>
 <p>Uma vez que o valor foi menor do que o previamente estipulado ao <span class="math inline">\(\alpha\)</span>, é possível concluir que o pressuposto da normalidade foi violado. situações como essa são muito frequentes. Na literatura, são presentes recomendações de ajuste dos dados por alguma função <code>g(.)</code> ou tornar mais severo o valor de p na interpretação dos resultados. Por exemplo, em vez de 0.05, usar 0.01.</p>
-<p>A homocedasticidade pode ser verificada por um gráfico dos resíduos dado valores previstos. O ideal é não encontrar padrões no gráfico.</p>
+<p>A homocedasticidade pode ser verificada por um gráfico dos resíduos contra os valores previstos. O ideal é não encontrar padrões no gráfico.</p>
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="kw">ggplot</span>(<span class="kw">fortify</span>(mod_escolaridade), <span class="kw">aes</span>(<span class="dt">x=</span>.fitted, <span class="dt">y=</span>.resid)) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb74-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb74-3" title="3"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>)</a></code></pre></div>
@@ -419,7 +441,7 @@ Superior
 </tr>
 </tbody>
 </table>
-<p>Repare que,a este momento, os aspectos são apenas apresentados conceitualmente e não matematicamente. Em outro momento, aspectos da decomposição da variância serão também descritos.</p>
+<p>Aqui, K significa quantidade de categorias dentro de um fator e N significa a quantidade de observações consideradas. As siglas em inglês são comumeiramente utilizadas falar falar da “Soma dos quadrados entre os grupos” (SSB), “Soma dos quadrados dentro dos grupos” (SSW), “Quadrado médio entre grupos” (MSB) e “Quadrado médio dentro dos grupos” (MSW). Repare também que,a este momento, os aspectos são apenas apresentados conceitualmente e não matematicamente. Em outro momento, aspectos da decomposição da variância serão também descritos.</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1">apaTables<span class="op">::</span><span class="kw">apa.aov.table</span>(mod_escolaridade)</a></code></pre></div>
 <pre><code>## 
 ## 
