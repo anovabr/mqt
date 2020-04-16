@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 4 ANOVA | Métodos quantitativos em Psicologia com R</title>
+  <title>Capítulo 5 ANOVA | Métodos quantitativos em Psicologia com R</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 4 ANOVA | Métodos quantitativos em Psicologia com R" />
+  <meta property="og:title" content="Capítulo 5 ANOVA | Métodos quantitativos em Psicologia com R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="cjvanlissa/gitbook-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 4 ANOVA | Métodos quantitativos em Psicologia com R" />
+  <meta name="twitter:title" content="Capítulo 5 ANOVA | Métodos quantitativos em Psicologia com R" />
   
   <meta name="twitter:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   
@@ -140,43 +140,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#objetivo"><i class="fa fa-check"></i><b>1.1</b> Objetivo</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#bases"><i class="fa fa-check"></i><b>1.2</b> Bases</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#pacotes-e-sintaxes"><i class="fa fa-check"></i><b>1.3</b> Pacotes e sintaxes</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#aspectos-gerais"><i class="fa fa-check"></i><b>1.4</b> Aspectos gerais</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html"><i class="fa fa-check"></i><b>2</b> Estatística Descritiva</a><ul>
-<li class="chapter" data-level="2.1" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#pesquisa"><i class="fa fa-check"></i><b>2.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="2.2" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#condições-gerais"><i class="fa fa-check"></i><b>2.2</b> Condições gerais</a></li>
-<li class="chapter" data-level="2.3" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>2.3</b> Verbos do dplyr</a></li>
-<li class="chapter" data-level="2.4" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#tabelas"><i class="fa fa-check"></i><b>2.4</b> Tabelas</a></li>
-<li class="chapter" data-level="2.5" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#gráficos"><i class="fa fa-check"></i><b>2.5</b> Gráficos</a></li>
-<li class="chapter" data-level="2.6" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-discreta"><i class="fa fa-check"></i><b>2.6</b> 1 variável discreta</a></li>
-<li class="chapter" data-level="2.7" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-contínua"><i class="fa fa-check"></i><b>2.7</b> 1 variável contínua</a></li>
-<li class="chapter" data-level="2.8" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-discreta-e-vd-contínua"><i class="fa fa-check"></i><b>2.8</b> 2 variáveis com VI discreta (e VD contínua)</a></li>
-<li class="chapter" data-level="2.9" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-contínua-e-vd-contínua"><i class="fa fa-check"></i><b>2.9</b> 2 variáveis com VI contínua (e VD contínua)</a></li>
-<li class="chapter" data-level="2.10" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#outros-gráficos-e-configurações"><i class="fa fa-check"></i><b>2.10</b> Outros gráficos e configurações</a></li>
-<li class="chapter" data-level="2.11" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#resumo"><i class="fa fa-check"></i><b>2.11</b> Resumo</a></li>
+<li class="chapter" data-level="2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html"><i class="fa fa-check"></i><b>2</b> Aspectos gerais</a></li>
+<li class="chapter" data-level="3" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html"><i class="fa fa-check"></i><b>3</b> Estatística Descritiva</a><ul>
+<li class="chapter" data-level="3.1" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#pesquisa"><i class="fa fa-check"></i><b>3.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="3.2" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#condições-gerais"><i class="fa fa-check"></i><b>3.2</b> Condições gerais</a></li>
+<li class="chapter" data-level="3.3" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>3.3</b> Verbos do dplyr</a></li>
+<li class="chapter" data-level="3.4" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#tabelas"><i class="fa fa-check"></i><b>3.4</b> Tabelas</a></li>
+<li class="chapter" data-level="3.5" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#gráficos"><i class="fa fa-check"></i><b>3.5</b> Gráficos</a></li>
+<li class="chapter" data-level="3.6" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-discreta"><i class="fa fa-check"></i><b>3.6</b> 1 variável discreta</a></li>
+<li class="chapter" data-level="3.7" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-contínua"><i class="fa fa-check"></i><b>3.7</b> 1 variável contínua</a></li>
+<li class="chapter" data-level="3.8" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-discreta-e-vd-contínua"><i class="fa fa-check"></i><b>3.8</b> 2 variáveis com VI discreta (e VD contínua)</a></li>
+<li class="chapter" data-level="3.9" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-contínua-e-vd-contínua"><i class="fa fa-check"></i><b>3.9</b> 2 variáveis com VI contínua (e VD contínua)</a></li>
+<li class="chapter" data-level="3.10" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#outros-gráficos-e-configurações"><i class="fa fa-check"></i><b>3.10</b> Outros gráficos e configurações</a></li>
+<li class="chapter" data-level="3.11" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#resumo"><i class="fa fa-check"></i><b>3.11</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="teste-t.html"><a href="teste-t.html"><i class="fa fa-check"></i><b>3</b> Teste T</a><ul>
-<li class="chapter" data-level="3.1" data-path="teste-t.html"><a href="teste-t.html#pesquisa-1"><i class="fa fa-check"></i><b>3.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="3.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-r"><i class="fa fa-check"></i><b>3.2</b> Execução no R</a></li>
-<li class="chapter" data-level="3.3" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito"><i class="fa fa-check"></i><b>3.3</b> Tamanho do efeito</a></li>
-<li class="chapter" data-level="3.4" data-path="teste-t.html"><a href="teste-t.html#versão-robusta-do-teste-t"><i class="fa fa-check"></i><b>3.4</b> Versão robusta do teste T</a></li>
-<li class="chapter" data-level="3.5" data-path="teste-t.html"><a href="teste-t.html#mann-whitney"><i class="fa fa-check"></i><b>3.5</b> Mann-whitney</a></li>
-<li class="chapter" data-level="3.6" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>3.6</b> Teste T e regressão</a></li>
-<li class="chapter" data-level="3.7" data-path="teste-t.html"><a href="teste-t.html#aspectos-matemáticos"><i class="fa fa-check"></i><b>3.7</b> Aspectos matemáticos</a></li>
-<li class="chapter" data-level="3.8" data-path="teste-t.html"><a href="teste-t.html#resumo-1"><i class="fa fa-check"></i><b>3.8</b> Resumo</a></li>
+<li class="chapter" data-level="4" data-path="teste-t.html"><a href="teste-t.html"><i class="fa fa-check"></i><b>4</b> Teste T</a><ul>
+<li class="chapter" data-level="4.1" data-path="teste-t.html"><a href="teste-t.html#pesquisa-1"><i class="fa fa-check"></i><b>4.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="4.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-r"><i class="fa fa-check"></i><b>4.2</b> Execução no R</a></li>
+<li class="chapter" data-level="4.3" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito"><i class="fa fa-check"></i><b>4.3</b> Tamanho do efeito</a></li>
+<li class="chapter" data-level="4.4" data-path="teste-t.html"><a href="teste-t.html#versão-robusta-do-teste-t"><i class="fa fa-check"></i><b>4.4</b> Versão robusta do teste T</a></li>
+<li class="chapter" data-level="4.5" data-path="teste-t.html"><a href="teste-t.html#mann-whitney"><i class="fa fa-check"></i><b>4.5</b> Mann-whitney</a></li>
+<li class="chapter" data-level="4.6" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>4.6</b> Teste T e regressão</a></li>
+<li class="chapter" data-level="4.7" data-path="teste-t.html"><a href="teste-t.html#aspectos-matemáticos"><i class="fa fa-check"></i><b>4.7</b> Aspectos matemáticos</a></li>
+<li class="chapter" data-level="4.8" data-path="teste-t.html"><a href="teste-t.html#resumo-1"><i class="fa fa-check"></i><b>4.8</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>4</b> ANOVA</a><ul>
-<li class="chapter" data-level="4.1" data-path="anova.html"><a href="anova.html#legenda"><i class="fa fa-check"></i><b>4.1</b> Legenda</a></li>
-<li class="chapter" data-level="4.2" data-path="anova.html"><a href="anova.html#pesquisa-2"><i class="fa fa-check"></i><b>4.2</b> Pesquisa</a></li>
-<li class="chapter" data-level="4.3" data-path="anova.html"><a href="anova.html#anova-de-1-via"><i class="fa fa-check"></i><b>4.3</b> ANOVA de 1 via</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="anova.html"><a href="anova.html#execução-no-r-1"><i class="fa fa-check"></i><b>4.3.1</b> Execução no R</a></li>
-<li class="chapter" data-level="4.3.2" data-path="anova.html"><a href="anova.html#post-hoc"><i class="fa fa-check"></i><b>4.3.2</b> Post hoc</a></li>
+<li class="chapter" data-level="5" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>5</b> ANOVA</a><ul>
+<li class="chapter" data-level="5.1" data-path="anova.html"><a href="anova.html#legenda"><i class="fa fa-check"></i><b>5.1</b> Legenda</a></li>
+<li class="chapter" data-level="5.2" data-path="anova.html"><a href="anova.html#pesquisa-2"><i class="fa fa-check"></i><b>5.2</b> Pesquisa</a></li>
+<li class="chapter" data-level="5.3" data-path="anova.html"><a href="anova.html#anova-de-1-via"><i class="fa fa-check"></i><b>5.3</b> ANOVA de 1 via</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="anova.html"><a href="anova.html#execução-no-r-1"><i class="fa fa-check"></i><b>5.3.1</b> Execução no R</a></li>
+<li class="chapter" data-level="5.3.2" data-path="anova.html"><a href="anova.html#post-hoc"><i class="fa fa-check"></i><b>5.3.2</b> Post hoc</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="anova.html"><a href="anova.html#anova-de-2-vias"><i class="fa fa-check"></i><b>4.4</b> ANOVA de 2 vias</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="anova.html"><a href="anova.html#execução-no-r-2"><i class="fa fa-check"></i><b>4.4.1</b> Execução no R</a></li>
+<li class="chapter" data-level="5.4" data-path="anova.html"><a href="anova.html#anova-de-2-vias"><i class="fa fa-check"></i><b>5.4</b> ANOVA de 2 vias</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="anova.html"><a href="anova.html#execução-no-r-2"><i class="fa fa-check"></i><b>5.4.1</b> Execução no R</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="anova.html"><a href="anova.html#anova-fatorial"><i class="fa fa-check"></i><b>4.5</b> ANOVA Fatorial</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="anova.html"><a href="anova.html#execução-no-r-3"><i class="fa fa-check"></i><b>4.5.1</b> Execução no R</a></li>
+<li class="chapter" data-level="5.5" data-path="anova.html"><a href="anova.html#anova-fatorial"><i class="fa fa-check"></i><b>5.5</b> ANOVA Fatorial</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="anova.html"><a href="anova.html#execução-no-r-3"><i class="fa fa-check"></i><b>5.5.1</b> Execução no R</a></li>
+<li class="chapter" data-level="5.5.2" data-path="anova.html"><a href="anova.html#post-hoc-1"><i class="fa fa-check"></i><b>5.5.2</b> Post hoc</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -200,7 +201,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="anova" class="section level1">
-<h1><span class="header-section-number">Capítulo 4</span> ANOVA</h1>
+<h1><span class="header-section-number">Capítulo 5</span> ANOVA</h1>
 <div class="objectives">
 <p>
 <strong>Objetivos do capítulo</strong><br />
@@ -248,7 +249,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>A ANOVA tem diversas características de modelagem que serão descritas na seção a seguir,</p>
 <div id="legenda" class="section level2">
-<h2><span class="header-section-number">4.1</span> Legenda</h2>
+<h2><span class="header-section-number">5.1</span> Legenda</h2>
 <p>Diferentes termos são empregados em uma ANOVA. A legenda a seguir visa auxiliar no entendimento de cada um deles e aproximar o leitor a conceitos amplos utilizados em modelos lineares:</p>
 <div class="writing">
 <p>
@@ -263,17 +264,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Por heurística, se escreve os delinementos estudados por uma ANOVA com <span class="math inline">\(\eta\)</span>. Se, por exemplo, o interesse seja o de verificar o efeito do sexo (masculino ou feminino) e da escolaridade (fundamental, médio e superior), a representação será <span class="math inline">\(\eta = 2 \times 3\)</span>. Isso significa que a ANOVA tem dois fatores (sexo e escolaridade) e o primeiro fator tem dois níveis e o segundo tem 3 níveis.</p>
 </div>
 <div id="pesquisa-2" class="section level2">
-<h2><span class="header-section-number">4.2</span> Pesquisa</h2>
+<h2><span class="header-section-number">5.2</span> Pesquisa</h2>
 <div class="alert alert-info" role="alert">
 <p><strong>Base: </strong> Livro - R - TEG</p>
 </div>
 <p>Neste capítulo, vamos utilizar a pesquisa intitulada “A relação entre o nível de Empreendedorismo (TEG) e os aspectos sociodemográficos dos Taxistas cooperados da cidade de Santo André/São Paulo, Brasil”, publicada em 2016 na Revista Eletrônica de Gestão e Serviços, em que sou co-autor. O objetivo dessa pesquisa foi identificar o nível de empreendedorismo em 147 taxistas de Santo André/SP, bem como averiguá-lo em associação aos aspectos sociodemográficos. A base contém 14 variáveis, sendo 6 variáveis da escala utilizada para avaliação do empreendedorismo e 8 variáveis gerais, incluindo aqui os aspectos sociodemográficos, como sexo e escolaridade. Essa base será utilizada para realizar uma ANOVA de 1 via, 2 vias e uma ANOVA fatorial.</p>
 </div>
 <div id="anova-de-1-via" class="section level2">
-<h2><span class="header-section-number">4.3</span> ANOVA de 1 via</h2>
+<h2><span class="header-section-number">5.3</span> ANOVA de 1 via</h2>
 <p>A pergunta que temos agora é sobre o possível efeito da <code>escolaridade</code> na Tendência Empreendedora Geral (<code>teg</code>). Trata-se de uma ANOVA de 1 via, dado que existe apenas uma VI, com mais de 2 níveis.</p>
 <div id="execução-no-r-1" class="section level3">
-<h3><span class="header-section-number">4.3.1</span> Execução no R</h3>
+<h3><span class="header-section-number">5.3.1</span> Execução no R</h3>
 <p>Ao trabalhar no R, é <u>fundamental</u> se certificar que os tipos das variáveis estão corretamente definidos em função da escala de medida utilizada. Erros nessa etapa podem gerar resultados absolutamente incorretos. A escolaridade é uma variável categórica (ordinal, tratada como discreta) e é necessário definir claramente isso ao R antes da análise propriamente dita.</p>
 <p>Isso pode ser feito pela função <code>case_when</code> e <code>levels</code>. O <code>case_when</code> irá substituir os valores originalmente presentes nessa variável e o <code>levels</code> deixará claro a ordem de cada categoria, o que é útil para que os gráficos sejam feitos corretamente.</p>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1">dados_teg &lt;-<span class="st"> </span>dados_teg <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -474,7 +475,7 @@ Superior
 <p>Para a comparação pareada, o pacote <code>emmeans</code> será utilizado.</p>
 </div>
 <div id="post-hoc" class="section level3">
-<h3><span class="header-section-number">4.3.2</span> Post hoc</h3>
+<h3><span class="header-section-number">5.3.2</span> Post hoc</h3>
 <p>A mecanica do por detrás do post hoc é a comparação pareada de todos os níveis presentes no fator, seguido pelo ajuste do valor de P. Existem muitas técnicas para tal ajuste e elas costumam ser agrupadas em função da sua robustez à violação da homocedasticidade. Para fins práticos, vamos utilizar uma técnica considerada bastante conservadora, chamada de Bonferroni, que multiplica o valor bruto encontrado pela quantidade de comparações.</p>
 <p>O resultado das comparações dois a dois será armazenado em um objeto específico, nomeado como <code>post_hoc_escolaridade</code>. Isso será útil para apresentar sumários e gráficos.</p>
 <div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1"><span class="kw">library</span>(emmeans)</a></code></pre></div>
@@ -651,10 +652,10 @@ Os dados foram analisados a partir de uma ANOVA de uma via investigando o efeito
 </div>
 </div>
 <div id="anova-de-2-vias" class="section level2">
-<h2><span class="header-section-number">4.4</span> ANOVA de 2 vias</h2>
+<h2><span class="header-section-number">5.4</span> ANOVA de 2 vias</h2>
 <p>Frequentemente, o interesse do pesquisador está em investigar como múltiplos fatores afetam a variável de interesse. Ao aumentar o número de variáveis independentes no modelo, se aumenta a quantidade de vias que a ANOVA possui. Se, por exemplo, a investigação visasse testar o efeito da <u>escolaridade</u> e do <u>sexo</u> no <u>empreendedorismo</u>, teríamos, por definição, uma ANOVA de duas vias. É fundamental atentar que essa modelage inicialmente considera apenas os efeitos principais dos fatores e não assume ou modela uma possível interação entre os preditores.</p>
 <div id="execução-no-r-2" class="section level3">
-<h3><span class="header-section-number">4.4.1</span> Execução no R</h3>
+<h3><span class="header-section-number">5.4.1</span> Execução no R</h3>
 <p>Após a escrita adequada da hipótese, a modelagem segue o mesmo padrão da feita anteriormente, iniciando pela definição correta do tipo de variável em relação à sua escala de medida.</p>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1">dados_teg &lt;-<span class="st"> </span>dados_teg <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb84-2" title="2"><span class="st">  </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(sexo), <span class="kw">funs</span>(</a>
@@ -858,11 +859,8 @@ NaN
 ##                    
 ## 
 ## Note: Values in square brackets indicate the bounds of the 90% confidence interval for partial eta-squared</code></pre>
-<p>Os resultados continuam constantando o efeito da escolaridade (F(3, 142) = 8.24, p &lt; 0.01, ηp2 = 0.15, 90% CI [.06, .22]) no empreendedorismo, mas também concluiu que o efeito do sexo não é significativo (F(1, 142) = 0.816, p = 0.36, ηp2 = 0.01, 90% CI [.00, .04]). É importante ter atenção à forma de reportar os resultados, uma vez que delineamentos de dois fatores quase sempre produz coeficientes são diferentes do delineamento anterior. Assim, uma sugestão de escrita é a seguinte:</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1"><span class="co">#Apesar de não ter uma interpretação direta, o valor apresentado ao intercepto é o valor médio dos homens com escolaridade primária. Isso ocorre pois como há duas variáveis categóricas sendo analisadas, o valor utilizado para referência (ou seja, 0) do sexo foi para homens e este valor para escolaridade foi para aqueles com ensino primário.</span></a>
-<a class="sourceLine" id="cb89-2" title="2"></a>
-<a class="sourceLine" id="cb89-3" title="3">dados_teg <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(sexo <span class="op">==</span><span class="st"> &quot;Masculino&quot;</span> <span class="op">&amp;</span><span class="st"> </span>escolaridade <span class="op">==</span><span class="st"> &quot;Primário&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="kw">mean</span>(teg))</a>
-<a class="sourceLine" id="cb89-4" title="4"><span class="kw">summary</span>(<span class="kw">lm</span>(teg <span class="op">~</span><span class="st"> </span>escolaridade <span class="op">+</span><span class="st"> </span>sexo, dados_teg))<span class="op">$</span>coefficients[<span class="dv">1</span>,<span class="dv">1</span>] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">round</span>(.,<span class="dv">1</span>)</a></code></pre></div>
+<p>Os resultados continuam constantando o efeito da escolaridade (F(3, 142) = 8.24, p &lt; 0.01, ηp2 = 0.15, 90% CI [.06, .22]) no empreendedorismo, mas também concluiu que o efeito do sexo não é significativo (F(1, 142) = 0.816, p = 0.36, ηp2 = 0.01, 90% CI [.00, .04]). É importante ter atenção à forma de reportar os resultados, uma vez que delineamentos de dois fatores quase sempre produz coeficientes são diferentes do delineamento anterior. A análise post hoc que seria feita agora seria a mesma feita anteriormente e, em função disso, será suprimida.</p>
+<p>Uma sugestão de escrita desses resultados é a seguinte:</p>
 <div class="writing">
 <p>
 <strong>Como escrever os resultados</strong>
@@ -874,7 +872,7 @@ Os dados foram analisados a partir de uma ANOVA de duas vias investigando o efei
 </div>
 </div>
 <div id="anova-fatorial" class="section level2">
-<h2><span class="header-section-number">4.5</span> ANOVA Fatorial</h2>
+<h2><span class="header-section-number">5.5</span> ANOVA Fatorial</h2>
 <p>A ideia da ANOVA fatorial é provavelmente uma das mais frequentes em perguntas de pesquisas, que consistem em tentar saber se os fatores tem alguma interação entre si. Nesse sentido, a modelagem envolve o cálculo de um terceiro parâmetro para investigar essa relação. Dessa maneira:</p>
 <p><span class="math display">\[y_i = b_0 + b_1X{_1}_i + b_2X{_2}_i + b_3(X{_1}_i * X{_2}_i) + \epsilon_{i}\]</span></p>
 <p>Os coeficientes <span class="math inline">\(b_1\)</span> e <span class="math inline">\(b_2\)</span> estimam os efeitos principais, enquanto o <span class="math inline">\(b_3\)</span> estima o efeito da interação.</p>
@@ -886,22 +884,22 @@ Os dados foram analisados a partir de uma ANOVA de duas vias investigando o efei
 </ol>
 <p>Nessa pesquisa, tivemos o interesse em saber se o nível de empreendedorismo varia em função de uma interação entre <code>sexo</code> e <code>estado civil</code> (solteiro ou casado) dos participantes. Ou seja, se o nível de homens e mulheres variava em função deles(as) serem casados(as) ou não. Em áreas comportamentais, a interação entre o efeito estado civil e do sexo em características sociais é bastante estudado.</p>
 <div id="execução-no-r-3" class="section level3">
-<h3><span class="header-section-number">4.5.1</span> Execução no R</h3>
+<h3><span class="header-section-number">5.5.1</span> Execução no R</h3>
 <p>Como mencionado, é fundamental ajustar todas as características da base para que os resultados não sejam distorcidos em função de definições computacionais. Como nessa pesquisa, também permitimos que pessoas divorciadas e viuvas, uma opção para deixar as análises totalmente pareadas com a pergunta da pesquisa é criar uma base contendo apenas solteiros (originalmente codificados com 1) e casados (originalmente codificados como 2).</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1">base_interacao &lt;-<span class="st"> </span>dados_teg <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(estado_civil <span class="op">==</span><span class="st"> &quot;1&quot;</span> <span class="op">|</span><span class="st"> </span>estado_civil <span class="op">==</span><span class="st"> &quot;2&quot;</span>)</a>
-<a class="sourceLine" id="cb90-2" title="2">base_interacao &lt;-<span class="st"> </span>base_interacao <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb90-3" title="3"><span class="st">  </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(estado_civil), </a>
-<a class="sourceLine" id="cb90-4" title="4">    <span class="op">~</span><span class="kw">factor</span>(<span class="kw">case_when</span>(</a>
-<a class="sourceLine" id="cb90-5" title="5">      . <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">~</span><span class="st"> &quot;solteiro&quot;</span>,</a>
-<a class="sourceLine" id="cb90-6" title="6">      . <span class="op">==</span><span class="st"> </span><span class="dv">2</span> <span class="op">~</span><span class="st"> &quot;casado&quot;</span>), <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;solteiro&quot;</span>,<span class="st">&quot;casado&quot;</span>)))</a></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1">base_interacao &lt;-<span class="st"> </span>dados_teg <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(estado_civil <span class="op">==</span><span class="st"> &quot;1&quot;</span> <span class="op">|</span><span class="st"> </span>estado_civil <span class="op">==</span><span class="st"> &quot;2&quot;</span>)</a>
+<a class="sourceLine" id="cb89-2" title="2">base_interacao &lt;-<span class="st"> </span>base_interacao <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb89-3" title="3"><span class="st">  </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(estado_civil), </a>
+<a class="sourceLine" id="cb89-4" title="4">    <span class="op">~</span><span class="kw">factor</span>(<span class="kw">case_when</span>(</a>
+<a class="sourceLine" id="cb89-5" title="5">      . <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">~</span><span class="st"> &quot;solteiro&quot;</span>,</a>
+<a class="sourceLine" id="cb89-6" title="6">      . <span class="op">==</span><span class="st"> </span><span class="dv">2</span> <span class="op">~</span><span class="st"> &quot;casado&quot;</span>), <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;solteiro&quot;</span>,<span class="st">&quot;casado&quot;</span>)))</a></code></pre></div>
 <p>Agora o gráfico apresentado deve combinar as duas variáveis independentes, uma no eixo de X e outro no agrupamento. A escolha de como apresentar estas variáveis não deve ser aleatória, mas ser atrelada à forma da pergunta de pesquisa. Se o interesse for responder “Quanto o estado civil depende do sexo para gerar os resultados do TEG” sugere que em X coloque-se a variável “estado civíl” e no agrupamento a variáel "sexo.</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1"><span class="kw">ggplot</span>(base_interacao, <span class="kw">aes</span>(<span class="dt">x =</span> estado_civil, <span class="dt">y =</span> teg, <span class="dt">group =</span> sexo, <span class="dt">col=</span> sexo)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb91-2" title="2"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">size=</span><span class="dv">1</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb91-3" title="3"><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="dt">width=</span><span class="fl">0.1</span>, <span class="dt">size=</span><span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1"><span class="kw">ggplot</span>(base_interacao, <span class="kw">aes</span>(<span class="dt">x =</span> estado_civil, <span class="dt">y =</span> teg, <span class="dt">group =</span> sexo, <span class="dt">col=</span> sexo)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb90-2" title="2"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">size=</span><span class="dv">1</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb90-3" title="3"><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="dt">width=</span><span class="fl">0.1</span>, <span class="dt">size=</span><span class="dv">1</span>)</a></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-70-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O gráfico indica que existe um efeito de interação, uma vez que as linhas se cruzam. No entanto, o teste formal deve ser feito. Da mesma forma do realizado anteriormente, a modelagem omitirá a verificação dos pressupostos, que foi apresentada em etapa inicial.</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1">mod_int_sexo_civil &lt;-<span class="st"> </span><span class="kw">lm</span>(teg <span class="op">~</span><span class="st"> </span>sexo <span class="op">*</span><span class="st"> </span>estado_civil, base_interacao)</a>
-<a class="sourceLine" id="cb92-2" title="2">apaTables<span class="op">::</span><span class="kw">apa.aov.table</span>(mod_int_sexo_civil)</a></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1">mod_int_sexo_civil &lt;-<span class="st"> </span><span class="kw">lm</span>(teg <span class="op">~</span><span class="st"> </span>sexo <span class="op">*</span><span class="st"> </span>estado_civil, base_interacao)</a>
+<a class="sourceLine" id="cb91-2" title="2">apaTables<span class="op">::</span><span class="kw">apa.aov.table</span>(mod_int_sexo_civil)</a></code></pre></div>
 <pre><code>## 
 ## 
 ## ANOVA results using teg as the dependent variable
@@ -922,13 +920,15 @@ Os dados foram analisados a partir de uma ANOVA de duas vias investigando o efei
 ## 
 ## Note: Values in square brackets indicate the bounds of the 90% confidence interval for partial eta-squared</code></pre>
 <p>A leitura da tabela começa de cima para baixo, ou seja, pela interação. Neses caso, ela é significativa (F1, 129) = 4.23, p &lt; 0.05, ηp2 = 0.03, 90% CI [.00, .10]). Quando isso acontece, não se deve interpretar os efeitos principais, mesmo que eles sejam significativos.</p>
-<p>No caso, à pergunta “o sexo tem efeito no empreendedorismo”, a resposta adequada seria “depende”, uma vez que ele varia em função do estado civil do participante. O post hoc vez será também feito pelo pacote <code>emmeans</code>, que já foi carregado anteriormente.</p>
-<p>Para deixar a rotina clara, vamos armazenar os resultados no objeto <code>post_hoc_int</code> e, em seguida, explorar os coeficientes.Repare que dessa vez, os valores de p ajustados ou não são os mesmos, dado que há apenas duas categorias em cada grupo.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1">post_hoc_int &lt;-<span class="st"> </span><span class="kw">emmeans</span>(mod_int_sexo_civil, pairwise <span class="op">~</span><span class="st"> </span>sexo <span class="op">*</span><span class="st"> </span>estado_civil, <span class="dt">adjust =</span> <span class="st">&quot;bonferroni&quot;</span>)</a></code></pre></div>
+</div>
+<div id="post-hoc-1" class="section level3">
+<h3><span class="header-section-number">5.5.2</span> Post hoc</h3>
+<p>No caso, à pergunta “o sexo tem efeito no empreendedorismo”, a resposta adequada seria “depende”, uma vez que ele varia em função do estado civil do participante. O post hoc vez será também feito pelo pacote <code>emmeans</code>, que já foi carregado anteriormente. Para deixar a rotina clara, vamos armazenar os resultados no objeto <code>post_hoc_int</code> e, em seguida, explorar os coeficientes.Repare que dessa vez, os valores de p ajustados ou não são os mesmos, dado que há apenas duas categorias em cada grupo.</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1">post_hoc_int &lt;-<span class="st"> </span><span class="kw">emmeans</span>(mod_int_sexo_civil, pairwise <span class="op">~</span><span class="st"> </span>sexo <span class="op">*</span><span class="st"> </span>estado_civil, <span class="dt">adjust =</span> <span class="st">&quot;bonferroni&quot;</span>)</a></code></pre></div>
 <p>O resultado deve ser acessado via contrastes.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1">post_hoc_int<span class="op">$</span>contrasts <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb95-2" title="2"><span class="st">  </span><span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb95-3" title="3"><span class="st">  </span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="kw">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1">post_hoc_int<span class="op">$</span>contrasts <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb94-2" title="2"><span class="st">  </span><span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb94-3" title="3"><span class="st">  </span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="kw">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</a></code></pre></div>
 <table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>

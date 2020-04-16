@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Métodos quantitativos em Psicologia com R</title>
+  <title>Capítulo 2 Aspectos gerais | Métodos quantitativos em Psicologia com R</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Métodos quantitativos em Psicologia com R" />
+  <meta property="og:title" content="Capítulo 2 Aspectos gerais | Métodos quantitativos em Psicologia com R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="cjvanlissa/gitbook-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Métodos quantitativos em Psicologia com R" />
+  <meta name="twitter:title" content="Capítulo 2 Aspectos gerais | Métodos quantitativos em Psicologia com R" />
   
   <meta name="twitter:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="aspectos-gerais.html"/>
+<link rel="prev" href="index.html"/>
+<link rel="next" href="estatística-descritiva.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -200,40 +200,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Métodos quantitativos em Psicologia com R</h1>
-<p class="author"><em><a href="mailto:%20luisfca@gmail.com">Luis Anunciação (PUC-Rio), PhD</a></em></p>
-<p class="date"><em>2020-04-15</em></p>
-</div>
-<div id="introdução" class="section level1">
-<h1><span class="header-section-number">Capítulo 1</span> Introdução</h1>
-<p>Aprender estatística e análise de dados é uma das tarefas mais importantes e desafiadoras que existe no meio acadêmico, especialmente às disciplinas agrupadas em ciências humanas, como Psicologia. Por consequência, ensinar ambas as matérias também impõe um desafio enorme, mas necessário.</p>
-<p>Por diversas razões, as pesquisas feitas em Psicologia apresentam muitas informações misturadas e sobrepostas e a utilização da estatística é fundamental para conseguir separar e filtrar àquelas informações que temos interesse (sinal) daquelas que apenas distorcem estas primeiras (ruído).</p>
-<div id="objetivo" class="section level2">
-<h2><span class="header-section-number">1.1</span> Objetivo</h2>
-<p>Este livro tem como objetivo introduzir conceitos teóricos e aspectos computacionais de estatística de maneira pragmática, direta ao ponto e a partir de perguntas previamente exploradas em pesquisas científicas publicadas. Em menor nível, a modelagem matemática será apresentada e descrita.</p>
-<p>Uma das coisas mais importantes para se ter em mente neste livro é que apesar de todo conteúdo ter uma estrutura linear, os capítulos foram construídos de maneira a serem completos em si mesmo e responderem questões específicas, particulares e pontuais. Assim, penso que o livro atende tanto aqueles leitores com interesse em ler a obra inteira, como aqueles que buscam apenas informações mais específicas de um tópico particular.</p>
-<p>Evidentemente, esse formato adotado pode gerar uma percepção diferente entre aqueles que consultarem apenas um capítulo ou outro e aqueles que lerem o conteúdo por completo. Isso ocorre pois como muitos testes estatísticos são entendidos como casos particulares de outros, alguns fragmentos que podem parecer destoantes durante uma leitura inicial em alguns capítulos, tornam-se mais fáceis e articulados àqueles que lerem o trabalho inteiro e se dispuserem a fazer uma releitura de partes específicas.</p>
-<p>Para ilustrar, o capítulo sobre o Teste T expõe uma pequena parte sobre modelos de regressão, conteúdo que somente é abordado posteriormente. Se em um primeiro momento isso provavelmente pode gerar alguma (pequena) confusão, a releitura do capítulo após o término da sequência do livro tende a gerar, além de um conhecimento mais profundo por parte do leitor, a percepção da integração tanto da estrutura do livro, como da relação existente entre diferentes modelos estatísticos.</p>
-</div>
-<div id="bases" class="section level2">
-<h2><span class="header-section-number">1.2</span> Bases</h2>
-<p>Todas as bases de dados utilizadas neste livro são frutos de pesquisas empíricas que apresentam artigos publicados. Uma vez que o objetivo de um livro é diferente do objetivo da publicação de um artigo, alguns ajustes foram feitos às bases para torná-las mais acessíveis. Nenhuma alteração foi realizada nos dados, mas apenas em mudanças em relação a nomes de variáveis e quantidade de vetores.</p>
-<p>Todo material pode ser acessado livre e grauitamente em <a href="https://github.com/anovabr/mqt/tree/master/bases" class="uri">https://github.com/anovabr/mqt/tree/master/bases</a></p>
-</div>
-<div id="pacotes-e-sintaxes" class="section level2">
-<h2><span class="header-section-number">1.3</span> Pacotes e sintaxes</h2>
-<p>Este livro utiliza majoritariamente o ambiente <a href="https://www.tidyverse.org/">tidyverse</a> para realização das análises. Entretanto, sempre que necessário, funções R-base e uso de outros pacotes serão utilizados. Toda codificação utilizada no livro é exibida nos capítulos e integralmente disponível gratuitamente neste (GitHub)[<a href="https://github.com/anovabr/mqt" class="uri">https://github.com/anovabr/mqt</a>]</p>
+<div id="aspectos-gerais" class="section level1">
+<h1><span class="header-section-number">Capítulo 2</span> Aspectos gerais</h1>
+<p>Conforme já explicitado, a estatística pode ser dividida em duas áreas interligadas: estatística descritiva e estatística inferencial. O objetivo da estatística descritiva é apresentar sínteses e resumos dos resultados a partir de gráficos e tabelas. Não é intenção dessa área fazer generalizações ou extrapolar os resultados obtidos em uma pesquisa a pessoas não investigadas durante a coleta de dados. Por contraste, a estatística inferencial visa extrapolar os dados e fazer generalizações que toquem toda população de onde aquela mostra foi retirada e é representativa. Dessa maneira, o principal objetivo da estatística inferencial é, de fato, fazer inferências.</p>
+<p>Apesar de livros e aulas unirem ambas as áreas da estatística, alguns pontos merecem destaque, que são:</p>
+<ol style="list-style-type: decimal">
+<li><p>A estatística descritiva surgiu antes que a inferencial. A etimologia da palavra talvez ajude a entender, uma vez que estatística vem da palavra estado e este sempre teve interesse em saber quantos eram os cidadãos de um determinado local para, entre outras atividades, taxá-los. Dessa maneira, aspectos descritivos antecedem os inferenciais. Por sua vez, a estatística inferencial guarda origem e proximidade com a teoria dos jogos e, consequentemente, isso ajuda a entender o motivo pelo qual a maioria dos exemplos inferenciais envolvem jogos de azar.</p></li>
+<li><p>A estatística tem duas “escolas” ou “formas de pensamento”. A estatística frequentista e a estatística bayesiana. Aspectos fundamentais que tocam à definição de probabilidade são diferentes, bem como a definição de dados e parâmetros também o são. Pela perspectiva histórica, a estatística bayesiana é mais antiga que a frequentista. No entanto, se for comparado a proporção de uso entre os pesquisadores, a estatística frequentista é ainda a mais frequente e justifica a ênfase deste livro nesta área.</p></li>
+<li><p>A relação entre estatística e Machine Learning (ML) é relativamente recente. Apesar de grande interface, e do fato que as análises realizadas em estatística e ML encontram resultados virtualmente idênticos, as áreas têm objetivos diferentes. Ainda sob perspectiva histórica, a estatística, como uma área do conhecimento, é anterior à ML e, também por isso, justifica a ênfase do livro.</p></li>
+</ol>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="aspectos-gerais.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="estatística-descritiva.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -264,7 +248,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/index.Rmd",
+"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/01-aspectos_gerais.Rmd",
 "text": "Edit"
 },
 "history": {
