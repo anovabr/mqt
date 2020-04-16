@@ -343,11 +343,14 @@ apaTables::apa.aov.table(mod_escolaridade_sexo)
 ```
 
 
-Os resultados continuam constantando o efeito da escolaridade (F(3, 142) = 8.24, p < 0.01, ηp2 = 0.15, 90% CI [.06, .22]) no empreendedorismo, mas também concluiu que o efeito do sexo não é significativo (F(1, 142) = 0.816, p = 0.36, ηp2 = 0.01, 90% CI [.00, .04]). É importante ter atenção à forma de reportar os resultados, uma vez que delineamentos de dois fatores quase sempre produz coeficientes são diferentes do delineamento anterior. Assim, uma sugestão de escrita é a seguinte:
+Os resultados continuam constantando o efeito da escolaridade (F(3, 142) = 8.24, p < 0.01, ηp2 = 0.15, 90% CI [.06, .22]) no empreendedorismo, mas também concluiu que o efeito do sexo não é significativo (F(1, 142) = 0.816, p = 0.36, ηp2 = 0.01, 90% CI [.00, .04]). É importante ter atenção à forma de reportar os resultados, uma vez que delineamentos de dois fatores quase sempre produz coeficientes são diferentes do delineamento anterior. A análise post hoc que seria feita agora seria a mesma feita anteriormente e, em função disso, será suprimida.
+
+
+Uma sugestão de escrita desses resultados é a seguinte:
 
 
 
-```{r, eval = FALSE }
+```{r, eval = FALSE, include=FALSE  }
 #Apesar de não ter uma interpretação direta, o valor apresentado ao intercepto é o valor médio dos homens com escolaridade primária. Isso ocorre pois como há duas variáveis categóricas sendo analisadas, o valor utilizado para referência (ou seja, 0) do sexo foi para homens e este valor para escolaridade foi para aqueles com ensino primário.
 
 dados_teg %>% filter(sexo == "Masculino" & escolaridade == "Primário") %>% summarise(mean(teg))
@@ -413,9 +416,11 @@ apaTables::apa.aov.table(mod_int_sexo_civil)
 
 A leitura da tabela começa de cima para baixo, ou seja, pela interação. Neses caso, ela é significativa (F1, 129) = 4.23, p < 0.05, ηp2 = 0.03, 90% CI [.00, .10]). Quando isso acontece, não se deve interpretar os efeitos principais, mesmo que eles sejam significativos. 
 
-No caso, à pergunta "o sexo tem efeito no empreendedorismo", a resposta adequada seria "depende", uma vez que ele varia em função do estado civil do participante. O post hoc vez será também feito pelo pacote `emmeans`, que já foi carregado anteriormente. 
 
-Para deixar a rotina clara, vamos armazenar os resultados no objeto `post_hoc_int` e, em seguida, explorar os coeficientes.Repare que dessa vez, os valores de p ajustados ou não são os mesmos, dado que há apenas duas categorias em cada grupo.
+### Post hoc
+
+
+No caso, à pergunta "o sexo tem efeito no empreendedorismo", a resposta adequada seria "depende", uma vez que ele varia em função do estado civil do participante. O post hoc vez será também feito pelo pacote `emmeans`, que já foi carregado anteriormente. Para deixar a rotina clara, vamos armazenar os resultados no objeto `post_hoc_int` e, em seguida, explorar os coeficientes.Repare que dessa vez, os valores de p ajustados ou não são os mesmos, dado que há apenas duas categorias em cada grupo.
 
 ```{r}
 post_hoc_int <- emmeans(mod_int_sexo_civil, pairwise ~ sexo * estado_civil, adjust = "bonferroni")
