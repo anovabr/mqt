@@ -28,7 +28,7 @@ library(kableExtra) #tables with different styles
 
 A ANOVA é um teste estatístico desenvolvimento para verificar diferença entre diversos grupos. Pragmaticamente, é possível entender ANOVA como um super teste T, onde o que está em jogo não é somente o quanto as médias amostrais estão distantes, mas o quão distantes estão relativamente à variabilidade de observações individuais.  
 
-Conceitualmente, similar ao teste T, a ANOVA é um caso especial de um modelo de regressão em que a variável independente é discreta/categórica. 
+Conceitualmente, similar ao teste T, a ANOVA e todas as suas extensões (e.g., ANCOVA e MANOVA) são casos especiais de um modelo de regressão que lidam com variáveis independente discretas/categórica.
 
 Em Psicologia, alguns autores indicam que a ANOVA é a técnica inferencial mais utilizada [@Chartier2008; @Howell2011]. Se por um aspecto, isso é extremamente vantajoso por estreitar a relação entre Psicologia e Estatística, por outro, isso parece ter contribuído para criação e manutenção de diferentes conceitos equivocados sobre a ANOVA. 
 
@@ -58,7 +58,7 @@ A ANOVA tem diversas características de modelagem que serão descritas na seç�
 
 ## Legenda
 
-Diferentes termos são empregados em uma ANOVA. A legenda a seguir visa auxiliar no entendimento de cada um deles e aproximar o leitor a conceitos amplos utilizados em modelos lineares:
+Diferentes termos são empregados em uma ANOVA e em modelos próximos. A legenda a seguir visa auxiliar no entendimento de cada um deles e aproximar o leitor a conceitos amplos utilizados em modelos lineares:
 
 ```{block, type="writing"}
 **Fator**: Variável independente,  via, variável fonte, variável preditora, tratamento  
@@ -67,6 +67,8 @@ Diferentes termos são empregados em uma ANOVA. A legenda a seguir visa auxiliar
 **Efeito principal**: Efeito da variável independente, sem considerar outras caracterísitcas do modelo   
 **Efeito de interação**: Efeito do termo de interação entre duas ou mais variáveis independentes.Quando significativo, não se interpreta os efeitos principais.   
 **Efeito simples**: Efeito de uma variável independente em um nível (específico) de outra variável independente.  
+**ANCOVA**: Análise de covariância, onde se controla os resultados por uma variável contínua 
+**MANOVA**: Análise multivariada de variância, onde se extende a ANOVA para incluir duas variáveis dependentes  
 ```
 
 
@@ -437,4 +439,9 @@ post_hoc_int$contrasts %>%
 
 Repare que as informações repetem aquilo já visualizado no gráfico anterior, mas com as correções, a interpretação torna-se menos visual. Os resultados indicam que as mulheres solteiras têm resultados mais elevados do que os homens casados (Δ = 5.74, p = 0.04) e que existe uma tendência das mulheres solteiras, quando comparadas às mulheres casadas, terem também mais empreendedorismo (Δ = 6.22, p = 0.09). Repare que a diferença visual entre homens e mulheres solteiras não é significativa. Em linhas gerais, parece que o empreendedorismo diminui em pessoas casadas e isso é especialmente válido às mulheres.
 
+
+
+## Resumo  
+
+Este capítulo apresentou a ANOVA tanto de uma forma bastante pragmática como de uma maneira mais conceitual e, consequentemente, complexa. De forma pragmática, ao classificar a ANOVA como um super teste T, é possível demonstrar a importância da correção do valor de P após múltiplas comparações. Sem esses ajustes, a chance de cometer falsos positivos aumentaria. Já em outro sentido, ao deixar claro que a ANOVA é um caso particular de modelos de regressão, é possível entender que ela é uma análise complexa e que se ajusta bem à grande parte das perguntas empíricas e teóricas realizadas em Psicologia e outras ciências comportamentais.  
 
