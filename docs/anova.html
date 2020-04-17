@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="teste-t.html"/>
-
+<link rel="next" href="regressão-linear-simples.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -179,6 +179,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5.1" data-path="anova.html"><a href="anova.html#execução-no-r-3"><i class="fa fa-check"></i><b>5.5.1</b> Execução no R</a></li>
 <li class="chapter" data-level="5.5.2" data-path="anova.html"><a href="anova.html#post-hoc-1"><i class="fa fa-check"></i><b>5.5.2</b> Post hoc</a></li>
 </ul></li>
+<li class="chapter" data-level="5.6" data-path="anova.html"><a href="anova.html#resumo-2"><i class="fa fa-check"></i><b>5.6</b> Resumo</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>6</b> Regressão linear simples</a><ul>
+<li class="chapter" data-level="6.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#legenda-1"><i class="fa fa-check"></i><b>6.1</b> Legenda</a></li>
+<li class="chapter" data-level="6.2" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#explicação-conceitual"><i class="fa fa-check"></i><b>6.2</b> Explicação conceitual</a></li>
+<li class="chapter" data-level="6.3" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisa-3"><i class="fa fa-check"></i><b>6.3</b> Pesquisa</a></li>
+<li class="chapter" data-level="6.4" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#regressão-linear-simples-1"><i class="fa fa-check"></i><b>6.4</b> Regressão linear simples</a></li>
+<li class="chapter" data-level="6.5" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pressupostos"><i class="fa fa-check"></i><b>6.5</b> Pressupostos</a></li>
+<li class="chapter" data-level="6.6" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#a-interpretação"><i class="fa fa-check"></i><b>6.6</b> A interpretação</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="http://www.puc-rio.br/" target="blank">PUC-Rio</a></li>
@@ -214,7 +223,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </p>
 </div>
 <p>A ANOVA é um teste estatístico desenvolvimento para verificar diferença entre diversos grupos. Pragmaticamente, é possível entender ANOVA como um super teste T, onde o que está em jogo não é somente o quanto as médias amostrais estão distantes, mas o quão distantes estão relativamente à variabilidade de observações individuais.</p>
-<p>Conceitualmente, similar ao teste T, a ANOVA é um caso especial de um modelo de regressão em que a variável independente é discreta/categórica.</p>
+<p>Conceitualmente, similar ao teste T, a ANOVA e todas as suas extensões (e.g., ANCOVA e MANOVA) são casos especiais de um modelo de regressão que lidam com variáveis independente discretas/categórica.</p>
 <p>Em Psicologia, alguns autores indicam que a ANOVA é a técnica inferencial mais utilizada <span class="citation">(Chartier and Faulkner <a href="#ref-Chartier2008">2008</a>; Howell <a href="#ref-Howell2011">2011</a>)</span>. Se por um aspecto, isso é extremamente vantajoso por estreitar a relação entre Psicologia e Estatística, por outro, isso parece ter contribuído para criação e manutenção de diferentes conceitos equivocados sobre a ANOVA.</p>
 <p>Conceitualmente, a ANOVA é um modelo linear, tal que:</p>
 <p><span class="math display">\[y_i = b_0 + b_1X{_1}_i + \epsilon_{i}\]</span></p>
@@ -250,7 +259,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>A ANOVA tem diversas características de modelagem que serão descritas na seção a seguir,</p>
 <div id="legenda" class="section level2">
 <h2><span class="header-section-number">5.1</span> Legenda</h2>
-<p>Diferentes termos são empregados em uma ANOVA. A legenda a seguir visa auxiliar no entendimento de cada um deles e aproximar o leitor a conceitos amplos utilizados em modelos lineares:</p>
+<p>Diferentes termos são empregados em uma ANOVA e em modelos próximos. A legenda a seguir visa auxiliar no entendimento de cada um deles e aproximar o leitor a conceitos amplos utilizados em modelos lineares:</p>
 <div class="writing">
 <p>
 <strong>Fator</strong>: Variável independente, via, variável fonte, variável preditora, tratamento<br />
@@ -258,7 +267,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <strong>Níveis</strong>: Grupos, condições, categorias da variável independente<br />
 <strong>Efeito principal</strong>: Efeito da variável independente, sem considerar outras caracterísitcas do modelo<br />
 <strong>Efeito de interação</strong>: Efeito do termo de interação entre duas ou mais variáveis independentes.Quando significativo, não se interpreta os efeitos principais.<br />
-<strong>Efeito simples</strong>: Efeito de uma variável independente em um nível (específico) de outra variável independente.
+<strong>Efeito simples</strong>: Efeito de uma variável independente em um nível (específico) de outra variável independente.<br />
+<strong>ANCOVA</strong>: Análise de covariância, onde se controla os resultados por uma variável contínua <strong>MANOVA</strong>: Análise multivariada de variância, onde se extende a ANOVA para incluir duas variáveis dependentes
 </p>
 </div>
 <p>Por heurística, se escreve os delinementos estudados por uma ANOVA com <span class="math inline">\(\eta\)</span>. Se, por exemplo, o interesse seja o de verificar o efeito do sexo (masculino ou feminino) e da escolaridade (fundamental, médio e superior), a representação será <span class="math inline">\(\eta = 2 \times 3\)</span>. Isso significa que a ANOVA tem dois fatores (sexo e escolaridade) e o primeiro fator tem dois níveis e o segundo tem 3 níveis.</p>
@@ -1076,25 +1086,12 @@ Masculino,casado - Feminino,casado
 </tbody>
 </table>
 <p>Repare que as informações repetem aquilo já visualizado no gráfico anterior, mas com as correções, a interpretação torna-se menos visual. Os resultados indicam que as mulheres solteiras têm resultados mais elevados do que os homens casados (Δ = 5.74, p = 0.04) e que existe uma tendência das mulheres solteiras, quando comparadas às mulheres casadas, terem também mais empreendedorismo (Δ = 6.22, p = 0.09). Repare que a diferença visual entre homens e mulheres solteiras não é significativa. Em linhas gerais, parece que o empreendedorismo diminui em pessoas casadas e isso é especialmente válido às mulheres.</p>
+</div>
+</div>
+<div id="resumo-2" class="section level2">
+<h2><span class="header-section-number">5.6</span> Resumo</h2>
+<p>Este capítulo apresentou a ANOVA tanto de uma forma bastante pragmática como de uma maneira mais conceitual e, consequentemente, complexa. De forma pragmática, ao classificar a ANOVA como um super teste T, é possível demonstrar a importância da correção do valor de P após múltiplas comparações. Sem esses ajustes, a chance de cometer falsos positivos aumentaria. Já em outro sentido, ao deixar claro que a ANOVA é um caso particular de modelos de regressão, é possível entender que ela é uma análise complexa e que se ajusta bem à grande parte das perguntas empíricas e teóricas realizadas em Psicologia e outras ciências comportamentais.</p>
 
-<div id="refs" class="references">
-<div>
-<p>Chartier, Sylvain, and Andrew Faulkner. 2008. “General Linear Models: An Integrated Approach to Statistics.” <em>Tutorials in Quantitative Methods for Psychology</em> 4 (2): 65–78. <a href="https://doi.org/10.20982/tqmp.04.2.p065">https://doi.org/10.20982/tqmp.04.2.p065</a>.</p>
-</div>
-<div>
-<p>Field, Andy P., and Rand R. Wilcox. 2017. “Robust Statistical Methods: A Primer for Clinical Psychology and Experimental Psychopathology Researchers.” <em>Behaviour Research and Therapy</em> 98 (November): 19–38. <a href="https://doi.org/10.1016/j.brat.2017.05.013">https://doi.org/10.1016/j.brat.2017.05.013</a>.</p>
-</div>
-<div>
-<p>Howell, David C. 2011. <em>Fundamental Statistics for the Behavioral Sciences</em>. Belmont: CA: Wadsworth Cengage Learning.</p>
-</div>
-<div>
-<p>Lumley, Thomas, Paula Diehr, Scott Emerson, and Lu Chen. 2002. “The Importance of the Normality Assumption in Large Public Health Data Sets.” <em>Annual Review of Public Health</em> 23 (1): 151–69. <a href="https://doi.org/10.1146/annurev.publhealth.23.100901.140546">https://doi.org/10.1146/annurev.publhealth.23.100901.140546</a>.</p>
-</div>
-<div>
-<p>Morettin, Pedro Alberto, and Wilton de Oliveira Bussab. 2010. <em>Estatistica Basica</em>. Saraiva.</p>
-</div>
-</div>
-</div>
 </div>
 </div>
 <h3>References</h3>
@@ -1111,8 +1108,8 @@ Masculino,casado - Feminino,casado
           </div>
         </div>
       </div>
-<a href="teste-t.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="teste-t.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="regressão-linear-simples.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

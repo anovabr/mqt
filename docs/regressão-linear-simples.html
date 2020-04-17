@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 6 Regressão linear simples | Métodos quantitativos em Psicologia com R</title>
+  <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 6 Regressão linear simples | Métodos quantitativos em Psicologia com R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
+  <meta name="github-repo" content="cjvanlissa/gitbook-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 6 Regressão linear simples | Métodos quantitativos em Psicologia com R" />
+  
+  <meta name="twitter:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
+  
+
+<meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
+
+
+<meta name="date" content="2020-04-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="anova.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/viz-0.3/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.1/grViz.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MQT em Psicologia com R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introdução</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#objetivo"><i class="fa fa-check"></i><b>1.1</b> Objetivo</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#bases"><i class="fa fa-check"></i><b>1.2</b> Bases</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#pacotes-e-sintaxes"><i class="fa fa-check"></i><b>1.3</b> Pacotes e sintaxes</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html"><i class="fa fa-check"></i><b>2</b> Aspectos gerais</a></li>
+<li class="chapter" data-level="3" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html"><i class="fa fa-check"></i><b>3</b> Estatística Descritiva</a><ul>
+<li class="chapter" data-level="3.1" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#pesquisa"><i class="fa fa-check"></i><b>3.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="3.2" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#condições-gerais"><i class="fa fa-check"></i><b>3.2</b> Condições gerais</a></li>
+<li class="chapter" data-level="3.3" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>3.3</b> Verbos do dplyr</a></li>
+<li class="chapter" data-level="3.4" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#tabelas"><i class="fa fa-check"></i><b>3.4</b> Tabelas</a></li>
+<li class="chapter" data-level="3.5" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#gráficos"><i class="fa fa-check"></i><b>3.5</b> Gráficos</a></li>
+<li class="chapter" data-level="3.6" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-discreta"><i class="fa fa-check"></i><b>3.6</b> 1 variável discreta</a></li>
+<li class="chapter" data-level="3.7" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-contínua"><i class="fa fa-check"></i><b>3.7</b> 1 variável contínua</a></li>
+<li class="chapter" data-level="3.8" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-discreta-e-vd-contínua"><i class="fa fa-check"></i><b>3.8</b> 2 variáveis com VI discreta (e VD contínua)</a></li>
+<li class="chapter" data-level="3.9" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-contínua-e-vd-contínua"><i class="fa fa-check"></i><b>3.9</b> 2 variáveis com VI contínua (e VD contínua)</a></li>
+<li class="chapter" data-level="3.10" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#outros-gráficos-e-configurações"><i class="fa fa-check"></i><b>3.10</b> Outros gráficos e configurações</a></li>
+<li class="chapter" data-level="3.11" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#resumo"><i class="fa fa-check"></i><b>3.11</b> Resumo</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="teste-t.html"><a href="teste-t.html"><i class="fa fa-check"></i><b>4</b> Teste T</a><ul>
+<li class="chapter" data-level="4.1" data-path="teste-t.html"><a href="teste-t.html#pesquisa-1"><i class="fa fa-check"></i><b>4.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="4.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-r"><i class="fa fa-check"></i><b>4.2</b> Execução no R</a></li>
+<li class="chapter" data-level="4.3" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito"><i class="fa fa-check"></i><b>4.3</b> Tamanho do efeito</a></li>
+<li class="chapter" data-level="4.4" data-path="teste-t.html"><a href="teste-t.html#versão-robusta-do-teste-t"><i class="fa fa-check"></i><b>4.4</b> Versão robusta do teste T</a></li>
+<li class="chapter" data-level="4.5" data-path="teste-t.html"><a href="teste-t.html#mann-whitney"><i class="fa fa-check"></i><b>4.5</b> Mann-whitney</a></li>
+<li class="chapter" data-level="4.6" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>4.6</b> Teste T e regressão</a></li>
+<li class="chapter" data-level="4.7" data-path="teste-t.html"><a href="teste-t.html#aspectos-matemáticos"><i class="fa fa-check"></i><b>4.7</b> Aspectos matemáticos</a></li>
+<li class="chapter" data-level="4.8" data-path="teste-t.html"><a href="teste-t.html#resumo-1"><i class="fa fa-check"></i><b>4.8</b> Resumo</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>5</b> ANOVA</a><ul>
+<li class="chapter" data-level="5.1" data-path="anova.html"><a href="anova.html#legenda"><i class="fa fa-check"></i><b>5.1</b> Legenda</a></li>
+<li class="chapter" data-level="5.2" data-path="anova.html"><a href="anova.html#pesquisa-2"><i class="fa fa-check"></i><b>5.2</b> Pesquisa</a></li>
+<li class="chapter" data-level="5.3" data-path="anova.html"><a href="anova.html#anova-de-1-via"><i class="fa fa-check"></i><b>5.3</b> ANOVA de 1 via</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="anova.html"><a href="anova.html#execução-no-r-1"><i class="fa fa-check"></i><b>5.3.1</b> Execução no R</a></li>
+<li class="chapter" data-level="5.3.2" data-path="anova.html"><a href="anova.html#post-hoc"><i class="fa fa-check"></i><b>5.3.2</b> Post hoc</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="anova.html"><a href="anova.html#anova-de-2-vias"><i class="fa fa-check"></i><b>5.4</b> ANOVA de 2 vias</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="anova.html"><a href="anova.html#execução-no-r-2"><i class="fa fa-check"></i><b>5.4.1</b> Execução no R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="anova.html"><a href="anova.html#anova-fatorial"><i class="fa fa-check"></i><b>5.5</b> ANOVA Fatorial</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="anova.html"><a href="anova.html#execução-no-r-3"><i class="fa fa-check"></i><b>5.5.1</b> Execução no R</a></li>
+<li class="chapter" data-level="5.5.2" data-path="anova.html"><a href="anova.html#post-hoc-1"><i class="fa fa-check"></i><b>5.5.2</b> Post hoc</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="anova.html"><a href="anova.html#resumo-2"><i class="fa fa-check"></i><b>5.6</b> Resumo</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>6</b> Regressão linear simples</a><ul>
+<li class="chapter" data-level="6.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#legenda-1"><i class="fa fa-check"></i><b>6.1</b> Legenda</a></li>
+<li class="chapter" data-level="6.2" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#explicação-conceitual"><i class="fa fa-check"></i><b>6.2</b> Explicação conceitual</a></li>
+<li class="chapter" data-level="6.3" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisa-3"><i class="fa fa-check"></i><b>6.3</b> Pesquisa</a></li>
+<li class="chapter" data-level="6.4" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#regressão-linear-simples-1"><i class="fa fa-check"></i><b>6.4</b> Regressão linear simples</a></li>
+<li class="chapter" data-level="6.5" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pressupostos"><i class="fa fa-check"></i><b>6.5</b> Pressupostos</a></li>
+<li class="chapter" data-level="6.6" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#a-interpretação"><i class="fa fa-check"></i><b>6.6</b> A interpretação</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="http://www.puc-rio.br/" target="blank">PUC-Rio</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Métodos quantitativos em Psicologia com R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="regressão-linear-simples" class="section level1">
+<h1><span class="header-section-number">Capítulo 6</span> Regressão linear simples</h1>
+<p>Os modelos de regressão modelos estatísticos que relacionam o comportamento de uma variável resposta (Y) como uma função de variáveis condicionantes (X). Em larga escala, eles substituem os outros testes paramétricos vistos até agora. Assim, quase tudo o que foi visto durante os capítulos anteriormente são casos especiais de modelos de regressão. No entanto, é possível estudar tais modelos tanto de uma maneira <u>operacional</u>, com foco totalmente pragmático e aderente às recomendações tradicionais dos livros de estatística, ou de uma forma <u>detalhada</u>, em que ao estudar os modelos de regressão, quase que muitos conceitos da estatística inferencial e estatística matemática são revisitados.</p>
+<p>Nesse capítulo, iremos ver ambas as maneiras, mas preservando o foco na capacidade operacional.</p>
+<p>Conceitualmente, a regressão linear é apresentada como::</p>
+<p><span class="math display">\[y_i = b_0 + b_1X{_1}_i + \epsilon_{i}\]</span></p>
+<p><span class="math inline">\(y_i\)</span> representa a variável dependente<br />
+<span class="math inline">\(b_0\)</span> é o intercepto (coeficiente linear)<br />
+<span class="math inline">\(b_1\)</span> é a inclinação (coeficiente angular)<br />
+<span class="math inline">\(\epsilon_{i}\)</span> é o erro/resíduo</p>
+<div id="legenda-1" class="section level2">
+<h2><span class="header-section-number">6.1</span> Legenda</h2>
+<p>Diferentes termos são empregados em modelos de regressão A legenda a seguir visa auxiliar no entendimento de cada um deles e aproximar o leitor a conceitos amplos utilizados em modelos lineares:</p>
+<div class="writing">
+<p>
+<strong>intercepto</strong> (constante) - <span class="math inline"><span class="math inline">\(b_0\)</span></span>: Valor previsto de Y quando X = 0<br />
+<strong>Inclinação</strong> (slope) - <span class="math inline"><span class="math inline">\(b_i \forall i \neq 0\)</span></span>: A diferença média em unidades da variável dependente prevista em Y quando se altera uma unidade de X.<br />
+<strong>SSR</strong>: Soma dos Quadrados da Regressão<br />
+<strong>SSE</strong>: Soma dos Quadrados dos Erros<br />
+<strong>SST</strong>: Soma dos Quadrados Total<br />
+<strong>Variabilidade total</strong> SST = SSR + SSE<br />
+<span class="math inline"><span class="math inline">\(R^2\)</span></span> ou <strong>Coeficiente de Determinação</strong>: A porcentagem de variação da variável dependente (Y) que pode ser atribuída à variabilida da(s) variável (is) independente(s) (X)<br />
+<span class="math inline"><span class="math inline">\(R^2_{adj}\)</span></span> ou <strong>Coeficiente de Determinação ajustado</strong>: Pondera a porcentagem de variação da variável dependente (Y) que pode ser atribuída à variabilida da(s) variável (is) independente(s) (X) pelo número de variáveis explicativas e pelo número de observações da amostra. É particularmente útil quando deseja-se comparar modelos de regressão múltipla que prevêem a mesma variável dependente, pois penaliza aquele modelo com maior número de variáveis independentes.<br />
+RMSEA (<span class="math inline"><span class="math inline">\(Res. St. Error\)</span></span> ou Erro padrão dos resíduos): Desvio padrão dos valores previstos da variável dependente ao redor da linha de regressão estimada
+</p>
+</div>
+<p>O conhecimento das fórmulas fechadas também auxilia no entendimento da modelagem.</p>
+<div class="writing">
+<p>
+Soma dos Quadrados da Regressão: <span class="math inline"><span class="math inline">\(SSR = \sum_{i=1}^{n}(\hat{y} - \bar{y})^2\)</span></span>
+</p>
+<p>
+Soma dos Quadrados dos Erros: <span class="math inline"><span class="math inline">\(SSE = \sum_{i=1}^{n}(y_i - \hat{y})^2\)</span></span>
+</p>
+<p>
+Soma dos Quadrados Total: <span class="math inline"><span class="math inline">\(SST = \sum_{i=1}^{n}(y_i - \bar{y})^2\)</span></span>
+</p>
+<p>
+<strong>Variabilidade total</strong> <span class="math inline"><span class="math inline">\(SST = SSR + SSE\)</span></span>
+</p>
+<p>
+<span class="math inline"><span class="math inline">\(R^2\)</span></span> ou <strong>Coeficiente de Determinação</strong>: $ R^2 = = 1- $
+</p>
+<p>
+Erro quadrático médio (MSE): <span class="math inline"><span class="math inline">\(SSE = \sum_{i=1}^{n}(y_i - \hat{y})^2 /N-K\)</span></span>
+</p>
+<p>
+<span class="math inline"><span class="math inline">\(R^2_{adj}\)</span></span> ou <strong>Coeficiente de Determinação ajustado</strong>: <span class="math inline"><span class="math inline">\(1-\frac{MSE}{MSR}\)</span></span>
+</p>
+<p>
+<span class="math inline"><span class="math inline">\(Res. St. Error = \sqrt\frac{SSE}{N-K}\)</span></span>: Erro padrão dos resíduos, se refere ao desvio padrão dos valores previstos da variável dependente ao redor da linha de regressão estimada
+</p>
+</div>
+<p>É possível citar ao menos três formas de explicar modelos de regressão. Evidentemente, todas são interligadas, mas cada qual apresenta uma ênfase didática diferente. Nesse sentido, a forma mais “conceitual” conta com conjuntos para explicitar o tema, a forma “correlacional” parte de um gráfico de dispersão e a forma “analítica” traz conceitos matemático. A forma correlacional é a mais simples de todas e iniciará o capítulo. A forma correlacional e analítica serão vistas a partir da pesquisa realizada.</p>
+</div>
+<div id="explicação-conceitual" class="section level2">
+<h2><span class="header-section-number">6.2</span> Explicação conceitual</h2>
+<p>Inicialmente, é necessário atentar que a <code>variável dependente (Y)</code> e a <code>variável independente (X)</code> podem ser vistas como conjuntos. No caso:</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1"><span class="kw">include_graphics</span>(<span class="st">&quot;raw_img/cap_reg_x_y.png&quot;</span>)</a></code></pre></div>
+<p><img src="raw_img/cap_reg_x_y.png" style="display: block; margin: auto;" /></p>
+<p>Repare que ambas as variáveis estão afastadas e não há nenhuma relação entre elas. No entanto, o que frequentemente ocorre é que existe algum grau de relacionamento entre elas, tal como exposto abaixo:</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1"><span class="kw">include_graphics</span>(<span class="st">&quot;raw_img/cap_reg_x_y2.png&quot;</span>)</a></code></pre></div>
+<p><img src="raw_img/cap_reg_x_y2.png" style="display: block; margin: auto;" /></p>
+<p>Nesse caso, vamos assumir que a variável X (independente) é um fator de causalidade à realização da variável dependente (Y). Em outras palavras, uma parte da realização de Y, necessariamente, depende de X. Essa área de interseção é entendida como a parte de Y que pode ser atribuída ou explicada por X. Analiticamente, essa área precisa de algumas transformações algébricas e, em função delas, recebe o nome de <code>Soma dos Quadrados da Regressão</code> (SSR, em inglês).</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1"><span class="kw">include_graphics</span>(<span class="st">&quot;raw_img/cap_reg_x_y_SSR.png&quot;</span>)</a></code></pre></div>
+<p><img src="raw_img/cap_reg_x_y_SSR.png" style="display: block; margin: auto;" /></p>
+<p>No entanto, nem toda a variabilidade de Y pode ser atribuída à X. Essa região também sofrerá transformações algébricas e receberá o nome de <code>Soma dos Quadrados dos Erros</code> (SSE, em inglês). Essa área representa a variabilidade de Y que não pode ser atribuída/explicada por X. Nesse caso:</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" title="1"><span class="kw">include_graphics</span>(<span class="st">&quot;raw_img/cap_reg_x_y_SSE.png&quot;</span>)</a></code></pre></div>
+<p><img src="raw_img/cap_reg_x_y_SSE.png" style="display: block; margin: auto;" /></p>
+<p>É também possível verificar que a variável dependente (Y) têm uma variabilidade total, que também pode ser vista como o somatório da área explicada pela regressão (SSR-interseção) com a área não explicada (SSE). Essa região total também passará por transformações algébricas e receberá o nome de <code>Soma dos Quadrados Total</code> (SST, em inglês).</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1"><span class="kw">include_graphics</span>(<span class="st">&quot;raw_img/cap_reg_x_y_SST.png&quot;</span>)</a></code></pre></div>
+<p><img src="raw_img/cap_reg_x_y_SST.png" style="display: block; margin: auto;" /></p>
+<p>Vendo todas as partições de uma única vez, temos o seguinte:</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1"><span class="kw">include_graphics</span>(<span class="st">&quot;raw_img/cap_reg_x_y_SSR_SSE_SST.png&quot;</span>)</a></code></pre></div>
+<p><img src="raw_img/cap_reg_x_y_SSR_SSE_SST.png" style="display: block; margin: auto;" /></p>
+<p>Com isso, torna-se claro que a porcentagem de variação da variável dependente (Y) que pode ser atribuída à variabilidade de X é uma razão entre a Soma dos Quadrados da Regressão (SSR) pela Soma dos Quadrados Total (SST). O coeficiente obtido por essa razão recebe o nome de <strong>Coeficiente de Determinação</strong> ou <span class="math inline">\(R^2\)</span>.</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" title="1"><span class="kw">include_graphics</span>(<span class="st">&quot;raw_img/cap_reg_r2.png&quot;</span>)</a></code></pre></div>
+<p><img src="raw_img/cap_reg_r2.png" style="display: block; margin: auto;" /></p>
+<p>Isso é equivalente a subtração do espaço máximo de variabilidade (100%) pela razão entre a Soma dos Quadrados dos Erros (SSE) pela Soma dos Quadrados Total (SST):</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1"><span class="kw">include_graphics</span>(<span class="st">&quot;raw_img/cap_reg_r2_1.png&quot;</span>)</a></code></pre></div>
+<p><img src="raw_img/cap_reg_r2_1.png" style="display: block; margin: auto;" /></p>
+<p>Evidentemente, modelos em que haja mais de uma variável independente (X) são frequentemente vistos por motivos óbvios. É muito improvável que uma única variável independente consiga explicar a variabilidade de variável dependente. Dessa maneira, é possível considerar Modelos de Regressão múltipla, tal como:</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1"><span class="kw">include_graphics</span>(<span class="st">&quot;raw_img/cap_reg_multipla_ortogonal.png&quot;</span>)</a></code></pre></div>
+<p><img src="raw_img/cap_reg_multipla_ortogonal.png" style="display: block; margin: auto;" /></p>
+<p>Nesse modelo, há duas variáveis independentes (X1 e X2) e elas não tem nenhuma correlação <span class="math inline">\(\rho_{(X_1,X_2)}=0\)</span></p>
+<p>A situação de correlação 0 entre X1 e X2 é muito improvavável. Modelos em que ambas as variáveis apresentam um grau de associação são frequentes:</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1"><span class="kw">include_graphics</span>(<span class="st">&quot;raw_img/cap_reg_multipla.png&quot;</span>)</a></code></pre></div>
+<p><img src="raw_img/cap_reg_multipla.png" style="display: block; margin: auto;" /></p>
+<p>A área em que existe uma interseção entre X1 e X2 chama-se de colinearidade. Caso haja mais de 2 variáveis também associadas, o nome é multicolinearidade.</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" title="1"><span class="kw">include_graphics</span>(<span class="st">&quot;raw_img/cap_reg_multipla_colinearidade.png&quot;</span>)</a></code></pre></div>
+<p><img src="raw_img/cap_reg_multipla_colinearidade.png" style="display: block; margin: auto;" /></p>
+<p>Modelos assim serão explicitados em momento posterior.</p>
+</div>
+<div id="pesquisa-3" class="section level2">
+<h2><span class="header-section-number">6.3</span> Pesquisa</h2>
+<p>Vamos utilizar a pesquisa intitulada “Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students”, publicada em 2018 no Global Journal of Educational Studies, que sou co-autor.</p>
+<p>O objetivo dessa pesquisa foi explorar os fatores envolvidos em transtornos alimentares e aspectos da percepção da imagem corporal, bem como verificar a capacidade que uma medida possuia em predizer os resultados de outra. Esse artigo contou com a utilização de escalas aplicadas em 219 participantes no Brasil. Para acessar aspectos relacionados aos Transtornos alimentares, a escala EAT-26 foi aplicada. Para verificar aspectos da imagem corporal, a escala BSQ-34 foi aplicada.</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1">dados_brasil <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb106-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(sexo) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb106-3" title="3"><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(eat_soma, bsq_soma, imc, faz_esporte, familia_esporte), </a>
+<a class="sourceLine" id="cb106-4" title="4">               <span class="kw">list</span>(<span class="op">~</span><span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="op">~</span><span class="kw">sd</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb106-5" title="5"><span class="st">  </span><span class="kw">t</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb106-6" title="6"><span class="st">  </span><span class="kw">kable</span>(., <span class="dt">digits =</span> <span class="dv">2</span>,  <span class="dt">booktabs =</span> T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb106-7" title="7"><span class="st">  </span><span class="kw">kable_styling</span>(<span class="dt">position =</span> <span class="st">&quot;center&quot;</span>, <span class="dt">full_width =</span> F, <span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>)</a></code></pre></div>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td style="text-align:left;">
+sexo
+</td>
+<td style="text-align:left;">
+Homens
+</td>
+<td style="text-align:left;">
+Mulheres
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+eat_soma_mean
+</td>
+<td style="text-align:left;">
+12.64516
+</td>
+<td style="text-align:left;">
+18.47619
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bsq_soma_mean
+</td>
+<td style="text-align:left;">
+64.23656
+</td>
+<td style="text-align:left;">
+94.26190
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+imc_mean
+</td>
+<td style="text-align:left;">
+24.09761
+</td>
+<td style="text-align:left;">
+22.58287
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+faz_esporte_mean
+</td>
+<td style="text-align:left;">
+0.3978495
+</td>
+<td style="text-align:left;">
+0.4523810
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+familia_esporte_mean
+</td>
+<td style="text-align:left;">
+0.4782609
+</td>
+<td style="text-align:left;">
+0.4761905
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+eat_soma_sd
+</td>
+<td style="text-align:left;">
+8.188865
+</td>
+<td style="text-align:left;">
+10.088976
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bsq_soma_sd
+</td>
+<td style="text-align:left;">
+32.86679
+</td>
+<td style="text-align:left;">
+34.86458
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+imc_sd
+</td>
+<td style="text-align:left;">
+3.990227
+</td>
+<td style="text-align:left;">
+3.150678
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+faz_esporte_sd
+</td>
+<td style="text-align:left;">
+0.4921069
+</td>
+<td style="text-align:left;">
+0.4997142
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+familia_esporte_sd
+</td>
+<td style="text-align:left;">
+0.5022643
+</td>
+<td style="text-align:left;">
+0.5014265
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="regressão-linear-simples-1" class="section level2">
+<h2><span class="header-section-number">6.4</span> Regressão linear simples</h2>
+<p>A Regressão linear é uma técnica estatística utilizada que além de verificar o relacionamento funcional entre duas variáveis, permite criar uma equação que verifique o quanto uma variável varie em função de outra.</p>
+<p>Há, ao menos, duas utilidades diretas em uma pesquisa, que são:</p>
+<ol style="list-style-type: lower-roman">
+<li><p>Predizer os valores da variável dependente (Y) em função dos valores da variável dependente (X);</p></li>
+<li><p>Explicar a variabilidade da variável dependente (Y) em função da variável independente (X). Tecnicamente, ambas as utilidades são virtualmente iguais.</p></li>
+</ol>
+<p>A Regressão linear simples pode ser vista a partir de um incremento ou avanço dos modelos de correlação. Dessa maneira, os aspectos correlacionais devem (e podem) ser inicialmente investigados. Conforme já exposto, o gráfico de dispersão auxilia na visualização da relação entre as variáveis.</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1"><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> bsq_soma, <span class="dt">y =</span> eat_soma)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb107-2" title="2"><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb107-3" title="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Resultados da Escala BSQ-34&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Resultados da Escala EAT-26&quot;</span>, </a>
+<a class="sourceLine" id="cb107-4" title="4">       <span class="dt">title =</span> <span class="st">&quot;Correlação entre o BSQ-34 e o EAT-26&quot;</span>)</a></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-89-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>A correlação entre ambas as medidas expressa a força e a direção que elas possuem. Enquanto a força é interpretada em <code>fraca</code> (0.1), <code>moderada</code> (0.3) ou <code>forte</code> (0.5), a direção pode ser positiva ou negativa, a depender do sinal.</p>
+<p>Tecnicamente, a correlação (de Pearson) nada mais é do que a padronização da covariância. Dessa forma,</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1">(<span class="kw">cov</span>(dados_brasil<span class="op">$</span>eat_soma, dados_brasil<span class="op">$</span>bsq_soma))<span class="op">/</span>(<span class="kw">sd</span>(dados_brasil<span class="op">$</span>bsq_soma)<span class="op">*</span><span class="kw">sd</span>(dados_brasil<span class="op">$</span>eat_soma))</a></code></pre></div>
+<pre><code>## [1] 0.6741895</code></pre>
+<p><span class="math display">\[r(x,y) = \frac{COV(x,y)}{S(x)*S(y)} = \frac{243.6009}{361.3241} \approx 0.67\]</span></p>
+<p>É necessário testar a hipótese que essa correlação poderia ser 0. A estatística do teste de significância da correlação segue uma distribuição T (n-2) graus de liberdade. Assim:</p>
+<p><span class="math inline">\(H_{0}: \rho = 0 \\ H_{a}: \rho \neq 0 \\ \alpha = 0.05\)</span></p>
+<p><span class="math display">\[t = \frac{r_{xy}}{\sqrt\frac{1-r^2}{n-2}} = \frac{0.67}{\sqrt\frac{1-0.67^2}{219-2}} = 13.45\]</span></p>
+<p>A comparação do valor calculado com o valor crítico (1.9709563) aponta que a <span class="math inline">\(H_0\)</span> deve ser rejeitada. Assim, conclui-se que a correlação entre os resultados obtidos pelo <code>BSQ-34</code> e o <code>EAT-26</code> é significativa.</p>
+<p>No entanto, é natural que o interesse de pesquisa seja verificar o quanto os resultados do <code>EAT-26</code> variam em função do <code>BSQ-34</code>, uma vez que alguns achados da literatura comentam que a <code>alterações da alimentação</code> ocorre em função da percepção da <code>imagem corporal</code>. Refraseando um pouco essa pergunta, o interesse agora é prever os valores do <code>EAT-26</code> a partir dos valores do <code>BSQ-34</code>. Como antes afirmado, esse objetivo é virtualmente identico a calcular o quanto a variabilidade dos resultados do <code>EAT-26</code> pode ser explicada pelos resultados do <code>BSQ-34</code>.</p>
+<p>Fazer isso pede que se retorne ao gráfico correlacional feito ainda pouco e que tente se ajustar / traçar uma reta que tente tocar na maioria dos pontos. Milhões de retas podem ser traçadas e todas acertarão alguns pontos, mas errarão outros. Por exemplo</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1"><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> bsq_soma, <span class="dt">y =</span> eat_soma)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb110-2" title="2"><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb110-3" title="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Resultados da Escala BSQ-34&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Resultados da Escala EAT-26&quot;</span>, </a>
+<a class="sourceLine" id="cb110-4" title="4">       <span class="dt">title =</span> <span class="st">&quot;Correlação entre o BSQ-34 e o EAT-26&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb110-5" title="5"><span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">slope =</span> <span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>,.<span class="dv">1</span>,<span class="fl">0.08</span>), <span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="fl">0.1</span>,<span class="fl">0.7</span>)),</a>
+<a class="sourceLine" id="cb110-6" title="6">              <span class="dt">color =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">20</span>)</a></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-91-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>A necessidade agora é conseguir encontrar uma função que possa gerar uma reta que esteja bem perto dos pontos reais e, consequentemente, minimize os erros. Isso é feito justamente resgatando o conceito de função afim, exposto no ensino médio (e ilustrado ao início do capítulo)</p>
+<p><span class="math display">\[\hat{y} = a + bx\]</span></p>
+<p>Repare que agora o valor previsto (<span class="math inline">\(\hat{y}\)</span>) depende de duas constantes (<code>intercepto ou coeficiente linear</code> e <code>inclinação ou coeficiente angular</code>) e uma variável (x). Apenas por uma questão de simbologia, três coisas são feitas com a equação:<br />
+(i) Os símbolos são alterados. Agora <span class="math inline">\(a = b_0\)</span> e <span class="math inline">\(b = b_1\)</span>. A alteração de simbologia não altera em nada os cálculos.<br />
+(ii) Como eu sei que essa reta vai estimar os valores reais <span class="math inline">\(y\)</span>, letras minúsculas ou um chapéu sobre as letras será utilizado em vez das letras maiúsculas ou gregas.<br />
+(iii) Para que cada valor estimado seja associado a um participante a letra <span class="math inline">\(i\)</span> será adicionada abaixo do <span class="math inline">\(y\)</span>, e do <span class="math inline">\(b_1\)</span>.<br />
+Assim, temos que os valores estimados de y, agora <span class="math inline">\(\hat{y}\)</span>, são obtidos pelo <span class="math inline">\(b_0\)</span> e <span class="math inline">\(b_1\)</span>:</p>
+<p><span class="math display">\[\hat{y}_i = b_0 + b_1X{_1}_i\]</span>
+No entanto, entre o valor real de y (os pontos no gráfico) e os valores obtidos pela minha equação, haverá uma certa quantidade de erro de estimativa (<span class="math inline">\(e_i\)</span>). Ou seja, os valores estimados de cada participante (<span class="math inline">\(i\)</span>) vão ter uma quantidade de erro (<span class="math inline">\(e_i\)</span>). Dessa forma, é possível pensar que os valores reais agora possuem uma porção de erro:</p>
+<p><span class="math display">\[y_i = a + bx+\underbrace{e_i}_\text{aleatório}\]</span></p>
+<p>É possível traçar milhões de retas, mas para encontrar a reta que minimiza os erros, é necessário discriona-lo.</p>
+<p><span class="math display">\[e_i = y_i - \hat{y_i}\]</span>
+<span class="math display">\[e_i = y_i - (b_0 + b_1X{_1}_i) \\ =  y_i - b_0 - b_1X{_1}_i\]</span></p>
+<p>Quando se minimizar o erro (<span class="math inline">\(\epsilon_{i}\)</span>) em relação ao <span class="math inline">\(b_0\)</span> e do <span class="math inline">\(b_1\)</span>, eu vou conseguir ter os coeficientes da função que possibilitam que eu contrua a reta mais próxima a todos os pontos. O método utilizado para isso é o Mínimos Quadrados Ordinários (em inglês, Ordinary Least Squares – OLS):</p>
+<p>As derivada serão igualadas a 0:</p>
+<p><span class="math display">\[\frac{\partial f}{\partial \beta_0}, \frac{\partial f}{\partial \beta_1} = 0\]</span></p>
+<p>E os resultados permitem concluir que:</p>
+<p><span class="math display">\[\begin{aligned}
+b_1 &amp;= \frac{\sum_{i = 1}^{n} x_i y_i - \frac{(\sum_{i = 1}^{n} x_i)(\sum_{i = 1}^{n} y_i)}{n}}{\sum_{i = 1}^{n} x_i^2 - \frac{(\sum_{i = 1}^{n} x_i)^2}{n}} = \frac{COV(xy)}{VAR(x)}\\
+b_0 &amp;= \bar{y} - b_1 \bar{x}
+\end{aligned}\]</span></p>
+<p>Agora torna-se fácil traçar uma linha entre os pontos que minimize os erros. Uma vez que se sabe que:</p>
+<p><span class="math display">\[b_1  = \frac{COV(xy)}{VAR(x)}\]</span>
+e que:</p>
+<p><span class="math display">\[b_0  = \bar{y} - b_1\bar{x}\]</span></p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1">b1 &lt;-<span class="st"> </span><span class="kw">cov</span>(dados_brasil<span class="op">$</span>bsq_soma, dados_brasil<span class="op">$</span>eat_soma)<span class="op">/</span><span class="kw">var</span>(dados_brasil<span class="op">$</span>bsq_soma)</a>
+<a class="sourceLine" id="cb111-2" title="2">b0 &lt;-<span class="st"> </span><span class="kw">mean</span>(dados_brasil<span class="op">$</span>eat_soma)<span class="op">-</span>(b1<span class="op">*</span><span class="kw">mean</span>(dados_brasil<span class="op">$</span>bsq_soma))</a>
+<a class="sourceLine" id="cb111-3" title="3"></a>
+<a class="sourceLine" id="cb111-4" title="4"><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> bsq_soma, <span class="dt">y =</span> eat_soma)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb111-5" title="5"><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb111-6" title="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Resultados da Escala BSQ-34&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Resultados da Escala EAT-26&quot;</span>, </a>
+<a class="sourceLine" id="cb111-7" title="7">       <span class="dt">title =</span> <span class="st">&quot;Correlação entre o BSQ-34 e o EAT-26&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb111-8" title="8"><span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">intercept =</span> b0, <span class="dt">slope =</span> b1)</a></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-92-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>É também fácil notar que essa linha passará necessariamente pela média de ambas as variáveis.</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" title="1">b1 &lt;-<span class="st"> </span><span class="kw">cov</span>(dados_brasil<span class="op">$</span>bsq_soma, dados_brasil<span class="op">$</span>eat_soma)<span class="op">/</span><span class="kw">var</span>(dados_brasil<span class="op">$</span>bsq_soma)</a>
+<a class="sourceLine" id="cb112-2" title="2">b0 &lt;-<span class="st"> </span><span class="kw">mean</span>(dados_brasil<span class="op">$</span>eat_soma)<span class="op">-</span>(b1<span class="op">*</span><span class="kw">mean</span>(dados_brasil<span class="op">$</span>bsq_soma))</a>
+<a class="sourceLine" id="cb112-3" title="3"></a>
+<a class="sourceLine" id="cb112-4" title="4"><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> bsq_soma, <span class="dt">y =</span> eat_soma)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb112-5" title="5"><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb112-6" title="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Resultados da Escala BSQ-34&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Resultados da Escala EAT-26&quot;</span>, </a>
+<a class="sourceLine" id="cb112-7" title="7">       <span class="dt">title =</span> <span class="st">&quot;Correlação entre o BSQ-34 e o EAT-26&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb112-8" title="8"><span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">intercept =</span> b0, <span class="dt">slope =</span> b1) <span class="op">+</span></a>
+<a class="sourceLine" id="cb112-9" title="9"><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">mean</span>(dados_brasil<span class="op">$</span>bsq_soma)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb112-10" title="10"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="kw">mean</span>(dados_brasil<span class="op">$</span>eat_soma))</a></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-93-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Ainda aproveitando o gráfico, agora torna-se mais simples de notar os dados reais, a linha de regressão e as distâncias (resíduos) entre os pontos reais e os previstos.</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1"><span class="kw">transform</span>(dados_brasil, <span class="dt">Fitted =</span> <span class="kw">fitted</span>(mod_linear_simples)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb113-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">y =</span> bsq_soma, <span class="dt">x =</span> eat_soma)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb113-3" title="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> bsq_soma, <span class="dt">x =</span> eat_soma, <span class="dt">shape =</span> <span class="st">&quot;real&quot;</span>), <span class="dt">color=</span><span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co">#plot real</span></a>
+<a class="sourceLine" id="cb113-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Fitted, <span class="dt">shape =</span>  <span class="st">&quot;previsto&quot;</span>), <span class="dt">color=</span><span class="st">&quot;1&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co">#plot previsto</span></a>
+<a class="sourceLine" id="cb113-5" title="5"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">se=</span><span class="ot">FALSE</span>, <span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb113-6" title="6"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> eat_soma, <span class="dt">y =</span> bsq_soma, <span class="dt">xend =</span> eat_soma, <span class="dt">yend =</span> Fitted), <span class="dt">color=</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co">#erro ligado</span></a>
+<a class="sourceLine" id="cb113-7" title="7"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">name =</span> <span class="st">&quot;Legenda&quot;</span>,</a>
+<a class="sourceLine" id="cb113-8" title="8">                      <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Estimados/Previstos&quot;</span>, <span class="st">&quot;Reais dos dados&quot;</span>),</a>
+<a class="sourceLine" id="cb113-9" title="9">                      <span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;green&quot;</span>, <span class="st">&quot;black&quot;</span>)) <span class="op">+</span><span class="st">   </span></a>
+<a class="sourceLine" id="cb113-10" title="10"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">name =</span> <span class="st">&quot;Legenda&quot;</span>,</a>
+<a class="sourceLine" id="cb113-11" title="11">                     <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Estimados/Previstos&quot;</span>, <span class="st">&quot;Reais dos dados&quot;</span>),</a>
+<a class="sourceLine" id="cb113-12" title="12">                     <span class="dt">values =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb113-13" title="13"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Escala BSQ-34&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Escala EAT-26&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;Resultados previstos vs. reais&quot;</span>)</a></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-94-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Posto isso, agora vamos, computacionalmente e analiticamente, passo a passo na regressão linear simples. A função <code>lm</code> é a nativa para isso. Ela precisa da variável dependente e da variável independente, tal como abaixo.</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" title="1">mod_linear_simples &lt;-<span class="st"> </span><span class="kw">lm</span>(eat_soma <span class="op">~</span><span class="st"> </span>bsq_soma, <span class="dt">data =</span> dados_brasil)</a></code></pre></div>
+<p>Existem diferentes maneiras de apresentar o resultado (que já calculamos inicialmente), A função <code>stargazer</code>, do pacote com mesmo nome, é uma das mais informativas e práticas. Assim:</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" title="1"><span class="kw">stargazer</span>(mod_linear_simples, <span class="dt">type =</span> <span class="st">&quot;text&quot;</span>) </a></code></pre></div>
+<pre><code>## 
+## ===============================================
+##                         Dependent variable:    
+##                     ---------------------------
+##                              eat_soma          
+## -----------------------------------------------
+## bsq_soma                     0.177***          
+##                               (0.013)          
+##                                                
+## Constant                       1.550           
+##                               (1.180)          
+##                                                
+## -----------------------------------------------
+## Observations                    219            
+## R2                             0.455           
+## Adjusted R2                    0.452           
+## Residual Std. Error      7.215 (df = 217)      
+## F Statistic          180.823*** (df = 1; 217)  
+## ===============================================
+## Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+<div class="writing">
+<p>
+<strong>Importante</strong>
+</p>
+<p>
+Apesar de todas as informações estarem presentes, os resultados não poderiam ser apresentados pelo <code>kable()</code> de maneira adequada. Assim, além do <code>stargazer</code>, como feito aqui, é possível contar com a função <code>summ</code> do pacote <code>jtools</code>, ou com a função <code>tab_model</code> do <code>sjPlot</code>
+</p>
+</div>
+<p>Os resultados do <code>intercepto</code> (<span class="math inline">\(b_0\)</span>) e da <code>inclinação</code> <span class="math inline">\(b_1\)</span> já foram analisados anteriormente, mas agora há 4 outros resultados que serão descritos. Em <strong>primeiro momento</strong>, é necessário verificar o ajuste do modelo e isso é feito pela linha <code>F-statistic</code>. Existem ao menos duas formas de entender essa etapa e os resultados obtidos. É possível chegar a eSSR resultado (I) comparando os resultados do modelo em questão com um modelo em que apenas o intercepto é utilizado para prever todos os valores ou (ii) verificando o quanto o modelo em questão consegue explicar da variabilidade dos dados. As duas formas serão vistas, a começar pela primeira.</p>
+<p>Em termos técnicos, chama-se o modelo em questão de modelo <strong>irrestrito</strong> (ou <strong>Aumentado</strong>), uma vez que ele possui pelo menos um preditor além do intercepto. Por contraste, chama-se o modelo que tem apenas a média de <strong>intercepto-apenas</strong> (ou <strong>Compacto</strong>, ou <strong>restrito</strong> ou <strong>nulo</strong>). Algebricamente, temos o seguinte:</p>
+<p>Modelo Compacto: <span class="math inline">\(y_i = b_0 + e_i\)</span><br />
+Modelo Aumentado: <span class="math inline">\(y_i = b_0 + b_1X_{1i} + e_i\)</span></p>
+<p>Tanto o modelo compacto quanto o modelo aumentado geram uma quantidade de erro. A Soma dos Quadrados dos Erros (SSE) de ambos os modelos é a métrica utilizada para eSSR indicador. No R, é chamado de por Residual Sums-of-Squares (RSS).</p>
+<p>Algebricamente, temos:</p>
+<p><span class="math display">\[SSE =  \sum_{i=1}^{n}(y_i - \hat{y_i})^2\]</span></p>
+<p>One:
+<span class="math inline">\(y_i\)</span> = Valor real obtido<br />
+<span class="math inline">\(\hat{y_i}\)</span> = Valor previsto pelo modelo</p>
+<p>Quão maior o valor da SSE, pior. No Modelo Compacto (intercepto-apenas), esse valor é de 299560.7. A conta é relativamente simples, tal como ilustrado abaixo.</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" title="1"><span class="co">#SSE - Soma dos quadrados dos erros -- intercept-only</span></a>
+<a class="sourceLine" id="cb117-2" title="2">dados_brasil &lt;-<span class="st"> </span>dados_brasil <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb117-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">erros_intercepto_apenas =</span> <span class="kw">residuals</span>(mod_intercepto_apenas)<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb117-4" title="4"></a>
+<a class="sourceLine" id="cb117-5" title="5">dados_brasil <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb117-6" title="6"><span class="st">  </span><span class="kw">summarise</span>(<span class="kw">sum</span>(erros_intercepto_apenas)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">deframe</span>() -&gt;<span class="st"> </span>sse_intercepto_apenas</a></code></pre></div>
+<p>No Modelo Aumentado, o SSE é de 163401. Vale lembrar que a previsão dos valores de <span class="math inline">\(\hat{y_i}\)</span> deSSR modelo conta com os resultados da variável <code>bsq_soma</code></p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1"><span class="co">#SSE - Soma dos quadrados dos residuos -- modelo irrestrito</span></a>
+<a class="sourceLine" id="cb118-2" title="2">dados_brasil &lt;-<span class="st"> </span>dados_brasil <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb118-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">erros_linear_simples =</span> <span class="kw">residuals</span>(mod_linear_simples)<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb118-4" title="4"></a>
+<a class="sourceLine" id="cb118-5" title="5">dados_brasil <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb118-6" title="6"><span class="st">  </span><span class="kw">summarise</span>(<span class="kw">sum</span>(erros_linear_simples)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">deframe</span>() -&gt;<span class="st"> </span>sse_linear_simples</a></code></pre></div>
+<p>A comparação entre os modelos é feita pela capacidade de redução proporcional do erro (em ingles, Proportional Reduction in Erro ou PRE) que ocorre ao inserir o preditor. Formalmente, estamos diante de um teste de hipóteses que assume, inicialmente, que o valor de <span class="math inline">\(b_1\)</span> poderia ser simplesmente 0. Ou seja:</p>
+<p><span class="math display">\[H_0: b_1 = 0 \\  H_a: b_1 \neq 0 \\ \alpha = 0.05\]</span></p>
+<p>Caso o preditor inserido seja “útil” ao modelo, os valores previstos (<span class="math inline">\(\hat{y}\)</span>) serão mais próximos aos valores reais e, consequentemente, os erros serão menores. Assim, a razão abaixo apresenta o quanto o Modelo A diminui no erro da estimativa.</p>
+<p><span class="math inline">\(PRE = \frac{SSE(C)-SSE(A)}{SSR(C)}\)</span></p>
+<p>Ou</p>
+<p><span class="math inline">\(PRE = \frac{299560.7-163401}{299560.7} = 0.4545318\)</span></p>
+<p>Pela conta, O Modelo Aumentado possui cerca de 45% menos erro do que o Modelo Compacto. No entanto, não dá para assumir a priori se esse valor é significativo ou não, uma vez que o Modelo Aumentado tem também mais preditores/parâmetros do que o Modelo Compacto. Dessa maneira, é necessário verificar estatísticamente se a adição feita pelo Modelo Aumentado é significativa. Isso é feito a partir de uma Distribuição F e é realizado da seguinte maneira:</p>
+<p><span class="math inline">\(F = \frac{PRE/(PA − PC)}{(1−PRE)/(n−PA)}\)</span></p>
+<p>onde:
+PRE = Proportional reduction in error<br />
+PA = Quantidade de parâmetros no Modelo A (no caso, 2: <span class="math inline">\(b_0\)</span> e <span class="math inline">\(b_1{eatsoma}\)</span>)<br />
+PC = Quantidade de parâmetros no Modelo C (No caso, apenas 1: <span class="math inline">\(b_0\)</span>)<br />
+n = Quantidade de participantes (no caso, 219)</p>
+<p><span class="math inline">\(F = \frac{0.45/(2 − 1)}{(1−0.45)/(219−2)}\)</span></p>
+<p>O valor encontrado (180.82) deve ser comparado com o valor crítico associado a um nível de significância específico, que possui distribuição F com PA − PC graus de liberdade no numerador e n−PA no denominador. Nesse caso, considerando 0.05 de significância, o valor crítico é 3.8846687, ou:</p>
+<p><span class="math inline">\(X \sim F_{0.05}(PA − PC,n−PA) \\X \sim F_{0.05}(df = 1, df = 217)\)</span></p>
+<p>Como temos visto no decorrer dos capítulos, quão maior a estatística de teste, menor o valor de P. Nesse caso, como o valor calculado é maior do que o valor crítico, o valor de p é menor do que o nível de significância eleito (p =2.197683210^{-30}). Isso indica que o Modelo Aumentado significativamente reduz os erros quando comparado ao Modelo Compacto.</p>
+<p>Graficamente, temos a seguinte situação:</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" title="1">f_critical &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">data.frame</span>(<span class="dt">x=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">5</span>)), <span class="kw">aes</span>(<span class="dt">x=</span>x)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb119-2" title="2"><span class="st">     </span><span class="kw">stat_function</span>(<span class="dt">fun=</span>df, <span class="dt">args=</span><span class="kw">list</span>(<span class="dt">df1=</span><span class="dv">1</span>, <span class="dt">df2=</span><span class="dv">217</span>), <span class="dt">colour=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">size=</span><span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb119-3" title="3"><span class="st">     </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">qf</span>(<span class="dv">1</span><span class="fl">-0.05</span>, <span class="dv">1</span>, <span class="dv">217</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb119-4" title="4"><span class="st">      </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x=</span><span class="dv">4</span>, <span class="dt">y=</span><span class="fl">1.4</span>, <span class="dt">label =</span> <span class="st">&quot;Valor crítico&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb119-5" title="5"><span class="st">     </span><span class="kw">ggtitle</span>(<span class="st">&quot;F Distribution&quot;</span>)</a>
+<a class="sourceLine" id="cb119-6" title="6"></a>
+<a class="sourceLine" id="cb119-7" title="7">f_calculated &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">data.frame</span>(<span class="dt">x=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">5</span>)), <span class="kw">aes</span>(<span class="dt">x=</span>x)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb119-8" title="8"><span class="st">     </span><span class="kw">stat_function</span>(<span class="dt">fun=</span>df, <span class="dt">args=</span><span class="kw">list</span>(<span class="dt">df1=</span><span class="dv">1</span>, <span class="dt">df2=</span><span class="dv">217</span>), <span class="dt">colour=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">size=</span><span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb119-9" title="9"><span class="st">     </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">qf</span>(<span class="dv">1</span><span class="fl">-0.05</span>, <span class="dv">1</span>, <span class="dv">217</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb119-10" title="10"><span class="st">     </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">180</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb119-11" title="11"><span class="st">     </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x=</span><span class="dv">170</span>, <span class="dt">y=</span><span class="fl">1.4</span>, <span class="dt">label =</span> <span class="st">&quot;Valor calculado&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb119-12" title="12"><span class="st">     </span><span class="kw">ggtitle</span>(<span class="st">&quot;F Distribution&quot;</span>)</a>
+<a class="sourceLine" id="cb119-13" title="13"></a>
+<a class="sourceLine" id="cb119-14" title="14"><span class="kw">grid.arrange</span>(f_critical, f_calculated)</a></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-100-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Agora, após esses cálculos, é possível concluir que a adição de um novo preditor no modelo reduz significativamente o erro presente em um modelo que conte apenas com a média (F(1, 217) = 180.8, p &lt; 0.01). Posto isso, também é possível apresentar a função nativa <code>anova</code> que o R executa ao realizarmos a regressão. Repare que os valores encontrados são exatamente os mesmos (299561 para o SSE do Modelo Compacto e 163401 para o SSE do Modelo Aumentado). O valor de F também e p também são os mesmos (180.82 e p &lt; 0,01).</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1"><span class="kw">anova</span>(mod_intercepto_apenas,mod_linear_simples)</a></code></pre></div>
+<pre><code>## Warning in anova.lmlist(object, ...): models with response &#39;&quot;eat_soma&quot;&#39;
+## removed because response differs from model 1</code></pre>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: bsq_soma
+##            Df Sum Sq Mean Sq F value Pr(&gt;F)
+## Residuals 218 299561  1374.1</code></pre>
+<p>No entanto, logo ao início comentamos que o <code>F-test</code> aponta para quanto o modelo em questão consegue explicar da variabilidade dos dados. Isso é feito pela razão entre a Regressão Quadrática Média (MSR) do Modelo Aumentado com o Erro Quadrático Médio (MSE) desse mesmo modelo.</p>
+<p><span class="math display">\[ F = \frac{MSR}{MSE}\]</span></p>
+<p>Da mesma maneira que foi explicado durante a ANOVA, o MSE é fruto da razão entre o SSR pelos graus de liberdade (K-1, considerando aqui o intercepto) e o MSR é fruto da razão entre o SSR pelos graus de liberdade (N-K, considerando também o intercepto). Nesse caso, o df do Modelo Aumentado é igual a 2 (<span class="math inline">\(b_0\)</span> e <span class="math inline">\(b_1\)</span>) e o df do resíduo é igual a 217 (219-2).</p>
+<p>Abaixo a prova matemática:</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1">dados_brasil <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb123-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">SSR_modelo_aumentado =</span> (<span class="kw">predict</span>(mod_linear_simples)<span class="op">-</span><span class="kw">mean</span>(bsq_soma))<span class="op">^</span><span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb123-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">SSR_modelo_residuos =</span> (<span class="kw">predict</span>(mod_linear_simples)<span class="op">-</span>bsq_soma)<span class="op">^</span><span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb123-4" title="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">F_statistic =</span> (<span class="kw">sum</span>(SSR_modelo_aumentado)<span class="op">/</span>(<span class="dv">2-1</span>))<span class="op">/</span>(<span class="kw">sum</span>(SSR_modelo_residuos)<span class="op">/</span>(<span class="kw">nrow</span>(dados_brasil)<span class="op">-</span><span class="dv">2</span>)))</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 1
+##   F_statistic
+##         &lt;dbl&gt;
+## 1        180.</code></pre>
+<p>Com isso posto, agora é possível montar a tabela inicial da regressão, que é exatamente igual ao que foi exposta no capítulo sobre a ANOVA (de uma via):</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Source</th>
+<th align="left">SS</th>
+<th align="left">df</th>
+<th align="left">MS</th>
+<th align="left">F-Value</th>
+<th align="left">P-Value</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Explicada</td>
+<td align="left">SSR (Regressão)</td>
+<td align="left">K-1</td>
+<td align="left">MSR</td>
+<td align="left">SSR/K-1</td>
+<td align="left">MSR/MSE</td>
+<td>–</td>
+</tr>
+<tr class="even">
+<td align="left">Erro</td>
+<td align="left">SSE (Erro)</td>
+<td align="left">N-K</td>
+<td align="left">MSE</td>
+<td align="left">SSE/N-K</td>
+<td align="left">–</td>
+<td>–</td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left">SST (Total)</td>
+<td align="left">N-1</td>
+<td align="left">var(y)</td>
+<td align="left">–</td>
+<td align="left">–</td>
+<td>–</td>
+</tr>
+</tbody>
+</table>
+<p>Com os valores reais, essa tabela fica:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Source</th>
+<th align="left">SS</th>
+<th align="left">df</th>
+<th align="left">MSE</th>
+<th align="left">F-Value</th>
+<th align="left">P-Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Explicada</td>
+<td align="left">9414.3</td>
+<td align="left">2-1</td>
+<td align="left">9414.3</td>
+<td align="left">180.823106</td>
+<td align="left">–</td>
+</tr>
+<tr class="even">
+<td align="left">Resíduo</td>
+<td align="left">1.1297710^{4}</td>
+<td align="left">219-2</td>
+<td align="left">52.0633409</td>
+<td align="left">–</td>
+<td align="left">–</td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left">2.071210^{4}</td>
+<td align="left">219-1</td>
+<td align="left">–</td>
+<td align="left">–</td>
+<td align="left">–</td>
+</tr>
+</tbody>
+</table>
+<p>Dito isso, o <strong>segundo momento</strong> é ainda calcado na análise dos resíduos. No caso, a raiz quadrada do erro quadratico médio indica o desvio padrão dos valores previstos da variável dependente ao redor da linha de regressão estimada. Algebricamente:</p>
+<p><span class="math display">\[RMSE = \sqrt\frac{SSE}{N-K} = \sqrt{MSE}\]</span></p>
+<p>No caso específico:</p>
+<p><span class="math display">\[RMSE = \sqrt\frac{163401}{219-2} = 27.44\]</span></p>
+<p>O <strong>terceiro momento</strong> se relaciona à interpretação do <span class="math inline">\(R^2\)</span>. Também chamado de <strong>Coeficiente de Determinação</strong>, ele mensura o quanto a variação total da variável dependente pode ser atribuída às variáveis independentes do modelo. Matematicamente, ele é equivalente ao PRE entre o Modelo Compacto e o Modelo Aumentado que, por sua vez, é equivalente à razão entre o SSR e a SST do Modelo Aumentado ou 1 - (SSE/SST)</p>
+<p>Assim, o PRE era:</p>
+<p><span class="math inline">\(PRE = \frac{SSE(C)-SSE(A)}{SSR(C)}=\frac{299560.7-163401}{299560.7} = 0.4545318\)</span></p>
+<p>Enquanto O R2 tem o mesmo valor:
+<span class="math inline">\(R^2 = \frac{SSR}{SST} = \frac{136159.8}{299560.7} = 0.454\)</span><br />
+<span class="math inline">\(R^2 = 1-\frac{SSE}{SST} = 1- \frac{163401}{299560.7} = 0.454\)</span></p>
+<p>Nesse caso, cerca de 45% da variabilidade dos resultados da Escala EAT-26 podem ser atribuídos à variabilidade da Escala BSQ-34.</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" title="1"><span class="co">#Soma dos Quadrados Explicados - SSR</span></a>
+<a class="sourceLine" id="cb125-2" title="2">SSR_modelo_aumentado &lt;-<span class="st"> </span>dados_brasil <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb125-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">SSR_modelo_aumentado =</span> (<span class="kw">predict</span>(mod_linear_simples)<span class="op">-</span><span class="kw">mean</span>(eat_soma))<span class="op">^</span><span class="dv">2</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb125-4" title="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">SSR_modelo_aumentado =</span> (<span class="kw">sum</span>(SSR_modelo_aumentado))) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb125-5" title="5"><span class="st">  </span><span class="kw">as.numeric</span>() <span class="co">#9414.255</span></a>
+<a class="sourceLine" id="cb125-6" title="6"></a>
+<a class="sourceLine" id="cb125-7" title="7"><span class="co">#Soma dos Quadrados dos erros - SSE</span></a>
+<a class="sourceLine" id="cb125-8" title="8">SSE_modelo_aumentado &lt;-<span class="st"> </span>dados_brasil <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb125-9" title="9"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">SSE_modelo_aumentado =</span> (<span class="kw">predict</span>(mod_linear_simples)<span class="op">-</span>eat_soma)<span class="op">^</span><span class="dv">2</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb125-10" title="10"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">SSE_modelo_aumentado =</span> (<span class="kw">sum</span>(SSE_modelo_aumentado))) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb125-11" title="11"><span class="st">  </span><span class="kw">as.numeric</span>() <span class="co">#11297.74</span></a>
+<a class="sourceLine" id="cb125-12" title="12"></a>
+<a class="sourceLine" id="cb125-13" title="13"><span class="co">#Soma dos quadrados total - SST</span></a>
+<a class="sourceLine" id="cb125-14" title="14">sst_modelo_aumentado &lt;-<span class="st"> </span>dados_brasil <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb125-15" title="15"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sst_modelo_aumentado =</span> (eat_soma<span class="op">-</span><span class="kw">mean</span>(eat_soma))<span class="op">^</span><span class="dv">2</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb125-16" title="16"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">sst_modelo_aumentado =</span> (<span class="kw">sum</span>(sst_modelo_aumentado))) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb125-17" title="17"><span class="st">  </span><span class="kw">as.numeric</span>() <span class="co">#20712</span></a></code></pre></div>
+<p>Finalmente, o <strong>quarto momento</strong> é entender o <span class="math inline">\(R^2 ajustado\)</span>. Uma vez que modelos com mais parâmetros/preditores, independente da relevância deles, vão sempre ter <span class="math inline">\(R^2\)</span> maior do que modelos mais compactos e, portanto, mais parcimoniosos, é necessário introduz uma punição ancorada na quantidade de preditores inseridos. Essa punição é realizada pelo <span class="math inline">\(R^2 ajustado\)</span>, que irá considerar a complexidade do modelo. Algebricamente é a mesma coisa que <span class="math inline">\(1-\frac{MSE}{MST} = 1-\frac{MSE}{VAR(Y)}\)</span>, como pode ser visto abaixo:</p>
+<p><span class="math display">\[Adjusted R^2 = 1 - \frac{SSE/(N-K)}{SST/(N-1)} = 1-\frac{11297/217}{20712/218} = 1-\frac{52}{95} = 1 - 0.547 = 0.452\]</span></p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1"><span class="co">#variance </span></a>
+<a class="sourceLine" id="cb126-2" title="2"><span class="kw">sum</span>((<span class="kw">mean</span>(dados_brasil<span class="op">$</span>eat_soma)<span class="op">-</span><span class="st"> </span>dados_brasil<span class="op">$</span>eat_soma)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">218</span></a>
+<a class="sourceLine" id="cb126-3" title="3"><span class="kw">var</span>(dados_brasil<span class="op">$</span>eat_soma)</a></code></pre></div>
+<p>Com tais resultados descritos, agora é possível retornar aos coeficientes obtidos na regressão, que estão novamente listados abaixo.</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" title="1"><span class="kw">stargazer</span>(mod_linear_simples, <span class="dt">type =</span> <span class="st">&quot;text&quot;</span>)</a></code></pre></div>
+<pre><code>## 
+## ===============================================
+##                         Dependent variable:    
+##                     ---------------------------
+##                              eat_soma          
+## -----------------------------------------------
+## bsq_soma                     0.177***          
+##                               (0.013)          
+##                                                
+## Constant                       1.550           
+##                               (1.180)          
+##                                                
+## -----------------------------------------------
+## Observations                    219            
+## R2                             0.455           
+## Adjusted R2                    0.452           
+## Residual Std. Error      7.215 (df = 217)      
+## F Statistic          180.823*** (df = 1; 217)  
+## ===============================================
+## Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+<p>O <code>intercepto</code> é chamado de <code>constante</code> na maior parte dos programas e isso não é diferente no <code>stargazer</code>. No caso, ele se refere ao valor médio/esperado de Y quando X=0. Ou seja, se alguém tiveSSR tirado o valor 0 na escala BSQ-34, o valor previsto para os resultados da Escala EAT-26 seria de 1.55, tal como provado abaixo:</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" title="1"><span class="kw">predict</span>(mod_linear_simples, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">0</span>)))</a></code></pre></div>
+<pre><code>##        1 
+## 1.549962</code></pre>
+<p>É importante notar que frequentemente o intercepto não tem interpretação lógica e, por isso, costuma ser desconsiderado. No entanto, é possível centralizar os valores do preditor <span class="math inline">\((x_i-\bar{x})\)</span> para que o intercepto se torne o valor médio da variável dependente.</p>
+<p>É também importante atentar que o valor do intercepto não é significativo, indicando que ele não é significativamente diferente de 0.</p>
+<p>Já o coeficiente do <code>bsq_soma</code>, que se refere os resultados obtidos a partir da Escala BSQ-34 é 0.177 e significativo. Isso significa que 1 unidade de mudança nos resultados da BSQ-34 geram 0.177 unidade de mudança, em média, nos resultados da Escala BSQ-34.</p>
+<p>É importante atentar que o Erro Padrão (Std. Error) é justamente o que permite verificar a significância do resultado e segue uma T com n-2 graus de liberdade. Nesse caso, para o Intervalo de Confiança de <code>b1</code> é:</p>
+<p><span class="math display">\[CI = b1 \pm t_{\alpha/2},_{n-2}*SE(b_1))
+\\ b1 - SE(b_1) ≤ b1 ≤ b1 + SE(b_1)\]</span></p>
+<p><span class="math display">\[CI = b1 \pm t_{\alpha/2},_{n-2}\sqrt{\dfrac{SSE/(N-k)}{\sum_{i=1}^{n}(x_i - \bar{x})^2}}\]</span></p>
+<p>Torna-se claro, dessa forma, que a estatística T encontrada nada mais é do que:</p>
+<p><span class="math display">\[T = \frac{b_1}{SE(b_1)} \\ T = \frac{2.5640}{0.1907} = 13.44\]</span></p>
+<p>É importante atentar que na regressão linear simples, o intervalo de confiança de <span class="math inline">\(b_1\)</span> é análogo à razão entre o RMSE por toda variação ao entorno de X</p>
+<p><span class="math display">\[CI(b1)=\frac{RMSE}{\sqrt{n-1*S^2X}}\]</span></p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" title="1"><span class="kw">sqrt</span>(SSE_modelo_aumentado<span class="op">/</span><span class="dv">217</span>)</a>
+<a class="sourceLine" id="cb131-2" title="2"></a>
+<a class="sourceLine" id="cb131-3" title="3">(SSE_modelo_aumentado<span class="op">/</span><span class="dv">217</span>)<span class="op">*</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">219</span>)<span class="op">+</span>(<span class="kw">mean</span>(dados_brasil<span class="op">$</span>bsq_soma)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>(<span class="kw">sum</span>((<span class="kw">mean</span>(dados_brasil<span class="op">$</span>bsq_soma)<span class="op">-</span><span class="st"> </span>dados_brasil<span class="op">$</span>bsq_soma)<span class="op">^</span><span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb131-4" title="4"></a>
+<a class="sourceLine" id="cb131-5" title="5"><span class="co">#Erro padrão do b0</span></a>
+<a class="sourceLine" id="cb131-6" title="6"><span class="kw">sqrt</span>((SSE_modelo_aumentado<span class="op">/</span><span class="dv">217</span>))<span class="op">*</span><span class="kw">sqrt</span>(((<span class="dv">1</span><span class="op">/</span><span class="dv">219</span>)<span class="op">+</span>(<span class="kw">mean</span>(dados_brasil<span class="op">$</span>bsq_soma)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>(<span class="kw">sum</span>((<span class="kw">mean</span>(dados_brasil<span class="op">$</span>bsq_soma)<span class="op">-</span><span class="st"> </span>dados_brasil<span class="op">$</span>bsq_soma)<span class="op">^</span><span class="dv">2</span>))))</a>
+<a class="sourceLine" id="cb131-7" title="7"></a>
+<a class="sourceLine" id="cb131-8" title="8"></a>
+<a class="sourceLine" id="cb131-9" title="9">(SSE_modelo_aumentado<span class="op">/</span><span class="dv">217</span>)<span class="op">/</span><span class="kw">sqrt</span>(((<span class="dv">1</span><span class="op">/</span><span class="dv">219</span>)<span class="op">+</span>(<span class="kw">mean</span>(dados_brasil<span class="op">$</span>bsq_soma)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>(<span class="kw">sum</span>((<span class="kw">mean</span>(dados_brasil<span class="op">$</span>bsq_soma)<span class="op">-</span><span class="st"> </span>dados_brasil<span class="op">$</span>bsq_soma)<span class="op">^</span><span class="dv">2</span>))))</a>
+<a class="sourceLine" id="cb131-10" title="10"></a>
+<a class="sourceLine" id="cb131-11" title="11"><span class="co">#https://www.ics.uci.edu/~sternh/courses/210/slides2new.pdf</span></a></code></pre></div>
+<p>Em relação ao <code>intercepto</code>, o intervalo de confiança também é baseado no erro padrão, tal como descrito abaixo:</p>
+<p><span class="math display">\[CI = b0 \pm t_{\alpha/2},_{n-2}*SE(b_0))
+\\ b0 - SE(b_0) ≤ b0 ≤ b0 + SE(b_0)\]</span></p>
+<p><span class="math display">\[SS_{b0} = \sqrt{SSE/(N-K)(\frac{1}{n}+\frac{\bar{x}^2}{\sum_{i=1}^{n}(x_i - \bar{x})^2}})\]</span></p>
+<p>A estatística de teste é dada pela razão entre a estimativa e o erro padrão.</p>
+<p><span class="math display">\[ T = \frac{b0}{SE(b1)} \\ = \frac{0.177}{0.013} \\ \approx 13.4  \]</span></p>
+</div>
+<div id="pressupostos" class="section level2">
+<h2><span class="header-section-number">6.5</span> Pressupostos</h2>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1"><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> bsq_media, <span class="dt">y  =</span> bsq_soma)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb132-2" title="2"><span class="st">  </span><span class="kw">geom_line</span>()</a></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-110-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" title="1"><span class="kw">cov</span>(dados_brasil<span class="op">$</span>eat_soma,dados_brasil<span class="op">$</span>bsq_soma)<span class="op">/</span><span class="kw">var</span>(dados_brasil<span class="op">$</span>eat_soma)</a></code></pre></div>
+<pre><code>## [1] 2.563973</code></pre>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" title="1"><span class="kw">mean</span>(dados_brasil<span class="op">$</span>bsq_soma)<span class="op">-</span><span class="kw">cov</span>(dados_brasil<span class="op">$</span>eat_soma,dados_brasil<span class="op">$</span>bsq_soma)<span class="op">/</span><span class="kw">var</span>(dados_brasil<span class="op">$</span>eat_soma)<span class="op">*</span><span class="kw">mean</span>(dados_brasil<span class="op">$</span>eat_soma)</a></code></pre></div>
+<pre><code>## [1] 40.48785</code></pre>
+<p>Para utilizar os resultados, alguns pressupostos precisam ser atendidos. Tanto gráficos como testes formais podem ser utilizados para isso.</p>
+<p>O primeiro é a linearidade.</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" title="1"><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> eat_soma, <span class="dt">y =</span> bsq_soma)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb137-2" title="2"><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb137-3" title="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-112-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Em seguida, a independência dos resíduos, que pode ser calculada pela Variance inflation factors (VIF). Caso o valor do VIF supere 4, há sinal de multicolinearidade.</p>
+<p><span class="math inline">\(VIF = \frac{1}{1 - {R}^{2}_{k}} = \frac{1}{Tolerance}\)</span></p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" title="1"><span class="kw">library</span>(olsrr)</a>
+<a class="sourceLine" id="cb138-2" title="2"><span class="kw">ols_vif_tol</span>(mod_linear_simples)</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 3
+##   Variables Tolerance   VIF
+##   &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;
+## 1 bsq_soma          1     1</code></pre>
+<p>Os erros devem ser normalmentre distribuídos. Isso pode ser feito por um Q-Q plot. É indicado que não haja diferença entre a linha azul e a vermelha. Evidentemente, com dados empíricos (reais) isso é muito difícil.</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1"><span class="kw">ols_plot_resid_qq</span>(mod_linear_simples)</a></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-114-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>É também possível checar por um histograma, em que as barras devem ter similaridade à linha que apresenta a distribuição normal.</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" title="1"><span class="kw">ols_plot_resid_hist</span>(mod_linear_simples)</a></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-115-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Os testes formaiss são o Shapiro-wilk, Kolgomorov-Smirnov, Cramer-von Mises e Anderson Darling. Em todos, a hipótese nula é de que os resíduos são normalmente distribuídos. Em função da modelagem matemática de cada um deSSRs testes, é esperado que eles tenham uma baixa performance em amostras menores que 30 e que os resultados entre eles sejam distintos quando a amostra é superior a 30, mas inferior a 200. A literatura tem mostrado que o Shapiro-Wilk é o teste com maior poder para detectar desvios da normalidade</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" title="1"><span class="kw">ols_test_normality</span>(mod_linear_simples)</a></code></pre></div>
+<pre><code>## Warning in ks.test(y, &quot;pnorm&quot;, mean(y), sd(y)): ties should not be present
+## for the Kolmogorov-Smirnov test</code></pre>
+<pre><code>## -----------------------------------------------
+##        Test             Statistic       pvalue  
+## -----------------------------------------------
+## Shapiro-Wilk              0.9598         0.0000 
+## Kolmogorov-Smirnov        0.0825         0.1017 
+## Cramer-von Mises         16.9357         0.0000 
+## Anderson-Darling          2.3975         0.0000 
+## -----------------------------------------------</code></pre>
+<p>De forma similar ao observado nos gráficos, os resultados majoritariamente apontam para normalidade dos resíduos.</p>
+<p>As variâncias devem ser iguais (homocedasticidade). Iso pode ser visto em um gráfico de dispersão em que x é o valor previsto (fitted values) e y é o valor dos resíduos (residual). Traçar uma linha no centro de y facilita a visualização. O ideal é que padrões não sejam encontrados.</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" title="1"><span class="kw">include_graphics</span>(<span class="st">&quot;raw_img/cap_reg_homocedasticidade.png&quot;</span>)</a></code></pre></div>
+<p><img src="raw_img/cap_reg_homocedasticidade.png" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" title="1"><span class="kw">ols_plot_resid_fit</span>(mod_linear_simples)</a></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-118-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>É possível visualizar que eSSR pressuposto é violado.</p>
+<p>Exstem diferentes testes formais, como o Bartlett e o Breusch-Pagan. Os resultados costumam convergir e, em função da praticidade computacional, optaremos pelo teste de Breusch-Pagan. Nesseteste, os resultados tem distribuição qui-quadrado e a hipótese nula assume homocedasticidade. Portanto, a estatística de teste deveria ser insignificante para que a homocedasticidade pudeSSR ser aceita.</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" title="1"><span class="kw">ols_test_breusch_pagan</span>(mod_linear_simples)</a></code></pre></div>
+<pre><code>## 
+##  Breusch Pagan Test for Heteroskedasticity
+##  -----------------------------------------
+##  Ho: the variance is constant            
+##  Ha: the variance is not constant        
+## 
+##                 Data                 
+##  ------------------------------------
+##  Response : eat_soma 
+##  Variables: fitted values of eat_soma 
+## 
+##         Test Summary          
+##  -----------------------------
+##  DF            =    1 
+##  Chi2          =    8.980527 
+##  Prob &gt; Chi2   =    0.00272872</code></pre>
+</div>
+<div id="a-interpretação" class="section level2">
+<h2><span class="header-section-number">6.6</span> A interpretação</h2>
+<p>Posto isso,</p>
+
+<div id="refs" class="references">
+<div>
+<p>Chartier, Sylvain, and Andrew Faulkner. 2008. “General Linear Models: An Integrated Approach to Statistics.” <em>Tutorials in Quantitative Methods for Psychology</em> 4 (2): 65–78. <a href="https://doi.org/10.20982/tqmp.04.2.p065">https://doi.org/10.20982/tqmp.04.2.p065</a>.</p>
+</div>
+<div>
+<p>Field, Andy P., and Rand R. Wilcox. 2017. “Robust Statistical Methods: A Primer for Clinical Psychology and Experimental Psychopathology Researchers.” <em>Behaviour Research and Therapy</em> 98 (November): 19–38. <a href="https://doi.org/10.1016/j.brat.2017.05.013">https://doi.org/10.1016/j.brat.2017.05.013</a>.</p>
+</div>
+<div>
+<p>Howell, David C. 2011. <em>Fundamental Statistics for the Behavioral Sciences</em>. Belmont: CA: Wadsworth Cengage Learning.</p>
+</div>
+<div>
+<p>Lumley, Thomas, Paula Diehr, Scott Emerson, and Lu Chen. 2002. “The Importance of the Normality Assumption in Large Public Health Data Sets.” <em>Annual Review of Public Health</em> 23 (1): 151–69. <a href="https://doi.org/10.1146/annurev.publhealth.23.100901.140546">https://doi.org/10.1146/annurev.publhealth.23.100901.140546</a>.</p>
+</div>
+<div>
+<p>Morettin, Pedro Alberto, and Wilton de Oliveira Bussab. 2010. <em>Estatistica Basica</em>. Saraiva.</p>
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="anova.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/08-regressao_linear_simples.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["gitbook-demo.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
