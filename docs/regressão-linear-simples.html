@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2020-04-18" />
+<meta name="date" content="2020-04-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -185,7 +185,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#legenda-1"><i class="fa fa-check"></i><b>6.1</b> Legenda</a></li>
 <li class="chapter" data-level="6.2" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#explicação-conceitual"><i class="fa fa-check"></i><b>6.2</b> Explicação conceitual</a></li>
 <li class="chapter" data-level="6.3" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisa-3"><i class="fa fa-check"></i><b>6.3</b> Pesquisa</a></li>
-<li class="chapter" data-level="6.4" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#regressão-linear-simples-1"><i class="fa fa-check"></i><b>6.4</b> Regressão linear simples</a></li>
+<li class="chapter" data-level="6.4" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#regressão-linear-simples-1"><i class="fa fa-check"></i><b>6.4</b> Regressão linear simples</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-r-4"><i class="fa fa-check"></i><b>6.4.1</b> Execução no R</a></li>
+</ul></li>
 <li class="chapter" data-level="6.5" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pressupostos"><i class="fa fa-check"></i><b>6.5</b> Pressupostos</a></li>
 <li class="chapter" data-level="6.6" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#a-interpretação"><i class="fa fa-check"></i><b>6.6</b> A interpretação</a></li>
 </ul></li>
@@ -305,7 +307,7 @@ Erro quadrático médio (MSE): <span class="math inline"><span class="math inlin
 <div id="pesquisa-3" class="section level2">
 <h2><span class="header-section-number">6.3</span> Pesquisa</h2>
 <div class="alert alert-info" role="alert">
-<p><strong>Base: </strong> Livro - R - TEG</p>
+<p><strong>Base: </strong> Livro - Dados - Eating disorders</p>
 </div>
 <p>Vamos utilizar a pesquisa intitulada “Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students”, publicada em 2018 no Global Journal of Educational Studies, que sou co-autor.</p>
 <p>O objetivo dessa pesquisa foi explorar os fatores envolvidos em transtornos alimentares e aspectos da percepção da imagem corporal, bem como verificar a capacidade que uma medida possuia em predizer os resultados de outra. Esse artigo contou com a utilização de escalas aplicadas em 219 participantes no Brasil. Para acessar aspectos relacionados aos Transtornos alimentares, a escala EAT-26 foi aplicada. Para verificar aspectos da imagem corporal, a escala BSQ-34 foi aplicada.</p>
@@ -450,7 +452,10 @@ familia_esporte_sd
 <li><p>Predizer os valores da variável dependente (Y) em função dos valores da variável dependente (X);</p></li>
 <li><p>Explicar a variabilidade da variável dependente (Y) em função da variável independente (X). Tecnicamente, ambas as utilidades são virtualmente iguais.</p></li>
 </ol>
-<p>A Regressão linear simples pode ser vista a partir de um incremento ou avanço dos modelos de correlação. Dessa maneira, os aspectos correlacionais devem (e podem) ser inicialmente investigados. Conforme já exposto, o gráfico de dispersão auxilia na visualização da relação entre as variáveis.</p>
+<p>A Regressão linear simples pode ser vista a partir de um incremento ou avanço dos modelos de correlação. Dessa maneira, os aspectos correlacionais devem (e podem) ser inicialmente investigados.</p>
+<div id="execução-no-r-4" class="section level3">
+<h3><span class="header-section-number">6.4.1</span> Execução no R</h3>
+<p>Conforme já exposto, o gráfico de dispersão auxilia na visualização da relação entre as variáveis.</p>
 <div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1"><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> bsq_soma, <span class="dt">y =</span> eat_soma)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb107-2" title="2"><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb107-3" title="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Resultados da Escala BSQ-34&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Resultados da Escala EAT-26&quot;</span>, </a>
@@ -814,6 +819,7 @@ n = Quantidade de participantes (no caso, 219)</p>
 <p><span class="math display">\[SS_{b0} = \sqrt{SSE/(N-K)(\frac{1}{n}+\frac{\bar{x}^2}{\sum_{i=1}^{n}(x_i - \bar{x})^2}})\]</span></p>
 <p>A estatística de teste é dada pela razão entre a estimativa e o erro padrão.</p>
 <p><span class="math display">\[ T = \frac{b0}{SE(b1)} \\ = \frac{0.177}{0.013} \\ \approx 13.4  \]</span></p>
+</div>
 </div>
 <div id="pressupostos" class="section level2">
 <h2><span class="header-section-number">6.5</span> Pressupostos</h2>
