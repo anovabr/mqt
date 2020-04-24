@@ -155,7 +155,7 @@ Modelos assim serão explicitados em momento posterior.
 ## Pesquisa  
 
 <div class="alert alert-info" role="alert">
-  <strong>Base: </strong> Livro - R - TEG
+  <strong>Base: </strong> Livro - Dados - Eating disorders
 </div>  
 
 
@@ -186,7 +186,12 @@ Há, ao menos, duas utilidades diretas em uma pesquisa, que são:
 
 (ii) Explicar a variabilidade da variável dependente (Y) em função da variável independente (X). Tecnicamente, ambas as utilidades são virtualmente iguais.
 
-A Regressão linear simples pode ser vista a partir de um incremento ou avanço dos modelos de correlação. Dessa maneira, os aspectos correlacionais devem (e podem) ser inicialmente investigados. Conforme já exposto, o gráfico de dispersão auxilia na visualização da relação entre as variáveis.
+A Regressão linear simples pode ser vista a partir de um incremento ou avanço dos modelos de correlação. Dessa maneira, os aspectos correlacionais devem (e podem) ser inicialmente investigados. 
+
+### Execução no R
+
+
+Conforme já exposto, o gráfico de dispersão auxilia na visualização da relação entre as variáveis.
 
 ```{r}
 ggplot(dados_brasil, aes(x = bsq_soma, y = eat_soma)) +
