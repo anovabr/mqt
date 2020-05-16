@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Métodos quantitativos em Psicologia com R</title>
+  <title>Capítulo 4 Qui quadrado | Métodos quantitativos em Psicologia com R</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Métodos quantitativos em Psicologia com R" />
+  <meta property="og:title" content="Capítulo 4 Qui quadrado | Métodos quantitativos em Psicologia com R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="cjvanlissa/gitbook-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Métodos quantitativos em Psicologia com R" />
+  <meta name="twitter:title" content="Capítulo 4 Qui quadrado | Métodos quantitativos em Psicologia com R" />
   
   <meta name="twitter:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="aspectos-gerais.html"/>
+<link rel="prev" href="estatística-descritiva.html"/>
+<link rel="next" href="teste-t.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -212,40 +212,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Métodos quantitativos em Psicologia com R</h1>
-<p class="author"><em><a href="mailto:%20luisfca@gmail.com">Luis Anunciação (PUC-Rio), PhD</a></em></p>
-<p class="date"><em>2020-05-15</em></p>
+<div id="qui-quadrado" class="section level1">
+<h1><span class="header-section-number">Capítulo 4</span> Qui quadrado</h1>
+<div class="objectives">
+<p>
+<strong>Objetivos do capítulo</strong><br />
+1. Apresentar o teste T<br />
+2. Discutir os pressupostos de execução do teste T<br />
+3. Realizar gráficos relacionados à comparação de médias<br />
+4. Apresentar e interpretar métricas de tamanho do efeito<br />
+5. Dar exemplos relacionados à escrita dos resultados 6. Apresentar versões não paramétricas do teste T (Wilcoxon-Mann-Whitney)
+</p>
 </div>
-<div id="introdução" class="section level1">
-<h1><span class="header-section-number">Capítulo 1</span> Introdução</h1>
-<p>Aprender estatística e análise de dados é uma das tarefas mais importantes e desafiadoras que existe no meio acadêmico, especialmente às disciplinas agrupadas em ciências humanas, como Psicologia. Por consequência, ensinar ambas as matérias também impõe um desafio enorme, mas necessário.</p>
-<p>Por diversas razões, as pesquisas feitas em Psicologia apresentam muitas informações misturadas e sobrepostas e a utilização da estatística é fundamental para conseguir separar e filtrar àquelas informações que temos interesse (sinal) daquelas que apenas distorcem estas primeiras (ruído).</p>
-<div id="objetivo" class="section level2">
-<h2><span class="header-section-number">1.1</span> Objetivo</h2>
-<p>Este livro tem como objetivo introduzir conceitos teóricos e aspectos computacionais de estatística de maneira pragmática, direta ao ponto e a partir de perguntas previamente exploradas em pesquisas científicas publicadas. Em menor nível, a modelagem matemática será apresentada e descrita.</p>
-<p>Uma das coisas mais importantes para se ter em mente neste livro é que apesar de todo conteúdo ter uma estrutura linear, os capítulos foram construídos de maneira a serem completos em si mesmo e responderem questões específicas, particulares e pontuais. Assim, penso que o livro atende tanto aqueles leitores com interesse em ler a obra inteira, como aqueles que buscam apenas informações mais específicas de um tópico particular.</p>
-<p>Evidentemente, esse formato adotado pode gerar uma percepção diferente entre aqueles que consultarem apenas um capítulo ou outro e aqueles que lerem o conteúdo por completo. Isso ocorre pois como muitos testes estatísticos são entendidos como casos particulares de outros, alguns fragmentos que podem parecer destoantes durante uma leitura inicial em alguns capítulos, tornam-se mais fáceis e articulados àqueles que lerem o trabalho inteiro e se dispuserem a fazer uma releitura de partes específicas.</p>
-<p>Para ilustrar, o capítulo sobre o Teste T expõe uma pequena parte sobre modelos de regressão, conteúdo que somente é abordado posteriormente. Se em um primeiro momento isso provavelmente pode gerar alguma (pequena) confusão, a releitura do capítulo após o término da sequência do livro tende a gerar, além de um conhecimento mais profundo por parte do leitor, a percepção da integração tanto da estrutura do livro, como da relação existente entre diferentes modelos estatísticos.</p>
-</div>
-<div id="bases" class="section level2">
-<h2><span class="header-section-number">1.2</span> Bases</h2>
-<p>Todas as bases de dados utilizadas neste livro são frutos de pesquisas empíricas que apresentam artigos publicados. Uma vez que o objetivo de um livro é diferente do objetivo da publicação de um artigo, alguns ajustes foram feitos às bases para torná-las mais acessíveis. Nenhuma alteração foi realizada nos dados, mas apenas em mudanças em relação a nomes de variáveis e quantidade de vetores.</p>
-<p>Todo material pode ser acessado livre e grauitamente em <a href="https://github.com/anovabr/mqt/tree/master/bases" class="uri">https://github.com/anovabr/mqt/tree/master/bases</a></p>
-</div>
-<div id="pacotes-e-sintaxes" class="section level2">
-<h2><span class="header-section-number">1.3</span> Pacotes e sintaxes</h2>
-<p>Este livro utiliza majoritariamente o ambiente <a href="https://www.tidyverse.org/">tidyverse</a> para realização das análises. Entretanto, sempre que necessário, funções R-base e uso de outros pacotes serão utilizados. Toda codificação utilizada no livro é exibida nos capítulos e integralmente disponível gratuitamente neste (GitHub)[<a href="https://github.com/anovabr/mqt" class="uri">https://github.com/anovabr/mqt</a>]</p>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="aspectos-gerais.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="estatística-descritiva.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="teste-t.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -276,7 +263,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/index.Rmd",
+"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/04-qui_quadrado.Rmd",
 "text": "Edit"
 },
 "history": {
