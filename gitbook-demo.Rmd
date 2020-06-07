@@ -1,3 +1,129 @@
+--- 
+title: "Métodos quantitativos em Psicologia com R"
+author: "[Luis Anunciação (PUC-Rio), PhD](mailto: luisfca@gmail.com)"
+date: "`r Sys.Date()`"
+always_allow_html: yes
+description: This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R.
+documentclass: book
+github-repo: cjvanlissa/gitbook-demo
+link-citations: yes
+colorlinks: yes
+bibliography:
+- book.bib
+- packages.bib
+site: bookdown::bookdown_site
+biblio-style: apalike
+---
+
+# Introdução
+
+Placeholder
+
+
+## Objetivo 
+## Bases
+## Pacotes e sintaxes
+
+<!--chapter:end:index.Rmd-->
+
+# Aspectos gerais
+
+[Versão de testes] Conforme já explicitado, a estatística pode ser dividida em duas áreas interligadas: estatística descritiva e estatística inferencial. O objetivo da estatística descritiva é apresentar sínteses e resumos dos resultados a partir de gráficos e tabelas. Não é intenção dessa área fazer generalizações ou extrapolar os resultados obtidos em uma pesquisa a pessoas não investigadas durante a coleta de dados. Por contraste, a estatística inferencial visa extrapolar os dados e fazer generalizações que toquem toda população de onde aquela mostra foi retirada e é representativa. Dessa maneira, o principal objetivo da estatística inferencial é, de fato, fazer inferências. 
+
+Apesar de livros e aulas unirem ambas as áreas da estatística, alguns pontos merecem destaque, que são:  
+
+1. A estatística descritiva surgiu antes que a inferencial. A etimologia da palavra talvez ajude a entender, uma vez que estatística vem da palavra estado e este sempre teve interesse em saber quantos eram os cidadãos de um determinado local para, entre outras atividades, taxá-los. Dessa maneira, aspectos descritivos antecedem os inferenciais. Por sua vez, a estatística inferencial guarda origem e proximidade com a teoria dos jogos e, consequentemente, isso ajuda a entender o motivo pelo qual a maioria dos exemplos inferenciais envolvem jogos de azar.
+
+2. A estatística tem duas "escolas" ou "formas de pensamento". A estatística frequentista e a estatística bayesiana. Aspectos fundamentais que tocam à definição de probabilidade são diferentes, bem como a definição de dados e parâmetros também o são. Pela perspectiva histórica, a estatística bayesiana é mais antiga que a frequentista. No entanto, se for comparado a proporção de uso entre os pesquisadores, a estatística frequentista é ainda a mais frequente e justifica a ênfase deste livro nesta área.
+
+3. A relação entre estatística e Machine Learning (ML) é relativamente recente. Apesar de grande interface, e do fato que as análises realizadas em estatística e ML encontram resultados virtualmente idênticos, as áreas têm objetivos diferentes. Ainda sob perspectiva histórica, a estatística, como uma área do conhecimento, é anterior à ML e, também por isso, justifica a ênfase do livro.
+
+<!--chapter:end:01-aspectos_gerais.Rmd-->
+
+
+# Estatística Descritiva
+
+Placeholder
+
+
+## Pesquisa
+## Condições gerais  
+## Verbos do dplyr
+## Tabelas
+## Gráficos
+## 1 variável discreta
+## 1 variável contínua
+## 2 variáveis com VI discreta (e VD contínua)  
+## 2 variáveis com VI contínua (e VD contínua)  
+## Outros gráficos e configurações
+## Resumo  
+
+<!--chapter:end:02-estatistica_descritiva.Rmd-->
+
+# Qui quadrado
+
+```{r base e pacotes qui quadrado, include = FALSE }
+
+load(file="C:/Users/luisf/OneDrive/Documentos/anovabr/MQT/bases/Livro - R - ASQ SE all age intervals.RData")
+
+library(tidyverse)
+library(knitr) #tables and graphs
+library(kableExtra) #tables with different styles
+
+
+```
+
+```{block, type="objectives"}
+**Objetivos do capítulo**  
+1. Apresentar o teste T  
+2. Discutir os pressupostos de execução do teste T  
+3. Realizar gráficos relacionados à comparação de médias  
+4. Apresentar e interpretar métricas de tamanho do efeito  
+5. Dar exemplos relacionados à escrita dos resultados 
+6. Apresentar versões não paramétricas do teste T (Wilcoxon-Mann-Whitney)
+```
+
+
+
+<!--chapter:end:04-qui_quadrado.Rmd-->
+
+
+# Teste T
+
+Placeholder
+
+
+## Pesquisa
+## Execução no R  
+## Tamanho do efeito  
+## Versão robusta do teste T
+## Mann-whitney
+## Teste T e regressão
+## Aspectos matemáticos
+## Resumo  
+
+<!--chapter:end:05-teste_t.Rmd-->
+
+
+# ANOVA
+
+Placeholder
+
+
+## Legenda
+## Pesquisa
+## ANOVA de 1 via
+### Execução no R
+### Post hoc
+## ANOVA de 2 vias
+### Execução no R
+## ANOVA Fatorial
+### Execução no R
+### Post hoc
+## Resumo  
+
+<!--chapter:end:06-anova.Rmd-->
+
 # Regressão linear simples
 
 
@@ -629,7 +755,7 @@ $VIF = \frac{1}{1 - {R}^{2}_{k}} = \frac{1}{Tolerance}$
 
 ```{r}
 library(olsrr)
-#ols_vif_tol(mod_linear_simples)
+ols_vif_tol(mod_linear_simples)
 ```
 
 Os erros devem ser normalmentre distribuídos. Isso pode ser feito por um Q-Q plot. É indicado que não haja diferença entre a linha azul e a vermelha. Evidentemente, com dados empíricos (reais) isso é muito difícil.
@@ -679,3 +805,6 @@ ols_test_breusch_pagan(mod_linear_simples)
 ## A interpretação
 
 Posto isso, 
+
+<!--chapter:end:08-regressao_linear_simples.Rmd-->
+
