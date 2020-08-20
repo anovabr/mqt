@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 7 ANOVA de medidas repetidas | Métodos quantitativos em Psicologia com R</title>
+  <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 7 ANOVA de medidas repetidas | Métodos quantitativos em Psicologia com R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
+  <meta name="github-repo" content="cjvanlissa/gitbook-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 7 ANOVA de medidas repetidas | Métodos quantitativos em Psicologia com R" />
+  
+  <meta name="twitter:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
+  
+
+<meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
+
+
+<meta name="date" content="2020-08-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="anova.html"/>
+<link rel="next" href="regressão-linear-simples.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MQT em Psicologia com R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introdução</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#objetivo"><i class="fa fa-check"></i><b>1.1</b> Objetivo</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#público-alvo"><i class="fa fa-check"></i><b>1.2</b> Público-alvo</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#formato-do-livro"><i class="fa fa-check"></i><b>1.3</b> Formato do livro</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#bases"><i class="fa fa-check"></i><b>1.4</b> Bases</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#pacotes-e-sintaxes"><i class="fa fa-check"></i><b>1.5</b> Pacotes e sintaxes</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html"><i class="fa fa-check"></i><b>2</b> Aspectos gerais</a></li>
+<li class="chapter" data-level="3" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html"><i class="fa fa-check"></i><b>3</b> Estatística Descritiva</a><ul>
+<li class="chapter" data-level="3.1" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#pesquisa"><i class="fa fa-check"></i><b>3.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="3.2" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#condições-gerais"><i class="fa fa-check"></i><b>3.2</b> Condições gerais</a></li>
+<li class="chapter" data-level="3.3" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>3.3</b> Verbos do dplyr</a></li>
+<li class="chapter" data-level="3.4" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#tabelas"><i class="fa fa-check"></i><b>3.4</b> Tabelas</a></li>
+<li class="chapter" data-level="3.5" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#gráficos"><i class="fa fa-check"></i><b>3.5</b> Gráficos</a></li>
+<li class="chapter" data-level="3.6" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-discreta"><i class="fa fa-check"></i><b>3.6</b> 1 variável discreta</a></li>
+<li class="chapter" data-level="3.7" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-contínua"><i class="fa fa-check"></i><b>3.7</b> 1 variável contínua</a></li>
+<li class="chapter" data-level="3.8" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-discreta-e-vd-contínua"><i class="fa fa-check"></i><b>3.8</b> 2 variáveis com VI discreta (e VD contínua)</a></li>
+<li class="chapter" data-level="3.9" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-contínua-e-vd-contínua"><i class="fa fa-check"></i><b>3.9</b> 2 variáveis com VI contínua (e VD contínua)</a></li>
+<li class="chapter" data-level="3.10" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#outros-gráficos-e-configurações"><i class="fa fa-check"></i><b>3.10</b> Outros gráficos e configurações</a></li>
+<li class="chapter" data-level="3.11" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#resumo"><i class="fa fa-check"></i><b>3.11</b> Resumo</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="qui-quadrado.html"><a href="qui-quadrado.html"><i class="fa fa-check"></i><b>4</b> Qui quadrado</a></li>
+<li class="chapter" data-level="5" data-path="teste-t.html"><a href="teste-t.html"><i class="fa fa-check"></i><b>5</b> Teste T</a><ul>
+<li class="chapter" data-level="5.1" data-path="teste-t.html"><a href="teste-t.html#pesquisa-1"><i class="fa fa-check"></i><b>5.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="5.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-r"><i class="fa fa-check"></i><b>5.2</b> Execução no R</a></li>
+<li class="chapter" data-level="5.3" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito"><i class="fa fa-check"></i><b>5.3</b> Tamanho do efeito</a></li>
+<li class="chapter" data-level="5.4" data-path="teste-t.html"><a href="teste-t.html#versão-robusta-do-teste-t"><i class="fa fa-check"></i><b>5.4</b> Versão robusta do teste T</a></li>
+<li class="chapter" data-level="5.5" data-path="teste-t.html"><a href="teste-t.html#mann-whitney"><i class="fa fa-check"></i><b>5.5</b> Mann-whitney</a></li>
+<li class="chapter" data-level="5.6" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>5.6</b> Teste T e regressão</a></li>
+<li class="chapter" data-level="5.7" data-path="teste-t.html"><a href="teste-t.html#aspectos-matemáticos"><i class="fa fa-check"></i><b>5.7</b> Aspectos matemáticos</a></li>
+<li class="chapter" data-level="5.8" data-path="teste-t.html"><a href="teste-t.html#resumo-1"><i class="fa fa-check"></i><b>5.8</b> Resumo</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>6</b> ANOVA</a><ul>
+<li class="chapter" data-level="6.1" data-path="anova.html"><a href="anova.html#legenda"><i class="fa fa-check"></i><b>6.1</b> Legenda</a></li>
+<li class="chapter" data-level="6.2" data-path="anova.html"><a href="anova.html#pesquisa-2"><i class="fa fa-check"></i><b>6.2</b> Pesquisa</a></li>
+<li class="chapter" data-level="6.3" data-path="anova.html"><a href="anova.html#anova-de-1-via"><i class="fa fa-check"></i><b>6.3</b> ANOVA de 1 via</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="anova.html"><a href="anova.html#execução-no-r-1"><i class="fa fa-check"></i><b>6.3.1</b> Execução no R</a></li>
+<li class="chapter" data-level="6.3.2" data-path="anova.html"><a href="anova.html#post-hoc"><i class="fa fa-check"></i><b>6.3.2</b> Post hoc</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="anova.html"><a href="anova.html#anova-de-2-vias"><i class="fa fa-check"></i><b>6.4</b> ANOVA de 2 vias</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="anova.html"><a href="anova.html#execução-no-r-2"><i class="fa fa-check"></i><b>6.4.1</b> Execução no R</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="anova.html"><a href="anova.html#anova-fatorial"><i class="fa fa-check"></i><b>6.5</b> ANOVA Fatorial</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="anova.html"><a href="anova.html#execução-no-r-3"><i class="fa fa-check"></i><b>6.5.1</b> Execução no R</a></li>
+<li class="chapter" data-level="6.5.2" data-path="anova.html"><a href="anova.html#post-hoc-1"><i class="fa fa-check"></i><b>6.5.2</b> Post hoc</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="anova.html"><a href="anova.html#resumo-2"><i class="fa fa-check"></i><b>6.6</b> Resumo</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html"><i class="fa fa-check"></i><b>7</b> ANOVA de medidas repetidas</a><ul>
+<li class="chapter" data-level="7.1" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pesquisa-3"><i class="fa fa-check"></i><b>7.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="7.2" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pacote-ez"><i class="fa fa-check"></i><b>7.2</b> Pacote ez</a></li>
+<li class="chapter" data-level="7.3" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pacote-lme4"><i class="fa fa-check"></i><b>7.3</b> Pacote lme4</a></li>
+<li class="chapter" data-level="7.4" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#sumário"><i class="fa fa-check"></i><b>7.4</b> Sumário</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>8</b> Regressão linear simples</a><ul>
+<li class="chapter" data-level="8.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#legenda-1"><i class="fa fa-check"></i><b>8.1</b> Legenda</a></li>
+<li class="chapter" data-level="8.2" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#explicação-conceitual"><i class="fa fa-check"></i><b>8.2</b> Explicação conceitual</a></li>
+<li class="chapter" data-level="8.3" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisa-4"><i class="fa fa-check"></i><b>8.3</b> Pesquisa</a></li>
+<li class="chapter" data-level="8.4" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#regressão-linear-simples-1"><i class="fa fa-check"></i><b>8.4</b> Regressão linear simples</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-r-4"><i class="fa fa-check"></i><b>8.4.1</b> Execução no R</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pressupostos"><i class="fa fa-check"></i><b>8.5</b> Pressupostos</a></li>
+<li class="chapter" data-level="8.6" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#a-interpretação"><i class="fa fa-check"></i><b>8.6</b> A interpretação</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="http://www.puc-rio.br/" target="blank">PUC-Rio</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Métodos quantitativos em Psicologia com R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="anova-de-medidas-repetidas" class="section level1">
+<h1><span class="header-section-number">Capítulo 7</span> ANOVA de medidas repetidas</h1>
+<div class="objectives">
+<p>
+<strong>Objetivos do capítulo</strong><br />
+1. Apresentar a ANOVA de Medidas Repetidas e o Modelo Linear de Efeitos Mistos (LMM).<br />
+2. Realizar passo-a-passo a modelagem com ambas as estratégias com os pacotes ez e lme4.<br />
+3. Verificar os pressupostos e implementar as correções sugeridas.<br />
+4. Escrever os resultados.
+</p>
+</div>
+<p>Conforme explicitado no decorrer do livro, é possível entender a ANOVA de medidas repetidas como um caso especial do <strong>Modelo Linear de Efeitos Mistos (LMM)</strong>. Quando os dados são balanceados, os resultados são equivalentes <span class="citation">(<span class="citeproc-not-found" data-reference-id="howell_2013"><strong>???</strong></span>)</span>. Dessa maneira, você irá reparar que as análises realizadas nesse capítulo serão feitas tanto via <strong>ANOVA</strong> quanto <strong>LMM</strong> e irão usar dois pacotes, o <code>ez</code> e o <code>lme4</code>. O primeiro irá modelar os dados a via ANOVA, enquanto o segundo irá modela-los via LMM.</p>
+<p>Quando se compara a modelagem via ANOVA de Medidas Repetidas e LMM, este último tem vantagens, já que: 1. permite modelar tanto <em>efeitos fixos</em> quanto <em>efeitos aleatórios</em>, 2. tem opções para lidar com casos ausentes, 3. permite trabalhar com dados desbalanceados e 4. Relaxa alguns pressupostos tradicionais da ANOVA. De forma sucinta, como dois componentes podem ser estipulados (um intra-indivíduo e um entre-indivíduos), tanto o intercepto quanto a inclinação podem ser aleatórios <span class="citation">(<span class="citeproc-not-found" data-reference-id="Judd2012"><strong>???</strong></span>; <span class="citeproc-not-found" data-reference-id="Quen2004"><strong>???</strong></span>)</span>. A equação a seguir apresenta sua forma mais simples:</p>
+<p><span class="math display">\[y_{it} = a_{i} + b_{t} + \epsilon_{it}\]</span></p>
+<p><span class="math inline">\(i\)</span> representa caso caso<br />
+<span class="math inline">\(t\)</span> representa o ponto temporal em que houve uma medida<br />
+<span class="math inline">\(y_{it}\)</span> é o desfecho<br />
+<span class="math inline">\(a_{i}\)</span> é o intercepto (média de caso caso)<br />
+<span class="math inline">\(b_{t}\)</span> representa a média de cada medida no tempo<br />
+<span class="math inline">\(\epsilon_{it}\)</span> representa os desvios da medida individual dos casos e do tempo</p>
+<div id="pesquisa-3" class="section level2">
+<h2><span class="header-section-number">7.1</span> Pesquisa</h2>
+<p>A esse momento, vamos ter como referência de análise a pesquisa intitulada <a href="https://www.google.com">“Avaliação psicométrica em português do indicador de dor crônica de Helsinki em cães com sinais crônicos de osteoartrite”</a>, que tem como primeira autora Lídia Matsubara e eu sou co-autor. Essa pesquisa foi publicada no “Arquivo Brasileiro de Medicina Veterinária e Zootecnia” e você pode acessá-la pelo DOI: .</p>
+<p>Nessa pesquisa, temos um <strong>grupo controle</strong> e um <strong>grupo experimental</strong> e todos os participantes foram avaliados em 5 momentos diferentes do tempo: 1 semana antes do início do tratamento (W2), imediatamente antes (W0), duas semanas após o tratamento ter iniciado (S2). Dessa forma, trata-se de um delineamento 2x5, considerando os 2 grupos e as 5 medições ao longo do tempo. A base <em>tratamento</em> apresenta essas características e seus nomes estão abaixo.</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="anova-de-medidas-repetidas.html#cb108-1"></a>tratamento <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">names</span>()</span></code></pre></div>
+<pre><code>## [1] &quot;id&quot;        &quot;grupo&quot;     &quot;tempo&quot;     &quot;resultado&quot;</code></pre>
+<p>Dessa forma:<br />
+<strong>id</strong> refere-se a uma identificação única de cada participante.<br />
+<strong>grupo</strong> refere-se ao grupo em que o participante foi alocado, tal como previamente apresentado.<br />
+<strong>tempo</strong> diz respeito aos 5 pontos de medida e<br />
+<strong>resultado</strong> é uma variável aleatória contínua do valor obtido na escala utilizada.</p>
+<p>É importante alertar que o formato de base é o longo, diferente dos padrão visto em programas comerciais, como o SPSS.</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="anova-de-medidas-repetidas.html#cb110-1"></a>tratamento <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>() </span></code></pre></div>
+<pre><code>## # A tibble: 6 x 4
+##   id    grupo   tempo resultado
+##   &lt;fct&gt; &lt;fct&gt;   &lt;fct&gt;     &lt;dbl&gt;
+## 1 1     Placebo antes        20
+## 2 2     Placebo antes        16
+## 3 3     Placebo antes        15
+## 4 4     Placebo antes        18
+## 5 5     Placebo antes        12
+## 6 6     Placebo antes        17</code></pre>
+<p>A modelagem estatística envolve definir claramente que o <code>resultado</code> é uma função do <code>tempo</code>, do <code>grupo</code> e da interação <code>tempo x grupo</code>. Conforme exposto, a primeira etapa consiste na apresentação de tabelas e gráficos. Essas técnicas descritivas são muito informativas e permitem uma rápida compreensão dos resultados.</p>
+<p>A tabela a seguir apresenta a quantidade de participantes nas condições com o passar do tempo.</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="anova-de-medidas-repetidas.html#cb112-1"></a>tratamento <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(grupo, tempo) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb112-2"><a href="anova-de-medidas-repetidas.html#cb112-2"></a><span class="st">  </span><span class="kw">count</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb112-3"><a href="anova-de-medidas-repetidas.html#cb112-3"></a><span class="st">  </span><span class="kw">spread</span>(grupo, n) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb112-4"><a href="anova-de-medidas-repetidas.html#cb112-4"></a><span class="st">  </span><span class="kw">kable</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="kw">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</span></code></pre></div>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+tempo
+</th>
+<th style="text-align:right;">
+Experimental
+</th>
+<th style="text-align:right;">
+Placebo
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+antes
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+21
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+nodia
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+21
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+semana2
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+21
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+semana4
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+21
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+semana6
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+21
+</td>
+</tr>
+</tbody>
+</table>
+<p>Nota-se que apesar de não ter havido perda amostral, os grupos não tiveram a mesma quantidade de participantes, gerando o que é classicamente entendido como desbalanceamento amostral. Em seguida, a tabela abaixo apresenta os valores da média e do desvio-padrão para todas as condições:</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="anova-de-medidas-repetidas.html#cb113-1"></a>tratamento <span class="op">%&gt;%</span><span class="st">  </span><span class="co">#base de dados</span></span>
+<span id="cb113-2"><a href="anova-de-medidas-repetidas.html#cb113-2"></a><span class="st">  </span><span class="kw">group_by</span>(grupo,tempo) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#agrupar</span></span>
+<span id="cb113-3"><a href="anova-de-medidas-repetidas.html#cb113-3"></a><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(resultado),<span class="kw">funs</span>(mean, sd)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#tirar estatisticas </span></span>
+<span id="cb113-4"><a href="anova-de-medidas-repetidas.html#cb113-4"></a><span class="st">  </span><span class="kw">gather</span>(medida, val, mean<span class="op">:</span>sd) <span class="op">%&gt;%</span><span class="st">  </span><span class="co">#transformar para longo</span></span>
+<span id="cb113-5"><a href="anova-de-medidas-repetidas.html#cb113-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">key =</span> <span class="kw">paste0</span>(tempo,<span class="st">&quot;_&quot;</span>, medida)) <span class="op">%&gt;%</span><span class="st">  </span><span class="co">#criar um unico inexador</span></span>
+<span id="cb113-6"><a href="anova-de-medidas-repetidas.html#cb113-6"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(grupo, key, val) <span class="op">%&gt;%</span><span class="st">  </span><span class="co">#selecionar apenas as 3 variaveis importantes</span></span>
+<span id="cb113-7"><a href="anova-de-medidas-repetidas.html#cb113-7"></a><span class="st">  </span><span class="kw">separate</span>(key, <span class="dt">into=</span><span class="kw">c</span>(<span class="st">&quot;Tempo&quot;</span>,<span class="st">&quot;key2&quot;</span>)) <span class="op">%&gt;%</span><span class="st">  </span><span class="co">#dividir media e desvio</span></span>
+<span id="cb113-8"><a href="anova-de-medidas-repetidas.html#cb113-8"></a><span class="st">  </span><span class="kw">unite</span>(grupo, grupo, key2) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#unir </span></span>
+<span id="cb113-9"><a href="anova-de-medidas-repetidas.html#cb113-9"></a><span class="st">  </span><span class="kw">spread</span>(Tempo, val)  <span class="op">%&gt;%</span><span class="st">  </span><span class="co">#alargar</span></span>
+<span id="cb113-10"><a href="anova-de-medidas-repetidas.html#cb113-10"></a><span class="st">  </span><span class="kw">kable</span>(., <span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb113-11"><a href="anova-de-medidas-repetidas.html#cb113-11"></a><span class="st">  </span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="kw">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</span></code></pre></div>
+<p>O gráfico abaixo também apresenta as mesmas informações, mas insere uma barra com o erro padrão da média. Isso é útil para interpretação inferencial.</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="anova-de-medidas-repetidas.html#cb114-1"></a><span class="kw">ggplot</span>(tratamento, <span class="kw">aes</span>(<span class="dt">x=</span>tempo, <span class="dt">y=</span>resultado, <span class="dt">group=</span>grupo, <span class="dt">color=</span>grupo)) <span class="op">+</span><span class="st"> </span><span class="co">#variaveis</span></span>
+<span id="cb114-2"><a href="anova-de-medidas-repetidas.html#cb114-2"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.y =</span> mean, <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>, <span class="dt">size=</span><span class="fl">1.5</span>, <span class="kw">aes</span>(<span class="dt">linetype =</span> grupo)) <span class="op">+</span><span class="st"> </span><span class="co">#linha</span></span>
+<span id="cb114-3"><a href="anova-de-medidas-repetidas.html#cb114-3"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.y=</span><span class="st">&quot;mean&quot;</span>, <span class="dt">geom=</span><span class="st">&quot;point&quot;</span>, <span class="dt">size=</span><span class="dv">5</span>, <span class="kw">aes</span>(<span class="dt">shape =</span> grupo)) <span class="op">+</span><span class="st"> </span><span class="co">#pontos</span></span>
+<span id="cb114-4"><a href="anova-de-medidas-repetidas.html#cb114-4"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>,<span class="dt">size=</span><span class="dv">1</span>) <span class="co">#barra de erro</span></span></code></pre></div>
+<pre><code>## Warning: `fun.y` is deprecated. Use `fun` instead.
+
+## Warning: `fun.y` is deprecated. Use `fun` instead.</code></pre>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-80-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>É possível ver que as barras de erro estão superpostas, isto é, uma dentro da outra. Isso ocorre quando não há diferença significativa entre as condições. No entanto, o teste formal estatístico deve ser realizado.</p>
+</div>
+<div id="pacote-ez" class="section level2">
+<h2><span class="header-section-number">7.2</span> Pacote ez</h2>
+<p>Inicialmente, a modelagem será feita via ANOVA de Medidas Repetidas com o pacote <code>ez</code>. A função utilizada será a <code>ezANOVA</code>.</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="anova-de-medidas-repetidas.html#cb116-1"></a><span class="kw">library</span>(ez)</span></code></pre></div>
+<pre><code>## Registered S3 methods overwritten by &#39;lme4&#39;:
+##   method                          from
+##   cooks.distance.influence.merMod car 
+##   influence.merMod                car 
+##   dfbeta.influence.merMod         car 
+##   dfbetas.influence.merMod        car</code></pre>
+<p>Sua sintaxe envolve as seguintes características:</p>
+<p><strong>data</strong> refere-se à base de dados (lembre-se que ela deve estar no formato longo)<br />
+<strong>dv</strong> refere-se à variável dependente (contínua)<br />
+<strong>wid</strong> refere-se à variável com a identificação única de cada aprticipante<br />
+<strong>within</strong> refere-se à variável independente com <em>efeito dentro do tratamento</em>, ou seja, a variável que se repete. Nesse caso, cada uma das semanas<br />
+<strong>between</strong> refere-se à variável independente com <em>efeito entre os tratamentos</em>, ou seja, cada um dos grupos<br />
+<strong>type</strong> refere-se à forma pela qual a soma dos quadrado será calculada. O tipo 3 emula os resultados dos programas típicos e quase sempre é a melhor opção para finalidade de comparação entre resultados<br />
+<strong>detailed</strong> refere-se à apresentação detalhada dos resultados<br />
+<strong>return_aov</strong> refere-se à criação de um objeto no formato <code>aov</code> que tem utilidade para análises comparadas posteriores</p>
+<p>Visando facilitar a comunicação, criaremos um objeto (<code>ez_outcome</code>) para armazenar os resultados e, em seguida, iremos acionar a função <code>summary</code> para apresenta-los.</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="anova-de-medidas-repetidas.html#cb118-1"></a>ez_outcome &lt;-<span class="st"> </span><span class="kw">ezANOVA</span>(</span>
+<span id="cb118-2"><a href="anova-de-medidas-repetidas.html#cb118-2"></a>  <span class="dt">data =</span> tratamento,</span>
+<span id="cb118-3"><a href="anova-de-medidas-repetidas.html#cb118-3"></a>  <span class="dt">dv =</span> resultado,</span>
+<span id="cb118-4"><a href="anova-de-medidas-repetidas.html#cb118-4"></a>  <span class="dt">wid =</span> id,</span>
+<span id="cb118-5"><a href="anova-de-medidas-repetidas.html#cb118-5"></a>  <span class="dt">within =</span> tempo,</span>
+<span id="cb118-6"><a href="anova-de-medidas-repetidas.html#cb118-6"></a>  <span class="dt">between =</span> grupo,</span>
+<span id="cb118-7"><a href="anova-de-medidas-repetidas.html#cb118-7"></a>  <span class="dt">type =</span> <span class="dv">3</span>,</span>
+<span id="cb118-8"><a href="anova-de-medidas-repetidas.html#cb118-8"></a>  <span class="dt">detailed =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb118-9"><a href="anova-de-medidas-repetidas.html#cb118-9"></a>  <span class="dt">return_aov =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<pre><code>## Warning: Data is unbalanced (unequal N per group). Make sure you specified a
+## well-considered value for the type argument to ezANOVA().</code></pre>
+<p>A mensagem de aviso informa que os grupos estão desbalenceados em relação à quantidade de participantes, o que foi mencionado acima. Antes de interpretar os resultados, é necessário verificar os pressupostos já que a validade dessa interpretação é atrelada à manutenção (ou sua ausência) dos pressupostos que a técnica solicita.</p>
+<p>No caso da ANOVA de Medidas Repetidas, é necessário verificar a <strong>normalidade</strong> e a <strong>esfericidade</strong>. A normalidade pode ser feita via gráficos e testes estatísticos formais. A esfericidade é verificada resgatando o objeto anteriormente definido (<code>ez_outcome</code>) e o examinando passo a passo. A principal novidade dos pressupostos está na esfericidade, que guarda um princípio similar à homogeneidade e pode ser entendida como sua extensão. A esfericidade se refere às variâncias das diferenças entre todos os pares de medidas serem similares e a homogeneidade se refere à constância das variâncias entre os grupos <span class="citation">(<span class="citeproc-not-found" data-reference-id="Quen2004"><strong>???</strong></span>)</span>.</p>
+<p>A normalidade dos resíduos foi acessada pelo gráfico a seguir. Repare que a função <code>mutate</code> foi utilizada para adicionar uma coluna com os resíduos do modelo à base de dados antes de plotá-los.</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="anova-de-medidas-repetidas.html#cb120-1"></a>tratamento <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb120-2"><a href="anova-de-medidas-repetidas.html#cb120-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">residuos =</span> <span class="kw">proj</span>(ez_outcome<span class="op">$</span>aov)[[<span class="dv">3</span>]][, <span class="st">&quot;Residuals&quot;</span>]) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb120-3"><a href="anova-de-medidas-repetidas.html#cb120-3"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>residuos)) <span class="op">+</span></span>
+<span id="cb120-4"><a href="anova-de-medidas-repetidas.html#cb120-4"></a><span class="st">      </span><span class="kw">geom_histogram</span>(<span class="dt">colour=</span><span class="st">&quot;black&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;grey&quot;</span>) <span class="op">+</span></span>
+<span id="cb120-5"><a href="anova-de-medidas-repetidas.html#cb120-5"></a><span class="st">      </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(<span class="dt">y=</span> ..count..))</span></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-83-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>É possível argumentar que a normalidade dos resíduos foi relativamente mantida. Caso o interesse fosse um teste formal, ele seria feito pelo <code>Shapiro Wilk</code>, que assume <span class="math inline">\(H_0\)</span> de normalidade.</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="anova-de-medidas-repetidas.html#cb121-1"></a><span class="kw">shapiro.test</span>(<span class="kw">proj</span>(ez_outcome<span class="op">$</span>aov)[[<span class="dv">3</span>]][, <span class="st">&quot;Residuals&quot;</span>])</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  proj(ez_outcome$aov)[[3]][, &quot;Residuals&quot;]
+## W = 0.95677, p-value = 8.986e-06</code></pre>
+<p>Por esse último resultado, como o valor de p foi inferior ao alfa tipicamente estabelecido (0.05), não seria possível manter o pressuposto da normalidade e algo deveria ser feito, como transformação dos dados ou implementação de outra técnica analítica. No entanto, desde a década de 1960 é sabido que o valor de p é inversamente associado ao tamanho da amostra <span class="citation">(<span class="citeproc-not-found" data-reference-id="Lin2013"><strong>???</strong></span>; <span class="citeproc-not-found" data-reference-id="Nunnally1960"><strong>???</strong></span>)</span>. Nessa análise, há 200 observações (40 participantes em cada um dos 5 pontos de medida), o que influencia na redução do valor de p <span class="citation">(<span class="citeproc-not-found" data-reference-id="Lin2013"><strong>???</strong></span>)</span>. Dessa maneira, o resultado exposto previamente no gráfico é considerado nessa análise.</p>
+<p>Já a esfericidade é testada pelo <strong>teste de Mauchly</strong>. Esse teste define a hipótese nula como presença da esfericidade e idealmente a não rejeição da <span class="math inline">\(H_0\)</span> é desejada. No entanto, quando o pressuposto da esfericidade é rejeitado, é necessário aplicar algum ajuste, como a <strong>correção de Greenhouse-Geisser</strong> ou a de <strong>Huynh-Feldt</strong>. Ambas as técnicas ajustam os graus de liberdade a partir de um coeficiente particular. Como previamente exposto, o pressuposto da esfericidade não é necessário quando a modelagem é feita via LMM <span class="citation">(<span class="citeproc-not-found" data-reference-id="Quen2004"><strong>???</strong></span>)</span>.</p>
+<p>Abaixo esta o <code>ez_outcome</code>, que é dividido em 4 blocos diferentes: <code>$ANOVA</code>, <code>$Mauchly's Test for Sphericity</code>, <code>$Sphericity Corrections</code> e <code>$aov</code>. Como são muitas informações, os resultados serão especificamente comentados.</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="anova-de-medidas-repetidas.html#cb123-1"></a>ez_outcome</span></code></pre></div>
+<pre><code>## $ANOVA
+##        Effect DFn DFd        SSn      SSd           F            p p&lt;.05
+## 1 (Intercept)   1  38 48939.5370 7789.218 238.7534145 5.697345e-18     *
+## 2       grupo   1  38   144.7770 7789.218   0.7062999 4.059320e-01      
+## 3       tempo   4 152   146.8913 1689.479   3.3039005 1.253774e-02     *
+## 4 grupo:tempo   4 152    30.9513 1689.479   0.6961612 5.957207e-01      
+##           ges
+## 1 0.837744209
+## 2 0.015044147
+## 3 0.015260502
+## 4 0.003254726
+## 
+## $`Mauchly&#39;s Test for Sphericity`
+##        Effect         W            p p&lt;.05
+## 3       tempo 0.2560615 1.321806e-07     *
+## 4 grupo:tempo 0.2560615 1.321806e-07     *
+## 
+## $`Sphericity Corrections`
+##        Effect       GGe      p[GG] p[GG]&lt;.05       HFe      p[HF] p[HF]&lt;.05
+## 3       tempo 0.5739442 0.03509961         * 0.6129198 0.03190522         *
+## 4 grupo:tempo 0.5739442 0.52012876           0.6129198 0.52896128          
+## 
+## $aov
+## 
+## Call:
+## aov(formula = formula(aov_formula), data = data)
+## 
+## Grand Mean: 15.705
+## 
+## Stratum 1: id
+## 
+## Terms:
+##                    grupo Residuals
+## Sum of Squares   144.777  7789.218
+## Deg. of Freedom        1        38
+## 
+## Residual standard error: 14.3171
+## 4 out of 5 effects not estimable
+## Estimated effects are balanced
+## 
+## Stratum 2: id:tempo
+## 
+## Terms:
+##                     tempo grupo:tempo Residuals
+## Sum of Squares   151.1700     30.9513 1689.4787
+## Deg. of Freedom         4           4       152
+## 
+## Residual standard error: 3.333915
+## Estimated effects may be unbalanced</code></pre>
+<p>A primeira parte que se olha é o <strong>Mauchly’s Test for Sphericity</strong>. Caso haja rejeição da hipótese nula, deve-se olhar inicialmente todos os resultados dispostos no <strong>Sphericity Corrections</strong> para depois olhar a parte <strong>ANOVA</strong>. Caso não haja rejeição da hipótese nula, basta os resultados já na parte <strong>ANOVA</strong>, que fica ao início do output. Nessa pesquisa, se rejeitou a esfericidade para o efeito principal do <code>tempo</code> (w = 0.26, p &lt; 0.05) e da interação <code>tempo x grupo</code> (w = 0.26, p &lt; 0.05). Dessa forma, as correções devem ser implementadas. Duas correções são possíveis, a Greenhouse-Geisser (p[GG]) e a de Huynh-Feldt e existe uma regra prática (<em>rule of thumb</em>) para isso: quando o valor de Greenhouse-Geisser (ϵ ou GGe) é inferior a 0.75, os valores dos graus de liberdade do numerador e do denominador são ajustados pela correção de Greenhouse-Geisser; quando é superior a 0.75, o ajuste é feito pela de Huynh-Feldt. Nessa pesquisa, o ajuste será feito via Greenhouse-Geisser.</p>
+<p>Antes de iniciar a interpretação dos resultados, lembre-se que toda interpretação deve ser <strong>sempre</strong> iniciada pela interação. Caso ela seja significativa, <strong>não se deve interpretar</strong> os efeitos principais.</p>
+<p>Repare que a parte <strong>Sphericity Corrections</strong> tem informações sobre a interação <code>tempo x grupo</code> e da <code>semana</code>. Esses efeitos devem ser interpretados aqui nessa seção, em vez da seção <strong>ANOVA</strong>. A interação <code>tempo x grupo</code> não é significativa. O valor de p é de 0.52. Manualmente, esse valor pode ser obtido computando a região crítica da cauda à direita da densidade da distribuição F. O valor de F é de 0.696 que é o encontrado na primeira parte do output (<strong>ANOVA</strong>), o numerador foi ajustado para 2.29 (DFn = <code>4 x 0.5739 =  2.29</code>) e o denominador foi ajustado para 87.24 (DFd=<code>152 x 0.5739 = 87.24</code>). Assim:</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="anova-de-medidas-repetidas.html#cb125-1"></a> <span class="dv">1</span><span class="op">-</span><span class="kw">pf</span>(<span class="fl">0.69</span>, <span class="dv">4</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.57</span>, <span class="dv">152</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.57</span>)</span></code></pre></div>
+<pre><code>## [1] 0.5224581</code></pre>
+<p>O efeito principal da <code>semana</code> é significativo, com valor de p = 0.03.</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="anova-de-medidas-repetidas.html#cb127-1"></a><span class="dv">1</span><span class="op">-</span><span class="kw">pf</span>(<span class="fl">3.30</span>, <span class="dv">4</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.57</span>, <span class="dv">152</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.57</span>)</span></code></pre></div>
+<pre><code>## [1] 0.03558152</code></pre>
+<p>O efeito principal do <code>grupo</code> deve ser visto diretamente na parte <strong>ANOVA</strong> e não é significativo. O valor de p é de 0.40, que pode ser manualmente computado assim:</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="anova-de-medidas-repetidas.html#cb129-1"></a> <span class="dv">1</span><span class="op">-</span><span class="kw">pf</span>(<span class="fl">0.71</span>, <span class="dv">1</span>, <span class="dv">38</span>)</span></code></pre></div>
+<pre><code>## [1] 0.4047162</code></pre>
+<p>Assim, é possível concluir que o passar do tempo gerou uma diferença significativa no resultado da dor dos animais (VD), mas que isso não é relacionado a nenhum grupo específico. Em outras palavras, esse efeito não é moderado pelo grupo em que o animal se encontra.</p>
+<p>Frequentemente, os resultados corrigidos e os não-corrigidos concluem na mesma direção. Isso é verdadeiro nesse caso. Repare:</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="anova-de-medidas-repetidas.html#cb131-1"></a><span class="kw">summary</span>(ez_outcome<span class="op">$</span>aov)</span></code></pre></div>
+<pre><code>## 
+## Error: id
+##           Df Sum Sq Mean Sq F value Pr(&gt;F)
+## grupo      1    145   144.8   0.706  0.406
+## Residuals 38   7789   205.0               
+## 
+## Error: id:tempo
+##              Df Sum Sq Mean Sq F value Pr(&gt;F)  
+## tempo         4  151.2   37.79   3.400 0.0107 *
+## grupo:tempo   4   31.0    7.74   0.696 0.5957  
+## Residuals   152 1689.5   11.11                 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="anova-de-medidas-repetidas.html#cb133-1"></a>ez_outcome<span class="op">$</span><span class="st">`</span><span class="dt">Sphericity Corrections</span><span class="st">`</span></span></code></pre></div>
+<pre><code>##        Effect       GGe      p[GG] p[GG]&lt;.05       HFe      p[HF] p[HF]&lt;.05
+## 3       tempo 0.5739442 0.03509961         * 0.6129198 0.03190522         *
+## 4 grupo:tempo 0.5739442 0.52012876           0.6129198 0.52896128</code></pre>
+<p>O valor de P do efeito da <em>semana</em> saiu de 0.01 (sem correção) para 0.03 (com correção). Já a interação <em>grupo x semana</em> saiu de 0.59 (sem correção) para 0.52 (com correção).</p>
+<div class="writing">
+<p>
+<strong>Como escrever os resultados</strong>
+</p>
+<p>
+Os dados foram analisados a partir de uma ANOVA de medidas repetidas investigando o efeito fixo do grupo e do tempo, bem como a interação entre ambos. O teste de Mauchly indicou a violação da esfericidade (w = 0.26, p &lt; 0.01) e, portanto, os graus de liberdade foram corrigidos pelo ajuste de Greenhouse-geisser (ϵ = 0.57). Não houve interação significativa entre o grupo e o tempo (F(2.29, 87.24) = 0.69), nem efeito do grupo (F(1, 38) = 0.71, p &lt; 0.40). O passar de tempo foi significativo no resultado, apesar de apresentar um efeito pequeno.(F(2,29, 87.24) = 3.30, p = 0.035, np2 = 0.01)
+</p>
+</div>
+</div>
+<div id="pacote-lme4" class="section level2">
+<h2><span class="header-section-number">7.3</span> Pacote lme4</h2>
+<p>A esse momento, a modelagem será feita via LMM. O pacote <code>lme4</code> e seu complemento <code>lmerTest</code> serão utilizados.</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="anova-de-medidas-repetidas.html#cb135-1"></a><span class="kw">library</span>(lme4)</span>
+<span id="cb135-2"><a href="anova-de-medidas-repetidas.html#cb135-2"></a><span class="kw">library</span>(lmerTest)</span></code></pre></div>
+<pre><code>## Warning: package &#39;lmerTest&#39; was built under R version 4.0.2</code></pre>
+<p>A sintaxe é realizada pela funçào <code>lmer</code>, que é similar à <code>lm</code>, em que:<br />
+<code>VD ~ VI</code><br />
+mas permite adicionar efeitos aleatórios correlacionados pela utilização de barras verticais (|) ou descorrelacionados, pela utilização de duas barras verticais (||):</p>
+<p><code>VD ~ VI + |  efeito aleatório</code></p>
+<p>Dessa maneira, a sintaxe a seguinte cria o modelo, bem como o armazena sob nome de <code>mod_lme</code>:</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="anova-de-medidas-repetidas.html#cb137-1"></a>mod_lme &lt;-<span class="st"> </span><span class="kw">lmer</span>(resultado <span class="op">~</span><span class="st"> </span>tempo<span class="op">*</span>grupo <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">|</span>id) , <span class="dt">data =</span> tratamento)</span></code></pre></div>
+<p>Repare que esse modelo é composto pelo se seguintes componentes:<br />
+1. efeito fixo do <code>tempo</code>
+2. efeito fixo do <code>grupo</code>,<br />
+3. efeito fixo da interação <code>tempo x grupo</code>
+4. efeito aleatório do <code>id</code>.</p>
+<p>Esse modelo assume um intercepto aleatório para cada participante. O efeito aleatório é uma variável categórica, quase sempre de agrupamento, que desejamos controlar. É importante alertar que quando uma interação é definida, o código ganha automaticamente os efeitos fixos que compreendem a interação mesmo que eles não tenham sido expostos claramente, como ocorreu nesse caso.</p>
+<p>A visualização dessa modelagem é bastante útil para compreender o que significa a ideia de intercepto aleatório.</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="anova-de-medidas-repetidas.html#cb138-1"></a><span class="kw">ggplot</span>(tratamento, <span class="kw">aes</span>(<span class="dt">x=</span>tempo, <span class="dt">y=</span>resultado, <span class="dt">group=</span>id, <span class="dt">color=</span>id, <span class="dt">linetype=</span>grupo)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb138-2"><a href="anova-de-medidas-repetidas.html#cb138-2"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size=</span><span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb138-3"><a href="anova-de-medidas-repetidas.html#cb138-3"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="kw">mean</span>(tratamento<span class="op">$</span>resultado[tratamento<span class="op">$</span>tempo <span class="op">==</span><span class="st"> &quot;antes&quot;</span>]), <span class="dt">linetype=</span><span class="st">&quot;dashed&quot;</span>) <span class="op">+</span></span>
+<span id="cb138-4"><a href="anova-de-medidas-repetidas.html#cb138-4"></a><span class="st">   </span><span class="kw">annotate</span>(<span class="dt">geom =</span> <span class="st">&quot;text&quot;</span>, <span class="dt">x=</span><span class="fl">0.5</span>, <span class="dt">y =</span> <span class="kw">mean</span>(tratamento<span class="op">$</span>resultado[tratamento<span class="op">$</span>tempo <span class="op">==</span><span class="st"> &quot;antes&quot;</span>])<span class="op">+</span><span class="dv">1</span>, <span class="dt">label =</span> <span class="st">&quot;Média&quot;</span>,<span class="dt">hjust =</span> <span class="dv">0</span>)</span></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-93-1.png" width="864" style="display: block; margin: auto;" /></p>
+<p>Repare que cada participante (<code>id</code>) inicia em um ponto específico e tem uma trajetória específica no decorrer do tratamento. O valor médio antes do tratamento está apresentado pela linha pontilhada. Apesar de informativo, esse gráfico tem pouca aplicação pedagógica e, por isso, não deve ser relatado.</p>
+<p>Uma vez que o modelo já foi criado, agora é necessário recuperar seus resultados. É importante notar que O pressuposto da normalidade é necessário e ele já foi acessado (e aceito) anteriormente. Conforme dito ao início do capítulo, O LMM relaxa o pressuposto esfericidadde e, por consequência, também o da homogeneidade <span class="citation">(<span class="citeproc-not-found" data-reference-id="Quen2004"><strong>???</strong></span>)</span>.</p>
+<p>Inicialmente, a <code>anova</code> permite uma visualização de todos os coeficientes do modelo. Isso é importante para verificar cada um dos preditores estipulados e sua significância. O <code>summary</code> apresenta um resultado mais detalhado que será explicitado a seguir. A interpretação dos resultados é similar à realizada em modelos de regressão e totalmente convergente ao resultado obtido na ANOVA. Novamente, a leitura da tabela deve começar pela interação.</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="anova-de-medidas-repetidas.html#cb139-1"></a><span class="kw">anova</span>(mod_lme)</span></code></pre></div>
+<pre><code>## Type III Analysis of Variance Table with Satterthwaite&#39;s method
+##              Sum Sq Mean Sq NumDF DenDF F value  Pr(&gt;F)  
+## tempo       146.891  36.723     4   152  3.3039 0.01254 *
+## grupo         7.851   7.851     1    38  0.7063 0.40593  
+## tempo:grupo  30.951   7.738     4   152  0.6962 0.59572  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Verifique que a tabela apresenta três os resultados: <code>tempo x grupo</code>, <code>grupo</code> e <code>tempo</code>. A técnica de Satterthwaite’s method é utilizada para corrigir os valores do grau de liberdade e, consequentemente, os valores de p. Os resultados são virtualmente identicos aos obtidos pela ANOVA, com a diferença que os graus de liberdade do numerador de do denominador não foram corrigidos.</p>
+<p>Para obter as informações completas do modelo, é necessário solicitar o <code>summary</code>. Essa função retorna 4 informações calculadas: <code>Scaled residuals</code>, <code>Random effects</code>, <code>Fixed effects</code> e <code>Correlation of Fixed Effect</code> e serve para aprofundar a interpretação dos resultados. Uma particular diferença entre esse relatório e o da ANOVA de Medidas Repetidas é o np2, que não faz parte do LMM.</p>
+<div class="writing">
+<p>
+<strong>Como escrever os resultados</strong>
+</p>
+<p>
+Os dados foram analisados através de um Modelo Linear de Efeitos Mistos, que verificou o efeito do tempo, do grupo, a interação entre esses dois preditores e permitiu um intercepto aleatório para cada participante. Dessa maneira, esse modelo levaou em consideração tanto efeitos fixos quanto aleatórios, além de relaxar alguns pressupostos tradicionais dos modelos de regressão. Os resultados permitem concluir que Não há interação significativa tempo x grupo (F(4, 152 = 0.696), p = 0.696), bem como não há efeito significativo do grupo (F(1, 38 = 0.706), p = 0.706). A o efeito o tempo foi significativo (F(4, 152 = 3.304), p = 3.304)
+</p>
+</div>
+<div class="objectives">
+<p>
+<strong>Notas importantes</strong><br />
+Para uma melhor interação do conteúdo desse capítulo com outros tutoriais, lembre-se que:<br />
+<em>between</em> é sinônimo de <em>entre grupos</em> e <em>whithin</em> é sinônimo de medidas repetidas (pode ser um delineamento do tipo sujeito como seu próprio controle).
+</p>
+<p>
+Os gráficos realizados aqui poderiam ser mais facilmente criados por pacotes específicos (por exemplo, sjPlot ou effects). No entanto, eles só funcionam após a modelagem ter sido definida, o que não foi feito inicialmente por razões pedagógicas.
+</p>
+<p>
+Os códigos disponíveis no capítulo servem para você poder adaptá-los à sua realidade.
+</p>
+</div>
+</div>
+<div id="sumário" class="section level2">
+<h2><span class="header-section-number">7.4</span> Sumário</h2>
+<ol style="list-style-type: decimal">
+<li>ANOVA de Medidas Repetidas pode ser entendida como um caso do Modelo Linear de Efeitos Mistos (LMM).<br />
+</li>
+<li>O LMM é mais flexível e, consequentemente, mais vantajoso para ser utilizado.<br />
+</li>
+<li>A ANOVA tem como pressuposto Normalidade e Esfericidade, enquanto o LMM apenas Normalidade dos resíduos.</li>
+<li>A interpretação das tabelas sempre começa pela interação.<br />
+</li>
+<li>Os resultados frequentemente encontrados em ambos os modelos vão na mesma direção.<br />
+</li>
+<li>A escrita apresenta algumas particularidades relacionadas à cada modelo.</li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="anova.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="regressão-linear-simples.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/07-anova_mr.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["gitbook-demo.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
