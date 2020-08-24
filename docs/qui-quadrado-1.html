@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Métodos quantitativos em Psicologia com R</title>
+  <title>Capítulo 9 Qui quadrado | Métodos quantitativos em Psicologia com R</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Métodos quantitativos em Psicologia com R" />
+  <meta property="og:title" content="Capítulo 9 Qui quadrado | Métodos quantitativos em Psicologia com R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="cjvanlissa/gitbook-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Métodos quantitativos em Psicologia com R" />
+  <meta name="twitter:title" content="Capítulo 9 Qui quadrado | Métodos quantitativos em Psicologia com R" />
   
   <meta name="twitter:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="regressão-linear-simples.html"/>
 
-<link rel="next" href="aspectos-gerais.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -228,39 +228,190 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Métodos quantitativos em Psicologia com R</h1>
-<p class="author"><em><a href="mailto:%20luisfca@gmail.com">Luis Anunciação (PUC-Rio), PhD</a></em></p>
-<p class="date"><em>2020-08-23</em></p>
+<div id="qui-quadrado-1" class="section level1">
+<h1><span class="header-section-number">Capítulo 9</span> Qui quadrado</h1>
+<p>Introdução</p>
+<div id="legenda-2" class="section level2">
+<h2><span class="header-section-number">9.1</span> Legenda</h2>
+<p>Diferentes termos são empregados em modelos de regressão A legenda a seguir visa auxiliar no entendimento de cada um deles e aproximar o leitor a conceitos amplos utilizados em modelos lineares:</p>
+<div class="writing">
+<p>
+<strong>intercepto</strong> (constante) - <span class="math inline"><span class="math inline">\(b_0\)</span></span>: Valor previsto de Y quando X = 0<br />
+<strong>Inclinação</strong> (slope) - <span class="math inline"><span class="math inline">\(b_i \forall i \neq 0\)</span></span>: A diferença média em unidades da variável dependente prevista em Y quando se altera uma unidade de X.<br />
+<strong>SSR</strong>: Soma dos Quadrados da Regressão<br />
+<strong>SSE</strong>: Soma dos Quadrados dos Erros<br />
+<strong>SST</strong>: Soma dos Quadrados Total<br />
+<strong>Variabilidade total</strong> SST = SSR + SSE<br />
+<span class="math inline"><span class="math inline">\(R^2\)</span></span> ou <strong>Coeficiente de Determinação</strong>: A porcentagem de variação da variável dependente (Y) que pode ser atribuída à variabilida da(s) variável (is) independente(s) (X)<br />
+<span class="math inline"><span class="math inline">\(R^2_{adj}\)</span></span> ou <strong>Coeficiente de Determinação ajustado</strong>: Pondera a porcentagem de variação da variável dependente (Y) que pode ser atribuída à variabilida da(s) variável (is) independente(s) (X) pelo número de variáveis explicativas e pelo número de observações da amostra. É particularmente útil quando deseja-se comparar modelos de regressão múltipla que prevêem a mesma variável dependente, pois penaliza aquele modelo com maior número de variáveis independentes.<br />
+RMSEA (<span class="math inline"><span class="math inline">\(Res. St. Error\)</span></span> ou Erro padrão dos resíduos): Desvio padrão dos valores previstos da variável dependente ao redor da linha de regressão estimada
+</p>
 </div>
-<div id="introdução" class="section level1">
-<h1><span class="header-section-number">Capítulo 1</span> Introdução</h1>
-<p>Aprender estatística e análise de dados é uma das tarefas mais importantes e desafiadoras que existe no meio acadêmico, especialmente às disciplinas agrupadas em ciências humanas, como Psicologia. Por consequência, ensinar ambas as matérias também impõe um desafio enorme, mas necessário. Isso ocorre por diversas razões, mas especialmente porque as pesquisas feitas em Psicologia apresentam muitas informações misturadas e sobrepostas e a utilização da estatística é fundamental para conseguir separar e filtrar àquelas informações que temos interesse (sinal) daquelas que apenas distorcem estas primeiras (ruído).</p>
-<div id="objetivo" class="section level2">
-<h2><span class="header-section-number">1.1</span> Objetivo</h2>
-<p>Este livro tem como objetivo introduzir conceitos teóricos e aspectos computacionais de estatística de maneira pragmática, direta ao ponto e a partir de perguntas previamente exploradas em pesquisas científicas publicadas. Em menor nível, a modelagem matemática será apresentada e descrita.</p>
 </div>
-<div id="público-alvo" class="section level2">
-<h2><span class="header-section-number">1.2</span> Público-alvo</h2>
-<p>Este livro foi desenvolvido com mais aderência a estudantes de pós-graduação em Psicologia, especialmente aos alunos do Departamento de PSicologia da PUC-Rio e de Psicometria da UFRJ.</p>
+<div id="explicação-conceitual-1" class="section level2">
+<h2><span class="header-section-number">9.2</span> Explicação conceitual</h2>
 </div>
-<div id="formato-do-livro" class="section level2">
-<h2><span class="header-section-number">1.3</span> Formato do livro</h2>
-<p>É importante ter em mente que apesar de todo conteúdo do livro ter uma estrutura linear, os capítulos foram construídos visando responder questões específicas, particulares e pontuais. Assim, cada capítulo apresenta uma relativa independência dos demais e pode ser visto isoladamente, caso o leitor assim queira,
-Com isso, acredito que o livro atende tanto aqueles leitores com interesse em ler a obra inteira, como aqueles que buscam apenas informações mais específicas de um tópico particular.</p>
-<p>Evidentemente, esse formato adotado pode gerar uma percepção diferente entre aqueles que consultarem apenas um capítulo ou outro e aqueles que lerem o conteúdo por completo. Isso ocorre pois como muitos testes estatísticos são entendidos como casos particulares de outros, alguns fragmentos que podem parecer destoantes durante uma leitura inicial, tornam-se mais fáceis e articulados àqueles que lerem o trabalho inteiro e se dispuserem a fazer uma releitura de partes específicas.</p>
-<p>Para ilustrar, o capítulo sobre o Teste T expõe uma pequena parte sobre modelos de regressão, conteúdo que somente é abordado posteriormente. Se em um primeiro momento isso provavelmente pode gerar alguma (pequena) confusão, a releitura do capítulo após o término da sequência do livro tende a gerar, além de um conhecimento mais profundo por parte do leitor, a percepção da integração tanto da estrutura do livro, como da relação existente entre diferentes modelos estatísticos.</p>
+<div id="pesquisa-5" class="section level2">
+<h2><span class="header-section-number">9.3</span> Pesquisa</h2>
+<div class="alert alert-info" role="alert">
+<p><strong>Base: </strong> Livro - Dados - Eating disorders</p>
 </div>
-<div id="bases" class="section level2">
-<h2><span class="header-section-number">1.4</span> Bases</h2>
-<p>Todas as bases de dados utilizadas neste livro são frutos de pesquisas empíricas que apresentam artigos publicados. Visando otimização, alguns ajustes foram feitos às bases para torná-las mais acessíveis. Nenhuma alteração foi realizada nos dados, mas apenas em mudanças em relação a nomes de variáveis e quantidade de vetores.</p>
-<p>Todo material pode ser acessado livre e grauitamente em <a href="https://github.com/anovabr/mqt/tree/master/bases" class="uri">https://github.com/anovabr/mqt/tree/master/bases</a></p>
+<p>Vamos utilizar a pesquisa intitulada “Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students”, publicada em 2018 no Global Journal of Educational Studies, que sou co-autor.</p>
+<p>O objetivo dessa pesquisa foi explorar os fatores envolvidos em transtornos alimentares e aspectos da percepção da imagem corporal, bem como verificar a capacidade que uma medida possuia em predizer os resultados de outra. Esse artigo contou com a utilização de escalas aplicadas em 219 participantes no Brasil. Para acessar aspectos relacionados aos Transtornos alimentares, a escala EAT-26 foi aplicada. Para verificar aspectos da imagem corporal, a escala BSQ-34 foi aplicada.</p>
+<p>Segue abaixo uma tabela inicial com dados descritivos dos resultados.</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="qui-quadrado-1.html#cb183-1"></a>dados_brasil <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb183-2"><a href="qui-quadrado-1.html#cb183-2"></a><span class="st">  </span><span class="kw">group_by</span>(sexo) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb183-3"><a href="qui-quadrado-1.html#cb183-3"></a><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(eat_soma, bsq_soma, imc, faz_esporte, familia_esporte), </span>
+<span id="cb183-4"><a href="qui-quadrado-1.html#cb183-4"></a>               <span class="kw">list</span>(<span class="op">~</span><span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="op">~</span><span class="kw">sd</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb183-5"><a href="qui-quadrado-1.html#cb183-5"></a><span class="st">  </span><span class="kw">t</span>() <span class="op">%&gt;%</span></span>
+<span id="cb183-6"><a href="qui-quadrado-1.html#cb183-6"></a><span class="st">  </span><span class="kw">kable</span>(., <span class="dt">digits =</span> <span class="dv">2</span>,  <span class="dt">booktabs =</span> T) <span class="op">%&gt;%</span></span>
+<span id="cb183-7"><a href="qui-quadrado-1.html#cb183-7"></a><span class="st">  </span><span class="kw">kable_styling</span>(<span class="dt">position =</span> <span class="st">&quot;center&quot;</span>, <span class="dt">full_width =</span> F, <span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>)</span></code></pre></div>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td style="text-align:left;">
+sexo
+</td>
+<td style="text-align:left;">
+Homens
+</td>
+<td style="text-align:left;">
+Mulheres
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+eat_soma_mean
+</td>
+<td style="text-align:left;">
+12.64516
+</td>
+<td style="text-align:left;">
+18.47619
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bsq_soma_mean
+</td>
+<td style="text-align:left;">
+64.23656
+</td>
+<td style="text-align:left;">
+94.26190
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+imc_mean
+</td>
+<td style="text-align:left;">
+24.09761
+</td>
+<td style="text-align:left;">
+22.58287
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+faz_esporte_mean
+</td>
+<td style="text-align:left;">
+0.3978495
+</td>
+<td style="text-align:left;">
+0.4523810
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+familia_esporte_mean
+</td>
+<td style="text-align:left;">
+0.4782609
+</td>
+<td style="text-align:left;">
+0.4761905
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+eat_soma_sd
+</td>
+<td style="text-align:left;">
+8.188865
+</td>
+<td style="text-align:left;">
+10.088976
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bsq_soma_sd
+</td>
+<td style="text-align:left;">
+32.86679
+</td>
+<td style="text-align:left;">
+34.86458
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+imc_sd
+</td>
+<td style="text-align:left;">
+3.990227
+</td>
+<td style="text-align:left;">
+3.150678
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+faz_esporte_sd
+</td>
+<td style="text-align:left;">
+0.4921069
+</td>
+<td style="text-align:left;">
+0.4997142
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+familia_esporte_sd
+</td>
+<td style="text-align:left;">
+0.5022643
+</td>
+<td style="text-align:left;">
+0.5014265
+</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="pacotes-e-sintaxes" class="section level2">
-<h2><span class="header-section-number">1.5</span> Pacotes e sintaxes</h2>
-<p>Este livro utiliza majoritariamente o ambiente <a href="https://www.tidyverse.org/">tidyverse</a> para realização das análises. Entretanto, sempre que necessário, funções R-base e uso de outros pacotes serão utilizados. Toda codificação utilizada no livro é exibida nos capítulos e integralmente disponível gratuitamente neste (GitHub)[<a href="https://github.com/anovabr/mqt" class="uri">https://github.com/anovabr/mqt</a>]</p>
-<p>O <code>tidyverse</code> costuma ter atualizações frequentes e espero que as funções utilizadas durante o livro não sejam descontinuadas (deprecated) com o tempo.</p>
+<div id="regressão-linear-simples-2" class="section level2">
+<h2><span class="header-section-number">9.4</span> Regressão linear simples</h2>
 
+<div id="refs" class="references">
+<div>
+<p>Chartier, Sylvain, and Andrew Faulkner. 2008. “General Linear Models: An Integrated Approach to Statistics.” <em>Tutorials in Quantitative Methods for Psychology</em> 4 (2): 65–78. <a href="https://doi.org/10.20982/tqmp.04.2.p065">https://doi.org/10.20982/tqmp.04.2.p065</a>.</p>
+</div>
+<div>
+<p>Field, Andy P., and Rand R. Wilcox. 2017. “Robust Statistical Methods: A Primer for Clinical Psychology and Experimental Psychopathology Researchers.” <em>Behaviour Research and Therapy</em> 98 (November): 19–38. <a href="https://doi.org/10.1016/j.brat.2017.05.013">https://doi.org/10.1016/j.brat.2017.05.013</a>.</p>
+</div>
+<div>
+<p>Howell, David C. 2011. <em>Fundamental Statistics for the Behavioral Sciences</em>. Belmont: CA: Wadsworth Cengage Learning.</p>
+</div>
+<div>
+<p>Lumley, Thomas, Paula Diehr, Scott Emerson, and Lu Chen. 2002. “The Importance of the Normality Assumption in Large Public Health Data Sets.” <em>Annual Review of Public Health</em> 23 (1): 151–69. <a href="https://doi.org/10.1146/annurev.publhealth.23.100901.140546">https://doi.org/10.1146/annurev.publhealth.23.100901.140546</a>.</p>
+</div>
+<div>
+<p>Morettin, Pedro Alberto, and Wilton de Oliveira Bussab. 2010. <em>Estatistica Basica</em>. Saraiva.</p>
+</div>
+</div>
 </div>
 </div>
             </section>
@@ -268,8 +419,8 @@ Com isso, acredito que o livro atende tanto aqueles leitores com interesse em le
           </div>
         </div>
       </div>
+<a href="regressão-linear-simples.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="aspectos-gerais.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -300,7 +451,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/index.Rmd",
+"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/09-qui_quadrado.Rmd",
 "text": "Edit"
 },
 "history": {
