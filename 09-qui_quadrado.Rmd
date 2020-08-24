@@ -1,14 +1,20 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Qui quadrado
 
 
 ```{r, include = FALSE }
 load(file="~/anovabr/mqt/bases/Base R TDAH Arruda.RData")
 library(tidyverse)
+library(janitor)
 library(knitr) #tables and graphs
 library(kableExtra) #tables with different styles
-library(olsrr) #regression diagnostics
-library(gridExtra) #plot together
-library(stargazer) #presenting results
+
+library(descr) #chi squared
+library(epitools) #epidemiology
 ```
 
 
@@ -16,53 +22,75 @@ library(stargazer) #presenting results
 Introdução
 
 
-## Legenda
- 
-Diferentes termos são empregados em modelos de regressão A legenda a seguir visa auxiliar no entendimento de cada um deles e aproximar o leitor a conceitos amplos utilizados em modelos lineares:
-
-```{block, type="writing"}
-**intercepto** (constante) - $b_0$: Valor previsto de Y quando X = 0  
-**Inclinação** (slope) - $b_i \forall i  \neq 0$: A diferença média em unidades da variável dependente prevista em Y quando se altera uma unidade de X.  
-**SSR**: Soma dos Quadrados da Regressão  
-**SSE**: Soma dos Quadrados dos Erros  
-**SST**: Soma dos Quadrados Total  
-**Variabilidade total** SST = SSR + SSE  
-$R^2$ ou **Coeficiente de Determinação**: A porcentagem de variação da variável dependente (Y) que pode ser atribuída à variabilida da(s) variável (is) independente(s) (X)  
-$R^2_{adj}$ ou **Coeficiente de Determinação ajustado**: Pondera a porcentagem de variação da variável dependente (Y) que pode ser atribuída à variabilida da(s) variável (is) independente(s) (X) pelo número de variáveis explicativas e pelo número de observações da amostra. É particularmente útil quando deseja-se comparar modelos de regressão múltipla que prevêem a mesma variável dependente, pois penaliza aquele modelo com maior número de variáveis independentes.  
-RMSEA ($Res. St. Error$  ou Erro padrão dos resíduos): Desvio padrão dos valores previstos da variável dependente ao redor da linha de regressão estimada  
+```{block, type="objectives"}
+**Objetivos do capítulo**  
+1. Introduzir o Qui quadrado
+2. Realizar gráficos relacionados 
+2. Apresentar os pressupostos do teste
+3. Apresentar e interpretar métricas de tamanho do efeito
+5. Dar exemplos relacionados à escrita dos resultados
 ```
 
 
 
-## Explicação conceitual
 
 
-
-## Pesquisa  
-
+## Pesquisa
+  
 <div class="alert alert-info" role="alert">
-  <strong>Base: </strong> Livro - Dados - Eating disorders
+  <strong>Base: </strong> Base R TDAH Arruda
 </div>  
 
 
-Vamos utilizar a pesquisa intitulada "Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students", publicada em 2018 no Global Journal of Educational Studies, que sou co-autor.
+## Execução no R
 
-O objetivo dessa pesquisa foi explorar os fatores envolvidos em transtornos alimentares e aspectos da percepção da imagem corporal, bem como verificar a capacidade que uma medida possuia em predizer os resultados de outra. Esse artigo contou com a utilização de escalas aplicadas em 219 participantes no Brasil. Para acessar aspectos relacionados aos Transtornos alimentares, a escala EAT-26 foi aplicada. Para verificar aspectos da imagem corporal, a escala BSQ-34 foi aplicada.  
-
-Segue abaixo uma tabela inicial com dados descritivos dos resultados.  
-
+Como vem sendo ilustrado no decorrer do livro.
 
 ```{r}
-dados_brasil %>% 
-  group_by(sexo) %>% 
-  summarise_at(vars(eat_soma, bsq_soma, imc, faz_esporte, familia_esporte), 
-               list(~mean(., na.rm = TRUE), ~sd(., na.rm = TRUE))) %>% 
-  t() %>%
-  kable(., digits = 2,  booktabs = T) %>%
-  kable_styling(position = "center", full_width = F, bootstrap_options = "striped")
+ggplot(ds_selected, aes(x= sex_male, fill = adhd_parent)) +
+  geom_bar(position = "fill") +
+  coord_flip() +
+  theme_bw() +
+  labs(x = "sexo", y = "Proporção", fill = "TDAH")
 ```
 
 
-## Regressão linear simples
 
+
+```{r}
+ds_selected %>%
+  tabyl(sex_male, adhd_parent) %>%
+  adorn_totals(c("row", "col")) %>%
+  adorn_percentages("row") %>% 
+  adorn_pct_formatting(rounding = "half up", digits = 0) %>%
+  adorn_ns() 
+```
+
+
+```{r}
+ds_selected %>% #<-- dataset with predictors
+  count(adhd_parent) %>% 
+  mutate(prop = prop.table(n)) %>% 
+   adorn_totals()
+```
+
+
+Relação entre sexo (meninos e meninas) e apresentar TDAH (sim ou não)
+
+```{r}
+ds_selected %>% #Relative Risk for gender
+  #drop_na() %>% 
+  {CrossTable(.$sex_male,.$adhd_parent,
+              expected = T,
+              chisq = T)}
+```
+
+
+Risco
+
+```{r}
+#relative risk (boys)
+riskratio(ds_selected$sex_male,ds_selected$adhd_parent) 
+oddsratio(ds_selected$sex_male,ds_selected$adhd_parent, method =  "wald")
+```
 
