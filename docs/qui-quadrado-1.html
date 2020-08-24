@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2020-08-23" />
+<meta name="date" content="2020-08-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -203,10 +203,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#a-interpretação"><i class="fa fa-check"></i><b>8.6</b> A interpretação</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html"><i class="fa fa-check"></i><b>9</b> Qui quadrado</a><ul>
-<li class="chapter" data-level="9.1" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html#legenda-2"><i class="fa fa-check"></i><b>9.1</b> Legenda</a></li>
-<li class="chapter" data-level="9.2" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html#explicação-conceitual-1"><i class="fa fa-check"></i><b>9.2</b> Explicação conceitual</a></li>
-<li class="chapter" data-level="9.3" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html#pesquisa-5"><i class="fa fa-check"></i><b>9.3</b> Pesquisa</a></li>
-<li class="chapter" data-level="9.4" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html#regressão-linear-simples-2"><i class="fa fa-check"></i><b>9.4</b> Regressão linear simples</a></li>
+<li class="chapter" data-level="9.1" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html#pesquisa-5"><i class="fa fa-check"></i><b>9.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="9.2" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html#execução-no-r-5"><i class="fa fa-check"></i><b>9.2</b> Execução no R</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="http://www.puc-rio.br/" target="blank">PUC-Rio</a></li>
@@ -231,169 +229,144 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="qui-quadrado-1" class="section level1">
 <h1><span class="header-section-number">Capítulo 9</span> Qui quadrado</h1>
 <p>Introdução</p>
-<div id="legenda-2" class="section level2">
-<h2><span class="header-section-number">9.1</span> Legenda</h2>
-<p>Diferentes termos são empregados em modelos de regressão A legenda a seguir visa auxiliar no entendimento de cada um deles e aproximar o leitor a conceitos amplos utilizados em modelos lineares:</p>
-<div class="writing">
+<div class="objectives">
 <p>
-<strong>intercepto</strong> (constante) - <span class="math inline"><span class="math inline">\(b_0\)</span></span>: Valor previsto de Y quando X = 0<br />
-<strong>Inclinação</strong> (slope) - <span class="math inline"><span class="math inline">\(b_i \forall i \neq 0\)</span></span>: A diferença média em unidades da variável dependente prevista em Y quando se altera uma unidade de X.<br />
-<strong>SSR</strong>: Soma dos Quadrados da Regressão<br />
-<strong>SSE</strong>: Soma dos Quadrados dos Erros<br />
-<strong>SST</strong>: Soma dos Quadrados Total<br />
-<strong>Variabilidade total</strong> SST = SSR + SSE<br />
-<span class="math inline"><span class="math inline">\(R^2\)</span></span> ou <strong>Coeficiente de Determinação</strong>: A porcentagem de variação da variável dependente (Y) que pode ser atribuída à variabilida da(s) variável (is) independente(s) (X)<br />
-<span class="math inline"><span class="math inline">\(R^2_{adj}\)</span></span> ou <strong>Coeficiente de Determinação ajustado</strong>: Pondera a porcentagem de variação da variável dependente (Y) que pode ser atribuída à variabilida da(s) variável (is) independente(s) (X) pelo número de variáveis explicativas e pelo número de observações da amostra. É particularmente útil quando deseja-se comparar modelos de regressão múltipla que prevêem a mesma variável dependente, pois penaliza aquele modelo com maior número de variáveis independentes.<br />
-RMSEA (<span class="math inline"><span class="math inline">\(Res. St. Error\)</span></span> ou Erro padrão dos resíduos): Desvio padrão dos valores previstos da variável dependente ao redor da linha de regressão estimada
+<strong>Objetivos do capítulo</strong><br />
+1. Introduzir o Qui quadrado 2. Realizar gráficos relacionados 2. Apresentar os pressupostos do teste 3. Apresentar e interpretar métricas de tamanho do efeito 5. Dar exemplos relacionados à escrita dos resultados
 </p>
 </div>
-</div>
-<div id="explicação-conceitual-1" class="section level2">
-<h2><span class="header-section-number">9.2</span> Explicação conceitual</h2>
-</div>
 <div id="pesquisa-5" class="section level2">
-<h2><span class="header-section-number">9.3</span> Pesquisa</h2>
+<h2><span class="header-section-number">9.1</span> Pesquisa</h2>
 <div class="alert alert-info" role="alert">
-<p><strong>Base: </strong> Livro - Dados - Eating disorders</p>
+<p><strong>Base: </strong> Base R TDAH Arruda</p>
 </div>
-<p>Vamos utilizar a pesquisa intitulada “Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students”, publicada em 2018 no Global Journal of Educational Studies, que sou co-autor.</p>
-<p>O objetivo dessa pesquisa foi explorar os fatores envolvidos em transtornos alimentares e aspectos da percepção da imagem corporal, bem como verificar a capacidade que uma medida possuia em predizer os resultados de outra. Esse artigo contou com a utilização de escalas aplicadas em 219 participantes no Brasil. Para acessar aspectos relacionados aos Transtornos alimentares, a escala EAT-26 foi aplicada. Para verificar aspectos da imagem corporal, a escala BSQ-34 foi aplicada.</p>
-<p>Segue abaixo uma tabela inicial com dados descritivos dos resultados.</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="qui-quadrado-1.html#cb183-1"></a>dados_brasil <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb183-2"><a href="qui-quadrado-1.html#cb183-2"></a><span class="st">  </span><span class="kw">group_by</span>(sexo) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb183-3"><a href="qui-quadrado-1.html#cb183-3"></a><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(eat_soma, bsq_soma, imc, faz_esporte, familia_esporte), </span>
-<span id="cb183-4"><a href="qui-quadrado-1.html#cb183-4"></a>               <span class="kw">list</span>(<span class="op">~</span><span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="op">~</span><span class="kw">sd</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb183-5"><a href="qui-quadrado-1.html#cb183-5"></a><span class="st">  </span><span class="kw">t</span>() <span class="op">%&gt;%</span></span>
-<span id="cb183-6"><a href="qui-quadrado-1.html#cb183-6"></a><span class="st">  </span><span class="kw">kable</span>(., <span class="dt">digits =</span> <span class="dv">2</span>,  <span class="dt">booktabs =</span> T) <span class="op">%&gt;%</span></span>
-<span id="cb183-7"><a href="qui-quadrado-1.html#cb183-7"></a><span class="st">  </span><span class="kw">kable_styling</span>(<span class="dt">position =</span> <span class="st">&quot;center&quot;</span>, <span class="dt">full_width =</span> F, <span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>)</span></code></pre></div>
-<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<tbody>
-<tr>
-<td style="text-align:left;">
-sexo
-</td>
-<td style="text-align:left;">
-Homens
-</td>
-<td style="text-align:left;">
-Mulheres
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-eat_soma_mean
-</td>
-<td style="text-align:left;">
-12.64516
-</td>
-<td style="text-align:left;">
-18.47619
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-bsq_soma_mean
-</td>
-<td style="text-align:left;">
-64.23656
-</td>
-<td style="text-align:left;">
-94.26190
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-imc_mean
-</td>
-<td style="text-align:left;">
-24.09761
-</td>
-<td style="text-align:left;">
-22.58287
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-faz_esporte_mean
-</td>
-<td style="text-align:left;">
-0.3978495
-</td>
-<td style="text-align:left;">
-0.4523810
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-familia_esporte_mean
-</td>
-<td style="text-align:left;">
-0.4782609
-</td>
-<td style="text-align:left;">
-0.4761905
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-eat_soma_sd
-</td>
-<td style="text-align:left;">
-8.188865
-</td>
-<td style="text-align:left;">
-10.088976
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-bsq_soma_sd
-</td>
-<td style="text-align:left;">
-32.86679
-</td>
-<td style="text-align:left;">
-34.86458
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-imc_sd
-</td>
-<td style="text-align:left;">
-3.990227
-</td>
-<td style="text-align:left;">
-3.150678
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-faz_esporte_sd
-</td>
-<td style="text-align:left;">
-0.4921069
-</td>
-<td style="text-align:left;">
-0.4997142
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-familia_esporte_sd
-</td>
-<td style="text-align:left;">
-0.5022643
-</td>
-<td style="text-align:left;">
-0.5014265
-</td>
-</tr>
-</tbody>
-</table>
 </div>
-<div id="regressão-linear-simples-2" class="section level2">
-<h2><span class="header-section-number">9.4</span> Regressão linear simples</h2>
+<div id="execução-no-r-5" class="section level2">
+<h2><span class="header-section-number">9.2</span> Execução no R</h2>
+<p>Como vem sendo ilustrado no decorrer do livro.</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="qui-quadrado-1.html#cb183-1"></a><span class="kw">ggplot</span>(ds_selected, <span class="kw">aes</span>(<span class="dt">x=</span> sex_male, <span class="dt">fill =</span> adhd_parent)) <span class="op">+</span></span>
+<span id="cb183-2"><a href="qui-quadrado-1.html#cb183-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>) <span class="op">+</span></span>
+<span id="cb183-3"><a href="qui-quadrado-1.html#cb183-3"></a><span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span></span>
+<span id="cb183-4"><a href="qui-quadrado-1.html#cb183-4"></a><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span></span>
+<span id="cb183-5"><a href="qui-quadrado-1.html#cb183-5"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;sexo&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Proporção&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;TDAH&quot;</span>)</span></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-134-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="qui-quadrado-1.html#cb184-1"></a>ds_selected <span class="op">%&gt;%</span></span>
+<span id="cb184-2"><a href="qui-quadrado-1.html#cb184-2"></a><span class="st">  </span><span class="kw">tabyl</span>(sex_male, adhd_parent) <span class="op">%&gt;%</span></span>
+<span id="cb184-3"><a href="qui-quadrado-1.html#cb184-3"></a><span class="st">  </span><span class="kw">adorn_totals</span>(<span class="kw">c</span>(<span class="st">&quot;row&quot;</span>, <span class="st">&quot;col&quot;</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb184-4"><a href="qui-quadrado-1.html#cb184-4"></a><span class="st">  </span><span class="kw">adorn_percentages</span>(<span class="st">&quot;row&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb184-5"><a href="qui-quadrado-1.html#cb184-5"></a><span class="st">  </span><span class="kw">adorn_pct_formatting</span>(<span class="dt">rounding =</span> <span class="st">&quot;half up&quot;</span>, <span class="dt">digits =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span></span>
+<span id="cb184-6"><a href="qui-quadrado-1.html#cb184-6"></a><span class="st">  </span><span class="kw">adorn_ns</span>() </span></code></pre></div>
+<pre><code>##  sex_male         no      yes       Total
+##    female 95% (3379) 5% (183) 100% (3562)
+##      male 91% (3230) 9% (322) 100% (3552)
+##     Total 93% (6609) 7% (505) 100% (7114)</code></pre>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="qui-quadrado-1.html#cb186-1"></a>ds_selected <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#&lt;-- dataset with predictors</span></span>
+<span id="cb186-2"><a href="qui-quadrado-1.html#cb186-2"></a><span class="st">  </span><span class="kw">count</span>(adhd_parent) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb186-3"><a href="qui-quadrado-1.html#cb186-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop =</span> <span class="kw">prop.table</span>(n)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb186-4"><a href="qui-quadrado-1.html#cb186-4"></a><span class="st">   </span><span class="kw">adorn_totals</span>()</span></code></pre></div>
+<pre><code>##  adhd_parent    n       prop
+##           no 6609 0.92901321
+##          yes  505 0.07098679
+##        Total 7114 1.00000000</code></pre>
+<p>Relação entre sexo (meninos e meninas) e apresentar TDAH (sim ou não)</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="qui-quadrado-1.html#cb188-1"></a>ds_selected <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#Relative Risk for gender</span></span>
+<span id="cb188-2"><a href="qui-quadrado-1.html#cb188-2"></a><span class="st">  </span><span class="co">#drop_na() %&gt;% </span></span>
+<span id="cb188-3"><a href="qui-quadrado-1.html#cb188-3"></a><span class="st">  </span>{<span class="kw">CrossTable</span>(.<span class="op">$</span>sex_male,.<span class="op">$</span>adhd_parent,</span>
+<span id="cb188-4"><a href="qui-quadrado-1.html#cb188-4"></a>              <span class="dt">expected =</span> T,</span>
+<span id="cb188-5"><a href="qui-quadrado-1.html#cb188-5"></a>              <span class="dt">chisq =</span> T)}</span></code></pre></div>
+<pre><code>##    Cell Contents 
+## |-------------------------|
+## |                       N | 
+## |              Expected N | 
+## | Chi-square contribution | 
+## |           N / Row Total | 
+## |           N / Col Total | 
+## |         N / Table Total | 
+## |-------------------------|
+## 
+## =====================================
+##               .$adhd_parent
+## .$sex_male        no      yes   Total
+## -------------------------------------
+## female          3379      183    3562
+##               3309.1    252.9        
+##                1.475   19.298        
+##                0.949    0.051   0.501
+##                0.511    0.362        
+##                0.475    0.026        
+## -------------------------------------
+## male            3230      322    3552
+##               3299.9    252.1        
+##                1.479   19.353        
+##                0.909    0.091   0.499
+##                0.489    0.638        
+##                0.454    0.045        
+## -------------------------------------
+## Total           6609      505    7114
+##                0.929    0.071        
+## =====================================
+## 
+## Statistics for All Table Factors
+## 
+## Pearson&#39;s Chi-squared test 
+## ------------------------------------------------------------
+## Chi^2 = 41.60464      d.f. = 1      p = 1.12e-10 
+## 
+## Pearson&#39;s Chi-squared test with Yates&#39; continuity correction 
+## ------------------------------------------------------------
+## Chi^2 = 41.01118      d.f. = 1      p = 1.51e-10</code></pre>
+<p>Risco</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="qui-quadrado-1.html#cb190-1"></a><span class="co">#relative risk (boys)</span></span>
+<span id="cb190-2"><a href="qui-quadrado-1.html#cb190-2"></a><span class="kw">riskratio</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent) </span></code></pre></div>
+<pre><code>## $data
+##          Outcome
+## Predictor   no yes Total
+##    female 3379 183  3562
+##    male   3230 322  3552
+##    Total  6609 505  7114
+## 
+## $measure
+##          risk ratio with 95% C.I.
+## Predictor estimate    lower    upper
+##    female 1.000000       NA       NA
+##    male   1.764517 1.480658 2.102793
+## 
+## $p.value
+##          two-sided
+## Predictor   midp.exact fisher.exact   chi.square
+##    female           NA           NA           NA
+##    male   9.128209e-11  1.08562e-10 1.117279e-10
+## 
+## $correction
+## [1] FALSE
+## 
+## attr(,&quot;method&quot;)
+## [1] &quot;Unconditional MLE &amp; normal approximation (Wald) CI&quot;</code></pre>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="qui-quadrado-1.html#cb192-1"></a><span class="kw">oddsratio</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent, <span class="dt">method =</span>  <span class="st">&quot;wald&quot;</span>)</span></code></pre></div>
+<pre><code>## $data
+##          Outcome
+## Predictor   no yes Total
+##    female 3379 183  3562
+##    male   3230 322  3552
+##    Total  6609 505  7114
+## 
+## $measure
+##          odds ratio with 95% C.I.
+## Predictor estimate    lower    upper
+##    female 1.000000       NA       NA
+##    male   1.840732 1.525648 2.220887
+## 
+## $p.value
+##          two-sided
+## Predictor   midp.exact fisher.exact   chi.square
+##    female           NA           NA           NA
+##    male   9.128209e-11  1.08562e-10 1.117279e-10
+## 
+## $correction
+## [1] FALSE
+## 
+## attr(,&quot;method&quot;)
+## [1] &quot;Unconditional MLE &amp; normal approximation (Wald) CI&quot;</code></pre>
 
 <div id="refs" class="references">
 <div>
