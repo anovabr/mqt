@@ -19,18 +19,21 @@ library(epitools) #epidemiology
 
 
 
-Introdução
-
 
 ```{block, type="objectives"}
 **Objetivos do capítulo**  
-1. Introduzir o Qui quadrado
-2. Realizar gráficos relacionados 
-2. Apresentar os pressupostos do teste
-3. Apresentar e interpretar métricas de tamanho do efeito
-5. Dar exemplos relacionados à escrita dos resultados
+1. Introduzir o Qui quadrado  
+2. Realizar gráficos relacionados    
+2. Apresentar os pressupostos do teste  
+3. Apresentar e interpretar métricas de tamanho do efeito  
+5. Dar exemplos relacionados à escrita dos resultados  
 ```
 
+
+O Teste Qui-quadrado é um conjunto de, ao menos, três testes estatísticos desenvolvidos para análise de variáveis categóricas e que permitem testar a homogeneidade da distribuição de uma variável (Homogeneity), sua aderência (Goodness of fit) ou a indepedência entre duas variáveis. Como todos os testes não-paramétricos, ele é livre de uma distribuição de probabilidade característica e a mecânica matemática é similar entre esses três tipos de qui-quadrado:
+
+
+$$\chi^2=\sum_{k=1}^{n} \frac{(O_k - E_k)^2}{E_k}$$
 
 
 
@@ -38,13 +41,19 @@ Introdução
 ## Pesquisa
   
 <div class="alert alert-info" role="alert">
-  <strong>Base: </strong> Base R TDAH Arruda
+  <strong>Base: </strong> Base R TDAH Arruda.Rdata
 </div>  
 
 
+Neste capítulo, vamos utilizar a pesquisa intitulada "Parent-reported diagnosis of Attention Deficit Hyperactivity Disorder and psychostimulant use among children and adolescents: a population-based nationwide study", que está em avaliação pela revista "Social Psychiatry and Psychiatric Epidemiology (SPPE)". Neste trabalho, tivemos o objetivo de verificar a epidemiologia do Transtorno do déficit de atenção com hiperatividade (TDAH) em uma amostra representativa de crianças e adolescentes brasileiros, bem como explorar eventuais associações entre características sociodemográficas, especialmente os sexo do participante, e possíveis fatores e risco e TDAH.
+
 ## Execução no R
 
-Como vem sendo ilustrado no decorrer do livro.
+Como exposto no decorrer de outros capítulos, o teste de hipóteses começa pela formulação conceitual das hipóteses. Apesar de ser possível estipular $H_0$ e $H_a$ a partir de equações específicas, para tornar o conteúdo mais palatável, a apresentação será textual/substantiva.
+
+
+$$H_0 = Não\ há\ associação\ entre\ sexo\ e\ TDAH \\ H_a = Há\ associação\ entre\ sexo\ e\ TDAH \\ \alpha = 0.05$$
+
 
 ```{r}
 ggplot(ds_selected, aes(x= sex_male, fill = adhd_parent)) +

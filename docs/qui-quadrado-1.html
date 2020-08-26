@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2020-08-24" />
+<meta name="date" content="2020-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -228,22 +228,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="qui-quadrado-1" class="section level1">
 <h1><span class="header-section-number">Capítulo 9</span> Qui quadrado</h1>
-<p>Introdução</p>
 <div class="objectives">
 <p>
 <strong>Objetivos do capítulo</strong><br />
-1. Introduzir o Qui quadrado 2. Realizar gráficos relacionados 2. Apresentar os pressupostos do teste 3. Apresentar e interpretar métricas de tamanho do efeito 5. Dar exemplos relacionados à escrita dos resultados
+1. Introduzir o Qui quadrado<br />
+2. Realizar gráficos relacionados<br />
+2. Apresentar os pressupostos do teste<br />
+3. Apresentar e interpretar métricas de tamanho do efeito<br />
+5. Dar exemplos relacionados à escrita dos resultados
 </p>
 </div>
+<p>O Teste Qui-quadrado é um conjunto de, ao menos, três testes estatísticos desenvolvidos para análise de variáveis categóricas e que permitem testar a homogeneidade da distribuição de uma variável (Homogeneity), sua aderência (Goodness of fit) ou a indepedência entre duas variáveis. Como todos os testes não-paramétricos, ele é livre de uma distribuição de probabilidade característica e a mecânica matemática é similar entre esses três tipos de qui-quadrado:</p>
+<p><span class="math display">\[\chi^2=\sum_{k=1}^{n} \frac{(O_k - E_k)^2}{E_k}\]</span></p>
 <div id="pesquisa-5" class="section level2">
 <h2><span class="header-section-number">9.1</span> Pesquisa</h2>
 <div class="alert alert-info" role="alert">
-<p><strong>Base: </strong> Base R TDAH Arruda</p>
+<p><strong>Base: </strong> Base R TDAH Arruda.Rdata</p>
 </div>
+<p>Neste capítulo, vamos utilizar a pesquisa intitulada “Parent-reported diagnosis of Attention Deficit Hyperactivity Disorder and psychostimulant use among children and adolescents: a population-based nationwide study”, que está em avaliação pela revista “Social Psychiatry and Psychiatric Epidemiology (SPPE)”. Neste trabalho, tivemos o objetivo de verificar a epidemiologia do Transtorno do déficit de atenção com hiperatividade (TDAH) em uma amostra representativa de crianças e adolescentes brasileiros, bem como explorar eventuais associações entre características sociodemográficas, especialmente os sexo do participante, e possíveis fatores e risco e TDAH.</p>
 </div>
 <div id="execução-no-r-5" class="section level2">
 <h2><span class="header-section-number">9.2</span> Execução no R</h2>
-<p>Como vem sendo ilustrado no decorrer do livro.</p>
+<p>Como exposto no decorrer de outros capítulos, o teste de hipóteses começa pela formulação conceitual das hipóteses. Apesar de ser possível estipular <span class="math inline">\(H_0\)</span> e <span class="math inline">\(H_a\)</span> a partir de equações específicas, para tornar o conteúdo mais palatável, a apresentação será textual/substantiva.</p>
+<p><span class="math display">\[H_0 = Não\ há\ associação\ entre\ sexo\ e\ TDAH \\ H_a = Há\ associação\ entre\ sexo\ e\ TDAH \\ \alpha = 0.05\]</span></p>
 <div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="qui-quadrado-1.html#cb183-1"></a><span class="kw">ggplot</span>(ds_selected, <span class="kw">aes</span>(<span class="dt">x=</span> sex_male, <span class="dt">fill =</span> adhd_parent)) <span class="op">+</span></span>
 <span id="cb183-2"><a href="qui-quadrado-1.html#cb183-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>) <span class="op">+</span></span>
 <span id="cb183-3"><a href="qui-quadrado-1.html#cb183-3"></a><span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span></span>
