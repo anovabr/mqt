@@ -45,15 +45,17 @@ $$\chi^2=\sum_{k=1}^{n} \frac{(O_k - E_k)^2}{E_k}$$
 </div>  
 
 
-Neste capítulo, vamos utilizar a pesquisa intitulada "Parent-reported diagnosis of Attention Deficit Hyperactivity Disorder and psychostimulant use among children and adolescents: a population-based nationwide study", que está em avaliação pela revista "Social Psychiatry and Psychiatric Epidemiology (SPPE)". Neste trabalho, tivemos o objetivo de verificar a epidemiologia do Transtorno do déficit de atenção com hiperatividade (TDAH) em uma amostra representativa de crianças e adolescentes brasileiros, bem como explorar eventuais associações entre características sociodemográficas, especialmente os sexo do participante, e possíveis fatores e risco e TDAH.
+Neste capítulo, vamos utilizar a pesquisa intitulada "Parent-reported diagnosis of Attention Deficit Hyperactivity Disorder and psychostimulant use among children and adolescents: a population-based nationwide study", que está em avaliação pela revista "Social Psychiatry and Psychiatric Epidemiology (SPPE)". Neste trabalho, tivemos o objetivo de verificar aspectos epidemiológicos do Transtorno do Déficit de Atenção com Hiperatividade (TDAH) em uma amostra representativa de crianças e adolescentes brasileiros, bem como explorar eventuais associações entre características sociodemográficas, especialmente os sexo do participante, e possíveis fatores e risco e TDAH.
 
 ## Execução no R
 
-Como exposto no decorrer de outros capítulos, o teste de hipóteses começa pela formulação conceitual das hipóteses. Apesar de ser possível estipular $H_0$ e $H_a$ a partir de equações específicas, para tornar o conteúdo mais palatável, a apresentação será textual/substantiva.
+Como exposto no decorrer de outros capítulos, o teste de hipóteses começa pela formulação conceitual das hipóteses. Apesar de ser possível estipular $H_0$ e $H_a$ a partir de equações específicas,a apresentação será textual/substantiva.
 
 
 $$H_0 = Não\ há\ associação\ entre\ sexo\ e\ TDAH \\ H_a = Há\ associação\ entre\ sexo\ e\ TDAH \\ \alpha = 0.05$$
+Uma característica colateral a esta apresentação textual do teste de hipóteses do Qui-quadrado é evitar confusões que ocorrem em relação ao conceito do teste e sua formulação matemática. Com muita frequência, dividimos os testes de hipóteses naqueles que verificam "associação" e naqueles que verificam "diferenças". Conceitualmente, o Qui-quadrado investiga associação entre variáveis. No entanto, sua formulação matemática é feita pela diferença entre um valor observado e um valor esperado (tal como ilustrado na equação ao início do capítulo). ASsim, acredito que a formulação apenas textual evita criar confusões e ainda tornar o conteúdo mais palatável.
 
+Posto isso, o gráfico de barras é sempre um bom início para visualizar os dados. Repare que a barra azul (que representa a porcentagem de TDAH) parece se comportar de maneira diferente nos grupos. 
 
 ```{r}
 ggplot(ds_selected, aes(x= sex_male, fill = adhd_parent)) +
@@ -80,7 +82,8 @@ ds_selected %>%
 ds_selected %>% #<-- dataset with predictors
   count(adhd_parent) %>% 
   mutate(prop = prop.table(n)) %>% 
-   adorn_totals()
+   adorn_totals() %>% 
+  kable(digits = 2) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
 ```
 
 
