@@ -30,13 +30,19 @@ library(epitools) #epidemiology
 ```
 
 
-O Teste Qui-quadrado é um conjunto de, ao menos, três testes estatísticos desenvolvidos para análise de variáveis categóricas e que permitem testar a homogeneidade da distribuição de uma variável (Homogeneity), sua aderência (Goodness of fit) ou a indepedência entre duas variáveis. Como todos os testes não-paramétricos, ele é livre de uma distribuição de probabilidade característica e a mecânica matemática é similar entre esses três tipos de qui-quadrado:
+O Teste Qui-quadrado é um conjunto de, ao menos, três testes estatísticos desenvolvidos para análise de variáveis categóricas e que permitem (1) testar a homogeneidade da distribuição de uma variável (Homogeneity), (2) sua aderência a uma distribuição teórica (Goodness of fit) ou (3) a indepedência entre duas variáveis. Como todos os testes não-paramétricos, ele é livre de uma distribuição de probabilidade característica e a mecânica matemática é similar entre esses três tipos de qui-quadrado:
 
 
 $$\chi^2=\sum_{k=1}^{n} \frac{(O_k - E_k)^2}{E_k}$$
 
 
+Os seguintes pressupostos estão presentes na etapa de diagnóstico do modelo:
 
+(i) Os dados são aleatórios e representativos da população de interesse
+(ii) A variável de interesse é categórica (ou tratada como categórica)
+(iii) O valor esperado para, ao menos 80% de todas as combinações possível (células na tabela) é 5 ou superior.
+
+uma curiosidade que remonta a história e explica parte da desavença que Pearson tinha com Fisher. O qui-quadrado foi originalmente desenvolvido em 1900 e 1904 por Karl Pearson [@Pearson1900]. Ronald Fisher detectou um erro no cálculo dos graus de liberdade e rapidamente divulgou isso, para descontentamento de Pearson [@Baird, 1983].
 
 ## Pesquisa
   
@@ -49,7 +55,7 @@ Neste capítulo, vamos utilizar a pesquisa intitulada "Parent-reported diagnosis
 
 ## Execução no R
 
-Como exposto no decorrer de outros capítulos, o teste de hipóteses começa pela formulação conceitual das hipóteses. Apesar de ser possível estipular $H_0$ e $H_a$ a partir de equações específicas,a apresentação será textual/substantiva.
+Neste momento, vamos seguir apenas com o qui-quadrado de independência. Como exposto no decorrer de outros capítulos, o teste de hipóteses começa pela formulação conceitual das hipóteses. Apesar de ser possível estipular $H_0$ e $H_a$ a partir de equações específicas,a apresentação será textual/substantiva.
 
 
 $$H_0 = Não\ há\ associação\ entre\ sexo\ e\ TDAH \\ H_a = Há\ associação\ entre\ sexo\ e\ TDAH \\ \alpha = 0.05$$
@@ -66,35 +72,64 @@ ggplot(ds_selected, aes(x= sex_male, fill = adhd_parent)) +
 ```
 
 
+Em seguida, a tabela de contingência traz informações sobre o relacionamento das variáveis. Apesar do qui-quadrado não eleger uma Vi e uma VD, Com bastante frequência utilizamos as linhas para apresentar a variável de maior interesse (neste caso, sexo) e as colunas para indicar o critério ou o eventual desfecho (neste caso, ter ou não TDAH). A porcentagem nas linhas e o valor esperado (em caso de independência entre as variáveis) auxiliam bastante na descrição dos resultados.
 
 
 ```{r}
-ds_selected %>%
-  tabyl(sex_male, adhd_parent) %>%
-  adorn_totals(c("row", "col")) %>%
-  adorn_percentages("row") %>% 
-  adorn_pct_formatting(rounding = "half up", digits = 0) %>%
-  adorn_ns() 
+CrossTable(ds_selected$sex_male,ds_selected$adhd_parent,
+           expected = T,
+           chisq = T, prop.c = F, prop.t = F, prop.chisq = F) %>% pander::pander(., digits = 1)
+```
+
+O cálculo do qui-quadrado apresentado abaixo deixa claro que que é possível rejeitar a Hipótese nula, uma vez que o valor de P é menor do que o nível de significância previamente estipulado (0.05)
+
+```{r}
+CrossTable(ds_selected$sex_male,ds_selected$adhd_parent,
+           expected = T,
+           chisq = T, prop.c = F, prop.t = F, prop.chisq = F)$CST
 ```
 
 
+
+```{block, type="writing"}
+**Como escrever os resultados**  
+
+A associação entre o sexo do participante e sua condição clínica (ter ou não TDAH) foi investida por um Teste Qui-quadrado de independência. Os resultados indicarma que ambas as variáveis são associadas (X2(1) = 41.605).
+```  
+
+
+## Tamanho do efeito  
+
+Como tenho apresentado no decorrer dos outros capítulos, os valores de P quase nunca são informativos sobre a relevância dos resultados. O tamanho do efeito mais utilizado no ambiente das análises de Qui quadardo é o V de Cramer. Esta estatística gera valores 0-1 e é dada da seguinte maneira:
+
+$$V=\sqrt\frac{\chi^2}{n*df^`}$$
+Em que:
+$\chi^2$ = valor do Qui quadrado obtido
+n = tamanho da amostra
+$df^`$ menor valor entre (Linhas - 1) ou (Colunas - 1) da tabela de contingências
+
+
+que pode tem interpretação baseada nos graus de liberdade e é feita da seguinte maneira:
+
+  | Graus de liberdade  | Pequeno           | Médio   |  Grande   
+  | :-----------        | :-----------       | :-----------              |  :-----------      
+  | 1 (2x2)             | One-sample  t test | Two-samples t test        |  Paired t test
+  | 2 (2x3) ou (3x2)    | Signed rank test   | Mann-whitney              |  Wilcoxon
+
+
+
+
+  | Cohen's d | Interpretação         
+  | :-----    | :-----     
+  | V $\geq$ 0.8   | Grande 
+  | V $\geq$ 0.5   | Moderado      
+  | V $\geq$ 0.2   | Pequeno
+  | V < 0.2   | Irrelevante
+
+
+
 ```{r}
-ds_selected %>% #<-- dataset with predictors
-  count(adhd_parent) %>% 
-  mutate(prop = prop.table(n)) %>% 
-   adorn_totals() %>% 
-  kable(digits = 2) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
-```
-
-
-Relação entre sexo (meninos e meninas) e apresentar TDAH (sim ou não)
-
-```{r}
-ds_selected %>% #Relative Risk for gender
-  #drop_na() %>% 
-  {CrossTable(.$sex_male,.$adhd_parent,
-              expected = T,
-              chisq = T)}
+rcompanion::cramerV(ds_selected$sex_male,ds_selected$adhd_parent)
 ```
 
 

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 8 Regressão linear simples | Métodos quantitativos em Psicologia com R</title>
+  <title>Capítulo 9 Regressão linear simples | Métodos quantitativos em Psicologia com R</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 8 Regressão linear simples | Métodos quantitativos em Psicologia com R" />
+  <meta property="og:title" content="Capítulo 9 Regressão linear simples | Métodos quantitativos em Psicologia com R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="cjvanlissa/gitbook-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 8 Regressão linear simples | Métodos quantitativos em Psicologia com R" />
+  <meta name="twitter:title" content="Capítulo 9 Regressão linear simples | Métodos quantitativos em Psicologia com R" />
   
   <meta name="twitter:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2020-08-29" />
+<meta name="date" content="2020-08-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -149,62 +149,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html"><i class="fa fa-check"></i><b>3</b> Estatística Descritiva</a><ul>
 <li class="chapter" data-level="3.1" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#pesquisa"><i class="fa fa-check"></i><b>3.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="3.2" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#condições-gerais"><i class="fa fa-check"></i><b>3.2</b> Condições gerais</a></li>
-<li class="chapter" data-level="3.3" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>3.3</b> Verbos do dplyr</a></li>
-<li class="chapter" data-level="3.4" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#tabelas"><i class="fa fa-check"></i><b>3.4</b> Tabelas</a></li>
-<li class="chapter" data-level="3.5" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#gráficos"><i class="fa fa-check"></i><b>3.5</b> Gráficos</a></li>
-<li class="chapter" data-level="3.6" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-discreta"><i class="fa fa-check"></i><b>3.6</b> 1 variável discreta</a></li>
-<li class="chapter" data-level="3.7" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-contínua"><i class="fa fa-check"></i><b>3.7</b> 1 variável contínua</a></li>
-<li class="chapter" data-level="3.8" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-discreta-e-vd-contínua"><i class="fa fa-check"></i><b>3.8</b> 2 variáveis com VI discreta (e VD contínua)</a></li>
-<li class="chapter" data-level="3.9" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-contínua-e-vd-contínua"><i class="fa fa-check"></i><b>3.9</b> 2 variáveis com VI contínua (e VD contínua)</a></li>
-<li class="chapter" data-level="3.10" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#outros-gráficos-e-configurações"><i class="fa fa-check"></i><b>3.10</b> Outros gráficos e configurações</a></li>
-<li class="chapter" data-level="3.11" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#resumo"><i class="fa fa-check"></i><b>3.11</b> Resumo</a></li>
+<li class="chapter" data-level="3.3" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#tabelas"><i class="fa fa-check"></i><b>3.3</b> Tabelas</a></li>
+<li class="chapter" data-level="3.4" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#gráficos"><i class="fa fa-check"></i><b>3.4</b> Gráficos</a></li>
+<li class="chapter" data-level="3.5" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-discreta"><i class="fa fa-check"></i><b>3.5</b> 1 variável discreta</a></li>
+<li class="chapter" data-level="3.6" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-contínua"><i class="fa fa-check"></i><b>3.6</b> 1 variável contínua</a></li>
+<li class="chapter" data-level="3.7" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-discreta-e-vd-contínua"><i class="fa fa-check"></i><b>3.7</b> 2 variáveis com VI discreta (e VD contínua)</a></li>
+<li class="chapter" data-level="3.8" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-contínua-e-vd-contínua"><i class="fa fa-check"></i><b>3.8</b> 2 variáveis com VI contínua (e VD contínua)</a></li>
+<li class="chapter" data-level="3.9" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#outros-gráficos-e-configurações"><i class="fa fa-check"></i><b>3.9</b> Outros gráficos e configurações</a></li>
+<li class="chapter" data-level="3.10" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#resumo"><i class="fa fa-check"></i><b>3.10</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="qui-quadrado.html"><a href="qui-quadrado.html"><i class="fa fa-check"></i><b>4</b> Qui quadrado</a></li>
-<li class="chapter" data-level="5" data-path="teste-t.html"><a href="teste-t.html"><i class="fa fa-check"></i><b>5</b> Teste T</a><ul>
-<li class="chapter" data-level="5.1" data-path="teste-t.html"><a href="teste-t.html#pesquisa-1"><i class="fa fa-check"></i><b>5.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="5.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-r"><i class="fa fa-check"></i><b>5.2</b> Execução no R</a></li>
-<li class="chapter" data-level="5.3" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito"><i class="fa fa-check"></i><b>5.3</b> Tamanho do efeito</a></li>
-<li class="chapter" data-level="5.4" data-path="teste-t.html"><a href="teste-t.html#versão-robusta-do-teste-t"><i class="fa fa-check"></i><b>5.4</b> Versão robusta do teste T</a></li>
-<li class="chapter" data-level="5.5" data-path="teste-t.html"><a href="teste-t.html#mann-whitney"><i class="fa fa-check"></i><b>5.5</b> Mann-whitney</a></li>
-<li class="chapter" data-level="5.6" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>5.6</b> Teste T e regressão</a></li>
-<li class="chapter" data-level="5.7" data-path="teste-t.html"><a href="teste-t.html#aspectos-matemáticos"><i class="fa fa-check"></i><b>5.7</b> Aspectos matemáticos</a></li>
-<li class="chapter" data-level="5.8" data-path="teste-t.html"><a href="teste-t.html#resumo-1"><i class="fa fa-check"></i><b>5.8</b> Resumo</a></li>
+<li class="chapter" data-level="4" data-path="o-r-e-o-tidyverse.html"><a href="o-r-e-o-tidyverse.html"><i class="fa fa-check"></i><b>4</b> O R e o Tidyverse</a><ul>
+<li class="chapter" data-level="4.1" data-path="o-r-e-o-tidyverse.html"><a href="o-r-e-o-tidyverse.html#tidyverse"><i class="fa fa-check"></i><b>4.1</b> Tidyverse</a></li>
+<li class="chapter" data-level="4.2" data-path="o-r-e-o-tidyverse.html"><a href="o-r-e-o-tidyverse.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>4.2</b> Verbos do dplyr</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>6</b> ANOVA</a><ul>
-<li class="chapter" data-level="6.1" data-path="anova.html"><a href="anova.html#legenda"><i class="fa fa-check"></i><b>6.1</b> Legenda</a></li>
-<li class="chapter" data-level="6.2" data-path="anova.html"><a href="anova.html#pesquisa-2"><i class="fa fa-check"></i><b>6.2</b> Pesquisa</a></li>
-<li class="chapter" data-level="6.3" data-path="anova.html"><a href="anova.html#anova-de-1-via"><i class="fa fa-check"></i><b>6.3</b> ANOVA de 1 via</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="anova.html"><a href="anova.html#execução-no-r-1"><i class="fa fa-check"></i><b>6.3.1</b> Execução no R</a></li>
-<li class="chapter" data-level="6.3.2" data-path="anova.html"><a href="anova.html#post-hoc"><i class="fa fa-check"></i><b>6.3.2</b> Post hoc</a></li>
+<li class="chapter" data-level="5" data-path="qui-quadrado.html"><a href="qui-quadrado.html"><i class="fa fa-check"></i><b>5</b> Qui quadrado</a></li>
+<li class="chapter" data-level="6" data-path="teste-t.html"><a href="teste-t.html"><i class="fa fa-check"></i><b>6</b> Teste T</a><ul>
+<li class="chapter" data-level="6.1" data-path="teste-t.html"><a href="teste-t.html#pesquisa-1"><i class="fa fa-check"></i><b>6.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="6.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-r"><i class="fa fa-check"></i><b>6.2</b> Execução no R</a></li>
+<li class="chapter" data-level="6.3" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito"><i class="fa fa-check"></i><b>6.3</b> Tamanho do efeito</a></li>
+<li class="chapter" data-level="6.4" data-path="teste-t.html"><a href="teste-t.html#versão-robusta-do-teste-t"><i class="fa fa-check"></i><b>6.4</b> Versão robusta do teste T</a></li>
+<li class="chapter" data-level="6.5" data-path="teste-t.html"><a href="teste-t.html#mann-whitney"><i class="fa fa-check"></i><b>6.5</b> Mann-whitney</a></li>
+<li class="chapter" data-level="6.6" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>6.6</b> Teste T e regressão</a></li>
+<li class="chapter" data-level="6.7" data-path="teste-t.html"><a href="teste-t.html#aspectos-matemáticos"><i class="fa fa-check"></i><b>6.7</b> Aspectos matemáticos</a></li>
+<li class="chapter" data-level="6.8" data-path="teste-t.html"><a href="teste-t.html#resumo-1"><i class="fa fa-check"></i><b>6.8</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="anova.html"><a href="anova.html#anova-de-2-vias"><i class="fa fa-check"></i><b>6.4</b> ANOVA de 2 vias</a><ul>
-<li class="chapter" data-level="6.4.1" data-path="anova.html"><a href="anova.html#execução-no-r-2"><i class="fa fa-check"></i><b>6.4.1</b> Execução no R</a></li>
+<li class="chapter" data-level="7" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>7</b> ANOVA</a><ul>
+<li class="chapter" data-level="7.1" data-path="anova.html"><a href="anova.html#legenda"><i class="fa fa-check"></i><b>7.1</b> Legenda</a></li>
+<li class="chapter" data-level="7.2" data-path="anova.html"><a href="anova.html#pesquisa-2"><i class="fa fa-check"></i><b>7.2</b> Pesquisa</a></li>
+<li class="chapter" data-level="7.3" data-path="anova.html"><a href="anova.html#anova-de-1-via"><i class="fa fa-check"></i><b>7.3</b> ANOVA de 1 via</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="anova.html"><a href="anova.html#execução-no-r-1"><i class="fa fa-check"></i><b>7.3.1</b> Execução no R</a></li>
+<li class="chapter" data-level="7.3.2" data-path="anova.html"><a href="anova.html#post-hoc"><i class="fa fa-check"></i><b>7.3.2</b> Post hoc</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="anova.html"><a href="anova.html#anova-fatorial"><i class="fa fa-check"></i><b>6.5</b> ANOVA Fatorial</a><ul>
-<li class="chapter" data-level="6.5.1" data-path="anova.html"><a href="anova.html#execução-no-r-3"><i class="fa fa-check"></i><b>6.5.1</b> Execução no R</a></li>
-<li class="chapter" data-level="6.5.2" data-path="anova.html"><a href="anova.html#post-hoc-1"><i class="fa fa-check"></i><b>6.5.2</b> Post hoc</a></li>
+<li class="chapter" data-level="7.4" data-path="anova.html"><a href="anova.html#anova-de-2-vias"><i class="fa fa-check"></i><b>7.4</b> ANOVA de 2 vias</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="anova.html"><a href="anova.html#execução-no-r-2"><i class="fa fa-check"></i><b>7.4.1</b> Execução no R</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="anova.html"><a href="anova.html#resumo-2"><i class="fa fa-check"></i><b>6.6</b> Resumo</a></li>
+<li class="chapter" data-level="7.5" data-path="anova.html"><a href="anova.html#anova-fatorial"><i class="fa fa-check"></i><b>7.5</b> ANOVA Fatorial</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="anova.html"><a href="anova.html#execução-no-r-3"><i class="fa fa-check"></i><b>7.5.1</b> Execução no R</a></li>
+<li class="chapter" data-level="7.5.2" data-path="anova.html"><a href="anova.html#post-hoc-1"><i class="fa fa-check"></i><b>7.5.2</b> Post hoc</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html"><i class="fa fa-check"></i><b>7</b> ANOVA de medidas repetidas</a><ul>
-<li class="chapter" data-level="7.1" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pesquisa-3"><i class="fa fa-check"></i><b>7.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="7.2" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pacote-ez"><i class="fa fa-check"></i><b>7.2</b> Pacote ez</a></li>
-<li class="chapter" data-level="7.3" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pacote-lme4"><i class="fa fa-check"></i><b>7.3</b> Pacote lme4</a></li>
-<li class="chapter" data-level="7.4" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#sumário"><i class="fa fa-check"></i><b>7.4</b> Sumário</a></li>
+<li class="chapter" data-level="7.6" data-path="anova.html"><a href="anova.html#resumo-2"><i class="fa fa-check"></i><b>7.6</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>8</b> Regressão linear simples</a><ul>
-<li class="chapter" data-level="8.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#legenda-1"><i class="fa fa-check"></i><b>8.1</b> Legenda</a></li>
-<li class="chapter" data-level="8.2" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#explicação-conceitual"><i class="fa fa-check"></i><b>8.2</b> Explicação conceitual</a></li>
-<li class="chapter" data-level="8.3" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisa-4"><i class="fa fa-check"></i><b>8.3</b> Pesquisa</a></li>
-<li class="chapter" data-level="8.4" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#regressão-linear-simples-1"><i class="fa fa-check"></i><b>8.4</b> Regressão linear simples</a><ul>
-<li class="chapter" data-level="8.4.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-r-4"><i class="fa fa-check"></i><b>8.4.1</b> Execução no R</a></li>
+<li class="chapter" data-level="8" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html"><i class="fa fa-check"></i><b>8</b> ANOVA de medidas repetidas</a><ul>
+<li class="chapter" data-level="8.1" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pesquisa-3"><i class="fa fa-check"></i><b>8.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="8.2" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pacote-ez"><i class="fa fa-check"></i><b>8.2</b> Pacote ez</a></li>
+<li class="chapter" data-level="8.3" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pacote-lme4"><i class="fa fa-check"></i><b>8.3</b> Pacote lme4</a></li>
+<li class="chapter" data-level="8.4" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#sumário"><i class="fa fa-check"></i><b>8.4</b> Sumário</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pressupostos"><i class="fa fa-check"></i><b>8.5</b> Pressupostos</a></li>
-<li class="chapter" data-level="8.6" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#a-interpretação"><i class="fa fa-check"></i><b>8.6</b> A interpretação</a></li>
+<li class="chapter" data-level="9" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>9</b> Regressão linear simples</a><ul>
+<li class="chapter" data-level="9.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#legenda-1"><i class="fa fa-check"></i><b>9.1</b> Legenda</a></li>
+<li class="chapter" data-level="9.2" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#explicação-conceitual"><i class="fa fa-check"></i><b>9.2</b> Explicação conceitual</a></li>
+<li class="chapter" data-level="9.3" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisa-4"><i class="fa fa-check"></i><b>9.3</b> Pesquisa</a></li>
+<li class="chapter" data-level="9.4" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#regressão-linear-simples-1"><i class="fa fa-check"></i><b>9.4</b> Regressão linear simples</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-r-4"><i class="fa fa-check"></i><b>9.4.1</b> Execução no R</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html"><i class="fa fa-check"></i><b>9</b> Qui quadrado</a><ul>
-<li class="chapter" data-level="9.1" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html#pesquisa-5"><i class="fa fa-check"></i><b>9.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="9.2" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html#execução-no-r-5"><i class="fa fa-check"></i><b>9.2</b> Execução no R</a></li>
+<li class="chapter" data-level="9.5" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pressupostos"><i class="fa fa-check"></i><b>9.5</b> Pressupostos</a></li>
+<li class="chapter" data-level="9.6" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#a-interpretação"><i class="fa fa-check"></i><b>9.6</b> A interpretação</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html"><i class="fa fa-check"></i><b>10</b> Qui quadrado</a><ul>
+<li class="chapter" data-level="10.1" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html#pesquisa-5"><i class="fa fa-check"></i><b>10.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="10.2" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html#execução-no-r-5"><i class="fa fa-check"></i><b>10.2</b> Execução no R</a></li>
+<li class="chapter" data-level="10.3" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html#tamanho-do-efeito-1"><i class="fa fa-check"></i><b>10.3</b> Tamanho do efeito</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="http://www.puc-rio.br/" target="blank">PUC-Rio</a></li>
@@ -227,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="regressão-linear-simples" class="section level1">
-<h1><span class="header-section-number">Capítulo 8</span> Regressão linear simples</h1>
+<h1><span class="header-section-number">Capítulo 9</span> Regressão linear simples</h1>
 <p>Os modelos de regressão modelos estatísticos que relacionam o comportamento de uma variável resposta (Y) como uma função de variáveis condicionantes (X). Em larga escala, eles substituem os outros testes paramétricos vistos até agora. Assim, quase tudo o que foi visto durante os capítulos anteriormente são casos especiais de modelos de regressão. No entanto, é possível estudar tais modelos tanto de uma maneira <u>operacional</u>, com foco totalmente pragmático e aderente às recomendações tradicionais dos livros de estatística, ou de uma forma <u>detalhada</u>, em que ao estudar os modelos de regressão, quase que muitos conceitos da estatística inferencial e estatística matemática são revisitados.</p>
 <p>Nesse capítulo, iremos ver ambas as maneiras, mas preservando o foco na capacidade operacional.</p>
 <p>Conceitualmente, a regressão linear é apresentada como::</p>
@@ -237,7 +241,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span class="math inline">\(b_1\)</span> é a inclinação (coeficiente angular)<br />
 <span class="math inline">\(\epsilon_{i}\)</span> é o erro/resíduo</p>
 <div id="legenda-1" class="section level2">
-<h2><span class="header-section-number">8.1</span> Legenda</h2>
+<h2><span class="header-section-number">9.1</span> Legenda</h2>
 <p>Diferentes termos são empregados em modelos de regressão A legenda a seguir visa auxiliar no entendimento de cada um deles e aproximar o leitor a conceitos amplos utilizados em modelos lineares:</p>
 <div class="writing">
 <p>
@@ -282,7 +286,7 @@ Erro quadrático médio (MSE): <span class="math inline"><span class="math inlin
 <p>É possível citar ao menos três formas de explicar modelos de regressão. Evidentemente, todas são interligadas, mas cada qual apresenta uma ênfase didática diferente. Nesse sentido, a forma mais “conceitual” conta com conjuntos para explicitar o tema, a forma “correlacional” parte de um gráfico de dispersão e a forma “analítica” traz conceitos matemático. A forma correlacional é a mais simples de todas e iniciará o capítulo. A forma correlacional e analítica serão vistas a partir da pesquisa realizada.</p>
 </div>
 <div id="explicação-conceitual" class="section level2">
-<h2><span class="header-section-number">8.2</span> Explicação conceitual</h2>
+<h2><span class="header-section-number">9.2</span> Explicação conceitual</h2>
 <p>Inicialmente, é necessário atentar que a <code>variável dependente (Y)</code> e a <code>variável independente (X)</code> podem ser vistas como conjuntos. No caso:</p>
 <p><img src="img/cap_reg_x_y.PNG" /></p>
 <p>Repare que ambas as variáveis estão afastadas e não há nenhuma relação entre elas. No entanto, o que frequentemente ocorre é que existe algum grau de relacionamento entre elas, tal como exposto abaixo:</p>
@@ -309,7 +313,7 @@ Erro quadrático médio (MSE): <span class="math inline"><span class="math inlin
 <p>Modelos assim serão explicitados em momento posterior.</p>
 </div>
 <div id="pesquisa-4" class="section level2">
-<h2><span class="header-section-number">8.3</span> Pesquisa</h2>
+<h2><span class="header-section-number">9.3</span> Pesquisa</h2>
 <div class="alert alert-info" role="alert">
 <p><strong>Base: </strong> Livro - Dados - Eating disorders</p>
 </div>
@@ -450,7 +454,7 @@ familia_esporte_sd
 </table>
 </div>
 <div id="regressão-linear-simples-1" class="section level2">
-<h2><span class="header-section-number">8.4</span> Regressão linear simples</h2>
+<h2><span class="header-section-number">9.4</span> Regressão linear simples</h2>
 <p>A Regressão linear é uma técnica estatística utilizada que além de verificar o relacionamento funcional entre duas variáveis, permite criar uma equação que verifique o quanto os valores de uma variável varie em função de outra.</p>
 <p>Há, ao menos, duas utilidades diretas em uma pesquisa, que são:</p>
 <ol style="list-style-type: lower-roman">
@@ -459,7 +463,7 @@ familia_esporte_sd
 </ol>
 <p>Tecnicamente, ambas as utilidades são virtualmente iguais e como a Regressão linear simples pode ser vista a partir de um incremento ou avanço dos modelos de correlação, os aspectos correlacionais devem (e podem) ser inicialmente investigados.</p>
 <div id="execução-no-r-4" class="section level3">
-<h3><span class="header-section-number">8.4.1</span> Execução no R</h3>
+<h3><span class="header-section-number">9.4.1</span> Execução no R</h3>
 <p>Conforme já exposto, o gráfico de dispersão auxilia na visualização da relação entre as variáveis.A correlação entre ambas as medidas expressa a força e a direção que elas possuem. Enquanto a força é interpretada em <code>fraca</code> (0.1), <code>moderada</code> (0.3) ou <code>forte</code> (0.5), a direção pode ser positiva ou negativa, a depender do sinal.</p>
 <div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="regressão-linear-simples.html#cb142-1"></a><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> bsq_soma, <span class="dt">y =</span> eat_soma)) <span class="op">+</span></span>
 <span id="cb142-2"><a href="regressão-linear-simples.html#cb142-2"></a><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></span>
@@ -547,7 +551,7 @@ e que:</p>
 <p>Existem diferentes maneiras de apresentar o resultado (que já calculamos inicialmente), A função <code>stargazer</code>, do pacote com mesmo nome, é uma das mais informativas e práticas. Assim:</p>
 <div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="regressão-linear-simples.html#cb151-1"></a><span class="kw">stargazer</span>(mod_linear_simples, <span class="dt">type =</span> <span class="st">&#39;latex&#39;</span>) </span></code></pre></div>
 % Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-% Date and time: Sat, Aug 29, 2020 - 12:06:04 AM
+% Date and time: Mon, Aug 31, 2020 - 12:08:46 AM
 
 <div class="writing">
 <p>
@@ -809,7 +813,7 @@ n = Quantidade de participantes (no caso, 219)</p>
 </div>
 </div>
 <div id="pressupostos" class="section level2">
-<h2><span class="header-section-number">8.5</span> Pressupostos</h2>
+<h2><span class="header-section-number">9.5</span> Pressupostos</h2>
 <div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="regressão-linear-simples.html#cb166-1"></a><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> bsq_media, <span class="dt">y  =</span> bsq_soma)) <span class="op">+</span></span>
 <span id="cb166-2"><a href="regressão-linear-simples.html#cb166-2"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-122-1.png" width="672" style="display: block; margin: auto;" /></p>
@@ -873,7 +877,7 @@ n = Quantidade de participantes (no caso, 219)</p>
 ##  Prob &gt; Chi2   =    0.00272872</code></pre>
 </div>
 <div id="a-interpretação" class="section level2">
-<h2><span class="header-section-number">8.6</span> A interpretação</h2>
+<h2><span class="header-section-number">9.6</span> A interpretação</h2>
 <p>Posto isso,</p>
 
 </div>

@@ -43,36 +43,6 @@ Todo documento acadêmico e científico é composto de <u>aspectos textuais</u>,
 
 Frequentemente, as primeiras análises descritivas começam pela apresentação de <u>tabelas</u> e <u>gráficos</u>. Da mesma forma que a construção de um prédio depende que andaimes sejam colocados, um relatório técnico depende dessas condições. Ainda neste sentido, da mesma maneira que a conclusão do prédio cursa com a retirada dos andaimes, é bem possível que as versões finais de artigos científicos ou relatórios aproveitem apenas parte dos gráficos e tabelas desenvolvidos. 
 
-Dito isso, o R e seus pacotes oferecem excelentes ferramentas para aspectos descritivos. No entanto, algumas apresentações relativamente simples frequentemente trazem uma dificuldade computacional intensa, o que pode gerar alguma desvantagem na utilização do R para tais apresentações quando comparados com programas mais acessíveis, como o Excel. No entanto, apesar dessa condição, a relação entre dificuldade e complexidade favorece o R àquelas tarefas mais complicadas, como realizar análises inferenciais e psicométricas, como apresentado a seguir.
-
-![](./img/excel_r.PNG)
-
-
-## Verbos do dplyr
-
-O dplyr funciona de maneira muito intuitiva. O padrão original do R considera que as operações são realizadas a partir de uma lógica do tipo `verbo(sujeito, complemento)` enquanto o ambiente tidyverse opta por `sujeito %>% verbo(complemento)`, tornando-se o ato de programar mais natural e associado à maneira que organizamos as ideias. 
-
-Os verbos principais do pacote estão listados na tabela a seguir e as sintaxes deixadas no decorrer deste capítulo (e do livro) permitem uma melhor apreensão das funcionalidades. É importante lembrar que, em alguns momentos, em função da praticidade computacional, algumas sintaxes vão contar com o formato base do R.
-
-
-
-| Verbo         | Ação          |
-| :------------ | :-----------: |
-| glimpse       | Inspeciona os dados |
-| count         | Conta os níveis de uma variável |
-| select        | seleciona uma variável específica |
-| filter        | Filtra os resultados por um nível específico de uma variável |
-| group_by      | Agrupa os resultados por níveis de uma variávei específica |
-| summarise     | Apresenta sumários (com medidas estatísticas)  |
-| mutate        | Cria novas variáveis ou altera as existentes  |
-| arrange       | Organiza a apresentação dos resultados  |
-| left_join     | Junta bases ou colunas  |
-| pivot_longer        | Transforma uma base larga em longa  |
-| pivot_wider        | Transforma uma base longa em larga  |
-
-
-
-É também importante ficar atento às atualizações do dplyr e do sistema tidyverse como um todo. Eventualmente, mudanças podem ocorrer e impossibilitar (ou dificultar) a reprodução de rotinas antigas. O [site](https://www.tidyverse.org/) é o local ideal para acompanhar as atualizações. 
 
 ## Tabelas
 

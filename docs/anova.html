@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 6 ANOVA | Métodos quantitativos em Psicologia com R</title>
+  <title>Capítulo 7 ANOVA | Métodos quantitativos em Psicologia com R</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 6 ANOVA | Métodos quantitativos em Psicologia com R" />
+  <meta property="og:title" content="Capítulo 7 ANOVA | Métodos quantitativos em Psicologia com R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="cjvanlissa/gitbook-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 6 ANOVA | Métodos quantitativos em Psicologia com R" />
+  <meta name="twitter:title" content="Capítulo 7 ANOVA | Métodos quantitativos em Psicologia com R" />
   
   <meta name="twitter:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2020-08-29" />
+<meta name="date" content="2020-08-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -149,62 +149,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html"><i class="fa fa-check"></i><b>3</b> Estatística Descritiva</a><ul>
 <li class="chapter" data-level="3.1" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#pesquisa"><i class="fa fa-check"></i><b>3.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="3.2" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#condições-gerais"><i class="fa fa-check"></i><b>3.2</b> Condições gerais</a></li>
-<li class="chapter" data-level="3.3" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>3.3</b> Verbos do dplyr</a></li>
-<li class="chapter" data-level="3.4" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#tabelas"><i class="fa fa-check"></i><b>3.4</b> Tabelas</a></li>
-<li class="chapter" data-level="3.5" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#gráficos"><i class="fa fa-check"></i><b>3.5</b> Gráficos</a></li>
-<li class="chapter" data-level="3.6" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-discreta"><i class="fa fa-check"></i><b>3.6</b> 1 variável discreta</a></li>
-<li class="chapter" data-level="3.7" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-contínua"><i class="fa fa-check"></i><b>3.7</b> 1 variável contínua</a></li>
-<li class="chapter" data-level="3.8" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-discreta-e-vd-contínua"><i class="fa fa-check"></i><b>3.8</b> 2 variáveis com VI discreta (e VD contínua)</a></li>
-<li class="chapter" data-level="3.9" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-contínua-e-vd-contínua"><i class="fa fa-check"></i><b>3.9</b> 2 variáveis com VI contínua (e VD contínua)</a></li>
-<li class="chapter" data-level="3.10" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#outros-gráficos-e-configurações"><i class="fa fa-check"></i><b>3.10</b> Outros gráficos e configurações</a></li>
-<li class="chapter" data-level="3.11" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#resumo"><i class="fa fa-check"></i><b>3.11</b> Resumo</a></li>
+<li class="chapter" data-level="3.3" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#tabelas"><i class="fa fa-check"></i><b>3.3</b> Tabelas</a></li>
+<li class="chapter" data-level="3.4" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#gráficos"><i class="fa fa-check"></i><b>3.4</b> Gráficos</a></li>
+<li class="chapter" data-level="3.5" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-discreta"><i class="fa fa-check"></i><b>3.5</b> 1 variável discreta</a></li>
+<li class="chapter" data-level="3.6" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-contínua"><i class="fa fa-check"></i><b>3.6</b> 1 variável contínua</a></li>
+<li class="chapter" data-level="3.7" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-discreta-e-vd-contínua"><i class="fa fa-check"></i><b>3.7</b> 2 variáveis com VI discreta (e VD contínua)</a></li>
+<li class="chapter" data-level="3.8" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-contínua-e-vd-contínua"><i class="fa fa-check"></i><b>3.8</b> 2 variáveis com VI contínua (e VD contínua)</a></li>
+<li class="chapter" data-level="3.9" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#outros-gráficos-e-configurações"><i class="fa fa-check"></i><b>3.9</b> Outros gráficos e configurações</a></li>
+<li class="chapter" data-level="3.10" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#resumo"><i class="fa fa-check"></i><b>3.10</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="qui-quadrado.html"><a href="qui-quadrado.html"><i class="fa fa-check"></i><b>4</b> Qui quadrado</a></li>
-<li class="chapter" data-level="5" data-path="teste-t.html"><a href="teste-t.html"><i class="fa fa-check"></i><b>5</b> Teste T</a><ul>
-<li class="chapter" data-level="5.1" data-path="teste-t.html"><a href="teste-t.html#pesquisa-1"><i class="fa fa-check"></i><b>5.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="5.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-r"><i class="fa fa-check"></i><b>5.2</b> Execução no R</a></li>
-<li class="chapter" data-level="5.3" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito"><i class="fa fa-check"></i><b>5.3</b> Tamanho do efeito</a></li>
-<li class="chapter" data-level="5.4" data-path="teste-t.html"><a href="teste-t.html#versão-robusta-do-teste-t"><i class="fa fa-check"></i><b>5.4</b> Versão robusta do teste T</a></li>
-<li class="chapter" data-level="5.5" data-path="teste-t.html"><a href="teste-t.html#mann-whitney"><i class="fa fa-check"></i><b>5.5</b> Mann-whitney</a></li>
-<li class="chapter" data-level="5.6" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>5.6</b> Teste T e regressão</a></li>
-<li class="chapter" data-level="5.7" data-path="teste-t.html"><a href="teste-t.html#aspectos-matemáticos"><i class="fa fa-check"></i><b>5.7</b> Aspectos matemáticos</a></li>
-<li class="chapter" data-level="5.8" data-path="teste-t.html"><a href="teste-t.html#resumo-1"><i class="fa fa-check"></i><b>5.8</b> Resumo</a></li>
+<li class="chapter" data-level="4" data-path="o-r-e-o-tidyverse.html"><a href="o-r-e-o-tidyverse.html"><i class="fa fa-check"></i><b>4</b> O R e o Tidyverse</a><ul>
+<li class="chapter" data-level="4.1" data-path="o-r-e-o-tidyverse.html"><a href="o-r-e-o-tidyverse.html#tidyverse"><i class="fa fa-check"></i><b>4.1</b> Tidyverse</a></li>
+<li class="chapter" data-level="4.2" data-path="o-r-e-o-tidyverse.html"><a href="o-r-e-o-tidyverse.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>4.2</b> Verbos do dplyr</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>6</b> ANOVA</a><ul>
-<li class="chapter" data-level="6.1" data-path="anova.html"><a href="anova.html#legenda"><i class="fa fa-check"></i><b>6.1</b> Legenda</a></li>
-<li class="chapter" data-level="6.2" data-path="anova.html"><a href="anova.html#pesquisa-2"><i class="fa fa-check"></i><b>6.2</b> Pesquisa</a></li>
-<li class="chapter" data-level="6.3" data-path="anova.html"><a href="anova.html#anova-de-1-via"><i class="fa fa-check"></i><b>6.3</b> ANOVA de 1 via</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="anova.html"><a href="anova.html#execução-no-r-1"><i class="fa fa-check"></i><b>6.3.1</b> Execução no R</a></li>
-<li class="chapter" data-level="6.3.2" data-path="anova.html"><a href="anova.html#post-hoc"><i class="fa fa-check"></i><b>6.3.2</b> Post hoc</a></li>
+<li class="chapter" data-level="5" data-path="qui-quadrado.html"><a href="qui-quadrado.html"><i class="fa fa-check"></i><b>5</b> Qui quadrado</a></li>
+<li class="chapter" data-level="6" data-path="teste-t.html"><a href="teste-t.html"><i class="fa fa-check"></i><b>6</b> Teste T</a><ul>
+<li class="chapter" data-level="6.1" data-path="teste-t.html"><a href="teste-t.html#pesquisa-1"><i class="fa fa-check"></i><b>6.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="6.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-r"><i class="fa fa-check"></i><b>6.2</b> Execução no R</a></li>
+<li class="chapter" data-level="6.3" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito"><i class="fa fa-check"></i><b>6.3</b> Tamanho do efeito</a></li>
+<li class="chapter" data-level="6.4" data-path="teste-t.html"><a href="teste-t.html#versão-robusta-do-teste-t"><i class="fa fa-check"></i><b>6.4</b> Versão robusta do teste T</a></li>
+<li class="chapter" data-level="6.5" data-path="teste-t.html"><a href="teste-t.html#mann-whitney"><i class="fa fa-check"></i><b>6.5</b> Mann-whitney</a></li>
+<li class="chapter" data-level="6.6" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>6.6</b> Teste T e regressão</a></li>
+<li class="chapter" data-level="6.7" data-path="teste-t.html"><a href="teste-t.html#aspectos-matemáticos"><i class="fa fa-check"></i><b>6.7</b> Aspectos matemáticos</a></li>
+<li class="chapter" data-level="6.8" data-path="teste-t.html"><a href="teste-t.html#resumo-1"><i class="fa fa-check"></i><b>6.8</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="anova.html"><a href="anova.html#anova-de-2-vias"><i class="fa fa-check"></i><b>6.4</b> ANOVA de 2 vias</a><ul>
-<li class="chapter" data-level="6.4.1" data-path="anova.html"><a href="anova.html#execução-no-r-2"><i class="fa fa-check"></i><b>6.4.1</b> Execução no R</a></li>
+<li class="chapter" data-level="7" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>7</b> ANOVA</a><ul>
+<li class="chapter" data-level="7.1" data-path="anova.html"><a href="anova.html#legenda"><i class="fa fa-check"></i><b>7.1</b> Legenda</a></li>
+<li class="chapter" data-level="7.2" data-path="anova.html"><a href="anova.html#pesquisa-2"><i class="fa fa-check"></i><b>7.2</b> Pesquisa</a></li>
+<li class="chapter" data-level="7.3" data-path="anova.html"><a href="anova.html#anova-de-1-via"><i class="fa fa-check"></i><b>7.3</b> ANOVA de 1 via</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="anova.html"><a href="anova.html#execução-no-r-1"><i class="fa fa-check"></i><b>7.3.1</b> Execução no R</a></li>
+<li class="chapter" data-level="7.3.2" data-path="anova.html"><a href="anova.html#post-hoc"><i class="fa fa-check"></i><b>7.3.2</b> Post hoc</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="anova.html"><a href="anova.html#anova-fatorial"><i class="fa fa-check"></i><b>6.5</b> ANOVA Fatorial</a><ul>
-<li class="chapter" data-level="6.5.1" data-path="anova.html"><a href="anova.html#execução-no-r-3"><i class="fa fa-check"></i><b>6.5.1</b> Execução no R</a></li>
-<li class="chapter" data-level="6.5.2" data-path="anova.html"><a href="anova.html#post-hoc-1"><i class="fa fa-check"></i><b>6.5.2</b> Post hoc</a></li>
+<li class="chapter" data-level="7.4" data-path="anova.html"><a href="anova.html#anova-de-2-vias"><i class="fa fa-check"></i><b>7.4</b> ANOVA de 2 vias</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="anova.html"><a href="anova.html#execução-no-r-2"><i class="fa fa-check"></i><b>7.4.1</b> Execução no R</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="anova.html"><a href="anova.html#resumo-2"><i class="fa fa-check"></i><b>6.6</b> Resumo</a></li>
+<li class="chapter" data-level="7.5" data-path="anova.html"><a href="anova.html#anova-fatorial"><i class="fa fa-check"></i><b>7.5</b> ANOVA Fatorial</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="anova.html"><a href="anova.html#execução-no-r-3"><i class="fa fa-check"></i><b>7.5.1</b> Execução no R</a></li>
+<li class="chapter" data-level="7.5.2" data-path="anova.html"><a href="anova.html#post-hoc-1"><i class="fa fa-check"></i><b>7.5.2</b> Post hoc</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html"><i class="fa fa-check"></i><b>7</b> ANOVA de medidas repetidas</a><ul>
-<li class="chapter" data-level="7.1" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pesquisa-3"><i class="fa fa-check"></i><b>7.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="7.2" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pacote-ez"><i class="fa fa-check"></i><b>7.2</b> Pacote ez</a></li>
-<li class="chapter" data-level="7.3" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pacote-lme4"><i class="fa fa-check"></i><b>7.3</b> Pacote lme4</a></li>
-<li class="chapter" data-level="7.4" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#sumário"><i class="fa fa-check"></i><b>7.4</b> Sumário</a></li>
+<li class="chapter" data-level="7.6" data-path="anova.html"><a href="anova.html#resumo-2"><i class="fa fa-check"></i><b>7.6</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>8</b> Regressão linear simples</a><ul>
-<li class="chapter" data-level="8.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#legenda-1"><i class="fa fa-check"></i><b>8.1</b> Legenda</a></li>
-<li class="chapter" data-level="8.2" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#explicação-conceitual"><i class="fa fa-check"></i><b>8.2</b> Explicação conceitual</a></li>
-<li class="chapter" data-level="8.3" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisa-4"><i class="fa fa-check"></i><b>8.3</b> Pesquisa</a></li>
-<li class="chapter" data-level="8.4" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#regressão-linear-simples-1"><i class="fa fa-check"></i><b>8.4</b> Regressão linear simples</a><ul>
-<li class="chapter" data-level="8.4.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-r-4"><i class="fa fa-check"></i><b>8.4.1</b> Execução no R</a></li>
+<li class="chapter" data-level="8" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html"><i class="fa fa-check"></i><b>8</b> ANOVA de medidas repetidas</a><ul>
+<li class="chapter" data-level="8.1" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pesquisa-3"><i class="fa fa-check"></i><b>8.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="8.2" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pacote-ez"><i class="fa fa-check"></i><b>8.2</b> Pacote ez</a></li>
+<li class="chapter" data-level="8.3" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pacote-lme4"><i class="fa fa-check"></i><b>8.3</b> Pacote lme4</a></li>
+<li class="chapter" data-level="8.4" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#sumário"><i class="fa fa-check"></i><b>8.4</b> Sumário</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pressupostos"><i class="fa fa-check"></i><b>8.5</b> Pressupostos</a></li>
-<li class="chapter" data-level="8.6" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#a-interpretação"><i class="fa fa-check"></i><b>8.6</b> A interpretação</a></li>
+<li class="chapter" data-level="9" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>9</b> Regressão linear simples</a><ul>
+<li class="chapter" data-level="9.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#legenda-1"><i class="fa fa-check"></i><b>9.1</b> Legenda</a></li>
+<li class="chapter" data-level="9.2" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#explicação-conceitual"><i class="fa fa-check"></i><b>9.2</b> Explicação conceitual</a></li>
+<li class="chapter" data-level="9.3" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisa-4"><i class="fa fa-check"></i><b>9.3</b> Pesquisa</a></li>
+<li class="chapter" data-level="9.4" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#regressão-linear-simples-1"><i class="fa fa-check"></i><b>9.4</b> Regressão linear simples</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-r-4"><i class="fa fa-check"></i><b>9.4.1</b> Execução no R</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html"><i class="fa fa-check"></i><b>9</b> Qui quadrado</a><ul>
-<li class="chapter" data-level="9.1" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html#pesquisa-5"><i class="fa fa-check"></i><b>9.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="9.2" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html#execução-no-r-5"><i class="fa fa-check"></i><b>9.2</b> Execução no R</a></li>
+<li class="chapter" data-level="9.5" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pressupostos"><i class="fa fa-check"></i><b>9.5</b> Pressupostos</a></li>
+<li class="chapter" data-level="9.6" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#a-interpretação"><i class="fa fa-check"></i><b>9.6</b> A interpretação</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html"><i class="fa fa-check"></i><b>10</b> Qui quadrado</a><ul>
+<li class="chapter" data-level="10.1" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html#pesquisa-5"><i class="fa fa-check"></i><b>10.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="10.2" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html#execução-no-r-5"><i class="fa fa-check"></i><b>10.2</b> Execução no R</a></li>
+<li class="chapter" data-level="10.3" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html#tamanho-do-efeito-1"><i class="fa fa-check"></i><b>10.3</b> Tamanho do efeito</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="http://www.puc-rio.br/" target="blank">PUC-Rio</a></li>
@@ -227,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="anova" class="section level1">
-<h1><span class="header-section-number">Capítulo 6</span> ANOVA</h1>
+<h1><span class="header-section-number">Capítulo 7</span> ANOVA</h1>
 <div class="objectives">
 <p>
 <strong>Objetivos do capítulo</strong><br />
@@ -275,7 +279,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>A ANOVA tem diversas características de modelagem que serão descritas na seção a seguir,</p>
 <div id="legenda" class="section level2">
-<h2><span class="header-section-number">6.1</span> Legenda</h2>
+<h2><span class="header-section-number">7.1</span> Legenda</h2>
 <p>Diferentes termos são empregados em uma ANOVA e em modelos próximos. A legenda a seguir visa auxiliar no entendimento de cada um deles e aproximar o leitor a conceitos amplos utilizados em modelos lineares:</p>
 <div class="writing">
 <p>
@@ -291,17 +295,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Por heurística, se escreve os delinementos estudados por uma ANOVA com <span class="math inline">\(\eta\)</span>. Se, por exemplo, o interesse seja o de verificar o efeito do sexo (masculino ou feminino) e da escolaridade (fundamental, médio e superior), a representação será <span class="math inline">\(\eta = 2 \times 3\)</span>. Isso significa que a ANOVA tem dois fatores (sexo e escolaridade) e o primeiro fator tem dois níveis e o segundo tem 3 níveis.</p>
 </div>
 <div id="pesquisa-2" class="section level2">
-<h2><span class="header-section-number">6.2</span> Pesquisa</h2>
+<h2><span class="header-section-number">7.2</span> Pesquisa</h2>
 <div class="alert alert-info" role="alert">
 <p><strong>Base: </strong> Livro - R - TEG</p>
 </div>
 <p>Neste capítulo, vamos utilizar a pesquisa intitulada “A relação entre o nível de Empreendedorismo (TEG) e os aspectos sociodemográficos dos Taxistas cooperados da cidade de Santo André/São Paulo, Brasil”, publicada em 2016 na Revista Eletrônica de Gestão e Serviços, em que sou co-autor. O objetivo dessa pesquisa foi identificar o nível de empreendedorismo em 147 taxistas de Santo André/SP, bem como averiguá-lo em associação aos aspectos sociodemográficos. A base contém 14 variáveis, sendo 6 variáveis da escala utilizada para avaliação do empreendedorismo e 8 variáveis gerais, incluindo aqui os aspectos sociodemográficos, como sexo e escolaridade. Essa base será utilizada para realizar uma ANOVA de 1 via, 2 vias e uma ANOVA fatorial.</p>
 </div>
 <div id="anova-de-1-via" class="section level2">
-<h2><span class="header-section-number">6.3</span> ANOVA de 1 via</h2>
+<h2><span class="header-section-number">7.3</span> ANOVA de 1 via</h2>
 <p>A pergunta que temos agora é sobre o possível efeito da <code>escolaridade</code> na Tendência Empreendedora Geral (<code>teg</code>). Trata-se de uma ANOVA de 1 via, dado que existe apenas uma VI, com mais de 2 níveis.</p>
 <div id="execução-no-r-1" class="section level3">
-<h3><span class="header-section-number">6.3.1</span> Execução no R</h3>
+<h3><span class="header-section-number">7.3.1</span> Execução no R</h3>
 <p>Ao trabalhar no R, é <u>fundamental</u> se certificar que os tipos das variáveis estão corretamente definidos em função da escala de medida utilizada. Erros nessa etapa podem gerar resultados absolutamente incorretos. A escolaridade é uma variável categórica (ordinal, tratada como discreta) e é necessário definir claramente isso ao R antes da análise propriamente dita.</p>
 <p>Isso pode ser feito pela função <code>case_when</code> e <code>levels</code>. O <code>case_when</code> irá substituir os valores originalmente presentes nessa variável e o <code>levels</code> deixará claro a ordem de cada categoria, o que é útil para que os gráficos sejam feitos corretamente.</p>
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="anova.html#cb81-1"></a>dados_teg &lt;-<span class="st"> </span>dados_teg <span class="op">%&gt;%</span><span class="st"> </span></span>
@@ -498,7 +502,7 @@ Superior
 <p>Para a comparação pareada, o pacote <code>emmeans</code> será utilizado.</p>
 </div>
 <div id="post-hoc" class="section level3">
-<h3><span class="header-section-number">6.3.2</span> Post hoc</h3>
+<h3><span class="header-section-number">7.3.2</span> Post hoc</h3>
 <p>A mecanica do por detrás do post hoc é a comparação pareada de todos os níveis presentes no fator, seguido pelo ajuste do valor de P. Existem muitas técnicas para tal ajuste e elas costumam ser agrupadas em função da sua robustez à violação da homocedasticidade. Para fins práticos, vamos utilizar uma técnica considerada bastante conservadora, chamada de Bonferroni, que multiplica o valor bruto encontrado pela quantidade de comparações.</p>
 <p>O resultado das comparações dois a dois será armazenado em um objeto específico, nomeado como <code>post_hoc_escolaridade</code>. Isso será útil para apresentar sumários e gráficos.</p>
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="anova.html#cb93-1"></a><span class="kw">library</span>(emmeans)</span></code></pre></div>
@@ -674,10 +678,10 @@ Os dados foram analisados a partir de uma ANOVA de uma via investigando o efeito
 </div>
 </div>
 <div id="anova-de-2-vias" class="section level2">
-<h2><span class="header-section-number">6.4</span> ANOVA de 2 vias</h2>
+<h2><span class="header-section-number">7.4</span> ANOVA de 2 vias</h2>
 <p>Frequentemente, o interesse do pesquisador está em investigar como múltiplos fatores afetam a variável de interesse. Ao aumentar o número de variáveis independentes no modelo, se aumenta a quantidade de vias que a ANOVA possui. Se, por exemplo, a investigação visasse testar o efeito da <u>escolaridade</u> e do <u>sexo</u> no <u>empreendedorismo</u>, teríamos, por definição, uma ANOVA de duas vias. É fundamental atentar que essa modelage inicialmente considera apenas os efeitos principais dos fatores e não assume ou modela uma possível interação entre os preditores.</p>
 <div id="execução-no-r-2" class="section level3">
-<h3><span class="header-section-number">6.4.1</span> Execução no R</h3>
+<h3><span class="header-section-number">7.4.1</span> Execução no R</h3>
 <p>Após a escrita adequada da hipótese, a modelagem segue o mesmo padrão da feita anteriormente, iniciando pela definição correta do tipo de variável em relação à sua escala de medida.</p>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="anova.html#cb97-1"></a>dados_teg &lt;-<span class="st"> </span>dados_teg <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb97-2"><a href="anova.html#cb97-2"></a><span class="st">  </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(sexo), <span class="kw">funs</span>(</span>
@@ -889,7 +893,7 @@ Os dados foram analisados a partir de uma ANOVA de duas vias investigando o efei
 </div>
 </div>
 <div id="anova-fatorial" class="section level2">
-<h2><span class="header-section-number">6.5</span> ANOVA Fatorial</h2>
+<h2><span class="header-section-number">7.5</span> ANOVA Fatorial</h2>
 <p>A ideia da ANOVA fatorial é provavelmente uma das mais frequentes em perguntas de pesquisas, que consistem em tentar saber se os fatores tem alguma interação entre si. Nesse sentido, a modelagem envolve o cálculo de um terceiro parâmetro para investigar essa relação. Dessa maneira:</p>
 <p><span class="math display">\[y_i = b_0 + b_1X{_1}_i + b_2X{_2}_i + b_3(X{_1}_i * X{_2}_i) + \epsilon_{i}\]</span></p>
 <p>Os coeficientes <span class="math inline">\(b_1\)</span> e <span class="math inline">\(b_2\)</span> estimam os efeitos principais, enquanto o <span class="math inline">\(b_3\)</span> estima o efeito da interação.</p>
@@ -901,7 +905,7 @@ Os dados foram analisados a partir de uma ANOVA de duas vias investigando o efei
 </ol>
 <p>Nessa pesquisa, tivemos o interesse em saber se o nível de empreendedorismo varia em função de uma interação entre <code>sexo</code> e <code>estado civil</code> (solteiro ou casado) dos participantes. Ou seja, se o nível de homens e mulheres variava em função deles(as) serem casados(as) ou não. Em áreas comportamentais, a interação entre o efeito estado civil e do sexo em características sociais é bastante estudado.</p>
 <div id="execução-no-r-3" class="section level3">
-<h3><span class="header-section-number">6.5.1</span> Execução no R</h3>
+<h3><span class="header-section-number">7.5.1</span> Execução no R</h3>
 <p>Como mencionado, é fundamental ajustar todas as características da base para que os resultados não sejam distorcidos em função de definições computacionais. Como nessa pesquisa, também permitimos que pessoas divorciadas e viuvas, uma opção para deixar as análises totalmente pareadas com a pergunta da pesquisa é criar uma base contendo apenas solteiros (originalmente codificados com 1) e casados (originalmente codificados como 2).</p>
 <div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="anova.html#cb102-1"></a>base_interacao &lt;-<span class="st"> </span>dados_teg <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(estado_civil <span class="op">==</span><span class="st"> &quot;1&quot;</span> <span class="op">|</span><span class="st"> </span>estado_civil <span class="op">==</span><span class="st"> &quot;2&quot;</span>)</span>
 <span id="cb102-2"><a href="anova.html#cb102-2"></a>base_interacao &lt;-<span class="st"> </span>base_interacao <span class="op">%&gt;%</span><span class="st"> </span></span>
@@ -939,7 +943,7 @@ Os dados foram analisados a partir de uma ANOVA de duas vias investigando o efei
 <p>A leitura da tabela começa de cima para baixo, ou seja, pela interação. Neses caso, ela é significativa (F1, 129) = 4.23, p &lt; 0.05, ηp2 = 0.03, 90% CI [.00, .10]). Quando isso acontece, não se deve interpretar os efeitos principais, mesmo que eles sejam significativos.</p>
 </div>
 <div id="post-hoc-1" class="section level3">
-<h3><span class="header-section-number">6.5.2</span> Post hoc</h3>
+<h3><span class="header-section-number">7.5.2</span> Post hoc</h3>
 <p>No caso, à pergunta “o sexo tem efeito no empreendedorismo”, a resposta adequada seria “depende”, uma vez que ele varia em função do estado civil do participante. O post hoc vez será também feito pelo pacote <code>emmeans</code>, que já foi carregado anteriormente. Para deixar a rotina clara, vamos armazenar os resultados no objeto <code>post_hoc_int</code> e, em seguida, explorar os coeficientes.Repare que dessa vez, os valores de p ajustados ou não são os mesmos, dado que há apenas duas categorias em cada grupo.</p>
 <div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="anova.html#cb106-1"></a>post_hoc_int &lt;-<span class="st"> </span><span class="kw">emmeans</span>(mod_int_sexo_civil, pairwise <span class="op">~</span><span class="st"> </span>sexo <span class="op">*</span><span class="st"> </span>estado_civil, <span class="dt">adjust =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
 <p>O resultado deve ser acessado via contrastes.</p>
@@ -1096,7 +1100,7 @@ Masculino,casado - Feminino,casado
 </div>
 </div>
 <div id="resumo-2" class="section level2">
-<h2><span class="header-section-number">6.6</span> Resumo</h2>
+<h2><span class="header-section-number">7.6</span> Resumo</h2>
 <p>Este capítulo apresentou a ANOVA tanto de uma forma bastante pragmática como de uma maneira mais conceitual e, consequentemente, complexa. De forma pragmática, ao classificar a ANOVA como um super teste T, é possível demonstrar a importância da correção do valor de P após múltiplas comparações. Sem esses ajustes, a chance de cometer falsos positivos aumentaria. Já em outro sentido, ao deixar claro que a ANOVA é um caso particular de modelos de regressão, é possível entender que ela é uma análise complexa e que se ajusta bem à grande parte das perguntas empíricas e teóricas realizadas em Psicologia e outras ciências comportamentais.</p>
 
 </div>
