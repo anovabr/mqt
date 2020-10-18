@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2020-08-31" />
+<meta name="date" content="2020-10-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -234,13 +234,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Capítulo 4</span> O R e o Tidyverse</h1>
 <p>Este livro é totalmente feito no R, com utilização do RStudio e diversos pacotes para otimizar as análises estatísticas apresentadas. Muito provavelmente, esta escolha é ainda uma excessão no universo da Psicologia, que utiliza o SPSS e outros programas <em>point and click</em> com frequência. Uma série de razões motivaram a minha escola e, entre elas:</p>
 <ul>
-<li>o R é uma linguagem de programação desenvolvido especificamente para Estatística.
+<li>o R é uma linguagem de programação desenvolvida especificamente para Estatística.
 <ul>
 <li>Diferente de uma linguagem mais geral (por exemplo, Python) ou de um programa point and click, que serve como uma ponte entre estatística e a usabilidade (SPSS ou STATA), o R é feito para que a pessoa tenha controle total das ações estatísticas. Apesar disso poder assustar no início, julgo que essa característica do R é essencial, inclusive, para que o usuário planeje adequadamente as análises de interesse, em vez de apenas selecionar parte de um output padronizado, como ocorre com o SPSS. Além disso, como o R tem um nicho em Estatística, ele é absolutamente mais adaptado para o dia-a-dia em estatística do que o Python, que tem vantagem em aplicações variadas.</li>
 </ul></li>
 <li>o R e todas as suas otimizações são gratuitas
 <ul>
-<li>Todo ambiente R é gratuito e isso inclui o Rstudio (que é uma IDE, Integrated Development Environment) e seus pacotes</li>
+<li>Todo ambiente R é gratuito e isso inclui o Rstudio (que é uma IDE, Integrated Development Environment) e seus pacotes.</li>
 </ul></li>
 <li>Pacotes
 <ul>
@@ -255,7 +255,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.1</span> Tidyverse</h2>
 <p>O Tidyverse é um ambiente integrado de pacotes que, além de funcionarem de maneira totalmente integrada, permitem que as linhas de código que fazemos para programar no R se tornem mais intuitivas e mais próximas à forma que temos de pensar, em que primeiro vem o sujeito e depois o verbo. Será possível notar que durante este livro, frequentemente eu vou utilizar uma função de ligação (o pipe, %&gt;% ) em vez da estrutura do R-Base, que será usada apenas minoritariamente aqui. Ao instalar o tidyverse <code>install.package("tidyvese")</code>, todos os pacotes abaixo ficam disponíveis no R.</p>
 <p><img src="img/tidyverse_website.png" /></p>
-<p>No entanto, nem tudo são flores. Apesar do R e seus pacotes oferecem excelentes ferramentas para análise de dados, algumas condições descritivas são demasiadamente custosas. Por exemplo, enquanto realizar algumas tabelas e gráficos no Excel é tremendamente fácil, as vezes o R exige diversas linhas de código. Nesse sentido, na relação entre dificuldade e complexidade o R sai na frente em tarefas complexas (como exemplo, estimar os coeficientes de um modelo não-linear), mas talvez perca em tarefas fáceis (por exemplo, gerar uma tabela de contingência).</p>
+<p>No entanto, nem tudo são flores. Apesar do R e seus pacotes oferecem excelentes ferramentas para análise de dados, algumas condições descritivas são demasiadamente custosas. Por exemplo, enquanto realizar algumas tabelas e gráficos no Excel é tremendamente fácil, as vezes o R exige diversas linhas de código. Nesse sentido, na relação entre dificuldade e complexidade, o R sai na frente em tarefas complexas (como exemplo, estimar os coeficientes de um modelo não-linear), mas talvez perca em tarefas fáceis (por exemplo, gerar uma tabela de contingência).</p>
 <p><img src="img/excel_r.PNG" /></p>
 <p>Uma outra barreira muito importante do R é que ele é uma linguagem de programação e isso gera uma dificuldade a mais na docência de estatística, especialmente aos alunos de graduação. Tendo em vista que é muito esperado que estes estudantes tenham algum receio em relação à estatística, apresentar o R traria ainda uma outra dificuldade, que é entender e aprender a programar. Em situações como esta, talvez o ideal seja começar motivando o estudante a entender como a estatística é uma ferramenta importante para tomar decisões em relação a pergutas de pesquisa para só depois, lentamente, apresentar aspectos matemáticos e computacionais.</p>
 </div>

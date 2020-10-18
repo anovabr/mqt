@@ -7,9 +7,9 @@ editor_options:
 
 
 ```{r, include = FALSE }
-
 load(file="C:/Users/luisf/OneDrive/Documentos/anovabr/MQT/bases/Livro - R - TEG.RData")
 library(tidyverse)
+library(emmeans) #posthoc
 library(knitr) #tables and graphs
 library(kableExtra) #tables with different styles
 ```
@@ -237,10 +237,6 @@ A mecanica do por detrás do post hoc é a comparação pareada de todos os nív
 
 O resultado das comparações dois a dois será armazenado em um objeto específico, nomeado como `post_hoc_escolaridade`. Isso será útil para apresentar sumários e gráficos.
 
-```{r, message=FALSE}
-library(emmeans)
-```
-
 
 ```{r}
 post_hoc_escolaridade <- emmeans(mod_escolaridade, "escolaridade") %>% pairs(., reverse = TRUE, adjust = "bonferroni")
@@ -384,7 +380,7 @@ Dessa vez, é importante ressaltar alguns aspectos:
 
 3. A interpretação dos resultados <u>sempre</u> começa pela interação. Caso ela seja significativa, não se interpreta os efeitos principais.    
 
-Nessa pesquisa, tivemos o interesse em saber se o nível de empreendedorismo varia em função de uma interação entre `sexo` e  `estado civil` (solteiro ou casado) dos participantes.  Ou seja, se o nível de homens e mulheres variava em função deles(as) serem casados(as) ou não. Em áreas comportamentais, a interação entre o efeito estado civil e do sexo em características sociais é bastante estudado.  
+Nessa pesquisa, tivemos o interesse em saber se o nível de empreendedorismo varia em função de uma interação entre `sexo` e  `estado civil` (solteiro ou casado) dos participantes e, mais especificamente, se o estado civil impactaria o empreendedorismo de maneira diferente em homens e mulheres. Em áreas comportamentais, a interação entre o efeito estado civil e do sexo em características sociais é bastante estudado.  
 
 ### Execução no R
 
@@ -403,12 +399,12 @@ Agora o gráfico apresentado deve combinar as duas variáveis independentes, uma
 
 ```{r, message=FALSE}
 ggplot(base_interacao, aes(x = estado_civil, y = teg, group = sexo, col= sexo)) +
-  geom_line(stat = "summary", size=1) + 
+  geom_line(stat = "summary", fun = mean, size=1) + 
   stat_summary(fun.data = mean_se, geom = "errorbar", width=0.1, size=1)
 ```
 
 
-O gráfico indica que existe um efeito de interação, uma vez que as linhas se cruzam. No entanto, o teste formal deve ser feito. Da mesma forma do realizado anteriormente, a modelagem omitirá a verificação dos pressupostos, que foi apresentada em etapa inicial. 
+O gráfico sugere que existe um efeito de interação, uma vez que as linhas se cruzam. No entanto, o teste formal deve ser feito. Da mesma forma do realizado anteriormente, a modelagem omitirá a verificação dos pressupostos, que foi apresentada em etapa inicial. 
 
 ```{r}
 mod_int_sexo_civil <- lm(teg ~ sexo * estado_civil, base_interacao)
@@ -416,7 +412,7 @@ apaTables::apa.aov.table(mod_int_sexo_civil)
 ```
 
 
-A leitura da tabela começa de cima para baixo, ou seja, pela interação. Neses caso, ela é significativa (F1, 129) = 4.23, p < 0.05, ηp2 = 0.03, 90% CI [.00, .10]). Quando isso acontece, não se deve interpretar os efeitos principais, mesmo que eles sejam significativos. 
+A leitura da tabela começa de cima para baixo, ou seja, pela interação. Neses caso, ela é significativa (F(1, 129) = 4.24, p < 0.05, ηp2 = 0.03, 90% CI [.00, .10]). Quando isso acontece, não se deve interpretar os efeitos principais, mesmo que eles sejam significativos. 
 
 
 ### Post hoc
@@ -425,7 +421,7 @@ A leitura da tabela começa de cima para baixo, ou seja, pela interação. Neses
 No caso, à pergunta "o sexo tem efeito no empreendedorismo", a resposta adequada seria "depende", uma vez que ele varia em função do estado civil do participante. O post hoc vez será também feito pelo pacote `emmeans`, que já foi carregado anteriormente. Para deixar a rotina clara, vamos armazenar os resultados no objeto `post_hoc_int` e, em seguida, explorar os coeficientes.Repare que dessa vez, os valores de p ajustados ou não são os mesmos, dado que há apenas duas categorias em cada grupo.
 
 ```{r}
-post_hoc_int <- emmeans(mod_int_sexo_civil, pairwise ~ sexo * estado_civil, adjust = "bonferroni")
+post_hoc_int <- emmeans(mod_int_sexo_civil, pairwise ~ sexo * estado_civil)
 ```
 
 O resultado deve ser acessado via contrastes.
@@ -437,11 +433,11 @@ post_hoc_int$contrasts %>%
 ```
 
 
-Repare que as informações repetem aquilo já visualizado no gráfico anterior, mas com as correções, a interpretação torna-se menos visual. Os resultados indicam que as mulheres solteiras têm resultados mais elevados do que os homens casados (Δ = 5.74, p = 0.04) e que existe uma tendência das mulheres solteiras, quando comparadas às mulheres casadas, terem também mais empreendedorismo (Δ = 6.22, p = 0.09). Repare que a diferença visual entre homens e mulheres solteiras não é significativa. Em linhas gerais, parece que o empreendedorismo diminui em pessoas casadas e isso é especialmente válido às mulheres.
+Repare que as informações repetem aquilo já visualizado no gráfico anterior, mas com as correções para evitar a inflação do erro do tipo 1. Neste momento, a interpretação torna-se menos visual e mais detalhada. Os resultados indicam que o empreededorismo depende tanto do estado civil como do sexo do participante. Quando solteiros, há uma tendência das mulheres empreenderem mais do que os homens (Δ = -5.048, p = 0.09). Entretanto, essa diferença não ocorre quando os participantes são casados, já que homens e mulheres casadas tem, em media, o mesmo nível de empreendedorismo (Δ = 0.482, p = 1). No entanto, especialmente nas mulheres casadas, o nível de empreendedorismo é significativamente menor do que nas solteiras (Δ = -6.222, p = 0.07). Em linhas gerais, parece que o empreendedorismo diminui em pessoas casadas e isso é especialmente válido às mulheres.
 
 
 
 ## Resumo  
 
-Este capítulo apresentou a ANOVA tanto de uma forma bastante pragmática como de uma maneira mais conceitual e, consequentemente, complexa. De forma pragmática, ao classificar a ANOVA como um super teste T, é possível demonstrar a importância da correção do valor de P após múltiplas comparações. Sem esses ajustes, a chance de cometer falsos positivos aumentaria. Já em outro sentido, ao deixar claro que a ANOVA é um caso particular de modelos de regressão, é possível entender que ela é uma análise complexa e que se ajusta bem à grande parte das perguntas empíricas e teóricas realizadas em Psicologia e outras ciências comportamentais.  
+Este capítulo apresentou a ANOVA tanto de uma forma  pragmática, como de uma maneira mais conceitual e, consequentemente, complexa. De forma pragmática, ao classificar a ANOVA como um super teste T, é possível demonstrar a importância da correção do valor de P após múltiplas comparações. Sem esses ajustes, a chance de cometer falsos positivos aumentaria. Já em outro sentido, ao deixar claro que a ANOVA é um caso particular de modelos de regressão, é possível entender que ela é uma análise complexa e que se ajusta bem à grande parte das perguntas empíricas e teóricas realizadas em Psicologia e outras ciências comportamentais.  
 
