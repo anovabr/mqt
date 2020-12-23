@@ -1,11 +1,17 @@
 # ANOVA de medidas repetidas
 
-```{r base e pacotes, include = FALSE }
+```{r base e ajustes, include = FALSE }
+load("~/anovabr/mqt/bases/R - Base Lidia Carprofeno.RData") 
+#remove uneccessary data
+rm(dados, ez_outcome, mod_lme, conf.int, stat_sum_df_all)
+tratamento <- tratamento %>% rename(grupo = grupo_dummy, tempo = semana)
+```
 
-load(file="C:/Users/luisf/OneDrive/Documentos/anovabr/MQT/bases/R - Base ANOVA de medidas repetidas.RData")
+```{r, include = FALSE }
 library(tidyverse)
 library(knitr) #tables and graphs
 library(kableExtra) #tables with different styles
+
 ```
 
 
@@ -59,7 +65,6 @@ A modelagem estatística envolve definir claramente que o `resultado` é uma fun
 
 A tabela a seguir apresenta a quantidade de participantes nas condições com o passar do tempo.
 ```{r }
-
 tratamento %>% group_by(grupo, tempo) %>% 
   count() %>% 
   spread(grupo, n) %>% 
