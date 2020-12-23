@@ -262,7 +262,6 @@ $$b_0  = \bar{y} - b_1\bar{x}$$
 
 
 ```{r}
-
 b1 <- cov(dados_brasil$bsq_soma, dados_brasil$eat_soma)/var(dados_brasil$bsq_soma)
 b0 <- mean(dados_brasil$eat_soma)-(b1*mean(dados_brasil$bsq_soma))
 
@@ -277,7 +276,6 @@ ggplot(dados_brasil, aes(x = bsq_soma, y = eat_soma)) +
 É também fácil notar que essa linha passará necessariamente pela média de ambas as variáveis.
 
 ```{r}
-
 ggplot(dados_brasil, aes(x = bsq_soma, y = eat_soma)) +
   geom_jitter() +
   labs(x = "Resultados da Escala BSQ-34", y = "Resultados da Escala EAT-26", 
@@ -285,8 +283,6 @@ ggplot(dados_brasil, aes(x = bsq_soma, y = eat_soma)) +
   geom_abline(intercept = b0, slope = b1) +
   geom_vline(xintercept = mean(dados_brasil$bsq_soma), size=1.5, color = "red", linetype = "dashed") +
   geom_hline(yintercept = mean(dados_brasil$eat_soma), size=1.5, color = "red", linetype = "dashed")
-
-
 ```
 
 Ainda aproveitando o gráfico, agora torna-se mais simples de notar os dados reais, a linha de regressão e as distâncias (resíduos) entre os pontos reais e os previstos. Enquanto o modelo foi preciso em alguns pontos, em outros ele não se saiu assim tão bem. No entanto, como essa reta foi construída pela minimização da soma dos quadrados dos resíduos, isso nos deixa confortável com os resultados.
@@ -487,7 +483,7 @@ $R^2 = 1-\frac{SSE}{SST} = 1- \frac{163401}{299560.7} = 0.454$
 
 Nesse caso, cerca de 45% da variabilidade dos resultados da Escala EAT-26 podem ser atribuídos à variabilidade da Escala BSQ-34.
 
-```{r, eval=FALSE}
+```{r, eval=TRUE}
 #Soma dos Quadrados Explicados - SSR
 SSR_modelo_aumentado <- dados_brasil %>% 
   mutate(SSR_modelo_aumentado = (predict(mod_linear_simples)-mean(eat_soma))^2) %>%
@@ -602,7 +598,7 @@ $$ T = \frac{b0}{SE(b1)} \\ = \frac{0.177}{0.013} \\ \approx 13.4  $$
 ## Pressupostos 
 
 ```{r}
-ggplot(dados_brasil, aes(x = bsq_media, y  = bsq_soma)) +
+ggplot(dados_brasil, aes(x = bsq_soma, y  = bsq_soma)) +
   geom_line()
 ```
 
