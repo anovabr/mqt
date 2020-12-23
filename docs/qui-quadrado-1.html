@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2020-10-17" />
+<meta name="date" content="2020-12-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -264,16 +264,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[H_0 = Não\ há\ associação\ entre\ sexo\ e\ TDAH \\ H_a = Há\ associação\ entre\ sexo\ e\ TDAH \\ \alpha = 0.05\]</span>
 Uma característica colateral a esta apresentação textual do teste de hipóteses do Qui-quadrado é evitar confusões que ocorrem em relação ao conceito do teste e sua formulação matemática. Com muita frequência, dividimos os testes de hipóteses naqueles que verificam “associação” e naqueles que verificam “diferenças”. Conceitualmente, o Qui-quadrado investiga associação entre variáveis. No entanto, sua formulação matemática é feita pela diferença entre um valor observado e um valor esperado (tal como ilustrado na equação ao início do capítulo). ASsim, acredito que a formulação apenas textual evita criar confusões e ainda tornar o conteúdo mais palatável.</p>
 <p>Posto isso, o gráfico de barras é sempre um bom início para visualizar os dados. Repare que a barra azul (que representa a porcentagem de TDAH) parece se comportar de maneira diferente nos grupos.</p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="qui-quadrado-1.html#cb182-1"></a><span class="kw">ggplot</span>(ds_selected, <span class="kw">aes</span>(<span class="dt">x=</span> sex_male, <span class="dt">fill =</span> adhd_parent)) <span class="op">+</span></span>
-<span id="cb182-2"><a href="qui-quadrado-1.html#cb182-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>) <span class="op">+</span></span>
-<span id="cb182-3"><a href="qui-quadrado-1.html#cb182-3"></a><span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span></span>
-<span id="cb182-4"><a href="qui-quadrado-1.html#cb182-4"></a><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span></span>
-<span id="cb182-5"><a href="qui-quadrado-1.html#cb182-5"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;sexo&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Proporção&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;TDAH&quot;</span>)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-133-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="qui-quadrado-1.html#cb183-1"></a><span class="kw">ggplot</span>(ds_selected, <span class="kw">aes</span>(<span class="dt">x=</span> sex_male, <span class="dt">fill =</span> adhd_parent)) <span class="op">+</span></span>
+<span id="cb183-2"><a href="qui-quadrado-1.html#cb183-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>) <span class="op">+</span></span>
+<span id="cb183-3"><a href="qui-quadrado-1.html#cb183-3"></a><span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span></span>
+<span id="cb183-4"><a href="qui-quadrado-1.html#cb183-4"></a><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span></span>
+<span id="cb183-5"><a href="qui-quadrado-1.html#cb183-5"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;sexo&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Proporção&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;TDAH&quot;</span>)</span></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-134-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Em seguida, a tabela de contingência traz informações sobre o relacionamento das variáveis. Apesar do qui-quadrado não eleger uma Vi e uma VD, Com bastante frequência utilizamos as linhas para apresentar a variável de maior interesse (neste caso, sexo) e as colunas para indicar o critério ou o eventual desfecho (neste caso, ter ou não TDAH). A porcentagem nas linhas e o valor esperado (em caso de independência entre as variáveis) auxiliam bastante na descrição dos resultados.</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="qui-quadrado-1.html#cb183-1"></a><span class="kw">CrossTable</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent,</span>
-<span id="cb183-2"><a href="qui-quadrado-1.html#cb183-2"></a>           <span class="dt">expected =</span> T,</span>
-<span id="cb183-3"><a href="qui-quadrado-1.html#cb183-3"></a>           <span class="dt">chisq =</span> T, <span class="dt">prop.c =</span> F, <span class="dt">prop.t =</span> F, <span class="dt">prop.chisq =</span> F) <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>(., <span class="dt">digits =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="qui-quadrado-1.html#cb184-1"></a><span class="kw">CrossTable</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent,</span>
+<span id="cb184-2"><a href="qui-quadrado-1.html#cb184-2"></a>           <span class="dt">expected =</span> T,</span>
+<span id="cb184-3"><a href="qui-quadrado-1.html#cb184-3"></a>           <span class="dt">chisq =</span> T, <span class="dt">prop.c =</span> F, <span class="dt">prop.t =</span> F, <span class="dt">prop.chisq =</span> F) <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>(., <span class="dt">digits =</span> <span class="dv">1</span>)</span></code></pre></div>
 <table>
 <colgroup>
 <col width="31%" />
@@ -339,9 +339,9 @@ Row(%)</td>
 </tbody>
 </table>
 <p>O cálculo do qui-quadrado apresentado abaixo deixa claro que que é possível rejeitar a Hipótese nula, uma vez que o valor de P é menor do que o nível de significância previamente estipulado (0.05)</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="qui-quadrado-1.html#cb184-1"></a><span class="kw">CrossTable</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent,</span>
-<span id="cb184-2"><a href="qui-quadrado-1.html#cb184-2"></a>           <span class="dt">expected =</span> T,</span>
-<span id="cb184-3"><a href="qui-quadrado-1.html#cb184-3"></a>           <span class="dt">chisq =</span> T, <span class="dt">prop.c =</span> F, <span class="dt">prop.t =</span> F, <span class="dt">prop.chisq =</span> F)<span class="op">$</span>CST</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="qui-quadrado-1.html#cb185-1"></a><span class="kw">CrossTable</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent,</span>
+<span id="cb185-2"><a href="qui-quadrado-1.html#cb185-2"></a>           <span class="dt">expected =</span> T,</span>
+<span id="cb185-3"><a href="qui-quadrado-1.html#cb185-3"></a>           <span class="dt">chisq =</span> T, <span class="dt">prop.c =</span> F, <span class="dt">prop.t =</span> F, <span class="dt">prop.chisq =</span> F)<span class="op">$</span>CST</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
@@ -415,12 +415,12 @@ n = tamanho da amostra
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="qui-quadrado-1.html#cb186-1"></a>rcompanion<span class="op">::</span><span class="kw">cramerV</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent)</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="qui-quadrado-1.html#cb187-1"></a>rcompanion<span class="op">::</span><span class="kw">cramerV</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent)</span></code></pre></div>
 <pre><code>## Cramer V 
 ##  0.07647</code></pre>
 <p>Risco</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="qui-quadrado-1.html#cb188-1"></a><span class="co">#relative risk (boys)</span></span>
-<span id="cb188-2"><a href="qui-quadrado-1.html#cb188-2"></a><span class="kw">riskratio</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent) </span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="qui-quadrado-1.html#cb189-1"></a><span class="co">#relative risk (boys)</span></span>
+<span id="cb189-2"><a href="qui-quadrado-1.html#cb189-2"></a><span class="kw">riskratio</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent) </span></code></pre></div>
 <pre><code>## $data
 ##          Outcome
 ## Predictor   no yes Total
@@ -445,7 +445,7 @@ n = tamanho da amostra
 ## 
 ## attr(,&quot;method&quot;)
 ## [1] &quot;Unconditional MLE &amp; normal approximation (Wald) CI&quot;</code></pre>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="qui-quadrado-1.html#cb190-1"></a><span class="kw">oddsratio</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent, <span class="dt">method =</span>  <span class="st">&quot;wald&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="qui-quadrado-1.html#cb191-1"></a><span class="kw">oddsratio</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent, <span class="dt">method =</span>  <span class="st">&quot;wald&quot;</span>)</span></code></pre></div>
 <pre><code>## $data
 ##          Outcome
 ## Predictor   no yes Total
