@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2020-12-23" />
+<meta name="date" content="2020-12-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,11 +50,6 @@
 
 
 
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
-<script src="libs/viz-1.8.2/viz.js"></script>
-<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script>
 
 
 <style type="text/css">
@@ -143,7 +138,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#público-alvo"><i class="fa fa-check"></i><b>1.2</b> Público-alvo</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#formato-do-livro"><i class="fa fa-check"></i><b>1.3</b> Formato do livro</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#bases"><i class="fa fa-check"></i><b>1.4</b> Bases</a></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#pacotes-e-sintaxes"><i class="fa fa-check"></i><b>1.5</b> Pacotes e sintaxes</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#o-r"><i class="fa fa-check"></i><b>1.5</b> O R</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#pacotes-e-sintaxes"><i class="fa fa-check"></i><b>1.6</b> Pacotes e sintaxes</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html"><i class="fa fa-check"></i><b>2</b> Aspectos gerais</a></li>
 <li class="chapter" data-level="3" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html"><i class="fa fa-check"></i><b>3</b> Estatística Descritiva</a><ul>
@@ -233,35 +229,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Métodos quantitativos em Psicologia com R</h1>
 <p class="author"><em><a href="mailto:%20luisfca@gmail.com">Luis Anunciação (PUC-Rio), PhD</a></em></p>
-<p class="date"><em>2020-12-23</em></p>
+<p class="date"><em>2020-12-26</em></p>
 </div>
 <div id="introdução" class="section level1">
 <h1><span class="header-section-number">Capítulo 1</span> Introdução</h1>
-<p>Aprender estatística e análise de dados é uma das tarefas mais importantes e desafiadoras que existe no meio acadêmico, especialmente às disciplinas agrupadas em ciências humanas, como Psicologia. Por consequência, ensinar ambas as matérias também impõe um desafio enorme, mas necessário. Isso ocorre por diversas razões, mas especialmente porque as pesquisas feitas em Psicologia apresentam muitas informações misturadas e sobrepostas e a utilização da estatística é fundamental para conseguir separar e filtrar àquelas informações que temos interesse (sinal) daquelas que apenas distorcem estas primeiras (ruído).</p>
+<p>Aprender estatística e análise de dados é uma das tarefas mais importantes e desafiadoras que existe no meio acadêmico, especialmente às disciplinas agrupadas em ciências humanas, como Psicologia. Por consequência, ensinar ambas as matérias também impõe um desafio enorme, mas necessário. Frequentemente, pesquisas feitas em Psicologia apresentam um conjunto de resultados sobrepostos que, sem a utilização da estatística, torna-se impossível a separação e filtro daquelas informações que são válidas e despertam o interesse acadêmico (sinal) daquelas que apenas distorcem estas primeiras (ruído).</p>
 <div id="objetivo" class="section level2">
 <h2><span class="header-section-number">1.1</span> Objetivo</h2>
-<p>Este livro tem como objetivo introduzir conceitos teóricos e aspectos computacionais de estatística de maneira pragmática, direta ao ponto e a partir de perguntas previamente exploradas em pesquisas científicas publicadas. Em menor nível, a modelagem matemática será apresentada e descrita.</p>
+<p>Este livro tem como objetivo apresentar, discutir e operacionalizar conceitos relacionados à análise estatística de dados. A abordagem deste livro segue um padrão computacional e pragmático. Cada um dos capítulos irá usar uma publicação científica para articular uma determinada análise e seu conjunto de conceitos associados. Em menor nível, a modelagem matemática será apresentada e descrita.</p>
 </div>
 <div id="público-alvo" class="section level2">
 <h2><span class="header-section-number">1.2</span> Público-alvo</h2>
-<p>Este livro foi desenvolvido com mais aderência a estudantes de pós-graduação em Psicologia, especialmente aos alunos do Departamento de PSicologia da PUC-Rio e de Psicometria da UFRJ.</p>
+<p>Este livro foi desenvolvido com mais aderência a estudantes de pós-graduação em Psicologia, especialmente aos alunos do Departamento de Psicologia da PUC-Rio e de Psicometria da UFRJ. Apesar dos conceitos em estatística e análise de dados serem supradisciplinares, os exemplos tocam mais frontalmente perguntas feitas por psicólogos e neurociêntistas.</p>
 </div>
 <div id="formato-do-livro" class="section level2">
 <h2><span class="header-section-number">1.3</span> Formato do livro</h2>
-<p>É importante ter em mente que apesar de todo conteúdo do livro ter uma estrutura linear, os capítulos foram construídos visando responder questões específicas, particulares e pontuais. Assim, cada capítulo apresenta uma relativa independência dos demais e pode ser visto isoladamente, caso o leitor assim queira,
-Com isso, acredito que o livro atende tanto aqueles leitores com interesse em ler a obra inteira, como aqueles que buscam apenas informações mais específicas de um tópico particular.</p>
-<p>Evidentemente, esse formato adotado pode gerar uma percepção diferente entre aqueles que consultarem apenas um capítulo ou outro e aqueles que lerem o conteúdo por completo. Isso ocorre pois como muitos testes estatísticos são entendidos como casos particulares de outros, alguns fragmentos que podem parecer destoantes durante uma leitura inicial, tornam-se mais fáceis e articulados àqueles que lerem o trabalho inteiro e se dispuserem a fazer uma releitura de partes específicas.</p>
-<p>Para ilustrar, o capítulo sobre o Teste T expõe uma pequena parte sobre modelos de regressão, conteúdo que somente é abordado posteriormente. Se em um primeiro momento isso provavelmente pode gerar alguma (pequena) confusão, a releitura do capítulo após o término da sequência do livro tende a gerar, além de um conhecimento mais profundo por parte do leitor, a percepção da integração tanto da estrutura do livro, como da relação existente entre diferentes modelos estatísticos.</p>
+<p>O livro foi pensando para ter uma estrutura linear formada por capítulos autossuficientes e desenvolvidos para responder questões específicas, particulares e pontuais. Dessa maneira, acredito que o livro atenda tanto aqueles leitores com interesse em ler a obra inteira, como aqueles que buscam apenas informações mais específicas de um tópico particular.</p>
+<p>Esse formato adotado tende a gerar uma percepção diferente entre aqueles que consultarem apenas um capítulo ou outro e aqueles que lerem o conteúdo por completo. Isso ocorre pois como muitos testes estatísticos são entendidos como casos particulares de outros, alguns fragmentos que podem parecer destoantes durante uma leitura inicial, tornam-se mais fáceis e articulados àqueles que lerem o trabalho inteiro e se dispuserem a fazer uma releitura de partes específicas.</p>
+<p>Para ilustrar, o capítulo sobre o Teste T expõe uma pequena parte sobre modelos de regressão, conteúdo que somente é abordado posteriormente. Se em um primeiro momento isso provavelmente pode gerar alguma (pequena) confusão, a releitura do capítulo após o término da sequência do livro poderá gerar, além de um conhecimento mais profundo por parte do leitor, a percepção da integração tanto da estrutura do livro, como da relação existente entre diferentes modelos estatísticos.</p>
 </div>
 <div id="bases" class="section level2">
 <h2><span class="header-section-number">1.4</span> Bases</h2>
 <p>Todas as bases de dados utilizadas neste livro são frutos de pesquisas empíricas que apresentam artigos publicados. Visando otimização, alguns ajustes foram feitos às bases para torná-las mais acessíveis. Nenhuma alteração foi realizada nos dados, mas apenas em mudanças em relação a nomes de variáveis e quantidade de vetores.</p>
-<p>Todo material pode ser acessado livre e grauitamente em <a href="https://github.com/anovabr/mqt/tree/master/bases" class="uri">https://github.com/anovabr/mqt/tree/master/bases</a></p>
+<p>Todo material pode ser acessado livre e gratuitamente em <a href="https://github.com/anovabr/mqt/tree/master/bases" class="uri">https://github.com/anovabr/mqt/tree/master/bases</a></p>
+</div>
+<div id="o-r" class="section level2">
+<h2><span class="header-section-number">1.5</span> O R</h2>
+<p>O livro é feito integralmente no R, utilizando o Rmarkdown e funções nativas e do Tidyverse. Caso alguém apresente o interesse em reproduzir as análises, será necessário seguir todas as linhas de código disponíveis no decorrer dos capítulos.
+A parte textual e a parte de programação do texto se sobrepõem frequentemente e isso foi feito de maneira intencional, visando deixar todo o desenvolvimento deste livro o mais próximo o possível do cotidiano de pesquisadores e estatísticos.</p>
 </div>
 <div id="pacotes-e-sintaxes" class="section level2">
-<h2><span class="header-section-number">1.5</span> Pacotes e sintaxes</h2>
-<p>Este livro utiliza majoritariamente o ambiente <a href="https://www.tidyverse.org/">tidyverse</a> para realização das análises. Entretanto, sempre que necessário, funções R-base e uso de outros pacotes serão utilizados. Toda codificação utilizada no livro é exibida nos capítulos e integralmente disponível gratuitamente neste (GitHub)[<a href="https://github.com/anovabr/mqt" class="uri">https://github.com/anovabr/mqt</a>]</p>
-<p>O <code>tidyverse</code> costuma ter atualizações frequentes e espero que as funções utilizadas durante o livro não sejam descontinuadas (deprecated) com o tempo.</p>
+<h2><span class="header-section-number">1.6</span> Pacotes e sintaxes</h2>
+<p>Este livro utiliza majoritariamente o ambiente <a href="https://www.tidyverse.org/">tidyverse</a> para realização das análises. Entretanto, sempre que necessário, funções R-base e uso de outros pacotes serão utilizados. Toda codificação utilizada no livro é exibida nos capítulos e integralmente disponível gratuitamente neste (GitHub)[<a href="https://github.com/anovabr/mqt" class="uri">https://github.com/anovabr/mqt</a>]<br />
+O <code>tidyverse</code> costuma ter atualizações frequentes e espero que as funções utilizadas durante o livro não sejam descontinuadas (deprecated) com o tempo.</p>
 
 </div>
 </div>
@@ -321,20 +321,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

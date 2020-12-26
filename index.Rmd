@@ -22,36 +22,45 @@ knitr::opts_chunk$set(echo = TRUE, fig.align="center")
 # Introdução
 
   
-Aprender estatística e análise de dados é uma das tarefas mais importantes e desafiadoras que existe no meio acadêmico, especialmente às disciplinas agrupadas em ciências humanas, como Psicologia. Por consequência, ensinar ambas as matérias também impõe um desafio enorme, mas necessário. Isso ocorre por diversas razões, mas especialmente porque as pesquisas feitas em Psicologia apresentam muitas informações misturadas e sobrepostas e a utilização da estatística é fundamental para conseguir separar e filtrar àquelas informações que temos interesse (sinal) daquelas que apenas distorcem estas primeiras (ruído).  
+Aprender estatística e análise de dados é uma das tarefas mais importantes e desafiadoras que existe no meio acadêmico, especialmente às disciplinas agrupadas em ciências humanas, como Psicologia. Por consequência, ensinar ambas as matérias também impõe um desafio enorme, mas necessário. Frequentemente, pesquisas feitas em Psicologia apresentam um conjunto de resultados sobrepostos que, sem a utilização da estatística, torna-se impossível a separação e filtro daquelas informações que são válidas e despertam o interesse acadêmico (sinal) daquelas que apenas distorcem estas primeiras (ruído).  
 
 ## Objetivo 
 
-Este livro tem como objetivo introduzir conceitos teóricos e aspectos computacionais de estatística de maneira pragmática, direta ao ponto e a partir de perguntas previamente exploradas em pesquisas científicas publicadas. Em menor nível, a modelagem matemática será apresentada e descrita.
+Este livro tem como objetivo apresentar, discutir e operacionalizar conceitos relacionados à análise estatística de dados. A abordagem deste livro segue um padrão computacional e pragmático. Cada um dos capítulos irá usar uma publicação científica para articular uma determinada análise e seu conjunto de conceitos associados. Em menor nível, a modelagem matemática será apresentada e descrita.
 
 ## Público-alvo
 
-Este livro foi desenvolvido com mais aderência a estudantes de pós-graduação em Psicologia, especialmente aos alunos do Departamento de PSicologia da PUC-Rio e de Psicometria da UFRJ.
+Este livro foi desenvolvido com mais aderência a estudantes de pós-graduação em Psicologia, especialmente aos alunos do Departamento de Psicologia da PUC-Rio e de Psicometria da UFRJ. Apesar dos conceitos em estatística e análise de dados serem supradisciplinares, os exemplos tocam mais frontalmente perguntas feitas por psicólogos e neurociêntistas.
 
 
 ## Formato do livro
 
 
-É importante ter em mente que apesar de todo conteúdo do livro ter uma estrutura linear, os capítulos foram construídos visando responder questões específicas, particulares e pontuais. Assim, cada capítulo apresenta uma relativa independência dos demais e pode ser visto isoladamente, caso o leitor assim queira,
-Com isso, acredito que o livro atende tanto aqueles leitores com interesse em ler a obra inteira, como aqueles que buscam apenas informações mais específicas de um tópico particular.
+O livro foi pensando para ter uma estrutura linear formada por capítulos autossuficientes e desenvolvidos para responder questões específicas, particulares e pontuais.  Dessa maneira, acredito que o livro atenda tanto aqueles leitores com interesse em ler a obra inteira, como aqueles que buscam apenas informações mais específicas de um tópico particular.
 
-Evidentemente, esse formato adotado pode gerar uma percepção diferente entre aqueles que consultarem apenas um capítulo ou outro e aqueles que lerem o conteúdo por completo. Isso ocorre pois como muitos testes estatísticos são entendidos como casos particulares de outros, alguns fragmentos que podem parecer destoantes durante uma leitura inicial, tornam-se mais fáceis e articulados àqueles que lerem o trabalho inteiro e se dispuserem a fazer uma releitura de partes específicas.  
+Esse formato adotado tende a gerar uma percepção diferente entre aqueles que consultarem apenas um capítulo ou outro e aqueles que lerem o conteúdo por completo. Isso ocorre pois como muitos testes estatísticos são entendidos como casos particulares de outros, alguns fragmentos que podem parecer destoantes durante uma leitura inicial, tornam-se mais fáceis e articulados àqueles que lerem o trabalho inteiro e se dispuserem a fazer uma releitura de partes específicas.  
 
-Para ilustrar, o capítulo sobre o Teste T expõe uma pequena parte sobre modelos de regressão, conteúdo que somente é abordado posteriormente. Se em um primeiro momento isso provavelmente pode gerar alguma (pequena) confusão, a releitura do capítulo após o término da sequência do livro tende a gerar, além de um conhecimento mais profundo por parte do leitor, a percepção da integração tanto da estrutura do livro, como da relação existente entre diferentes modelos estatísticos. 
+Para ilustrar, o capítulo sobre o Teste T expõe uma pequena parte sobre modelos de regressão, conteúdo que somente é abordado posteriormente. Se em um primeiro momento isso provavelmente pode gerar alguma (pequena) confusão, a releitura do capítulo após o término da sequência do livro poderá gerar, além de um conhecimento mais profundo por parte do leitor, a percepção da integração tanto da estrutura do livro, como da relação existente entre diferentes modelos estatísticos. 
+
+
 
 ## Bases
-
 Todas as bases de dados utilizadas neste livro são frutos de pesquisas empíricas que apresentam artigos publicados. Visando otimização, alguns ajustes foram feitos às bases para torná-las mais acessíveis. Nenhuma alteração foi realizada nos dados, mas apenas em mudanças em relação a nomes de variáveis e quantidade de vetores.
 
-Todo material pode ser acessado livre e grauitamente em https://github.com/anovabr/mqt/tree/master/bases 
+Todo material pode ser acessado livre e gratuitamente em https://github.com/anovabr/mqt/tree/master/bases 
+
+
+## O R
+O livro é feito integralmente no R, utilizando o Rmarkdown e funções nativas e do Tidyverse. Caso alguém apresente o interesse em reproduzir as análises, será necessário seguir todas as linhas de código disponíveis no decorrer dos capítulos.
+A parte textual e a parte de programação do texto se sobrepõem frequentemente e isso foi feito de maneira intencional, visando deixar todo o desenvolvimento deste livro o mais próximo o possível do cotidiano de pesquisadores e estatísticos. 
+
+
 
 ## Pacotes e sintaxes
 
 Este livro utiliza majoritariamente o ambiente [tidyverse](https://www.tidyverse.org/) para realização das análises. Entretanto, sempre que necessário, funções R-base e uso de outros pacotes serão utilizados. Toda codificação utilizada no livro é exibida nos capítulos e integralmente disponível gratuitamente neste (GitHub)[https://github.com/anovabr/mqt]   
-
 O `tidyverse` costuma ter atualizações frequentes e espero que as funções utilizadas durante o livro não sejam descontinuadas (deprecated) com o tempo.
 
+## Outros recursos
+
+Tão importante como saber como saber estatística e programação, é saber onde buscar ajuda (de qualidade) para as questões que, naturalmente, aparecem no decorrer das atividades. Eu recomendo fortemente a comunidade [stackoverflow](https://stackoverflow.com/) neste sentido.

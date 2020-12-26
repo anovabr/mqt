@@ -12,6 +12,10 @@ library(stargazer) #presenting results
 ```
 
 
+```{r}
+dados_brasil <- dados %>% filter(pais == 1)
+```
+
 
 Os modelos de regressão modelos estatísticos que relacionam o comportamento de uma variável resposta (Y) como uma função de variáveis condicionantes (X). Em larga escala, eles substituem os outros testes paramétricos vistos até agora. Assim, quase tudo o que foi visto durante os capítulos anteriormente são casos especiais de modelos de regressão. No entanto, é possível estudar tais modelos tanto de uma maneira <u>operacional</u>, com foco totalmente pragmático e aderente às recomendações tradicionais dos livros de estatística, ou de uma forma <u>detalhada</u>, em que ao estudar os modelos de regressão, quase que muitos conceitos da estatística inferencial e estatística matemática são revisitados.
 
