@@ -50,6 +50,11 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script>
 
 
 <style type="text/css">
@@ -140,6 +145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#bases"><i class="fa fa-check"></i><b>1.4</b> Bases</a></li>
 <li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#o-r"><i class="fa fa-check"></i><b>1.5</b> O R</a></li>
 <li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#pacotes-e-sintaxes"><i class="fa fa-check"></i><b>1.6</b> Pacotes e sintaxes</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#outros-recursos"><i class="fa fa-check"></i><b>1.7</b> Outros recursos</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html"><i class="fa fa-check"></i><b>2</b> Aspectos gerais</a></li>
 <li class="chapter" data-level="3" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html"><i class="fa fa-check"></i><b>3</b> Estatística Descritiva</a><ul>
@@ -262,6 +268,10 @@ A parte textual e a parte de programação do texto se sobrepõem frequentemente
 <h2><span class="header-section-number">1.6</span> Pacotes e sintaxes</h2>
 <p>Este livro utiliza majoritariamente o ambiente <a href="https://www.tidyverse.org/">tidyverse</a> para realização das análises. Entretanto, sempre que necessário, funções R-base e uso de outros pacotes serão utilizados. Toda codificação utilizada no livro é exibida nos capítulos e integralmente disponível gratuitamente neste (GitHub)[<a href="https://github.com/anovabr/mqt" class="uri">https://github.com/anovabr/mqt</a>]<br />
 O <code>tidyverse</code> costuma ter atualizações frequentes e espero que as funções utilizadas durante o livro não sejam descontinuadas (deprecated) com o tempo.</p>
+</div>
+<div id="outros-recursos" class="section level2">
+<h2><span class="header-section-number">1.7</span> Outros recursos</h2>
+<p>Tão importante como saber como saber estatística e programação, é saber onde buscar ajuda (de qualidade) para as questões que, naturalmente, aparecem no decorrer das atividades. Eu recomendo fortemente a comunidade <a href="https://stackoverflow.com/">stackoverflow</a> neste sentido.</p>
 
 </div>
 </div>
@@ -321,6 +331,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
