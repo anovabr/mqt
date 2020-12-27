@@ -1,7 +1,7 @@
 ---
 output: html_document
 editor_options: 
-  chunk_output_type: console
+  chunk_output_type: inline
 ---
 # ANOVA
 
@@ -20,17 +20,13 @@ library(kableExtra) #tables with different styles
 2. Discutir os pressupostos de execução da ANOVA  
 3. Realizar gráficos relacionados à comparação de médias  
 4. Apresentar e interpretar métricas de tamanho do efeito  
-5. Dar exemplos relacionados à escrita dos resultados 
+5. Dar exemplos relacionados à escrita dos resultados  
 6. Discutir os testes post-hoc  
-7. Apresentar versões não paramétricas da teste ANOVA (Kruskal-Wallis)  
+7. Apresentar o teste Kruskal-Wallis    
 ```
 
 
-A ANOVA é um teste estatístico desenvolvimento para verificar diferença entre diversos grupos. Pragmaticamente, é possível entender ANOVA como um super teste T, onde o que está em jogo não é somente o quanto as médias amostrais estão distantes, mas o quão distantes estão relativamente à variabilidade de observações individuais.  
-
-Conceitualmente, similar ao teste T, a ANOVA e todas as suas extensões (e.g., ANCOVA e MANOVA) são casos especiais de um modelo de regressão que lidam com variáveis independente discretas/categórica.
-
-Em Psicologia, alguns autores indicam que a ANOVA é a técnica inferencial mais utilizada [@Chartier2008; @Howell2011]. Se por um aspecto, isso é extremamente vantajoso por estreitar a relação entre Psicologia e Estatística, por outro, isso parece ter contribuído para criação e manutenção de diferentes conceitos equivocados sobre a ANOVA. 
+A ANOVA é um teste estatístico desenvolvimento para verificar diferenças médias entre diversos grupos. Pragmaticamente, é possível entender ANOVA como um super teste T ou também um caso particular de um modelo de regressão. Assim, de maneira similar ao teste T, a ANOVA e todas as suas extensões (e.g., ANCOVA e MANOVA) são casos especiais de um modelo de regressão que lidam com variáveis independentes categóricas. Alguns autores indicam que a ANOVA é a técnica inferencial mais utilizada em Psicologia [@Chartier2008; @Howell2011]. Se por um aspecto, isso é extremamente vantajoso por estreitar a relação entre Psicologia e Estatística, por outro, isso parece ter contribuído para criação e manutenção de diferentes conceitos equivocados sobre a ANOVA. 
 
 Conceitualmente, a ANOVA é um modelo linear, tal que:
 
@@ -39,12 +35,13 @@ Conceitualmente, a ANOVA é um modelo linear, tal que:
 $y_i$ representa a variável dependente  
 $b_0$ é o intercepto (coeficiente linear)   
 $b_1$ é a inclinação (coeficiente angular)  
+$X_1$ é a variável independente em questão  
 $\epsilon_{i}$ é o erro/resíduo   
 
-Todos os pressupostos dos modelos linares são mantidos e o mnemônico LINE auxilia a resgatar todos eles. Assume-se que o erro é independente e identicamente distribuído ($iid$), distribuído normalmente com média 0 e variância constante $\sigma^2$, ou seja:  \[ \epsilon\stackrel{iid}{\sim} \mathcal{N}(\mu,\,\sigma^{2})\,\] Além de homocedástico: \[ VAR(\epsilon |x_1,x_2,...,x_k)=\sigma^2 \].   
-`iid`ainda signica erros descorrelatados \[ COV(\epsilon_1,\epsilon_j)=0 \].  
+Todos os pressupostos dos modelos linares são mantidos e o mnemônico LINE auxilia a resgatar todos eles. Assume-se que o erro é independente e identicamente distribuído ($iid$), distribuído normalmente com média 0 e variância constante $\sigma^2$, ou seja:  \[ \epsilon\stackrel{iid}{\sim} \mathcal{N}(0,\,\sigma^{2})\,\] Além de homocedástico: \[ VAR(\epsilon |x_1,x_2,...,x_k)=\sigma^2 \].   
+`iid`ainda signica erros descorrelatados \[ COV(\epsilon_i,\epsilon_j)=0 \].  
 
-É importante atentar que assumir média 0 $E(\epsilon|x)=0$, também implica que a correlação do erro com as variáveis é nula. Operacionalmente, o erro representa <u>todos os fatores de pesquisa</u> e problemas de medição que afetam o resultado além das variáveis independentes consideradas na modelagem.
+É importante atentar que assumir média 0,  também implica que a correlação do erro com as variáveis é nula. Operacionalmente, o erro representa <u>todos os fatores de pesquisa</u> e problemas de medição que afetam o resultado além das variáveis independentes consideradas na modelagem.
 
 
 Da mesma forma que feito em outros capítulos, a tabela abaixo concatena os testes estatísticos relacionados quando os pressupostos são violados. Para fins de comparação com outros trabalhos, há autores que sugerem que se use sempre as versões não-paramétricas em resultados obtidos por processos de avaliação psicológica, arguindo que os dados têm nível de medida "ordinal".
@@ -61,19 +58,29 @@ A ANOVA tem diversas características de modelagem que serão descritas na seç�
 Diferentes termos são empregados em uma ANOVA e em modelos próximos. A legenda a seguir visa auxiliar no entendimento de cada um deles e aproximar o leitor a conceitos amplos utilizados em modelos lineares:
 
 ```{block, type="writing"}
-**Fator**: Variável independente,  via, variável fonte, variável preditora, tratamento  
+**Via**: Variável independente, variável fonte, variável preditora, tratamento  
+**Fator**: Sinônimo de via    
 **Desfecho**: Variável dependente, variável critério    
-**Níveis**: Grupos, condições, categorias da variável independente  
-**Efeito principal**: Efeito da variável independente, sem considerar outras caracterísitcas do modelo   
-**Efeito de interação**: Efeito do termo de interação entre duas ou mais variáveis independentes.Quando significativo, não se interpreta os efeitos principais.   
+**Níveis**: Grupos, classes, condições, categorias da variável independente  
+**Efeito principal**: Efeito da variável independente em questão (controlanddo pelas outras no modelo)    
+**Efeito de interação**: Efeito do termo de interação entre duas ou mais variáveis independentes. Quando significativo, não se interpreta os efeitos principais.   
 **Efeito simples**: Efeito de uma variável independente em um nível (específico) de outra variável independente.  
 **ANCOVA**: Análise de covariância, onde se controla os resultados por uma variável contínua 
-**MANOVA**: Análise multivariada de variância, onde se extende a ANOVA para incluir duas variáveis dependentes  
+**MANOVA**: Análise multivariada de variância, onde se extende a ANOVA para incluir duas variáveis dependentes. É um modelo multivariado.    
 ```
 
 
-Por heurística, se escreve os delinementos estudados por uma ANOVA com $\eta$. Se, por exemplo, o interesse seja o de verificar o efeito do sexo (masculino ou feminino) e da escolaridade (fundamental, médio e superior), a representação será $\eta =  2 \times 3$. Isso significa que a ANOVA tem dois fatores (sexo e escolaridade) e o primeiro fator tem dois níveis e o segundo tem 3 níveis. 
+Por heurística, se escreve os delinementos estudados por uma ANOVA com $\eta$. Por exemplo, se o interesse for verificar o efeito do sexo (masculino ou feminino) e da escolaridade (fundamental, médio e superior), a representação será $\eta =  2 \times 3$. Isso significa que a ANOVA tem dois fatores (sexo e escolaridade) e o primeiro fator tem dois níveis e o segundo tem 3 níveis. 
 
+
+
+A tabela a seguir resume as denominações encontradas na literatura:
+
+
+  | VD / VI     | Uma VI                    |  2 ou mais VIs (sem interação)       | 2 ou mais VIs (com interação)  
+  | :-----------| :-----------              | :-----------                         | :-----------          
+  | Uma VD      | Anova de 1 via (one way)  |  Anova 2 (ou mais)  vias (multi way) |   Anova fatorial
+  | > uma VD    | MANOVA     
 
 ## Pesquisa
   
@@ -82,7 +89,7 @@ Por heurística, se escreve os delinementos estudados por uma ANOVA com $\eta$. 
 </div>  
 
 
-Neste capítulo, vamos utilizar a pesquisa intitulada "A relação entre o nível de Empreendedorismo (TEG) e os aspectos sociodemográficos dos Taxistas cooperados da cidade de Santo André/São Paulo, Brasil", publicada em 2016 na Revista Eletrônica de Gestão e Serviços, em que sou co-autor. O objetivo dessa pesquisa foi identificar o nível de empreendedorismo em 147 taxistas de Santo André/SP, bem como averiguá-lo em associação aos aspectos sociodemográficos. A base contém 14 variáveis, sendo 6 variáveis da escala utilizada para avaliação do empreendedorismo e 8 variáveis gerais, incluindo aqui os aspectos sociodemográficos, como sexo e escolaridade. Essa base será utilizada para realizar uma ANOVA de 1 via, 2 vias e uma ANOVA fatorial.
+Neste capítulo, vamos utilizar a pesquisa intitulada ["A relação entre o nível de Empreendedorismo (TEG) e os aspectos sociodemográficos dos Taxistas cooperados da cidade de Santo André/São Paulo, Brasil"](https://www.metodista.br/revistas/revistas-metodista/index.php/REGS/article/view/6453), publicada em 2016 na Revista Eletrônica de Gestão e Serviços, em que sou co-autor. O objetivo dessa pesquisa foi identificar o nível de empreendedorismo em 147 taxistas de Santo André/SP, bem como averiguá-lo em associação aos aspectos sociodemográficos. A base contém 14 variáveis, sendo 6 variáveis da escala utilizada para avaliação do empreendedorismo e 8 variáveis gerais, incluindo aqui os aspectos sociodemográficos, como sexo e escolaridade. Essa base será utilizada para realizar uma ANOVA de 1 via, 2 vias e uma ANOVA fatorial.
 
 
 ## ANOVA de 1 via
@@ -94,23 +101,22 @@ A pergunta que temos agora é sobre o possível efeito da `escolaridade` na Tend
 
 Ao trabalhar no R, é <u>fundamental</u> se certificar que os tipos das variáveis estão corretamente definidos em função da escala de medida utilizada. Erros nessa etapa podem gerar resultados absolutamente incorretos. A escolaridade é uma variável categórica (ordinal, tratada como discreta) e é necessário definir claramente isso ao R antes da análise propriamente dita. 
 
-Isso pode ser feito pela função `case_when` e `levels`. O `case_when` irá substituir os valores originalmente presentes nessa variável e o `levels` deixará claro a ordem de cada categoria, o que é útil para que os gráficos sejam feitos corretamente.
+Isso pode ser feito pela função `case_when` e `levels`. O `case_when` irá usar os valores originalmente presentes nessa variável na criação de uma variável categórica e o `levels` deixará claro a ordem de cada categoria, o que é útil para que os gráficos sejam feitos corretamente.
 
-```{r, eval=FALSE}
+```{r }
 dados_teg <- dados_teg %>% 
-  mutate_at(vars(escolaridade), 
-    ~factor(case_when(
-      . == 1 ~ "Primário",
-      . == 2 ~ "Ginásio",
-      . == 3 ~ "Colegial",
-      . == 4 ~ "Superior"), 
-      levels=c("Primário","Ginásio","Colegial","Superior")))
+  mutate(escolaridade_fct = factor(case_when(
+      escolaridade == 1 ~ "primario",
+      escolaridade == 2 ~ "ginasio",
+      escolaridade == 3 ~ "Colegial",
+      escolaridade == 4 ~ "superior"), 
+      levels=c("primario","ginasio","Colegial","superior")))
 ```
 
 
 Uma vez que os itens de um instrumento sociodemográfico devem levar em consideração o contexto das pessoas avaliadas e, as categorias de escolaridade foram definidas como as apresentadas. Primário significa escolaridade até o 5º ano, ginásio significa escolaridade até o 9º ano e colegial é equivalente ao ensino médio.
 
-As hipóteses precisam ser descritas:
+As hipóteses precisam ser formalmente descritas:
 
 $$H_0 = \mu_{escolaridade_i} - \mu_{escolaridae_j} = 0 \\ H_a = c.c \\ \alpha = 0.05$$
 Aqui, o subscrito $i$ e $j$ foi utilizado de maneira liberal para apresentar a diferença entre todas as combinações lineares possíveis.
@@ -119,7 +125,7 @@ Em seguida, a apresentação tabular das médias e desvios-padrão pode ser real
 
 ```{r}
 dados_teg %>% 
-  group_by(escolaridade) %>% 
+  group_by(escolaridade_fct) %>% 
   summarise_at(vars(teg), lst(n=~n(),mean,sd)) %>% 
   kable(digits = 2) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
 ```
@@ -128,8 +134,8 @@ dados_teg %>%
 Tal como ilustrado no decorrer dos outros capítulos, gráficos são fundamentais para entendimento do relacionamento entre as variáveis. Uma vez que a escolaridade (VI) é tratada como discreta e a TEG (VD) é contínua, um gráfico de barras é adequado. A inclusão das barras de erro permite uma compreensão inferencial inicial.
 
 ```{r, message=FALSE}
-ggplot(dados_teg, aes(x=escolaridade, y = teg, fill = escolaridade)) +
-  geom_bar(stat = "summary") +
+ggplot(dados_teg, aes(x=escolaridade_fct, y = teg, fill = escolaridade_fct)) +
+  geom_bar(stat = "summary", fun = mean) +
   stat_summary(fun.data = mean_se, geom = "errorbar") +
   theme(legend.position = "none")
 ```
@@ -139,16 +145,16 @@ A visualização dos resultados já permite identificar algumas caracteríticas 
 
 A modelagem formal irá contemplar n-1 níveis dos preditores e estipulará no intercepto o nível de referência. Dessa maneira:
 
-\[y_{i} = b_{0} + b_1Esc_{ginasio_i} + b_2Esc_{colegial_i} + b_1Esc_{superior_i} + \epsilon_{i}\]
+\[y_{i} = b_{0} + b_1Esc_{ginasio} + b_2Esc_{colegial} + b_1Esc_{superior} + \epsilon_{i}\]
 
 $b_0$ representa o intercepto, que aqui é o valor médio da Escolaridade primária  
 $b_i$ representa os outros preditores  
-$\epsilon_{it}$ representa o erro
+$\epsilon_{i}$ representa o erro
 
 A função `lm` será utilizada e o objeto `mod_escolaridade` será armazenado. É também possível utilizar a função `aov` e a escolha da `lm` foi apenas por conveniência.
 
 ```{r}
-mod_escolaridade <- lm(teg ~ escolaridade, dados_teg)
+mod_escolaridade <- lm(teg ~ escolaridade_fct, dados_teg)
 ```
 
 Antes de checar os resultados, é necessário verificar se os pressupostos da ANOVA foram atendidos. Esses pedem que os resíduos sejam normalmente distribuídos e homocedásticos. Tal como previamente exposto no teste T, a investigação dessas condições é tanto feita por gráficos e testes formais e ambos são muito úteis. A análise da normalidade dos resíduos será inicialmente feita.
@@ -184,13 +190,13 @@ car::leveneTest(mod_escolaridade)
 ```
 
 
-A homocedasticidade foi assumida. Dessa maneira, mesmo com a violação da normalidade, o modelo será utilizado e seu sumário geral será apresentado pela função apa.aov do pacote `apaTables`. Isso é importante para garantir resultados programas tipicamente utilizados, como o SPSS e o STATA. Essa tabela é padronizada e muito similar na maioria dos programas estatísticos. Ela traz as seguintes informações principais:
+A homocedasticidade foi assumida. Dessa maneira, mesmo com a violação da normalidade, o modelo será utilizado e seu sumário geral será apresentado pela função `apa.aov` do pacote `apaTables`. Isso é importante para garantir resultados programas tipicamente utilizados, como o SPSS e o STATA. Essa tabela é padronizada e muito similar na maioria dos programas estatísticos. Ela traz as seguintes informações principais:
 
 
   | Preditor          | Soma dos Quadrados| Graus de liberdade  |  Quadrado médio | Estat. F      | 
   | :-----------      | :-----------      | :-----------        |  :-----------   | :-----------  |  
-  | Fator             | Entre (SSB)       | K-1                 |  MSB = SSB/ k-1 | F = MSB/MSW   | 
-  | Resíduo           | Dentro (SSW)      | N-k                 |  MSW = SSW/ N-K |               |
+  | Fator             | Entre (SSB)       | K-1                 |  MSB = SSB/K-1 | F = MSB/MSW    | 
+  | Resíduo           | Dentro (SSW)      | N-K                 |  MSW = SSW/N-K |                |
   | Total             | Total (SQT)       | N-1                 |  
 
 
@@ -202,27 +208,28 @@ apaTables::apa.aov.table(mod_escolaridade)
 ```
 
 
-A leitura desse resultado é similar a de um modelo de regressão e a de outros modelos lineares e, em linhas gerais, em relatório ou publicações quase sempre apenas se diz que o modelo foi significativo, indicando as principais estatísticas obtidas da seguinte maneira: F(3,143) = 8.231, p < 0.01, ηp2 = 0.15, 90% CI [.06, .22]. 
+A leitura desse resultado é similar a de um modelo de regressão e a de outros modelos lineares e, em linhas gerais, em relatório ou publicações quase sempre apenas se diz que o modelo foi significativo, indicando as principais estatísticas obtidas da seguinte maneira: F(3,143) = 8.23, p < 0.01, ηp2 = 0.15, 90% CI [.06, .22]. 
 
 No entanto, o que essa constatação está realmente dizendo é que houve uma comparação entre dois modelos, um que usou os resultados da variável "escolaridade" para prever os resultados obtidos pelo TEG (chamado de Modelo aumentado) e outro que usou apenas a média que o TEG (chamado de modelo compacto ou nulo neste caso). O resultado significativo indica que a inclusão da "escolaridade" no  modelo testado foi significativamente capaz de reduzir o erro de previsão que o modelo nulo obteve (em ingles Proportional Reduction in Error ou PRE). Ainda nesse caso, o ηp2 (eta parcial quadrado) indica a proporção da variabilidade dos resultados do TEG que pode ser atribuídos à escolaridade e é uma métrica de tamanho do efeito, cuja interpretação se recomenda da seguinte maneira:
 
-  | ηp2             | Interpretação         
-  | :-----          :-----     
-  | ηp2 $\geq$ 0.14 | Grande 
-  | ηp2 $\geq$ 0.06 | Moderado      
-  | ηp2 $\geq$ 0.01 | Pequeno
-  | ηp2 < 0.01      | Irrelevante
+  | ηp2             | Interpretação           
+  | :-----          :-----       
+  | ηp2 < 0.01      | Irrelevante  
+  | ηp2 $\geq$ 0.01 | Pequeno    
+  | ηp2 $\geq$ 0.06 | Moderado     
+  | ηp2 $\geq$ 0.14 | Grande   
 
 De fato, quando isso ocorre, a busca por possíveis diferenças entre <u>todas as comparações possíveis</u> costuma ser feita por testes post hocs.
 
-Entretanto, é importante mencionar que que se uma ANOVA é significativa, isso não significa necessariamente que haverá alguma diferença <u>entre as médias dos grupos</u>. Tecnicamente, a diferença pode ocorrer em qualquer comparação possível, como grupo 1 contra grupos 2 + grupo 3 ou grupo 2 contra grupo 1+3. Dessa forma, o resultado geral da ANOVA e testes post hoc respondem questões diferentes e é possível realizar qualquer comparação múltipla sem sequer realizar a ANOVA, desde que os resultados sejam devidamente corrigidos caso se assuma alguns pressupostos sobre os constrastes.
+Entretanto, é importante mencionar que que se uma ANOVA é significativa, isso não significa necessariamente que haverá alguma diferença <u>entre as médias dos grupos</u>. Tecnicamente, a diferença pode ocorrer em qualquer comparação possível, como grupo 1 contra grupos 2 + grupo 3 ou grupo 2 contra grupo 1+3. Dessa forma, o resultado geral da ANOVA e testes post hoc respondem questões diferentes e é possível realizar qualquer comparação múltipla sem sequer realizar a ANOVA, desde que os resultados sejam devidamente corrigidos caso se assuma alguns pressupostos sobre os constrastes.  
 
 
 Uma vez que realizar uma ANOVA não é tecnicamente necessário para realização de comparações pareadas, é possível que alguém se pergunte qual é, então, a necessidade da realização deste primeiro teste. De fato, hoje em dia, a realização da ANOVA ocorre mais para que o pesquisador (i) consiga realizar computacionalmente todas as comparações pareadas entre as categorias da variável e, em seguida, (ii) corrigir adequadamente o valor de P obtido em cada computação.
 
 Isso dito, uma vez que a <u>escolaridade</u> foi significativa, as principais comparações serão testadas dois a dois.Sempre que múltiplas que comparações são realizadas, é esperado que haja uma inflação do erro do tipo 1 e, por isso, é necessário ajustar o valor de P. Repare que a quantidade de comparações pode ser calculada da seguinte forma:
 
- \[ J*(\frac{J-1}2) \] , onde
+ \[ J*(\frac{J-1}2) \] 
+
 $J$ é a quantidade de níveis da variável
 
 Nesse caso:  
@@ -233,13 +240,14 @@ Para a comparação pareada, o pacote `emmeans` será utilizado.
 
 ### Post hoc
 
-A mecanica do por detrás do post hoc é a comparação pareada de todos os níveis presentes no fator, seguido pelo ajuste do valor de P. Existem muitas técnicas para tal ajuste e elas costumam ser agrupadas em função da sua robustez à violação da homocedasticidade. Para fins práticos, vamos utilizar uma técnica considerada bastante conservadora, chamada de Bonferroni, que multiplica o valor bruto encontrado pela quantidade de comparações.
+A mecanica do por detrás do post hoc é a comparação pareada de todos os níveis presentes no fator, seguido pelo ajuste do valor de P. Existem muitas técnicas para tal ajuste e elas costumam ser agrupadas em função da sua robustez à violação da homocedasticidade. Para fins práticos, vamos utilizar uma técnica considerada bastante conservadora, chamada de Bonferroni, que multiplica o valor de p encontrado pela quantidade de comparações.
 
 O resultado das comparações dois a dois será armazenado em um objeto específico, nomeado como `post_hoc_escolaridade`. Isso será útil para apresentar sumários e gráficos.
 
 
 ```{r}
-post_hoc_escolaridade <- emmeans(mod_escolaridade, "escolaridade") %>% pairs(., reverse = TRUE, adjust = "bonferroni")
+post_hoc_escolaridade <- emmeans(mod_escolaridade, "escolaridade_fct") %>% 
+  pairs(., reverse = TRUE, adjust = "bonferroni")
 ```
 
 Tal como feito até agora, o gráfico inicial das comparações será realizado. A adição das barras de erro gera interpretação mais rápida e simples para todas as comparações.
@@ -252,7 +260,6 @@ ggplot(mapping = aes(contrast, estimate)) +
   geom_hline(yintercept = 0, linetype = "dashed") + 
   scale_size(trans = "reverse") + 
   coord_flip()
-
 ```
 
 
@@ -260,8 +267,8 @@ A apresentação tabular é fundamental e apresenta as estatísticas inferenciai
 
 ```{r}
 post_hoc_escolaridade %>% 
-  kable(digits = 2) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
-  
+  kable(digits = 2) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
 ```
 
 Os resultados são significativos na comparação `Superior - Primário`, `Superior - Ginásio` e `Superior - Colegial`. Em todos, os resultados do TEG foi mais elevado naqueles participantes que haviam concluído o ensino superior.  
@@ -271,24 +278,23 @@ A esse momento, a escrita é fundamental:
 ```{block, type="writing"}
 **Como escrever os resultados**  
 
-Os dados foram analisados a partir de uma ANOVA de uma via investigando o efeito da escolaridade no empreendedorismo, medido por um escala específica. Foi possível concluir que a escolaridade é significativa (F(3, 143) = 8.23, p < 0.01, ηp2 = 0.15, 90% CI [.06, .22]) e as comparações pareadas, ajustadas pela técnica de Bonferroni, mostraram que os participantes com ensino superior apresentam pontuação mais alta do que àqueles com o primário (Δ = 7.16, p < 0.01), ginásio (Δ = 5.07, p < 0.01) e colegial (Δ = 2.96, p < 0.05).  
+Os dados foram analisados a partir de uma ANOVA de uma via investigando o efeito da escolaridade no empreendedorismo, medido por um escala específica. Foi possível concluir que a escolaridade é significativa (F(3, 143) = 8.23, p < 0.01, ηp2 = 0.15, 90% CI [.06, .22]). As comparações pareadas foram ajustadas pela técnica de Bonferroni e mostraram que os participantes com ensino superior apresentam pontuação mais alta do que àqueles com o primário (Δ = 7.16, p < 0.01), ginásio (Δ = 5.07, p < 0.01) e colegial (Δ = 2.96, p < 0.05).  
 ```
 
 
 ## ANOVA de 2 vias
 
-Frequentemente, o interesse do pesquisador está em investigar como múltiplos fatores afetam a variável de interesse. Ao aumentar o número de variáveis independentes no modelo, se aumenta a quantidade de vias que a ANOVA possui. Se, por exemplo, a investigação visasse testar o efeito da <u>escolaridade</u> e do <u>sexo</u> no <u>empreendedorismo</u>, teríamos, por definição, uma ANOVA de duas vias. É fundamental atentar que essa modelage inicialmente considera apenas os efeitos principais dos fatores e não assume ou modela uma possível interação entre os preditores.
+Frequentemente, o interesse do pesquisador está em investigar como múltiplos fatores afetam a variável de interesse. Ao aumentar o número de variáveis independentes no modelo, se aumenta a quantidade de vias que a ANOVA possui. Se, por exemplo, a investigação visasse testar o efeito da <u>escolaridade</u> e do <u>sexo</u> no <u>empreendedorismo</u>, teríamos, por definição, uma ANOVA de duas vias. É fundamental atentar que essa modelagem inicialmente considera apenas os efeitos principais dos fatores e não assume ou modela uma possível interação entre os preditores.
 
 ### Execução no R
 
 Após a escrita adequada da hipótese, a modelagem segue o mesmo padrão da feita anteriormente, iniciando pela definição correta do tipo de variável em relação à sua escala de medida.
 
-```{r, eval=FALSE}
+```{r }
 dados_teg <- dados_teg %>% 
-  mutate_at(vars(sexo), funs(
-    factor(case_when(
-      . == 1 ~ "Masculino",
-      . == 2 ~ "Feminino"), levels=c("Masculino","Feminino"))))
+  mutate(sexo_fct = factor(case_when(
+      sexo == 1 ~ "masculino",
+      sexo == 2 ~ "feminino"), levels=c("masculino","feminino")))
 ```
 
 
@@ -296,10 +302,10 @@ Tabelas e gráficos também devem ser apresentadas.
 
 ```{r}
 dados_teg %>% 
-  group_by(escolaridade, sexo) %>% 
+  group_by(escolaridade_fct, sexo_fct) %>% 
   mutate(rn = row_number()) %>% 
   summarise_at(vars(teg), lst(n=~n(), mean, sd)) %>% 
-  pivot_wider(names_from = sexo, #indexador unico
+  pivot_wider(names_from = sexo_fct, #indexador unico
               names_sep = "_",  #pode ser removido
               values_from = c(n:sd)) %>%  #organizar valores
   kable(digits = 2) %>% 
@@ -312,13 +318,15 @@ Como o objetivo é verificar duas variáveis isoladamente, os gráficos também 
 
 ```{r, message=FALSE}
 gridExtra::grid.arrange(
-  ggplot(dados_teg, aes(x=escolaridade, y = teg, fill = escolaridade)) +
+  ggplot(dados_teg, aes(x=escolaridade_fct, y = teg, fill = escolaridade_fct)) +
   geom_bar(stat = "summary") +
-  stat_summary(fun.data = mean_se, geom = "errorbar"),
+  stat_summary(fun.data = mean_se, geom = "errorbar") +
+  theme(legend.position = "none"),
   
-  ggplot(dados_teg, aes(x = sexo, y = teg, fill = sexo)) +
+  ggplot(dados_teg, aes(x = sexo_fct, y = teg, fill = sexo_fct)) +
   geom_bar(stat = "summary") +
-  stat_summary(fun.data = mean_se, geom = "errorbar"))
+  stat_summary(fun.data = mean_se, geom = "errorbar") +
+  theme(legend.position = "none"))
 
 ```
 
@@ -327,8 +335,8 @@ Agora, formalmente a modelagem será feita. Os passos devem ser exatamente os me
 
   | Preditor      | Soma dos Quadrados| Graus de liberdade |  Quadrado médio             | Estat. F       | 
   | :-----------  | :-----------      | :-----------       |  :-----------               | :-----------   |  
-  | Fator (A)     | Entre (SS(A))     | K(A)-1             |  MS(A) = SS(A)/k-1          | F = MS(A)/MSW  | 
-  | Fator (B)     | Entre (SS(B))     | K(B)-1             |  MS(B) = SS(B)/k-1          | F = MS(B)/MSW  | 
+  | Fator (A)     | Entre (SS(A))     | K(A)-1             |  MS(A) = SS(A)/K-1          | F = MS(A)/MSW  | 
+  | Fator (B)     | Entre (SS(B))     | K(B)-1             |  MS(B) = SS(B)/K-1          | F = MS(B)/MSW  | 
   | Resíduo       | Dentro (SSW)      | N-1-(df(A)+df(B))  |  MSW = SSW/N-1-(df(A)+df(B))|                |
 
 
@@ -336,12 +344,12 @@ Agora, formalmente a modelagem será feita. Os passos devem ser exatamente os me
 Posto isso, os resultados obtidos são:
 
 ```{r}
-mod_escolaridade_sexo <- lm(teg ~ escolaridade + sexo, dados_teg)
+mod_escolaridade_sexo <- lm(teg ~ escolaridade_fct + sexo_fct, dados_teg)
 apaTables::apa.aov.table(mod_escolaridade_sexo)
 ```
 
 
-Os resultados continuam constantando o efeito da escolaridade (F(3, 142) = 8.24, p < 0.01, ηp2 = 0.15, 90% CI [.06, .22]) no empreendedorismo, mas também concluiu que o efeito do sexo não é significativo (F(1, 142) = 0.816, p = 0.36, ηp2 = 0.01, 90% CI [.00, .04]). É importante ter atenção à forma de reportar os resultados, uma vez que delineamentos de dois fatores quase sempre produz coeficientes são diferentes do delineamento anterior. A análise post hoc que seria feita agora seria a mesma feita anteriormente e, em função disso, será suprimida.
+Os resultados continuam constantando o efeito da escolaridade (F(3,142) = 8.24, p < 0.01, ηp2 = 0.15, 90% CI [.06, .22]) no empreendedorismo, mas também concluiu que o efeito do sexo não é significativo (F(1, 142) = 0.816, p = 0.36, ηp2 = 0.01, 90% CI [.00, .04]). É importante ter atenção à forma de reportar os resultados, uma vez que delineamentos de dois fatores quase sempre produz coeficientes são diferentes do delineamento anterior. A análise post hoc que seria feita agora seria a mesma feita anteriormente e, em função disso, será suprimida.
 
 
 Uma sugestão de escrita desses resultados é a seguinte:
@@ -350,10 +358,8 @@ Uma sugestão de escrita desses resultados é a seguinte:
 
 ```{r, eval = FALSE, include=FALSE  }
 #Apesar de não ter uma interpretação direta, o valor apresentado ao intercepto é o valor médio dos homens com escolaridade primária. Isso ocorre pois como há duas variáveis categóricas sendo analisadas, o valor utilizado para referência (ou seja, 0) do sexo foi para homens e este valor para escolaridade foi para aqueles com ensino primário.
-
-dados_teg %>% filter(sexo == "Masculino" & escolaridade == "Primário") %>% summarise(mean(teg))
-summary(lm(teg ~ escolaridade + sexo, dados_teg))$coefficients[1,1] %>% round(.,1)
-
+dados_teg %>% filter(sexo_fct == "masculino" & escolaridade_fct == "primario") %>% summarise(mean(teg))
+summary(lm(teg ~ escolaridade_fct + sexo_fct, dados_teg))$coefficients[1,1]
 ```
 
 
@@ -387,32 +393,30 @@ Nessa pesquisa, tivemos o interesse em saber se o nível de empreendedorismo var
 Como mencionado, é fundamental ajustar todas as características da base para que os resultados não sejam distorcidos em função de definições computacionais. Como nessa pesquisa, também permitimos que pessoas divorciadas e viuvas, uma opção para deixar as análises totalmente pareadas com a pergunta da pesquisa é criar uma base contendo apenas solteiros (originalmente codificados com 1) e casados (originalmente codificados como 2).
 
 ```{r}
-base_interacao <- dados_teg %>% filter(estado_civil == "1" | estado_civil == "2")
+base_interacao <- dados_teg %>% filter(civil == 1 | civil == 2)
 base_interacao <- base_interacao %>% 
-  mutate_at(vars(estado_civil), 
-    ~factor(case_when(
-      . == 1 ~ "solteiro",
-      . == 2 ~ "casado"), levels=c("solteiro","casado")))
+  mutate(estado_civil_fct = factor(case_when(
+      civil == 1 ~ "solteiro",
+      civil == 2 ~ "casado"), levels=c("solteiro","casado")))
 ```
 
 Agora o gráfico apresentado deve combinar as duas variáveis independentes, uma no eixo de X e outro no agrupamento. A escolha de como apresentar estas variáveis não deve ser aleatória, mas ser atrelada à forma da pergunta de pesquisa. Se o interesse for responder "Quanto o estado civil depende do sexo para gerar os resultados do TEG" sugere que em X coloque-se a variável "estado civíl" e no agrupamento a variáel "sexo.
 
 ```{r, message=FALSE}
-ggplot(base_interacao, aes(x = estado_civil, y = teg, group = sexo, col= sexo)) +
+ggplot(base_interacao, aes(x = estado_civil_fct, y = teg, group = sexo_fct, col = sexo_fct)) +
   geom_line(stat = "summary", fun = mean, size=1) + 
   stat_summary(fun.data = mean_se, geom = "errorbar", width=0.1, size=1)
 ```
 
-
 O gráfico sugere que existe um efeito de interação, uma vez que as linhas se cruzam. No entanto, o teste formal deve ser feito. Da mesma forma do realizado anteriormente, a modelagem omitirá a verificação dos pressupostos, que foi apresentada em etapa inicial. 
 
 ```{r}
-mod_int_sexo_civil <- lm(teg ~ sexo * estado_civil, base_interacao)
+mod_int_sexo_civil <- lm(teg ~ sexo_fct * estado_civil_fct, base_interacao)
 apaTables::apa.aov.table(mod_int_sexo_civil)
 ```
 
 
-A leitura da tabela começa de cima para baixo, ou seja, pela interação. Neses caso, ela é significativa (F(1, 129) = 4.24, p < 0.05, ηp2 = 0.03, 90% CI [.00, .10]). Quando isso acontece, não se deve interpretar os efeitos principais, mesmo que eles sejam significativos. 
+A leitura da tabela começa de cima para baixo, ou seja, pela interação. Neses caso, ela é significativa (F(1,129) = 4.24, p = 0.042, ηp2 = 0.03, 90% CI [.00, .10]). Quando isso acontece, não se deve interpretar os efeitos principais, mesmo que eles sejam significativos. 
 
 
 ### Post hoc
@@ -421,7 +425,7 @@ A leitura da tabela começa de cima para baixo, ou seja, pela interação. Neses
 No caso, à pergunta "o sexo tem efeito no empreendedorismo", a resposta adequada seria "depende", uma vez que ele varia em função do estado civil do participante. O post hoc vez será também feito pelo pacote `emmeans`, que já foi carregado anteriormente. Para deixar a rotina clara, vamos armazenar os resultados no objeto `post_hoc_int` e, em seguida, explorar os coeficientes.Repare que dessa vez, os valores de p ajustados ou não são os mesmos, dado que há apenas duas categorias em cada grupo.
 
 ```{r}
-post_hoc_int <- emmeans(mod_int_sexo_civil, pairwise ~ sexo * estado_civil)
+post_hoc_int <- emmeans(mod_int_sexo_civil, pairwise ~ sexo_fct * estado_civil_fct)
 ```
 
 O resultado deve ser acessado via contrastes.
@@ -433,11 +437,14 @@ post_hoc_int$contrasts %>%
 ```
 
 
-Repare que as informações repetem aquilo já visualizado no gráfico anterior, mas com as correções para evitar a inflação do erro do tipo 1. Neste momento, a interpretação torna-se menos visual e mais detalhada. Os resultados indicam que o empreededorismo depende tanto do estado civil como do sexo do participante. Quando solteiros, há uma tendência das mulheres empreenderem mais do que os homens (Δ = -5.048, p = 0.09). Entretanto, essa diferença não ocorre quando os participantes são casados, já que homens e mulheres casadas tem, em media, o mesmo nível de empreendedorismo (Δ = 0.482, p = 1). No entanto, especialmente nas mulheres casadas, o nível de empreendedorismo é significativamente menor do que nas solteiras (Δ = -6.222, p = 0.07). Em linhas gerais, parece que o empreendedorismo diminui em pessoas casadas e isso é especialmente válido às mulheres.
+Repare que as informações repetem aquilo já visualizado no gráfico anterior, mas com as correções para evitar a inflação do erro do tipo 1. Neste momento, a interpretação torna-se menos visual e mais detalhada. Os resultados indicam que o empreededorismo depende tanto do estado civil como do sexo do participante. Quando solteiros, há uma tendência das mulheres empreenderem mais do que os homens (Δ = -5.048, p = 0.09). Entretanto, essa diferença não ocorre quando os participantes são casados, já que homens e mulheres casadas tem, em media, o mesmo nível de empreendedorismo (Δ = 0.482, p = 1). No entanto, especialmente nas mulheres casadas, o nível de empreendedorismo é significativamente menor do que nas solteiras (Δ = -6.222, p = 0.07). Em linhas gerais, parece que o empreendedorismo diminui em pessoas casadas e isso é especialmente válido às mulheres.  
+É importante também atentar que a correção do valor de P deve ser feita para proteger falsos positivos (erro do tipo 1), mas que, idealmente, não devem também gerar falsos negativos (erro do tipo 2), o que talvez pudesse ser sugerido se aqui não tivéssemos interpretado os valores entre 0.05 e 0.1 dos resultados.  
 
 
 
 ## Resumo  
 
-Este capítulo apresentou a ANOVA tanto de uma forma  pragmática, como de uma maneira mais conceitual e, consequentemente, complexa. De forma pragmática, ao classificar a ANOVA como um super teste T, é possível demonstrar a importância da correção do valor de P após múltiplas comparações. Sem esses ajustes, a chance de cometer falsos positivos aumentaria. Já em outro sentido, ao deixar claro que a ANOVA é um caso particular de modelos de regressão, é possível entender que ela é uma análise complexa e que se ajusta bem à grande parte das perguntas empíricas e teóricas realizadas em Psicologia e outras ciências comportamentais.  
+1. A ANOVA pode tanto ser entendida como um super teste T, como um caso particular de um modelo de regressão  
+2. Testes post hoc e resultados globais da ANOVA não respondem às mesmas perguntas  
+3. As comparações pareadas devem proteger a inflação do erro do tipo 1, sem gerar o erro do tipo 2 
 
