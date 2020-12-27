@@ -1,106 +1,107 @@
 # ANOVA de medidas repetidas
 
-```{r base e ajustes, include = FALSE }
-load("~/anovabr/mqt/bases/R - Base Lidia Carprofeno.RData") 
-#remove uneccessary data
-rm(dados, ez_outcome, mod_lme, conf.int, stat_sum_df_all)
-tratamento <- tratamento %>% rename(grupo = grupo_dummy, tempo = semana)
-```
-
 ```{r, include = FALSE }
 library(tidyverse)
 library(knitr) #tables and graphs
 library(kableExtra) #tables with different styles
 
+load(file = "~/anovabr/mqt/bases/R - Base Lidia Carprofeno.RData") 
 ```
 
 
 ```{block, type="objectives"}
 **Objetivos do capítulo**  
-1. Apresentar a ANOVA de Medidas Repetidas e o Modelo Linear de Efeitos Mistos (LMM).  
-2. Realizar passo-a-passo a modelagem com ambas as estratégias com os pacotes ez e lme4.  
+1. Apresentar a ANOVA de Medidas Repetidas.    
+2. Realizar passo-a-passo a modelagem analítica.    
 3. Verificar os pressupostos e implementar as correções sugeridas.  
 4. Escrever os resultados.  
-
 ```
 
-Conforme explicitado no decorrer do livro, é possível entender a ANOVA de medidas repetidas como um caso especial do **Modelo Linear de Efeitos Mistos (LMM)**. Quando os dados são balanceados, os resultados são equivalentes [@howell_2013]. Dessa maneira, você irá reparar que as análises realizadas nesse capítulo serão feitas tanto via **ANOVA** quanto **LMM** e irão usar dois pacotes, o `ez` e o `lme4`. O primeiro irá modelar os dados a via ANOVA, enquanto o segundo irá modela-los via LMM.
+A ANOVA de medidas repetidas é oferece uma moelagem analítica para a análise de dados longitudinais pareados, isto é, relacionados. Esta técnica pode ser entendida como uma expansão da ANOVA ou um caso especial do <u>Modelo Linear de Efeitos Mistos (LMM)</u> [@howell_2013], que é realizada quando se deseja verificar se os resultados de vários grupos variam significativamente com o tempo. Os pressupostos são similares aos discutidos em outros testes inferenciais:
 
-Quando se compara a modelagem via ANOVA de Medidas Repetidas e LMM, este último tem vantagens, já que: 1. permite modelar tanto *efeitos fixos* quanto *efeitos aleatórios*, 2. tem opções para lidar com casos ausentes, 3. permite trabalhar com dados desbalanceados e 4. Relaxa alguns pressupostos tradicionais da ANOVA. De forma sucinta, como dois componentes podem ser estipulados (um intra-indivíduo e um entre-indivíduos), tanto o intercepto quanto a inclinação podem ser aleatórios [@Judd2012;@Quen2004]. A equação a seguir apresenta sua forma mais simples:
-
-\[y_{it} = a_{i} + b_{t} + \epsilon_{it}\]
-
-$i$ representa caso caso  
-$t$ representa o ponto temporal em que houve uma medida  
-$y_{it}$ é o desfecho  
-$a_{i}$ é o intercepto (média de caso caso)  
-$b_{t}$ representa a média de cada medida no tempo  
-$\epsilon_{it}$ representa os desvios da medida individual dos casos e do tempo  
+*(i)* Os dados são aleatórios e representativos da população  
+*(ii)* a variável dependente é contínua  
+*(iii)* Os resíduos do modelo são normalmente distribuídos
+*(iv)* há esfericidade dos grupos  
 
 ## Pesquisa
 
 
-A esse momento, vamos ter como referência de análise a pesquisa intitulada ["Avaliação psicométrica em português do indicador de dor crônica de Helsinki em cães com sinais crônicos de osteoartrite"](https://www.google.com), que tem como primeira autora Lídia Matsubara e eu sou co-autor. Essa pesquisa foi publicada no "Arquivo Brasileiro de Medicina Veterinária e Zootecnia" e você pode acessá-la pelo DOI: .
+A esse momento, vamos ter como referência de análise a pesquisa intitulada ["Avaliação psicométrica em português do indicador de dor crônica de Helsinki em cães com sinais crônicos de osteoartrite"](https://www.scielo.br/scielo.php?script=sci_arttext&pid=S0102-09352019000100109), que tem como primeira autora Lídia Matsubara e eu sou co-autor. Essa pesquisa foi publicada no "Arquivo Brasileiro de Medicina Veterinária e Zootecnia" em 2019.
 
-Nessa pesquisa, temos um **grupo controle** e um **grupo experimental** e todos os participantes foram avaliados em 5 momentos diferentes do tempo: 1 semana antes do início do tratamento (W2), imediatamente antes (W0), duas semanas após o tratamento ter iniciado (S2). Dessa forma, trata-se de um delineamento 2x5, considerando os 2 grupos e as 5 medições ao longo do tempo. A base *tratamento* apresenta essas características e seus nomes estão abaixo.
+Nessa pesquisa, temos um **grupo controle** e um **grupo experimental** e todos os participantes foram avaliados em 5 momentos diferentes do tempo: 1 semana antes do início do tratamento (W2), imediatamente antes (W0), duas semanas e quatro semanas após o tratamento ter iniciado (S2 e s4) e após uma semana da retirada do tratamento (s6). Dessa forma, trata-se de um delineamento 2x5, considerando os 2 grupos e as 5 medições ao longo do tempo. A base `dados` reúne as varáveis da pesquisa em formato largo (wide) Entretanto, o formato longo é o mais tipicamente encontrado para análises longitudinais e, por isso, será imeplementado a seguir.
+
+```{r}
+tratamento <- dados %>% 
+  mutate(id = row_number()) %>% 
+  select(id, grupo_dummy,starts_with("total_")) %>% 
+  pivot_longer(-c(id,grupo_dummy),
+                names_to = "tempo",
+               values_to= "resultado") %>% 
+  rename(grupo = grupo_dummy) %>% 
+  filter(grupo < 3) %>% 
+  mutate(grupo = factor(if_else(grupo == 1, "Placebo", "Experimental"))) %>% 
+  mutate(tempo = factor(case_when(
+    tempo == "total_w4" ~ "antes",
+    tempo == "total_w0" ~ "no_dia",
+    tempo == "total_s2" ~ "semana_2",
+    tempo == "total_s4" ~ "semana_4",
+    tempo == "total_s6" ~ "semana_6",
+  )))
+```
+
+As variávies neste conjunto de dados são:
 
 ```{r }
 tratamento %>% names()
 ```
 
 Dessa forma:  
+
 **id** refere-se a uma identificação única de cada participante.  
-**grupo** refere-se ao grupo em que o participante foi alocado, tal como previamente apresentado.  
+**grupo** refere-se ao grupo em que o participante foi alocado, tal como previamente apresentado (controle ou experimental).  
 **tempo** diz respeito aos 5 pontos de medida e     
 **resultado** é uma variável aleatória contínua do valor obtido na escala utilizada.  
 
-É importante alertar que o formato de base é o longo, diferente dos padrão visto em programas comerciais, como o SPSS. 
-
-
-```{r }
-tratamento %>% head() 
-```
+## Execução no R   
 
 A modelagem estatística envolve definir claramente que o `resultado` é uma função do `tempo`, do `grupo` e da interação `tempo x grupo`. Conforme exposto, a primeira etapa consiste na apresentação de tabelas e gráficos. Essas técnicas descritivas são muito informativas e permitem uma rápida compreensão dos resultados.
 
 A tabela a seguir apresenta a quantidade de participantes nas condições com o passar do tempo.
+
 ```{r }
-tratamento %>% group_by(grupo, tempo) %>% 
+tratamento %>% 
+  group_by(grupo, tempo) %>% 
   count() %>% 
-  spread(grupo, n) %>% 
+  pivot_wider(names_from=grupo, values_from = n) %>% 
   kable() %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
 ```
 Nota-se que apesar de não ter havido perda amostral, os grupos não tiveram a mesma quantidade de participantes, gerando o que é classicamente entendido como desbalanceamento amostral. Em seguida, a tabela abaixo apresenta os valores da média e do desvio-padrão para todas as condições:
 
-```{r , eval=FALSE}
+```{r }
 tratamento %>%  #base de dados
   group_by(grupo,tempo) %>% #agrupar
-  summarise_at(vars(resultado),funs(mean, sd)) %>% #tirar estatisticas 
-  gather(medida, val, mean:sd) %>%  #transformar para longo
-  mutate(key = paste0(tempo,"_", medida)) %>%  #criar um unico inexador
-  dplyr::select(grupo, key, val) %>%  #selecionar apenas as 3 variaveis importantes
-  separate(key, into=c("Tempo","key2")) %>%  #dividir media e desvio
-  unite(grupo, grupo, key2) %>% #unir 
-  spread(Tempo, val)  %>%  #alargar
-  kable(., digits = 2) %>% 
+  summarise_at(vars(resultado),lst(mean, sd)) %>% #tirar estatisticas 
+  pivot_longer(-c(grupo, tempo), names_to = "medida") %>% 
+  mutate(key = paste0(medida,"=", value)) %>%  #criar um unico inexador
+  select(grupo, tempo, key) %>%  #selecionar apenas as 3 variaveis importantes
+  separate(key, into=c("medida","resultado"),sep = "=", convert = TRUE) %>%  #dividir media e desvio
+  pivot_wider(names_from = tempo, values_from = resultado) %>%  #alargar
+  kable(., digits=2) %>% 
   kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
-
 ```
+
 O gráfico abaixo também apresenta as mesmas informações, mas insere uma barra com o erro padrão da média. Isso é útil para interpretação inferencial.
 
 ```{r,fig.align='center'}
 ggplot(tratamento, aes(x=tempo, y=resultado, group=grupo, color=grupo)) + #variaveis
-  stat_summary(fun.y = mean, geom = "line", size=1.5, aes(linetype = grupo)) + #linha
-  stat_summary(fun.y="mean", geom="point", size=5, aes(shape = grupo)) + #pontos
+  stat_summary(fun = mean, geom = "line", size=1.5, aes(linetype = grupo)) + #linha
+  stat_summary(fun="mean", geom="point", size=5, aes(shape = grupo)) + #pontos
   stat_summary(fun.data = mean_se, geom = "errorbar",size=1) #barra de erro
-  
 ```
 
-É possível ver que as barras de erro estão superpostas, isto é, uma dentro da outra. Isso ocorre quando não há diferença significativa entre as condições. No entanto, o teste formal estatístico deve ser realizado.  
+É possível ver que as barras de erro estão superpostas, isto é, uma dentro da outra. Isso ocorre quando não há diferença significativa entre as condições. No entanto, o teste formal estatístico deve ser realizado. Isso pode ser feito por algumas funções do pacote `ez`, descritas abaixo:
 
-## Pacote ez
-
-Inicialmente, a modelagem será feita via ANOVA de Medidas Repetidas com o pacote `ez`. A função utilizada será a `ezANOVA`.
 
 ```{r }
 library(ez)
@@ -133,9 +134,9 @@ ez_outcome <- ezANOVA(
 
 A mensagem de aviso informa que os grupos estão desbalenceados em relação à quantidade de participantes, o que foi mencionado acima. Antes de interpretar os resultados, é necessário verificar os pressupostos já que a validade dessa interpretação é atrelada à manutenção (ou sua ausência) dos pressupostos que a técnica solicita.  
 
-No caso da ANOVA de Medidas Repetidas, é necessário verificar a **normalidade** e a **esfericidade**. A normalidade pode ser feita via gráficos e testes estatísticos formais. A esfericidade é verificada resgatando o objeto anteriormente definido (`ez_outcome`) e o examinando passo a passo. A principal novidade dos pressupostos está na esfericidade, que guarda um princípio similar à homogeneidade e pode ser entendida como sua extensão. A esfericidade se refere às variâncias das diferenças entre todos os pares de medidas serem similares e a homogeneidade se refere à constância das variâncias entre os grupos [@Quen2004].
+No caso da ANOVA de Medidas Repetidas, é necessário verificar a <u>normalidade</u> e a <u>esfericidade</u>. A normalidade pode ser feita via gráficos e testes estatísticos formais. A esfericidade é verificada resgatando o objeto anteriormente definido (`ez_outcome`) e o examinando passo a passo. A principal novidade dos pressupostos está na esfericidade, que guarda um princípio similar à homogeneidade e pode ser entendida como sua extensão. A esfericidade se refere às variâncias das diferenças entre todos os pares de medidas serem similares e a homogeneidade se refere à constância das variâncias entre os grupos [@Quen2004].
 
-A normalidade dos resíduos foi acessada pelo gráfico a seguir. Repare que a função `mutate` foi utilizada para adicionar uma coluna com os resíduos do modelo à base de dados antes de plotá-los. 
+A normalidade dos resíduos é vista pelo gráfico a seguir. Repare que a função `mutate` foi utilizada para adicionar uma coluna com os resíduos do modelo à base de dados antes de plotá-los. 
 
 ```{r, message=FALSE}
 tratamento %>% 
@@ -143,7 +144,6 @@ tratamento %>%
   ggplot(aes(x=residuos)) +
       geom_histogram(colour="black", fill="grey") +
       geom_density(aes(y= ..count..))
-
 ```
 
 É possível argumentar que a normalidade dos resíduos foi relativamente mantida. Caso o interesse fosse um teste formal, ele seria feito pelo `Shapiro Wilk`, que assume $H_0$ de normalidade. 
@@ -154,136 +154,74 @@ shapiro.test(proj(ez_outcome$aov)[[3]][, "Residuals"])
 
 Por esse último resultado, como o valor de p foi inferior ao alfa tipicamente estabelecido (0.05), não seria possível manter o pressuposto da normalidade e algo deveria ser feito, como transformação dos dados ou implementação de outra técnica analítica. No entanto, desde a década de 1960 é sabido que o valor de p é inversamente associado ao tamanho da amostra [@Lin2013; @Nunnally1960]. Nessa análise, há 200 observações (40 participantes em cada um dos 5 pontos de medida), o que influencia na redução do valor de p [@Lin2013]. Dessa maneira, o resultado exposto previamente no gráfico é considerado nessa análise.
 
-Já a esfericidade é testada pelo **teste de Mauchly**. Esse teste define a hipótese nula como presença da esfericidade e idealmente a não rejeição da $H_0$ é desejada. No entanto, quando o pressuposto da esfericidade é rejeitado, é necessário aplicar algum ajuste, como a **correção de Greenhouse-Geisser** ou a de **Huynh-Feldt**. Ambas as técnicas ajustam os graus de liberdade a partir de um coeficiente particular. Como previamente exposto, o pressuposto da esfericidade não é necessário quando a modelagem é feita via LMM [@Quen2004].
+Já a esfericidade é testada pelo **teste de Mauchly**. Esse teste define a hipótese nula como presença da esfericidade e idealmente a não rejeição da $H_0$ é desejada. No entanto, quando o pressuposto da esfericidade é rejeitado, é necessário aplicar algum ajuste, como a <u>correção de Greenhouse-Geisser</u> ou a de <u>Huynh-Feldt</u>. Ambas as técnicas ajustam os graus de liberdade a partir de um coeficiente particular. 
 
 Abaixo esta o `ez_outcome`, que é dividido em 4 blocos diferentes: `$ANOVA`, `$Mauchly's Test for Sphericity`, `$Sphericity Corrections` e `$aov`. Como são muitas informações, os resultados serão especificamente comentados.
 
 ```{r }
-ez_outcome
+ez_outcome %>% pander::pander()
 ```
-A primeira parte que se olha é o **Mauchly's Test for Sphericity**. Caso haja rejeição da hipótese nula, deve-se olhar inicialmente todos os resultados dispostos no **Sphericity Corrections** para depois olhar a parte **ANOVA**. Caso não haja rejeição da hipótese nula, basta os resultados já na parte **ANOVA**, que fica ao início do output. Nessa pesquisa, se rejeitou a esfericidade para o efeito principal do `tempo` (w = `r round(ez_outcome$"Mauchly's Test for Sphericity"[1,2],2) `, p < 0.05) e da interação `tempo x grupo` (w = `r round(ez_outcome$"Mauchly's Test for Sphericity"[2,2],2) `, p < 0.05). Dessa forma, as correções devem ser implementadas. Duas correções são possíveis, a Greenhouse-Geisser (p[GG]) e a de Huynh-Feldt e existe uma regra prática (*rule of thumb*) para isso: quando o valor de Greenhouse-Geisser (ϵ ou GGe) é inferior a 0.75, os valores dos graus de liberdade do numerador e do denominador são ajustados pela correção de Greenhouse-Geisser; quando é superior a 0.75, o ajuste é feito pela de Huynh-Feldt. Nessa pesquisa, o ajuste será feito via Greenhouse-Geisser.
+A primeira parte que se olha é o **Mauchly's Test for Sphericity**. Caso haja rejeição da hipótese nula, deve-se olhar inicialmente todos os resultados dispostos no **Sphericity Corrections** para depois olhar a parte **ANOVA**.    
 
-Antes de iniciar a interpretação dos resultados, lembre-se que toda interpretação deve ser **sempre** iniciada pela interação. Caso ela seja significativa, **não se deve interpretar** os efeitos principais.
+Caso não haja rejeição da hipótese nula, basta os resultados já na parte **ANOVA**, que fica ao início do output.   
 
-Repare que a parte **Sphericity Corrections** tem informações sobre a interação `tempo x grupo` e da `semana`. Esses efeitos devem ser interpretados aqui nessa seção, em vez da seção **ANOVA**. A interação `tempo x grupo` não é significativa. O valor de p é de 0.52. Manualmente, esse valor pode ser obtido computando a região crítica da cauda à direita da densidade da distribuição F. O valor de F é de `r round(ez_outcome$ANOVA[4,6],3) ` que é o encontrado na primeira parte do output (**ANOVA**), o numerador foi ajustado para 2.29 (DFn = `4 x 0.5739 =  2.29`) e o denominador foi ajustado para 87.24 (DFd=`152 x 0.5739 = 87.24`). Assim:
+Nessa pesquisa, se rejeitou a esfericidade para o efeito principal do `tempo` (w = `r round(ez_outcome$"Mauchly's Test for Sphericity"[1,2],2) `, p < 0.05) e da interação `tempo x grupo` (w = `r round(ez_outcome$"Mauchly's Test for Sphericity"[2,2],2) `, p < 0.05). Dessa forma, as correções devem ser implementadas nos graus de liberdade de ambos os coeficientes. Duas correções são possíveis, a Greenhouse-Geisser (p[GG]) e a de Huynh-Feldt e existe uma regra prática (*rule of thumb*) para isso:  
+
+1) Quando o valor de Greenhouse-Geisser (ϵ ou GGe) é inferior a 0.75, os valores dos graus de liberdade do numerador e do denominador são ajustados pela correção de Greenhouse-Geisser  
+2) quando é superior a 0.75, o ajuste é feito pela de Huynh-Feldt. 
+
+Nessa pesquisa, o ajuste será feito via Greenhouse-Geisser.  
+
+Antes de iniciar a interpretação dos resultados, lembre-se que toda interpretação deve ser <u>sempre</u> iniciada pela interação. Caso ela seja significativa, <u>não se deve interpretar</u> os efeitos principais.
+
+Repare que a parte **Sphericity Corrections** tem informações sobre a interação `tempo x grupo` e da `semana`. Esses efeitos devem ser interpretados aqui nessa seção, em vez da seção **ANOVA**. A interação `tempo x grupo` não é significativa. O valor de p é de 0.52. Manualmente, esse valor pode ser obtido computando a região crítica da cauda à direita da densidade da distribuição F. Para isso, é necessário plugar o valor de F obtido (`r round(ez_outcome$ANOVA[4,6],3) `), encontrado na primeira parte do output (**ANOVA**), e ajustar o numerador para 2.29 (DFn = `4 x 0.5739 =  2.29`) e o denominador para 87.24 (DFd=`152 x 0.5739 = 87.24`). Assim:
 
 ```{r}
- 1-pf(0.69, 4 * 0.57, 152 * 0.57)
-
+1-pf(0.69, 4 * 0.57, 152 * 0.57)
 ```
   
-O efeito principal da `semana` é significativo, com valor de p = 0.03.
+O efeito principal do `tempo` é significativo, com valor de p = 0.03.
 
 ```{r}
 1-pf(3.30, 4 * 0.57, 152 * 0.57)
 ```
 
-O efeito principal do `grupo` deve ser visto diretamente na parte **ANOVA** e não é significativo. O valor de p é de 0.40, que pode ser manualmente computado assim:
+O efeito principal do `grupo` deve ser visto diretamente na parte `ANOVA` e não é significativo. O valor de p é de 0.40, que pode ser manualmente computado assim:
 ```{r}
- 1-pf(0.71, 1, 38)
-
+1-pf(0.71, 1, 38)
 ```
 
-Assim, é possível concluir que o passar do tempo gerou uma diferença significativa no resultado da dor dos animais (VD), mas que isso não é relacionado a nenhum grupo específico. Em outras palavras, esse efeito não é moderado pelo grupo em que o animal se encontra. 
+Assim, é possível concluir que o passar do tempo gerou uma diferença significativa no resultado da dor dos animais (VD), mas que isso não é relacionado a nenhum grupo específico. Em outras palavras, esse efeito não depende do grupo em que o animal se encontra. 
 
-Frequentemente, os resultados corrigidos e os não-corrigidos concluem na mesma direção. Isso é verdadeiro nesse caso. Repare:
+Frequentemente, os resultados corrigidos e os não-corrigidos concluem na mesma direção. Isso é verdadeiro nesse caso. Repare que os resultados não corrigidos:
+
+```{r }
+summary(ez_outcome$aov) %>% pander::pander()
+```
+Chegariam as mesmas conclusões dos corrigidos:  
 
 ```{r}
-summary(ez_outcome$aov)
-ez_outcome$`Sphericity Corrections`
+ez_outcome$`Sphericity Corrections`%>% pander::pander()
 ```
 
-O valor de P do efeito da *semana* saiu de 0.01 (sem correção) para 0.03 (com correção). Já a interação *grupo x semana* saiu de 0.59 (sem correção) para 0.52 (com correção).
+
+O valor de P do efeito do `tempo` saiu de 0.01 (sem correção) para 0.03 (com correção). Já a interação `grupo x semana` saiu de 0.59 (sem correção) para 0.52 (com correção).
+
 
 ```{block, type="writing"}
 **Como escrever os resultados**  
 
-Os dados foram analisados a partir de uma ANOVA de medidas repetidas investigando o efeito fixo do grupo e do tempo, bem como a interação entre ambos. O teste de Mauchly indicou a violação da esfericidade (w = 0.26, p < 0.01) e, portanto, os graus de liberdade foram corrigidos pelo ajuste de Greenhouse-geisser (ϵ = 0.57). Não houve interação significativa entre o grupo e o tempo (F(2.29, 87.24) = 0.69), nem efeito do grupo (F(1, 38) = 0.71, p < 0.40). O passar de tempo foi significativo no resultado, apesar de apresentar um efeito pequeno.(F(2,29, 87.24) = 3.30, p = 0.035, np2 = 0.01) 
+Os dados foram analisados a partir de uma ANOVA de medidas repetidas investigando o efeito fixo do grupo e do tempo, bem como a interação entre ambos. O teste de Mauchly indicou a violação da esfericidade (w = 0.26, p < 0.01) e, portanto, os graus de liberdade foram corrigidos pelo ajuste de Greenhouse-geisser (ϵ = 0.57). Não houve interação significativa entre o grupo e o tempo (F(2.29, 87.24) = 0.69), nem efeito do grupo (F(1, 38) = 0.71, p < 0.40). O passar de tempo foi significativo no resultado, apesar de apresentar um efeito pequeno (F(2,29, 87.24) = 3.30, p = 0.035, np2 = 0.01). 
 ```
 
 
 
-## Pacote lme4
 
-A esse momento, a modelagem será feita via LMM. O pacote `lme4` e seu complemento `lmerTest` serão utilizados.
+## Resumo  
 
-```{r, message=FALSE}
-library(lme4)
-library(lmerTest)
-
-```
-
-A sintaxe é realizada pela funçào `lmer`, que é similar à `lm`, em que:  
-`VD ~ VI`  
-mas permite adicionar efeitos aleatórios correlacionados pela utilização de barras verticais (|) ou descorrelacionados, pela utilização de duas barras verticais (||):  
-
-`VD ~ VI + |  efeito aleatório `  
-
-Dessa maneira, a sintaxe a seguinte cria o modelo, bem como o armazena sob nome de `mod_lme`: 
-
-```{r}
-mod_lme <- lmer(resultado ~ tempo*grupo + (1|id) , data = tratamento)
-
-```
-
-Repare que esse modelo é composto pelo se seguintes componentes:  
-1. efeito fixo do `tempo` 
-2. efeito fixo do `grupo`,  
-3. efeito fixo da interação `tempo x grupo` 
-4. efeito aleatório do `id`. 
-
-Esse modelo assume um intercepto aleatório para cada participante. O efeito aleatório é uma variável categórica, quase sempre de agrupamento, que desejamos controlar. É importante alertar que quando uma interação é definida, o código ganha automaticamente os efeitos fixos que compreendem a interação mesmo que eles não tenham sido expostos claramente, como ocorreu nesse caso. 
-
-A visualização dessa modelagem é bastante útil para compreender o que significa a ideia de intercepto aleatório. 
-
-```{r,fig.align='center', fig.width=9, fig.height=7}
-ggplot(tratamento, aes(x=tempo, y=resultado, group=id, color=id, linetype=grupo)) + 
-  geom_line(size=1) +
-  geom_hline(yintercept = mean(tratamento$resultado[tratamento$tempo == "antes"]), linetype="dashed") +
-   annotate(geom = "text", x=0.5, y = mean(tratamento$resultado[tratamento$tempo == "antes"])+1, label = "Média",hjust = 0)
-```
-
-Repare que cada participante (`id`) inicia em um ponto específico e tem uma trajetória específica no decorrer do tratamento. O valor médio antes do tratamento está apresentado pela linha pontilhada. Apesar de informativo, esse gráfico tem pouca aplicação pedagógica e, por isso, não deve ser relatado.  
-
-Uma vez que o modelo já foi criado, agora é necessário recuperar seus resultados. É importante notar que O pressuposto da normalidade é necessário e ele já foi acessado (e aceito) anteriormente. Conforme dito ao início do capítulo, O LMM relaxa o pressuposto esfericidadde e, por consequência, também o da homogeneidade [@Quen2004].
-
-Inicialmente, a `anova` permite uma visualização de todos os coeficientes do modelo. Isso é importante para verificar cada um dos preditores estipulados e sua significância. O `summary` apresenta um resultado mais detalhado que será explicitado a seguir. A interpretação dos resultados é similar à realizada em modelos de regressão e totalmente convergente ao resultado obtido na ANOVA. Novamente, a leitura da tabela deve começar pela interação. 
-
-```{r}
-anova(mod_lme)
-
-```
-
-Verifique que a tabela apresenta três os resultados: `tempo x grupo`, `grupo` e `tempo`. A técnica de Satterthwaite's method é utilizada para corrigir os valores do grau de liberdade e, consequentemente, os valores de p. Os resultados são virtualmente identicos aos obtidos pela ANOVA, com a diferença que os graus de liberdade do numerador de do denominador não foram corrigidos.  
-
-Para obter as informações completas do modelo, é necessário solicitar o `summary`. Essa função retorna 4 informações calculadas: `Scaled residuals`, `Random effects`, `Fixed effects` e `Correlation of Fixed Effect` e serve para aprofundar a interpretação dos resultados. Uma particular diferença entre esse relatório e o da ANOVA de Medidas Repetidas é o np2, que não faz parte do LMM.
-
-```{block, type="writing"}
-**Como escrever os resultados** 
-
-Os dados foram analisados através de um Modelo Linear de Efeitos Mistos, que verificou o efeito do tempo, do grupo, a interação entre esses dois preditores e permitiu um intercepto aleatório para cada participante. Dessa maneira, esse modelo levaou em consideração tanto efeitos fixos quanto aleatórios, além de relaxar alguns pressupostos tradicionais dos modelos de regressão. Os resultados permitem concluir que Não há interação significativa tempo x grupo (F(4, 152 = 0.696), p = 0.696), bem como não há efeito significativo do grupo (F(1, 38 = 0.706), p = 0.706). A o efeito o tempo foi significativo (F(4, 152 = 3.304), p = 3.304)
-```
-
-
-```{block, type="objectives"}
-**Notas importantes**  
-Para uma melhor interação do conteúdo desse capítulo com outros tutoriais, lembre-se que:  
-*between* é sinônimo de *entre grupos* e *whithin* é sinônimo de medidas repetidas (pode ser um delineamento do tipo sujeito como seu próprio controle).  
-
-Os gráficos realizados aqui poderiam ser mais facilmente criados por pacotes específicos (por exemplo, sjPlot ou effects). No entanto, eles só funcionam após a modelagem ter sido definida, o que não foi feito inicialmente por razões pedagógicas.
-
-Os códigos disponíveis no capítulo servem para você poder adaptá-los à sua realidade.  
-```
-
-## Sumário  
-
-1. ANOVA de Medidas Repetidas pode ser entendida como um caso do Modelo Linear de Efeitos Mistos (LMM).   
-2. O LMM é mais flexível e, consequentemente, mais vantajoso para ser utilizado.  
-3. A ANOVA tem como pressuposto Normalidade e Esfericidade, enquanto o LMM apenas Normalidade dos resíduos.
-4. A interpretação das tabelas sempre começa pela interação.  
-5. Os resultados frequentemente encontrados em ambos os modelos vão na mesma direção.  
-5. A escrita apresenta algumas particularidades relacionadas à cada modelo.    
-
-
-
+1. A ANOVA de medidas repetidas é um teste bastante utilizado quando participantes de mesmos grupos são avaliados longitudinalmente  
+2. Este modelo pode ser entendido como uma expansão de uma ANOVA ou um caso particular de uma regressão linear de efeitos mistos  
+3. A execução deste teste no R solicita que a base seja transformada para o formato longo  
+4. A interpretação dos resultados é, inicialmente, complicada e precisa ser feita de maneira cautelosa  
+ 
 
