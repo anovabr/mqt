@@ -2,23 +2,146 @@
 
 ```{r base e pacotes qui quadrado, include = FALSE }
 
-load(file="C:/Users/luisf/OneDrive/Documentos/anovabr/MQT/bases/Livro - R - ASQ SE all age intervals.RData")
+load(file="~/anovabr/mqt/bases/Base R TDAH Arruda.RData") #base
+rm(list=setdiff(ls(), "ds_selected"))
+
 
 library(tidyverse)
 library(knitr) #tables and graphs
 library(kableExtra) #tables with different styles
 
-
 ```
 
 ```{block, type="objectives"}
 **Objetivos do capítulo**  
-1. Apresentar o teste T  
-2. Discutir os pressupostos de execução do teste T  
+1. Apresentar o teste Qui-quadrado
+2. Diferenciar o qui-quadrado de aderência, homogeneidade e independência
 3. Realizar gráficos relacionados à comparação de médias  
 4. Apresentar e interpretar métricas de tamanho do efeito  
 5. Dar exemplos relacionados à escrita dos resultados 
 6. Apresentar versões não paramétricas do teste T (Wilcoxon-Mann-Whitney)
 ```
 
+
+O Teste Qui-quadrado é um conjunto de testes não-paramétricos utilizados para (1) verificar as distribuições de probabilidades de cada categoria de uma variável em relação a um valor teórico esperado (aderência), (2) verificar se as distribuições das categorias são as mesmas para diferentes subpopulações (homogeneidade) e (3) verificar se duas variáveis categóricas são independentes (independência). Apesar da diferenças em relação às perguntas analíticas, o sistema matemático é o mesmo:
+
+
+
+$$\chi^2=\sum_{k=1}^{n} \frac{(O_k - E_k)^2}{E_k}$$
+onde:
+K se refere a quantidade de classes
+O é o valor observado de uma determinada classe
+E é o valor esperado desta classe
+
+
+Pela fórmula, é possível deduzir que quanto maior for a discrepância entre as frequências observadas empiricamente (O) e as frequências esperadas (E), maior será a estatística de teste e, consequentemente, menor será o valor de P.
+
+Se assume os seguintes pressupostos funcionais à execução de um Qui-quadrado:  
+
+*(i)* Os dados são aleatórios e representativos da população  
+*(ii)* as variáveis analisadas são categóricas (e.g., sexo, nível de escolaridade, grau de uma doença)  
+*(iii)* Todas as frequências esperadas são maiores ou iguais a 1  
+*(iv)* No máximo, apenas 20% das frequências esperadas são inferiores a 5.  
+
+
+uma curiosidade que remonta a história e explica parte da desavença que Pearson tinha com Fisher. O qui-quadrado foi originalmente desenvolvido em 1900 e 1904 por Karl Pearson [@Pearson1900]. Ronald Fisher detectou um erro no cálculo dos graus de liberdade e rapidamente divulgou isso, para descontentamento de Pearson [@BAIRD1983].
+
+
+A tabela abaixo descreve as condições de análise, com exemplos ilustrativos:
+
+
+  | Versão do teste | Variáveis           | Exemplo                                                                                       |
+  | :-----------    | :-----------        | :-----------                                                                                  |    
+  | Aderência       | 1 categórica        | Verificar se a proporção de caras e coroas é de 50% cada                                      |
+  | Homogeneidade   | 2 categóricas       | Verificar se a proporção de homens e mulheres que gostam de uma marca de celular é similar    |
+  | Independência   | 2 categóricas       | Verificar se o sexo e a escolha do curso de graduação são independentes                       |
+
+Algumas notas: O Qui-quadrado de aderência também é chamado de "qualidade do ajuste" ou "bondade". Estas são traduções tipicamente para **goodnes of fit**. Como todas as análises são realizadas de uma maneira virtualmente idêntica, essas distinções são mais teóricas do que práticas. O Qui-quadrado de aderência tem uma proposta parecida com a ANOVA de uma via.
+
+
+## Pesquisa
+  
+<div class="alert alert-info" role="alert">
+  <strong>Base: </strong> Base R TDAH Arruda.Rdata
+</div>  
+
+
+Neste capítulo, vamos utilizar a pesquisa intitulada "Parent-reported diagnosis of Attention Deficit Hyperactivity Disorder and psychostimulant use among children and adolescents: a population-based nationwide study", que está em avaliação pela revista "Social Psychiatry and Psychiatric Epidemiology (SPPE)". Neste trabalho, tivemos o objetivo de verificar aspectos epidemiológicos do Transtorno do Déficit de Atenção com Hiperatividade (TDAH) em uma amostra representativa de crianças e adolescentes brasileiros, bem como explorar eventuais associações entre características sociodemográficas, especialmente os sexo do participante, e possíveis fatores e risco e TDAH.
+
+## Execução no R
+
+Neste momento, vamos seguir apenas com o qui-quadrado de independência, que foi o utilizado neste artigo. Como exposto no decorrer de outros capítulos, o teste de hipóteses começa pela formulação conceitual das hipóteses. Apesar de ser possível estipular $H_0$ e $H_a$ a partir de equações específicas,a apresentação será textual/substantiva.
+
+
+$$H_0 = Não\ há\ associação\ entre\ sexo\ e\ TDAH \\ H_a = Há\ associação\ entre\ sexo\ e\ TDAH \\ \alpha = 0.05$$
+Uma característica colateral a esta apresentação textual do teste de hipóteses do Qui-quadrado é evitar confusões que ocorrem em relação ao conceito do teste e sua formulação matemática. Com muita frequência, dividimos os testes de hipóteses naqueles que verificam "associação" e naqueles que verificam "diferenças". Conceitualmente, o Qui-quadrado investiga associação entre variáveis. No entanto, sua formulação matemática é feita pela diferença entre um valor observado e um valor esperado (tal como ilustrado na equação ao início do capítulo). ASsim, acredito que a formulação apenas textual evita criar confusões e ainda tornar o conteúdo mais palatável.
+
+Posto isso, o gráfico de barras é sempre um bom início para visualizar os dados. Repare que a barra azul (que representa a porcentagem de TDAH) parece se comportar de maneira diferente nos grupos. 
+
+```{r}
+ggplot(ds_selected, aes(x= sex_male, fill = adhd_parent)) +
+  geom_bar(position = "fill") +
+  coord_flip() +
+  labs(x = "sexo", y = "Proporção", fill = "TDAH")
+```
+
+
+Em seguida, a tabela de contingência traz informações sobre o relacionamento das variáveis. Apesar do qui-quadrado não eleger uma Vi e uma VD, Com bastante frequência utilizamos as linhas para apresentar a variável de maior interesse (neste caso, sexo) e as colunas para indicar o critério ou o eventual desfecho (neste caso, ter ou não TDAH). A porcentagem nas linhas e o valor esperado (em caso de independência entre as variáveis) auxiliam bastante na descrição dos resultados.
+
+
+```{r}
+gmodels::CrossTable(ds_selected$sex_male,ds_selected$adhd_parent,
+           expected = T,
+           chisq = T, prop.c = F, prop.t = F, prop.chisq = F)
+```
+
+O cálculo do qui-quadrado apresentado abaixo deixa claro que que é possível rejeitar a Hipótese nula, uma vez que o valor de P é menor do que o nível de significância previamente estipulado (0.05)
+
+
+```{block, type="writing"}
+**Como escrever os resultados**  
+  
+A associação entre o sexo do participante e sua condição clínica (ter ou não TDAH) foi investida por um Teste Qui-quadrado de independência. Os resultados indicarma que ambas as variáveis são associadas (X2(1) = 41.605).
+```  
+
+
+## Tamanho do efeito  
+
+Como tenho apresentado no decorrer dos outros capítulos, os valores de P quase nunca são informativos sobre a relevância dos resultados. O tamanho do efeito mais utilizado no ambiente das análises de Qui quadardo é o V de Cramer. Esta estatística gera valores 0-1 e é dada da seguinte maneira:
+
+$$V=\sqrt\frac{\chi^2}{n*df^`}$$
+Em que:
+$\chi^2$ = valor do Qui quadrado obtido
+n = tamanho da amostra
+$df^`$ menor valor entre (Linhas - 1) ou (Colunas - 1) da tabela de contingências
+
+
+que pode tem interpretação baseada nos graus de liberdade e é feita da seguinte maneira:
+
+  | Graus de liberdade  | Pequeno     | Médio       |  Grande     |
+  | :-----------        | :-----------| :-----------              |     
+  | 1                   | 0.1         | 0.3        |  0.5         |
+  | 2                   | 0.07        | 0.21       |  0.35        |
+  | 3                   | 0.06        | 0.17       |  0.29        |
+
+
+
+```{r}
+rcompanion::cramerV(ds_selected$sex_male,ds_selected$adhd_parent)
+```
+Com estas análises feiats, os resultados podem ser ampliados
+
+
+```{block, type="writing"}
+**Como escrever os resultados**  
+  
+A associação entre o sexo do participante e sua condição clínica (ter ou não TDAH) foi investida por um Teste Qui-quadrado de independência. Os resultados indicarma que ambas as variáveis são associadas (X2(1) = 41.605). O tamanho do efeito foi calculado pelo V de Cramer, que se mostrou pequeno 0.07.
+```  
+
+
+## Resumo  
+
+1. O Qui-quadrado não é apenas um teste, mas um conjunto de análises realizadas em variáveis categóricas.  
+2. Apesar de diferenças conceituais, o formato matemático é virtualmente o mesmo.
+3. O tamanho do efeito apresenta interpretações que podem variar em função dos graus de liberdade
 
