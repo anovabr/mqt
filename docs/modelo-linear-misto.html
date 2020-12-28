@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 5 Qui quadrado | Métodos quantitativos em Psicologia com R</title>
+  <title>Capítulo 9 Modelo linear misto | Métodos quantitativos em Psicologia com R</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 5 Qui quadrado | Métodos quantitativos em Psicologia com R" />
+  <meta property="og:title" content="Capítulo 9 Modelo linear misto | Métodos quantitativos em Psicologia com R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="cjvanlissa/gitbook-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 5 Qui quadrado | Métodos quantitativos em Psicologia com R" />
+  <meta name="twitter:title" content="Capítulo 9 Modelo linear misto | Métodos quantitativos em Psicologia com R" />
   
   <meta name="twitter:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="estatística-descritiva.html"/>
-<link rel="next" href="teste-t.html"/>
+<link rel="prev" href="anova-de-medidas-repetidas.html"/>
+<link rel="next" href="regressão-linear-simples.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -241,205 +241,251 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="qui-quadrado" class="section level1">
-<h1><span class="header-section-number">Capítulo 5</span> Qui quadrado</h1>
+<div id="modelo-linear-misto" class="section level1">
+<h1><span class="header-section-number">Capítulo 9</span> Modelo linear misto</h1>
 <div class="objectives">
 <p>
 <strong>Objetivos do capítulo</strong><br />
-1. Apresentar o teste Qui-quadrado<br />
-2. Diferenciar o qui-quadrado de aderência, homogeneidade e independência<br />
-3. Realizar gráficos relacionados à distribuição de porcentagens<br />
-4. Apresentar e interpretar métricas de tamanho do efeito<br />
-5. Dar exemplos relacionados à escrita dos resultados
+1. Apresentar a ANOVA de Medidas Repetidas.<br />
+2. Realizar passo-a-passo a modelagem analítica.<br />
+3. Verificar os pressupostos e implementar as correções sugeridas.<br />
+4. Escrever os resultados.
 </p>
 </div>
-<p>O Teste Qui-quadrado é um conjunto de testes não-paramétricos utilizados para (1) verificar as distribuições de probabilidades de cada categoria de uma variável em relação a um valor teórico esperado (aderência), (2) verificar se as distribuições das categorias são as mesmas para diferentes subpopulações (homogeneidade) e (3) verificar se duas variáveis categóricas são independentes (independência). Apesar da diferenças em relação às perguntas analíticas, o sistema matemático é o mesmo:</p>
-<p><span class="math display">\[\chi^2=\sum_{k=1}^{n} \frac{(O_k - E_k)^2}{E_k}\]</span>
-onde:
-K se refere a quantidade de classes
-O é o valor observado de uma determinada classe
-E é o valor esperado desta classe</p>
-<p>Pela fórmula, é possível deduzir que quanto maior for a discrepância entre as frequências observadas empiricamente (O) e as frequências esperadas (E), maior será a estatística de teste e, consequentemente, menor será o valor de P.</p>
-<p>Se assume os seguintes pressupostos funcionais à execução de um Qui-quadrado:</p>
-<p><em>(i)</em> Os dados são aleatórios e representativos da população<br />
-<em>(ii)</em> as variáveis analisadas são categóricas (e.g., sexo, nível de escolaridade, grau de uma doença)<br />
-<em>(iii)</em> Todas as frequências esperadas são maiores ou iguais a 1<br />
-<em>(iv)</em> No máximo, apenas 20% das frequências esperadas são inferiores a 5.</p>
-<p>uma curiosidade que remonta a história e explica parte da desavença que Pearson tinha com Fisher. O qui-quadrado foi originalmente desenvolvido em 1900 e 1904 por Karl Pearson <span class="citation">(Pearson <a href="#ref-Pearson1900" role="doc-biblioref">1900</a>)</span>. Ronald Fisher detectou um erro no cálculo dos graus de liberdade e rapidamente divulgou isso, para descontentamento de Pearson <span class="citation">(BAIRD <a href="#ref-BAIRD1983" role="doc-biblioref">1983</a>)</span>.</p>
-<p>A tabela abaixo descreve as condições de análise, com exemplos ilustrativos:</p>
+<p>O modelo linear misto (LMM) é um modelo linear, frequentemente utilizado para trabalhar dados longitudinais ou de medidas repetidas, que possibilita definir tanto parâmetros populacionais (efeitos fixos), como coeficientes individuais (efeitos aleatórios), além do erro experimental. Pragmaticamente, este modelo oferece mais flexibildiade à ANOVA de medidas repetidas e sua utilização vem ganhando mais espaço em Psicologia <span class="citation">(Gueorguieva and Krystal <a href="#ref-Gueorguieva2004" role="doc-biblioref">2004</a>)</span>.</p>
+<p>É importante atentar que os efeitos fixos são compatilhados por todos os indivíduos, enquanto os aleatórios são especificos de cada um dos participantes. Com isso, cada indivíduo tem a sua própria trajetória média (tanto intercepto como inclinação) e um subconjunto dos parâmetros de regressão são tomados como aleatórios.</p>
+<p>A tabela a seguir compara a ANOVA de medidas repetidas e o LMM</p>
 <table>
+<thead>
+<tr class="header">
+<th align="left">Característica</th>
+<th align="left">ANOVA (MR)</th>
+<th align="left">Modelo Linear Misto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Sujeitos medidos em vários momentos</td>
+<td align="left">Sim</td>
+<td align="left">Sim</td>
+</tr>
+<tr class="even">
+<td align="left">Dados completos em todos os segmentos</td>
+<td align="left">Sim</td>
+<td align="left">Não</td>
+</tr>
+<tr class="odd">
+<td align="left">Estimativas de tendências individuais</td>
+<td align="left">Não</td>
+<td align="left">Sim</td>
+</tr>
+<tr class="even">
+<td align="left">Covariáveis tempo-depenentes</td>
+<td align="left">Não</td>
+<td align="left">Sim</td>
+</tr>
+<tr class="odd">
+<td align="left">Complexidade computacional</td>
+<td align="left">Baixa</td>
+<td align="left">Alta</td>
+</tr>
+</tbody>
+</table>
+<div id="pesquisa-5" class="section level2">
+<h2><span class="header-section-number">9.1</span> Pesquisa</h2>
+<p>A esse momento, vamos ter como referência de análise a pesquisa intitulada <a href="https://www.scielo.br/scielo.php?script=sci_arttext&amp;pid=S0102-09352019000100109">“Avaliação psicométrica em português do indicador de dor crônica de Helsinki em cães com sinais crônicos de osteoartrite”</a>, que tem como primeira autora Lídia Matsubara e eu sou co-autor. Essa pesquisa foi previamente utilizada no capítulo de ANOVA de medidas repetidas.</p>
+<p>Nessa pesquisa, temos um <u>grupo controle</u> e um <u>grupo experimental</u> e todos os participantes foram avaliados em 5 momentos diferentes do tempo: 1 semana antes do início do tratamento (W2), imediatamente antes (W0), duas semanas e quatro semanas após o tratamento ter iniciado (S2 e s4) e após uma semana da retirada do tratamento (s6). Dessa forma, trata-se de um delineamento 2x5, considerando os 2 grupos e as 5 medições ao longo do tempo. A base <code>dados</code> reúne as varáveis da pesquisa em formato largo (wide) Entretanto, o formato longo é o mais tipicamente encontrado para análises longitudinais e, por isso, será imeplementado a seguir.</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="modelo-linear-misto.html#cb130-1"></a>tratamento &lt;-<span class="st"> </span>dados <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb130-2"><a href="modelo-linear-misto.html#cb130-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">id =</span> <span class="kw">row_number</span>()) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb130-3"><a href="modelo-linear-misto.html#cb130-3"></a><span class="st">  </span><span class="kw">select</span>(id, grupo_dummy,<span class="kw">starts_with</span>(<span class="st">&quot;total_&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb130-4"><a href="modelo-linear-misto.html#cb130-4"></a><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="op">-</span><span class="kw">c</span>(id,grupo_dummy),</span>
+<span id="cb130-5"><a href="modelo-linear-misto.html#cb130-5"></a>                <span class="dt">names_to =</span> <span class="st">&quot;tempo&quot;</span>,</span>
+<span id="cb130-6"><a href="modelo-linear-misto.html#cb130-6"></a>               <span class="dt">values_to=</span> <span class="st">&quot;resultado&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb130-7"><a href="modelo-linear-misto.html#cb130-7"></a><span class="st">  </span><span class="kw">rename</span>(<span class="dt">grupo =</span> grupo_dummy) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb130-8"><a href="modelo-linear-misto.html#cb130-8"></a><span class="st">  </span><span class="kw">filter</span>(grupo <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb130-9"><a href="modelo-linear-misto.html#cb130-9"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">grupo =</span> <span class="kw">factor</span>(<span class="kw">if_else</span>(grupo <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, <span class="st">&quot;Placebo&quot;</span>, <span class="st">&quot;Experimental&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb130-10"><a href="modelo-linear-misto.html#cb130-10"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">tempo =</span> <span class="kw">factor</span>(<span class="kw">case_when</span>(</span>
+<span id="cb130-11"><a href="modelo-linear-misto.html#cb130-11"></a>    tempo <span class="op">==</span><span class="st"> &quot;total_w4&quot;</span> <span class="op">~</span><span class="st"> &quot;antes&quot;</span>,</span>
+<span id="cb130-12"><a href="modelo-linear-misto.html#cb130-12"></a>    tempo <span class="op">==</span><span class="st"> &quot;total_w0&quot;</span> <span class="op">~</span><span class="st"> &quot;no_dia&quot;</span>,</span>
+<span id="cb130-13"><a href="modelo-linear-misto.html#cb130-13"></a>    tempo <span class="op">==</span><span class="st"> &quot;total_s2&quot;</span> <span class="op">~</span><span class="st"> &quot;semana_2&quot;</span>,</span>
+<span id="cb130-14"><a href="modelo-linear-misto.html#cb130-14"></a>    tempo <span class="op">==</span><span class="st"> &quot;total_s4&quot;</span> <span class="op">~</span><span class="st"> &quot;semana_4&quot;</span>,</span>
+<span id="cb130-15"><a href="modelo-linear-misto.html#cb130-15"></a>    tempo <span class="op">==</span><span class="st"> &quot;total_s6&quot;</span> <span class="op">~</span><span class="st"> &quot;semana_6&quot;</span>,</span>
+<span id="cb130-16"><a href="modelo-linear-misto.html#cb130-16"></a>  )))</span></code></pre></div>
+<p>As variávies neste conjunto de dados são:</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="modelo-linear-misto.html#cb131-1"></a>tratamento <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">names</span>()</span></code></pre></div>
+<pre><code>## [1] &quot;id&quot;        &quot;grupo&quot;     &quot;tempo&quot;     &quot;resultado&quot;</code></pre>
+<p>Dessa forma:</p>
+<p><strong>id</strong> refere-se a uma identificação única de cada participante.<br />
+<strong>grupo</strong> refere-se ao grupo em que o participante foi alocado, tal como previamente apresentado (controle ou experimental).<br />
+<strong>tempo</strong> diz respeito aos 5 pontos de medida e<br />
+<strong>resultado</strong> é uma variável aleatória contínua do valor obtido na escala utilizada.</p>
+</div>
+<div id="execução-no-r-6" class="section level2">
+<h2><span class="header-section-number">9.2</span> execução no R</h2>
+<p>A modelagem será feita via LMM. O pacote <code>lme4</code> e seu complemento <code>lmerTest</code> serão utilizados.</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="modelo-linear-misto.html#cb133-1"></a><span class="kw">library</span>(lme4)</span></code></pre></div>
+<pre><code>## Loading required package: Matrix</code></pre>
+<pre><code>## 
+## Attaching package: &#39;Matrix&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:tidyr&#39;:
+## 
+##     expand, pack, unpack</code></pre>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="modelo-linear-misto.html#cb137-1"></a><span class="kw">library</span>(lmerTest)</span></code></pre></div>
+<pre><code>## Warning: package &#39;lmerTest&#39; was built under R version 4.0.2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;lmerTest&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:lme4&#39;:
+## 
+##     lmer</code></pre>
+<pre><code>## The following object is masked from &#39;package:stats&#39;:
+## 
+##     step</code></pre>
+<p>A estrutura computacional agora permite incluir tanto efeitos fixos como aleatórios. Quando eles são definidos como correlacionados, se utiliza uma barra verticail (|); quando descorrelacionados, duas barras verticais (||) são utilizadas. Nesta pesquisa, pode-se entender que cada participante tem seu próprio intercepto, ou seja, seu próprio valor de início. A sintaxe a seguinte específica o modelo e o armazena sob nome de <code>mod_lme</code>.</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="modelo-linear-misto.html#cb142-1"></a>mod_lme &lt;-<span class="st"> </span><span class="kw">lmer</span>(resultado <span class="op">~</span><span class="st"> </span>tempo<span class="op">*</span>grupo <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">|</span>id) , <span class="dt">data =</span> tratamento)</span></code></pre></div>
+<p>Repare que esse modelo é composto pelo se seguintes componentes:<br />
+1. efeito fixo do <code>tempo</code><br />
+2. efeito fixo do <code>grupo</code>,<br />
+3. efeito fixo da interação <code>tempo x grupo</code><br />
+4. efeito aleatório do <code>id</code>, indicando um intercepto aleatório e específico por participante</p>
+<p>A visualização dessa modelagem é bastante útil para compreender o que significa a ideia de intercepto aleatório.</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="modelo-linear-misto.html#cb143-1"></a><span class="kw">ggplot</span>(tratamento, <span class="kw">aes</span>(<span class="dt">x=</span>tempo, <span class="dt">y=</span>resultado, <span class="dt">group=</span>id, <span class="dt">color=</span>id, <span class="dt">linetype=</span>grupo)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb143-2"><a href="modelo-linear-misto.html#cb143-2"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size=</span><span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb143-3"><a href="modelo-linear-misto.html#cb143-3"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="kw">mean</span>(tratamento<span class="op">$</span>resultado[tratamento<span class="op">$</span>tempo <span class="op">==</span><span class="st"> &quot;antes&quot;</span>]), <span class="dt">linetype=</span><span class="st">&quot;dashed&quot;</span>) <span class="op">+</span></span>
+<span id="cb143-4"><a href="modelo-linear-misto.html#cb143-4"></a><span class="st">   </span><span class="kw">annotate</span>(<span class="dt">geom =</span> <span class="st">&quot;text&quot;</span>, <span class="dt">x=</span><span class="fl">0.5</span>, <span class="dt">y =</span> <span class="kw">mean</span>(tratamento<span class="op">$</span>resultado[tratamento<span class="op">$</span>tempo <span class="op">==</span><span class="st"> &quot;antes&quot;</span>])<span class="op">+</span><span class="dv">1</span>, <span class="dt">label =</span> <span class="st">&quot;Média&quot;</span>,<span class="dt">hjust =</span> <span class="dv">0</span>)</span></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-104-1.png" width="864" style="display: block; margin: auto;" /></p>
+<p>Repare que cada participante (<code>id</code>) inicia em um ponto específico e tem uma trajetória específica no decorrer do tratamento. O valor médio antes do tratamento está apresentado pela linha pontilhada. Apesar de informativo, esse gráfico tem pouca aplicação pedagógica e, por isso, não deve ser relatado.</p>
+<p>Uma vez que o modelo já foi criado, agora é necessário recuperar seus resultados. É importante notar que O pressuposto da normalidade é necessário e ele já foi acessado (e aceito) anteriormente. Conforme dito ao início do capítulo, O LMM relaxa o pressuposto esfericidadde e, por consequência, também o da homogeneidade <span class="citation">(Quené and Bergh <a href="#ref-Quen2004" role="doc-biblioref">2004</a>)</span>.</p>
+<p>Inicialmente, a <code>anova</code> permite uma visualização de todos os coeficientes do modelo. Isso é importante para verificar cada um dos preditores estipulados e sua significância. A interpretação dos resultados é similar à realizada em modelos de regressão e totalmente convergente ao resultado obtido na ANOVA. Novamente, a leitura da tabela deve começar pela interação.</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="modelo-linear-misto.html#cb144-1"></a><span class="kw">anova</span>(mod_lme) <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
+<table>
+<caption>Type III Analysis of Variance Table with Satterthwaite’s method</caption>
 <colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
+<col width="24%" />
+<col width="12%" />
+<col width="13%" />
+<col width="10%" />
+<col width="10%" />
+<col width="13%" />
+<col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th align="left">Versão do teste</th>
-<th align="left">Variáveis</th>
-<th align="left">Exemplo</th>
+<th align="center"> </th>
+<th align="center">Sum Sq</th>
+<th align="center">Mean Sq</th>
+<th align="center">NumDF</th>
+<th align="center">DenDF</th>
+<th align="center">F value</th>
+<th align="center">Pr(&gt;F)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Aderência</td>
-<td align="left">1 categórica</td>
-<td align="left">Verificar se a proporção de caras e coroas é de 50% cada</td>
+<td align="center"><strong>tempo</strong></td>
+<td align="center">146.9</td>
+<td align="center">36.72</td>
+<td align="center">4</td>
+<td align="center">152</td>
+<td align="center">3.304</td>
+<td align="center">0.01254</td>
 </tr>
 <tr class="even">
-<td align="left">Homogeneidade</td>
-<td align="left">2 categóricas</td>
-<td align="left">Verificar se a proporção de homens e mulheres que gostam de uma marca de celular é similar</td>
+<td align="center"><strong>grupo</strong></td>
+<td align="center">7.851</td>
+<td align="center">7.851</td>
+<td align="center">1</td>
+<td align="center">38</td>
+<td align="center">0.7063</td>
+<td align="center">0.4059</td>
 </tr>
 <tr class="odd">
-<td align="left">Independência</td>
-<td align="left">2 categóricas</td>
-<td align="left">Verificar se o sexo e a escolha do curso de graduação são independentes</td>
+<td align="center"><strong>tempo:grupo</strong></td>
+<td align="center">30.95</td>
+<td align="center">7.738</td>
+<td align="center">4</td>
+<td align="center">152</td>
+<td align="center">0.6962</td>
+<td align="center">0.5957</td>
 </tr>
 </tbody>
 </table>
-<p>Algumas notas: O Qui-quadrado de aderência também é chamado de “qualidade do ajuste” ou “bondade”. Estas são traduções tipicamente para <strong>goodnes of fit</strong>. Como todas as análises são realizadas de uma maneira virtualmente idêntica, essas distinções são mais teóricas do que práticas. O Qui-quadrado de aderência tem uma proposta parecida com a ANOVA de uma via.</p>
-<div id="pesquisa-1" class="section level2">
-<h2><span class="header-section-number">5.1</span> Pesquisa</h2>
-<div class="alert alert-info" role="alert">
-<p><strong>Base: </strong> Base R TDAH Arruda.Rdata</p>
-</div>
-<p>Neste capítulo, vamos utilizar a pesquisa intitulada “Parent-reported diagnosis of Attention Deficit Hyperactivity Disorder and psychostimulant use among children and adolescents: a population-based nationwide study”, que está em avaliação pela revista “Social Psychiatry and Psychiatric Epidemiology (SPPE)”. Neste trabalho, tivemos o objetivo de verificar aspectos epidemiológicos do Transtorno do Déficit de Atenção com Hiperatividade (TDAH) em uma amostra representativa de crianças e adolescentes brasileiros, bem como explorar eventuais associações entre características sociodemográficas, especialmente os sexo do participante, e possíveis fatores e risco e TDAH.</p>
-</div>
-<div id="execução-no-r" class="section level2">
-<h2><span class="header-section-number">5.2</span> Execução no R</h2>
-<p>Neste momento, vamos seguir apenas com o qui-quadrado de independência, que foi o utilizado neste artigo. Como exposto no decorrer de outros capítulos, o teste de hipóteses começa pela formulação conceitual das hipóteses. Apesar de ser possível estipular <span class="math inline">\(H_0\)</span> e <span class="math inline">\(H_a\)</span> a partir de equações específicas,a apresentação será textual/substantiva.</p>
-<p><span class="math display">\[H_0 = Não\ há\ associação\ entre\ sexo\ e\ TDAH \\ H_a = Há\ associação\ entre\ sexo\ e\ TDAH \\ \alpha = 0.05\]</span>
-Uma característica colateral a esta apresentação textual do teste de hipóteses do Qui-quadrado é evitar confusões que ocorrem em relação ao conceito do teste e sua formulação matemática. Com muita frequência, dividimos os testes de hipóteses naqueles que verificam “associação” e naqueles que verificam “diferenças”. Conceitualmente, o Qui-quadrado investiga associação entre variáveis. No entanto, sua formulação matemática é feita pela diferença entre um valor observado e um valor esperado (tal como ilustrado na equação ao início do capítulo). ASsim, acredito que a formulação apenas textual evita criar confusões e ainda tornar o conteúdo mais palatável.</p>
-<p>Posto isso, o gráfico de barras é sempre um bom início para visualizar os dados. Repare que a barra azul (que representa a porcentagem de TDAH) parece se comportar de maneira diferente nos grupos.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="qui-quadrado.html#cb51-1"></a><span class="kw">ggplot</span>(ds_selected, <span class="kw">aes</span>(<span class="dt">x=</span> sex_male, <span class="dt">fill =</span> adhd_parent)) <span class="op">+</span></span>
-<span id="cb51-2"><a href="qui-quadrado.html#cb51-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>) <span class="op">+</span></span>
-<span id="cb51-3"><a href="qui-quadrado.html#cb51-3"></a><span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span></span>
-<span id="cb51-4"><a href="qui-quadrado.html#cb51-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;sexo&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Proporção&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;TDAH&quot;</span>)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Em seguida, a tabela de contingência traz informações sobre o relacionamento das variáveis. Apesar do qui-quadrado não eleger uma Vi e uma VD, Com bastante frequência utilizamos as linhas para apresentar a variável de maior interesse (neste caso, sexo) e as colunas para indicar o critério ou o eventual desfecho (neste caso, ter ou não TDAH). A porcentagem nas linhas e o valor esperado (em caso de independência entre as variáveis) auxiliam bastante na descrição dos resultados.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="qui-quadrado.html#cb52-1"></a>gmodels<span class="op">::</span><span class="kw">CrossTable</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent,</span>
-<span id="cb52-2"><a href="qui-quadrado.html#cb52-2"></a>           <span class="dt">expected =</span> T,</span>
-<span id="cb52-3"><a href="qui-quadrado.html#cb52-3"></a>           <span class="dt">chisq =</span> T, <span class="dt">prop.c =</span> F, <span class="dt">prop.t =</span> F, <span class="dt">prop.chisq =</span> F)</span></code></pre></div>
-<pre><code>## 
-##  
-##    Cell Contents
-## |-------------------------|
-## |                       N |
-## |              Expected N |
-## |           N / Row Total |
-## |-------------------------|
+<p>Verifique que a tabela apresenta três os resultados: <code>tempo x grupo</code>, <code>grupo</code> e <code>tempo</code>. A técnica de Satterthwaite’s method é utilizada para corrigir os valores do grau de liberdade e, consequentemente, os valores de p. Os resultados são virtualmente identicos aos obtidos pela ANOVA, com a diferença que os graus de liberdade do numerador de do denominador não foram corrigidos.</p>
+<p>Para obter as informações completas do modelo, é necessário solicitar o <code>summary</code>. Essa função retorna 4 informações calculadas: <code>Scaled residuals</code>, <code>Random effects</code>, <code>Fixed effects</code> e <code>Correlation of Fixed Effect</code> e serve para aprofundar a interpretação dos resultados. Uma particular diferença entre esse relatório e o da ANOVA de Medidas Repetidas é o np2, que não faz parte do LMM.</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="modelo-linear-misto.html#cb145-1"></a><span class="kw">summary</span>(mod_lme) </span></code></pre></div>
+<pre><code>## Linear mixed model fit by REML. t-tests use Satterthwaite&#39;s method [
+## lmerModLmerTest]
+## Formula: resultado ~ tempo * grupo + (1 | id)
+##    Data: tratamento
 ## 
-##  
-## Total Observations in Table:  7114 
+## REML criterion at convergence: 1137.5
 ## 
-##  
-##                      | ds_selected$adhd_parent 
-## ds_selected$sex_male |        no |       yes | Row Total | 
-## ---------------------|-----------|-----------|-----------|
-##               female |      3379 |       183 |      3562 | 
-##                      |  3309.145 |   252.855 |           | 
-##                      |     0.949 |     0.051 |     0.501 | 
-## ---------------------|-----------|-----------|-----------|
-##                 male |      3230 |       322 |      3552 | 
-##                      |  3299.855 |   252.145 |           | 
-##                      |     0.909 |     0.091 |     0.499 | 
-## ---------------------|-----------|-----------|-----------|
-##         Column Total |      6609 |       505 |      7114 | 
-## ---------------------|-----------|-----------|-----------|
+## Scaled residuals: 
+##     Min      1Q  Median      3Q     Max 
+## -2.4365 -0.4386 -0.0476  0.4571  3.8758 
 ## 
-##  
-## Statistics for All Table Factors
+## Random effects:
+##  Groups   Name        Variance Std.Dev.
+##  id       (Intercept) 38.77    6.227   
+##  Residual             11.11    3.334   
+## Number of obs: 200, groups:  id, 40
 ## 
+## Fixed effects:
+##                             Estimate Std. Error        df t value Pr(&gt;|t|)    
+## (Intercept)                 15.10526    1.62039  55.61796   9.322 5.83e-13 ***
+## tempono_dia                  0.84211    1.08166 152.00000   0.779    0.437    
+## temposemana_2               -0.21053    1.08166 152.00000  -0.195    0.846    
+## temposemana_4               -1.10526    1.08166 152.00000  -1.022    0.308    
+## temposemana_6               -1.00000    1.08166 152.00000  -0.925    0.357    
+## grupoPlacebo                 2.60902    2.23636  55.61796   1.167    0.248    
+## tempono_dia:grupoPlacebo    -1.17544    1.49284 152.00000  -0.787    0.432    
+## temposemana_2:grupoPlacebo  -1.12281    1.49284 152.00000  -0.752    0.453    
+## temposemana_4:grupoPlacebo  -2.13283    1.49284 152.00000  -1.429    0.155    
+## temposemana_6:grupoPlacebo  -0.09524    1.49284 152.00000  -0.064    0.949    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Pearson&#39;s Chi-squared test 
-## ------------------------------------------------------------
-## Chi^2 =  41.60464     d.f. =  1     p =  1.117279e-10 
-## 
-## Pearson&#39;s Chi-squared test with Yates&#39; continuity correction 
-## ------------------------------------------------------------
-## Chi^2 =  41.01118     d.f. =  1     p =  1.513606e-10 
-## 
-## </code></pre>
-<p>O cálculo do qui-quadrado apresentado abaixo deixa claro que que é possível rejeitar a Hipótese nula, uma vez que o valor de P é menor do que o nível de significância previamente estipulado (0.05)</p>
+## Correlation of Fixed Effects:
+##             (Intr) tmpn_d tmps_2 tmps_4 tmps_6 grpPlc tmp_:P tm_2:P tm_4:P
+## tempono_dia -0.334                                                        
+## temposemn_2 -0.334  0.500                                                 
+## temposemn_4 -0.334  0.500  0.500                                          
+## temposemn_6 -0.334  0.500  0.500  0.500                                   
+## grupoPlaceb -0.725  0.242  0.242  0.242  0.242                            
+## tmpn_d:grpP  0.242 -0.725 -0.362 -0.362 -0.362 -0.334                     
+## tmpsmn_2:gP  0.242 -0.362 -0.725 -0.362 -0.362 -0.334  0.500              
+## tmpsmn_4:gP  0.242 -0.362 -0.362 -0.725 -0.362 -0.334  0.500  0.500       
+## tmpsmn_6:gP  0.242 -0.362 -0.362 -0.362 -0.725 -0.334  0.500  0.500  0.500</code></pre>
 <div class="writing">
 <p>
 <strong>Como escrever os resultados</strong>
 </p>
 <p>
-A associação entre o sexo do participante e sua condição clínica (ter ou não TDAH) foi investida por um Teste Qui-quadrado de independência. Os resultados indicarma que ambas as variáveis são associadas (X2(1) = 41.605).
+Os dados foram analisados através de um Modelo Linear de Efeitos Mistos, que verificou o efeito do tempo, do grupo, a interação entre esses dois preditores e permitiu um intercepto aleatório para cada participante. Dessa maneira, esse modelo levou em consideração tanto efeitos fixos quanto aleatórios, além de relaxar alguns pressupostos tradicionais dos modelos de regressão. Os resultados permitem concluir que Não há interação significativa tempo x grupo (F(4, 152 = 0.696), p = 0.696), bem como não há efeito significativo do grupo (F(1, 38 = 0.706), p = 0.706). Em outra direção, o efeito o tempo foi significativo (F(4, 152 = 3.304), p = 0.013)
 </p>
 </div>
 </div>
-<div id="tamanho-do-efeito" class="section level2">
-<h2><span class="header-section-number">5.3</span> Tamanho do efeito</h2>
-<p>Como tenho apresentado no decorrer dos outros capítulos, os valores de P quase nunca são informativos sobre a relevância dos resultados. O tamanho do efeito mais utilizado no ambiente das análises de Qui quadardo é o V de Cramer. Esta estatística gera valores 0-1 e é dada da seguinte maneira:</p>
-<p><span class="math display">\[V=\sqrt\frac{\chi^2}{n*df^`}\]</span>
-Em que:
-<span class="math inline">\(\chi^2\)</span> = valor do Qui quadrado obtido
-n = tamanho da amostra
-<span class="math inline">\(df^`\)</span> menor valor entre (Linhas - 1) ou (Colunas - 1) da tabela de contingências</p>
-<p>que pode tem interpretação baseada nos graus de liberdade e é feita da seguinte maneira:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Graus de liberdade</th>
-<th align="left">Pequeno</th>
-<th align="left">Médio</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">1</td>
-<td align="left">0.1</td>
-<td align="left">0.3</td>
-</tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="left">0.07</td>
-<td align="left">0.21</td>
-</tr>
-<tr class="odd">
-<td align="left">3</td>
-<td align="left">0.06</td>
-<td align="left">0.17</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="qui-quadrado.html#cb54-1"></a>rcompanion<span class="op">::</span><span class="kw">cramerV</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent)</span></code></pre></div>
-<pre><code>## Registered S3 method overwritten by &#39;DescTools&#39;:
-##   method         from 
-##   reorder.factor gdata</code></pre>
-<pre><code>## Cramer V 
-##  0.07647</code></pre>
-<p>Com estas análises feitas, os resultados podem ser ampliados</p>
-<div class="writing">
-<p>
-<strong>Como escrever os resultados</strong>
-</p>
-<p>
-A associação entre o sexo do participante e sua condição clínica (ter ou não TDAH) foi investida por um Teste Qui-quadrado de independência. Os resultados indicarma que ambas as variáveis são associadas (X2(1) = 41.605). O tamanho do efeito foi calculado pelo V de Cramer, que se mostrou pequeno 0.07.
-</p>
-</div>
-</div>
-<div id="resumo-2" class="section level2">
-<h2><span class="header-section-number">5.4</span> Resumo</h2>
+<div id="resumo-6" class="section level2">
+<h2><span class="header-section-number">9.3</span> Resumo</h2>
 <ol style="list-style-type: decimal">
-<li>O Qui-quadrado não é apenas um teste, mas um conjunto de análises realizadas em variáveis categóricas.<br />
+<li>O Modelo Linear de Efeitos Mistos (LMM) oferece maior versatilidade à ANOVA de medidas repetidas<br />
 </li>
-<li>Apesar de diferenças conceituais, o formato matemático é virtualmente o mesmo.</li>
-<li>O tamanho do efeito apresenta interpretações que podem variar em função dos graus de liberdade</li>
+<li>A ANOVA tem como pressuposto Normalidade e Esfericidade, enquanto o LMM apenas Normalidade dos resíduos</li>
+<li>Os resultados frequentemente encontrados em ambos os modelos vão na mesma direção<br />
+</li>
+<li>A implementação computacional é mais trabalhosa<br />
+</li>
+<li>A escrita apresenta algumas particularidades relacionadas à cada modelo.</li>
 </ol>
 
 </div>
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
-<div id="ref-BAIRD1983">
-<p>BAIRD, DAVIS. 1983. “The Fisher/Pearson Chi-Squared Controversy: A Turning Point for Inductive Inference.” <em>The British Journal for the Philosophy of Science</em> 34 (2): 105–18. <a href="https://doi.org/10.1093/bjps/34.2.105">https://doi.org/10.1093/bjps/34.2.105</a>.</p>
+<div id="ref-Gueorguieva2004">
+<p>Gueorguieva, Ralitza, and John H. Krystal. 2004. “Move over ANOVA.” <em>Archives of General Psychiatry</em> 61 (3): 310. <a href="https://doi.org/10.1001/archpsyc.61.3.310">https://doi.org/10.1001/archpsyc.61.3.310</a>.</p>
 </div>
-<div id="ref-Pearson1900">
-<p>Pearson, Karl. 1900. “X. On the Criterion That a Given System of Deviations from the Probable in the Case of a Correlated System of Variables Is Such That It Can Be Reasonably Supposed to Have Arisen from Random Sampling.” <em>The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science</em> 50 (302): 157–75. <a href="https://doi.org/10.1080/14786440009463897">https://doi.org/10.1080/14786440009463897</a>.</p>
+<div id="ref-Quen2004">
+<p>Quené, Hugo, and Huub van den Bergh. 2004. “On Multi-Level Modeling of Data from Repeated Measures Designs: A Tutorial.” <em>Speech Communication</em> 43 (1-2): 103–21. <a href="https://doi.org/10.1016/j.specom.2004.02.004">https://doi.org/10.1016/j.specom.2004.02.004</a>.</p>
 </div>
 </div>
             </section>
@@ -447,8 +493,8 @@ A associação entre o sexo do participante e sua condição clínica (ter ou n�
           </div>
         </div>
       </div>
-<a href="estatística-descritiva.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="teste-t.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="anova-de-medidas-repetidas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="regressão-linear-simples.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -479,7 +525,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/04-qui_quadrado.Rmd",
+"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/08-linear_misto.Rmd",
 "text": "Edit"
 },
 "history": {
