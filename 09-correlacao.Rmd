@@ -1,0 +1,133 @@
+# Correlação
+
+
+```{r, include = FALSE }
+load("~/anovabr/mqt/bases/Base R - imagem corporal.RData")
+
+library(tidyverse)
+library(knitr) #tables and graphs
+library(kableExtra) #tables with different styles
+library(olsrr) #regression diagnostics
+library(gridExtra) #plot together
+library(stargazer) #presenting results
+```
+
+A análise de correlação é um procedimento estatístico para verificar a relação entre duas variáveis. Existem diferentes formas para realizar tal análise e a maioria busca medir a <u>força</u> e a <u>direção</u> da <u>associação linear</u> entre duas variáveis aleatórias. A tabela a seguir descreve alguns dos métodos.
+
+
+
+  | Nível de medida | Correlação / Coeficiente                     |  
+  | :-----------    | :-----------                                 |        
+  | Intervalar      | Correlação Produto momento de Pearson        |   
+  | Ordinal         | Correlação de Spearman                       |
+  | Nominal         | Coeficiente Phi                              |
+  
+
+A Correlação de Pearson é apresentado por $\rho$ ou r, é uma das mais frequentemente calculadas em Psicologia e será demonstrada neste capítulo. Entretanto, tenha em mente que algumas áreas específicas costumam utilizar outras correlações. Como exemplo, é bem típico em Psicometria utilizar indicadores categóricos e, com isso, realizar correlações tetracóricas ou policóricas, o que não será abordado aqui. 
+
+O coeficiente de correlação é formado por um <u>valor numérico</u> e um <u>sinal</u> e o gráfico de dispersão é uma excelente forma de apresentar o relacionamento bivariado.  A tabela abaixo descreve as possíveis interpretações [@Cohen1988]
+
+  | Valor/ Sinal  | Positivo (+)          | Negativo (-)       | 
+  | :-----------  | :-----------          | :-----------       |
+  | 0.1           | Fraca positiva        | Fraca negativa     |
+  | 0.3           | Moderada positiva     | Moderada negativa  |
+  | 0.5           | Forte positiva        | Forte negativa     |
+
+As imagens abaixo demonstram tais conceitos.  
+
+```{r}
+grid.arrange(
+  ggplot(data = data.frame(MASS::mvrnorm(n=200, mu=c(0, 0), Sigma=matrix(c(1, .1, .1, 1), nrow=2), empirical=TRUE)), 
+         aes(x = X1, y = X2)) + geom_jitter() + labs(x= "", y = "Y") +
+    geom_text(aes(label=paste("r=+0.1 - fraca")),  x=-Inf, y=Inf, hjust=-0.2, vjust=1.2),
+  ggplot(data = data.frame(MASS::mvrnorm(n=200, mu=c(0, 0), Sigma=matrix(c(1, .3, .3, 1), nrow=2), empirical=TRUE)), 
+         aes(x = X1, y = X2)) + geom_jitter() + labs(x= "X", y = "") +
+    geom_text(aes(label=paste("r=+0.3 - moderada")),  x=-Inf, y=Inf, hjust=-0.2, vjust=1.2),
+  ggplot(data = data.frame(MASS::mvrnorm(n=200, mu=c(0, 0), Sigma=matrix(c(1, .5, .5, 1), nrow=2), empirical=TRUE)), 
+         aes(x = X1, y = X2)) + geom_jitter() + labs(x= "", y = "") +
+    geom_text(aes(label=paste("r=+0.5 - forte")),  x=-Inf, y=Inf, hjust=-0.2, vjust=1.2), 
+  
+  ggplot(data = data.frame(MASS::mvrnorm(n=200, mu=c(0, 0), Sigma=matrix(c(1, -.1, -.1, 1), nrow=2), empirical=TRUE)), 
+         aes(x = X1, y = X2)) + geom_jitter() + labs(x= "", y = "Y") +
+    geom_text(aes(label=paste("r=-0.1 - fraca")),  x=-Inf, y=Inf, hjust=-0.2, vjust=1.2),
+  ggplot(data = data.frame(MASS::mvrnorm(n=200, mu=c(0, 0), Sigma=matrix(c(1, -.3, -.3, 1), nrow=2), empirical=TRUE)), 
+         aes(x = X1, y = X2)) + geom_jitter() + labs(x= "X", y = "") +
+    geom_text(aes(label=paste("r=-0.3 - moderada")),  x=-Inf, y=Inf, hjust=-0.2, vjust=1.2),
+  ggplot(data = data.frame(MASS::mvrnorm(n=200, mu=c(0, 0), Sigma=matrix(c(1, -.5, -.5, 1), nrow=2), empirical=TRUE)), 
+         aes(x = X1, y = X2)) + geom_jitter() + labs(x= "", y = "") +
+    geom_text(aes(label=paste("r=-0.5 - forte")),  x=-Inf, y=Inf, hjust=-0.2, vjust=1.2),
+  
+  nrow = 2)
+```
+
+Para realização da Correlação de Pearson, é necessário que ambas as variáveis sejam contínuas e apresentem relacionamento linear. As seguintes propriedades existem no coeficiente de correlação:   
+
+1. É limitado entre -1 e +1, com 0 indicando ausência de correlação    
+2. O sinal indica a natureza, enquanto o número a força  
+3. É simétrico, ou seja, r(x,y) = r(y,x)  
+4. É adimensional e invariante em transformações lineares  
+5. Sensível aos outliers  
+6. Não indica causalidade  
+
+
+
+
+## Pesquisa  
+
+<div class="alert alert-info" role="alert">
+  <strong>Base: </strong> Livro - Dados - Eating disorders
+</div>  
+
+
+Vamos utilizar a pesquisa intitulada ["Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students"](https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students), publicada em 2018 no Global Journal of Educational Studies, que sou co-autor.
+
+O objetivo dessa pesquisa foi explorar os fatores envolvidos em transtornos alimentares e aspectos da percepção da imagem corporal, bem como verificar a capacidade que uma medida possuia em predizer os resultados de outra. Esse artigo contou com a utilização de escalas aplicadas em 219 participantes no Brasil. Para acessar aspectos relacionados aos Transtornos alimentares, a escala EAT-26 foi aplicada. Para verificar aspectos da imagem corporal, a escala BSQ-34 foi aplicada.  
+
+Segue abaixo uma tabela inicial com dados descritivos dos resultados.  
+
+
+```{r}
+dados_brasil %>% 
+  select(sexo,eat_soma, bsq_soma, imc, faz_esporte, familia_esporte) %>% 
+  psych::describeBy(.,group = "sexo") %>% pander::pander()
+```
+
+
+
+## Execução no R  
+
+Inicialmente, a escrita da hipótese é:
+
+$$H_0: \rho_{(x,y)} = 0 \\ H_a =  \rho_{(x,y)} \neq 0 \\ \alpha = 0.05$$
+
+O gráfico de dispersão auxilia na visualização da relação entre as variáveis e permite verificar se o relacionamento é ou não linear. 
+
+```{r}
+ggplot(dados_brasil, aes(x = bsq_soma, y = eat_soma)) +
+  geom_jitter() +
+  labs(x = "Resultados da Escala BSQ-34", y = "Resultados da Escala EAT-26", 
+       title = "Correlação entre o BSQ-34 e o EAT-26")
+```
+O gráfico indica que as duas variáveis são relacionadas. Apesar do padrão deste relacionamento não ser estritamente linear, é possível verificar formalmente a correlação entre ambas as variáveis,
+
+```{r}
+cor.test(dados_brasil$eat_soma, dados_brasil$bsq_soma)
+```
+
+Os resultados permitem concluir que a correlação é positiva e forte (r = 0.675), além de significativa (p < 0.001). Isso indica que ambas as variáveis covariam de maneira proporcional, em que valores altos tendem a acompanhar valores altos em outra. É importante atentar que esse relacionamento não indica causalidade e, dessa forma, essa covariação pode ser explicada por diferentes fatores não analisados neste método.  
+
+
+
+```{block, type="writing"}
+**Como escrever os resultados**  
+
+A correlação entre o comportamento alimentar (EAT-26) e a percepção corporal (BSQ-34) foi calculada pelo Coeficiente Produto-Momento de Pearson. Os resultados concluíram que existe uma correlação positiva, forte e significativa entre ambas as variáveis (r = 0.675, p < 0.001), indicando que as duas variáveis covariam de maneira proporcional.
+```
+
+
+## Resumo  
+
+1. O termo correlação diz respeito a um conjunto de métodos que visa verificar a direção e a força do relacionamento entre duas variáveis   
+2. A correlação de Pearson assume que ambas as variáveis são linearmente correlacionadas  
+3, O coeficiente sempre indicará a direção (por um sinal) e a força (por um número entre -1 e +1) do relacionamento bivariado  
+3. Correlação não indica causalidade  

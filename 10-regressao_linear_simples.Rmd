@@ -345,41 +345,25 @@ predict(mod_linear_simples, data.frame(bsq_soma=c(0)))
 Já o coeficiente do `bsq_soma` se refere os resultados obtidos a partir da Escala BSQ-34 é 0.178 e significativo. Isso significa que 1 unidade de mudança nos resultados da BSQ-34 geram 0.177 unidade de mudança, em média, nos resultados da Escala EAT-26. A significância deste coeficiente é dada pelo Erro Padrão (Std. Error) e segue uma T com n-2 graus de liberdade.
 
 
-Uma vez que o modelo já foi realizado, a interpretação dos resultados depende da adequação de seus pressupostos. Estes testes são os mesmos realizados em outros modelos e podem ser feitos tanto de forma gráfica, como de maneira formal. A linearidade 
-
-## Pressupostos 
-
-```{r}
-ggplot(dados_brasil, aes(x = bsq_soma, y  = bsq_soma)) +
-  geom_line()
-```
-
-
-```{r}
-cov(dados_brasil$eat_soma,dados_brasil$bsq_soma)/var(dados_brasil$eat_soma)
-mean(dados_brasil$bsq_soma)-cov(dados_brasil$eat_soma,dados_brasil$bsq_soma)/var(dados_brasil$eat_soma)*mean(dados_brasil$eat_soma)
-```
-
-Para utilizar os resultados, alguns pressupostos precisam ser atendidos. Tanto gráficos como testes formais podem ser utilizados para isso. O relacionamento <u>linear</u> já havia sido investigado no gráfico de dispersão ao início deste capítulo. A <u>Normalidade</u> dos resíduos pode ser vista pelo QQ-Plot (abaixo):
+Uma vez que o modelo já foi realizado, a interpretação dos resultados depende da adequação de seus pressupostos. Estes testes são os mesmos realizados em outros modelos e podem ser feitos tanto de forma gráfica, como de maneira formal. O relacionamento <u>linear</u> já havia sido investigado no gráfico de dispersão ao início deste capítulo. A <u>Normalidade</u> dos resíduos pode ser vista pelo QQ-Plot (abaixo):
 
 
 ```{r}
 ols_plot_resid_qq(mod_linear_simples)
 ```
-
-Diferentes testes estatísticos também podem ser utilizados. Apesar de resultados algo discordantes, os achados sugerem violação deste pressuposto.
+Caso os pontos e a reta diagonal estejam superpostos, se considera que este pressuposto foi atendido. Testes estatísticos formais também podem ser utilizados. Apesar dos resultados obtidos por tais testes serem algo discordantes, os achados sugerem violação deste pressuposto.  
 
 ```{r}
 ols_test_normality(mod_linear_simples)
 ```
 
-A <u>independência</u> dos resíduos depende bastante do delineamento utilizado e transversal ou longitudinal. O teste de Durbin Watson pode ser utilizado e a Hipótees nula é de que os resíduos não são correlacionados.
+A <u>independência</u> dos resíduos depende bastante do delineamento utilizado e transversal ou longitudinal. O teste de Durbin Watson pode ser utilizado e a Hipótees nula é de que os resíduos não são correlacionados. Este pressuposto foi atendido, o que já era esperado.  
 
 ```{r}
 car::durbinWatsonTest(mod_linear_simples)
 ```
 
-As homocedasticidade, ou seja, <u>variâncias constantes</u> pode ser vista em um gráfico de dispersão dos resíduos (residual) contra os valores previstos.  
+As homocedasticidade, ou seja, <u>variâncias constantes</u> pode ser vista em um gráfico de dispersão dos resíduos (residual) contra os valores previstos (fitted).  
 
 ```{r}
 ols_plot_resid_fit(mod_linear_simples)
@@ -400,7 +384,7 @@ Existem também testes formais, como o Bartlett e o Breusch-Pagan. Os resultados
 ols_test_breusch_pagan(mod_linear_simples)
 ```
 
-Isso posto, os diagnósticos executados indicaram que o modelo violou a normalidade e a homocedasticidade. Apesar desse tipo de resultado ser frequente em PSicologia, á interpretação dos resultados é limitada e deve ser feita de forma apenas preliminar. Abaixo uma orientação de como escrever os resultados.
+Isso posto, os diagnósticos executados indicaram que o modelo violou a normalidade e a homocedasticidade e preservou a linearidade e a independência dos resíduos. Apesar desse tipo de resultado ser frequente em Psicologia, a interpretação dos resultados é limitada e deve ser feita de forma apenas preliminar. Abaixo uma orientação de como escrever os resultados.
 
 
 ```{block, type="writing"}
@@ -412,3 +396,9 @@ Um modelo de regressão foi calculado para verificar os resultados dos comportam
 
 
 
+## Resumo  
+
+1. Existem diferentes modelos de regressão e eles sempre visam prever um resultado a partir de uma ou um conjunto de variáveis  
+2. O tipo de modelagem depedente tanto da natureza e quantidade das VIs e VDs, sempre possível entender grande parte dos testes estatísticos estudados como casos particulares dos modelos de regressão  
+3. Os principais indicadores de um modelo de regressão são sua significância geral, o $R^2$,o o $R^2_{adj}$, bem como o coeficiente e a significância dos preditores  
+4. o diagnóstico é uma parte essencial desta modelagem e o mnemônico LINE pode ajudar na lembrança dos pressupostos  
