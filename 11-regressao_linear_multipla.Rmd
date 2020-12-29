@@ -1,0 +1,160 @@
+# Regressão linear múltipla
+
+
+```{r, include = FALSE }
+load("~/anovabr/mqt/bases/Base R - imagem corporal.RData")
+
+library(tidyverse)
+library(knitr) #tables and graphs
+library(kableExtra) #tables with different styles
+library(olsrr) #regression diagnostics
+library(gridExtra) #plot together
+library(stargazer) #presenting results
+```
+
+Os modelos de regressão linear múltipla são desenvolvidos para predizer os valores médios de uma variável resposta (Y) em função de duas ou mais variáveis independentes (X). Nestes modelos, a VD deve ser contínua e as VIs podem ser tanto contínuas como categóricas. Tecnicamente, a família da ANOVA vista anteriormente são casos particulares de modelos de regressão múltipla.
+
+
+Conceitualmente, neste modelo, se adiciona um outro preditor à equação vista no capítulo de regressão linear simples. Assim:
+
+\[y_i = b_0 + b_1X{_1}_i + b_2X{_2}_i+ \epsilon_{i}\]
+
+$y_i$ representa a variável dependente  
+$b_0$ é o intercepto (coeficiente linear)   
+$b_1$ e $b_2$ indicam a inclinação dos preditores (coeficiente angular)  
+$\epsilon_{i}$ é o erro/resíduo   
+
+
+Os seguintes pressupostos devem ser avaliados:
+
+
+(i) A relação entre as variáveis é linear
+(ii) Os resíduos são independentes  
+(ii) Os resíduos são normalmente distribuídos
+(iii) A variância dos resíduos é constante
+
+O mnemônico <u>LINE</u> (linearity, independence, normality, equal variance) talvez ajude a lembrar destes pressupostos.
+
+
+
+## Pesquisa  
+
+<div class="alert alert-info" role="alert">
+  <strong>Base: </strong> Livro - Dados - Eating disorders
+</div>  
+
+
+Vamos utilizar a pesquisa intitulada ["Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students"](https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students), publicada em 2018 no Global Journal of Educational Studies, que sou co-autor.
+
+O objetivo dessa pesquisa foi explorar os fatores envolvidos em transtornos alimentares e aspectos da percepção da imagem corporal, bem como verificar a capacidade que uma medida possuia em predizer os resultados de outra. Esse artigo contou com a utilização de escalas aplicadas em 219 participantes no Brasil. Para acessar aspectos relacionados aos Transtornos alimentares, a escala EAT-26 foi aplicada. Para verificar aspectos da imagem corporal, a escala BSQ-34 foi aplicada.  
+
+Segue abaixo uma tabela inicial com dados descritivos dos resultados.  
+
+
+```{r}
+dados_brasil %>% 
+  select(sexo,eat_soma, bsq_soma, imc, faz_esporte, familia_esporte) %>% 
+  psych::describeBy(.,group = "sexo") %>% pander::pander()
+```
+
+
+
+## Execução no R  
+
+Para crir o modelo no R, basta adicionar uma nova variável à equação. Neste caso, além de verificar o efeito da <u>percepção de imagem corporal</u>, o <u>peso</u> também irá ser utilizado como preditor. É importante notar que, por padrão, o R não usa linhas com dados ausentes e isso pode reduzir o poder do teste.
+
+
+```{r}
+mod_linear_multiplo <- lm(eat_soma ~ bsq_soma + peso_atual, data = dados_brasil)
+```
+
+A apresentação segue o mesmo formato da realizada no capítulo específico de regressão linear simples.
+
+```{r }
+ols_regress(mod_linear_multiplo) 
+```
+  
+Os resultados devem ser analisados de maneira cuidadosa. Inicialmente, é possível concluir que o modelo foi globalmente significativo (F(2, 213) = 100.675, p < 0.001) e que cerca de 48% da variabilidade do EAT-26 pode ser atribuída aos valores do BSQ-34 e do peso do participante. Cada um dos preditores tem um comportamento específico. Em relação ao BSQ-34, cada unidade a mais em seu resultado impacta, em média, 0.18 pontos a mais no EAT-26, controlando pelo peso do participante (p < 0.001). Além disso, cada 1 kg a mais no peso do participante impacta em -0.121 (p < 0.001), em média, nos resultados do EAT-26, controlando pelos valores do BSQ-34.
+
+A ideia de verificar o efeito de uma variável controlando por outra tem um significado particular. Assumindo duas pessoas que <u>tem o peso atual igual ao peso médio do grupo</u> ou <u>o mesmo peso</u>, cada ponto extra no BSQ gera, em média, 0.18 pontos a mais no EAT-26. Assim, o valor estimado no <u>EAT-26</u> de Um participante que teve 45 pontos no <u>BSQ</u> e <u>peso</u> de 66.51 (o peso médio) é de 9.41. Já o valor estimado no <u>EAT-26</u> de um outro participante com 46 pontos no <u>BSQ</u> e mesmo <u>peso</u> do primeiro participante (66.51) é de  9.59. A diferença entre os valores é exatamente igual ao coeficiente calculado na regressão (b = 0.18). Abaixo há duas linhas de código apresentando esses resultados.
+
+```{r}
+peso_medio <- mean(dados_brasil$peso_atual, na.rm=T)
+predict(mod_linear_multiplo, data.frame(bsq_soma=c(45), peso_atual=peso_medio))
+```
+```{r}
+predict(mod_linear_multiplo, data.frame(bsq_soma=c(46), peso_atual=peso_medio))
+```
+
+```{r}
+predict(mod_linear_multiplo, data.frame(bsq_soma=c(46), peso_atual=peso_medio))-predict(mod_linear_multiplo, data.frame(bsq_soma=c(45), peso_atual=peso_medio))
+```
+
+Tal como apresentado anteriores, a interpretação dos resultados depende da adequação de seus pressupostos. O relacionamento <u>linear</u> já havia sido investigado no gráfico de dispersão nos capítulos anteriores. A <u>Normalidade</u> dos resíduos pode ser vista pelo QQ-Plot (abaixo):
+
+
+```{r}
+ols_plot_resid_qq(mod_linear_multiplo)
+ols_plot_resid_stud_fit(mod_linear_multiplo)
+```
+
+e por testes estatísticos formais. De forma análoga ao que aconteceu no capítulo de regressão linear simples, apesar de algo discordantes, o pressuposto de normalidade foi rejeitado.
+
+```{r}
+ols_test_normality(mod_linear_multiplo)
+```
+
+A <u>independência</u> dos resíduos pode ser avaliada pelo Durbin Watson. É importante lemrbar que a Hipótees nula é de que os resíduos não são correlacionados.   
+
+```{r}
+car::durbinWatsonTest(mod_linear_multiplo)
+```
+
+As homocedasticidade, ou seja, <u>variâncias constantes</u> pode ser vista em um gráfico de dispersão dos resíduos (residual) contra os valores previstos (fitted).  
+
+
+```{r}
+ols_plot_resid_fit(mod_linear_multiplo)
+```
+
+O teste Breusch-Pagan também é um indicador importante e a Hipótese nula assume homocedasticidade. Portanto, a estatística de teste deveria ser insignificante para que a homocedasticidade pudeSSR ser aceita, o que não é o caso aqui.
+
+
+```{r}
+ols_test_breusch_pagan(mod_linear_multiplo)
+```
+
+
+Como esse modelo pode reunir diversas variáveis independentes, é importante verificar o quanto elas são correlacionadas entre si. Isso é feito pela análise de Variance Inflaction Factor (VIF). Valores de VIF superiores a 4 indicam que as variáveis indepenentes são fortemente correlacionadas e, com isso, as estimativas podem ser distorcidas. Neste caso, isso não aconteceu.
+
+```{r}
+ols_coll_diag(mod_linear_multiplo)
+```
+
+Com isso realizado, os diagnósticos indicaram que a normalidade e a homocedasticidade foram violadas, novamente sugerindo uma interpretação cautelosa dos resultados. Abaixo uma orientação de como escrever os resultados.
+
+
+```{block, type="writing"}
+**Como escrever os resultados**  
+
+Um modelo de regressão múltipla foi calculado para verificar os resultados dos comportamentos alimentares (EAT-26) em função da percepção de imagem corporal (BSQ-34) e do peso do participante. Os resultados indicaram que cerca de 48% da variância do EAT-26 pode ser atribuída aos preditores (R2 = 0.486, F(2,213) = 100.675, p < 0.001). Cada ponto a mais no BSQ-34 impacta, em média, em 0.180 no EAT-26 (p < 0.001), controlando pelo peso do participante. 
+
+```  
+
+
+## Técnicas automáticas de seleção de variáveis  
+
+Os critérios para composição dos modelos costuma despertar um grande interesse nos debates estatísticos e quantas, quais e como eleger as variáveis independentes é um dos mais intensos. A seleção destas variáveis visa otimizar a acurácia do modelo, mas sem perder sua parcimônia, ou seja, simplicidade [@Unger1973; @Gaudio2001]. Métodos com justificativa teórica costumam ser chamados de entrada bruta, enquanto métodos em que se implementa algum algorítimo computadorizado para tal seleção tendem a ser denominados de métodos automáticos. Apesar do detalhamento destas técnicas ser fora do escopo dete capítulo, a seguir são listadas as principais técnicas:
+
+1. Backward selection  
+2. Forward selection  
+3. Stepwise selecion  
+4. Lasso selection  
+
+
+## Resumo  
+
+1. O termo regressão múltipla se refere a um modelo de regressão com duas ou mais variáveis independentes   
+2. As VIs podem ser de qualquer natureza, o que significa que toda família da ANOVA pode ser entendida como casos particulares de regressão   
+3. Os diagnósticos são os mesmos dos modelos simples, mas agora é necessário também testar a multicolinearidade do modelo  
+4. Existem diferentes métodos para adicionar preditores e maneiras manuais e automáticas são disponíveis   

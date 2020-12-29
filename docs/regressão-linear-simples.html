@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="correlação.html"/>
-
+<link rel="next" href="regressão-linear-múltipla.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -217,6 +217,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisa-7"><i class="fa fa-check"></i><b>11.3</b> Pesquisa</a></li>
 <li class="chapter" data-level="11.4" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-r-8"><i class="fa fa-check"></i><b>11.4</b> Execução no R</a></li>
 <li class="chapter" data-level="11.5" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#resumo-8"><i class="fa fa-check"></i><b>11.5</b> Resumo</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html"><i class="fa fa-check"></i><b>12</b> Regressão linear múltipla</a><ul>
+<li class="chapter" data-level="12.1" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisa-8"><i class="fa fa-check"></i><b>12.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="12.2" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-r-9"><i class="fa fa-check"></i><b>12.2</b> Execução no R</a></li>
+<li class="chapter" data-level="12.3" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#técnicas-automáticas-de-seleção-de-variáveis"><i class="fa fa-check"></i><b>12.3</b> Técnicas automáticas de seleção de variáveis</a></li>
+<li class="chapter" data-level="12.4" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#resumo-9"><i class="fa fa-check"></i><b>12.4</b> Resumo</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="http://www.puc-rio.br/" target="blank">PUC-Rio</a></li>
@@ -932,7 +938,7 @@ Caso os pontos e a reta diagonal estejam superpostos, se considera que este pres
 <strong>Como escrever os resultados</strong>
 </p>
 <p>
-Um modelo de regressão foi calculado para verificar os resultados dos comportamentos alimentares (EAT-26) em função da percepção de imagem corporal (BSQ-34). Os resultados indicaram que cerca de 45% da variância do EAT-26 pode ser atribuída ao BSQ-34 (R2 = 0.456, F(1,128) 182.8, p &lt; 0.001). Cada ponto a mais no BSQ-34 impacta, em média, em 0.178 no EAT-26 (b = 0.178, p &lt; 0.001).
+Um modelo de regressão foi calculado para verificar os resultados dos comportamentos alimentares (EAT-26) em função da percepção de imagem corporal (BSQ-34). Os resultados indicaram que cerca de 45% da variância do EAT-26 pode ser atribuída ao BSQ-34 (R2 = 0.456, F(1,218) = 182.88, p &lt; 0.001). Cada ponto a mais no BSQ-34 impacta, em média, em 0.178 no EAT-26 (b = 0.178, p &lt; 0.001).
 </p>
 </div>
 </div>
@@ -948,47 +954,6 @@ Um modelo de regressão foi calculado para verificar os resultados dos comportam
 <li>o diagnóstico é uma parte essencial desta modelagem e o mnemônico LINE pode ajudar na lembrança dos pressupostos</li>
 </ol>
 
-<div id="refs" class="references">
-<div>
-<p>BAIRD, DAVIS. 1983. “The Fisher/Pearson Chi-Squared Controversy: A Turning Point for Inductive Inference.” <em>The British Journal for the Philosophy of Science</em> 34 (2): 105–18. <a href="https://doi.org/10.1093/bjps/34.2.105">https://doi.org/10.1093/bjps/34.2.105</a>.</p>
-</div>
-<div>
-<p>Chartier, Sylvain, and Andrew Faulkner. 2008. “General Linear Models: An Integrated Approach to Statistics.” <em>Tutorials in Quantitative Methods for Psychology</em> 4 (2): 65–78. <a href="https://doi.org/10.20982/tqmp.04.2.p065">https://doi.org/10.20982/tqmp.04.2.p065</a>.</p>
-</div>
-<div>
-<p>Cohen, Jacob. 1988. <em>Statistical Power Analysis for the Behavioral Sciences</em>. Routledge. <a href="https://doi.org/10.4324/9780203771587">https://doi.org/10.4324/9780203771587</a>.</p>
-</div>
-<div>
-<p>Field, Andy P., and Rand R. Wilcox. 2017. “Robust Statistical Methods: A Primer for Clinical Psychology and Experimental Psychopathology Researchers.” <em>Behaviour Research and Therapy</em> 98 (November): 19–38. <a href="https://doi.org/10.1016/j.brat.2017.05.013">https://doi.org/10.1016/j.brat.2017.05.013</a>.</p>
-</div>
-<div>
-<p>Gueorguieva, Ralitza, and John H. Krystal. 2004. “Move over ANOVA.” <em>Archives of General Psychiatry</em> 61 (3): 310. <a href="https://doi.org/10.1001/archpsyc.61.3.310">https://doi.org/10.1001/archpsyc.61.3.310</a>.</p>
-</div>
-<div>
-<p>Howell, David C. 2011. <em>Fundamental Statistics for the Behavioral Sciences</em>. Belmont: CA: Wadsworth Cengage Learning.</p>
-</div>
-<div>
-<p>Krus, David J., and Patricia H. Krus. 1977. “Lost: McCalls T Scores: Why?” <em>Educational and Psychological Measurement</em> 37 (1): 257–61. <a href="https://doi.org/10.1177/001316447703700134">https://doi.org/10.1177/001316447703700134</a>.</p>
-</div>
-<div>
-<p>Lumley, Thomas, Paula Diehr, Scott Emerson, and Lu Chen. 2002. “The Importance of the Normality Assumption in Large Public Health Data Sets.” <em>Annual Review of Public Health</em> 23 (1): 151–69. <a href="https://doi.org/10.1146/annurev.publhealth.23.100901.140546">https://doi.org/10.1146/annurev.publhealth.23.100901.140546</a>.</p>
-</div>
-<div>
-<p>Morettin, Pedro Alberto, and Wilton de Oliveira Bussab. 2010. <em>Estatistica Basica</em>. Saraiva.</p>
-</div>
-<div>
-<p>Pearson, Karl. 1900. “X. On the Criterion That a Given System of Deviations from the Probable in the Case of a Correlated System of Variables Is Such That It Can Be Reasonably Supposed to Have Arisen from Random Sampling.” <em>The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science</em> 50 (302): 157–75. <a href="https://doi.org/10.1080/14786440009463897">https://doi.org/10.1080/14786440009463897</a>.</p>
-</div>
-<div>
-<p>Quené, Hugo, and Huub van den Bergh. 2004. “On Multi-Level Modeling of Data from Repeated Measures Designs: A Tutorial.” <em>Speech Communication</em> 43 (1-2): 103–21. <a href="https://doi.org/10.1016/j.specom.2004.02.004">https://doi.org/10.1016/j.specom.2004.02.004</a>.</p>
-</div>
-<div>
-<p>Wasserstein, Ronald L., and Nicole A. Lazar. 2016. “The ASA Statement on P-Values: Context, Process, and Purpose.” <em>The American Statistician</em> 70 (2): 129–33. <a href="https://doi.org/10.1080/00031305.2016.1154108">https://doi.org/10.1080/00031305.2016.1154108</a>.</p>
-</div>
-<div>
-<p>Yap, B. W., and C. H. Sim. 2011. “Comparisons of Various Types of Normality Tests.” <em>Journal of Statistical Computation and Simulation</em> 81 (12): 2141–55. <a href="https://doi.org/10.1080/00949655.2010.520163">https://doi.org/10.1080/00949655.2010.520163</a>.</p>
-</div>
-</div>
 </div>
 </div>
 <h3>References</h3>
@@ -1002,8 +967,8 @@ Um modelo de regressão foi calculado para verificar os resultados dos comportam
           </div>
         </div>
       </div>
-<a href="correlação.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="correlação.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="regressão-linear-múltipla.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

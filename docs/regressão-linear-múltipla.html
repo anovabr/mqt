@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 10 Correlação | Métodos quantitativos em Psicologia com R</title>
+  <title>Capítulo 12 Regressão linear múltipla | Métodos quantitativos em Psicologia com R</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 10 Correlação | Métodos quantitativos em Psicologia com R" />
+  <meta property="og:title" content="Capítulo 12 Regressão linear múltipla | Métodos quantitativos em Psicologia com R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="cjvanlissa/gitbook-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 10 Correlação | Métodos quantitativos em Psicologia com R" />
+  <meta name="twitter:title" content="Capítulo 12 Regressão linear múltipla | Métodos quantitativos em Psicologia com R" />
   
   <meta name="twitter:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="modelo-linear-misto.html"/>
-<link rel="next" href="regressão-linear-simples.html"/>
+<link rel="prev" href="regressão-linear-simples.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -244,108 +244,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="correlação" class="section level1">
-<h1><span class="header-section-number">Capítulo 10</span> Correlação</h1>
-<p>A análise de correlação é um procedimento estatístico para verificar a relação entre duas variáveis. Existem diferentes formas para realizar tal análise e a maioria busca medir a <u>força</u> e a <u>direção</u> da <u>associação linear</u> entre duas variáveis aleatórias. A tabela a seguir descreve alguns dos métodos.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Nível de medida</th>
-<th align="left">Correlação / Coeficiente</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Intervalar</td>
-<td align="left">Correlação Produto momento de Pearson</td>
-</tr>
-<tr class="even">
-<td align="left">Ordinal</td>
-<td align="left">Correlação de Spearman</td>
-</tr>
-<tr class="odd">
-<td align="left">Nominal</td>
-<td align="left">Coeficiente Phi</td>
-</tr>
-</tbody>
-</table>
-<p>A Correlação de Pearson é apresentado por <span class="math inline">\(\rho\)</span> ou r, é uma das mais frequentemente calculadas em Psicologia e será demonstrada neste capítulo. Entretanto, tenha em mente que algumas áreas específicas costumam utilizar outras correlações. Como exemplo, é bem típico em Psicometria utilizar indicadores categóricos e, com isso, realizar correlações tetracóricas ou policóricas, o que não será abordado aqui.</p>
-<p>O coeficiente de correlação é formado por um <u>valor numérico</u> e um <u>sinal</u> e o gráfico de dispersão é uma excelente forma de apresentar o relacionamento bivariado. A tabela abaixo descreve as possíveis interpretações <span class="citation">(Cohen <a href="#ref-Cohen1988" role="doc-biblioref">1988</a>)</span></p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Valor/ Sinal</th>
-<th align="left">Positivo (+)</th>
-<th align="left">Negativo (-)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">0.1</td>
-<td align="left">Fraca positiva</td>
-<td align="left">Fraca negativa</td>
-</tr>
-<tr class="even">
-<td align="left">0.3</td>
-<td align="left">Moderada positiva</td>
-<td align="left">Moderada negativa</td>
-</tr>
-<tr class="odd">
-<td align="left">0.5</td>
-<td align="left">Forte positiva</td>
-<td align="left">Forte negativa</td>
-</tr>
-</tbody>
-</table>
-<p>As imagens abaixo demonstram tais conceitos.</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="correlação.html#cb147-1"></a><span class="kw">grid.arrange</span>(</span>
-<span id="cb147-2"><a href="correlação.html#cb147-2"></a>  <span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(MASS<span class="op">::</span><span class="kw">mvrnorm</span>(<span class="dt">n=</span><span class="dv">200</span>, <span class="dt">mu=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">Sigma=</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">.1</span>, <span class="fl">.1</span>, <span class="dv">1</span>), <span class="dt">nrow=</span><span class="dv">2</span>), <span class="dt">empirical=</span><span class="ot">TRUE</span>)), </span>
-<span id="cb147-3"><a href="correlação.html#cb147-3"></a>         <span class="kw">aes</span>(<span class="dt">x =</span> X1, <span class="dt">y =</span> X2)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x=</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Y&quot;</span>) <span class="op">+</span></span>
-<span id="cb147-4"><a href="correlação.html#cb147-4"></a><span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;r=+0.1 - fraca&quot;</span>)),  <span class="dt">x=</span><span class="op">-</span><span class="ot">Inf</span>, <span class="dt">y=</span><span class="ot">Inf</span>, <span class="dt">hjust=</span><span class="op">-</span><span class="fl">0.2</span>, <span class="dt">vjust=</span><span class="fl">1.2</span>),</span>
-<span id="cb147-5"><a href="correlação.html#cb147-5"></a>  <span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(MASS<span class="op">::</span><span class="kw">mvrnorm</span>(<span class="dt">n=</span><span class="dv">200</span>, <span class="dt">mu=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">Sigma=</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">.3</span>, <span class="fl">.3</span>, <span class="dv">1</span>), <span class="dt">nrow=</span><span class="dv">2</span>), <span class="dt">empirical=</span><span class="ot">TRUE</span>)), </span>
-<span id="cb147-6"><a href="correlação.html#cb147-6"></a>         <span class="kw">aes</span>(<span class="dt">x =</span> X1, <span class="dt">y =</span> X2)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x=</span> <span class="st">&quot;X&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span></span>
-<span id="cb147-7"><a href="correlação.html#cb147-7"></a><span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;r=+0.3 - moderada&quot;</span>)),  <span class="dt">x=</span><span class="op">-</span><span class="ot">Inf</span>, <span class="dt">y=</span><span class="ot">Inf</span>, <span class="dt">hjust=</span><span class="op">-</span><span class="fl">0.2</span>, <span class="dt">vjust=</span><span class="fl">1.2</span>),</span>
-<span id="cb147-8"><a href="correlação.html#cb147-8"></a>  <span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(MASS<span class="op">::</span><span class="kw">mvrnorm</span>(<span class="dt">n=</span><span class="dv">200</span>, <span class="dt">mu=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">Sigma=</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">.5</span>, <span class="fl">.5</span>, <span class="dv">1</span>), <span class="dt">nrow=</span><span class="dv">2</span>), <span class="dt">empirical=</span><span class="ot">TRUE</span>)), </span>
-<span id="cb147-9"><a href="correlação.html#cb147-9"></a>         <span class="kw">aes</span>(<span class="dt">x =</span> X1, <span class="dt">y =</span> X2)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x=</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span></span>
-<span id="cb147-10"><a href="correlação.html#cb147-10"></a><span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;r=+0.5 - forte&quot;</span>)),  <span class="dt">x=</span><span class="op">-</span><span class="ot">Inf</span>, <span class="dt">y=</span><span class="ot">Inf</span>, <span class="dt">hjust=</span><span class="op">-</span><span class="fl">0.2</span>, <span class="dt">vjust=</span><span class="fl">1.2</span>), </span>
-<span id="cb147-11"><a href="correlação.html#cb147-11"></a>  </span>
-<span id="cb147-12"><a href="correlação.html#cb147-12"></a>  <span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(MASS<span class="op">::</span><span class="kw">mvrnorm</span>(<span class="dt">n=</span><span class="dv">200</span>, <span class="dt">mu=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">Sigma=</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">-.1</span>, <span class="fl">-.1</span>, <span class="dv">1</span>), <span class="dt">nrow=</span><span class="dv">2</span>), <span class="dt">empirical=</span><span class="ot">TRUE</span>)), </span>
-<span id="cb147-13"><a href="correlação.html#cb147-13"></a>         <span class="kw">aes</span>(<span class="dt">x =</span> X1, <span class="dt">y =</span> X2)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x=</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Y&quot;</span>) <span class="op">+</span></span>
-<span id="cb147-14"><a href="correlação.html#cb147-14"></a><span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;r=-0.1 - fraca&quot;</span>)),  <span class="dt">x=</span><span class="op">-</span><span class="ot">Inf</span>, <span class="dt">y=</span><span class="ot">Inf</span>, <span class="dt">hjust=</span><span class="op">-</span><span class="fl">0.2</span>, <span class="dt">vjust=</span><span class="fl">1.2</span>),</span>
-<span id="cb147-15"><a href="correlação.html#cb147-15"></a>  <span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(MASS<span class="op">::</span><span class="kw">mvrnorm</span>(<span class="dt">n=</span><span class="dv">200</span>, <span class="dt">mu=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">Sigma=</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">-.3</span>, <span class="fl">-.3</span>, <span class="dv">1</span>), <span class="dt">nrow=</span><span class="dv">2</span>), <span class="dt">empirical=</span><span class="ot">TRUE</span>)), </span>
-<span id="cb147-16"><a href="correlação.html#cb147-16"></a>         <span class="kw">aes</span>(<span class="dt">x =</span> X1, <span class="dt">y =</span> X2)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x=</span> <span class="st">&quot;X&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span></span>
-<span id="cb147-17"><a href="correlação.html#cb147-17"></a><span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;r=-0.3 - moderada&quot;</span>)),  <span class="dt">x=</span><span class="op">-</span><span class="ot">Inf</span>, <span class="dt">y=</span><span class="ot">Inf</span>, <span class="dt">hjust=</span><span class="op">-</span><span class="fl">0.2</span>, <span class="dt">vjust=</span><span class="fl">1.2</span>),</span>
-<span id="cb147-18"><a href="correlação.html#cb147-18"></a>  <span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(MASS<span class="op">::</span><span class="kw">mvrnorm</span>(<span class="dt">n=</span><span class="dv">200</span>, <span class="dt">mu=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">Sigma=</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">-.5</span>, <span class="fl">-.5</span>, <span class="dv">1</span>), <span class="dt">nrow=</span><span class="dv">2</span>), <span class="dt">empirical=</span><span class="ot">TRUE</span>)), </span>
-<span id="cb147-19"><a href="correlação.html#cb147-19"></a>         <span class="kw">aes</span>(<span class="dt">x =</span> X1, <span class="dt">y =</span> X2)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x=</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span></span>
-<span id="cb147-20"><a href="correlação.html#cb147-20"></a><span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;r=-0.5 - forte&quot;</span>)),  <span class="dt">x=</span><span class="op">-</span><span class="ot">Inf</span>, <span class="dt">y=</span><span class="ot">Inf</span>, <span class="dt">hjust=</span><span class="op">-</span><span class="fl">0.2</span>, <span class="dt">vjust=</span><span class="fl">1.2</span>),</span>
-<span id="cb147-21"><a href="correlação.html#cb147-21"></a>  </span>
-<span id="cb147-22"><a href="correlação.html#cb147-22"></a>  <span class="dt">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-109-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Para realização da Correlação de Pearson, é necessário que ambas as variáveis sejam contínuas e apresentem relacionamento linear. As seguintes propriedades existem no coeficiente de correlação:</p>
-<ol style="list-style-type: decimal">
-<li>É limitado entre -1 e +1, com 0 indicando ausência de correlação<br />
+<div id="regressão-linear-múltipla" class="section level1">
+<h1><span class="header-section-number">Capítulo 12</span> Regressão linear múltipla</h1>
+<p>Os modelos de regressão linear múltipla são desenvolvidos para predizer os valores médios de uma variável resposta (Y) em função de duas ou mais variáveis independentes (X). Nestes modelos, a VD deve ser contínua e as VIs podem ser tanto contínuas como categóricas. Tecnicamente, a família da ANOVA vista anteriormente são casos particulares de modelos de regressão múltipla.</p>
+<p>Conceitualmente, neste modelo, se adiciona um outro preditor à equação vista no capítulo de regressão linear simples. Assim:</p>
+<p><span class="math display">\[y_i = b_0 + b_1X{_1}_i + b_2X{_2}_i+ \epsilon_{i}\]</span></p>
+<p><span class="math inline">\(y_i\)</span> representa a variável dependente<br />
+<span class="math inline">\(b_0\)</span> é o intercepto (coeficiente linear)<br />
+<span class="math inline">\(b_1\)</span> e <span class="math inline">\(b_2\)</span> indicam a inclinação dos preditores (coeficiente angular)<br />
+<span class="math inline">\(\epsilon_{i}\)</span> é o erro/resíduo</p>
+<p>Os seguintes pressupostos devem ser avaliados:</p>
+<ol style="list-style-type: lower-roman">
+<li>A relação entre as variáveis é linear</li>
+<li>Os resíduos são independentes<br />
 </li>
-<li>O sinal indica a natureza, enquanto o número a força<br />
-</li>
-<li>É simétrico, ou seja, r(x,y) = r(y,x)<br />
-</li>
-<li>É adimensional e invariante em transformações lineares<br />
-</li>
-<li>Sensível aos outliers<br />
-</li>
-<li>Não indica causalidade</li>
+<li>Os resíduos são normalmente distribuídos</li>
+<li>A variância dos resíduos é constante</li>
 </ol>
-<div id="pesquisa-6" class="section level2">
-<h2><span class="header-section-number">10.1</span> Pesquisa</h2>
+<p>O mnemônico <u>LINE</u> (linearity, independence, normality, equal variance) talvez ajude a lembrar destes pressupostos.</p>
+<div id="pesquisa-8" class="section level2">
+<h2><span class="header-section-number">12.1</span> Pesquisa</h2>
 <div class="alert alert-info" role="alert">
 <p><strong>Base: </strong> Livro - Dados - Eating disorders</p>
 </div>
 <p>Vamos utilizar a pesquisa intitulada <a href="https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students">“Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students”</a>, publicada em 2018 no Global Journal of Educational Studies, que sou co-autor.</p>
 <p>O objetivo dessa pesquisa foi explorar os fatores envolvidos em transtornos alimentares e aspectos da percepção da imagem corporal, bem como verificar a capacidade que uma medida possuia em predizer os resultados de outra. Esse artigo contou com a utilização de escalas aplicadas em 219 participantes no Brasil. Para acessar aspectos relacionados aos Transtornos alimentares, a escala EAT-26 foi aplicada. Para verificar aspectos da imagem corporal, a escala BSQ-34 foi aplicada.</p>
 <p>Segue abaixo uma tabela inicial com dados descritivos dos resultados.</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="correlação.html#cb148-1"></a>dados_brasil <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb148-2"><a href="correlação.html#cb148-2"></a><span class="st">  </span><span class="kw">select</span>(sexo,eat_soma, bsq_soma, imc, faz_esporte, familia_esporte) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb148-3"><a href="correlação.html#cb148-3"></a><span class="st">  </span>psych<span class="op">::</span><span class="kw">describeBy</span>(.,<span class="dt">group =</span> <span class="st">&quot;sexo&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="regressão-linear-múltipla.html#cb177-1"></a>dados_brasil <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb177-2"><a href="regressão-linear-múltipla.html#cb177-2"></a><span class="st">  </span><span class="kw">select</span>(sexo,eat_soma, bsq_soma, imc, faz_esporte, familia_esporte) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb177-3"><a href="regressão-linear-múltipla.html#cb177-3"></a><span class="st">  </span>psych<span class="op">::</span><span class="kw">describeBy</span>(.,<span class="dt">group =</span> <span class="st">&quot;sexo&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
 <pre><code>## Warning in pander.default(.): No pander.method for &quot;psych&quot;, reverting to
 ## default.No pander.method for &quot;describeBy&quot;, reverting to default.</code></pre>
 <ul>
@@ -686,57 +613,202 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <!-- end of list -->
 </div>
-<div id="execução-no-r-7" class="section level2">
-<h2><span class="header-section-number">10.2</span> Execução no R</h2>
-<p>Inicialmente, a escrita da hipótese é:</p>
-<p><span class="math display">\[H_0: \rho_{(x,y)} = 0 \\ H_a:  \rho_{(x,y)} \neq 0 \\ \alpha = 0.05\]</span></p>
-<p>O gráfico de dispersão auxilia na visualização da relação entre as variáveis e permite verificar se o relacionamento é ou não linear.</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="correlação.html#cb150-1"></a><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> bsq_soma, <span class="dt">y =</span> eat_soma)) <span class="op">+</span></span>
-<span id="cb150-2"><a href="correlação.html#cb150-2"></a><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></span>
-<span id="cb150-3"><a href="correlação.html#cb150-3"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Resultados da Escala BSQ-34&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Resultados da Escala EAT-26&quot;</span>, </span>
-<span id="cb150-4"><a href="correlação.html#cb150-4"></a>       <span class="dt">title =</span> <span class="st">&quot;Correlação entre o BSQ-34 e o EAT-26&quot;</span>)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-111-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>O gráfico indica que as duas variáveis são relacionadas. Apesar do padrão deste relacionamento não ser estritamente linear, é possível verificar formalmente a correlação entre ambas as variáveis,</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="correlação.html#cb151-1"></a><span class="kw">cor.test</span>(dados_brasil<span class="op">$</span>eat_soma, dados_brasil<span class="op">$</span>bsq_soma)</span></code></pre></div>
-<pre><code>## 
-##  Pearson&#39;s product-moment correlation
+<div id="execução-no-r-9" class="section level2">
+<h2><span class="header-section-number">12.2</span> Execução no R</h2>
+<p>Para crir o modelo no R, basta adicionar uma nova variável à equação. Neste caso, além de verificar o efeito da <u>percepção de imagem corporal</u>, o <u>peso</u> também irá ser utilizado como preditor. É importante notar que, por padrão, o R não usa linhas com dados ausentes e isso pode reduzir o poder do teste.</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="regressão-linear-múltipla.html#cb179-1"></a>mod_linear_multiplo &lt;-<span class="st"> </span><span class="kw">lm</span>(eat_soma <span class="op">~</span><span class="st"> </span>bsq_soma <span class="op">+</span><span class="st"> </span>peso_atual, <span class="dt">data =</span> dados_brasil)</span></code></pre></div>
+<p>A apresentação segue o mesmo formato da realizada no capítulo específico de regressão linear simples.</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="regressão-linear-múltipla.html#cb180-1"></a><span class="kw">ols_regress</span>(mod_linear_multiplo) </span></code></pre></div>
+<pre><code>##                         Model Summary                          
+## --------------------------------------------------------------
+## R                       0.697       RMSE                7.082 
+## R-Squared               0.486       Coef. Var          44.265 
+## Adj. R-Squared          0.481       MSE                50.160 
+## Pred R-Squared          0.472       MAE                 5.434 
+## --------------------------------------------------------------
+##  RMSE: Root Mean Square Error 
+##  MSE: Mean Square Error 
+##  MAE: Mean Absolute Error 
 ## 
-## data:  dados_brasil$eat_soma and dados_brasil$bsq_soma
-## t = 13.523, df = 218, p-value &lt; 2.2e-16
-## alternative hypothesis: true correlation is not equal to 0
-## 95 percent confidence interval:
-##  0.5964405 0.7414562
-## sample estimates:
-##       cor 
-## 0.6754262</code></pre>
-<p>Os resultados permitem concluir que a correlação é positiva e forte (r = 0.675), além de significativa (p &lt; 0.001). Isso indica que ambas as variáveis covariam de maneira proporcional, em que valores altos em uma tendem a acompanhar valores altos em outra. É importante atentar que esse relacionamento não indica causalidade e, dessa forma, essa covariação pode ser explicada por diferentes fatores não analisados neste método.</p>
+##                                  ANOVA                                  
+## -----------------------------------------------------------------------
+##                  Sum of                                                
+##                 Squares         DF    Mean Square       F         Sig. 
+## -----------------------------------------------------------------------
+## Regression    10099.820          2       5049.910    100.675    0.0000 
+## Residual      10684.180        213         50.160                      
+## Total         20784.000        215                                     
+## -----------------------------------------------------------------------
+## 
+##                                   Parameter Estimates                                    
+## ----------------------------------------------------------------------------------------
+##       model      Beta    Std. Error    Std. Beta      t        Sig      lower     upper 
+## ----------------------------------------------------------------------------------------
+## (Intercept)     9.331         2.755                  3.386    0.001     3.899    14.762 
+##    bsq_soma     0.180         0.013        0.678    13.811    0.000     0.155     0.206 
+##  peso_atual    -0.121         0.037       -0.158    -3.221    0.001    -0.195    -0.047 
+## ----------------------------------------------------------------------------------------</code></pre>
+<p>Os resultados devem ser analisados de maneira cuidadosa. Inicialmente, é possível concluir que o modelo foi globalmente significativo (F(2, 213) = 100.675, p &lt; 0.001) e que cerca de 48% da variabilidade do EAT-26 pode ser atribuída aos valores do BSQ-34 e do peso do participante. Cada um dos preditores tem um comportamento específico. Em relação ao BSQ-34, cada unidade a mais em seu resultado impacta, em média, 0.18 pontos a mais no EAT-26, controlando pelo peso do participante (p &lt; 0.001). Além disso, cada 1 kg a mais no peso do participante impacta em -0.121 (p &lt; 0.001), em média, nos resultados do EAT-26, controlando pelos valores do BSQ-34.</p>
+<p>A ideia de verificar o efeito de uma variável controlando por outra tem um significado particular. Assumindo duas pessoas que <u>tem o peso atual igual ao peso médio do grupo</u> ou <u>o mesmo peso</u>, cada ponto extra no BSQ gera, em média, 0.18 pontos a mais no EAT-26. Assim, o valor estimado no <u>EAT-26</u> de Um participante que teve 45 pontos no <u>BSQ</u> e <u>peso</u> de 66.51 (o peso médio) é de 9.41. Já o valor estimado no <u>EAT-26</u> de um outro participante com 46 pontos no <u>BSQ</u> e mesmo <u>peso</u> do primeiro participante (66.51) é de 9.59. A diferença entre os valores é exatamente igual ao coeficiente calculado na regressão (b = 0.18). Abaixo há duas linhas de código apresentando esses resultados.</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="regressão-linear-múltipla.html#cb182-1"></a>peso_medio &lt;-<span class="st"> </span><span class="kw">mean</span>(dados_brasil<span class="op">$</span>peso_atual, <span class="dt">na.rm=</span>T)</span>
+<span id="cb182-2"><a href="regressão-linear-múltipla.html#cb182-2"></a><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">45</span>), <span class="dt">peso_atual=</span>peso_medio))</span></code></pre></div>
+<pre><code>##        1 
+## 9.416621</code></pre>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="regressão-linear-múltipla.html#cb184-1"></a><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">46</span>), <span class="dt">peso_atual=</span>peso_medio))</span></code></pre></div>
+<pre><code>##        1 
+## 9.596919</code></pre>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="regressão-linear-múltipla.html#cb186-1"></a><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">46</span>), <span class="dt">peso_atual=</span>peso_medio))<span class="op">-</span><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">45</span>), <span class="dt">peso_atual=</span>peso_medio))</span></code></pre></div>
+<pre><code>##         1 
+## 0.1802979</code></pre>
+<p>Tal como apresentado anteriores, a interpretação dos resultados depende da adequação de seus pressupostos. O relacionamento <u>linear</u> já havia sido investigado no gráfico de dispersão nos capítulos anteriores. A <u>Normalidade</u> dos resíduos pode ser vista pelo QQ-Plot (abaixo):</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="regressão-linear-múltipla.html#cb188-1"></a><span class="kw">ols_plot_resid_qq</span>(mod_linear_multiplo)</span></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-140-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="regressão-linear-múltipla.html#cb189-1"></a><span class="kw">ols_plot_resid_stud_fit</span>(mod_linear_multiplo)</span></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-140-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>e por testes estatísticos formais. De forma análoga ao que aconteceu no capítulo de regressão linear simples, apesar de algo discordantes, o pressuposto de normalidade foi rejeitado.</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="regressão-linear-múltipla.html#cb190-1"></a><span class="kw">ols_test_normality</span>(mod_linear_multiplo)</span></code></pre></div>
+<pre><code>## Warning in ks.test(y, &quot;pnorm&quot;, mean(y), sd(y)): ties should not be present for
+## the Kolmogorov-Smirnov test</code></pre>
+<pre><code>## -----------------------------------------------
+##        Test             Statistic       pvalue  
+## -----------------------------------------------
+## Shapiro-Wilk              0.9607         0.0000 
+## Kolmogorov-Smirnov        0.0689         0.2567 
+## Cramer-von Mises         17.7972         0.0000 
+## Anderson-Darling          2.2135         0.0000 
+## -----------------------------------------------</code></pre>
+<p>A <u>independência</u> dos resíduos pode ser avaliada pelo Durbin Watson. É importante lemrbar que a Hipótees nula é de que os resíduos não são correlacionados.</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="regressão-linear-múltipla.html#cb193-1"></a>car<span class="op">::</span><span class="kw">durbinWatsonTest</span>(mod_linear_multiplo)</span></code></pre></div>
+<pre><code>##  lag Autocorrelation D-W Statistic p-value
+##    1      0.02410462      1.947272   0.642
+##  Alternative hypothesis: rho != 0</code></pre>
+<p>As homocedasticidade, ou seja, <u>variâncias constantes</u> pode ser vista em um gráfico de dispersão dos resíduos (residual) contra os valores previstos (fitted).</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="regressão-linear-múltipla.html#cb195-1"></a><span class="kw">ols_plot_resid_fit</span>(mod_linear_multiplo)</span></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-143-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>O teste Breusch-Pagan também é um indicador importante e a Hipótese nula assume homocedasticidade. Portanto, a estatística de teste deveria ser insignificante para que a homocedasticidade pudeSSR ser aceita, o que não é o caso aqui.</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="regressão-linear-múltipla.html#cb196-1"></a><span class="kw">ols_test_breusch_pagan</span>(mod_linear_multiplo)</span></code></pre></div>
+<pre><code>## 
+##  Breusch Pagan Test for Heteroskedasticity
+##  -----------------------------------------
+##  Ho: the variance is constant            
+##  Ha: the variance is not constant        
+## 
+##                 Data                 
+##  ------------------------------------
+##  Response : eat_soma 
+##  Variables: fitted values of eat_soma 
+## 
+##         Test Summary          
+##  -----------------------------
+##  DF            =    1 
+##  Chi2          =    5.723583 
+##  Prob &gt; Chi2   =    0.01673854</code></pre>
+<p>Como esse modelo pode reunir diversas variáveis independentes, é importante verificar o quanto elas são correlacionadas entre si. Isso é feito pela análise de Variance Inflaction Factor (VIF). Valores de VIF superiores a 4 indicam que as variáveis indepenentes são fortemente correlacionadas e, com isso, as estimativas podem ser distorcidas. Neste caso, isso não aconteceu.</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="regressão-linear-múltipla.html#cb198-1"></a><span class="kw">ols_coll_diag</span>(mod_linear_multiplo)</span></code></pre></div>
+<pre><code>## Tolerance and Variance Inflation Factor
+## ---------------------------------------
+##    Variables Tolerance      VIF
+## 1   bsq_soma 0.9999925 1.000007
+## 2 peso_atual 0.9999925 1.000007
+## 
+## 
+## Eigenvalue and Condition Index
+## ------------------------------
+##   Eigenvalue Condition Index   intercept   bsq_soma  peso_atual
+## 1 2.85848875        1.000000 0.003656276 0.01908105 0.004257786
+## 2 0.12424761        4.796498 0.027440631 0.92248915 0.062344260
+## 3 0.01726365       12.867732 0.968903094 0.05842980 0.933397954</code></pre>
+<p>Com isso realizado, os diagnósticos indicaram que a normalidade e a homocedasticidade foram violadas, novamente sugerindo uma interpretação cautelosa dos resultados. Abaixo uma orientação de como escrever os resultados.</p>
 <div class="writing">
 <p>
 <strong>Como escrever os resultados</strong>
 </p>
 <p>
-A correlação entre o comportamento alimentar (EAT-26) e a percepção corporal (BSQ-34) foi calculada pelo Coeficiente Produto-Momento de Pearson. Os resultados concluíram que existe uma correlação positiva, forte e significativa entre ambas as variáveis (r = 0.675, p &lt; 0.001), indicando que as duas variáveis covariam de maneira proporcional.
+Um modelo de regressão múltipla foi calculado para verificar os resultados dos comportamentos alimentares (EAT-26) em função da percepção de imagem corporal (BSQ-34) e do peso do participante. Os resultados indicaram que cerca de 48% da variância do EAT-26 pode ser atribuída aos preditores (R2 = 0.486, F(2,213) = 100.675, p &lt; 0.001). Cada ponto a mais no BSQ-34 impacta, em média, em 0.180 no EAT-26 (p &lt; 0.001), controlando pelo peso do participante.
 </p>
 </div>
 </div>
-<div id="resumo-7" class="section level2">
-<h2><span class="header-section-number">10.3</span> Resumo</h2>
+<div id="técnicas-automáticas-de-seleção-de-variáveis" class="section level2">
+<h2><span class="header-section-number">12.3</span> Técnicas automáticas de seleção de variáveis</h2>
+<p>Os critérios para composição dos modelos costuma despertar um grande interesse nos debates estatísticos e quantas, quais e como eleger as variáveis independentes é um dos mais intensos. A seleção destas variáveis visa otimizar a acurácia do modelo, mas sem perder sua parcimônia, ou seja, simplicidade <span class="citation">(Unger and Hansch <a href="#ref-Unger1973" role="doc-biblioref">1973</a>; Gaudio and Zandonade <a href="#ref-Gaudio2001" role="doc-biblioref">2001</a>)</span>. Métodos com justificativa teórica costumam ser chamados de entrada bruta, enquanto métodos em que se implementa algum algorítimo computadorizado para tal seleção tendem a ser denominados de métodos automáticos. Apesar do detalhamento destas técnicas ser fora do escopo dete capítulo, a seguir são listadas as principais técnicas:</p>
 <ol style="list-style-type: decimal">
-<li>O termo correlação diz respeito a um conjunto de métodos que visa verificar a direção e a força do relacionamento entre duas variáveis<br />
+<li>Backward selection<br />
 </li>
-<li>A correlação de Pearson assume que ambas as variáveis são linearmente correlacionadas<br />
+<li>Forward selection<br />
 </li>
-<li>O coeficiente sempre indicará a direção (por um sinal) e a força (por um número entre -1 e +1) do relacionamento bivariado<br />
+<li>Stepwise selecion<br />
 </li>
-<li>Correlação não indica causalidade</li>
+<li>Lasso selection</li>
+</ol>
+</div>
+<div id="resumo-9" class="section level2">
+<h2><span class="header-section-number">12.4</span> Resumo</h2>
+<ol style="list-style-type: decimal">
+<li>O termo regressão múltipla se refere a um modelo de regressão com duas ou mais variáveis independentes<br />
+</li>
+<li>As VIs podem ser de qualquer natureza, o que significa que toda família da ANOVA pode ser entendida como casos particulares de regressão<br />
+</li>
+<li>Os diagnósticos são os mesmos dos modelos simples, mas agora é necessário também testar a multicolinearidade do modelo<br />
+</li>
+<li>Existem diferentes métodos para adicionar preditores e maneiras manuais e automáticas são disponíveis</li>
 </ol>
 
+<div id="refs" class="references">
+<div>
+<p>BAIRD, DAVIS. 1983. “The Fisher/Pearson Chi-Squared Controversy: A Turning Point for Inductive Inference.” <em>The British Journal for the Philosophy of Science</em> 34 (2): 105–18. <a href="https://doi.org/10.1093/bjps/34.2.105">https://doi.org/10.1093/bjps/34.2.105</a>.</p>
+</div>
+<div>
+<p>Chartier, Sylvain, and Andrew Faulkner. 2008. “General Linear Models: An Integrated Approach to Statistics.” <em>Tutorials in Quantitative Methods for Psychology</em> 4 (2): 65–78. <a href="https://doi.org/10.20982/tqmp.04.2.p065">https://doi.org/10.20982/tqmp.04.2.p065</a>.</p>
+</div>
+<div>
+<p>Cohen, Jacob. 1988. <em>Statistical Power Analysis for the Behavioral Sciences</em>. Routledge. <a href="https://doi.org/10.4324/9780203771587">https://doi.org/10.4324/9780203771587</a>.</p>
+</div>
+<div>
+<p>Field, Andy P., and Rand R. Wilcox. 2017. “Robust Statistical Methods: A Primer for Clinical Psychology and Experimental Psychopathology Researchers.” <em>Behaviour Research and Therapy</em> 98 (November): 19–38. <a href="https://doi.org/10.1016/j.brat.2017.05.013">https://doi.org/10.1016/j.brat.2017.05.013</a>.</p>
+</div>
+<div>
+<p>Gaudio, Anderson Coser, and Eliana Zandonade. 2001. “Proposição, Validação E Análise Dos Modelos Que Correlacionam Estrutura Química E Atividade Biológica.” <em>Quimica Nova</em> 24 (5): 658–71. <a href="https://doi.org/10.1590/s0100-40422001000500013">https://doi.org/10.1590/s0100-40422001000500013</a>.</p>
+</div>
+<div>
+<p>Gueorguieva, Ralitza, and John H. Krystal. 2004. “Move over ANOVA.” <em>Archives of General Psychiatry</em> 61 (3): 310. <a href="https://doi.org/10.1001/archpsyc.61.3.310">https://doi.org/10.1001/archpsyc.61.3.310</a>.</p>
+</div>
+<div>
+<p>Howell, David C. 2011. <em>Fundamental Statistics for the Behavioral Sciences</em>. Belmont: CA: Wadsworth Cengage Learning.</p>
+</div>
+<div>
+<p>Krus, David J., and Patricia H. Krus. 1977. “Lost: McCalls T Scores: Why?” <em>Educational and Psychological Measurement</em> 37 (1): 257–61. <a href="https://doi.org/10.1177/001316447703700134">https://doi.org/10.1177/001316447703700134</a>.</p>
+</div>
+<div>
+<p>Lumley, Thomas, Paula Diehr, Scott Emerson, and Lu Chen. 2002. “The Importance of the Normality Assumption in Large Public Health Data Sets.” <em>Annual Review of Public Health</em> 23 (1): 151–69. <a href="https://doi.org/10.1146/annurev.publhealth.23.100901.140546">https://doi.org/10.1146/annurev.publhealth.23.100901.140546</a>.</p>
+</div>
+<div>
+<p>Morettin, Pedro Alberto, and Wilton de Oliveira Bussab. 2010. <em>Estatistica Basica</em>. Saraiva.</p>
+</div>
+<div>
+<p>Pearson, Karl. 1900. “X. On the Criterion That a Given System of Deviations from the Probable in the Case of a Correlated System of Variables Is Such That It Can Be Reasonably Supposed to Have Arisen from Random Sampling.” <em>The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science</em> 50 (302): 157–75. <a href="https://doi.org/10.1080/14786440009463897">https://doi.org/10.1080/14786440009463897</a>.</p>
+</div>
+<div>
+<p>Quené, Hugo, and Huub van den Bergh. 2004. “On Multi-Level Modeling of Data from Repeated Measures Designs: A Tutorial.” <em>Speech Communication</em> 43 (1-2): 103–21. <a href="https://doi.org/10.1016/j.specom.2004.02.004">https://doi.org/10.1016/j.specom.2004.02.004</a>.</p>
+</div>
+<div>
+<p>Unger, Stefan H., and Corwin Hansch. 1973. “Model Building in Structure-Activity Relations. Reexamination of Adrenergic Blocking Activity of .Beta.-halo-.beta.-arylalkylamines.” <em>Journal of Medicinal Chemistry</em> 16 (7): 745–49. <a href="https://doi.org/10.1021/jm00265a001">https://doi.org/10.1021/jm00265a001</a>.</p>
+</div>
+<div>
+<p>Wasserstein, Ronald L., and Nicole A. Lazar. 2016. “The ASA Statement on P-Values: Context, Process, and Purpose.” <em>The American Statistician</em> 70 (2): 129–33. <a href="https://doi.org/10.1080/00031305.2016.1154108">https://doi.org/10.1080/00031305.2016.1154108</a>.</p>
+</div>
+<div>
+<p>Yap, B. W., and C. H. Sim. 2011. “Comparisons of Various Types of Normality Tests.” <em>Journal of Statistical Computation and Simulation</em> 81 (12): 2141–55. <a href="https://doi.org/10.1080/00949655.2010.520163">https://doi.org/10.1080/00949655.2010.520163</a>.</p>
+</div>
+</div>
 </div>
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
-<div id="ref-Cohen1988">
-<p>Cohen, Jacob. 1988. <em>Statistical Power Analysis for the Behavioral Sciences</em>. Routledge. <a href="https://doi.org/10.4324/9780203771587">https://doi.org/10.4324/9780203771587</a>.</p>
+<div id="ref-Gaudio2001">
+<p>Gaudio, Anderson Coser, and Eliana Zandonade. 2001. “Proposição, Validação E Análise Dos Modelos Que Correlacionam Estrutura Química E Atividade Biológica.” <em>Quimica Nova</em> 24 (5): 658–71. <a href="https://doi.org/10.1590/s0100-40422001000500013">https://doi.org/10.1590/s0100-40422001000500013</a>.</p>
+</div>
+<div id="ref-Unger1973">
+<p>Unger, Stefan H., and Corwin Hansch. 1973. “Model Building in Structure-Activity Relations. Reexamination of Adrenergic Blocking Activity of .Beta.-halo-.beta.-arylalkylamines.” <em>Journal of Medicinal Chemistry</em> 16 (7): 745–49. <a href="https://doi.org/10.1021/jm00265a001">https://doi.org/10.1021/jm00265a001</a>.</p>
 </div>
 </div>
             </section>
@@ -744,8 +816,8 @@ A correlação entre o comportamento alimentar (EAT-26) e a percepção corporal
           </div>
         </div>
       </div>
-<a href="modelo-linear-misto.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="regressão-linear-simples.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="regressão-linear-simples.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -776,7 +848,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/09-correlacao.Rmd",
+"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/11-regressao_linear_multipla.Rmd",
 "text": "Edit"
 },
 "history": {
