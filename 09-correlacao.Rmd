@@ -98,7 +98,7 @@ dados_brasil %>%
 
 Inicialmente, a escrita da hipótese é:
 
-$$H_0: \rho_{(x,y)} = 0 \\ H_a =  \rho_{(x,y)} \neq 0 \\ \alpha = 0.05$$
+$$H_0: \rho_{(x,y)} = 0 \\ H_a:  \rho_{(x,y)} \neq 0 \\ \alpha = 0.05$$
 
 O gráfico de dispersão auxilia na visualização da relação entre as variáveis e permite verificar se o relacionamento é ou não linear. 
 
@@ -108,13 +108,14 @@ ggplot(dados_brasil, aes(x = bsq_soma, y = eat_soma)) +
   labs(x = "Resultados da Escala BSQ-34", y = "Resultados da Escala EAT-26", 
        title = "Correlação entre o BSQ-34 e o EAT-26")
 ```
+  
 O gráfico indica que as duas variáveis são relacionadas. Apesar do padrão deste relacionamento não ser estritamente linear, é possível verificar formalmente a correlação entre ambas as variáveis,
 
 ```{r}
 cor.test(dados_brasil$eat_soma, dados_brasil$bsq_soma)
 ```
 
-Os resultados permitem concluir que a correlação é positiva e forte (r = 0.675), além de significativa (p < 0.001). Isso indica que ambas as variáveis covariam de maneira proporcional, em que valores altos tendem a acompanhar valores altos em outra. É importante atentar que esse relacionamento não indica causalidade e, dessa forma, essa covariação pode ser explicada por diferentes fatores não analisados neste método.  
+Os resultados permitem concluir que a correlação é positiva e forte (r = 0.675), além de significativa (p < 0.001). Isso indica que ambas as variáveis covariam de maneira proporcional, em que valores altos em uma tendem a acompanhar valores altos em outra. É importante atentar que esse relacionamento não indica causalidade e, dessa forma, essa covariação pode ser explicada por diferentes fatores não analisados neste método.  
 
 
 
@@ -128,6 +129,6 @@ A correlação entre o comportamento alimentar (EAT-26) e a percepção corporal
 ## Resumo  
 
 1. O termo correlação diz respeito a um conjunto de métodos que visa verificar a direção e a força do relacionamento entre duas variáveis   
-2. A correlação de Pearson assume que ambas as variáveis são linearmente correlacionadas  
-3, O coeficiente sempre indicará a direção (por um sinal) e a força (por um número entre -1 e +1) do relacionamento bivariado  
-3. Correlação não indica causalidade  
+2. A correlação de Pearson assume que ambas as variáveis são linearmente correlacionadas   
+3. O coeficiente sempre indicará a direção (por um sinal) e a força (por um número entre -1 e +1) do relacionamento bivariado  
+4. Correlação não indica causalidade  

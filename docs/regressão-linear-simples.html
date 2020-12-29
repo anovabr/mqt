@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 10 Regressão linear simples | Métodos quantitativos em Psicologia com R</title>
+  <title>Capítulo 11 Regressão linear simples | Métodos quantitativos em Psicologia com R</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 10 Regressão linear simples | Métodos quantitativos em Psicologia com R" />
+  <meta property="og:title" content="Capítulo 11 Regressão linear simples | Métodos quantitativos em Psicologia com R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="cjvanlissa/gitbook-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 10 Regressão linear simples | Métodos quantitativos em Psicologia com R" />
+  <meta name="twitter:title" content="Capítulo 11 Regressão linear simples | Métodos quantitativos em Psicologia com R" />
   
   <meta name="twitter:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   
@@ -24,15 +24,15 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2020-12-28" />
+<meta name="date" content="2020-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="modelo-linear-misto.html"/>
-<link rel="next" href="qui-quadrado-1.html"/>
+<link rel="prev" href="correlação.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -206,17 +206,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.2" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#execução-no-r-6"><i class="fa fa-check"></i><b>9.2</b> execução no R</a></li>
 <li class="chapter" data-level="9.3" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#resumo-6"><i class="fa fa-check"></i><b>9.3</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>10</b> Regressão linear simples</a><ul>
-<li class="chapter" data-level="10.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#legenda-1"><i class="fa fa-check"></i><b>10.1</b> Legenda</a></li>
-<li class="chapter" data-level="10.2" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#explicação-conceitual"><i class="fa fa-check"></i><b>10.2</b> Explicação conceitual</a></li>
-<li class="chapter" data-level="10.3" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisa-6"><i class="fa fa-check"></i><b>10.3</b> Pesquisa</a></li>
-<li class="chapter" data-level="10.4" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-r-7"><i class="fa fa-check"></i><b>10.4</b> Execução no R</a></li>
-<li class="chapter" data-level="10.5" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pressupostos"><i class="fa fa-check"></i><b>10.5</b> Pressupostos</a></li>
+<li class="chapter" data-level="10" data-path="correlação.html"><a href="correlação.html"><i class="fa fa-check"></i><b>10</b> Correlação</a><ul>
+<li class="chapter" data-level="10.1" data-path="correlação.html"><a href="correlação.html#pesquisa-6"><i class="fa fa-check"></i><b>10.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="10.2" data-path="correlação.html"><a href="correlação.html#execução-no-r-7"><i class="fa fa-check"></i><b>10.2</b> Execução no R</a></li>
+<li class="chapter" data-level="10.3" data-path="correlação.html"><a href="correlação.html#resumo-7"><i class="fa fa-check"></i><b>10.3</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html"><i class="fa fa-check"></i><b>11</b> Qui quadrado</a><ul>
-<li class="chapter" data-level="11.1" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html#pesquisa-7"><i class="fa fa-check"></i><b>11.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="11.2" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html#execução-no-r-8"><i class="fa fa-check"></i><b>11.2</b> Execução no R</a></li>
-<li class="chapter" data-level="11.3" data-path="qui-quadrado-1.html"><a href="qui-quadrado-1.html#tamanho-do-efeito-2"><i class="fa fa-check"></i><b>11.3</b> Tamanho do efeito</a></li>
+<li class="chapter" data-level="11" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>11</b> Regressão linear simples</a><ul>
+<li class="chapter" data-level="11.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#legenda-1"><i class="fa fa-check"></i><b>11.1</b> Legenda</a></li>
+<li class="chapter" data-level="11.2" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#explicação-conceitual"><i class="fa fa-check"></i><b>11.2</b> Explicação conceitual</a></li>
+<li class="chapter" data-level="11.3" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisa-7"><i class="fa fa-check"></i><b>11.3</b> Pesquisa</a></li>
+<li class="chapter" data-level="11.4" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-r-8"><i class="fa fa-check"></i><b>11.4</b> Execução no R</a></li>
+<li class="chapter" data-level="11.5" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#resumo-8"><i class="fa fa-check"></i><b>11.5</b> Resumo</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="http://www.puc-rio.br/" target="blank">PUC-Rio</a></li>
@@ -239,7 +239,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="regressão-linear-simples" class="section level1">
-<h1><span class="header-section-number">Capítulo 10</span> Regressão linear simples</h1>
+<h1><span class="header-section-number">Capítulo 11</span> Regressão linear simples</h1>
 <p>Os modelos de regressão são modelos estatísticos que visam predizer o comportamento de uma variável resposta (Y) como uma função de uma ou mais variáveis independentes (X). Em larga escala, eles substituem os outros testes paramétricos vistos até agora. Assim, quase tudo o que foi visto durante os capítulos anteriores são casos especiais de modelos de regressão.</p>
 <p>Existem diferentes nomenclaturas utilizadas para classificar tais modelos e a tabela abaixo apresenta uma classificação funcional.</p>
 <table>
@@ -295,7 +295,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>O mnemônico <u>LINE</u> (linearity, independence, normality, equal variance) talvez ajude a lembrar destes pressupostos.</p>
 <div id="legenda-1" class="section level2">
-<h2><span class="header-section-number">10.1</span> Legenda</h2>
+<h2><span class="header-section-number">11.1</span> Legenda</h2>
 <p>Diferentes termos são empregados em modelos de regressão A legenda a seguir visa auxiliar no entendimento de cada um deles e aproximar o leitor aos principais conceitos amplos utilizados em modelos lineares:</p>
 <div class="writing">
 <p>
@@ -353,7 +353,7 @@ Erro quadrático médio: <span class="math inline"><span class="math inline">\(M
 <p>É possível citar ao menos três formas de explicar modelos de regressão. Evidentemente, todas são interligadas, mas cada qual apresenta uma ênfase didática diferente. Nesse sentido, a forma mais “conceitual” conta com conjuntos para explicitar o tema, a forma “correlacional” parte de um gráfico de dispersão e a forma “analítica” traz conceitos matemático.</p>
 </div>
 <div id="explicação-conceitual" class="section level2">
-<h2><span class="header-section-number">10.2</span> Explicação conceitual</h2>
+<h2><span class="header-section-number">11.2</span> Explicação conceitual</h2>
 <p>Inicialmente, é necessário atentar que a <u>variável dependente (Y)</u> e a <u>variável independente (X)</u> podem ser vistas como conjuntos. No caso:</p>
 <p><img src="img/cap_reg_x_y.PNG" /></p>
 <p>Neste exemplo, ambas as variáveis estão afastadas e não há nenhuma relação entre elas. No entanto, o que frequentemente ocorre é que existe algum grau de relacionamento entre elas, tal como exposto abaixo:</p>
@@ -371,17 +371,17 @@ Erro quadrático médio: <span class="math inline"><span class="math inline">\(M
 <p>Isso é equivalente a subtração do espaço máximo de variabilidade (100%) pela razão entre a Soma dos Quadrados dos Erros (SSE) pela Soma dos Quadrados Total (SST):</p>
 <p><img src="img/cap_reg_r2_1.PNG" /></p>
 </div>
-<div id="pesquisa-6" class="section level2">
-<h2><span class="header-section-number">10.3</span> Pesquisa</h2>
+<div id="pesquisa-7" class="section level2">
+<h2><span class="header-section-number">11.3</span> Pesquisa</h2>
 <div class="alert alert-info" role="alert">
 <p><strong>Base: </strong> Livro - Dados - Eating disorders</p>
 </div>
 <p>Vamos utilizar a pesquisa intitulada <a href="https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students">“Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students”</a>, publicada em 2018 no Global Journal of Educational Studies, que sou co-autor.</p>
 <p>O objetivo dessa pesquisa foi explorar os fatores envolvidos em transtornos alimentares e aspectos da percepção da imagem corporal, bem como verificar a capacidade que uma medida possuia em predizer os resultados de outra. Esse artigo contou com a utilização de escalas aplicadas em 219 participantes no Brasil. Para acessar aspectos relacionados aos Transtornos alimentares, a escala EAT-26 foi aplicada. Para verificar aspectos da imagem corporal, a escala BSQ-34 foi aplicada.</p>
 <p>Segue abaixo uma tabela inicial com dados descritivos dos resultados.</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="regressão-linear-simples.html#cb147-1"></a>dados_brasil <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb147-2"><a href="regressão-linear-simples.html#cb147-2"></a><span class="st">  </span><span class="kw">select</span>(sexo,eat_soma, bsq_soma, imc, faz_esporte, familia_esporte) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb147-3"><a href="regressão-linear-simples.html#cb147-3"></a><span class="st">  </span>psych<span class="op">::</span><span class="kw">describeBy</span>(.,<span class="dt">group =</span> <span class="st">&quot;sexo&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="regressão-linear-simples.html#cb153-1"></a>dados_brasil <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb153-2"><a href="regressão-linear-simples.html#cb153-2"></a><span class="st">  </span><span class="kw">select</span>(sexo,eat_soma, bsq_soma, imc, faz_esporte, familia_esporte) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb153-3"><a href="regressão-linear-simples.html#cb153-3"></a><span class="st">  </span>psych<span class="op">::</span><span class="kw">describeBy</span>(.,<span class="dt">group =</span> <span class="st">&quot;sexo&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
 <pre><code>## Warning in pander.default(.): No pander.method for &quot;psych&quot;, reverting to
 ## default.No pander.method for &quot;describeBy&quot;, reverting to default.</code></pre>
 <ul>
@@ -722,25 +722,25 @@ Erro quadrático médio: <span class="math inline"><span class="math inline">\(M
 </ul>
 <!-- end of list -->
 </div>
-<div id="execução-no-r-7" class="section level2">
-<h2><span class="header-section-number">10.4</span> Execução no R</h2>
+<div id="execução-no-r-8" class="section level2">
+<h2><span class="header-section-number">11.4</span> Execução no R</h2>
 <p>Inicialmente, o gráfico de dispersão auxilia na visualização da relação entre as variáveis.A correlação entre ambas as medidas expressa a força e a direção que elas possuem. Enquanto a força é interpretada em <code>fraca</code> (0.1), <code>moderada</code> (0.3) ou <code>forte</code> (0.5) <span class="citation">(Cohen <a href="#ref-Cohen1988" role="doc-biblioref">1988</a>)</span>, a direção pode ser positiva ou negativa, a depender do sinal.</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="regressão-linear-simples.html#cb149-1"></a><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> bsq_soma, <span class="dt">y =</span> eat_soma)) <span class="op">+</span></span>
-<span id="cb149-2"><a href="regressão-linear-simples.html#cb149-2"></a><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></span>
-<span id="cb149-3"><a href="regressão-linear-simples.html#cb149-3"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Resultados da Escala BSQ-34&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Resultados da Escala EAT-26&quot;</span>, </span>
-<span id="cb149-4"><a href="regressão-linear-simples.html#cb149-4"></a>       <span class="dt">title =</span> <span class="st">&quot;Correlação entre o BSQ-34 e o EAT-26&quot;</span>)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-112-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="regressão-linear-simples.html#cb155-1"></a><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> bsq_soma, <span class="dt">y =</span> eat_soma)) <span class="op">+</span></span>
+<span id="cb155-2"><a href="regressão-linear-simples.html#cb155-2"></a><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></span>
+<span id="cb155-3"><a href="regressão-linear-simples.html#cb155-3"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Resultados da Escala BSQ-34&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Resultados da Escala EAT-26&quot;</span>, </span>
+<span id="cb155-4"><a href="regressão-linear-simples.html#cb155-4"></a>       <span class="dt">title =</span> <span class="st">&quot;Correlação entre o BSQ-34 e o EAT-26&quot;</span>)</span></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-118-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O gráfico deixa claro que existe um padrão linear entre ambas as variáveis. O coeficiente de correlação pode ser calculado pelo Produto momento de Pearson, com resultado de 0.6754262, indicando uma alta correlação entre ambos os resultados.</p>
 <p>Com isso, é natural que o interesse seja verificar o quanto os resultados do <u>EAT-26</u> variam em função do <u>BSQ-34</u>, uma vez que alguns achados da literatura comentam que a <u>alterações da alimentação</u> ocorrem em função da percepção da <u>imagem corporal</u>. Dando a este objetivo uma leitura estatística, o interesse é o de prever os valores do <u>EAT-26</u> a partir dos valores do <u>BSQ-34</u> ou o quanto a variabilidade dos resultados do <u>EAT-26</u> pode ser atribuída pelos resultados do <u>BSQ-34</u>.</p>
 <p>Fazer isso pede que se retorne ao gráfico correlacional feito ainda pouco e que tente se ajustar / traçar uma reta que tente tocar na maioria dos pontos. Milhões de retas podem ser traçadas e todas acertarão alguns pontos, mas errarão outros. Por exemplo:</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="regressão-linear-simples.html#cb150-1"></a><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> bsq_soma, <span class="dt">y =</span> eat_soma)) <span class="op">+</span></span>
-<span id="cb150-2"><a href="regressão-linear-simples.html#cb150-2"></a><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></span>
-<span id="cb150-3"><a href="regressão-linear-simples.html#cb150-3"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Resultados da Escala BSQ-34&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Resultados da Escala EAT-26&quot;</span>, </span>
-<span id="cb150-4"><a href="regressão-linear-simples.html#cb150-4"></a>       <span class="dt">title =</span> <span class="st">&quot;Correlação entre o BSQ-34 e o EAT-26&quot;</span>) <span class="op">+</span></span>
-<span id="cb150-5"><a href="regressão-linear-simples.html#cb150-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">10</span>,<span class="dv">200</span>) <span class="op">+</span></span>
-<span id="cb150-6"><a href="regressão-linear-simples.html#cb150-6"></a><span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">slope =</span> <span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="fl">0.4</span>,<span class="fl">0.6</span>), <span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="fl">0.2</span>,<span class="fl">0.2</span>)),<span class="dt">color =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="regressão-linear-simples.html#cb156-1"></a><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> bsq_soma, <span class="dt">y =</span> eat_soma)) <span class="op">+</span></span>
+<span id="cb156-2"><a href="regressão-linear-simples.html#cb156-2"></a><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></span>
+<span id="cb156-3"><a href="regressão-linear-simples.html#cb156-3"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Resultados da Escala BSQ-34&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Resultados da Escala EAT-26&quot;</span>, </span>
+<span id="cb156-4"><a href="regressão-linear-simples.html#cb156-4"></a>       <span class="dt">title =</span> <span class="st">&quot;Correlação entre o BSQ-34 e o EAT-26&quot;</span>) <span class="op">+</span></span>
+<span id="cb156-5"><a href="regressão-linear-simples.html#cb156-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">10</span>,<span class="dv">200</span>) <span class="op">+</span></span>
+<span id="cb156-6"><a href="regressão-linear-simples.html#cb156-6"></a><span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">slope =</span> <span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="fl">0.4</span>,<span class="fl">0.6</span>), <span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="fl">0.2</span>,<span class="fl">0.2</span>)),<span class="dt">color =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">20</span>)</span></code></pre></div>
 <pre><code>## Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-113-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-119-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>A necessidade agora é conseguir encontrar o <u>melhor</u> modelo estatístico que descreva essa relação. Assim, obter uma função que possa gerar uma reta que esteja bem perto dos pontos reais e, consequentemente, minimize os erros. Isso é feito justamente resgatando o conceito de função afim, exposto no ensino médio (e ilustrado ao início do capítulo):</p>
 <p><span class="math display">\[\hat{y} = a + bX\]</span></p>
 <p>Repare que agora o valor previsto (<span class="math inline">\(\hat{y}\)</span>) depende de duas constantes (<u>a: intercepto ou coeficiente linear</u> e <u>b: inclinação ou coeficiente angular</u>) e uma variável (X). Apenas por uma questão de simbologia, três alterações são feitas com a equação:</p>
@@ -766,44 +766,44 @@ b_1 &amp;= \frac{\sum_{i = 1}^{n} x_i y_i - \frac{(\sum_{i = 1}^{n} x_i)(\sum_{i
 <p><span class="math display">\[\begin{aligned}b_0 &amp;= \bar{y} - b_1 \bar{x}
 \end{aligned}\]</span></p>
 <p>Agora é possível traçar a <u>melhor</u> reta para descrever o relacionamento entre as variáveis, tal como abaixo:</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="regressão-linear-simples.html#cb152-1"></a>b1 &lt;-<span class="st"> </span><span class="kw">cov</span>(dados_brasil<span class="op">$</span>bsq_soma, dados_brasil<span class="op">$</span>eat_soma)<span class="op">/</span><span class="kw">var</span>(dados_brasil<span class="op">$</span>bsq_soma)</span>
-<span id="cb152-2"><a href="regressão-linear-simples.html#cb152-2"></a>b0 &lt;-<span class="st"> </span><span class="kw">mean</span>(dados_brasil<span class="op">$</span>eat_soma)<span class="op">-</span>(b1<span class="op">*</span><span class="kw">mean</span>(dados_brasil<span class="op">$</span>bsq_soma))</span>
-<span id="cb152-3"><a href="regressão-linear-simples.html#cb152-3"></a></span>
-<span id="cb152-4"><a href="regressão-linear-simples.html#cb152-4"></a><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> bsq_soma, <span class="dt">y =</span> eat_soma)) <span class="op">+</span></span>
-<span id="cb152-5"><a href="regressão-linear-simples.html#cb152-5"></a><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></span>
-<span id="cb152-6"><a href="regressão-linear-simples.html#cb152-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Resultados da Escala BSQ-34&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Resultados da Escala EAT-26&quot;</span>, </span>
-<span id="cb152-7"><a href="regressão-linear-simples.html#cb152-7"></a>       <span class="dt">title =</span> <span class="st">&quot;Correlação entre o BSQ-34 e o EAT-26&quot;</span>) <span class="op">+</span></span>
-<span id="cb152-8"><a href="regressão-linear-simples.html#cb152-8"></a><span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">intercept =</span> b0, <span class="dt">slope =</span> b1)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-114-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="regressão-linear-simples.html#cb158-1"></a>b1 &lt;-<span class="st"> </span><span class="kw">cov</span>(dados_brasil<span class="op">$</span>bsq_soma, dados_brasil<span class="op">$</span>eat_soma)<span class="op">/</span><span class="kw">var</span>(dados_brasil<span class="op">$</span>bsq_soma)</span>
+<span id="cb158-2"><a href="regressão-linear-simples.html#cb158-2"></a>b0 &lt;-<span class="st"> </span><span class="kw">mean</span>(dados_brasil<span class="op">$</span>eat_soma)<span class="op">-</span>(b1<span class="op">*</span><span class="kw">mean</span>(dados_brasil<span class="op">$</span>bsq_soma))</span>
+<span id="cb158-3"><a href="regressão-linear-simples.html#cb158-3"></a></span>
+<span id="cb158-4"><a href="regressão-linear-simples.html#cb158-4"></a><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> bsq_soma, <span class="dt">y =</span> eat_soma)) <span class="op">+</span></span>
+<span id="cb158-5"><a href="regressão-linear-simples.html#cb158-5"></a><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></span>
+<span id="cb158-6"><a href="regressão-linear-simples.html#cb158-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Resultados da Escala BSQ-34&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Resultados da Escala EAT-26&quot;</span>, </span>
+<span id="cb158-7"><a href="regressão-linear-simples.html#cb158-7"></a>       <span class="dt">title =</span> <span class="st">&quot;Correlação entre o BSQ-34 e o EAT-26&quot;</span>) <span class="op">+</span></span>
+<span id="cb158-8"><a href="regressão-linear-simples.html#cb158-8"></a><span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">intercept =</span> b0, <span class="dt">slope =</span> b1)</span></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-120-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Essa reta passará necessariamente pela média de ambas as variáveis.</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="regressão-linear-simples.html#cb153-1"></a><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> bsq_soma, <span class="dt">y =</span> eat_soma)) <span class="op">+</span></span>
-<span id="cb153-2"><a href="regressão-linear-simples.html#cb153-2"></a><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></span>
-<span id="cb153-3"><a href="regressão-linear-simples.html#cb153-3"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Resultados da Escala BSQ-34&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Resultados da Escala EAT-26&quot;</span>, </span>
-<span id="cb153-4"><a href="regressão-linear-simples.html#cb153-4"></a>       <span class="dt">title =</span> <span class="st">&quot;Correlação entre o BSQ-34 e o EAT-26&quot;</span>) <span class="op">+</span></span>
-<span id="cb153-5"><a href="regressão-linear-simples.html#cb153-5"></a><span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">intercept =</span> b0, <span class="dt">slope =</span> b1) <span class="op">+</span></span>
-<span id="cb153-6"><a href="regressão-linear-simples.html#cb153-6"></a><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">mean</span>(dados_brasil<span class="op">$</span>bsq_soma), <span class="dt">size=</span><span class="fl">1.5</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="op">+</span></span>
-<span id="cb153-7"><a href="regressão-linear-simples.html#cb153-7"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="kw">mean</span>(dados_brasil<span class="op">$</span>eat_soma), <span class="dt">size=</span><span class="fl">1.5</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-115-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="regressão-linear-simples.html#cb159-1"></a><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> bsq_soma, <span class="dt">y =</span> eat_soma)) <span class="op">+</span></span>
+<span id="cb159-2"><a href="regressão-linear-simples.html#cb159-2"></a><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></span>
+<span id="cb159-3"><a href="regressão-linear-simples.html#cb159-3"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Resultados da Escala BSQ-34&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Resultados da Escala EAT-26&quot;</span>, </span>
+<span id="cb159-4"><a href="regressão-linear-simples.html#cb159-4"></a>       <span class="dt">title =</span> <span class="st">&quot;Correlação entre o BSQ-34 e o EAT-26&quot;</span>) <span class="op">+</span></span>
+<span id="cb159-5"><a href="regressão-linear-simples.html#cb159-5"></a><span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">intercept =</span> b0, <span class="dt">slope =</span> b1) <span class="op">+</span></span>
+<span id="cb159-6"><a href="regressão-linear-simples.html#cb159-6"></a><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">mean</span>(dados_brasil<span class="op">$</span>bsq_soma), <span class="dt">size=</span><span class="fl">1.5</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="op">+</span></span>
+<span id="cb159-7"><a href="regressão-linear-simples.html#cb159-7"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="kw">mean</span>(dados_brasil<span class="op">$</span>eat_soma), <span class="dt">size=</span><span class="fl">1.5</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>)</span></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-121-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Aproveitando o gráfico, agora é possível apresentar os dados reais, a linha de regressão e as distâncias (resíduos) entre os pontos reais e os previstos. Enquanto o modelo foi preciso em alguns pontos, em outros ele não se saiu assim tão bem. No entanto, como essa reta foi construída pela minimização da soma dos quadrados dos resíduos, isso nos deixa confortável com os resultados.</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="regressão-linear-simples.html#cb154-1"></a><span class="kw">transform</span>(dados_brasil, <span class="dt">Fitted =</span> <span class="kw">fitted</span>(mod_linear_simples)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb154-2"><a href="regressão-linear-simples.html#cb154-2"></a><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">y =</span> bsq_soma, <span class="dt">x =</span> eat_soma)) <span class="op">+</span></span>
-<span id="cb154-3"><a href="regressão-linear-simples.html#cb154-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> bsq_soma, <span class="dt">x =</span> eat_soma, <span class="dt">shape =</span> <span class="st">&quot;real&quot;</span>), <span class="dt">color=</span><span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co">#plot real</span></span>
-<span id="cb154-4"><a href="regressão-linear-simples.html#cb154-4"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Fitted, <span class="dt">shape =</span>  <span class="st">&quot;previsto&quot;</span>), <span class="dt">color=</span><span class="st">&quot;1&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co">#plot previsto</span></span>
-<span id="cb154-5"><a href="regressão-linear-simples.html#cb154-5"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">se=</span><span class="ot">FALSE</span>, <span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb154-6"><a href="regressão-linear-simples.html#cb154-6"></a><span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> eat_soma, <span class="dt">y =</span> bsq_soma, <span class="dt">xend =</span> eat_soma, <span class="dt">yend =</span> Fitted), <span class="dt">color=</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co">#erro ligado</span></span>
-<span id="cb154-7"><a href="regressão-linear-simples.html#cb154-7"></a><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">name =</span> <span class="st">&quot;Legenda&quot;</span>,</span>
-<span id="cb154-8"><a href="regressão-linear-simples.html#cb154-8"></a>                      <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Estimados/Previstos&quot;</span>, <span class="st">&quot;Reais dos dados&quot;</span>),</span>
-<span id="cb154-9"><a href="regressão-linear-simples.html#cb154-9"></a>                      <span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;green&quot;</span>, <span class="st">&quot;black&quot;</span>)) <span class="op">+</span><span class="st">   </span></span>
-<span id="cb154-10"><a href="regressão-linear-simples.html#cb154-10"></a><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">name =</span> <span class="st">&quot;Legenda&quot;</span>,</span>
-<span id="cb154-11"><a href="regressão-linear-simples.html#cb154-11"></a>                     <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Estimados/Previstos&quot;</span>, <span class="st">&quot;Reais dos dados&quot;</span>),</span>
-<span id="cb154-12"><a href="regressão-linear-simples.html#cb154-12"></a>                     <span class="dt">values =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>)) <span class="op">+</span></span>
-<span id="cb154-13"><a href="regressão-linear-simples.html#cb154-13"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Escala BSQ-34&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Escala EAT-26&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;Resultados previstos vs. reais&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="regressão-linear-simples.html#cb160-1"></a><span class="kw">transform</span>(dados_brasil, <span class="dt">Fitted =</span> <span class="kw">fitted</span>(mod_linear_simples)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb160-2"><a href="regressão-linear-simples.html#cb160-2"></a><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">y =</span> bsq_soma, <span class="dt">x =</span> eat_soma)) <span class="op">+</span></span>
+<span id="cb160-3"><a href="regressão-linear-simples.html#cb160-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> bsq_soma, <span class="dt">x =</span> eat_soma, <span class="dt">shape =</span> <span class="st">&quot;real&quot;</span>), <span class="dt">color=</span><span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co">#plot real</span></span>
+<span id="cb160-4"><a href="regressão-linear-simples.html#cb160-4"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Fitted, <span class="dt">shape =</span>  <span class="st">&quot;previsto&quot;</span>), <span class="dt">color=</span><span class="st">&quot;1&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co">#plot previsto</span></span>
+<span id="cb160-5"><a href="regressão-linear-simples.html#cb160-5"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">se=</span><span class="ot">FALSE</span>, <span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb160-6"><a href="regressão-linear-simples.html#cb160-6"></a><span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> eat_soma, <span class="dt">y =</span> bsq_soma, <span class="dt">xend =</span> eat_soma, <span class="dt">yend =</span> Fitted), <span class="dt">color=</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co">#erro ligado</span></span>
+<span id="cb160-7"><a href="regressão-linear-simples.html#cb160-7"></a><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">name =</span> <span class="st">&quot;Legenda&quot;</span>,</span>
+<span id="cb160-8"><a href="regressão-linear-simples.html#cb160-8"></a>                      <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Estimados/Previstos&quot;</span>, <span class="st">&quot;Reais dos dados&quot;</span>),</span>
+<span id="cb160-9"><a href="regressão-linear-simples.html#cb160-9"></a>                      <span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;green&quot;</span>, <span class="st">&quot;black&quot;</span>)) <span class="op">+</span><span class="st">   </span></span>
+<span id="cb160-10"><a href="regressão-linear-simples.html#cb160-10"></a><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">name =</span> <span class="st">&quot;Legenda&quot;</span>,</span>
+<span id="cb160-11"><a href="regressão-linear-simples.html#cb160-11"></a>                     <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Estimados/Previstos&quot;</span>, <span class="st">&quot;Reais dos dados&quot;</span>),</span>
+<span id="cb160-12"><a href="regressão-linear-simples.html#cb160-12"></a>                     <span class="dt">values =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>)) <span class="op">+</span></span>
+<span id="cb160-13"><a href="regressão-linear-simples.html#cb160-13"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Escala BSQ-34&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Escala EAT-26&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;Resultados previstos vs. reais&quot;</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-116-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-122-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Posto isso, agora vamos, computacionalmente e analiticamente, realizar passo a passo a regressão linear simples. A função <code>lm</code> é a nativa para isso. Ela precisa da variável dependente e da variável independente, tal como abaixo. É importante sempre atentar para o nível de medida das variáveis para que os resultados sejam adequados.</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="regressão-linear-simples.html#cb156-1"></a>mod_linear_simples &lt;-<span class="st"> </span><span class="kw">lm</span>(eat_soma <span class="op">~</span><span class="st"> </span>bsq_soma, <span class="dt">data =</span> dados_brasil)</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="regressão-linear-simples.html#cb162-1"></a>mod_linear_simples &lt;-<span class="st"> </span><span class="kw">lm</span>(eat_soma <span class="op">~</span><span class="st"> </span>bsq_soma, <span class="dt">data =</span> dados_brasil)</span></code></pre></div>
 <p>Existem diferentes maneiras de apresentar o resultado. Tipicamente, uma tabela que apresenta características gerais seguida por específicas é o mais vantajoso. Assim:</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="regressão-linear-simples.html#cb157-1"></a><span class="kw">ols_regress</span>(mod_linear_simples) </span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="regressão-linear-simples.html#cb163-1"></a><span class="kw">ols_regress</span>(mod_linear_simples) </span></code></pre></div>
 <pre><code>##                         Model Summary                          
 ## --------------------------------------------------------------
 ## R                       0.675       RMSE                7.209 
@@ -877,27 +877,16 @@ Isso posto, a tabela inicial da regressão abaixo é exatamente igual a que foi 
 </table>
 <p>Com tais resultados descritos, agora é possível retornar aos coeficientes obtidos na regressão.</p>
 <p>O <code>intercepto</code> é chamado de <code>constante</code> na maior parte dos programas. Ele se refere ao valor médio (esperado) de Y quando X=0. Ou seja, se alguém tivesse tirado o valor 0 na escala BSQ-34, o valor previsto para os resultados da Escala EAT-26 seria de 1.55, tal como apresentado abaixo:</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="regressão-linear-simples.html#cb159-1"></a><span class="kw">predict</span>(mod_linear_simples, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">0</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="regressão-linear-simples.html#cb165-1"></a><span class="kw">predict</span>(mod_linear_simples, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">0</span>)))</span></code></pre></div>
 <pre><code>##        1 
 ## 1.465899</code></pre>
 <p>É importante notar que frequentemente o intercepto não tem interpretação lógica e, por isso, costuma ser desconsiderado. No entanto, é possível centralizar os valores do preditor <span class="math inline">\((x_i-\bar{x})\)</span> para que o intercepto se torne o valor médio da variável dependente e tenha melhor capacidade de interpretação. É também importante atentar que o valor do intercepto não é significativo, indicando que ele não é significativamente diferente de 0.</p>
 <p>Já o coeficiente do <code>bsq_soma</code> se refere os resultados obtidos a partir da Escala BSQ-34 é 0.178 e significativo. Isso significa que 1 unidade de mudança nos resultados da BSQ-34 geram 0.177 unidade de mudança, em média, nos resultados da Escala EAT-26. A significância deste coeficiente é dada pelo Erro Padrão (Std. Error) e segue uma T com n-2 graus de liberdade.</p>
-<p>Uma vez que o modelo já foi realizado, a interpretação dos resultados depende da adequação de seus pressupostos. Estes testes são os mesmos realizados em outros modelos e podem ser feitos tanto de forma gráfica, como de maneira formal. A linearidade</p>
-</div>
-<div id="pressupostos" class="section level2">
-<h2><span class="header-section-number">10.5</span> Pressupostos</h2>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="regressão-linear-simples.html#cb161-1"></a><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> bsq_soma, <span class="dt">y  =</span> bsq_soma)) <span class="op">+</span></span>
-<span id="cb161-2"><a href="regressão-linear-simples.html#cb161-2"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-120-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="regressão-linear-simples.html#cb162-1"></a><span class="kw">cov</span>(dados_brasil<span class="op">$</span>eat_soma,dados_brasil<span class="op">$</span>bsq_soma)<span class="op">/</span><span class="kw">var</span>(dados_brasil<span class="op">$</span>eat_soma)</span></code></pre></div>
-<pre><code>## [1] 2.562538</code></pre>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="regressão-linear-simples.html#cb164-1"></a><span class="kw">mean</span>(dados_brasil<span class="op">$</span>bsq_soma)<span class="op">-</span><span class="kw">cov</span>(dados_brasil<span class="op">$</span>eat_soma,dados_brasil<span class="op">$</span>bsq_soma)<span class="op">/</span><span class="kw">var</span>(dados_brasil<span class="op">$</span>eat_soma)<span class="op">*</span><span class="kw">mean</span>(dados_brasil<span class="op">$</span>eat_soma)</span></code></pre></div>
-<pre><code>## [1] 40.48661</code></pre>
-<p>Para utilizar os resultados, alguns pressupostos precisam ser atendidos. Tanto gráficos como testes formais podem ser utilizados para isso. O relacionamento <u>linear</u> já havia sido investigado no gráfico de dispersão ao início deste capítulo. A <u>Normalidade</u> dos resíduos pode ser vista pelo QQ-Plot (abaixo):</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="regressão-linear-simples.html#cb166-1"></a><span class="kw">ols_plot_resid_qq</span>(mod_linear_simples)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-122-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Diferentes testes estatísticos também podem ser utilizados. Apesar de resultados algo discordantes, os achados sugerem violação deste pressuposto.</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="regressão-linear-simples.html#cb167-1"></a><span class="kw">ols_test_normality</span>(mod_linear_simples)</span></code></pre></div>
+<p>Uma vez que o modelo já foi realizado, a interpretação dos resultados depende da adequação de seus pressupostos. Estes testes são os mesmos realizados em outros modelos e podem ser feitos tanto de forma gráfica, como de maneira formal. O relacionamento <u>linear</u> já havia sido investigado no gráfico de dispersão ao início deste capítulo. A <u>Normalidade</u> dos resíduos pode ser vista pelo QQ-Plot (abaixo):</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="regressão-linear-simples.html#cb167-1"></a><span class="kw">ols_plot_resid_qq</span>(mod_linear_simples)</span></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-126-1.png" width="672" style="display: block; margin: auto;" />
+Caso os pontos e a reta diagonal estejam superpostos, se considera que este pressuposto foi atendido. Testes estatísticos formais também podem ser utilizados. Apesar dos resultados obtidos por tais testes serem algo discordantes, os achados sugerem violação deste pressuposto.</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="regressão-linear-simples.html#cb168-1"></a><span class="kw">ols_test_normality</span>(mod_linear_simples)</span></code></pre></div>
 <pre><code>## Warning in ks.test(y, &quot;pnorm&quot;, mean(y), sd(y)): ties should not be present for
 ## the Kolmogorov-Smirnov test</code></pre>
 <pre><code>## -----------------------------------------------
@@ -908,19 +897,19 @@ Isso posto, a tabela inicial da regressão abaixo é exatamente igual a que foi 
 ## Cramer-von Mises          17.066         0.0000 
 ## Anderson-Darling          2.4137         0.0000 
 ## -----------------------------------------------</code></pre>
-<p>A <u>independência</u> dos resíduos depende bastante do delineamento utilizado e transversal ou longitudinal. O teste de Durbin Watson pode ser utilizado e a Hipótees nula é de que os resíduos não são correlacionados.</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="regressão-linear-simples.html#cb170-1"></a>car<span class="op">::</span><span class="kw">durbinWatsonTest</span>(mod_linear_simples)</span></code></pre></div>
+<p>A <u>independência</u> dos resíduos depende bastante do delineamento utilizado e transversal ou longitudinal. O teste de Durbin Watson pode ser utilizado e a Hipótees nula é de que os resíduos não são correlacionados. Este pressuposto foi atendido, o que já era esperado.</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="regressão-linear-simples.html#cb171-1"></a>car<span class="op">::</span><span class="kw">durbinWatsonTest</span>(mod_linear_simples)</span></code></pre></div>
 <pre><code>##  lag Autocorrelation D-W Statistic p-value
 ##    1      0.07254389      1.845067   0.256
 ##  Alternative hypothesis: rho != 0</code></pre>
-<p>As homocedasticidade, ou seja, <u>variâncias constantes</u> pode ser vista em um gráfico de dispersão dos resíduos (residual) contra os valores previstos.</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="regressão-linear-simples.html#cb172-1"></a><span class="kw">ols_plot_resid_fit</span>(mod_linear_simples)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-125-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>As homocedasticidade, ou seja, <u>variâncias constantes</u> pode ser vista em um gráfico de dispersão dos resíduos (residual) contra os valores previstos (fitted).</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="regressão-linear-simples.html#cb173-1"></a><span class="kw">ols_plot_resid_fit</span>(mod_linear_simples)</span></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-129-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Caso haja padrões neste gráfico, isso sugere que este pressuposto foi violado. A visualização costuma ser um pouco complicada e abaixo há três exemplos:</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="regressão-linear-simples.html#cb173-1"></a><span class="kw">include_graphics</span>(<span class="st">&quot;img/cap_reg_homocedasticidade.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="regressão-linear-simples.html#cb174-1"></a><span class="kw">include_graphics</span>(<span class="st">&quot;img/cap_reg_homocedasticidade.png&quot;</span>)</span></code></pre></div>
 <p><img src="img/cap_reg_homocedasticidade.png" width="400px" style="display: block; margin: auto;" /></p>
 <p>Existem também testes formais, como o Bartlett e o Breusch-Pagan. Os resultados costumam convergir e, em função da praticidade computacional, o teste de Breusch-Pagan será utilizado. Nesse teste, os resultados tem distribuição qui-quadrado e a Hipótese nula assume homocedasticidade. Portanto, a estatística de teste deveria ser insignificante para que a homocedasticidade pudeSSR ser aceita, o que não é o caso aqui.</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="regressão-linear-simples.html#cb174-1"></a><span class="kw">ols_test_breusch_pagan</span>(mod_linear_simples)</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="regressão-linear-simples.html#cb175-1"></a><span class="kw">ols_test_breusch_pagan</span>(mod_linear_simples)</span></code></pre></div>
 <pre><code>## 
 ##  Breusch Pagan Test for Heteroskedasticity
 ##  -----------------------------------------
@@ -937,7 +926,7 @@ Isso posto, a tabela inicial da regressão abaixo é exatamente igual a que foi 
 ##  DF            =    1 
 ##  Chi2          =    9.002614 
 ##  Prob &gt; Chi2   =    0.002695937</code></pre>
-<p>Isso posto, os diagnósticos executados indicaram que o modelo violou a normalidade e a homocedasticidade. Apesar desse tipo de resultado ser frequente em PSicologia, á interpretação dos resultados é limitada e deve ser feita de forma apenas preliminar. Abaixo uma orientação de como escrever os resultados.</p>
+<p>Isso posto, os diagnósticos executados indicaram que o modelo violou a normalidade e a homocedasticidade e preservou a linearidade e a independência dos resíduos. Apesar desse tipo de resultado ser frequente em Psicologia, a interpretação dos resultados é limitada e deve ser feita de forma apenas preliminar. Abaixo uma orientação de como escrever os resultados.</p>
 <div class="writing">
 <p>
 <strong>Como escrever os resultados</strong>
@@ -946,7 +935,60 @@ Isso posto, a tabela inicial da regressão abaixo é exatamente igual a que foi 
 Um modelo de regressão foi calculado para verificar os resultados dos comportamentos alimentares (EAT-26) em função da percepção de imagem corporal (BSQ-34). Os resultados indicaram que cerca de 45% da variância do EAT-26 pode ser atribuída ao BSQ-34 (R2 = 0.456, F(1,128) 182.8, p &lt; 0.001). Cada ponto a mais no BSQ-34 impacta, em média, em 0.178 no EAT-26 (b = 0.178, p &lt; 0.001).
 </p>
 </div>
+</div>
+<div id="resumo-8" class="section level2">
+<h2><span class="header-section-number">11.5</span> Resumo</h2>
+<ol style="list-style-type: decimal">
+<li>Existem diferentes modelos de regressão e eles sempre visam prever um resultado a partir de uma ou um conjunto de variáveis<br />
+</li>
+<li>O tipo de modelagem depedente tanto da natureza e quantidade das VIs e VDs, sempre possível entender grande parte dos testes estatísticos estudados como casos particulares dos modelos de regressão<br />
+</li>
+<li>Os principais indicadores de um modelo de regressão são sua significância geral, o <span class="math inline">\(R^2\)</span>,o o <span class="math inline">\(R^2_{adj}\)</span>, bem como o coeficiente e a significância dos preditores<br />
+</li>
+<li>o diagnóstico é uma parte essencial desta modelagem e o mnemônico LINE pode ajudar na lembrança dos pressupostos</li>
+</ol>
 
+<div id="refs" class="references">
+<div>
+<p>BAIRD, DAVIS. 1983. “The Fisher/Pearson Chi-Squared Controversy: A Turning Point for Inductive Inference.” <em>The British Journal for the Philosophy of Science</em> 34 (2): 105–18. <a href="https://doi.org/10.1093/bjps/34.2.105">https://doi.org/10.1093/bjps/34.2.105</a>.</p>
+</div>
+<div>
+<p>Chartier, Sylvain, and Andrew Faulkner. 2008. “General Linear Models: An Integrated Approach to Statistics.” <em>Tutorials in Quantitative Methods for Psychology</em> 4 (2): 65–78. <a href="https://doi.org/10.20982/tqmp.04.2.p065">https://doi.org/10.20982/tqmp.04.2.p065</a>.</p>
+</div>
+<div>
+<p>Cohen, Jacob. 1988. <em>Statistical Power Analysis for the Behavioral Sciences</em>. Routledge. <a href="https://doi.org/10.4324/9780203771587">https://doi.org/10.4324/9780203771587</a>.</p>
+</div>
+<div>
+<p>Field, Andy P., and Rand R. Wilcox. 2017. “Robust Statistical Methods: A Primer for Clinical Psychology and Experimental Psychopathology Researchers.” <em>Behaviour Research and Therapy</em> 98 (November): 19–38. <a href="https://doi.org/10.1016/j.brat.2017.05.013">https://doi.org/10.1016/j.brat.2017.05.013</a>.</p>
+</div>
+<div>
+<p>Gueorguieva, Ralitza, and John H. Krystal. 2004. “Move over ANOVA.” <em>Archives of General Psychiatry</em> 61 (3): 310. <a href="https://doi.org/10.1001/archpsyc.61.3.310">https://doi.org/10.1001/archpsyc.61.3.310</a>.</p>
+</div>
+<div>
+<p>Howell, David C. 2011. <em>Fundamental Statistics for the Behavioral Sciences</em>. Belmont: CA: Wadsworth Cengage Learning.</p>
+</div>
+<div>
+<p>Krus, David J., and Patricia H. Krus. 1977. “Lost: McCalls T Scores: Why?” <em>Educational and Psychological Measurement</em> 37 (1): 257–61. <a href="https://doi.org/10.1177/001316447703700134">https://doi.org/10.1177/001316447703700134</a>.</p>
+</div>
+<div>
+<p>Lumley, Thomas, Paula Diehr, Scott Emerson, and Lu Chen. 2002. “The Importance of the Normality Assumption in Large Public Health Data Sets.” <em>Annual Review of Public Health</em> 23 (1): 151–69. <a href="https://doi.org/10.1146/annurev.publhealth.23.100901.140546">https://doi.org/10.1146/annurev.publhealth.23.100901.140546</a>.</p>
+</div>
+<div>
+<p>Morettin, Pedro Alberto, and Wilton de Oliveira Bussab. 2010. <em>Estatistica Basica</em>. Saraiva.</p>
+</div>
+<div>
+<p>Pearson, Karl. 1900. “X. On the Criterion That a Given System of Deviations from the Probable in the Case of a Correlated System of Variables Is Such That It Can Be Reasonably Supposed to Have Arisen from Random Sampling.” <em>The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science</em> 50 (302): 157–75. <a href="https://doi.org/10.1080/14786440009463897">https://doi.org/10.1080/14786440009463897</a>.</p>
+</div>
+<div>
+<p>Quené, Hugo, and Huub van den Bergh. 2004. “On Multi-Level Modeling of Data from Repeated Measures Designs: A Tutorial.” <em>Speech Communication</em> 43 (1-2): 103–21. <a href="https://doi.org/10.1016/j.specom.2004.02.004">https://doi.org/10.1016/j.specom.2004.02.004</a>.</p>
+</div>
+<div>
+<p>Wasserstein, Ronald L., and Nicole A. Lazar. 2016. “The ASA Statement on P-Values: Context, Process, and Purpose.” <em>The American Statistician</em> 70 (2): 129–33. <a href="https://doi.org/10.1080/00031305.2016.1154108">https://doi.org/10.1080/00031305.2016.1154108</a>.</p>
+</div>
+<div>
+<p>Yap, B. W., and C. H. Sim. 2011. “Comparisons of Various Types of Normality Tests.” <em>Journal of Statistical Computation and Simulation</em> 81 (12): 2141–55. <a href="https://doi.org/10.1080/00949655.2010.520163">https://doi.org/10.1080/00949655.2010.520163</a>.</p>
+</div>
+</div>
 </div>
 </div>
 <h3>References</h3>
@@ -960,8 +1002,8 @@ Um modelo de regressão foi calculado para verificar os resultados dos comportam
           </div>
         </div>
       </div>
-<a href="modelo-linear-misto.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="qui-quadrado-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="correlação.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -992,7 +1034,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/09-regressao_linear_simples.Rmd",
+"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/10-regressao_linear_simples.Rmd",
 "text": "Edit"
 },
 "history": {

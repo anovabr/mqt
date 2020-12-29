@@ -50,6 +50,11 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script>
 
 
 <style type="text/css">
@@ -287,29 +292,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>As imagens abaixo demonstram tais conceitos.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="correlação.html#cb1-1"></a><span class="kw">grid.arrange</span>(</span>
-<span id="cb1-2"><a href="correlação.html#cb1-2"></a>  <span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(MASS<span class="op">::</span><span class="kw">mvrnorm</span>(<span class="dt">n=</span><span class="dv">200</span>, <span class="dt">mu=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">Sigma=</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">.1</span>, <span class="fl">.1</span>, <span class="dv">1</span>), <span class="dt">nrow=</span><span class="dv">2</span>), <span class="dt">empirical=</span><span class="ot">TRUE</span>)), </span>
-<span id="cb1-3"><a href="correlação.html#cb1-3"></a>         <span class="kw">aes</span>(<span class="dt">x =</span> X1, <span class="dt">y =</span> X2)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x=</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Y&quot;</span>) <span class="op">+</span></span>
-<span id="cb1-4"><a href="correlação.html#cb1-4"></a><span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;r=+0.1 - fraca&quot;</span>)),  <span class="dt">x=</span><span class="op">-</span><span class="ot">Inf</span>, <span class="dt">y=</span><span class="ot">Inf</span>, <span class="dt">hjust=</span><span class="op">-</span><span class="fl">0.2</span>, <span class="dt">vjust=</span><span class="fl">1.2</span>),</span>
-<span id="cb1-5"><a href="correlação.html#cb1-5"></a>  <span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(MASS<span class="op">::</span><span class="kw">mvrnorm</span>(<span class="dt">n=</span><span class="dv">200</span>, <span class="dt">mu=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">Sigma=</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">.3</span>, <span class="fl">.3</span>, <span class="dv">1</span>), <span class="dt">nrow=</span><span class="dv">2</span>), <span class="dt">empirical=</span><span class="ot">TRUE</span>)), </span>
-<span id="cb1-6"><a href="correlação.html#cb1-6"></a>         <span class="kw">aes</span>(<span class="dt">x =</span> X1, <span class="dt">y =</span> X2)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x=</span> <span class="st">&quot;X&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span></span>
-<span id="cb1-7"><a href="correlação.html#cb1-7"></a><span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;r=+0.3 - moderada&quot;</span>)),  <span class="dt">x=</span><span class="op">-</span><span class="ot">Inf</span>, <span class="dt">y=</span><span class="ot">Inf</span>, <span class="dt">hjust=</span><span class="op">-</span><span class="fl">0.2</span>, <span class="dt">vjust=</span><span class="fl">1.2</span>),</span>
-<span id="cb1-8"><a href="correlação.html#cb1-8"></a>  <span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(MASS<span class="op">::</span><span class="kw">mvrnorm</span>(<span class="dt">n=</span><span class="dv">200</span>, <span class="dt">mu=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">Sigma=</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">.5</span>, <span class="fl">.5</span>, <span class="dv">1</span>), <span class="dt">nrow=</span><span class="dv">2</span>), <span class="dt">empirical=</span><span class="ot">TRUE</span>)), </span>
-<span id="cb1-9"><a href="correlação.html#cb1-9"></a>         <span class="kw">aes</span>(<span class="dt">x =</span> X1, <span class="dt">y =</span> X2)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x=</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span></span>
-<span id="cb1-10"><a href="correlação.html#cb1-10"></a><span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;r=+0.5 - forte&quot;</span>)),  <span class="dt">x=</span><span class="op">-</span><span class="ot">Inf</span>, <span class="dt">y=</span><span class="ot">Inf</span>, <span class="dt">hjust=</span><span class="op">-</span><span class="fl">0.2</span>, <span class="dt">vjust=</span><span class="fl">1.2</span>), </span>
-<span id="cb1-11"><a href="correlação.html#cb1-11"></a>  </span>
-<span id="cb1-12"><a href="correlação.html#cb1-12"></a>  <span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(MASS<span class="op">::</span><span class="kw">mvrnorm</span>(<span class="dt">n=</span><span class="dv">200</span>, <span class="dt">mu=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">Sigma=</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">-.1</span>, <span class="fl">-.1</span>, <span class="dv">1</span>), <span class="dt">nrow=</span><span class="dv">2</span>), <span class="dt">empirical=</span><span class="ot">TRUE</span>)), </span>
-<span id="cb1-13"><a href="correlação.html#cb1-13"></a>         <span class="kw">aes</span>(<span class="dt">x =</span> X1, <span class="dt">y =</span> X2)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x=</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Y&quot;</span>) <span class="op">+</span></span>
-<span id="cb1-14"><a href="correlação.html#cb1-14"></a><span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;r=-0.1 - fraca&quot;</span>)),  <span class="dt">x=</span><span class="op">-</span><span class="ot">Inf</span>, <span class="dt">y=</span><span class="ot">Inf</span>, <span class="dt">hjust=</span><span class="op">-</span><span class="fl">0.2</span>, <span class="dt">vjust=</span><span class="fl">1.2</span>),</span>
-<span id="cb1-15"><a href="correlação.html#cb1-15"></a>  <span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(MASS<span class="op">::</span><span class="kw">mvrnorm</span>(<span class="dt">n=</span><span class="dv">200</span>, <span class="dt">mu=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">Sigma=</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">-.3</span>, <span class="fl">-.3</span>, <span class="dv">1</span>), <span class="dt">nrow=</span><span class="dv">2</span>), <span class="dt">empirical=</span><span class="ot">TRUE</span>)), </span>
-<span id="cb1-16"><a href="correlação.html#cb1-16"></a>         <span class="kw">aes</span>(<span class="dt">x =</span> X1, <span class="dt">y =</span> X2)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x=</span> <span class="st">&quot;X&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span></span>
-<span id="cb1-17"><a href="correlação.html#cb1-17"></a><span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;r=-0.3 - moderada&quot;</span>)),  <span class="dt">x=</span><span class="op">-</span><span class="ot">Inf</span>, <span class="dt">y=</span><span class="ot">Inf</span>, <span class="dt">hjust=</span><span class="op">-</span><span class="fl">0.2</span>, <span class="dt">vjust=</span><span class="fl">1.2</span>),</span>
-<span id="cb1-18"><a href="correlação.html#cb1-18"></a>  <span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(MASS<span class="op">::</span><span class="kw">mvrnorm</span>(<span class="dt">n=</span><span class="dv">200</span>, <span class="dt">mu=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">Sigma=</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">-.5</span>, <span class="fl">-.5</span>, <span class="dv">1</span>), <span class="dt">nrow=</span><span class="dv">2</span>), <span class="dt">empirical=</span><span class="ot">TRUE</span>)), </span>
-<span id="cb1-19"><a href="correlação.html#cb1-19"></a>         <span class="kw">aes</span>(<span class="dt">x =</span> X1, <span class="dt">y =</span> X2)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x=</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span></span>
-<span id="cb1-20"><a href="correlação.html#cb1-20"></a><span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;r=-0.5 - forte&quot;</span>)),  <span class="dt">x=</span><span class="op">-</span><span class="ot">Inf</span>, <span class="dt">y=</span><span class="ot">Inf</span>, <span class="dt">hjust=</span><span class="op">-</span><span class="fl">0.2</span>, <span class="dt">vjust=</span><span class="fl">1.2</span>),</span>
-<span id="cb1-21"><a href="correlação.html#cb1-21"></a>  </span>
-<span id="cb1-22"><a href="correlação.html#cb1-22"></a>  <span class="dt">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="correlação.html#cb147-1"></a><span class="kw">grid.arrange</span>(</span>
+<span id="cb147-2"><a href="correlação.html#cb147-2"></a>  <span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(MASS<span class="op">::</span><span class="kw">mvrnorm</span>(<span class="dt">n=</span><span class="dv">200</span>, <span class="dt">mu=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">Sigma=</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">.1</span>, <span class="fl">.1</span>, <span class="dv">1</span>), <span class="dt">nrow=</span><span class="dv">2</span>), <span class="dt">empirical=</span><span class="ot">TRUE</span>)), </span>
+<span id="cb147-3"><a href="correlação.html#cb147-3"></a>         <span class="kw">aes</span>(<span class="dt">x =</span> X1, <span class="dt">y =</span> X2)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x=</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Y&quot;</span>) <span class="op">+</span></span>
+<span id="cb147-4"><a href="correlação.html#cb147-4"></a><span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;r=+0.1 - fraca&quot;</span>)),  <span class="dt">x=</span><span class="op">-</span><span class="ot">Inf</span>, <span class="dt">y=</span><span class="ot">Inf</span>, <span class="dt">hjust=</span><span class="op">-</span><span class="fl">0.2</span>, <span class="dt">vjust=</span><span class="fl">1.2</span>),</span>
+<span id="cb147-5"><a href="correlação.html#cb147-5"></a>  <span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(MASS<span class="op">::</span><span class="kw">mvrnorm</span>(<span class="dt">n=</span><span class="dv">200</span>, <span class="dt">mu=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">Sigma=</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">.3</span>, <span class="fl">.3</span>, <span class="dv">1</span>), <span class="dt">nrow=</span><span class="dv">2</span>), <span class="dt">empirical=</span><span class="ot">TRUE</span>)), </span>
+<span id="cb147-6"><a href="correlação.html#cb147-6"></a>         <span class="kw">aes</span>(<span class="dt">x =</span> X1, <span class="dt">y =</span> X2)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x=</span> <span class="st">&quot;X&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span></span>
+<span id="cb147-7"><a href="correlação.html#cb147-7"></a><span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;r=+0.3 - moderada&quot;</span>)),  <span class="dt">x=</span><span class="op">-</span><span class="ot">Inf</span>, <span class="dt">y=</span><span class="ot">Inf</span>, <span class="dt">hjust=</span><span class="op">-</span><span class="fl">0.2</span>, <span class="dt">vjust=</span><span class="fl">1.2</span>),</span>
+<span id="cb147-8"><a href="correlação.html#cb147-8"></a>  <span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(MASS<span class="op">::</span><span class="kw">mvrnorm</span>(<span class="dt">n=</span><span class="dv">200</span>, <span class="dt">mu=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">Sigma=</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">.5</span>, <span class="fl">.5</span>, <span class="dv">1</span>), <span class="dt">nrow=</span><span class="dv">2</span>), <span class="dt">empirical=</span><span class="ot">TRUE</span>)), </span>
+<span id="cb147-9"><a href="correlação.html#cb147-9"></a>         <span class="kw">aes</span>(<span class="dt">x =</span> X1, <span class="dt">y =</span> X2)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x=</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span></span>
+<span id="cb147-10"><a href="correlação.html#cb147-10"></a><span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;r=+0.5 - forte&quot;</span>)),  <span class="dt">x=</span><span class="op">-</span><span class="ot">Inf</span>, <span class="dt">y=</span><span class="ot">Inf</span>, <span class="dt">hjust=</span><span class="op">-</span><span class="fl">0.2</span>, <span class="dt">vjust=</span><span class="fl">1.2</span>), </span>
+<span id="cb147-11"><a href="correlação.html#cb147-11"></a>  </span>
+<span id="cb147-12"><a href="correlação.html#cb147-12"></a>  <span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(MASS<span class="op">::</span><span class="kw">mvrnorm</span>(<span class="dt">n=</span><span class="dv">200</span>, <span class="dt">mu=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">Sigma=</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">-.1</span>, <span class="fl">-.1</span>, <span class="dv">1</span>), <span class="dt">nrow=</span><span class="dv">2</span>), <span class="dt">empirical=</span><span class="ot">TRUE</span>)), </span>
+<span id="cb147-13"><a href="correlação.html#cb147-13"></a>         <span class="kw">aes</span>(<span class="dt">x =</span> X1, <span class="dt">y =</span> X2)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x=</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Y&quot;</span>) <span class="op">+</span></span>
+<span id="cb147-14"><a href="correlação.html#cb147-14"></a><span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;r=-0.1 - fraca&quot;</span>)),  <span class="dt">x=</span><span class="op">-</span><span class="ot">Inf</span>, <span class="dt">y=</span><span class="ot">Inf</span>, <span class="dt">hjust=</span><span class="op">-</span><span class="fl">0.2</span>, <span class="dt">vjust=</span><span class="fl">1.2</span>),</span>
+<span id="cb147-15"><a href="correlação.html#cb147-15"></a>  <span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(MASS<span class="op">::</span><span class="kw">mvrnorm</span>(<span class="dt">n=</span><span class="dv">200</span>, <span class="dt">mu=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">Sigma=</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">-.3</span>, <span class="fl">-.3</span>, <span class="dv">1</span>), <span class="dt">nrow=</span><span class="dv">2</span>), <span class="dt">empirical=</span><span class="ot">TRUE</span>)), </span>
+<span id="cb147-16"><a href="correlação.html#cb147-16"></a>         <span class="kw">aes</span>(<span class="dt">x =</span> X1, <span class="dt">y =</span> X2)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x=</span> <span class="st">&quot;X&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span></span>
+<span id="cb147-17"><a href="correlação.html#cb147-17"></a><span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;r=-0.3 - moderada&quot;</span>)),  <span class="dt">x=</span><span class="op">-</span><span class="ot">Inf</span>, <span class="dt">y=</span><span class="ot">Inf</span>, <span class="dt">hjust=</span><span class="op">-</span><span class="fl">0.2</span>, <span class="dt">vjust=</span><span class="fl">1.2</span>),</span>
+<span id="cb147-18"><a href="correlação.html#cb147-18"></a>  <span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(MASS<span class="op">::</span><span class="kw">mvrnorm</span>(<span class="dt">n=</span><span class="dv">200</span>, <span class="dt">mu=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">Sigma=</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">-.5</span>, <span class="fl">-.5</span>, <span class="dv">1</span>), <span class="dt">nrow=</span><span class="dv">2</span>), <span class="dt">empirical=</span><span class="ot">TRUE</span>)), </span>
+<span id="cb147-19"><a href="correlação.html#cb147-19"></a>         <span class="kw">aes</span>(<span class="dt">x =</span> X1, <span class="dt">y =</span> X2)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x=</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span></span>
+<span id="cb147-20"><a href="correlação.html#cb147-20"></a><span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">paste</span>(<span class="st">&quot;r=-0.5 - forte&quot;</span>)),  <span class="dt">x=</span><span class="op">-</span><span class="ot">Inf</span>, <span class="dt">y=</span><span class="ot">Inf</span>, <span class="dt">hjust=</span><span class="op">-</span><span class="fl">0.2</span>, <span class="dt">vjust=</span><span class="fl">1.2</span>),</span>
+<span id="cb147-21"><a href="correlação.html#cb147-21"></a>  </span>
+<span id="cb147-22"><a href="correlação.html#cb147-22"></a>  <span class="dt">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-109-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Para realização da Correlação de Pearson, é necessário que ambas as variáveis sejam contínuas e apresentem relacionamento linear. As seguintes propriedades existem no coeficiente de correlação:</p>
 <ol style="list-style-type: decimal">
 <li>É limitado entre -1 e +1, com 0 indicando ausência de correlação<br />
@@ -332,14 +337,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Vamos utilizar a pesquisa intitulada <a href="https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students">“Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students”</a>, publicada em 2018 no Global Journal of Educational Studies, que sou co-autor.</p>
 <p>O objetivo dessa pesquisa foi explorar os fatores envolvidos em transtornos alimentares e aspectos da percepção da imagem corporal, bem como verificar a capacidade que uma medida possuia em predizer os resultados de outra. Esse artigo contou com a utilização de escalas aplicadas em 219 participantes no Brasil. Para acessar aspectos relacionados aos Transtornos alimentares, a escala EAT-26 foi aplicada. Para verificar aspectos da imagem corporal, a escala BSQ-34 foi aplicada.</p>
 <p>Segue abaixo uma tabela inicial com dados descritivos dos resultados.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="correlação.html#cb2-1"></a>dados_brasil <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb2-2"><a href="correlação.html#cb2-2"></a><span class="st">  </span><span class="kw">select</span>(sexo,eat_soma, bsq_soma, imc, faz_esporte, familia_esporte) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb2-3"><a href="correlação.html#cb2-3"></a><span class="st">  </span>psych<span class="op">::</span><span class="kw">describeBy</span>(.,<span class="dt">group =</span> <span class="st">&quot;sexo&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="correlação.html#cb148-1"></a>dados_brasil <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb148-2"><a href="correlação.html#cb148-2"></a><span class="st">  </span><span class="kw">select</span>(sexo,eat_soma, bsq_soma, imc, faz_esporte, familia_esporte) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb148-3"><a href="correlação.html#cb148-3"></a><span class="st">  </span>psych<span class="op">::</span><span class="kw">describeBy</span>(.,<span class="dt">group =</span> <span class="st">&quot;sexo&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
 <pre><code>## Warning in pander.default(.): No pander.method for &quot;psych&quot;, reverting to
 ## default.No pander.method for &quot;describeBy&quot;, reverting to default.</code></pre>
 <ul>
 <li><p><strong>1</strong>:</p>
-<table>
+<table style="width:98%;">
 <caption>Table continues below</caption>
 <colgroup>
 <col width="26%" />
@@ -348,8 +353,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <col width="10%" />
 <col width="10%" />
 <col width="10%" />
-<col width="12%" />
-<col width="12%" />
+<col width="11%" />
+<col width="11%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -426,15 +431,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<table style="width:100%;">
+<table style="width:97%;">
 <colgroup>
-<col width="28%" />
+<col width="27%" />
 <col width="10%" />
 <col width="10%" />
 <col width="10%" />
 <col width="12%" />
-<col width="14%" />
-<col width="14%" />
+<col width="13%" />
+<col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -503,7 +508,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td align="center">0.04467</td>
 </tr>
 </tbody>
-</table></li>
+</table>
+<ul>
 <li><p><strong>2</strong>:</p>
 <table>
 <caption>Table continues below</caption>
@@ -670,21 +676,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table></li>
+</ul></li>
 </ul>
 <!-- end of list -->
 </div>
 <div id="execução-no-r-7" class="section level2">
 <h2><span class="header-section-number">10.2</span> Execução no R</h2>
 <p>Inicialmente, a escrita da hipótese é:</p>
-<p><span class="math display">\[H_0: \rho_{(x,y)} = 0 \\ H_a =  \rho_{(x,y)} \neq 0 \\ \alpha = 0.05\]</span></p>
+<p><span class="math display">\[H_0: \rho_{(x,y)} = 0 \\ H_a:  \rho_{(x,y)} \neq 0 \\ \alpha = 0.05\]</span></p>
 <p>O gráfico de dispersão auxilia na visualização da relação entre as variáveis e permite verificar se o relacionamento é ou não linear.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="correlação.html#cb4-1"></a><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> bsq_soma, <span class="dt">y =</span> eat_soma)) <span class="op">+</span></span>
-<span id="cb4-2"><a href="correlação.html#cb4-2"></a><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></span>
-<span id="cb4-3"><a href="correlação.html#cb4-3"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Resultados da Escala BSQ-34&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Resultados da Escala EAT-26&quot;</span>, </span>
-<span id="cb4-4"><a href="correlação.html#cb4-4"></a>       <span class="dt">title =</span> <span class="st">&quot;Correlação entre o BSQ-34 e o EAT-26&quot;</span>)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-4-1.png" width="672" />
-O gráfico indica que as duas variáveis são relacionadas. Apesar do padrão deste relacionamento não ser estritamente linear, é possível verificar formalmente a correlação entre ambas as variáveis,</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="correlação.html#cb5-1"></a><span class="kw">cor.test</span>(dados_brasil<span class="op">$</span>eat_soma, dados_brasil<span class="op">$</span>bsq_soma)</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="correlação.html#cb150-1"></a><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> bsq_soma, <span class="dt">y =</span> eat_soma)) <span class="op">+</span></span>
+<span id="cb150-2"><a href="correlação.html#cb150-2"></a><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></span>
+<span id="cb150-3"><a href="correlação.html#cb150-3"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Resultados da Escala BSQ-34&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Resultados da Escala EAT-26&quot;</span>, </span>
+<span id="cb150-4"><a href="correlação.html#cb150-4"></a>       <span class="dt">title =</span> <span class="st">&quot;Correlação entre o BSQ-34 e o EAT-26&quot;</span>)</span></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-111-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>O gráfico indica que as duas variáveis são relacionadas. Apesar do padrão deste relacionamento não ser estritamente linear, é possível verificar formalmente a correlação entre ambas as variáveis,</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="correlação.html#cb151-1"></a><span class="kw">cor.test</span>(dados_brasil<span class="op">$</span>eat_soma, dados_brasil<span class="op">$</span>bsq_soma)</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -696,7 +703,7 @@ O gráfico indica que as duas variáveis são relacionadas. Apesar do padrão de
 ## sample estimates:
 ##       cor 
 ## 0.6754262</code></pre>
-<p>Os resultados permitem concluir que a correlação é positiva e forte (r = 0.675), além de significativa (p &lt; 0.001). Isso indica que ambas as variáveis covariam de maneira proporcional, em que valores altos tendem a acompanhar valores altos em outra. É importante atentar que esse relacionamento não indica causalidade e, dessa forma, essa covariação pode ser explicada por diferentes fatores não analisados neste método.</p>
+<p>Os resultados permitem concluir que a correlação é positiva e forte (r = 0.675), além de significativa (p &lt; 0.001). Isso indica que ambas as variáveis covariam de maneira proporcional, em que valores altos em uma tendem a acompanhar valores altos em outra. É importante atentar que esse relacionamento não indica causalidade e, dessa forma, essa covariação pode ser explicada por diferentes fatores não analisados neste método.</p>
 <div class="writing">
 <p>
 <strong>Como escrever os resultados</strong>
@@ -712,7 +719,8 @@ A correlação entre o comportamento alimentar (EAT-26) e a percepção corporal
 <li>O termo correlação diz respeito a um conjunto de métodos que visa verificar a direção e a força do relacionamento entre duas variáveis<br />
 </li>
 <li>A correlação de Pearson assume que ambas as variáveis são linearmente correlacionadas<br />
-3, O coeficiente sempre indicará a direção (por um sinal) e a força (por um número entre -1 e +1) do relacionamento bivariado<br />
+</li>
+<li>O coeficiente sempre indicará a direção (por um sinal) e a força (por um número entre -1 e +1) do relacionamento bivariado<br />
 </li>
 <li>Correlação não indica causalidade</li>
 </ol>
