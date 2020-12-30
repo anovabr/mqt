@@ -1,7 +1,7 @@
 # Teste T
 
 ```{r base e pacotes teste t, include = FALSE }
-load(file="~/anovabr/mqt/bases/Livro - R - ASQ SE all age intervals.RData")
+load(file="~/anovabr/mqt/bases/Livro - R - ASQ SE 12 e 18.RData")
 
 library(tidyverse)
 library(knitr) #tables and graphs
@@ -57,28 +57,37 @@ Nota: Existe um intenso debate sobre a utilização de testes paramétricos e n�
 ## Pesquisa
   
 <div class="alert alert-info" role="alert">
-  <strong>Base: </strong> Livro - R - ASQ SE all age intervals
+  <strong>Base: </strong> Livro - R - ASQ SE 12 e 18  
 </div>  
 
 
-Neste capítulo, vamos utilizar a pesquisa intitulada [“Confirmatory analysis and normative tables for the Brazilian Ages and Stages Questionnaires: Social–Emotional”](https://onlinelibrary.wiley.com/doi/abs/10.1111/cch.12649), publicada em 2019 na Child Care Health Development. Esse trabalho teve dois objetivos. O primeiro visou confirmar a estrutura fatorial de um instrumento utilizado para avaliar possíveis atrasos no desenvolvimento de competências sociais e emocionais (ASQ:SE) e o segundo visou desenvolver tabelas normativas para comparar meninos e meninas. Essa é uma pesquisa muito importante, visto que conta com uma base de dados robusta (mais de 50 mil participantes) e faz interface entre psicometria, avaliação psicológica e políticas públicas
+Neste capítulo, vamos utilizar a pesquisa intitulada [“Confirmatory analysis and normative tables for the Brazilian Ages and Stages Questionnaires: Social–Emotional”](https://onlinelibrary.wiley.com/doi/abs/10.1111/cch.12649), publicada em 2019 na Child Care Health Development. Esse trabalho teve dois objetivos. O primeiro visou confirmar a estrutura fatorial de um instrumento utilizado para avaliar possíveis atrasos no desenvolvimento de competências sociais e emocionais (ASQ:SE) e o segundo visou desenvolver tabelas normativas para comparar meninos e meninas. Essa é uma pesquisa muito importante, visto que conta com uma base de dados robusta (mais de 50 mil participantes) e faz interface entre psicometria, avaliação psicológica e políticas públicas.
+
+
+
+Neste capítulo, nosso o interesse será é o de comparar os resultados médios obtidos por meninos e meninas aos 12 e 18 meses. Assim, é necessário a escrita adequada das hipóteses e o nível de significância adotado na análise. Dessa maneira:
+
+$$H_0: \mu_{meninos} - \mu_{meninas} = 0 \\ H_a: \mu_{meninos} - \mu_{meninas} \neq 0 \\ \alpha = 0.05$$
+
 
 ## Execução no R  
 
-Como exemplo, a variável dependente do teste T tem de ser contínua. Na base de dados específica às crianças de 12 meses (`asq_12months`), essa variável será computada pela soma de todos os itens da escala. No dplyr, isso é feito pela integração da função `mutate` com a `select`
+
+A primeira etapa importante é assegurar que a base de dados tenha o resultado relacionado às competências sociais e emocionais das crianças. Esse valor será computado pela soma de todos os itens da escala. No dplyr, isso é feito pela integração da função `mutate` com a `select` e será executado às crianças com 12 e 18 meses. 
 
 ```{r}
 asq_12months <- asq_12months %>% 
   mutate(total_12 = rowSums(select(., starts_with("q_")), na.rm = TRUE))
+
+asq_18months <- asq_18months %>% 
+  mutate(total_18 = rowSums(select(., starts_with("q_")), na.rm = TRUE))
+
 ```
 
-Uma vez que o interesse é o de comparar os resultados médios obtidos por meninos e meninas aos 12 meses, é necessário a escrita adequada das hipóteses e o nível de significância adotado na análise. Dessa maneira:
+Em seguida, iremos começar <u>pelos 12 meses</u>. O processo de testagem da hipótese é feito preliminarmente de maneira gráfica e, em seguida, pela implementação do teste específico. Apesar do gráfico não ser decisivo na tomada de decisão, ele auxilia a visualilzação da distribuição da variável que temos interesse, bem como oferece já um entendimento inicial dos resultados.
 
-$$H_0 = \mu_{meninos} - \mu_{meninas} = 0 \\ H_a = \mu_{meninos} - \mu_{meninas} \neq 0 \\ \alpha = 0.05$$
+Posto que a VI é discreta e a VD é continua (exposta no capítulo \@ref(01-estatistica_descritiva)) tanto o gráfico de colunas/barras como o de densidade são úteis. O gráfico de barras tem uma vantagem de ser possível adicionar barras de erros, que já apresentam uma primeira evidência inferencial.
 
-Em seguida, o processo de testagem da hipótese é feito preliminarmente de maneira gráfica e, em seguida, pela implementação do teste específico. Apesar do gráfico não ser decisivo na tomada de decisão, ele auxilia a visualilzação da distribuição da variável que temos interesse, bem como oferece já um entendimento inicial dos resultados.
-
-Posto que a VI é discreta e a VD é continua (exposta no capítulo \@ref(01-estatistica_descritiva)) tanto o gráfico de colunas/barras como o de densidade são úteis. O gráfico de barras tem uma vantagem de ser possível adicionar barras de erros, que serão melhores descritas futuramente.
 
 ```{r}
 gridExtra::grid.arrange(
@@ -130,46 +139,29 @@ Agora, finalmente, o teste T.
 ```
 
 Os resultados trazem a média de ambos os grupos (`r t_test_12m$estimate[1]` e `r t_test_12m$estimate[2]`), a estatística do teste (`r t_test_12m$statistic`, as vezes chamada de T calculado), os graus de liberdade (`r t_test_12m$parameter`) e o valor de p `r t_test_12m$p.value`. Repare que como o valor de p é superior ao valor estipulado do nível de significância (0.05), falha-se em rejeitar a Hipótese nula, indicando que, apesar de numericamente distintos, os resultados não são estatisticamente significativos (na população).  
-
-
-```{block, type="writing"}
-**Como escrever os resultados**  
-
-Os dados foram analisados por um Teste T de amostras independentes para investigar as diferenças médias nos resultados do desenvolvimento entre meninos e meninas. Os resultados mostraram que os valores médios de meninos e meninas não são significativamente diferentes (t(1039) = 0.37, p = 0.71). Dessa maneira, as diferenças encontradas podem ser mais bem explicadas por outras fontes de variações. 
-```
-
-Com isto concluído, é também possível verificar se existem diferenças em idades mais avançadas. A sintaxe é customizável e torna-se fácil testar a hipótese da diferença, por exemplo, aos 18 meses. Nesse sentido, o teste de hipóteses deve ser normalmente escrito:
-
-
-$$H_0: \mu_{meninos} - \mu_{meninas} = 0 \\ H_a: \mu_{meninos} - \mu_{meninas} \neq 0 \\ \alpha = 0.05$$
-
-O gráfico novamente deve ser realizado
+  
+Com isto concluído, é também possível verificar se existem diferenças em idades mais avançadas, <u> tal como 18 meses</u>. A sintaxe é customizável e torna-se fácil testar a hipótese da diferença apenas customizando a hipótese e a sintaxe. O gráfico a seguir é a primeira parte a ser feita e apresenta o padrão dos resultados aos 18 meses.  
 
 
 ```{r}
 gridExtra::grid.arrange(
-  ggplot(asq_18months, aes(x = sex, y = score, fill = sex)) +
-  geom_bar(stat = "summary") +
+  ggplot(asq_18months, aes(x = sex, y = total_18, fill = sex)) +
+  geom_bar(stat = "summary", fun=mean) +
   stat_summary(fun.data = mean_se, geom = "errorbar", width = .2),
 
-  ggplot(asq_18months, aes(x = score, fill = sex)) + 
+  ggplot(asq_18months, aes(x = total_18, fill = sex)) + 
   geom_density(color = NA, alpha=.6))
 ```
 
-Bem como a verificação do pressuposto de normalidade e homocedasticidade, seguidos pelo teste formal.
+Tal como feito aos 12 meses, é necessário verificar o pressuposto de normalidade e homocedasticidade antes de realizar o teste formal. Assumindo pedagogicamente ambas as condições, os resultados teste formal é apresentado seguir.
+
 
 ```{r}
-(t_test_18m <- t.test(score ~ sex, var.equal = T,data = asq_18months))
+(t_test_18m <- t.test(total_18 ~ sex, var.equal = T,data = asq_18months))
 ```
 
-Diferentemente do anterior, agora o resultado foi significativo (p < 0.01) e deve ser reportado:
+Diferentemente do anterior, agora o resultado foi significativo (p < 0.01), trazendo evidências que permitem concluir pela rejeição da hipótese nula.  
 
-
-```{block, type="writing"}
-**Como escrever os resultados**  
-
-Os dados foram analisados por um Teste T de amostras independentes para investigar as diferenças médias nos resultados do desenvolvimento entre meninos e meninas com 18 meses idade. Os resultados mostraram que os valores médios de meninos (M = 27.5, SD = 21.8) e meninas (M = 24.9, SD = 20.3) são significativamente diferentes (t(5725) = 4.62, p < 0.01). 
-```
 
 É importante ter uma atenção especial à significância estatística. <u>De forma alguma</u>, um resultado que rejeita a hipótese nula deve ser entendido como "aceitação da hipótese alternativa", tampouco como evidência de causalidade. É fundamental lembrar que o valor de P se refere à probabilidade de encontrar a estatística de teste calculada, ou uma ainda mais exterma, assumindo que a hipótese nula é verdadeira [@Wasserstein2016]. Apesar de algo contra-intuitivo (e talvez desanimador), é assim que a estatística frequentista funciona.
 
@@ -190,10 +182,74 @@ A interpretação é a seguinte:
   
 
 ```{r}
-effsize::cohen.d(score ~ sex, data = asq_18months)
+effsize::cohen.d(total_18 ~ sex, data = asq_18months)
 ```
 
-Agora é possível agregar ambos os resultados e a escrita iria por esse caminho.
+## Execução no JASP
+
+Da mesma forma que foi feita no R, a apresentação de gráficos auxiliam o pesquisador a verificar padrões diferentes nos dados. Nesta parte, apenas a base de crianças com [18 meses](https://osf.io/xr2sq/) será utilizada. Após carregar tal base, a seção `Descriptives` apresentará o gráfico inicial dos resultados.
+
+
+![](./img/jasp_descriptives.png)
+
+Ao clicar nesta opção, será possível eleger as variáveis que irão ser analisadas e as variáveis que irão funcionar como agrupadores. Na prática, a lista `Variables` irá reunir as variáveis dependentes, enquanto a variável independente será colocada na seção `Split`. É importante atentar à opção `Frequency tables (nominal and ordinal)`, que deve ser marcada quando o nível de medida da variável de interesse for nominal ou ordinal. 
+
+![](./img/jasp_descriptives2.png)
+
+Isto posto, será necessário arrastar as variáveis de interesse aos seus respectivos locais. Neste caso, o <u>total_18</u> para parte das VDs, enquanto <u>sexo</u> para a VI. Ao fazer isso, o JASP automaticamente irá preencher a tabela previamente exposta com os valores estatísticos obtidos.
+
+
+![](./img/cap_testet_tabela_descritiva.png)
+
+Em seguida, ao clicar na opção `Plots`, será possível selecionar o <u>Boxplot</u>. O gráfico aparecerá abaixo da tabela e irá  apresentar diferentes informações estatísticas da distribuição dos <u>resultados</u> das crianças de 18 meses em função do <u>sexo</u>.
+
+
+![](./img/cap_testet_tabela.png)
+
+Para execução do Teste T, deve-se clicar em `T-Test` e, em seguida, `Independent samples T-test`. 
+
+![](./img/cap_testet_interface1.png)
+
+Ao realizar isso, a tela a ser exibida será próxima à imagem a seguir:
+
+
+![](./img/cap_testet_interface.png)
+
+Repare que a `Grouping variable` é o local onde a VI deverá ser colocada, enquanto a `Variables` é o local onde a VD irá ser inserida. É possível ter apenas uma VI, enquanto diferentes vDs podem ser inseridas na seção `Variables` para serem analisadas independentemente.  Neste caso de agora, a VI é <u>sexo</u> enquanto a VD é o <u>total_18</u>. Ao fazer isso, o JASP automaticamente irá fazer o Teste T e apresentar os resultados. Pragmaticamente, o valor de P costuma ser utilizado para decisões estatísticas e ele está marcado pelo quadrado roxo. 
+
+
+![](./img/cap_testet_resultados_iniciais.png)
+
+Entretanto, da mesma forma como apresentado antes, a interpretação deste resultado <u>não pode ser feita de uma forma automática</u>. É necessário saber se os pressupostos foram ou não atendidos, bem como calcular o tamanho do efeito. Estas opções estão dispostas na parte inferior à esquerda do programa.
+
+
+![](./img/cap_testet_pressupostos.png)
+
+Os resultados são os mesmos já obtidos pelo R. Ambos os pressupostos foram violados, sugerindo uma interpretação bastante cautelosa dos achados.
+
+![](./img/cap_testet_pressupostos_resultados.png)
+
+Finalmente, o resultado inicialmente calculado (Teste t) e o tamanho do efeito podem ser analisados em conjunto. O valor de P irá indicar se a hipótese nula foi rejeitada ou não e o tamanho do efeito irá indicar a relevância da possível diferença.
+
+![](./img/cap_testet_resultados.png)
+
+Os resultados obtidos pelo JASP são identicos aos do R. Eventualmente, a diferença em relação ao sinal (+ ou -) é devida à codificação feita pelos programas e nada interfere na interpretação dos resultados.
+
+
+
+## Escrita dos resultados
+
+
+O primeiro resultado obtido foi que meninos e meninas não apresentaram diferenças em seus resultados médios quando tinham 12 meses. Abaixo uma sugestão de escrita.
+
+
+```{block, type="writing"}
+**Como escrever os resultados**  
+
+Os dados foram analisados por um Teste T de amostras independentes para investigar as diferenças médias nos resultados do desenvolvimento entre meninos e meninas com 12 meses de idade. Os resultados mostraram que os valores médios de meninos e meninas não são significativamente diferentes (t(1039) = 0.37, p = 0.71). Dessa maneira, as diferenças encontradas podem ser mais bem explicadas por outras fontes de variações. 
+```
+
+Em seguida, verificamos que essa diferença é significativa aos 18 meses e abaixo uma outra sugestão de escrita.  
 
 ```{block, type="writing"}
 **Como escrever os resultados**  
@@ -205,25 +261,37 @@ Os dados foram analisados por um Teste T de amostras independentes para investig
 
 Em muitas situações, os pressupostos do teste T são violados e parte da literatura argumenta que o teste T é robusto o suficiente para lidar com isso [@Lumley2002], equanto outra parte sugere que é melhor optar por versões com médias aparadas ou não-paramétricas [@Field2017]. No entanto, o que não costuma ser discutido com tanta frequência é que a modificação do teste estatístico utilizado, necessariamente, modifica a hipótese da pesquisa. Nesse sentido, a decisão de alterar o teste estatístico deve ser feito com justificativa teórica por parte do pesquisador.
 
-O pacote `WRS` apresenta versões robusta do Teste T. Ainda, o próprio R base oferece uma solução para condições em que a homogeneidade dos grupos não é aceita, que é o Welch-test. Esse teste é feito assumindo estipulando `var.equal = F` na sintaxe previamente exposta ou removendo este argumento por completo.
+O pacote `WRS` apresenta versões robusta do Teste T. Ainda, o próprio R base oferece uma solução para condições em que a homogeneidade dos grupos não é aceita, que é o Welch-test. Esse teste é feito assumindo estipulando `var.equal = F` na sintaxe previamente exposta ou removendo este argumento por completo. No JASP, é possível acessar a versão robusta clicando em `Welch`, embaixo do `Student`, que já é previamente marcado.
+
+
 
 ## Mann-whitney
 
-A chamada versão não paramétrica do teste T é o teste de Wilcoxon-Mann-Whitney. Quando os pressupostos do teste T são violados, o Mann-Whitney é um forte candidato para sua substituição. Se de um lado esse teste supera tais pressupostos, por outro ele responde a uma hipótese diferente daquela que o teste T trabalha. Enquanto o teste T compara médias, o Mann-whitney compara os valores ranqueados (postos). Nota-se que ele não é um teste para comparar medianas e que isso só ocorre em condições restritas.
+O teste de Wilcoxon-Mann-Whitney costuma ser chamado de versão não-paramétrica do Teste T. Na verdade, isso não é totalmente verdadeiro, já que eles testam elemento diferentes. Assim, quando os pressupostos do teste T são violados, o Mann-Whitney é um forte candidato para sua substituição. Se de um lado esse teste supera tais pressupostos, por outro ele responde a uma hipótese diferente daquela que o teste T trabalha, conforme mencionado. Enquanto o teste T compara médias, o Mann-whitney compara os valores ranqueados (postos). Nota-se que ele não é um teste para comparar medianas e que isso só ocorre em condições restritas.
+
+
+### Execução No R
+
+A sintaxe a seguir apresenta os resultados. Repare que as conclusões estatística são virtualmente identicas às obtidas previamente, em que foi possível rejeitar a hipótese nula.
+
 
 ```{r}
-(mann_whiyney_18m <- wilcox.test(score ~ sex, data = asq_18months))
+(mann_whiyney_18m <- wilcox.test(total_18 ~ sex, data = asq_18months))
 ```
 
 
-Os resultados foram convergentes ao previamente encontrado e, em outras palavras, tambem apoiam a rejeição da hipótese nula. O tamanho do efeito também pode ser calculado ao implementar $Z/\sqrt{(n)}$. O output padrão do R não oferece essa informação, mas o pacote `coin` dispõe dessa métrica.
+### Tamanho do efeito
+
+O tamanho do efeito também pode ser calculado ao implementar $Z/\sqrt{(n)}$. O output padrão do R não oferece a informação de `Z`, mas o pacote `coin` dispõe dessa métrica.
 
 ```{r}
-coin::statistic(coin::wilcox_test(score ~ sex, data = asq_18months))
+coin::statistic(coin::wilcox_test(total_18 ~ sex, data = asq_18months))
 ```
-
 Assim, implementando a fórmula, o tamanho do efeito seria aproximadamete 0.06.
 
+### Escrita dos resultados  
+
+A literatura não é muito concordante em como escrever os resultados do Mann-Whitney e abaixo há uma sugestão.  
 
 ```{block, type="writing"}
 **Como escrever os resultados**  
@@ -231,29 +299,42 @@ Assim, implementando a fórmula, o tamanho do efeito seria aproximadamete 0.06.
 Os dados foram analisados pelo teste Wilcoxon-Mann-Whitney para investigar as diferenças nos resultados do desenvolvimento entre meninos (Mdn = 25, IQR = 30, M = 27.53, SD = 21.61) e meninas (Mdn = 20, IQR = 25, M = 24.95, SD = 20.34) com 18 meses de idade. Os resultados indicaram que os resultados foram significativos (W = 4368187, p < 0.01), mas com efeito negligenciável (0.12). 
 ```  
 
+
+### Execução no JASP
+
+No JASP, é necessário marcar a opÇão `Mann-Whitney` no lugar da opção `Student`, já previamente definida. O JASP utiliza a Correlação rank-bisserial como método padrão para relatar o tamanho do efeito para o teste de Mann-Whitney
+
+![](./img/cap_testet_mw.png)
+
+
+
+
+
 ## Teste T e regressão
 
-Conforme alertado, o Teste T é um caso particular deum modelo de regressão que assume que a variável independente é uma dummy. Assim, $b_0$ (intercepto) é o grupo que recebeu o valor 0 e $b_1$ (inclinação) é o grupo que recebeu o valor 1. Caso isso não tenha sido definido inicialmente, basta estipular que a variável é um <u>fator</u> e o R cuidará de todo o resto.
+Conforme alertado, o Teste T é um caso particular de um modelo de regressão que assume que a variável independente é uma dummy. Assim, $b_0$ (intercepto) é o grupo que recebeu o valor 0 e $b_1$ (inclinação) é o grupo que recebeu o valor 1. Caso isso não tenha sido definido inicialmente, ao se usar o R, basta estipular que a variável é um <u>fator</u>.
 
-Nesse caso, o R atribuiu os meninos como intercepto o valor médio dos meninos e a inclinação $b_1$ é justamente a diferença entre os valores (*24.95-27.53)*. Nesse caso, -2.58. A estatística F é equivalente a $t^2$ do teste t em sua versão tradicional (assumindo variâncias iguais entre grupos, adicionando `var.equal = T` à função).
+Nesse caso, o R atribuiu os meninos como intercepto o valor médio dos meninos e a inclinação $b_1$ é justamente a diferença entre os valores (*24.95-27.53)*. Nesse caso, -2.58. A estatística F é equivalente a $t^2$ do teste t em sua versão tradicional, que assume variâncias iguais entre grupos.
 
 ```{r}
-lm(score ~ sex, data = asq_18months) %>% 
+lm(total_18 ~ sex, data = asq_18months) %>% 
   olsrr::ols_regress()
 ```
 
 
-Dessa maneira, quando se comenta sobre o princípio da normalidade no teste T, o que se está falando é sobre a normalidade dos resíduos deste modelo. Isso pode ser feito tanto em formato gráfico:
+Assim, quando se comenta sobre o princípio da normalidade no teste T, o que se está falando é sobre a normalidade dos resíduos deste modelo. Isso pode ser visualmente pela análise de um QQ plot:
 
 ```{r}
-plot(lm(score ~ sex, data = asq_18months),2)
+olsrr::ols_plot_resid_qq(lm(total_18 ~ sex, data = asq_18months))
 ```
   
-Como por testes formais, tal como o Anderson-Darling:
+Há também testes estatísticos formais, tal como o Anderson-Darling. Neste, a hipótese nula é de que os resíduos são normalmente distribuídos.
 
 ```{r}
-nortest::ad.test(lm(score ~ sex, data = asq_18months)$residuals)
+nortest::ad.test(lm(total_18 ~ sex, data = asq_18months)$residuals)
 ```
+
+Os resultados foram convergentes ao alcançados durante o capítulo, indicando pela violação da normalidade.  
 
 ## Resumo  
 
