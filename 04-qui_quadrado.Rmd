@@ -70,7 +70,7 @@ Neste capítulo, vamos utilizar a pesquisa intitulada "Parent-reported diagnosis
 Neste momento, vamos seguir apenas com o qui-quadrado de independência, que foi o utilizado neste artigo. Como exposto no decorrer de outros capítulos, o teste de hipóteses começa pela formulação conceitual das hipóteses. Apesar de ser possível estipular $H_0$ e $H_a$ a partir de equações específicas,a apresentação será textual/substantiva.
 
 
-$$H_0 = Não\ há\ associação\ entre\ sexo\ e\ TDAH \\ H_a = Há\ associação\ entre\ sexo\ e\ TDAH \\ \alpha = 0.05$$
+$$H_0: Não\ há\ associação\ entre\ sexo\ e\ TDAH \\ H_a: Há\ associação\ entre\ sexo\ e\ TDAH \\ \alpha = 0.05$$
 Uma característica colateral a esta apresentação textual do teste de hipóteses do Qui-quadrado é evitar confusões que ocorrem em relação ao conceito do teste e sua formulação matemática. Com muita frequência, dividimos os testes de hipóteses naqueles que verificam "associação" e naqueles que verificam "diferenças". Conceitualmente, o Qui-quadrado investiga associação entre variáveis. No entanto, sua formulação matemática é feita pela diferença entre um valor observado e um valor esperado (tal como ilustrado na equação ao início do capítulo). Assim, acredito que a formulação apenas textual evita criar confusões e ainda tornar o conteúdo mais palatável.
 
 
@@ -91,7 +91,7 @@ Em seguida, a tabela de contingência traz informações sobre o relacionamento 
 
 ```{r}
 descr::CrossTable(ds_selected$sex_male,ds_selected$adhd_parent,
-           expected = T, prop.c = F, prop.chisq = F) %>% pander::pander()
+           expected = T, prop.c = F, prop.chisq = F, prop.t = F) %>% pander::pander()
 ```
 
 Os pressupostos relacionados <u>à inexistência de células com valores esperados iguais a 0</u> e de <u>no máximo 20% dos valores esperados serem inferiores a 5</u> podem ser investigados na tabela exposta anteriormente e foram atendidos.  
@@ -100,9 +100,7 @@ O cálculo do qui-quadrado apresentado abaixo deixa claro que que é possível r
 
 
 ```{r}
-descr::CrossTable(ds_selected$sex_male,ds_selected$adhd_parent,
-           expected = T,
-           chisq = T, prop.c = F, prop.t = F, prop.chisq = F)$CST %>% pander::pander()
+descr::CrossTable(ds_selected$sex_male,ds_selected$adhd_parent,chisq = T)$CST %>% pander::pander()
 ```
 
 Quando os pressupostos são violados, há sugestão de colapsar categorias, fazer correções nos resultados ou contar com outros testes, tal como o Fisher's Exact Test.  
@@ -119,6 +117,13 @@ n = tamanho da amostra
 $df^`$ menor valor entre (Linhas - 1) ou (Colunas - 1) da tabela de contingências  
 
 
+A função `CramerV`do pacote `rcompanion` gera esses resultados.
+
+```{r}
+rcompanion::cramerV(ds_selected$sex_male,ds_selected$adhd_parent)
+```
+
+
 A interpretação é baseada nos graus de liberdade e é feita da seguinte maneira:  
 
 
@@ -130,9 +135,6 @@ A interpretação é baseada nos graus de liberdade e é feita da seguinte manei
 
 
 
-```{r}
-rcompanion::cramerV(ds_selected$sex_male,ds_selected$adhd_parent)
-```
 
 ## Execução no JASP
 
@@ -197,13 +199,13 @@ Caso os pressupostos tenham sido violados, o JASP oferece algumas saídas, tal c
 ```{block, type="writing"}
 **Como escrever os resultados**  
   
-A associação entre o sexo do participante e sua condição clínica (ter ou não TDAH) foi investida por um Teste Qui-quadrado de independência. Os resultados indicarma que ambas as variáveis são associadas (X2(1) = 41.605). O tamanho do efeito foi calculado pelo V de Cramer, que se mostrou pequeno 0.07.
+A associação entre o sexo do participante e sua condição clínica (ter ou não TDAH) foi investigada por um Teste Qui-quadrado de independência. Os resultados indicaram que ambas as variáveis são associadas (X2(1) = 41.605). O tamanho do efeito foi calculado pelo V de Cramer, que se mostrou pequeno 0.07.
 ```  
 
 
 ## Resumo  
 
-1. O Qui-quadrado não é apenas um teste, mas um conjunto de análises realizadas em variáveis categóricas.  
-2. Apesar de diferenças conceituais, o formato matemático é virtualmente o mesmo.
-3. O tamanho do efeito apresenta interpretações que podem variar em função dos graus de liberdade
+1. O Qui-quadrado pode ser utilizado para um conjunto de análises realizadas em variáveis categóricas.  
+2. Apesar de diferenças conceituais, o formato matemático é o mesmo.  
+3. O tamanho do efeito apresenta interpretações que podem variar em função dos graus de liberdade.  
 

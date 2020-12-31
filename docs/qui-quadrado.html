@@ -50,6 +50,11 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script>
 
 
 <style type="text/css">
@@ -133,14 +138,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">MQT em Psicologia com R</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introdução</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#objetivo"><i class="fa fa-check"></i><b>1.1</b> Objetivo</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#público-alvo"><i class="fa fa-check"></i><b>1.2</b> Público-alvo</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#formato-do-livro"><i class="fa fa-check"></i><b>1.3</b> Formato do livro</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#bases"><i class="fa fa-check"></i><b>1.4</b> Bases</a></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#o-r"><i class="fa fa-check"></i><b>1.5</b> O R</a></li>
-<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#pacotes-e-sintaxes"><i class="fa fa-check"></i><b>1.6</b> Pacotes e sintaxes</a></li>
-<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#outros-recursos"><i class="fa fa-check"></i><b>1.7</b> Outros recursos</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prefácio</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#apresentação"><i class="fa fa-check"></i><b>1.1</b> Apresentação</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#objetivo"><i class="fa fa-check"></i><b>1.2</b> Objetivo</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#público-alvo"><i class="fa fa-check"></i><b>1.3</b> Público-alvo</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#formato-do-livro"><i class="fa fa-check"></i><b>1.4</b> Formato do livro</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#bases"><i class="fa fa-check"></i><b>1.5</b> Bases</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#o-r"><i class="fa fa-check"></i><b>1.6</b> O R</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#pacotes-e-sintaxes"><i class="fa fa-check"></i><b>1.7</b> Pacotes e sintaxes</a></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#outros-recursos"><i class="fa fa-check"></i><b>1.8</b> Outros recursos</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html"><i class="fa fa-check"></i><b>2</b> Aspectos gerais</a><ul>
 <li class="chapter" data-level="2.1" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#principais-áreas-da-estatística"><i class="fa fa-check"></i><b>2.1</b> Principais áreas da estatística</a></li>
@@ -206,16 +212,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2" data-path="anova.html"><a href="anova.html#pesquisa-3"><i class="fa fa-check"></i><b>7.2</b> Pesquisa</a></li>
 <li class="chapter" data-level="7.3" data-path="anova.html"><a href="anova.html#anova-de-1-via"><i class="fa fa-check"></i><b>7.3</b> ANOVA de 1 via</a><ul>
 <li class="chapter" data-level="7.3.1" data-path="anova.html"><a href="anova.html#execução-no-r-4"><i class="fa fa-check"></i><b>7.3.1</b> Execução no R</a></li>
-<li class="chapter" data-level="7.3.2" data-path="anova.html"><a href="anova.html#post-hoc"><i class="fa fa-check"></i><b>7.3.2</b> Post hoc</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="anova.html"><a href="anova.html#anova-de-2-vias"><i class="fa fa-check"></i><b>7.4</b> ANOVA de 2 vias</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="anova.html"><a href="anova.html#execução-no-r-5"><i class="fa fa-check"></i><b>7.4.1</b> Execução no R</a></li>
+<li class="chapter" data-level="7.4" data-path="anova.html"><a href="anova.html#tamanho-do-efeito-3"><i class="fa fa-check"></i><b>7.4</b> Tamanho do efeito</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="anova.html"><a href="anova.html#post-hoc"><i class="fa fa-check"></i><b>7.4.1</b> Post hoc</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="anova.html"><a href="anova.html#anova-fatorial"><i class="fa fa-check"></i><b>7.5</b> ANOVA Fatorial</a><ul>
-<li class="chapter" data-level="7.5.1" data-path="anova.html"><a href="anova.html#execução-no-r-6"><i class="fa fa-check"></i><b>7.5.1</b> Execução no R</a></li>
-<li class="chapter" data-level="7.5.2" data-path="anova.html"><a href="anova.html#post-hoc-1"><i class="fa fa-check"></i><b>7.5.2</b> Post hoc</a></li>
+<li class="chapter" data-level="7.5" data-path="anova.html"><a href="anova.html#execução-no-jasp-4"><i class="fa fa-check"></i><b>7.5</b> Execução no JASP</a></li>
+<li class="chapter" data-level="7.6" data-path="anova.html"><a href="anova.html#anova-de-2-vias"><i class="fa fa-check"></i><b>7.6</b> ANOVA de 2 vias</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="anova.html"><a href="anova.html#execução-no-r-5"><i class="fa fa-check"></i><b>7.6.1</b> Execução no R</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="anova.html"><a href="anova.html#resumo-4"><i class="fa fa-check"></i><b>7.6</b> Resumo</a></li>
+<li class="chapter" data-level="7.7" data-path="anova.html"><a href="anova.html#anova-fatorial"><i class="fa fa-check"></i><b>7.7</b> ANOVA Fatorial</a><ul>
+<li class="chapter" data-level="7.7.1" data-path="anova.html"><a href="anova.html#execução-no-r-6"><i class="fa fa-check"></i><b>7.7.1</b> Execução no R</a></li>
+<li class="chapter" data-level="7.7.2" data-path="anova.html"><a href="anova.html#post-hoc-1"><i class="fa fa-check"></i><b>7.7.2</b> Post hoc</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="anova.html"><a href="anova.html#resumo-4"><i class="fa fa-check"></i><b>7.8</b> Resumo</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html"><i class="fa fa-check"></i><b>8</b> ANOVA de medidas repetidas</a><ul>
 <li class="chapter" data-level="8.1" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pesquisa-4"><i class="fa fa-check"></i><b>8.1</b> Pesquisa</a></li>
@@ -330,26 +339,26 @@ E é o valor esperado desta classe</p>
 </div>
 <p>Neste capítulo, vamos utilizar a pesquisa intitulada “Parent-reported diagnosis of Attention Deficit Hyperactivity Disorder and psychostimulant use among children and adolescents: a population-based nationwide study”, que está em avaliação pela revista “Social Psychiatry and Psychiatric Epidemiology (SPPE)”. Neste trabalho, tivemos o objetivo de verificar aspectos epidemiológicos do Transtorno do Déficit de Atenção com Hiperatividade (TDAH) em uma amostra representativa de crianças e adolescentes brasileiros, bem como explorar eventuais associações entre características sociodemográficas, especialmente os sexo do participante, e possíveis fatores e risco e TDAH.</p>
 <p>Neste momento, vamos seguir apenas com o qui-quadrado de independência, que foi o utilizado neste artigo. Como exposto no decorrer de outros capítulos, o teste de hipóteses começa pela formulação conceitual das hipóteses. Apesar de ser possível estipular <span class="math inline">\(H_0\)</span> e <span class="math inline">\(H_a\)</span> a partir de equações específicas,a apresentação será textual/substantiva.</p>
-<p><span class="math display">\[H_0 = Não\ há\ associação\ entre\ sexo\ e\ TDAH \\ H_a = Há\ associação\ entre\ sexo\ e\ TDAH \\ \alpha = 0.05\]</span>
+<p><span class="math display">\[H_0: Não\ há\ associação\ entre\ sexo\ e\ TDAH \\ H_a: Há\ associação\ entre\ sexo\ e\ TDAH \\ \alpha = 0.05\]</span>
 Uma característica colateral a esta apresentação textual do teste de hipóteses do Qui-quadrado é evitar confusões que ocorrem em relação ao conceito do teste e sua formulação matemática. Com muita frequência, dividimos os testes de hipóteses naqueles que verificam “associação” e naqueles que verificam “diferenças”. Conceitualmente, o Qui-quadrado investiga associação entre variáveis. No entanto, sua formulação matemática é feita pela diferença entre um valor observado e um valor esperado (tal como ilustrado na equação ao início do capítulo). Assim, acredito que a formulação apenas textual evita criar confusões e ainda tornar o conteúdo mais palatável.</p>
 </div>
 <div id="execução-no-r" class="section level2">
 <h2><span class="header-section-number">5.2</span> Execução no R</h2>
 <p>O gráfico de barras é sempre um bom início para visualizar os dados. Repare que a barra azul (que representa a porcentagem de TDAH) parece se comportar de maneira diferente nos grupos.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="qui-quadrado.html#cb1-1"></a><span class="kw">ggplot</span>(ds_selected, <span class="kw">aes</span>(<span class="dt">x=</span> sex_male, <span class="dt">fill =</span> adhd_parent)) <span class="op">+</span></span>
-<span id="cb1-2"><a href="qui-quadrado.html#cb1-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>) <span class="op">+</span></span>
-<span id="cb1-3"><a href="qui-quadrado.html#cb1-3"></a><span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span></span>
-<span id="cb1-4"><a href="qui-quadrado.html#cb1-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;sexo&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Proporção&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;TDAH&quot;</span>)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="qui-quadrado.html#cb51-1"></a><span class="kw">ggplot</span>(ds_selected, <span class="kw">aes</span>(<span class="dt">x=</span> sex_male, <span class="dt">fill =</span> adhd_parent)) <span class="op">+</span></span>
+<span id="cb51-2"><a href="qui-quadrado.html#cb51-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>) <span class="op">+</span></span>
+<span id="cb51-3"><a href="qui-quadrado.html#cb51-3"></a><span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span></span>
+<span id="cb51-4"><a href="qui-quadrado.html#cb51-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;sexo&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Proporção&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;TDAH&quot;</span>)</span></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Em seguida, a tabela de contingência traz informações sobre o relacionamento das variáveis. Apesar do qui-quadrado não eleger uma VI e uma VD, Com bastante frequência utilizamos as linhas para apresentar a variável de maior interesse (neste caso, sexo) e as colunas para indicar o critério ou o eventual desfecho (neste caso, ter ou não TDAH). A porcentagem nas linhas e o valor esperado (em caso de independência entre as variáveis) auxiliam bastante na descrição dos resultados.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="qui-quadrado.html#cb2-1"></a>descr<span class="op">::</span><span class="kw">CrossTable</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent,</span>
-<span id="cb2-2"><a href="qui-quadrado.html#cb2-2"></a>           <span class="dt">expected =</span> T, <span class="dt">prop.c =</span> F, <span class="dt">prop.chisq =</span> F) <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="qui-quadrado.html#cb52-1"></a>descr<span class="op">::</span><span class="kw">CrossTable</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent,</span>
+<span id="cb52-2"><a href="qui-quadrado.html#cb52-2"></a>           <span class="dt">expected =</span> T, <span class="dt">prop.c =</span> F, <span class="dt">prop.chisq =</span> F, <span class="dt">prop.t =</span> F) <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
 <table>
 <colgroup>
-<col width="29%" />
-<col width="34%" />
-<col width="17%" />
-<col width="17%" />
+<col width="30%" />
+<col width="36%" />
+<col width="18%" />
+<col width="14%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -368,45 +377,37 @@ Total</th>
 <td align="center"><strong>female</strong><br />
 N<br />
 Expected N<br />
-Row(%)<br />
-Total(%)</td>
+Row(%)</td>
 <td align="center"> <br />
 3379<br />
 3309.1451<br />
-94.8624%<br />
-47.4979%</td>
+94.8624%</td>
 <td align="center"> <br />
 183<br />
 252.8549<br />
-5.1376%<br />
-2.5724%</td>
+5.1376%</td>
 <td align="center"> <br />
 3562<br />
 <br />
-50.0703%<br />
-</td>
+50.0703%</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>male</strong><br />
 N<br />
 Expected N<br />
-Row(%)<br />
-Total(%)</td>
+Row(%)</td>
 <td align="center"> <br />
 3230<br />
 3299.8549<br />
-90.9347%<br />
-45.4034%</td>
+90.9347%</td>
 <td align="center"> <br />
 322<br />
 252.1451<br />
-9.0653%<br />
-4.5263%</td>
+9.0653%</td>
 <td align="center"> <br />
 3552<br />
 <br />
-49.9297%<br />
-</td>
+49.9297%</td>
 </tr>
 <tr class="odd">
 <td align="center">Total</td>
@@ -418,9 +419,7 @@ Total(%)</td>
 </table>
 <p>Os pressupostos relacionados <u>à inexistência de células com valores esperados iguais a 0</u> e de <u>no máximo 20% dos valores esperados serem inferiores a 5</u> podem ser investigados na tabela exposta anteriormente e foram atendidos.</p>
 <p>O cálculo do qui-quadrado apresentado abaixo deixa claro que que é possível rejeitar a hipótese nula, uma vez que o valor de P é menor do que o nível de significância previamente estipulado (0.05).</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="qui-quadrado.html#cb3-1"></a>descr<span class="op">::</span><span class="kw">CrossTable</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent,</span>
-<span id="cb3-2"><a href="qui-quadrado.html#cb3-2"></a>           <span class="dt">expected =</span> T,</span>
-<span id="cb3-3"><a href="qui-quadrado.html#cb3-3"></a>           <span class="dt">chisq =</span> T, <span class="dt">prop.c =</span> F, <span class="dt">prop.t =</span> F, <span class="dt">prop.chisq =</span> F)<span class="op">$</span>CST <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="qui-quadrado.html#cb53-1"></a>descr<span class="op">::</span><span class="kw">CrossTable</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent,<span class="dt">chisq =</span> T)<span class="op">$</span>CST <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
 <table style="width:56%;">
 <caption>Pearson’s Chi-squared test: <code>tab</code></caption>
 <colgroup>
@@ -453,6 +452,10 @@ Em que:<br />
 <span class="math inline">\(\chi^2\)</span> = valor do Qui quadrado obtido<br />
 n = tamanho da amostra<br />
 <span class="math inline">\(df^`\)</span> menor valor entre (Linhas - 1) ou (Colunas - 1) da tabela de contingências</p>
+<p>A função <code>CramerV</code>do pacote <code>rcompanion</code> gera esses resultados.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="qui-quadrado.html#cb54-1"></a>rcompanion<span class="op">::</span><span class="kw">cramerV</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent)</span></code></pre></div>
+<pre><code>## Cramer V 
+##  0.07647</code></pre>
 <p>A interpretação é baseada nos graus de liberdade e é feita da seguinte maneira:</p>
 <table>
 <thead>
@@ -480,9 +483,6 @@ n = tamanho da amostra<br />
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="qui-quadrado.html#cb4-1"></a>rcompanion<span class="op">::</span><span class="kw">cramerV</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent)</span></code></pre></div>
-<pre><code>## Cramer V 
-##  0.07647</code></pre>
 </div>
 <div id="execução-no-jasp" class="section level2">
 <h2><span class="header-section-number">5.4</span> Execução no JASP</h2>
@@ -518,17 +518,18 @@ Nesta seção, será necessário indicar a variável que irá nas linhas e nas c
 <strong>Como escrever os resultados</strong>
 </p>
 <p>
-A associação entre o sexo do participante e sua condição clínica (ter ou não TDAH) foi investida por um Teste Qui-quadrado de independência. Os resultados indicarma que ambas as variáveis são associadas (X2(1) = 41.605). O tamanho do efeito foi calculado pelo V de Cramer, que se mostrou pequeno 0.07.
+A associação entre o sexo do participante e sua condição clínica (ter ou não TDAH) foi investigada por um Teste Qui-quadrado de independência. Os resultados indicaram que ambas as variáveis são associadas (X2(1) = 41.605). O tamanho do efeito foi calculado pelo V de Cramer, que se mostrou pequeno 0.07.
 </p>
 </div>
 </div>
 <div id="resumo-2" class="section level2">
 <h2><span class="header-section-number">5.6</span> Resumo</h2>
 <ol style="list-style-type: decimal">
-<li>O Qui-quadrado não é apenas um teste, mas um conjunto de análises realizadas em variáveis categóricas.<br />
+<li>O Qui-quadrado pode ser utilizado para um conjunto de análises realizadas em variáveis categóricas.<br />
 </li>
-<li>Apesar de diferenças conceituais, o formato matemático é virtualmente o mesmo.</li>
-<li>O tamanho do efeito apresenta interpretações que podem variar em função dos graus de liberdade</li>
+<li>Apesar de diferenças conceituais, o formato matemático é o mesmo.<br />
+</li>
+<li>O tamanho do efeito apresenta interpretações que podem variar em função dos graus de liberdade.</li>
 </ol>
 
 </div>

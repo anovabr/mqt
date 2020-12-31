@@ -26,25 +26,31 @@ library(kableExtra) #tables with different styles
 ```
 
 
-A ANOVA é um teste estatístico desenvolvimento para verificar diferenças médias entre diversos grupos. Pragmaticamente, é possível entender ANOVA como um super teste T ou também um caso particular de um modelo de regressão. Assim, de maneira similar ao teste T, a ANOVA e todas as suas extensões (e.g., ANCOVA e MANOVA) são casos especiais de um modelo de regressão que lidam com variáveis independentes categóricas. Alguns autores indicam que a ANOVA é a técnica inferencial mais utilizada em Psicologia [@Chartier2008; @Howell2011]. Se por um aspecto, isso é extremamente vantajoso por estreitar a relação entre Psicologia e Estatística, por outro, isso parece ter contribuído para criação e manutenção de diferentes conceitos equivocados sobre a ANOVA. 
+A ANOVA é um teste estatístico desenvolvimento para verificar <u>diferenças médias entre diversos grupos</u>. Pragmaticamente, é possível entender ANOVA como um super Teste T ou também um caso particular de um modelo de regressão. Assim, de maneira similar ao Teste T, a ANOVA e todas as suas extensões (e.g., ANCOVA e MANOVA) são casos especiais de um modelo de regressão que lidam com variáveis independentes categóricas.   
+
+Alguns autores indicam que a ANOVA é a técnica inferencial mais utilizada em Psicologia [@Chartier2008; @Howell2011]. Se por um aspecto, isso é extremamente vantajoso uma vez que estreita a relação entre Psicologia e Estatística, por outro, isso parece ter contribuído para criação e manutenção de diferentes conceitos equivocados sobre a ANOVA. 
 
 Conceitualmente, a ANOVA é um modelo linear, tal que:
 
 \[y_i = b_0 + b_1X{_1}_i + \epsilon_{i}\]
 
-$y_i$ representa a variável dependente  
+$y_i$ representa a variável dependente      
 $b_0$ é o intercepto (coeficiente linear)   
 $b_1$ é a inclinação (coeficiente angular)  
 $X_1$ é a variável independente em questão  
 $\epsilon_{i}$ é o erro/resíduo   
 
-Todos os pressupostos dos modelos linares são mantidos e o mnemônico LINE auxilia a resgatar todos eles. Assume-se que o erro é independente e identicamente distribuído ($iid$), distribuído normalmente com média 0 e variância constante $\sigma^2$, ou seja:  \[ \epsilon\stackrel{iid}{\sim} \mathcal{N}(0,\,\sigma^{2})\,\] Além de homocedástico: \[ VAR(\epsilon |x_1,x_2,...,x_k)=\sigma^2 \].   
-`iid`ainda signica erros descorrelatados \[ COV(\epsilon_i,\epsilon_j)=0 \].  
+Os seguintes pressupostos dos modelos linares são mantidos, que são:
 
-É importante atentar que assumir média 0,  também implica que a correlação do erro com as variáveis é nula. Operacionalmente, o erro representa <u>todos os fatores de pesquisa</u> e problemas de medição que afetam o resultado além das variáveis independentes consideradas na modelagem.
+*(i)* a variável dependente é contínua  
+*(ii)* Os resíduos são independentes  
+*(iii)* Os resíduos são normalmente distribuídos  
+*(iv)* A variância dos resíduos é constante  
+
+A linearidade dos resíduos não é formalmente um pressuposto, já que a VI é categórica em vez de conínua. Operacionalmente, o erro representa <u>todos os fatores de pesquisa</u> e problemas de medição que afetam o resultado, além das variáveis independentes consideradas na modelagem.
 
 
-Da mesma forma que feito em outros capítulos, a tabela abaixo concatena os testes estatísticos relacionados quando os pressupostos são violados. Para fins de comparação com outros trabalhos, há autores que sugerem que se use sempre as versões não-paramétricas em resultados obtidos por processos de avaliação psicológica, arguindo que os dados têm nível de medida "ordinal".
+Da mesma forma que feito em outros capítulos, a tabela abaixo concatena os testes estatísticos relacionados quando os pressupostos são violados. Para fins de comparação com outros trabalhos, há autores que sugerem que se use sempre as versões não-paramétricas em resultados obtidos por processos de avaliação psicológica, arguindo que os dados têm nível de medida "ordinal".  
 
   | Versão do teste | Um ou mais fatores |  Momentos repetidos             |  
   | :-----------    | :-----------       | :-----------                    |        
@@ -97,11 +103,22 @@ Neste capítulo, vamos utilizar a pesquisa intitulada ["A relação entre o nív
 A pergunta que temos agora é sobre o possível efeito da `escolaridade` na Tendência Empreendedora Geral (`teg`). Trata-se de uma ANOVA de 1 via, dado que existe apenas uma VI, com mais de 2 níveis.  
 
 
+As hipóteses precisam ser formalmente descritas:
+
+$$H_0: \mu_{escolaridade_i} - \mu_{escolaridae_j} = 0 \\ H_a: c.c \\ \alpha = 0.05$$
+Aqui, o subscrito $i$ e $j$ foi utilizado de maneira liberal para apresentar a diferença entre todas as combinações lineares possíveis.
+
 ### Execução no R
 
 Ao trabalhar no R, é <u>fundamental</u> se certificar que os tipos das variáveis estão corretamente definidos em função da escala de medida utilizada. Erros nessa etapa podem gerar resultados absolutamente incorretos. A escolaridade é uma variável categórica (ordinal, tratada como discreta) e é necessário definir claramente isso ao R antes da análise propriamente dita. 
 
 Isso pode ser feito pela função `case_when` e `levels`. O `case_when` irá usar os valores originalmente presentes nessa variável na criação de uma variável categórica e o `levels` deixará claro a ordem de cada categoria, o que é útil para que os gráficos sejam feitos corretamente.
+
+
+
+Uma vez que os itens de um instrumento sociodemográfico devem levar em consideração o contexto das pessoas avaliadas as categorias de escolaridade foram definidas como da seguinte maneira: Primário significa escolaridade até o 5º ano, ginásio significa escolaridade até o 9º ano e colegial é equivalente ao ensino médio.
+
+
 
 ```{r }
 dados_teg <- dados_teg %>% 
@@ -113,15 +130,7 @@ dados_teg <- dados_teg %>%
       levels=c("primario","ginasio","Colegial","superior")))
 ```
 
-
-Uma vez que os itens de um instrumento sociodemográfico devem levar em consideração o contexto das pessoas avaliadas e, as categorias de escolaridade foram definidas como as apresentadas. Primário significa escolaridade até o 5º ano, ginásio significa escolaridade até o 9º ano e colegial é equivalente ao ensino médio.
-
-As hipóteses precisam ser formalmente descritas:
-
-$$H_0 = \mu_{escolaridade_i} - \mu_{escolaridae_j} = 0 \\ H_a = c.c \\ \alpha = 0.05$$
-Aqui, o subscrito $i$ e $j$ foi utilizado de maneira liberal para apresentar a diferença entre todas as combinações lineares possíveis.
-
-Em seguida, a apresentação tabular das médias e desvios-padrão pode ser realizada.
+Os resultados descritivos devem ser calculados. A média irá apresentar a concentração dos dados, enquanto o desvio-padrão o afastamento dos valores em torno da respectiva média. 
 
 ```{r}
 dados_teg %>% 
@@ -129,8 +138,7 @@ dados_teg %>%
   summarise_at(vars(teg), lst(n=~n(),mean,sd)) %>% 
   kable(digits = 2) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
 ```
-
-
+    
 Tal como ilustrado no decorrer dos outros capítulos, gráficos são fundamentais para entendimento do relacionamento entre as variáveis. Uma vez que a escolaridade (VI) é tratada como discreta e a TEG (VD) é contínua, um gráfico de barras é adequado. A inclusão das barras de erro permite uma compreensão inferencial inicial.
 
 ```{r, message=FALSE}
@@ -141,56 +149,17 @@ ggplot(dados_teg, aes(x=escolaridade_fct, y = teg, fill = escolaridade_fct)) +
 ```
 
 
-A visualização dos resultados já permite identificar algumas caracteríticas gerais. Primeiro, quão maior a escolaridade, maior o o valor obtido na escala. Segundo, algumas barras de erros estão superpostas e outras não, o que nos leva à conclusão preliminar de que resultados significativos estarão presentes na próxima etapa, que é a modelagem formal dessa hipótese.
+A visualização dos resultados já permite identificar algumas caracteríticas gerais. Primeiro, quão maior a escolaridade, maior o o valor obtido na escala. Segundo, algumas barras de erros estão superpostas e outras não, o que nos leva à conclusão preliminar de que resultados significativos estarão presentes na próxima etapa, que é a modelagem formal dessa hipótese. 
 
-A modelagem formal irá contemplar n-1 níveis dos preditores e estipulará no intercepto o nível de referência. Dessa maneira:
-
-\[y_{i} = b_{0} + b_1Esc_{ginasio} + b_2Esc_{colegial} + b_1Esc_{superior} + \epsilon_{i}\]
-
-$b_0$ representa o intercepto, que aqui é o valor médio da Escolaridade primária  
-$b_i$ representa os outros preditores  
-$\epsilon_{i}$ representa o erro
-
-A função `lm` será utilizada e o objeto `mod_escolaridade` será armazenado. É também possível utilizar a função `aov` e a escolha da `lm` foi apenas por conveniência.
+Para realizar a ANOVA, é possível contar com a função `lm` ou `aov`. Aqui, a escolha da `lm` foi apenas por conveniência e o vetor `mod_escolaridade` irá armazenar os resultados.
 
 ```{r}
 mod_escolaridade <- lm(teg ~ escolaridade_fct, dados_teg)
 ```
 
-Antes de checar os resultados, é necessário verificar se os pressupostos da ANOVA foram atendidos. Esses pedem que os resíduos sejam normalmente distribuídos e homocedásticos. Tal como previamente exposto no teste T, a investigação dessas condições é tanto feita por gráficos e testes formais e ambos são muito úteis. A análise da normalidade dos resíduos será inicialmente feita.
 
-O gráfico abaixo apresenta a distribuição dos resíduos:   
+Para apresentação, a função `apa.aov.table` do pacote `apatables` pode ser utilizada. Este pacote gera uma tabela parecida com a dos principais pacotes estatísticos comerciais e apresenta os principais elementos interpretáveis de uma ANOVA. A tabela a seguir sintetiza tais características.  
 
-```{r, message=FALSE}
-ggplot(fortify(mod_escolaridade), aes(.resid)) +
-      geom_histogram(colour="black", fill="grey") +
-      geom_density(aes(y= ..count..))
-```
-
-O teste formal pode ser feito via shapiro-wilk. Tal como no teste T, a $H_0$ desse teste assume normalidade e, idealmente, não deve ser rejeitada.
-
-```{r}
-shapiro.test(residuals(mod_escolaridade))
-```
-
-Uma vez que o valor foi menor do que o previamente estipulado ao $\alpha$, é possível concluir que o pressuposto da normalidade foi violado. situações como essa são muito frequentes. Na literatura, são presentes recomendações de ajuste dos dados por alguma função `g(.)` ou tornar mais severo o valor de p na interpretação dos resultados. Por exemplo, em vez de 0.05, usar 0.01.
-
-A homocedasticidade pode ser verificada por um gráfico dos resíduos contra os valores previstos. O ideal é não encontrar padrões no gráfico.
-
-```{r}
-ggplot(fortify(mod_escolaridade), aes(x=.fitted, y=.resid)) + 
-  geom_point() +
-  geom_hline(yintercept = 0)
-```
-
-Além do teste de Bartlett ou Levene, em que estipulam $H_0$ como homocedasticidade e, idealmente, não deve ser rejeitada.
-
-```{r}
-car::leveneTest(mod_escolaridade)
-```
-
-
-A homocedasticidade foi assumida. Dessa maneira, mesmo com a violação da normalidade, o modelo será utilizado e seu sumário geral será apresentado pela função `apa.aov` do pacote `apaTables`. Isso é importante para garantir resultados programas tipicamente utilizados, como o SPSS e o STATA. Essa tabela é padronizada e muito similar na maioria dos programas estatísticos. Ela traz as seguintes informações principais:
 
 
   | Preditor          | Soma dos Quadrados| Graus de liberdade  |  Quadrado médio | Estat. F      | 
@@ -200,24 +169,64 @@ A homocedasticidade foi assumida. Dessa maneira, mesmo com a violação da norma
   | Total             | Total (SQT)       | N-1                 |  
 
 
-Aqui, K significa quantidade de categorias dentro de um fator e N significa a quantidade de observações consideradas. As siglas em inglês são comumeiramente utilizadas falar falar da "Soma dos quadrados entre os grupos" (SSB), "Soma dos quadrados dentro dos grupos" (SSW), "Quadrado médio entre grupos" (MSB) e "Quadrado médio dentro dos grupos" (MSW). Repare também que,a este momento, os aspectos são apenas apresentados conceitualmente e não matematicamente. Em outro momento, aspectos da decomposição da variância serão também descritos.
-
+Aqui, K significa quantidade de categorias dentro de um fator e N significa a quantidade de observações consideradas. As siglas em inglês são são utilizadas para apresentar a "Soma dos quadrados entre os grupos" (SSB), "Soma dos quadrados dentro dos grupos" (SSW), "Quadrado médio entre grupos" (MSB) e "Quadrado médio dentro dos grupos" (MSW). Repare também que,a este momento, os aspectos são apenas apresentados conceitualmente e não matematicamente. Em outro momento, aspectos da decomposição da variância serão também descritos.
 
 ```{r}
-apaTables::apa.aov.table(mod_escolaridade)
+apaTables::apa.aov.table(mod_escolaridade) %>% pander::pander(., split.table = Inf)
 ```
 
 
-A leitura desse resultado é similar a de um modelo de regressão e a de outros modelos lineares e, em linhas gerais, em relatório ou publicações quase sempre apenas se diz que o modelo foi significativo, indicando as principais estatísticas obtidas da seguinte maneira: F(3,143) = 8.23, p < 0.01, ηp2 = 0.15, 90% CI [.06, .22]. 
+A leitura desse resultado quase sempre irá pontuar as principais estatísticas obtidas da seguinte maneira: F(3,143) = 8.23, p < 0.01, ηp2 = 0.15, 90% CI [.06, .22].  
 
-No entanto, o que essa constatação está realmente dizendo é que houve uma comparação entre dois modelos, um que usou os resultados da variável "escolaridade" para prever os resultados obtidos pelo TEG (chamado de Modelo aumentado) e outro que usou apenas a média que o TEG (chamado de modelo compacto ou nulo neste caso). O resultado significativo indica que a inclusão da "escolaridade" no  modelo testado foi significativamente capaz de reduzir o erro de previsão que o modelo nulo obteve (em ingles Proportional Reduction in Error ou PRE). Ainda nesse caso, o ηp2 (eta parcial quadrado) indica a proporção da variabilidade dos resultados do TEG que pode ser atribuídos à escolaridade e é uma métrica de tamanho do efeito, cuja interpretação se recomenda da seguinte maneira:
+Um aspecto importante é que a validade da interpretação dos resultados depende dos pressupostos do modelo estatístico. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer [@Lix1996; @Barker2015; @Ernst2017]. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.
 
-  | ηp2             | Interpretação           
-  | :-----          :-----       
-  | ηp2 < 0.01      | Irrelevante  
-  | ηp2 $\geq$ 0.01 | Pequeno    
-  | ηp2 $\geq$ 0.06 | Moderado     
-  | ηp2 $\geq$ 0.14 | Grande   
+
+<u> Normalidade</u>: A ANOVA tem como um dos pressupostos a normalidade da distribuição dos resíduos. Isso pode ser feito de diferentes maneiras e abaixo há um QQ plot. Caso ambas as linhas estejam sobrepostas, isso gera evidências que o pressuposto foi atendido. Neste caso, isso parece ocorrer.
+
+```{r }
+olsrr::ols_plot_resid_qq(mod_escolaridade)
+```
+   
+Apesar do gráfico ter sido bastante claro, o teste shapiro-wilk costuma ser utilizado neste caso. A hipótese nula desse teste assume que os resíduos são normalmente distribuídos.
+
+```{r}
+shapiro.test(residuals(mod_escolaridade))
+```
+De maneira diferente à conclusão gráfica, o teste concluiu pela rejeção da normalidade.
+
+
+<u>Homocedasticidade</u>: Este pressuposto pode ser testado por um gráfico dos resíduos contra os valores previstos. O ideal é não encontrar padrões no gráfico, tal como o gráfico a seguir.
+
+```{r}
+olsrr::ols_plot_resid_fit(mod_escolaridade)
+```
+
+O teste de Bartlett ou Levene podem também ser utilzados de maneira formal. Ambos estipulam $H_0$ como homocedasticidade e, idealmente, não deve ser rejeitada.
+
+```{r}
+car::leveneTest(mod_escolaridade)
+```
+
+
+<u>Independência</u>:  Esse pressupostos frequentemente não é testado na ANOVA, apesar de ser uma exigência dos modelos lineares. De fato, uma vez que espera-se que os grupos sejam mutuamente excludentes, teria pouco sentido acreditar que os resíduos não fossem independentes. 
+
+
+## Tamanho do efeito  
+
+
+Resultados significativos não são informativos em relação ao tamanho do efeito. Esta última métrica tem mais contato com as perguntas originalmente realizadas em uma pesquisa e é entendida como uma medida objetiva e padronizada da magnitude de um efeito observado independente da significância estatística. Dessa maneira, o tamanho do efeito pode ser considerado um indicador da relevância clínica dos grupos, cujo uso é sempre importante em pesquisas em Psicologia e áreas da saúde.
+
+No ambiente da ANOVA, 3 medidas costumem ser utilizadas para tamanho do efeito, que são o <u>eta quadrado</u> ($\eta^2$), o <u>eta quadrado parcial</u> ($\eta_p^2$) e o <u>ômega quadrado</u> ($\omega^2$). Em uma ANOVA de uma via, como é o caso aqui, o $\eta^2$ e o $\eta_p^2$ possuem o mesmo valor. A ideia de ambas as medidas é verificar a variância explicada que o modelo testado apresenta quando comparado com um modelo simples, que contou apenas com a média. Esse conceito será melhor descrito no capítulo de regressão linear. No caso de agora, o $\eta^2$ e o $\eta_p^2$ indicam a proporção da variabilidade dos resultados do TEG que pode ser atribuídos à escolaridade. A interpretação pode ser feita da seguinte maneira:
+
+  | ηp2             | Interpretação              
+  | :-----------    | :-----------      
+  | ηp2 < 0.01      | Irrelevante    
+  | ηp2 $\geq$ 0.01 | Pequeno     
+  | ηp2 $\geq$ 0.06 | Moderado      
+  | ηp2 $\geq$ 0.14 | Grande     
+
+
+<aqui>
 
 De fato, quando isso ocorre, a busca por possíveis diferenças entre <u>todas as comparações possíveis</u> costuma ser feita por testes post hocs.
 
@@ -273,7 +282,69 @@ post_hoc_escolaridade %>%
 
 Os resultados são significativos na comparação `Superior - Primário`, `Superior - Ginásio` e `Superior - Colegial`. Em todos, os resultados do TEG foi mais elevado naqueles participantes que haviam concluído o ensino superior.  
 
+## Execução no JASP
+
+A base utilizada será a [base_csv_teg_processed](https://osf.io/gxbdc/). Para deixar os níveis de <u>Escolaridade<u> adequados às tabelas e gráficos, será necessário clicar no centro da variável <u>escolaridade_fct<u>, selecionar o grupo desejado (no caso, <u>primário</u>) e clicar na seta para que ele seja o primeiro grupos.
+
+![](./img/cap_anova_ordem_variaveis.png)
+A ordem dos níveis deve ser a utilizada durante a pesquisa: primário, ginásio, colegial e superior. É importante relembrar que esses termos foram utilizados em função do público que foi avaliado nessa pesquisa. Para fechar esta parte superior, basta clicar no `X` embaixo das setas.
+
+![](./img/cap_anova_ordem_variaveis2.png)
+
+
+Após feito isso, da mesma forma que foi feita no R, a apresentação de gráficos auxiliam o pesquisador a verificar padrões diferentes nos dados.  Para fazer os gráficos, é necessário clicar em `Descriptives`.
+
+![](./img/jasp_descriptives.png)
+
+
+Ao clicar nesta opção, será possível eleger as variáveis que irão ser analisadas e as variáveis que irão funcionar como agrupadores. Na prática, a lista `Variables` irá reunir as variáveis dependentes, enquanto a variável independente será colocada na seção `Split`. É importante atentar à opção `Frequency tables (nominal and ordinal)`, que deve ser marcada quando o nível de medida da variável de interesse for nominal ou ordinal. 
+
+![](./img/jasp_descriptives2.png)
+
+
+Agora é necessário arrastar as variáveis de interesse aos seus respectivos locais. Neste caso, o <u>teg</u> para parte das VDs, enquanto <u>escolaridade_fct</u> para a VI. Ao fazer isso, o JASP automaticamente irá preencher a tabela previamente exposta com os valores estatísticos obtidos. A média e o desvio-padrão indicam a posição típica dos dados e o afastamento esperado desta localização.   
+
+
+![](./img/cap_anova_descritivo.png)
+Em seguida, ao clicar na opção `Plots`, será possível selecionar o <u>Boxplot</u>. O gráfico aparecerá abaixo da tabela e irá apresentar diferentes informações estatísticas da <u>distribuição dos resultados</u> de empreendedorismo em função dos <u>níveis de escolaridade</u>.
+
+
+![](./img/cap_anova_descritivo2.png)
+
+Para execução da ANOVA, deve-se clicar em `ANOVA` e, em seguida, `Classical` e `ANOVA`.  
+
+![](./img/cap_anova_interface.png)
+
+Ao realizar isso, a tela a ser exibida será próxima à imagem a seguir:
+
+![](./img/cap_anova_interface2.png)
+
+
+O espaço de `Fixed factors` é o local onde a VI deverá ser colocada, enquanto o `Dependent Variable` é o local onde a VD irá ser inserida. Para realizar a ANOVA de uma via, é necessário inserir a <u>escolaridade_fct</u> e o <u>teg</u>, respectivamente, em `Fixed factors` e `Dependent Variable`.
+
+O JASP automaticamente irá realizar as contas e apresentar os resultados. Pragmaticamente, o valor de P é o indicador costumeiramente utilizado para tomar decisões inferenciais. Neste caso, <u>como o valor de p foi menor do que o nível de significância escolhido, rejeita-se a hipótese nula</u>.
+
+![](./img/cap_anova_resultados_iniciais.png)
+Entretanto, da mesma forma como apresentado antes, a interpretação deste resultado <u>não pode ser feita de uma forma automática</u>. É necessário saber se os pressupostos foram ou não atendidos, bem como calcular o tamanho do efeito. Estas opções estão dispostas na parte inferior à esquerda do programa.
+
+![](./img/cap_anova_assumptions.png)
+
+A <u>normalidade</u> é feita por um QQ-plot, enquanto o Teste de Levene testa a homocedasticidade. Idealmente, as linhas devem estar sobrepostas no QQ-plot para assumir a normalidade da distribuição dos resíduos. Além disso, o valor de p <u>deve ser superior</u> ao nível de significância eleito (quase sempre, 0.05) para considerar homogeneidade das variâncias. Neste caso, há a impressão visual de que a normalidade está mantida, da mesma forma que a homogeneidade. [Nota: O JASP não oferece um teste formal para testar a normalidade dos reíduos de uma ANOVA, tal como feito no R na seção anterior].
+
+
+![](./img/cap_anova_assumptions2.png)
+
+
+Após testar estes pressupostos, é importante avaliar o quanto a interpretação originalmente deve ser mantida. Existem diferentes recomendações sobre o que fazer quando os pressupostos são violados. Entre eles, transformar a distribuição da variável de interesse, usar versões robustas da ANOVA, usar testes não-paramétricos com objetivos próximos à ANOVA ou eleger algum modelo estatístico mais adequado à distribuição empírica obtida pelos dados. No JASP, as técnicas `Brown-Forsythe` e `Welch` são disponíveis para corrigir a violação do pressuposto de homocedasticidade.
+
+
+Finalmente, para inserir o tamanho do efeito é necessário clicar em `Estimatives of effect size` e, em seguida, no `eta quadrado` ($\eta^2$). O valor de P irá indicar se a hipótese nula foi rejeitada ou não e o tamanho do efeito irá indicar a relevância da possível diferença.
+
+
+![](./img/cap_anova_resultados.png)
+
 A esse momento, a escrita é fundamental:
+
 
 ```{block, type="writing"}
 **Como escrever os resultados**  
@@ -440,11 +511,16 @@ post_hoc_int$contrasts %>%
 Repare que as informações repetem aquilo já visualizado no gráfico anterior, mas com as correções para evitar a inflação do erro do tipo 1. Neste momento, a interpretação torna-se menos visual e mais detalhada. Os resultados indicam que o empreededorismo depende tanto do estado civil como do sexo do participante. Quando solteiros, há uma tendência das mulheres empreenderem mais do que os homens (Δ = -5.048, p = 0.09). Entretanto, essa diferença não ocorre quando os participantes são casados, já que homens e mulheres casadas tem, em media, o mesmo nível de empreendedorismo (Δ = 0.482, p = 1). No entanto, especialmente nas mulheres casadas, o nível de empreendedorismo é significativamente menor do que nas solteiras (Δ = -6.222, p = 0.07). Em linhas gerais, parece que o empreendedorismo diminui em pessoas casadas e isso é especialmente válido às mulheres.  
 É importante também atentar que a correção do valor de P deve ser feita para proteger falsos positivos (erro do tipo 1), mas que, idealmente, não devem também gerar falsos negativos (erro do tipo 2), o que talvez pudesse ser sugerido se aqui não tivéssemos interpretado os valores entre 0.05 e 0.1 dos resultados.  
 
+```{r}
+write.csv(dados_teg, "base_csv_teg_processed.csv", row.names = F)
+write.csv(base_interacao, "base_csv_teg_interacao_processed.csv", row.names = F)
+
+```
 
 
 ## Resumo  
 
-1. A ANOVA pode tanto ser entendida como um super teste T, como um caso particular de um modelo de regressão  
+1. A ANOVA pode tanto ser entendida como um super Teste T, como um caso particular de um modelo de regressão  
 2. Testes post hoc e resultados globais da ANOVA não respondem às mesmas perguntas  
 3. As comparações pareadas devem proteger a inflação do erro do tipo 1, sem gerar o erro do tipo 2 
 
