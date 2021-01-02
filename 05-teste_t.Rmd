@@ -270,13 +270,19 @@ Os dados foram analisados por um Teste T de amostras independentes para investig
 
 ## Versão robusta do Teste T
 
-Em muitas situações, os pressupostos do Teste T são violados. Parte da literatura argumenta que o Teste T é robusto o suficiente para lidar com isso [@Lumley2002], enquanto outra parte sugere que é melhor optar por versões com médias aparadas, técnicas não-paramétricas [@Field2017] ou outros modelos estatísticos. No entanto, o que não costuma ser discutido com tanta frequência é que a modificação do teste estatístico utilizado, necessariamente, modifica a hipótese da pesquisa. Nesse sentido, a decisão de alterar o teste estatístico deve ser feito com justificativa teórica por parte do pesquisador.
+Em muitas situações, os pressupostos do Teste T são violados. Parte da literatura argumenta que o Teste T é robusto o suficiente para lidar com isso [@Lumley2002], enquanto outra parte sugere que é melhor optar por versões com médias aparadas, técnicas não-paramétricas [@Field2017] ou outros modelos estatísticos. O Welch test é considerado uma versão robusta do Teste T, uma vez que <u>não</u> assume homocedasticidade, ou seja, lida bem com grupos com variâncias distintas.  
+
+
+O tamanho do efeito do Welch test é também o d de Cohen e, por isso, não será novamente calculado nesta seção.  
+
+Um aspecto importante e que  não costuma ser discutido com tanta frequência é que a modificação do teste estatístico utilizado pode modificar a hipótese da pesquisa. Nesse sentido, a decisão de alterar ou não o teste inferencial deve ser feita com justificativa teórica por parte do pesquisador.
+
 
 
 ### Execução no R
 
 
-O Welch-test é considerado a versão robusta do Teste T e oferece uma possível saída para condições em que a homogeneidade dos grupos não é aceita. Esse teste é feito assumindo estipulando `var.equal = F` na sintaxe previamente exposta ou removendo este argumento por completo. Existem outras soluções disponíveis no pacote `WRS` , que não serão implementadas neste livro. 
+Para executar o O Welch-test no R, deve-se alterar a sintaxe, estipulando `var.equal = F` na sintaxe previamente exposta. Como por padrão, o R executa o Welch test quando faz o Teste T, caso se remova este argumento por completo, este teste será calculado. Existem outras soluções disponíveis no pacote `WRS` , que não serão implementadas neste livro. 
 
 
 O Welch-test será calculado considerando as crianças com <u>18 meses</u>
@@ -346,9 +352,8 @@ Os dados foram analisados pelo teste Wilcoxon-Mann-Whitney para investigar as di
 
 ## Teste T e regressão
 
-Conforme alertado, o Teste T é um caso particular de um modelo de regressão que assume que a variável independente é uma dummy. Assim, $b_0$ (intercepto) é o grupo que recebeu o valor 0 e $b_1$ (inclinação) é o grupo que recebeu o valor 1. Caso isso não tenha sido definido inicialmente, ao se usar o R, basta estipular que a variável é um <u>fator</u>.
+Conforme alertado, o Teste T é um caso particular de um modelo de regressão que assume que a variável independente é uma dummy. Isso significa que ao realizar um Teste T, o pesquisador está fazendo um modelo de regressão, mesmo que isso não lhe seja intuitivo em primeiro momento. Neste modelo, $b_0$ (intercepto) é o grupo que recebeu o valor 0 e $b_1$ (inclinação) é o grupo que recebeu o valor 1. Caso isso não tenha sido definido inicialmente, ao se usar o R, basta estipular que a variável é um <u>fator</u>.
 
-Nesse caso, o R atribuiu os meninos como intercepto o valor médio dos meninos e a inclinação $b_1$ é justamente a diferença entre os valores (*24.95-27.53)*. Nesse caso, -2.58. A estatística F é equivalente a $t^2$ do Teste T em sua versão tradicional, que assume variâncias iguais entre grupos.
 
 ```{r}
 lm(total_18 ~ sex, data = asq_18months) %>% 
@@ -356,19 +361,37 @@ lm(total_18 ~ sex, data = asq_18months) %>%
 ```
 
 
-Assim, quando se comenta sobre o princípio da normalidade no Teste T, o que se está falando é sobre a normalidade dos resíduos deste modelo. Isso pode ser visualmente pela análise de um QQ plot:
+Em função da ordem alfabética, o R atribuiu os meninos (`male`) como intercepto. Assim, o valor de $b_0$ será o valor médio obtido pelos dos meninos, que foi de `27.53`. A inclinação $b_1$ é justamente a diferença entre os valores dos meninos e das meninas (`24.95-27.53`) e, nesse caso, -2.58. A estatística F é equivalente a $t^2$ do Teste T em sua versão tradicional, que assume variâncias iguais entre grupos.
+
+Agora torna-se mais intuitivo mostrar que a <u>normalidade no Teste T se refere à normalidade dos resíduos deste modelo de regressão</u>. Isso pode ser visualmente pela análise de um QQ plot, tal como a seguir.
 
 ```{r}
 olsrr::ols_plot_resid_qq(lm(total_18 ~ sex, data = asq_18months))
 ```
   
-Há também testes estatísticos formais, tal como o Anderson-Darling. Neste, a hipótese nula é de que os resíduos são normalmente distribuídos.
+Há também testes estatísticos formais, como o Shapiro-Wilk ou o Anderson-Darling. Nestes, a hipótese nula é de que os resíduos são normalmente distribuídos e idealmente não se deve rejeitá-la.
 
 ```{r}
 nortest::ad.test(lm(total_18 ~ sex, data = asq_18months)$residuals)
 ```
 
 Os resultados foram convergentes ao alcançados durante o capítulo, indicando pela violação da normalidade.  
+
+A homocedasticidade pode ser investigada também por um gráfico, em que os resíduos são plotados contra os valores ajustados, tal como abaixo.
+
+```{r}
+olsrr::ols_plot_resid_fit(lm(total_18 ~ sex, data = asq_18months))
+```
+
+O teste de Levene, de Bartlett ou de Breusch-Pagan também oferecem recursos para tal análise. Todos estes indicam pela hipótese nula a homocedasticidade. 
+
+```{r}
+olsrr::ols_test_breusch_pagan(lm(total_18 ~ sex, data = asq_18months))
+```
+
+Os achados também concluem pela rejeição da homocedasticidade, tal como foi previamente apresentado. 
+
+Mais detalhes sobre modelos de regressão são apresentados em capítulos específicos.  
 
 ## Resumo  
 
