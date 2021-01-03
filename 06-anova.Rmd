@@ -19,10 +19,10 @@ library(pander)
 1. Apresentar a ANOVA  
 2. Discutir os pressupostos de execução da ANOVA  
 3. Realizar gráficos relacionados à comparação de médias  
-4. Apresentar e interpretar métricas de tamanho do efeito  
-5. Dar exemplos relacionados à escrita dos resultados  
-6. Discutir os testes post-hoc  
-7. Apresentar o teste Kruskal-Wallis    
+4. Apresentar e interpretar diferentes tipos de ANOVA    
+5. Discutir os testes post-hoc  
+6. Dar exemplos relacionados à escrita dos resultados  
+ 
 ```
 
 
@@ -424,18 +424,31 @@ Os dados foram analisados a partir de uma ANOVA de uma via investigando o efeito
 1. Cognitive Processes and Memory Differences in Recall and Recognition in Adults    
 Nesta pesquisa, cerca de 150 estudantes foram apresentados a um filme e depois tiveram que lembrar algumas cenas. Três grupos distintos foram formados. Em um grupo, uma recordação com pistas foi implementada, em outro, técnicas de reconhecimento foram utilizadas e o terceiro grupo teve de fazer uma recordação livre, sem nenhum suporte adicional. 
 
+---
+
+## Pesquisa
+
+  
+<div class="alert alert-info" role="alert">
+  <strong>Base: </strong> Base - MEMORE 2020 Automated model selection
+</div> 
+
+Nas próximas seções, vamos usar parcialmente a pesquisa intitulada ["Propriedades psicométricas de instrumento de Memória Visual de Curto Prazo (MEMORE)"](https://www.neuropsicolatina.org/index.php/Neuropsicologia_Latinoamericana/article/view/545), publicada em 2020, em que sou o principal autor. Nesta pesquisa, apresentamos algumas propriedades psicométricas de um teste psicológico desenvolvido para avaliar aspectos da memória de curto prazo (MEMORE), bem como análises estatísticas para investigar o efeito de atributos psicológicos nos resultados obtidos pelos participantes neste teste específico.  
+
 
 ## ANOVA de 2 vias
 
-```{r}
+```{r, include = FALSE }
 load(file="~/anovabr/mqt/bases/Base - MEMORE 2020 Automated model selection.RData")
 rm(list=setdiff(ls(), "ds"))
 ```
 
-Frequentemente, o interesse do pesquisador está em investigar como múltiplos fatores afetam a variável de interesse. Ao aumentar o número de variáveis independentes no modelo, se aumenta a quantidade de vias que a ANOVA possui. Se, por exemplo, a investigação visasse testar o efeito da <u>escolaridade</u> e do <u>sexo</u> no <u>empreendedorismo</u>, teríamos, por definição, uma ANOVA de duas vias. Neste tipo de análise, se considera apenas os efeitos principais dos fatores, sem testar uma possível interação entre tais preditores.
+Em grande parte das vezes, o interesse do pesquisador é o de investigar como múltiplos fatores impactam a variável de desfecho. Quando se aumenta o número de variáveis independentes no modelo, consequentemente se aumenta a quantidade de vias ou fatores que a ANOVA possui. Na pesquisa de agora, como o interesse foi investigar o efeito da <u>escolaridade</u> e da <u>faixa etária</u>, trata-se de uma ANOVA de 2 vias. 
 
 
-Conceitualmente, na ANOVA de duas vias, temos:
+Na ANOVA de 2 vias, dois modelos principais podem ser calculados. O primeiro é chamado de "modelo aditivo", em que <u>não</u> se estipulam interações entre os fatores. O segundo modelo é denominado como "não aditivo" ou "saturado" e ocorre quando uma interação entre os fatores é definida. Nesta seção, será apresentado o modelo aditivo, enquanto na seção ANOVA fatorial, o modelo saturado será descrito.   
+
+Conceitualmente, na ANOVA de duas vias sem interação, temos:
 
 \[y_i = b_0 + b_1X{_1}_i + b_2X{_2}_i + \epsilon_{i}\]
 
@@ -459,7 +472,6 @@ ds <- ds %>%
          faixa_etaria = factor(faixa_etaria))
 ```
 
-
 Os dados apresentam casos ausentes na variável <u>faxa etária</u> e <u>escolaridade</u>. Muitas ações podem ser feitas para lidar com esta condição. Entretanto, pedagogicamente, esses valores não serão utilizados nestas análises de agora.
 
 ```{r}
@@ -473,7 +485,6 @@ A apresentação de tabelas e gráficos que possibilitem uma primeira descriçã
 ```{r}
 ds %>% 
   group_by(escolaridade_grupo, faixa_etaria) %>% 
-  #mutate(rn = row_number()) %>% 
   summarise_at(vars(memore_total), lst(n=~n(), mean, sd)) %>%  
   pivot_wider(names_from = escolaridade_grupo, #indexador unico
               names_sep = "_",  #pode ser removido
@@ -503,6 +514,7 @@ ggplot(ds, aes(x = faixa_etaria, y = memore_total, fill = escolaridade_grupo)) +
   geom_bar(stat = "summary", position = "dodge", fun = mean) +
   theme(legend.position = "bottom")
 ```
+É importante ter atenção que este gráfico não é necessariamente o melhor para uma ANOVA de 2 vias, uma vez que pode sugerir um relacionamento entre as variáveis independentes. Esse aspecto será melhor debatido na seção de ANOVA fatorial.  
 
 Agora, formalmente a modelagem poderá será feita. Os passos devem ser exatamente os mesmos aos performados anteriormente, incluindo a verificação de pressupostos e interpretação dos resultados. Para realizar a ANOVA de duas vias, é possível contar com a função lm ou aov. Aqui, a escolha da lm foi apenas por conveniência e o vetor `mod_escolaridade_faixa_etaria` irá armazenar os resultados.
 
@@ -567,8 +579,7 @@ Os resultados indicaram que a homocedasticidade foi preservada.
 
 ## Execução no JASP
 
-A base a ser carregada é a dos dados do [MEMORE](https://osf.io/4hdc2/). Após carregar tal base, a seção `Descriptives` apresentará o gráfico inicial dos resultados.
-
+A base a ser carregada é [CSV file - MEMORE Cognitive measurement.csv](https://osf.io/4hdc2/). Após carregar tal base, a seção `Descriptives` apresentará o gráfico inicial dos resultados.
 
 
 ![](./img/cap_anova_two_way_descriptives.png)
@@ -578,15 +589,17 @@ Ao clicar nesta opção, será possível eleger as variáveis que irão ser anal
 
 ![](./img/cap_anova_two_way_descriptives2.png)
 
-
-De forma distinta ao R, as tabelas e gráfico permitem poucas camadas de agregações. Neste momento, a relação entre <u>escolaridade</u> e <u>resultados</u> foi descrita.
-
-![](./img/cap_anova_two_way_tabela_descriptives.png)
-
-Para alterar esta descrição, basta modificar as variáveis de interesse.  
+Em seguida, ao clicar na opção Plots, será possível selecionar o `Boxplot` e `Boxplot element`. O gráfico aparecerá abaixo da tabela e irá apresentar diferentes informações estatísticas da distribuição dos resultados da avaliação psicológica em função dos níveis de <u>escolaridade_grupo</u>. Uma visualização preliminar indica que pessoas com escolaridade mais elevada (níveis 2 e 3) apresentam resultados maiores do que pessoas com o primeiro nível de escolaridade.
 
 
-Para realizar a ANOVA, será necessário clicar na opção `ANOVA`, `Classical` e `ANOVA`. Essa etapa é similar a que foi feita na ANOVA de 1 via. Ao realizar isso, a tela a ser exibida será próxima à imagem a seguir.
+![](./img/cap_anova_two_way_plot.png)
+
+Para alterar esta descrição, basta modificar as variáveis de interesse, colocando a  <u>faixa_etária</u>, por exemplo. A visualização sugere um padrão, em que pessoas mais velhas apresentam menor desempenho.  
+
+![](./img/cap_anova_two_way_plot1.png)
+
+
+Por padrão, o JASP não permite integrar os gráficos nesta seção. Isso será realizado posteriormente. Para executar a ANOVA, será necessário clicar na opção `ANOVA`, `Classical` e `ANOVA`. Essa etapa é similar a que foi feita na ANOVA de 1 via. Ao realizar isso, a tela a ser exibida será próxima à imagem a seguir.
 
 ![](./img/cap_anova_two_way_interface.png)
 
@@ -634,6 +647,135 @@ Gráficos específicos são recursos úteis para descrição destes resultados. 
 
 
 Notas: Infelizmente, o JASP não realiza um gráfico completo dessa maneira na seção `Descriptives`, tal como apresentado. Por vezes, será necessário primeiro rodar integralmente a ANOVA para depois gerar esta apresentação. Quase sempre, o eixo X recebe a variável com maior quantidade de níveis.  
+
+
+## Escrita dos resultados
+
+
+Após a execução de uma ANOVA de duas vias, foi possível concluir que ambas as variáveis foram significativas aos resultados da avaliação psicológica. Abaixo uma sugestão de escrita baseada nas recomendações da American Psychological Association (APA).
+
+
+```{block, type="writing"}
+**Como escrever os resultados**  
+
+Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA de duas vias para investigar o efeito da escolaridade e faixa etária nos resultados. Os achados permitiram concluir que tanto a escolaridade (F(2, 1427) = 7.58, p = 0.001, n2p = 0.01), como a faixa etária (F(4, 1427) = 32.972, p < 0.001, n2p = 0.08) tiveram efeito significativo nos resultados.
+
+```
+
+
+De forma análoga ao que aconteceu na ANOVA de 1 via, os resultados não indicam os níveis em que as diferenças podem existir. Testes post hoc são, novamente, necessários para responder à esta pergunta.
+
+## Post hoc  
+
+Na ANOVA de duas vias, o post hoc será realizado para cada um dos níveis ou fatores do modelo. Neste caso, <u>escolaridade_grupo</u> e <u>faixa_etaria</u>. 
+
+
+## Execução no R 
+
+O pacote `emmeans` será utilizado para, inicialmente, verificar cada uma das comparações entre os níveis de <u>escolaridade_grupo</u>. É bom notar que os resultados são ajustados pelas outras variáveis que integram o modelo. O vetor `post_hoc_twoway_escolaridade` reunirá os resultados.
+
+```{r}
+post_hoc_twoway_escolaridade <- emmeans(mod_escolaridade_faixa_etaria, "escolaridade_grupo") %>% 
+  pairs(.,adj = "bonferroni")
+```
+
+
+O gráfico a seguir foi realizado também na ANOVA de 1 via e apresenta um resultado mais fácil de interpretar em relação às comparações. O eixo horizontal tem destaque ao valor `0` e o eixo vertical apresenta todas as comparações. 
+
+```{r}
+CI <- confint(post_hoc_twoway_escolaridade)
+ggplot(mapping = aes(contrast, estimate)) +
+  geom_errorbar(aes(ymin = lower.CL, ymax = upper.CL), data = CI) +
+  geom_point(data = summary(post_hoc_twoway_escolaridade)) +
+  geom_hline(yintercept = 0, linetype = "dashed") + 
+  scale_size(trans = "reverse") + 
+  coord_flip()
+```
+
+A apresentação formal ocorre por tabelas, tal como a exposta a seguir. A última coluna `p.value` apresenta o valor de P corrigido pela técnica de Bonferroni.
+
+
+```{r}
+post_hoc_twoway_escolaridade %>% data.frame() %>% pander()
+```
+
+É possível concluir que pessoas com nível fundamental, quando comparadas às pessoas de nível médio (Δ = 3.23) e superior (Δ = 2.84), apresentam performance significativamente menor. Pessoas com ensino médio e ensino superior não tem resultados significativamente diferentes. 
+
+
+Para comparar os resultados em função de todos os níveis de <u>faixa_etaria</u>, basta customizar um pouco a função.
+
+```{r}
+post_hoc_twoway_faixaetaria <- emmeans(mod_escolaridade_faixa_etaria, "faixa_etaria") %>% 
+  pairs(.,adj = "bonferroni")
+```
+
+O gráfico, novamente, é um recurso útil à visualização preliminar dos resultados.  
+
+```{r}
+CI <- confint(post_hoc_twoway_faixaetaria)
+ggplot(mapping = aes(contrast, estimate)) +
+  geom_errorbar(aes(ymin = lower.CL, ymax = upper.CL), data = CI) +
+  geom_point(data = summary(post_hoc_twoway_faixaetaria)) +
+  geom_hline(yintercept = 0, linetype = "dashed") + 
+  scale_size(trans = "reverse") + 
+  coord_flip()
+```
+  
+Por sua vez, a tabela apresenta os resultados de maneira detalhada.
+
+```{r}
+post_hoc_twoway_faixaetaria %>% data.frame() %>% pander()
+```
+
+As conclusões indicam que pessoas mais novas (`Entre 14 e 24`) tem resultados mais elevados do que pessoas `Entre 35 e 44` , `Entre 45 e 54` e `Entre 55 e 64`. Participantes `Entre 25 e 34` também apresentam resultados maiores do que `Entre 35 e 44`, `Entre 45 e 54` e `Entre 55 e 64`. Não houve diferença significativa `Entre 14 e 24` e `Entre 25 e 34`, bem como `Entre 35 e 44` e `Entre 45 e 54` e `Entre 55 e 64`. Finalmente, participantes `Entre 45 e 54` e `Entre 55 e 64` também não tiveram resultados significativamente diferentes.
+
+## Execução no JASP
+
+Para executar o post hoc no JASP, é necessário clicar em Post Hoc tests, na parte esquerda inferior do programa.
+
+![](./img/cap_anova_two_way_posthoc.png)
+
+Em seguida, inserir as variáveis para o lado direito. O JASP apresentará todas as comparações feitas em <u>escolaridade_grupo</u> e <u>faixa_etaria</u>, ajustando os resultados por todas as variáveis no modelo e corrigindo o valor de P. Por padrão, a correção de P é feita pelo método de `Tukey`, que pode ser alterada na seção `Correction`. 
+
+![](./img/cap_anova_two_way_posthoc2.png)
+Mesmo sem implementar a correção de Bonferroni, os achados são virtualmente idênticos aos obtidos anteriormente pelo R. Possíveis diferenças de sinal (+ ou -) ocorrem pela codificação das variáveis e não impactam em nada a interpretação dos resultados. Para inserir também um gráfico característico dos resultados, basta clicar em `Descriptives Plots`.   
+
+Muitos gráficos são possíveis, mas a maioria irá destacar a possível relação que <u>escolaridade_grupo</u> e <u>faixa_etaria</u> possuem, o que será realizado na seção de ANOVA fatorial. 
+
+A interpretação dos resultados pode ser feita considerando o valor de P, o tamanho do efeito e as comparações pareadas.
+
+
+![](./img/cap_anova_two_way_posthoc_interpretacao.png)
+
+
+## Escrita dos resultados  
+
+
+Os resultados serão escritos apresentado os achados principais da ANOVA e as comparações pareadas de ambos os fatores, destacando os valores de P corrigidos. O estilo da escrita é baseada nas recomendações da American Psychological Association (APA).
+
+
+```{block, type="writing"}
+**Como escrever os resultados**  
+
+Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA de duas vias para investigar o efeito da escolaridade e faixa etária nos resultados. Os achados permitiram concluir que tanto a escolaridade (F(2, 1427) = 7.58, p = 0.001, n2p = 0.01), como a faixa etária (F(4, 1427) = 32.972, p < 0.001, n2p = 0.08) tiveram efeito significativo nos resultados. Comparações pareadas foram realizadas e os valores de P foram corrigidos pela técnica de Bonferroni. Em relação à escolaridade, pessoas com nível fundamental, quando comparadas às pessoas de nível médio (Δ = -3.23, p < 0.001) e superior (Δ = -2.84, p < 0.001) apresentam performance significativamente menor. Não houve diferença entre participantes com ensino médio e ensino superior. Em relação à faixa etária, participantes entre 14 e 24 anos apresentam performance significativamente maior do que participantes entre 35 e 44 (Δ = 4.21, p < 0.001), entre 45 e e 54 (Δ = 5.50, p < 0.001) e entre 55 e 64 anos (Δ = 5.50, p < 0.001).  Participantes entre 25 e 34 anos também apresentam performance significativamente superior do que participantes entre 35 e 44 anos (Δ = 4.03, p < 0.001), entre 45 e 54 (Δ = 5.32, p < 0.001) e entre 55 e 64 anos (Δ = 5.32, p < 0.001). Não houve diferença significativa na performance do grupo entre 14 e 24 anos do grupo entre 25 e 34, bem como entre o grupo entre 35 e 44 e 55 e 64, bem como os participantes com idades entre 45 e 54 daqueles com idade entre 55 e 64.
+
+```  
+
+## Resumo
+1. A ANOVA de duas vias pode ser feita por um modelo aditivo ou não-aditivo
+2. O modelo aditivo não define interação entre os fatores, enquanto o não-aditivo sim    
+3. A interpretação dos resultados de um fator é ajustada pelo outro  
+4. Os post hocs devem ser feitos individualmente para cada fator  
+
+
+
+---
+
+## ANOVA Fatorial
+
+
+A ANOVA Fatorial é uma ANOVA de 2 (ou mais) vias, em que se estipulam interações entre os fatores. O conceito de interação significa que há dois ou mais fatores e o efeito de um fator no desfecho depende do nível dos outros fatores. Na prática, na maior parte do tempo que um pesquisador pensa em uma ANOVA de 2 vias, o interesse justamente estar em saber se os fatores apresentam (ou não) uma interação. Talvez seja justamente por isso que a maioria dos programas comerciais realizam uma ANOVA Fatorial por padrão quando se solicita uma ANOVA de 2 vias.  
+
 
 
 
