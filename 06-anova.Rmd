@@ -100,14 +100,19 @@ Neste capítulo, vamos utilizar a pesquisa intitulada ["A relação entre o nív
 
 ## ANOVA de 1 via
 
-A pergunta que temos agora é sobre o possível efeito da `escolaridade` na Tendência Empreendedora Geral (`teg`). Trata-se de uma ANOVA de 1 via, dado que existe apenas uma VI, com mais de 2 níveis.  
+Em uma ANOVA de 1 via, há apenas um fator com três ou mais níveis. Dessa forma, conceitualmente temos:
+
+\[y_i = b_0 + b_1X{_1}_i +\epsilon_{i}\]
+
+$y_i$ representa a variável dependente      
+$b_0$ é o intercepto (coeficiente linear)   
+$b_1$ é a inclinação (coeficiente angular)  
+$X_1$ é a variável independente em questão  
+$\epsilon_{i}$ é o erro/resíduo   
 
 
-As hipóteses precisam ser formalmente descritas:
+A pergunta que temos neste trabalho é sobre o possível efeito da `escolaridade` (fundamental, médio, etc) na Tendência Empreendedora Geral (`teg`). Dessa maneira, esse sistema fechado de equação ilustra bem essa ANOVA., 
 
-$$H_0: \mu_{escolaridade_i} = \mu_{escolaridade_j} \\ H_a: c.c \\ \alpha = 0.05$$
-
-Aqui, os subscritos $i$ e $j$ foram utilizados de maneira liberal para apresentar a diferença entre todas as combinações lineares possíveis.
 
 ## Execução no R
 
@@ -758,9 +763,7 @@ Em seguida, selecionar ambas as variáveis e clicar na seta para deslocá-las pa
 O JASP apresentará todas as comparações feitas em <u>escolaridade</u> e <u>faixa_etaria</u>, ajustando os resultados por todas as variáveis no modelo e corrigindo o valor de P. Por padrão, a correção de P é feita pelo método de `Tukey`, que pode ser alterada na seção `Correction`. 
 
 ![](./img/cap_anova_two_way_posthoc2.png)
-Mesmo sem implementar a correção de Bonferroni, os achados são virtualmente idênticos aos obtidos anteriormente pelo R. Possíveis diferenças de sinal (+ ou -) ocorrem pela codificação das variáveis e não impactam em nada a interpretação dos achados. Para inserir também um gráfico característico dos resultados, basta clicar em `Descriptives Plots`.   
-
-Muitos gráficos são possíveis, mas a maioria irá destacar a possível relação que <u>escolaridade</u> e <u>faixa_etaria</u> possuem, o que será realizado na seção de ANOVA fatorial. 
+Mesmo sem implementar a correção de Bonferroni, os achados são virtualmente idênticos aos obtidos anteriormente pelo R. Possíveis diferenças de sinal (+ ou -) ocorrem pela codificação das variáveis e não impactam em nada a interpretação dos achados. O gráfico feito anteriormente é um forte candidato a também ser inserido para auxiliar a visualização dos achados.    
 
 A interpretação dos resultados pode ser feita considerando o valor de P, o tamanho do efeito e as comparações pareadas.
 
@@ -781,11 +784,16 @@ Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA de d
 
 ```  
 
+É importante ter em mente que as comparações e os sinais podem ser invertidos para que os resultados tornem-se mais facilmente interpretáveis.
+
+
+
 ## Resumo
 1. A ANOVA de duas vias pode ser feita por um modelo aditivo ou não-aditivo
-2. O modelo aditivo não define interação entre os fatores, enquanto o não-aditivo sim    
-3. A interpretação dos resultados de um fator é ajustada pelo outro  
-4. Os post hocs devem ser feitos individualmente para cada fator  
+2. Gráficos costumam ser feitos antes das análises para auxiliar na interpretação dos resultados  
+3. O modelo aditivo não define interação entre os fatores, enquanto o não-aditivo sim    
+4. A interpretação dos resultados de um fator é ajustada pelo outro  
+5. Os post hocs devem ser feitos individualmente para cada fator  
 
 
 
@@ -1009,4 +1017,90 @@ Gráficos específicos são recursos úteis para descrição destes resultados. 
 
 Notas: Infelizmente, o JASP não realiza um gráfico completo dessa maneira na seção `Descriptives`, tal como apresentado. Por vezes, será necessário primeiro rodar integralmente a ANOVA para depois gerar esta apresentação. Quase sempre, o eixo X recebe a variável com maior quantidade de níveis.  
 
+
+## Escrita dos resultados  
+
+
+Os resultados serão escritos apresentado os achados principais da ANOVA, destacando se o efeito da interação foi significativo ou não. O estilo da escrita é baseada nas recomendações da American Psychological Association (APA).
+
+
+```{block, type="writing"}
+**Como escrever os resultados**  
+
+Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA Fatorial para investigar o efeito da escolaridade, faixa etária, e de uma interação entre esses dois fatores nos resultados. Os resultados concluíram que a interação entre os fatores foi significativa (F(8, 1419) = 2.486, p = 0.011, n2p = 0.014), bem como a escolaridade (F(2, 1419) = 4.865, p = 0.008, n2p = 0.007) e a faixa etária (F(4, 1419) = 2.6.894, p < 0.001, n2p = 0.019).
+```  
+
+## Resumo
+1. A ANOVA Fatorial é um modelo feito para testar se os fatores apresentam ou não uma interação   
+2. A interpretação do modelo deve começar pela interação. Caso significativa, não se interpreta os efeitos principais    
+3. Os gráficos costumam ser ótimos recursos para entender o padrão dos resultados de maneira rápida     
+
+
+De forma análoga ao que aconteceu nos outros exemplos, os resultados até aqui obtidos não indicam quais níveis em que as diferenças podem existir. Testes post hoc são necessários para responder à esta pergunta
+
+
+## Post hoc
+
+As comparações Post hoc de uma ANOVA Fatorial <mark>podem ser feitas de duas maneiras</mark>, a depender do interesse do pesquisador. É possível comparar todos os níveis presentes em ambas as variáveis ou comparar todos os níveis de uma variável específica, enquanto outra é mantida constante. No primeiro caso, um exemplo seria a comparação de <u>pessoas com ensino fundamental entre 14 e 24 anos</u> contra <u>pessoas com ensino superior entre 35 e 44 anos</u>. No segundo caso, a comparação ocorreria entre todas as faixas de escolaridade em pessoas entre 14 e 24 anos <u>ou</u> pessoas entre 25 e 34 anos, etc.
+
+
+Normalmente, os post hocs são feitos após o pesquisador olhar os gráficos e os resultados obtidos podem confir ou não uma expectativa prévia. Os programas estatísticos comerciais tendem a realizar o segundo formato de análise, em que todas as interações intra-níveis são feitas após manter um nível de outro fator constante. Uma hipótese é que essa escolha ocorre para prevenir o erro do <u>tipo 2</u>. Uma vez que as correções para valor de P implementadas dependem da quantidade de comparações feitas, ao se comparar todos os níveis de um fator contra todos os níveis de outro fator, seria pouco provável ter resultados significativos. 
+
+Neste caso, o post hoc será feito para todos os níveis de `escolaridade` com pessoas na faixa etária `Entre 14 e 24`. Em seguida, novamente todos os níveis de `escolaridade` serão comparados com pessoas na faixa etária `Entre 25 e 34` e assim por diante. Essa escolha reflete o que foi apresentado no gráfico introdutório desta seção. O vetor `post_hoc_fatorial` será computado e armazenará os resultados.    
+
+```{r}
+post_hoc_fatorial <- emmeans(mod_escolaridade_faixa_etaria_fatorial, pairwise ~ escolaridade_grupo | faixa_etaria, adj = "bonferroni") 
+post_hoc_fatorial$contrasts %>% data.frame %>% pander()
+```
+O gráfico dessa vez será feito pela função `emmip` do pacote `emmeans`, que deve apresentar os mesmos resultados obtidos na tabela.  
+
+```{r}
+emmip(mod_escolaridade_faixa_etaria_fatorial, escolaridade_grupo ~ faixa_etaria, CIs = TRUE)
+```
+  
+Entre as conclusões possíveis, se constata, de maneira contraintuitiva, que pessoas entre 14 e 24 anos com ensino médio apresentam performance maior do que pessoas com ensino superior (Δ = 1.145). Por sua vez, não há diferença na performance entre pessoas entre 25 e 34 anos que possuem o ensino médio ou ensino superior. No entanto, pessoas que tem essa idade, mas apresentam o ensino fundamental possuem performance significativamente menor do que seus pares com ensino médio (Δ = -6.317) ou superior (Δ = -5.46). Pessoas entre 35 e 44 anos com ensino superior apresentam performance mais elevada do que seus pares com ensino médio (Δ = 2.365) ou fundamental (Δ = 3.477).  
+
+
+
+
+## Execução no JASP
+
+Para executar o post hoc no JASP, é necessário clicar em Post Hoc tests na parte esquerda inferior do programa.
+
+![](./img/cap_anova_fatorial_posthoc.png)
+
+Em seguida, selecionar todas as variáveis e clicar na seta para deslocá-las para o lado direito. 
+
+
+
+![](./img/cap_anova_fatorial_posthoc2.png)
+
+O JASP apresentará todas as comparações feitas em <u>escolaridade</u>, <u>faixa_etaria</u> e <u>escolaridade x faixa etária</u>, ajustando os resultados por todas as variáveis no modelo e corrigindo o valor de P. Por padrão, a correção de P é feita pelo método de Tukey, que pode ser alterada na seção `Correction`. 
+
+
+A interpretação principal é para interação <u>escolaridade x faixa etária</u>. No entanto, diferente do R, nesta versão do JASP <u>não</u> é possível reproduzir a análise feita em que a comparação entre todos os níveis de um fator é realizda enquanto se mantém o outro constante. Essa condição pode impactar um pouco na interpretação dos resultados, uma vez que os valores de P serão mais altos do que os previamente encontrados.    
+
+
+![](./img/cap_anova_fatorial_posthoc3.png)
+  
+O gráfico feito anteriormente é um forte candidato a também ser inserido para auxiliar a visualização dos achados. A interpretação dos resultados pode ser feita considerando o valor de P, o tamanho do efeito e as comparações pareadas.
+
+
+![](./img/cap_anova_fatorial_posthoc4.png)
+
+## Escrita dos resultados
+
+
+Os resultados serão escritos apresentado os achados principais da ANOVA, destacando se o efeito da interação foi significativo ou não e as comparações pareadas. O estilo da escrita é baseada nas recomendações da American Psychological Association (APA). Como os resultados do R e do JASP foram um pouco diferente nas comparações pareadas, o R será utilizado como principal.  
+
+
+```{block, type="writing"}
+**Como escrever os resultados**  
+
+Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA Fatorial para investigar o efeito da escolaridade, faixa etária, e de uma interação entre esses dois fatores nos resultados. Os resultados concluíram que a interação entre os fatores foi significativa (F(8, 1419) = 2.486, p = 0.011, n2p = 0.014), bem como a escolaridade (F(2, 1419) = 4.865, p = 0.008, n2p = 0.007) e a faixa etária (F(4, 1419) = 2.6.894, p < 0.001, n2p = 0.019). Em situações em que a interação é significativa os efeitos principais não são interpretados, já que os resultados podem depender de níveis específicos de cada uma das variáveis. As comparações pareadas foram feitas entre todos os níveis de escolaridade se mantendo a faixa etária constante e ajustando o valor de P pela técnica de Bonferroni. Pessoas entre 14 e 24 anos com ensino médio apresentam performance superior que seus pares com ensino superior (Δ = 1.145, p = 0.003). Pessoas ebtre 25 e 34 anos, com nível fundamental, têm performance significativamente mais baixa do que seus pares com ensino médio (Δ = -6.317, p < 0.001) e superior  (Δ = -5.46, p < 0.001). Finalmente, pessoas entre 35 e 44 anos com ensino superior tem performance significativamente maior do que aquelas com ensino fundamental  (Δ = 3.447, p < 0.001) e médio  (Δ = 2.365, p < 0.001). 
+
+```  
+
+
+É importante ter em mente que as comparações e os sinais podem ser invertidos para que os resultados tornem-se mais facilmente interpretáveis.
 
