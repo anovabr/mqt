@@ -26,18 +26,18 @@ library(pander)
 ```
 
 
-A ANOVA é um teste estatístico desenvolvimento para verificar <u>diferenças médias entre diversos grupos</u>. Pragmaticamente, é possível entender ANOVA como um super Teste T ou também um caso particular de um modelo de regressão. A ANOVA e todas as suas extensões (e.g., ANCOVA e MANOVA) são casos especiais de um modelo de regressão que lidam com uma ou variáveis independentes categóricas ou contínuas.     
+A ANOVA é um teste estatístico desenvolvimento para verificar <u>diferenças médias entre diversos grupos</u>. Pragmaticamente, é possível entender ANOVA como um super Teste T ou também um caso particular de um modelo de regressão. Na verdade, toda a família de modelos estatísticos estudados pela ANOVA (e.g., ANCOVA e MANOVA) são casos especiais de um modelo de regressão, em que as variáveis independentes podem ser categóricas ou contínuas.     
 
-Alguns autores indicam que a ANOVA é a técnica inferencial mais utilizada em Psicologia [@Chartier2008; @Howell2011]. Se por um aspecto, isso é extremamente vantajoso uma vez que estreita a relação entre Psicologia e Estatística, por outro, isso parece ter contribuído para criação e manutenção de diferentes conceitos equivocados sobre a ANOVA. 
+Alguns autores indicam que a ANOVA é a técnica inferencial mais utilizada em Psicologia [@Chartier2008; @Howell2011]. Se por um aspecto, isso é extremamente vantajoso, uma vez que estreita a relação entre Psicologia e Estatística; por outro, isso parece ter contribuído para criação e manutenção de diferentes conceitos equivocados sobre a ANOVA. 
 
-Conceitualmente, a ANOVA é um modelo linear, tal que:
+De maneira geral, a ANOVA é um modelo linear, tal que:
 
-\[y_i = b_0 + b_1X{_1}_i + \epsilon_{i}\]
+\[y_i = b_0 + b_1X{_1}_i + ... + b_pX{_p}_i + \epsilon_{i}\]
 
 $y_i$ representa a variável dependente      
 $b_0$ é o intercepto (coeficiente linear)   
-$b_1$ é a inclinação (coeficiente angular)  
-$X_1$ é a variável independente em questão  
+$b_p$ é a inclinação (coeficiente angular)  
+$X_p$ é a variável independente em questão  
 $\epsilon_{i}$ é o erro/resíduo   
 
 Os seguintes pressupostos dos modelos linares são mantidos, que são:
@@ -47,15 +47,15 @@ Os seguintes pressupostos dos modelos linares são mantidos, que são:
 *(iii)* Os resíduos são normalmente distribuídos  
 *(iv)* A variância dos resíduos é constante  
 
-A linearidade dos resíduos não é formalmente um pressuposto, já que a VI é categórica em vez de conínua. Operacionalmente, o erro representa <u>todos os fatores de pesquisa</u> e problemas de medição que afetam o resultado, além das variáveis independentes consideradas na modelagem.
+A linearidade dos resíduos não é formalmente um pressuposto a ser testado, especialmente quando a VI é categórica em vez de conínua. Operacionalmente, o erro representa <u>todos os fatores de pesquisa</u> e problemas de medição que afetam o resultado, além das variáveis independentes consideradas na modelagem.
 
 
 Da mesma forma que feito em outros capítulos, a tabela abaixo concatena os testes estatísticos relacionados quando os pressupostos são violados. Para fins de comparação com outros trabalhos, há autores que sugerem que se use sempre as versões não-paramétricas em resultados obtidos por processos de avaliação psicológica, arguindo que os dados têm nível de medida "ordinal".  
 
-  | Estatística     | Um ou mais fatores |  Medidas repetidas              |  
-  | :-----------    | :-----------       | :-----------                    |        
-  | Paramétrica     | Anova de k via(s)  |  Anova de medidas repetidas     |   
-  | Não-paramétrica | Kruskal-Wallis     |  Teste de Friedman ou Page Test |   
+  | Estatística     | Um ou mais fatores            |  Medidas repetidas              |  
+  | :-----------    | :-----------                  | :-----------                    |        
+  | Paramétrica     | ANOVA de k via(s)/Fatorial    |  ANOVA de medidas repetidas     |   
+  | Não-paramétrica | Kruskal-Wallis                |  Teste de Friedman ou Page Test |   
 
 
 A ANOVA tem diversos termos bastante específicos e utilizados em sua modelagem que serão descritos a seguir,
@@ -85,7 +85,7 @@ A tabela a seguir resume as denominações encontradas na literatura:
 
   | Quantas VDs | Uma VI                    |  2 ou mais VIs (sem interação)       | 2 ou mais VIs (com interação)  
   | :-----------| :-----------              | :-----------                         | :-----------          
-  | Uma VD      | Anova de 1 via (one way)  |  Anova 2 (ou mais)  vias (multi way) |   Anova fatorial
+  | Uma VD      | ANOVA de 1 via (one way)  |  ANOVA 2 (ou mais)  vias (multi way) |   ANOVA Fatorial
   | + de uma VD | MANOVA     
 
 ## Pesquisa
@@ -105,14 +105,15 @@ A pergunta que temos agora é sobre o possível efeito da `escolaridade` na Tend
 
 As hipóteses precisam ser formalmente descritas:
 
-$$H_0: \mu_{escolaridade_i} - \mu_{escolaridade_j} = 0 \\ H_a: c.c \\ \alpha = 0.05$$
-Aqui, o subscrito $i$ e $j$ foram utilizados de maneira liberal para apresentar a diferença entre todas as combinações lineares possíveis.
+$$H_0: \mu_{escolaridade_i} = \mu_{escolaridade_j} \\ H_a: c.c \\ \alpha = 0.05$$
+
+Aqui, os subscritos $i$ e $j$ foram utilizados de maneira liberal para apresentar a diferença entre todas as combinações lineares possíveis.
 
 ## Execução no R
 
 Ao trabalhar no R, é <u>fundamental</u> se certificar que os tipos das variáveis estão corretamente definidos em função da escala de medida utilizada. Erros nessa etapa podem gerar resultados absolutamente incorretos. A escolaridade é uma variável categórica (ordinal, tratada como discreta) e é necessário definir claramente isso ao R antes da análise propriamente dita. 
 
-Isso pode ser feito pela função `case_when` e `levels`. O `case_when` irá usar os valores originalmente presentes nessa variável na criação de uma variável categórica e o `levels` deixará claro a ordem de cada categoria, o que é útil para que os gráficos sejam feitos corretamente.  
+Isso pode ser feito pela função `case_when` e `levels`. O `case_when` irá usar os valores originalmente presentes nessa variável para computar uma nova variável categórica. O `levels` deixará claro a ordem de cada categoria, o que é útil para que os gráficos sejam feitos corretamente.  
 
 Uma vez que os itens de um instrumento sociodemográfico devem levar em consideração o contexto das pessoas avaliadas as categorias de escolaridade foram definidas como da seguinte maneira: Primário significa escolaridade até o 5º ano, ginásio significa escolaridade até o 9º ano e colegial é equivalente ao ensino médio.
 
@@ -172,16 +173,16 @@ apaTables::apa.aov.table(mod_escolaridade) %>% pander(., split.table = Inf)
 ```
 
 
-A escrita e leitura desse resultado quase sempre pontuarão as principais estatísticas obtidas e costumam ser feitas pelo seguinte padrão: 
+A escrita e leitura desse resultado traz as principais estatísticas obtidas. O padrão a seguir costuma ser utilizado:   
 
 $$F(df_{between}, \, df_{within}) = F, P, \eta^2, 90\% \,CI \, [min, \, max]$$
 
-Neste caso: F(3,143) = 8.23, p < 0.01, $\eta_p^2$ = 0.15, 90% CI [.06, .22]. A última parte do resultado é uma medida de tamanho do efeito, que terá a interpretação apresentada e discutida na próxima seção. 
+Neste caso: F(3,143) = 8.23, p < 0.01, $\eta_p^2$ = 0.15, 90% CI [.06, .22]. Nota-se de <u>jamais</u> apresentar `p = 0.0`. A última parte do resultado é uma medida de tamanho do efeito, que terá a interpretação apresentada e discutida na próxima seção. 
 
 Um aspecto importante é que a validade da interpretação dos resultados depende dos pressupostos do modelo estatístico. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer [@Lix1996; @Barker2015; @Ernst2017]. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.
 
 
-<u> Normalidade</u>: A ANOVA tem como um dos pressupostos a normalidade da distribuição dos resíduos. Isso pode ser feito de diferentes maneiras e abaixo há um QQ plot. Caso ambas as linhas estejam sobrepostas, isso gera evidências que o pressuposto foi atendido. Neste caso, isso parece ocorrer.
+<mark>Normalidade</mark>: A ANOVA tem como um dos pressupostos a normalidade da distribuição dos resíduos. Isso pode ser feito de diferentes maneiras e abaixo há um QQ plot. Caso ambas as linhas estejam sobrepostas, isso gera evidências que o pressuposto foi atendido. Neste caso, isso parece ocorrer.
 
 ```{r }
 olsrr::ols_plot_resid_qq(mod_escolaridade)
@@ -195,7 +196,7 @@ shapiro.test(residuals(mod_escolaridade))
 De maneira diferente à conclusão gráfica, o teste concluiu pela rejeção da normalidade.
 
 
-<u>Homocedasticidade</u>: Este pressuposto pode ser testado por um gráfico dos resíduos contra os valores previstos. O ideal é não encontrar padrões no gráfico, tal como o gráfico a seguir.
+<mark>Homocedasticidade</mark>: Este pressuposto pode ser testado por um gráfico dos resíduos contra os valores previstos. O ideal é não encontrar padrões no gráfico, tal como o gráfico a seguir.
 
 ```{r}
 olsrr::ols_plot_resid_fit(mod_escolaridade)
@@ -208,7 +209,7 @@ car::leveneTest(mod_escolaridade)
 ```
 Os resultados indicaram que a homocedasticidade foi preservada.  
 
-<u>Independência</u>:  Esse pressupostos frequentemente não é testado na ANOVA, apesar de ser uma exigência dos modelos lineares. De fato, uma vez que espera-se que os grupos sejam mutuamente excludentes, teria pouco sentido acreditar que os resíduos não fossem independentes. 
+<mark>Independência</mark>: Esse pressupostos frequentemente não é testado na ANOVA, apesar de ser uma exigência dos modelos lineares. De fato, uma vez que espera-se que os grupos sejam mutuamente excludentes, teria pouco sentido acreditar que os resíduos não fossem independentes. 
 
 
 ## Tamanho do efeito  
@@ -277,9 +278,9 @@ Da mesma forma como apresentado antes, a interpretação deste achado <u>não po
 
 ![](./img/cap_anova_assumptions.png)
 
-A <u>normalidade</u> é feita por um QQ plot. Idealmente, as linhas devem estar sobrepostas no QQ plot para assumir a normalidade da distribuição dos resíduos. 
+A <mark>normalidade</mark> é feita por um QQ plot. Idealmente, as linhas devem estar sobrepostas no QQ plot para assumir a normalidade da distribuição dos resíduos. 
 
-A <u>homocedasticidade</u> é formalmente testada pelo Teste de Levene. O valor de p <u>deve ser superior</u> ao nível de significância eleito (quase sempre, 0.05) para considerar a homogeneidade das variâncias.
+A <mark>homocedasticidade</mark> é formalmente testada pelo Teste de Levene. O valor de p <u>deve ser superior</u> ao nível de significância eleito (quase sempre, 0.05) para considerar a homogeneidade das variâncias.
 
 ![](./img/cap_anova_assumptions2.png)
 Neste caso, há a impressão visual de que a normalidade está mantida, bem como a homocedasticidade. [Nota: Esta versão do JASP não oferece um teste formal para testar a normalidade dos resíduos de uma ANOVA, tal como feito no R na seção anterior].
@@ -342,7 +343,15 @@ post_hoc_escolaridade <- emmeans(mod_escolaridade, "escolaridade_fct") %>%
   pairs(., reverse = TRUE, adjust = "bonferroni")
 ```
 
-Tal como feito até agora, o gráfico inicial das comparações será realizado. A adição das barras de erro gera interpretação mais rápida e simples para todas as comparações. Para interpretar o gráfico, é necessário ter como referência o valor 0 no eixo horizontal e, em seguida, verificar todas as comparações no eixo vertical. Quando alguma comparação toca o valor 0, isso indica que os grupos <u>não</u> são significativamente diferentes. Quando isso não ocorre, é possível sugerir inicialmente que há diferença nos grupos.
+
+A apresentação tabular é fundamental e apresenta as estatísticas inferenciais de interesse. A principal vantagem desta tabela é a correção do valor de P apresentado na coluna `p.value`. Este é o valor ajustado pelas comparações feitas.
+
+```{r}
+post_hoc_escolaridade %>% data.frame() %>% pander()
+```
+
+
+O gráfico das comparações com barras de erro proporciona uma conclusão mais rápida e simples para todas as comparações. Para interpretar o gráfico, é necessário ter como referência o valor 0 no eixo horizontal e, em seguida, verificar todas as comparações no eixo vertical. Quando alguma comparação toca o valor 0, isso indica que os grupos <u>não</u> são significativamente diferentes. Quando isso não ocorre, é possível sugerir que há diferença nos grupos.
 
 ```{r}
 CI <- confint(post_hoc_escolaridade)
@@ -353,15 +362,11 @@ ggplot(mapping = aes(contrast, estimate)) +
   scale_size(trans = "reverse") + 
   coord_flip()
 ```
-A apresentação tabular é fundamental e apresenta as estatísticas inferenciais de interesse. A principal vantagem desta tabela é a correção do valor de P apresentado na coluna `p.value`. 
 
-```{r}
-post_hoc_escolaridade %>% data.frame() %>% pander()
-```
 
-Como conclusões, os resultados são significativos na comparação `Superior - Primário`, `Superior - Ginásio` e `Superior - Colegial`. Em todos, os resultados do TEG foi mais elevado naqueles participantes que haviam concluído o ensino superior.  
+No geral, as comparações `Superior - Primário`, `Superior - Ginásio` e `Superior - Colegial` são significativas. Em todas elas, os resultados da TEG foram mais elevados nos participantes com ensino superior.  
 
-No início desta seção, foi comentando que o controle do erro do tipo 1 era uma vantagem da realização deste procedimento que inclui fazer uma ANOVA, verificar quantas comparações serão feitas e corrigir os resultados dos valores de P. A correção implementada no teste post hoc pode mostrar que a comparação entre `colegial - primário` não significativa, uma vez que o valor de p foi de `0.102`. No entanto, caso um Teste T tivesse sido realizado selecionando apenas esta comparação, os resultados seriam significativos (`0.01`), sugerindo um falso positivo, tal como demonstrado a seguir:
+No início desta seção, foi comentando que o controle do erro do tipo 1 era uma vantagem da realização deste procedimento que inclui fazer uma ANOVA, verificar quantas comparações serão feitas e corrigir os resultados dos valores de P. Um exemplo pode ser útil a este momento. Repare que a correção implementada no teste post hoc  concluiu que a comparação entre `colegial - primário` não é significativa. Nesta comparação, o valor de p foi de `0.102`. No entanto, caso um Teste T tivesse sido realizado selecionando apenas esta comparação, os resultados seriam significativos (`0.01`), tal como demonstrado a seguir:
 
 ```{r}
 dados_teg %>% 
@@ -369,33 +374,35 @@ dados_teg %>%
   {t.test(teg ~ escolaridade_fct, data = .)$p.value} %>% pander()
 ```
 
+Caso um Teste T tivesse sido feito no lugar do procedimento demonstrado nesta seção, essa conclusão seria fortemente sugestiva de um erro do tipo 1 ou falso positivo.    
+
 
 ## Execução no JASP  
 
 
-Para executar o post hoc no JASP, é necessário clicar em `Post Hoc tests`, na parte esquerda inferior do programa.
+Para executar o post hoc no JASP, é necessário clicar em `Post Hoc tests`, na parte esquerda inferior do programa. Ao fazer isso, um conjunto de novas opções ficará disponível logo abaixo da opção.  
 
 
 ![](./img/cap_anova_posthoc_interface.png)
 
-Em seguida, colocar ao lado direito a variável de interesse (<u>escolaridade_fct</u>). O JASP automaticamente irá realizar todas as comparações principais e corrigir o valor de P. O padrão do JASP é a correção de `Tukey`, que pode ser alterada clicando em `Correction`.
+Em seguida, basta colocar ao lado direito a variável de interesse (<u>escolaridade_fct</u>). O JASP automaticamente irá realizar todas as comparações principais e corrigir o valor de P. O padrão do JASP é a correção de `Tukey`, que pode ser alterada clicando em `Correction`.
 
 ![](./img/cap_anova_posthoc_resultados.png)
 
-Mesmo sem implementar a correção de Bonferroni, os achados são virtualmente idênticos aos obtidos anteriormente pelo R. Possíveis diferenças de sinal (+ ou -) ocorrem pela codificação das variáveis e não impactam em nada a interpretação dos resultados.     
+Mesmo sem implementar a correção de Bonferroni, os achados são virtualmente idênticos aos obtidos anteriormente pelo R. Possíveis diferenças de sinal (+ ou -) ocorrem pela codificação das variáveis e não impactam em nada a interpretação dos achados A interpretação dos resultados agora pode ser feita considerando o valor de P, o tamanho do efeito e as comparações pareadas.
+
+![](./img/cap_anova_posthoc_resultados2.png)  
 
 
-Eventualmente, antes da própria interpretação dos resultados, a apresentação de um gráfico de diferenças oferece um recurso visual adicional (e importante). Para fazer isso, é necessário clicar em `Descriptive plots`.
+Eventualmente, a apresentação de um gráfico de diferenças oferece um recurso visual adicional (e importante) para auxiliar no entendimento dos achados. Para fazer isso, é necessário clicar em `Descriptive plots`.
 
 ![](./img/cap_anova_posthoc_plots.png)
 
-Para realizar o gráfico, é necessário levar a variável <u>escolaridade_fct</u> para o `Horizontal axis`, marcar a opção `Display` e `Standard error`. O resultado será como abaixo.
+
+Em seguida, é necessário levar a variável <u>escolaridade_fct</u> para o `Horizontal axis`, marcar a opção `Display Error bars` e `Standard error`. O resultado será como abaixo.  
 
 ![](./img/cap_anova_posthoc_plots2.png)
 
-A interpretação dos resultados agora pode ser feita considerando o valor de P, o tamanho do efeito e as comparações pareadas.
-
-![](./img/cap_anova_posthoc_resultados2.png)
 
 ## Escrita dos resultados  
 
@@ -413,7 +420,7 @@ Os dados foram analisados a partir de uma ANOVA de uma via investigando o efeito
 
 ## Resumo  
 
-1. A ANOVA pode tanto ser entendida como um super Teste T, como um caso particular de um modelo de regressão  
+1. A ANOVA de uma via pode tanto ser entendida como um super Teste T, como um caso particular de um modelo de regressão  
 2. Testes post hoc e resultados globais da ANOVA não respondem às mesmas perguntas  
 3. As comparações pareadas devem proteger a inflação do erro do tipo 1, sem gerar o erro do tipo 2 
 
@@ -446,7 +453,7 @@ rm(list=setdiff(ls(), "ds"))
 Em grande parte das vezes, o interesse do pesquisador é o de investigar como múltiplos fatores impactam a variável de desfecho. Quando se aumenta o número de variáveis independentes no modelo, consequentemente se aumenta a quantidade de vias ou fatores que a ANOVA possui. Na pesquisa de agora, como o interesse foi investigar o efeito da <u>escolaridade</u> e da <u>faixa etária</u>, trata-se de uma ANOVA de 2 vias. 
 
 
-Na ANOVA de 2 vias, dois modelos principais podem ser calculados. O primeiro é chamado de "modelo aditivo", em que <u>não</u> se estipulam interações entre os fatores. O segundo modelo é denominado como "não aditivo" ou "saturado" e ocorre quando uma interação entre os fatores é definida. Nesta seção, será apresentado o modelo aditivo, enquanto na seção ANOVA fatorial, o modelo saturado será descrito.   
+Na ANOVA de 2 vias, dois modelos principais podem ser calculados. O primeiro é chamado de <mark>"modelo aditivo"</mark>, em que <u>não</u> se estipulam interações entre os fatores. O segundo modelo é denominado como <mark>"não aditivo"</mark> ou <mark>"saturado"</mark> e ocorre quando uma interação entre os fatores é definida. Nesta seção, será apresentado o modelo aditivo, enquanto na seção ANOVA fatorial, o modelo saturado será descrito.   
 
 Conceitualmente, na ANOVA de duas vias sem interação, temos:
 
@@ -464,7 +471,7 @@ $\epsilon_{i}$ é o erro/resíduo
 ## Execução no R
 
 
-A modelagem no R segue o mesmo padrão da feita anteriormente, iniciando pela codificação dos dados.
+A modelagem no R segue o mesmo padrão da feita anteriormente, iniciando pela codificação dos dados. É importante frisar que erros nesta etapa podem distorcer totalmente os resultados. Na variável <u>faixa etária</u> há  rótulos para cada intervalo, tornando a interpretação bastante fácil e intuitiva. Na variável <u>escolaridade</u>, se utilizou valores de 1 a 3 para identificar o ensino fundamental, médio e superior.
 
 ```{r}
 ds <- ds %>% 
@@ -472,15 +479,14 @@ ds <- ds %>%
          faixa_etaria = factor(faixa_etaria))
 ```
 
-Os dados apresentam casos ausentes na variável <u>faxa etária</u> e <u>escolaridade</u>. Muitas ações podem ser feitas para lidar com esta condição. Entretanto, pedagogicamente, esses valores não serão utilizados nestas análises de agora.
+Os dados apresentam casos ausentes na variável <u>faxa etária</u> e <u>escolaridade</u>. Muitas ações <mark>devem</mark> ser feitas para lidar com esta condição. No entanto, apenas para finalidade pedagógica, esses valores não serão utilizados nestas análises de agora.
 
 ```{r}
 ds <- ds %>% 
   filter(!is.na(faixa_etaria) & !is.na(escolaridade_grupo))
 ```
 
-
-A apresentação de tabelas e gráficos que possibilitem uma primeira descrição dos dados é importante e deve ser realizado.  
+A apresentação de tabelas e gráficos que possibilitem uma primeira descrição dos dados é importante e deve ser realizado.  Na tabela a seguir, as linhas irão reunir a <u>faixa etária</u>, enquanto as colunas reunirão a <u>escolaridade</u>.
 
 ```{r}
 ds %>% 
@@ -514,7 +520,8 @@ ggplot(ds, aes(x = faixa_etaria, y = memore_total, fill = escolaridade_grupo)) +
   geom_bar(stat = "summary", position = "dodge", fun = mean) +
   theme(legend.position = "bottom")
 ```
-É importante ter atenção que este gráfico não é necessariamente o melhor para uma ANOVA de 2 vias, uma vez que pode sugerir um relacionamento entre as variáveis independentes. Esse aspecto será melhor debatido na seção de ANOVA fatorial.  
+  
+É importante ter atenção que este gráfico não é necessariamente o melhor para uma ANOVA de 2 vias (aditiva), uma vez que pode sugerir algum relacionamento entre as variáveis independentes. Esse aspecto será melhor debatido na seção de ANOVA Fatorial.  
 
 Agora, formalmente a modelagem poderá será feita. Os passos devem ser exatamente os mesmos aos performados anteriormente, incluindo a verificação de pressupostos e interpretação dos resultados. Para realizar a ANOVA de duas vias, é possível contar com a função lm ou aov. Aqui, a escolha da lm foi apenas por conveniência e o vetor `mod_escolaridade_faixa_etaria` irá armazenar os resultados.
 
@@ -548,7 +555,7 @@ Note que a tabela já reúne a métrica do <u>tamanho do efeito</u>, que é dada
 Da mesma forma que apresentado na ANOVA de 1 via, a validade da interpretação dos resultados depende dos pressupostos do modelo estatístico. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer [@Lix1996; @Barker2015; @Ernst2017]. 
 
 
-<u> Normalidade</u>: O QQ plot abaixo apresenta os valores teóricos e empíricos. Caso ambas as linhas estejam sobrepostas, isso apoia que o pressuposto da normalidade foi atendido. Neste caso, isso não parece ocorrer.
+<mark>Normalidade</mark>: O QQ plot abaixo apresenta os valores teóricos e empíricos. Caso ambas as linhas estejam sobrepostas, isso apoia que o pressuposto da normalidade foi atendido. Neste caso, isso não parece ocorrer.
 
 ```{r }
 olsrr::ols_plot_resid_qq(mod_escolaridade_faixa_etaria)
@@ -561,7 +568,7 @@ shapiro.test(residuals(mod_escolaridade_faixa_etaria))
 ```
 Os resultados de ambas as técnicas foram similares, indicando a violação da normalidade dos resíduos.
 
-<u>Homocedasticidade</u>: Este pressuposto pode ser testado por um gráfico dos resíduos contra os valores previstos. O ideal é não encontrar padrões no gráfico, tal como o gráfico a seguir.
+<mark>Homocedasticidade</mark>: Este pressuposto pode ser testado por um gráfico dos resíduos contra os valores previstos. O ideal é não encontrar padrões no gráfico.
 
 ```{r}
 olsrr::ols_plot_resid_fit(mod_escolaridade_faixa_etaria)
@@ -574,12 +581,12 @@ olsrr::ols_test_breusch_pagan(mod_escolaridade_faixa_etaria)
 ```
 Os resultados indicaram que a homocedasticidade foi preservada.  
 
-<u>Independência</u>:  Esse pressupostos frequentemente não é testado na ANOVA, apesar de ser uma exigência dos modelos lineares. De fato, uma vez que espera-se que os grupos sejam mutuamente excludentes, teria pouco sentido acreditar que os resíduos não fossem independentes. 
+<mark>Independência</mark>:  Esse pressupostos frequentemente não é testado na ANOVA, apesar de ser uma exigência dos modelos lineares. De fato, uma vez que espera-se que os grupos sejam mutuamente excludentes, teria pouco sentido acreditar que os resíduos não fossem independentes. 
 
 
 ## Execução no JASP
 
-A base a ser carregada é [CSV file - MEMORE Cognitive measurement.csv](https://osf.io/4hdc2/). Após carregar tal base, a seção `Descriptives` apresentará o gráfico inicial dos resultados.
+Para executar a ANOVA de 2 vias no JASP, será necessário baixar a base [CSV file - MEMORE Cognitive measurement.csv](https://osf.io/4hdc2/). Após carregar os dados no programa, a seção `Descriptives` apresentará o gráfico inicial dos resultados.
 
 
 ![](./img/cap_anova_two_way_descriptives.png)
@@ -589,7 +596,7 @@ Ao clicar nesta opção, será possível eleger as variáveis que irão ser anal
 
 ![](./img/cap_anova_two_way_descriptives2.png)
 
-Em seguida, ao clicar na opção Plots, será possível selecionar o `Boxplot` e `Boxplot element`. O gráfico aparecerá abaixo da tabela e irá apresentar diferentes informações estatísticas da distribuição dos resultados da avaliação psicológica em função dos níveis de <u>escolaridade_grupo</u>. Uma visualização preliminar indica que pessoas com escolaridade mais elevada (níveis 2 e 3) apresentam resultados maiores do que pessoas com o primeiro nível de escolaridade.
+Em seguida, ao clicar na opção Plots, será possível selecionar o `Boxplot` e `Boxplot element`. O gráfico aparecerá abaixo da tabela e irá apresentar diferentes informações estatísticas da distribuição dos resultados da avaliação psicológica em função dos níveis de <u>escolaridade</u>. Uma visualização preliminar indica que pessoas com escolaridade mais elevada (níveis 2 e 3) apresentam resultados maiores do que pessoas com o primeiro nível de escolaridade.
 
 
 ![](./img/cap_anova_two_way_plot.png)
@@ -604,30 +611,33 @@ Por padrão, o JASP não permite integrar os gráficos nesta seção. Isso será
 ![](./img/cap_anova_two_way_interface.png)
 
 
-O espaço de `Fixed factors` é o local onde as duas VIs deverão ser inseridas. O espaço `Dependent Variable` é o local onde a VD contínua irá ser inserida. Para realizar a ANOVA de duas vias, as variáveis <u>escolaridade_grupo</u> e <u>faixa_etaria</u> deverão ser arrastadas para `Fixed factors`. A variável <u>memore_total</u> deverá ser colocada em `Dependent Variable`.
+O espaço de `Fixed factors` é o local onde as duas VIs deverão ser inseridas. O espaço `Dependent Variable` é o local onde a VD contínua irá ser inserida. Para realizar a ANOVA de duas vias, as variáveis <u>escolaridade</u> e <u>faixa_etaria</u> deverão ser arrastadas para `Fixed factors`. A variável <u>memore_total</u> deverá ser colocada em `Dependent Variable`.
 
 ![](./img/cap_anova_two_way_execucao.png)
 
-O JASP automaticamente irá realizar as contas e apresentar os resultados. No entanto, estes resultados <u>não são estritamente de uma ANOVA de 2 vias</u>. Repare que, diferente do modelo que planejamos, existe um outro preditor `escolaridade_grupo x faixa_etaria`. Isso ocorre pois, por padrão, o JASP realiza uma <u>ANOVA fatorial</u>, que será discutida a seguir. 
+O JASP automaticamente irá realizar as contas e apresentar os resultados. No entanto, estes resultados <u>não são estritamente de uma ANOVA de 2 vias aditiva</u>. Repare que, diferente do modelo que planejamos, existe um outro preditor `escolaridade x faixa_etaria`. Isso ocorre pois, por padrão, o JASP realiza uma <u>ANOVA fatorial</u>, que será discutida a seguir. 
 
 Para ajustar a modelagem, será necessário clicar em `Model`, na parte inferior esquerda do programa. 
 
 ![](./img/cap_anova_two_way_model_interface.png)
-Nesta tela, basta clicar em `escolaridade_grupo x faixa_etaria` e transferir do lado direito para o lado esquerdo clicando na seta destacada na imagem.
+Nesta tela, basta clicar em `escolaridade x faixa_etaria` e transferir do lado direito para o lado esquerdo clicando na seta destacada na imagem.
 
 ![](./img/cap_anova_two_way_model2.png)
-Ao fazer isso, o JASP automaticamente irá realizar as contas e apresentar os resultados. Pragmaticamente, o valor de P é o indicador costumeiramente utilizado para tomar decisões inferenciais. Os valores são exatamente os mesmos obtidos anteriormente na modelagem pelo R, indicando que <u>ambas as variáveis</u> são significativas. Repare que esta tabela inicial não apresenta o <u>tamanho do efeito</u> que deverá ser calculado em seguida, bem como nào indica se o modelo respeitou ou violou os pressupostos, que também deverá ser realizada.
+Ao fazer isso, o JASP automaticamente irá realizar as contas e apresentar os resultados. Pragmaticamente, o valor de P é o indicador costumeiramente utilizado para tomar decisões inferenciais. Os valores são exatamente os mesmos obtidos anteriormente na modelagem pelo R, indicando que <u>ambas as variáveis</u> são significativas. Repare que esta tabela inicial não apresenta o <u>tamanho do efeito</u> que deverá ser calculado em seguida, bem como não indica se o modelo respeitou ou violou os pressupostos, que também deverá ser testado
 
 
 ![](./img/cap_anova_two_way_resultados.png)
 
-Para verificar se os pressupostos de <u>normalidade</u> e <u>homocedasticidade</u> foram respeitados, é necessário clicar em `Assumption checks`. 
+Para verificar se os pressupostos de <mark>normalidade</mark> e <mark>homocedasticidade</mark> foram respeitados, é necessário clicar em `Assumption checks`. 
 
 ![](./img/cap_anova_two_way_pressupostos.png)
-As opções `Homogeneity tests` e `Q-Q plot of residuals` deverão ser marcadas. Repare que pela impressão visual, a normalidade não foi mantida. Além disso, a homocedasticidade foi também violada. Existem algumas saídas para isso, que vão desde modificar a modelagem até não corrigir tais condições e justificar metodologicamente esta escolha. No ambiente JASP, ambas as correções propostas para violação da homocedasticidade não são possíveis para uma ANOVA de 2 vias. Assim, mesmo com ambas as violações, o modelo utilizado não apresentará nenhum ajuste.
+As opções `Homogeneity tests` e `Q-Q plot of residuals` deverão ser marcadas. Repare que pela impressão visual, a normalidade não foi mantida. Além disso, a homocedasticidade foi também violada. É importante ter uma atenção que os resultados do JASP foram divergentes dos resultados do R. Isso se dá pelo teste de homocedasticidade utilizado. No R, o teste foi o `breusch Pagan`, enquanto no JASP foi o de `Levene`.  
+
 
 ![](./img/cap_anova_two_way_pressupostos2.png)
 
+
+Existem algumas saídas para isso, que vão desde modificar a modelagem até não corrigir tais condições e justificar metodologicamente esta escolha. No ambiente JASP, ambas as correções propostas para violação da homocedasticidade não são possíveis para uma ANOVA de 2 vias. Assim, mesmo com ambas as violações, o modelo utilizado não apresentará nenhum ajuste.
 
 Antes de voltar à interpretação da ANOVA, é necessário inserir o tamanho do efeito. Para isso, basta clicar em `Estimatives of effect size` e, em seguida, no `eta quadrado parcial` ($η_p^2$). Diferente de uma ANOVA de 1 via, os resultados do $η_p^2$ serão diferentes do ($η^2$). Uma vez que a ANOVA de 2 vias apresenta dois preditores, o $η_p^2$ informa a variância explicada por cada uma das variáveis após excluir a variância explicada pelas outras.
 
@@ -636,12 +646,12 @@ Antes de voltar à interpretação da ANOVA, é necessário inserir o tamanho do
 ![](./img/cap_anova_two_way_tamanho_do_efeito.png)
 
 
-A interpretação agora pode ser feita integralmente. O valor de P irá indicar se a hipótese nula foi rejeitada ou não e o tamanho do efeito irá indicar a relevância da possível diferença, com interpretação disposta na tabela precedente neste capítulo.
+Agora, a interpretação agora pode ser feita integralmente. O valor de P irá indicar se a hipótese nula foi rejeitada ou não e o tamanho do efeito irá indicar a relevância da possível diferença, com interpretação disposta na tabela precedente neste capítulo.
 
 ![](./img/cap_anova_two_way_resultados_finais.png)
 
 
-Gráficos específicos são recursos úteis para descrição destes resultados. Eles podem ser feitos clicando em `Descriptives Plots`, arrastando a <u>faixa_etaria</u> para `Horizontal axis` e a <u>escolaridade_grupo</u> para `Separated lines`. Para colocar o erro padrão, é necessário clicar em `Display error bars` e `Standard error`.
+Gráficos específicos são recursos úteis para descrição destes resultados. Eles podem ser feitos clicando em `Descriptives Plots`, arrastando a <u>faixa_etaria</u> para `Horizontal axis` e a <u>escolaridade</u> para `Separated lines`. Para colocar o erro padrão, é necessário clicar em `Display error bars` e `Standard error`.
 
 ![](./img/cap_anova_two_way_descriptives_final.png)
 
@@ -667,12 +677,12 @@ De forma análoga ao que aconteceu na ANOVA de 1 via, os resultados não indicam
 
 ## Post hoc  
 
-Na ANOVA de duas vias, o post hoc será realizado para cada um dos níveis ou fatores do modelo. Neste caso, <u>escolaridade_grupo</u> e <u>faixa_etaria</u>. 
+Na ANOVA de duas vias, o post hoc será realizado para cada um dos níveis ou fatores do modelo. Neste caso, <u>escolaridade</u> e <u>faixa_etaria</u>. 
 
 
 ## Execução no R 
 
-O pacote `emmeans` será utilizado para, inicialmente, verificar cada uma das comparações entre os níveis de <u>escolaridade_grupo</u>. É bom notar que os resultados são ajustados pelas outras variáveis que integram o modelo. O vetor `post_hoc_twoway_escolaridade` reunirá os resultados.
+O pacote `emmeans` será utilizado para, inicialmente, verificar cada uma das comparações entre os níveis de <u>escolaridade</u>. É bom notar que os resultados são ajustados pelas outras variáveis que integram o modelo. O vetor `post_hoc_twoway_escolaridade` reunirá os resultados.
 
 ```{r}
 post_hoc_twoway_escolaridade <- emmeans(mod_escolaridade_faixa_etaria, "escolaridade_grupo") %>% 
@@ -680,7 +690,15 @@ post_hoc_twoway_escolaridade <- emmeans(mod_escolaridade_faixa_etaria, "escolari
 ```
 
 
-O gráfico a seguir foi realizado também na ANOVA de 1 via e apresenta um resultado mais fácil de interpretar em relação às comparações. O eixo horizontal tem destaque ao valor `0` e o eixo vertical apresenta todas as comparações. 
+A apresentação formal ocorre por tabelas, tal como a exposta a seguir. A última coluna `p.value` apresenta o valor de P corrigido pela técnica de Bonferroni.
+
+
+```{r}
+post_hoc_twoway_escolaridade %>% data.frame() %>% pander()
+```
+
+
+O gráfico a seguir apresenta um resultado mais fácil de interpretar em relação às comparações e também foi realizado também na ANOVA de 1 via. O eixo horizontal tem destaque ao valor `0` e o eixo vertical apresenta todas as comparações. Caso alguma das comparações passe pelo valor 0, isso indica que ela não é significativa.  
 
 ```{r}
 CI <- confint(post_hoc_twoway_escolaridade)
@@ -692,24 +710,25 @@ ggplot(mapping = aes(contrast, estimate)) +
   coord_flip()
 ```
 
-A apresentação formal ocorre por tabelas, tal como a exposta a seguir. A última coluna `p.value` apresenta o valor de P corrigido pela técnica de Bonferroni.
-
-
-```{r}
-post_hoc_twoway_escolaridade %>% data.frame() %>% pander()
-```
 
 É possível concluir que pessoas com nível fundamental, quando comparadas às pessoas de nível médio (Δ = 3.23) e superior (Δ = 2.84), apresentam performance significativamente menor. Pessoas com ensino médio e ensino superior não tem resultados significativamente diferentes. 
 
 
-Para comparar os resultados em função de todos os níveis de <u>faixa_etaria</u>, basta customizar um pouco a função.
+Para comparar os resultados em função de todos os níveis de <u>faixa_etaria</u>, basta customizar um pouco a função.  
+
 
 ```{r}
 post_hoc_twoway_faixaetaria <- emmeans(mod_escolaridade_faixa_etaria, "faixa_etaria") %>% 
   pairs(.,adj = "bonferroni")
 ```
 
-O gráfico, novamente, é um recurso útil à visualização preliminar dos resultados.  
+Agora, a tabela apresenta os resultados das comparações etárias de maneira detalhada.
+
+```{r}
+post_hoc_twoway_faixaetaria %>% data.frame() %>% pander()
+```
+
+Conforme previamente descrito, O gráfico é um recurso útil à visualização dos resultados, permitindo que as conclusões tornem-se mais fáceis de serem obtidas.    
 
 ```{r}
 CI <- confint(post_hoc_twoway_faixaetaria)
@@ -721,26 +740,27 @@ ggplot(mapping = aes(contrast, estimate)) +
   coord_flip()
 ```
   
-Por sua vez, a tabela apresenta os resultados de maneira detalhada.
-
-```{r}
-post_hoc_twoway_faixaetaria %>% data.frame() %>% pander()
-```
 
 As conclusões indicam que pessoas mais novas (`Entre 14 e 24`) tem resultados mais elevados do que pessoas `Entre 35 e 44` , `Entre 45 e 54` e `Entre 55 e 64`. Participantes `Entre 25 e 34` também apresentam resultados maiores do que `Entre 35 e 44`, `Entre 45 e 54` e `Entre 55 e 64`. Não houve diferença significativa `Entre 14 e 24` e `Entre 25 e 34`, bem como `Entre 35 e 44` e `Entre 45 e 54` e `Entre 55 e 64`. Finalmente, participantes `Entre 45 e 54` e `Entre 55 e 64` também não tiveram resultados significativamente diferentes.
 
 ## Execução no JASP
 
-Para executar o post hoc no JASP, é necessário clicar em Post Hoc tests, na parte esquerda inferior do programa.
+Para executar o post hoc no JASP, é necessário clicar em `Post Hoc tests` na parte esquerda inferior do programa.
 
 ![](./img/cap_anova_two_way_posthoc.png)
 
-Em seguida, inserir as variáveis para o lado direito. O JASP apresentará todas as comparações feitas em <u>escolaridade_grupo</u> e <u>faixa_etaria</u>, ajustando os resultados por todas as variáveis no modelo e corrigindo o valor de P. Por padrão, a correção de P é feita pelo método de `Tukey`, que pode ser alterada na seção `Correction`. 
+Em seguida, selecionar ambas as variáveis e clicar na seta para deslocá-las para o lado direito.  
+
+![](./img/cap_anova_two_way_posthoc_interface.png)
+
+
+
+O JASP apresentará todas as comparações feitas em <u>escolaridade</u> e <u>faixa_etaria</u>, ajustando os resultados por todas as variáveis no modelo e corrigindo o valor de P. Por padrão, a correção de P é feita pelo método de `Tukey`, que pode ser alterada na seção `Correction`. 
 
 ![](./img/cap_anova_two_way_posthoc2.png)
-Mesmo sem implementar a correção de Bonferroni, os achados são virtualmente idênticos aos obtidos anteriormente pelo R. Possíveis diferenças de sinal (+ ou -) ocorrem pela codificação das variáveis e não impactam em nada a interpretação dos resultados. Para inserir também um gráfico característico dos resultados, basta clicar em `Descriptives Plots`.   
+Mesmo sem implementar a correção de Bonferroni, os achados são virtualmente idênticos aos obtidos anteriormente pelo R. Possíveis diferenças de sinal (+ ou -) ocorrem pela codificação das variáveis e não impactam em nada a interpretação dos achados. Para inserir também um gráfico característico dos resultados, basta clicar em `Descriptives Plots`.   
 
-Muitos gráficos são possíveis, mas a maioria irá destacar a possível relação que <u>escolaridade_grupo</u> e <u>faixa_etaria</u> possuem, o que será realizado na seção de ANOVA fatorial. 
+Muitos gráficos são possíveis, mas a maioria irá destacar a possível relação que <u>escolaridade</u> e <u>faixa_etaria</u> possuem, o que será realizado na seção de ANOVA fatorial. 
 
 A interpretação dos resultados pode ser feita considerando o valor de P, o tamanho do efeito e as comparações pareadas.
 
@@ -774,8 +794,219 @@ Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA de d
 ## ANOVA Fatorial
 
 
-A ANOVA Fatorial é uma ANOVA de 2 (ou mais) vias, em que se estipulam interações entre os fatores. O conceito de interação significa que há dois ou mais fatores e o efeito de um fator no desfecho depende do nível dos outros fatores. Na prática, na maior parte do tempo que um pesquisador pensa em uma ANOVA de 2 vias, o interesse justamente estar em saber se os fatores apresentam (ou não) uma interação. Talvez seja justamente por isso que a maioria dos programas comerciais realizam uma ANOVA Fatorial por padrão quando se solicita uma ANOVA de 2 vias.  
+A ANOVA Fatorial é uma ANOVA de 2 (ou mais) vias, em que se estipulam interações entre os fatores. O conceito de interação se aplica em condições em que o modelo apresenta dois ou mais fatores e o efeito de um fator no desfecho depende do nível dos outros fatores. Assi, é possível perceber que eeste tipo de modelagem estatística costuma vir mais por perguntas específicas e teóricas do que por análises puramente exploratórias.   
+
+Na prática, na maior parte do tempo que um pesquisador pensa em uma ANOVA de 2 vias, o interesse justamente é o de testar se os fatores apresentam (ou não) uma interação. Talvez seja por isso que a maioria dos programas comerciais realizam, por padrão, uma ANOVA Fatorial quando se solicita uma ANOVA de 2 vias.
 
 
+Conceitualmente, na ANOVA Fatorial, temos:
+
+\[y_i = b_0 + b_1X{_1}_i + b_2X{_2}_i + b_3(X{_1}_i * X{_2}_i) + \epsilon_{i}\]
+
+$y_i$ representa a variável dependente      
+$b_0$ é o intercepto (coeficiente linear)   
+$b_1$ é a inclinação da primeira VI   
+$X_1$ é a primeira variável independente     
+$b_2$ é a inclinação da segunda VI   
+$X_2$ é a segunda variável independente    
+$b_3$ é a inclinação da interação     
+$\epsilon_{i}$ é o erro/resíduo  
+
+
+## Execução no R  
+
+Desta vez, a modelagem no R deverá contar com a alteração dos `contrastes` para assegurar que os valores obtidos serão os mesmos dos programas comerciais e, consequentemente, irão ter a mesma interpretação. Para isso, basta rodar a linha de código a seguir:
+
+```{r}
+options(contrasts = c("contr.helmert", "contr.poly"))
+```
+
+
+Após esta etapa, todo o restante segue o mesmo padrão da feita anteriormente, iniciando pela codificação dos dados. É importante frisar que erros nesta etapa podem distorcer totalmente os resultados. Na variável <u>faixa etária</u> há  rótulos para cada intervalo, tornando a interpretação bastante fácil e intuitiva. Na variável <u>escolaridade</u>, se utilizou valores de 1 a 3 para identificar o ensino fundamental, médio e superior.
+
+```{r}
+ds <- ds %>% 
+  mutate(escolaridade_grupo = factor(escolaridade_grupo),
+         faixa_etaria = factor(faixa_etaria))
+```
+
+Os dados apresentam casos ausentes na variável <u>faxa etária</u> e <u>escolaridade</u>. Muitas ações <mark>devem</mark> ser feitas para lidar com esta condição. No entanto, apenas para finalidade pedagógica, esses valores não serão utilizados nestas análises de agora.
+
+```{r}
+ds <- ds %>% 
+  filter(!is.na(faixa_etaria) & !is.na(escolaridade_grupo))
+```
+
+A apresentação de tabelas e gráficos que possibilitem uma primeira descrição dos dados é importante e deve ser realizado.  Na tabela a seguir, as linhas irão reunir a <u>faixa etária</u>, enquanto as colunas reunirão a <u>escolaridade</u>.
+
+```{r}
+ds %>% 
+  group_by(escolaridade_grupo, faixa_etaria) %>% 
+  summarise_at(vars(memore_total), lst(n=~n(), mean, sd)) %>%  
+  pivot_wider(names_from = escolaridade_grupo, #indexador unico
+              names_sep = "_",  #pode ser removido
+              values_from = c(n:sd)) %>%  #organizar valores
+  pander(., split.table = Inf)
+```
+
+
+O gráfico dessa vez deve ser o mais completo o possível, indicando as três variáveis que estão sendo trabalhadas: <u>escolaridade</u>, <u>faixa etária</u> e <u>memore_total</u>. Tipicamente, no eixo X se coloca a VI com mais níveis, enquanto no agrupador (ou cluster), se coloca a VI com menos.
+
+
+```{r}
+ggplot(ds, aes(x = faixa_etaria, y = memore_total, fill = escolaridade_grupo)) +
+  geom_bar(stat = "summary", position = "dodge", fun = mean) +
+  theme(legend.position = "bottom")
+```
+   
+O gráfico parece indicar que a performance no teste varia tanto em função da idade, como em função da escolaridade. Por exemplo, pessoas <u>entre 14 e 24</u> anos, bem como <u>entre 25 e 34</u> anos com <u>ensino médio</u> apresentam o desempenho mais elevado quando comparadas com os outros participantes. No entanto, isso começa a se alterar aos 35 anos. Para estes participantes e aqueles mais velhos, o <u>ensino superior</u> parece ser o principal determinante.
+
+
+Agora, formalmente a modelagem poderá será feita. Os passos devem ser exatamente os mesmos aos performados anteriormente, incluindo a verificação de pressupostos e interpretação dos resultados. Para realizar a ANOVA Fatorial, é possível contar com a função `lm` ou `aov`. Aqui, a escolha da `lm` foi apenas por conveniência e o vetor `mod_escolaridade_faixa_etaria_fatorial` irá armazenar os resultados.
+
+
+```{r}
+mod_escolaridade_faixa_etaria_fatorial <- lm(memore_total ~ escolaridade_grupo * faixa_etaria, ds)
+```
+
+Repare que <u>não</u> é preciso descrever integralmente a equação na linha de código. Ao usar o símbolo `*`, o R já faz o restante.  
+
+
+A tabela padronizada da ANOVA Fatorial, disponível na maioria dos pacotes comerciais, é a seguinte:
+
+  | Preditor          | Soma dos Quadrados| Graus de liberdade |  Quadrado médio                   | Estat. F        | 
+  | :-----------      | :-----------      | :-----------       |  :-----------                     | :-----------    |  
+  | Fator (A)         | Entre (SS(A))     | K(A)-1             |  MS(A) = SS(A)/K-1                | F = MS(A)/MSW   | 
+  | Fator (B)         | Entre (SS(B))     | K(B)-1             |  MS(B) = SS(B)/K-1                | F = MS(B)/MSW   | 
+  | Interação (AB)    | Entre (SS(AB))    | (K(A)-1)*(K(B)-1)  |  MS(AB) = SS(AB)/(K(A)-1)*(K(B)-1)| F = MS(AB)/MSW  |  
+  | Resíduo           | Dentro (SSW)      | N-(K(A)*K(B))      |  MSW = SSW/N-(K(A)*K(B))           |                |
+
+
+Posto isso, os resultados obtidos são:  
+
+```{r}
+apaTables::apa.aov.table(mod_escolaridade_faixa_etaria_fatorial) %>% 
+  pander(., split.table = Inf)
+```
+
+
+A interpretação de uma ANOVA Fatorial tem algumas heurísticas:
+
+1. Sempre se começa pela interação (ou seja, de baixo para cima)  
+2. Caso a interação seja significativa, não se interpreta os efeitos principais  
+3. Caso a interação não seja significativa, a interpretação é a mesma da ANOVA de 1 ou 2 vias, anteriormente descritas  
+
+No caso de agora, os achados indicam que o efeito da interação entre escolaridade e faixa etária é significativo (F(8, 1419) = 2.49, p = 0.011, n2p = 0.1, 90% CI [.00 .02]), bem como são também significativos os efeitos da escolaridade (F(2, 1419) = 4.87, p = 0.008, n2p = 01, 90% CI [.00 .01]) e da faixa etária (F(4, 1419) = 6.89, p < 0.001, n2p = 02, 90% CI [.01 .03]). Como a interação foi significativa, deve-se evitar a interpretação dos efeitos principais, uma vez que os níveis de um fator podem impactar na interpretação de outro.  
+
+Note que a métrica do <u>tamanho do efeito</u> é o $\eta_p^2$ e já está na tabela. Sua interpretação é a mesma dos modelos mostrados anteriormente neste capítulo. 
+
+
+Da mesma forma que apresentado no decorrer deste capítulo, a validade da interpretação dos resultados depende dos pressupostos do modelo estatístico. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer [@Lix1996; @Barker2015; @Ernst2017]. 
+
+
+<mark>Normalidade</mark>: O QQ plot abaixo apresenta os valores teóricos e empíricos. Caso ambas as linhas estejam sobrepostas, isso apoia que o pressuposto da normalidade foi atendido. Neste caso, isso não parece ocorrer.
+
+```{r }
+olsrr::ols_plot_resid_qq(mod_escolaridade_faixa_etaria_fatorial)
+```
+   
+O Shapiro-wilk, Anderson-Darling e Jarque Bera também podem ser utilizado neste caso. A hipótese nula desses testes assumem que os resíduos são normalmente distribuídos.
+
+```{r}
+shapiro.test(residuals(mod_escolaridade_faixa_etaria_fatorial))
+```
+Os resultados de ambas as técnicas foram similares, indicando a violação da normalidade dos resíduos.
+
+<mark>Homocedasticidade</mark>: Este pressuposto pode ser testado por um gráfico dos resíduos contra os valores previstos. O ideal é não encontrar padrões no gráfico.
+
+```{r}
+olsrr::ols_plot_resid_fit(mod_escolaridade_faixa_etaria_fatorial)
+```
+
+O teste de Levene, de Bartlett ou de Breusch-Pagan podem também serem utilzados de maneira formal. Eles estipulam $H_0$ como homocedasticidade e, idealmente, não deve ser rejeitada.
+
+```{r}
+olsrr::ols_test_breusch_pagan(mod_escolaridade_faixa_etaria_fatorial)
+```
+Os resultados obtidos pelo teste de ` Breusch Pagan Test` indicaram que a homocedasticidade foi preservada.  
+
+<mark>Independência</mark>:  Esse pressupostos frequentemente não é testado na ANOVA, apesar de ser uma exigência dos modelos lineares. De fato, uma vez que espera-se que os grupos sejam mutuamente excludentes, teria pouco sentido acreditar que os resíduos não fossem independentes. 
+
+
+## Execução no JASP
+
+Para executar a ANOVA Fatorial no JASP, será necessário baixar a base [CSV file - MEMORE Cognitive measurement.csv](https://osf.io/4hdc2/). Após carregar os dados no programa, a seção `Descriptives` apresentará o gráfico inicial dos resultados.
+
+
+![](./img/cap_anova_two_way_descriptives.png)
+
+
+Ao clicar nesta opção, será possível eleger as variáveis que irão ser analisadas e as variáveis que irão funcionar como agrupadores. Na prática, a lista `Variables` irá reunir as variáveis dependentes, enquanto a variável independente será colocada na seção `Split`. É importante atentar à opção `Frequency tables (nominal and ordinal)`, que deve ser marcada quando o nível de medida da variável de interesse for nominal ou ordinal. 
+
+![](./img/cap_anova_two_way_descriptives2.png)
+
+Em seguida, ao clicar na opção Plots, será possível selecionar o `Boxplot` e `Boxplot element`. O gráfico aparecerá abaixo da tabela e irá apresentar diferentes informações estatísticas da distribuição dos resultados da avaliação psicológica em função dos níveis de <u>escolaridade</u>. Uma visualização preliminar indica que pessoas com escolaridade mais elevada (níveis 2 e 3) apresentam resultados maiores do que pessoas com o primeiro nível de escolaridade.
+
+
+![](./img/cap_anova_two_way_plot.png)
+
+Para alterar esta descrição, basta modificar as variáveis de interesse, colocando a  <u>faixa_etária</u>, por exemplo. A visualização sugere um padrão, em que pessoas mais velhas apresentam menor desempenho.  
+
+![](./img/cap_anova_two_way_plot1.png)
+
+
+Por padrão, o JASP não permite integrar os gráficos nesta seção. Isso será realizado posteriormente. Para executar a ANOVA, será necessário clicar na opção `ANOVA`, `Classical` e `ANOVA`. 
+
+![](./img/cap_anova_interface3.png)
+
+Essa etapa é similar a que foi feita na ANOVA de 1 via. Ao realizar isso, a tela a ser exibida será próxima à imagem a seguir.
+
+![](./img/cap_anova_two_way_interface.png)
+
+
+O espaço de `Fixed factors` é o local onde as duas VIs deverão ser inseridas. O espaço `Dependent Variable` é o local onde a VD contínua irá ser inserida. Para realizar a ANOVA de duas vias, as variáveis <u>escolaridade</u> e <u>faixa_etaria</u> deverão ser arrastadas para `Fixed factors`. A variável <u>memore_total</u> deverá ser colocada em `Dependent Variable`.
+
+![](./img/cap_anova_two_way_execucao.png)
+
+O JASP automaticamente irá realizar as contas e apresentar os resultados da ANOVA Fatorial. Repare que, diferente do modelo visto anteriormente, agora a ANOVA reúne os resultados de `escolaridade`, `faixa etária` e `escolaridade x faixa etaria`. 
+
+![](./img/cap_anova_fatorial_resultados1.png)
+
+
+Pragmaticamente, o valor de P é o indicador costumeiramente utilizado para tomar decisões inferenciais. Os valores são exatamente os mesmos obtidos anteriormente na modelagem pelo R, indicando que o efeito da interação entre escolaridade e faixa etária é significativo (F(8, 1419) = 2.49, p = 0.011), bem como são também significativos os efeitos da escolaridade (F(2, 1419) = 4.87, p = 0.008) e da faixa etária (F(4, 1419) = 6.89, p < 0.001). Como a interação foi significativa, deve-se evitar a interpretação dos efeitos principais, uma vez que os níveis de um fator podem impactar na interpretação de outro.  
+
+
+![](./img/cap_anova_fatorial_resultados2.png)
+
+Esta tabela inicial não apresenta o tamanho do efeito e também não indica se o modelo respeitou ou violou os pressupostos. Para verificar se os pressupostos de <mark>normalidade</mark> e <mark>homocedasticidade</mark> foram respeitados, é necessário clicar em `Assumption checks`.
+
+![](./img/cap_anova_fatorial_pressupostos.png)
+
+
+As opções `Homogeneity tests` e `Q-Q plot of residuals` deverão ser marcadas. Repare que pela impressão visual, a normalidade não foi mantida. Além disso, a homocedasticidade foi também violada. É importante ter uma atenção que os resultados do JASP foram divergentes dos resultados do R. Isso se dá pelo teste de homocedasticidade utilizado. No R, o teste foi o `breusch Pagan`, enquanto no JASP foi o de `Levene`.  
+
+
+![](./img/cap_anova_two_way_pressupostos2.png)
+
+
+Existem algumas saídas para isso, que vão desde modificar a modelagem até não corrigir tais condições e justificar metodologicamente esta escolha. No ambiente JASP, ambas as correções propostas para violação da homocedasticidade não são possíveis para uma ANOVA de 2 vias (incluindo a Fatorial). Assim, mesmo com ambas as violações, o modelo utilizado não apresentará nenhum ajuste.
+
+Antes de voltar à interpretação da ANOVA, é necessário inserir o tamanho do efeito. Para isso, basta clicar em `Estimatives of effect size` e, em seguida, no `eta quadrado parcial` ($η_p^2$). Diferente de uma ANOVA de 1 via, os resultados do $η_p^2$ serão diferentes do ($η^2$). Uma vez que a ANOVA Fatorial apresenta dois preditores, o $η_p^2$ informa a variância explicada por cada uma das variáveis após excluir a variância explicada pelas outras.
+
+
+![](./img/cap_anova_fatorial_tamanho_do_efeito.png)
+
+
+Agora, a interpretação agora pode ser feita integralmente. O valor de P irá indicar se a hipótese nula foi rejeitada ou não e o tamanho do efeito irá indicar a relevância da possível diferença, com interpretação disposta na tabela precedente neste capítulo.
+
+![](./img/cap_anova_fatorial_resultados3.png)
+
+
+Gráficos específicos são recursos úteis para descrição destes resultados. Eles podem ser feitos clicando em `Descriptives Plots`, arrastando a <u>faixa_etaria</u> para `Horizontal axis` e a <u>escolaridade</u> para `Separated lines`. Para colocar o erro padrão, é necessário clicar em `Display error bars` e `Standard error`.
+
+![](./img/cap_anova_fatorial_descriptives_final.png)
+
+
+Notas: Infelizmente, o JASP não realiza um gráfico completo dessa maneira na seção `Descriptives`, tal como apresentado. Por vezes, será necessário primeiro rodar integralmente a ANOVA para depois gerar esta apresentação. Quase sempre, o eixo X recebe a variável com maior quantidade de níveis.  
 
 
