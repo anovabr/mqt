@@ -16,12 +16,11 @@ library(pander)
 
 ```{block, type="objectives"}
 **Objetivos do capítulo**  
-1. Apresentar a ANOVA  
-2. Discutir os pressupostos de execução da ANOVA  
-3. Realizar gráficos relacionados à comparação de médias  
-4. Apresentar e interpretar diferentes tipos de ANOVA    
-5. Discutir os testes post-hoc  
-6. Dar exemplos relacionados à escrita dos resultados  
+1. Apresentar a ANOVA   
+2. Discutir seus diferentes tipos, incluindo ANOVA de 1 via, 2 vias e Fatorial    
+3. Apresentar gráficos e tabelas com comparações de grupos   
+4. Apresentar e discutir testes Post hoc  
+5. Dar exemplos relacionados à escrita dos resultados  
  
 ```
 
@@ -40,14 +39,14 @@ $b_p$ é a inclinação (coeficiente angular)
 $X_p$ é a variável independente em questão  
 $\epsilon_{i}$ é o erro/resíduo   
 
-Os seguintes pressupostos dos modelos linares são mantidos, que são:
+Os seguintes pressupostos dos modelos lineares são mantidos, que são:
 
 *(i)* A variável dependente é contínua  
 *(ii)* Os resíduos são independentes  
 *(iii)* Os resíduos são normalmente distribuídos  
 *(iv)* A variância dos resíduos é constante  
 
-A linearidade dos resíduos não é formalmente um pressuposto a ser testado, especialmente quando a VI é categórica em vez de conínua. Operacionalmente, o erro representa <u>todos os fatores de pesquisa</u> e problemas de medição que afetam o resultado, além das variáveis independentes consideradas na modelagem.
+A linearidade dos resíduos não é formalmente um pressuposto a ser testado, especialmente quando a VI é categórica em vez de contínua. Operacionalmente, o erro representa <u>todos os fatores de pesquisa</u> e problemas de medição que afetam o resultado, além das variáveis independentes consideradas na modelagem.
 
 
 Da mesma forma que feito em outros capítulos, a tabela abaixo concatena os testes estatísticos relacionados quando os pressupostos são violados. Para fins de comparação com outros trabalhos, há autores que sugerem que se use sempre as versões não-paramétricas em resultados obtidos por processos de avaliação psicológica, arguindo que os dados têm nível de medida "ordinal".  
@@ -73,11 +72,11 @@ Diferentes termos são empregados em uma ANOVA e em modelos próximos. A legenda
 **Efeito de interação**: Efeito do termo de interação entre duas ou mais variáveis independentes. Quando significativo, não se interpreta os efeitos principais.   
 **Efeito simples**: Efeito de uma variável independente em um nível (específico) de outra variável independente.  
 **ANCOVA**: Análise de covariância, onde se controla os resultados por uma variável contínua 
-**MANOVA**: Análise multivariada de variância, onde se extende a ANOVA para incluir duas variáveis dependentes. É um modelo multivariado.    
+**MANOVA**: Análise multivariada de variância, onde se estende a ANOVA para incluir duas variáveis dependentes. É um modelo multivariado.    
 ```
 
 
-Por heurística, se escreve os delinementos estudados por uma ANOVA com $\eta$. Por exemplo, se o interesse for verificar o efeito da escolaridade (fundamental, médio e superior) e do sexo (masculino ou feminino), a representação será $\eta =  3 \times 2$. Isso significa que a ANOVA tem dois fatores (escolaridade e sexo), o primeiro fator tem três níveis e o segundo tem 2 níveis. 
+Por heurística, se escreve os delineamentos estudados por uma ANOVA com $\eta$. Por exemplo, se o interesse for verificar o efeito da escolaridade (fundamental, médio e superior) e do sexo (masculino ou feminino), a representação será $\eta =  3 \times 2$. Isso significa que a ANOVA tem dois fatores (escolaridade e sexo), o primeiro fator tem três níveis e o segundo tem 2 níveis. 
 
 
 A tabela a seguir resume as denominações encontradas na literatura:
@@ -95,7 +94,7 @@ A tabela a seguir resume as denominações encontradas na literatura:
 </div>  
 
 
-Neste capítulo, vamos utilizar a pesquisa intitulada ["A relação entre o nível de Empreendedorismo (TEG) e os aspectos sociodemográficos dos Taxistas cooperados da cidade de Santo André/São Paulo, Brasil"](https://www.metodista.br/revistas/revistas-metodista/index.php/REGS/article/view/6453), publicada em 2016 na Revista Eletrônica de Gestão e Serviços, em que sou co-autor. O objetivo dessa pesquisa foi identificar o nível de empreendedorismo em 147 taxistas de Santo André/SP, bem como averiguá-lo em associação aos aspectos sociodemográficos. Muitas perguntas teóricas foram feitas neste trabalho e uma foi verificar o quanto os níveis de escolaridade poderiam impactar o empreendedorismo.  
+Neste capítulo, vamos utilizar a pesquisa intitulada ["A relação entre o nível de Empreendedorismo (TEG) e os aspectos sociodemográficos dos Taxistas cooperados da cidade de Santo André/São Paulo, Brasil"](https://www.metodista.br/revistas/revistas-metodista/index.php/REGS/article/view/6453), publicada em 2016 na Revista Eletrônica de Gestão e Serviços, em que sou coautor. O objetivo dessa pesquisa foi identificar o nível de empreendedorismo em 147 taxistas de Santo André/SP, bem como averiguá-lo em associação aos aspectos sociodemográficos. Muitas perguntas teóricas foram feitas neste trabalho e uma foi verificar o quanto os níveis de escolaridade poderiam impactar o empreendedorismo.  
 
 
 ## ANOVA de 1 via
@@ -151,7 +150,7 @@ ggplot(dados_teg, aes(x=escolaridade_fct, y = teg, fill = escolaridade_fct)) +
 ```
 
 
-A visualização dos resultados já permite identificar algumas caracteríticas gerais. Primeiro, quão maior a escolaridade, maior o o valor obtido na escala. Segundo, algumas barras de erros estão superpostas e outras não, o que nos leva à conclusão preliminar de que resultados significativos estarão presentes na próxima etapa, que é a modelagem formal dessa hipótese. 
+A visualização dos resultados já permite identificar algumas caracteríticas gerais. Primeiro, quão maior a escolaridade, maior o valor obtido na escala. Segundo, algumas barras de erros estão superpostas e outras não, o que nos leva à conclusão preliminar de que resultados significativos estarão presentes na próxima etapa, que é a modelagem formal dessa hipótese. 
 
 Para realizar a ANOVA, é possível contar com a função `lm` ou `aov`. Aqui, a escolha da `lm` foi apenas por conveniência e o vetor `mod_escolaridade` irá armazenar os resultados.
 
@@ -171,7 +170,7 @@ Para apresentação, a função `apa.aov.table` do pacote `apatables` pode ser u
   | Total             | Total (SQT)       | N-1                 |  
 
 
-Aqui, K significa quantidade de categorias dentro de um fator e N significa a quantidade de observações consideradas. As siglas em inglês são são utilizadas para apresentar a "Soma dos quadrados entre os grupos" (SSB), "Soma dos quadrados dentro dos grupos" (SSW), "Quadrado médio entre grupos" (MSB) e "Quadrado médio dentro dos grupos" (MSW). 
+Aqui, K significa quantidade de categorias dentro de um fator e N significa a quantidade de observações consideradas. As siglas em inglês são utilizadas para apresentar a "Soma dos quadrados entre os grupos" (SSB), "Soma dos quadrados dentro dos grupos" (SSW), "Quadrado médio entre grupos" (MSB) e "Quadrado médio dentro dos grupos" (MSW). 
 
 ```{r}
 apaTables::apa.aov.table(mod_escolaridade) %>% pander(., split.table = Inf)
@@ -319,7 +318,7 @@ Repare que este resultado é bastante informativo, mas não deixa claro quais os
 ## Post hoc
 
 
-Quando uma ANOVA é significativa, é possível investigar todas as comparações entre os níveis da VI por análises post hoc. É importante alertar que os resultados significativos da ANOVA  não significam, necessariamente, que haverá alguma diferença <u>entre as médias dos grupos</u>. Tecnicamente, a diferença pode ocorrer em qualquer comparação possível, como grupo 1 contra grupos 2 + grupo 3 ou grupo 2 contra grupo 1+3. Com isso, é possível perceber que o resultado geral da ANOVA e a execução de testes post hoc respondem questões diferentes. Na verdade, é inclusive possível realizar qualquer comparação múltipla sem sequer realizar a ANOVA, desde que os resultados sejam devidamente corrigidos e alguns pressupostos sobre os constrastes sejam previamente assumidos.  
+Quando uma ANOVA é significativa, é possível investigar todas as comparações entre os níveis da VI por análises post hoc. É importante alertar que os resultados significativos da ANOVA  não significam, necessariamente, que haverá alguma diferença <u>entre as médias dos grupos</u>. Tecnicamente, a diferença pode ocorrer em qualquer comparação possível, como grupo 1 contra grupos 2 + grupo 3 ou grupo 2 contra grupo 1+3. Com isso, é possível perceber que o resultado geral da ANOVA e a execução de testes post hoc respondem questões diferentes. Na verdade, é inclusive possível realizar qualquer comparação múltipla sem sequer realizar a ANOVA, desde que os resultados sejam devidamente corrigidos e alguns pressupostos sobre os contrastes sejam previamente assumidos.  
 
 
 Tendo em vista vez que realizar uma ANOVA não é tecnicamente necessário para comparações pareadas, é possível se perguntar qual é, então, a necessidade da realização da ANOVA? Historicamente, a ANOVA era um recurso muito importante em uma época em que o poder computacional era mais limitado. Seus resultados iriam indicar se comparações múltiplas deveriam ser feitas ou não. Hoje em dia, sua realização ocorre mais para que o pesquisador (i) consiga implementar todas as comparações pareadas entre as categorias da variável e, em seguida, (ii) possa corrigir adequadamente o valor de P obtido em cada comparação.  
@@ -338,7 +337,7 @@ Nesse caso:
 
 ## Execução no R
 
-Para a comparação pareada, o pacote `emmeans` será utilizado. A mecanica do por detrás do post hoc é a comparação pareada de todos os níveis presentes no fator, seguido pelo ajuste do valor de P. Existem muitas técnicas para tal ajuste e elas costumam ser agrupadas em função da sua robustez à violação da homocedasticidade. Para fins práticos, vamos utilizar uma técnica considerada bastante conservadora, chamada de Bonferroni, que multiplica o valor de p encontrado pela quantidade de comparações.
+Para a comparação pareada, o pacote `emmeans` será utilizado. A mecânica do por detrás do post hoc é a comparação pareada de todos os níveis presentes no fator, seguido pelo ajuste do valor de P. Existem muitas técnicas para tal ajuste e elas costumam ser agrupadas em função da sua robustez à violação da homocedasticidade. Para fins práticos, vamos utilizar uma técnica considerada bastante conservadora, chamada de Bonferroni, que multiplica o valor de p encontrado pela quantidade de comparações.
 
 O resultado das comparações dois a dois será armazenado em um objeto específico, nomeado como `post_hoc_escolaridade`. Isso será útil para apresentar sumários e gráficos.
 
@@ -412,7 +411,7 @@ Em seguida, é necessário levar a variável <u>escolaridade_fct</u> para o `Hor
 ## Escrita dos resultados  
 
 
-Os resultados serão escritos apresentado os achados principais da ANOVA e as comparações pareadas com seus valores de P corrigidos. O estilo da escrita é baseada nas recomendações da American Psychological Association (APA).
+Os resultados serão escritos apresentado os achados principais da ANOVA e as comparações pareadas com seus valores de P corrigidos. O estilo da escrita é baseado nas recomendações da American Psychological Association (APA).
 
 
 ```{block, type="writing"}
@@ -667,7 +666,7 @@ Notas: Infelizmente, o JASP não realiza um gráfico completo dessa maneira na s
 ## Escrita dos resultados
 
 
-Após a execução de uma ANOVA de duas vias, foi possível concluir que ambas as variáveis foram significativas aos resultados da avaliação psicológica. Abaixo uma sugestão de escrita baseada nas recomendações da American Psychological Association (APA).
+Após a execução de uma ANOVA de duas vias, foi possível concluir que ambas as variáveis foram significativas aos resultados da avaliação psicológica. Abaixo uma sugestão de escrita baseado nas recomendações da American Psychological Association (APA).
 
 
 ```{block, type="writing"}
@@ -774,7 +773,7 @@ A interpretação dos resultados pode ser feita considerando o valor de P, o tam
 ## Escrita dos resultados  
 
 
-Os resultados serão escritos apresentado os achados principais da ANOVA e as comparações pareadas de ambos os fatores, destacando os valores de P corrigidos. O estilo da escrita é baseada nas recomendações da American Psychological Association (APA).
+Os resultados serão escritos apresentado os achados principais da ANOVA e as comparações pareadas de ambos os fatores, destacando os valores de P corrigidos. O estilo da escrita é baseado nas recomendações da American Psychological Association (APA).
 
 
 ```{block, type="writing"}
@@ -1021,7 +1020,7 @@ Notas: Infelizmente, o JASP não realiza um gráfico completo dessa maneira na s
 ## Escrita dos resultados  
 
 
-Os resultados serão escritos apresentado os achados principais da ANOVA, destacando se o efeito da interação foi significativo ou não. O estilo da escrita é baseada nas recomendações da American Psychological Association (APA).
+Os resultados serão escritos apresentado os achados principais da ANOVA, destacando se o efeito da interação foi significativo ou não. O estilo da escrita é baseado nas recomendações da American Psychological Association (APA).
 
 
 ```{block, type="writing"}
@@ -1078,7 +1077,7 @@ Em seguida, selecionar todas as variáveis e clicar na seta para deslocá-las pa
 O JASP apresentará todas as comparações feitas em <u>escolaridade</u>, <u>faixa_etaria</u> e <u>escolaridade x faixa etária</u>, ajustando os resultados por todas as variáveis no modelo e corrigindo o valor de P. Por padrão, a correção de P é feita pelo método de Tukey, que pode ser alterada na seção `Correction`. 
 
 
-A interpretação principal é para interação <u>escolaridade x faixa etária</u>. No entanto, diferente do R, nesta versão do JASP <u>não</u> é possível reproduzir a análise feita em que a comparação entre todos os níveis de um fator é realizda enquanto se mantém o outro constante. Essa condição pode impactar um pouco na interpretação dos resultados, uma vez que os valores de P serão mais altos do que os previamente encontrados.    
+A interpretação principal é para interação <u>escolaridade x faixa etária</u>. No entanto, diferente do R, nesta versão do JASP <u>não</u> é possível reproduzir a análise feita em que a comparação entre todos os níveis de um fator é realizada enquanto se mantém o outro constante. Essa condição pode impactar um pouco na interpretação dos resultados, uma vez que os valores de P serão mais altos do que os previamente encontrados.    
 
 
 ![](./img/cap_anova_fatorial_posthoc3.png)
@@ -1091,7 +1090,7 @@ O gráfico feito anteriormente é um forte candidato a também ser inserido para
 ## Escrita dos resultados
 
 
-Os resultados serão escritos apresentado os achados principais da ANOVA, destacando se o efeito da interação foi significativo ou não e as comparações pareadas. O estilo da escrita é baseada nas recomendações da American Psychological Association (APA). Como os resultados do R e do JASP foram um pouco diferente nas comparações pareadas, o R será utilizado como principal.  
+Os resultados serão escritos apresentado os achados principais da ANOVA, destacando se o efeito da interação foi significativo ou não e as comparações pareadas. O estilo da escrita é baseado nas recomendações da American Psychological Association (APA). Como os resultados do R e do JASP foram um pouco diferente nas comparações pareadas, o R será utilizado como principal.  
 
 
 ```{block, type="writing"}
