@@ -10,6 +10,7 @@ editor_options:
 load("~/anovabr/mqt/bases/Base R - Pesquisa mapfre.RData") #base
 
 library(tidyverse)
+library(pander)
 library(knitr) #tables and graphs
 library(kableExtra) #tables with different styles
 
@@ -27,111 +28,50 @@ library(janitor) #descritipve stats
 3. Oferecer heurísticas ou regras gerais para criação de gráficos
 ```
 
+A Estatística descritiva visa <mark>descrever, resumir e apresentar</mark> os dados obtidos em uma pesquisa de maneira a tornar os resultados mais fáceis de serem compreendedidos. É possível fazer isso de maneira <u>textual</u>, <u>tabular</u> e <u>gráfica</u>. Cada uma dessa formas apresenta vantagens e desvantagens. Tabelas e texxtos permitem agrupar e detalhar bem os resultados e, com isso, torná-los mais precisos e abrangentes. Entretanto, esse detalhamento pode também dificultar um pouco no entendimento geral dos resultados. Por sua vez, gráficos geram sumários descritivos em que se é possível ter um entendimento rápido dos resultados. Além disso, os gráficos podem incorporar outros elementos que oferecem um primeiro entendimento inferencial, tal como barras de erro e intervalos de confiança.  
+
+Em todas estas técnicas, mas especialmente no desenvolvimento de gráficos, deve-se evitar gerar distorções na interpretação dos resultados. 
+
+
+
 ## Pesquisa
   
 <div class="alert alert-info" role="alert">
   <strong>Base:</strong> Base R - Pesquisa mapfre.RData
 </div>  
 
-Neste capítulo (e em alguns outros), vamos utilizar a pesquisa intitulada ["Depression and Anxiety Symptoms in a Representative Sample of Undergraduate Students in Spain, Portugal, and Brazil"](https://doi.org/10.1590/0102.3772e36412 ). Nessa pesquisa, sou o coautor e o pesquisador responsável para correspondência.
+Neste capítulo, vamos utilizar a pesquisa intitulada ["Depression and Anxiety Symptoms in a Representative Sample of Undergraduate Students in Spain, Portugal, and Brazil"](https://doi.org/10.1590/0102.3772e36412 ). Nessa pesquisa, sou o coautor e o pesquisador responsável para correspondência. O objetivo deste estudo foi desenvolver um mapa epidemiológico de sintomas de ansiedade e depressão em universitários em três países, bem como investigar possíveis relações entre tais condições de saúde e fatores sociodemográficos. Para acessar eventuais transtornos depressivos, o Inventário Beck de Depressão (BDI) foi utilizado e para acessar condições de ansiedade, o Inventário Beck de Ansiedade (BAI) foi utilizado.  
+
+Um diferencial importante do trabalho foi a seleção amostral. Partiu-se de uma amostra estratificada (probabilística) dos estudantes de três universidades, PUC-Rio (Brasil), Universidade de Extremadura (Espanha) e Universidade de Coimbra (Portugal). Isso permitiu ter maior validade externa dos resultados.
 
 
-O objetivo deste estudo foi fazer um mapa epidemiológico de sintomas de ansiedade e depressão em universitários em três países, bem como investigar possíveis relações entre tais condições de saúde e fatores sociodemográficos. Um diferencial importante do trabalho foi a seleção amostral. Partiu-se de uma amostra estratificada (probabilística) dos estudantes de três universidades, PUC-Rio (Brasil), Universidade de Extremadura (Espanha) e Universidade de Coimbra (Portugal). Isso permitiu ter maior validade externa dos resultados.
+## Execução no R 
 
+### Tabelas   
 
-## Condições gerais  
+Tabelas apresentam os sumários informativos de uma pesquisa de maneira reunida e objetiva. É possível utilizá-las com apenas uma ou com múltiplas variáveis, sejam elas categóricas ou contínuas. As tabelas precisam ter um título, bem como colunas e linhas. Com frequência, as instrução para desenvolvimento de tabelas variam de editora para editora e, segundo a APA, apenas as linhas superiores e inferiores recebem bordas e números decimais são arredondados até a segunda casa decimal.  
 
-Todo documento acadêmico e científico é composto de <u>aspectos textuais</u>, <u>tabulares</u> e <u>gráficos</u> que devem caminhar na mesma direção e serem <u>sempre associados às perguntas e objetivos traçados na pesquisa</u>. É fácil perceber, dessa maneira, que a parte principal de qualquer trabalho acadêmico não são necessariamente os aspectos estatísticos, mas sim os objetivos e as possíveis hipóteses investigadas pelos pesquisadores. A estatística, neste sentido, é uma valiosa ferramenta de trabalho (ou uma atividade de meio) para que as perguntas sejam respondidas de forma adequada e válida.
-
-Frequentemente, as primeiras análises descritivas começam pela apresentação de <u>tabelas</u> e <u>gráficos</u>. Da mesma forma que a construção de um prédio depende que andaimes sejam colocados, um relatório técnico depende dessas condições. Ainda neste sentido, assim como a conclusão do prédio cursa com a retirada destes andaimes, é bem possível que as versões finais de artigos científicos ou relatórios aproveitem apenas parte dos gráficos e tabelas desenvolvidos. 
-
-
-## Tabelas
-
-Tabelas apresentam os sumários informacionais de uma pesquisa de maneira reunida e objetiva. As tabelas precisam ter um título informativo, bem como colunas e linhas. Com frequência, apenas as linhas superiores e inferiores recebem bordas e números decimais são arredondados até a segunda casa decimal.  
-
-Como os verbos do dplyr possibilitam que os mesmos resultados sejam encontrados por vias diferentes, os códigos a seguir tentarão manter uma uniformidade lógica. Em alguns momentos, para ampliar as possibilidades de codificação, sintaxes extras serão oferecidas.  
-
-A tabela a seguir apresenta a quantidade de participantes em cada país.
-
-```{r}
-Dataset <- Dataset %>% ungroup()
-Dataset %>% 
-  group_by(country) %>% 
-  summarise(n=n()) %>% 
-  kable(digits = 2) %>% 
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
-```
-
-É também possível adicionar proporções relativas percentuais à tabela, o que é uma escolha adequada para apresentação dos resultados.
-
-
-```{r}
-Dataset %>% 
-  group_by(country) %>% 
-  summarise(n=n(), Prop = n/nrow(.)) %>% 
-  kable(digits = 2) %>% 
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
-```
-
-
-O pacote `janitor` oferece complementos úteis à família tidyverse e um deles justamente adiciona os totais, de maneira mais rápida e, em função disso, os exemplos também irão acessar as funções deste pacote.
+Frequentemente, Uma primeira tabela informativa deve apresentar a quantidade de participantes amostrados. Neses caso, como três países fizeram parte da pesquisa, os dados serão agrupados por eles. O desenvolvimento desta tabela pode ser feito com pacote `janitor`, tal como demonstrado a seguir.
 
 ```{r}
 Dataset %>% 
   tabyl(country) %>% 
   adorn_totals() %>% 
-  kable(digits = 2) %>% 
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
+  pander()
 
 ```
 
-
-O mesmo que foi realizado com os países, pode também ser realizado com o sexo do participante.
-
-```{r}
-Dataset %>% 
-  tabyl(sex) %>% 
-  adorn_totals() %>% 
-  kable(digits = 2) %>% 
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
-```
-
-É possível notar casos ausentes na variável sexo. Isso acontece com muita frequência e antes de formalmente discutirmos o que fazer neste caso, é possível adequar a tabela para não apresentar tais condições.A adição do argumento para filtrar os participantes com dados ausentes sobre sexo auxilia a apresentar melhor os resultados. É importante atentar que essa análise tem finalidade descritiva e que omitir a apresentação de variáveis ausentes <u>não significa excluir ou remover os participantes</u> das análises que serão feitas posteriormente. Somente em possibilidades remotas se retira participantes das análises de maneira definitiva.
+A adição de um um outro agrupador relacionado ao sexo é também importante. Note que existem casos ausentes na variável <u>sexo</u>. Isso ocorre com bastante frequência e há diferentes estratégias para lidar com isso, que serão discutidas em momento oportuno. Para que tais condições não sejam apresentadas, a função `filter` será implementada.   
 
 ```{r}
 Dataset %>% 
   filter(!is.na(sex)) %>% 
-  tabyl(sex) %>% 
+  tabyl(sex, country) %>% 
   adorn_totals() %>% 
-  kable(digits = 2) %>% 
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
-
+  pander()
 ```
 
-Para fazer uma tabela cruzada, em que seja possível apresentar a quantidade de homens e mulheres por país, épossível utilizar função `pivot_wider`:
-
-```{r}
-Dataset %>% 
-  filter(!is.na(sex)) %>% 
-  count(country,sex) %>% 
-  pivot_wider(names_from = sex, values_from = n) %>% 
-  kable(digits = 2) %>% 
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
-```
-
-Da mesma maneira como continuar com o `tabyl`, mas agora adicionando uma variável.
-
-```{r}
-Dataset %>% 
-  filter(!is.na(sex)) %>% 
-  tabyl(country, sex) %>% 
-  adorn_totals() %>% 
-  kable(digits = 2) %>% 
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
-```
-
-Finalmente, para apresentar a quantidade de participantes totais, bem como separar a quantidade e a porcentagem de homens e mulheres por país, a codificação torna-se mais densa. O código abaixo apresenta os comentários para auxiliar no entendimento da rotina e reproduz parcialmente a tabela 1 do artigo.
+Para apresentar a quantidade de participantes totais, bem como a quantidade e a porcentagem de homens e mulheres por país, a codificação torna-se um pouco mais densa. A tabela a seguir reproduz parcialmente a tabela 1 do artigo publicado.  
 
 ```{r}
 Dataset %>%
@@ -141,21 +81,57 @@ Dataset %>%
   adorn_percentages("row") %>% 
   adorn_pct_formatting(rounding = "half up", digits = 0) %>%
   adorn_ns() %>%
-  adorn_title("combined") %>%
-  kable(., digits = 2,  booktabs = T) %>%
-  kable_styling(position = "center", full_width = F, bootstrap_options = "striped")
+  pander()
+```
+Enquanto as tabelas com variáveis categóricas apresentam valores absolutos e suas respectivas porcentagens, tabelas para variáveis contínuas costumam utilizar medidas de posição e dispersão. A média e a mediana são os sumários mais utilizados para indicar a posição ou a concentração dos dados. Por sua vez, o desvio-padrão e a amplitude ou intervalo interquartil são utilizados para indicar o afastamento dos dados dessas medidas de posição. O R oferece muitos pacotes especializados em tabelas descritivas, cada qual com características positivas e limitadoras. 
+
+
+De maneira análoga à construção da primeira tabela deste capítuo, os valores do BDI e do BAI serão apresentados em função do país do participante.
+
+```{r}
+Dataset %>%
+  group_by(country) %>% 
+  summarise_at(vars(bdi_sum, bai_sum), lst(n=~n(),media=mean, DP=sd), na.rm=T) %>% 
+  mutate_if(is.numeric, round,2) %>% 
+  t() %>% 
+  pander(., split.table = Inf)
+```
+
+É também possível reunir tais resultados a partir do sexo do participante.
+
+
+```{r}
+Dataset %>%
+  filter(!is.na(sex)) %>% 
+  group_by(sex) %>% 
+  summarise_at(vars(bdi_sum, bai_sum), lst(n=~n(),media=mean, DP=sd), na.rm=T) %>% 
+  mutate_if(is.numeric, round,2) %>% 
+  t() %>% 
+  pander(., split.table = Inf)
+```
+A apresentação agrupando pelo país e sexo do participante encontra-se abaixo:  
+
+```{r}
+Dataset %>%
+  filter(!is.na(sex)) %>% 
+  group_by(country,sex) %>% 
+  summarise_at(vars(bdi_sum, bai_sum), lst(n=~n(),media=mean, DP=sd), na.rm=T) %>% 
+  mutate_if(is.numeric, round,2) %>% 
+  t() %>% 
+  pander(., split.table = Inf)
 ```
 
 
-## Gráficos
+### Gráficos
 
-A máquina gráfica do tidyverse é o ggplot. <u>Pelo menos</u> 3 argumentos são necessários para criação de gráficos, que são:
+A máquina gráfica do tidyverse é o ggplot. Para executar um gráfico, <mark>pelo menos</mark> 3 argumentos são necessários para criação de gráficos, que são:
 
-1. O banco dados `(data = )`, que pode ser omitido da sintaxe,    
+1. O banco dados `(data = )`,      
 2. O aspecto estético, que permite diferentes complementos `aes(x = , y = , fill = , color = )`,  
 3. O aspecto geométrico, que varia em função do gráfico a ser apresentado `geom_ ` 
 
 É também possível adicionar outros argumentos, como:  
+
 4. Transformações estatísticas `stat_summary`  
 5. Facetas para dividir a visualização `facet_`  
 6. Sistema de coordenadas `coord_`  
@@ -163,24 +139,24 @@ A máquina gráfica do tidyverse é o ggplot. <u>Pelo menos</u> 3 argumentos sã
 
 É importante notar que apesar dos argumentos utilizados na sintaxe serem similares aos utilizados em toda família tidyverse, a ligação `%>%` é substituída pelo `+`. 
 
-Quando bem feitos, os gráficos são extremamente úteis. Como aponta Morettin e Bussab [@morettin_bussab_2010], eles possibilitam:   
+Quando bem feitos, os gráficos são extremamente úteis. Como aponta Morettin e Bussab [-@morettin_bussab_2010], eles possibilitam:   
+
 (a) buscar padrões e relações;     
 (b) confirmar (ou não) certas expectativas que se tinha sobre os dados;   
 (c) descobrir novos fenômenos;  
 (d) confirmar (ou não) suposições feitas sobre os procedimentos estatísticos usados; e  
 (e) apresentar resultados de modo mais rápido e fácil.  
 
-É sempre bom que o gráfico tenha um título e uma escala. A maioria dos gráficos são apresentados em um plano com um eixo horizontal (abcissas) e um vertical (ordenadas), que se referem  aos níveis da variável que está sendo medida (eixo x) e as contagens ou proporções encontradas (eixo y) ou aos níveis da variável independente (eixo x) e os resultados médios da variável dependente (eixo y).
+É sempre bom que o gráfico tenha um título e uma escala. A maioria dos gráficos são apresentados em um plano com um eixo horizontal (abcissas) e um vertical (ordenadas). Quando há apenas uma variável para apresentar, o eixo x irá reunir seus níveis e o eixo y as contagens ou proporções e densidade. Quando há duas variáveis, o eixo x irá apresentar os níveis da variável indepenente, enquanto o y apresentará os valores médios encontrados. Quando há mais de uma variável independente, um agrupador ou cluster deverá ser computado. Com frequência, o eixo x recebe a variável independente com mais níveis, enquanto o agrupador recebe as outras.   
 
-Para eleger que gráfico será realizado, é necessário responder a duas perguntas que são atreladas às pesquisas em Psicologia e áreas congêneres:  
+Existem diferentes heurísticas que auxiliam na escolha do melhor gráfico a ser desenvolvido para apresentar os resultados de uma pesquisa. Uma delas parte do pressuposto que, quando há duas ou mais variáveis, a VD é continua e solicita que duas perguntas sejam respondidas, que são:  
 
-1. Quantas variáveis serão apresentadas ?  
-2. Qual o nível de medida da variával independente ?  
+1. <mark>Quantas</mark> variáveis serão apresentadas ?  
+2. Qual o <mark>nível de medida da variával independente </mark>?  
 
-O diagrama abaixo oferece uma árvore de decisão funcional.
+Com isso, o diagrama abaixo oferece uma árvore de decisão funcional.
 
 ```{r, echo=FALSE}
-
 grViz("digraph flowchart {
       # node definitions with substituted label text
       
@@ -211,14 +187,12 @@ grViz("digraph flowchart {
        
        
      }")
-
-
 ```
 
-É importante atentar que variáveis categóricas são operacionalmente entendidas como discretas aqui.
+Nota: Nessa apresentação, pragmaticamente as variáveis categóricas são tratadas como discretas.
 
 
-## 1 variável discreta
+### 1 variável discreta
 
 Quando há apenas uma variável discreta (incluindo aqui as categóricas), os gráficos são criados para apresentar as contagens e/ou suas proporções. Nesse caso, é recomendado utilização de um <u>gráfico de barras</u> ou <u>gráfico de setor</u>. Apesar de ser possível apresentar as frequências absolutas, esses resultados podem gerar distorção da informação e, portanto, é preferível sempre apresentar as proporções de ocorrência de uma determinada variável ou valor. Por definição, quando se trabalha com proporções, o valor máximo da soma das proporções é 100.
 
@@ -228,10 +202,9 @@ O gráfico de barras abaixo apresenta a contagem absoluta dos participantes pesq
 ggplot(Dataset, aes(x = country)) +
   geom_bar() +
   labs(x = "País", title = "Número de participantes nos países investigados")
-
 ```
 
-Já abaixo, as barras são utilizadas considerando os resultados proporcionais. Para isso, um recurso do pacote `scales` foi utilizado para adequar o eixo y e também para adicionar o valor às colunas.
+Apesar desse gráfico auxiliar em um primeiro entendimento dos dados, a mudança da contagem para proporções é indicada. Para fazer isso, um recurso do pacote `scales` foi implementado para adequar o eixo y e adicionar o valor textual às colunas.
 
 ```{r}
 ggplot(Dataset, aes(x = country, y = ..prop.., group = 1)) + 
@@ -245,15 +218,6 @@ ggplot(Dataset, aes(x = country, y = ..prop.., group = 1)) +
 O gráfico de setor (as vezes chamado de polar, pizza ou torta) pode também ser utilizado. O aspecto principal desse gráfico é apresentar os setores de maneira proporcional às frequências.
 
 ```{r}
-ggplot(Dataset, aes(x=factor(1), fill=country))+
-  geom_bar(width = 1) +
-  coord_polar("y") +
-  labs(title = "Proporção de participantes em cada país")
-```
-
-A adição de porcentagens costuma deixar o gráfico mais informativo
-
-```{r}
 Dataset %>% 
   count(country) %>% 
   mutate(pct = n/sum(n)) %>% 
@@ -265,9 +229,9 @@ Dataset %>%
 ```
 
 
-## 1 variável contínua
+### 1 variável contínua
 
-Quando uma única variável é apresentada no gráfico e ela é continua, os gráficos adequados são o histograma, densidade (kernel) e o boxplot.
+Quando uma única variável deve ser apresentada e ela é continua, os melhor gráficos são o histograma, densidade (kernel) e o boxplot.
 
 Abaixo um histograma da idade dos participantes:
 
@@ -285,7 +249,8 @@ ggplot(Dataset, aes(x = age)) +
   labs(title = "Distribuição da idade dos participantes")
 ```
 
-Esses dois gráficos apresentam bem o <u>formato</u> da distribuição. Neste caso, existe uma assimetria à direita, que é para onde a cauda dos dados se arrasta.
+Todas as distribuições tem uma localização, uma dispersão e um formato. De uma maneira mais direta, tanto o histograma como o gráfico de densidade conseguem informar bem, principalmente, sobre o <u>formato</u> da distribuição. Nesse caso, trata-se de uma assimetria positiva ou à direita. 
+
 
 Por sua vez, abaixo o boxplot dessa mesma variável: 
 
@@ -295,32 +260,50 @@ ggplot(Dataset, aes(y = age, x = "")) +
   labs(title = "Distribuição da idade dos participantes")
 ```
 
-O boxplot tem vantagens em comparação com os outros gráficos apresentados até agora. Além de apresentar o formato da distribuição, a área da caixa reúne 50% da distribuição (Q1, Q2 ou Mediana e Q3) e os bigodes são construídos com base em `Q1 - 1.5*IQR` e `Q3 + 1.5*IQR`.
+O boxplot apresenta vantagens em comparação com os outros gráficos apresentados até agora. Além de apresentar o formato da distribuição, ele também (1) apresenta na área da caixa a concetração onde 50% dos dados estão, (2) a mediana dos resultados, na linha interna e mais espessa da caixa, (3) os valores mínimos e máximos e (4) os eventuais outliers. É importante notar que a parte inferior da caixa é formada pelo valor do primeiro quartil (Q1), a linha mais espessa interna apresenta o segundo quartil (Q2) ou a mediana e a parte superior da caixa apresenta o valor do terceiro quartil (Q3). Os bigodes são frequentemente construídos com base em `Q1 - 1.5*IQR` e `Q3 + 1.5*IQR` e valores acima ou abaixo dele são entendidos como anômalos ou outliers. Por definição, os outliers são sempre poucos, mesmo que isso possa ser um pouco contraintuitivo nesta apresentação de agora. 
 
-Apesar de algo difícil de visualizar ao início, a informação apresentada no boxplot e no gráfico de densidade são iguais. 
+O gráfico abaixo apresenta parte dos valores descritos.   
+
+```{r}
+ggplot(Dataset, aes(y = age, x = "")) +
+  geom_boxplot()  +
+  stat_summary(
+    aes(label=sprintf("%1.1f", ..y..)),
+    geom="text", 
+    fun.y = function(y) boxplot.stats(y)$stats,
+    position=position_nudge(x=0.5), 
+    size=3.5)
+```
+
+Apesar de ser um pouco difícil de se visualizar ao início, a informação apresentada em um boxplot e no gráfico de densidade são virtualmente as mesmas, tal como demonstrado a seguir.   
 
 ```{r}
 gridExtra::grid.arrange(
   #Grafico 1
   ggplot(Dataset, aes(x = age)) +
-  geom_density(fill = "lightgray"),
-  
+  geom_density(fill = "lightgray") + labs(x="", y=""),
   #Grafico 2
   ggplot(Dataset, aes(y = age, x = "")) +
-  geom_boxplot() +
+  geom_boxplot() + labs(x = "") +
   coord_flip(),
-  
   top = "Distribuição da idade dos participantes" #título
 )
-
 ```
 
 
 ## 2 variáveis com VI discreta (e VD contínua)  
 
-Gráficos de barras ou colunas (considerando aqui as barras de erro) e o boxplot são adequados para apresentar essa relação. Basicamente, esses gráficos permitem verificar a <u>diferença</u> entre os grupos. 
+Gráficos de barras ou colunas e boxplots são adequados para apresentar essa relação. Basicamente, esses gráficos permitem verificar a <u>diferença</u> entre os grupos. 
 
-Como exemplo, o gráfico abaixo mostra os resultados do Inventário Beck de Ansiedade entre 3 países investigados. As barras de erro são importantes para verificar, inicialmente, as possíveis diferenças significativas entre os países.
+Como exemplo, o gráfico abaixo mostra os resultados do Inventário Beck de Ansiedade entre 3 países investigados. 
+
+```{r}
+ggplot(Dataset, aes(x = country, y = bai_sum)) +
+  geom_bar(stat = "summary", fun = mean) 
+```
+
+Tal como apresentado no início do capítulo, é possível adicionar outros elementos ao gráfico para que uma primeira apreensão inferencial seja possível. Nesse sentido, o gráfico abaixo apresenta também as barras de erro.
+
 
 ```{r}
 ggplot(Dataset, aes(x = country, y = bai_sum)) +
@@ -328,7 +311,7 @@ ggplot(Dataset, aes(x = country, y = bai_sum)) +
   stat_summary(geom = "errorbar",fun.data = mean_se, width = .5) 
 ```
 
-O boxplot a seguir também é um gráfico indicado:
+O boxplot a seguir também é um gráfico indicado. É importante notar que esse gráfico, a priori, <u>não</u> traz informações sobre a média, mas sim sobre a <u>distribuição</u> dos resultados. Evidentemente, como esse gráfico é bastante compreensivo, uma primeira noção inferencial já pode ser feita.   
 
 ```{r}
 ggplot(Dataset, aes(x = country, y = bai_sum)) +
