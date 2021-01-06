@@ -139,7 +139,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prefácio</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#apresentação"><i class="fa fa-check"></i><b>1.1</b> Apresentação</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#a-proposta"><i class="fa fa-check"></i><b>1.1</b> A proposta</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#objetivo"><i class="fa fa-check"></i><b>1.2</b> Objetivo</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#público-alvo"><i class="fa fa-check"></i><b>1.3</b> Público-alvo</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#formato-do-livro"><i class="fa fa-check"></i><b>1.4</b> Formato do livro</a></li>
@@ -147,6 +147,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#o-r"><i class="fa fa-check"></i><b>1.6</b> O R</a></li>
 <li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#pacotes-e-sintaxes"><i class="fa fa-check"></i><b>1.7</b> Pacotes e sintaxes</a></li>
 <li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#outros-recursos"><i class="fa fa-check"></i><b>1.8</b> Outros recursos</a></li>
+<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#capa"><i class="fa fa-check"></i><b>1.9</b> Capa</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html"><i class="fa fa-check"></i><b>2</b> Aspectos gerais</a><ul>
 <li class="chapter" data-level="2.1" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#principais-áreas-da-estatística"><i class="fa fa-check"></i><b>2.1</b> Principais áreas da estatística</a></li>
@@ -299,17 +300,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="prefácio" class="section level1">
 <h1><span class="header-section-number">Capítulo 1</span> Prefácio</h1>
 <p><img src="img/capa_jolie.png" /></p>
-<div id="apresentação" class="section level2">
-<h2><span class="header-section-number">1.1</span> Apresentação</h2>
-<p>Aprender estatística e análise de dados é uma das tarefas mais importantes e desafiadoras que existe no meio acadêmico, especialmente às disciplinas agrupadas em ciências humanas, como Psicologia. Por consequência, ensinar ambas as matérias também impõe um desafio enorme, mas necessário. Frequentemente, pesquisas feitas em Psicologia apresentam um conjunto de resultados sobrepostos que, sem a utilização da estatística, torna-se impossível a separação e filtro daquelas informações que são válidas e despertam o interesse acadêmico (sinal) daquelas que apenas distorcem estas primeiras (ruído).</p>
+<div id="a-proposta" class="section level2">
+<h2><span class="header-section-number">1.1</span> A proposta</h2>
+<p>Este livro tem como proposta a de ser um manual técnico, focado na apresentação e realização de um conjunto de conceitos de pesquisa e análises estatísticas no R e no JASP. Em cada capítulo, será apresentada uma pesquisa, o artigo publicado com os resultados, a base de dados utilizada e o conjunto de procedimentos analíticos e computacionais desenvolvidos para analisar os dados. A discussão de conceitos de pesquisa, bem como o desenvolvimento matemático, são implementados de maneira colateral durante o livro.</p>
 </div>
 <div id="objetivo" class="section level2">
 <h2><span class="header-section-number">1.2</span> Objetivo</h2>
-<p>Este livro tem como objetivo apresentar, discutir e operacionalizar conceitos relacionados à análise estatística de dados. A abordagem deste livro segue um padrão computacional e pragmático. Cada um dos capítulos irá usar uma publicação científica para articular uma determinada análise e seu conjunto de conceitos associados. Em menor nível, a modelagem matemática será apresentada e descrita.</p>
+<p>O livro tem como objetivos (1) apresentar, (2) discutir e (3) operacionalizar conceitos de pesquisa e análises estatística de dados. Espera-se que qualquer leitor/usuário de estatística consiga realizar todas as ações descritas no decorrer dos capítulos de maneira guiada e intuitiva. Dessa forma, tanto as sintaxes utilizadas no ambiente R como as telas de execução do JASP estão integralmente disponíveis.</p>
 </div>
 <div id="público-alvo" class="section level2">
 <h2><span class="header-section-number">1.3</span> Público-alvo</h2>
-<p>Este livro foi desenvolvido com mais aderência a estudantes de pós-graduação em Psicologia, especialmente aos alunos do Departamento de Psicologia da PUC-Rio e de Psicometria da UFRJ. Apesar dos conceitos em estatística e análise de dados serem supradisciplinares, os exemplos tocam mais frontalmente perguntas feitas por psicólogos e neurociêntistas.</p>
+<p>Este livro foi desenvolvido de maneira mais focada a estudantes de pós-graduação em Psicologia. O conteúdo surgiu das aulas da disciplina de Métodos Quantitativos na PUC-Rio, Análise de Dados na UFRJ e Estatística Aplicada na ANOVA. Apesar dos exemplos serem mais relacionados à Psicologia, grande parte dos conceitos e análises estatísticas implementadas no livro é interdisciplinar. Com isso, acredito que estudantes de áreas como educação, administração e economia poderão também ter proveito do livro.</p>
 </div>
 <div id="formato-do-livro" class="section level2">
 <h2><span class="header-section-number">1.4</span> Formato do livro</h2>
@@ -335,6 +336,10 @@ O <code>tidyverse</code> costuma ter atualizações frequentes e espero que as f
 <div id="outros-recursos" class="section level2">
 <h2><span class="header-section-number">1.8</span> Outros recursos</h2>
 <p>Tão importante como saber como saber estatística e programação, é saber onde buscar ajuda (de qualidade) para as questões que, naturalmente, aparecem no decorrer das atividades. Eu recomendo fortemente a comunidade <a href="https://stackoverflow.com/">stackoverflow</a> neste sentido.</p>
+</div>
+<div id="capa" class="section level2">
+<h2><span class="header-section-number">1.9</span> Capa</h2>
+<p>Com muita frequência, livros de Ciência de Dados utilizam a imagem de algum animal na capa. Há livros com cachorros, papagaios, peixes e veados. Esse livro não foge dessa regra e tem como capa a Jolie, a cachorrinha da Anna e minha.</p>
 
 </div>
 </div>
