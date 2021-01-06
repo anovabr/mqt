@@ -12,7 +12,7 @@ library(gridExtra) #plot together
 library(stargazer) #presenting results
 ```
 
-A análise de correlação é um procedimento estatístico para verificar a relação entre duas variáveis. Existem diferentes formas para realizar tal análise e a maioria busca medir a <u>força</u> e a <u>direção</u> da <u>associação linear</u> entre duas variáveis aleatórias. A tabela a seguir descreve alguns dos métodos.
+A análise de correlação é um procedimento estatístico para verificar a relação entre duas variáveis. Existem diferentes técnicas correlacionais e a maioria busca medir a <u>força</u> e a <u>direção</u> da <u>associação linear</u> entre duas variáveis aleatórias. A tabela a seguir descreve algumas técnicas.  
 
 
 
@@ -23,9 +23,9 @@ A análise de correlação é um procedimento estatístico para verificar a rela
   | Nominal         | Coeficiente Phi                              |
   
 
-A Correlação de Pearson é apresentado por $\rho$ ou r, é uma das mais frequentemente calculadas em Psicologia e será demonstrada neste capítulo. Entretanto, tenha em mente que algumas áreas específicas costumam utilizar outras correlações. Como exemplo, é bem típico em Psicometria utilizar indicadores categóricos e, com isso, realizar correlações tetracóricas ou policóricas, o que não será abordado aqui. 
+A Correlação de Pearson é uma das mais frequentemente calculadas em Psicologia e outras áreas empíricas e será demonstrada neste capítulo. Entretanto, tenha em mente que algumas áreas específicas costumam utilizar outras correlações. Como exemplo, é bem típico em Psicometria utilizar indicadores categóricos e, com isso, realizar correlações tetracóricas ou policóricas, que não serão abordadas aqui. 
 
-O coeficiente de correlação é formado por um <u>valor numérico</u> e um <u>sinal</u> e o gráfico de dispersão é uma excelente forma de apresentar o relacionamento bivariado.  A tabela abaixo descreve as possíveis interpretações [@Cohen1988]
+O coeficiente de correlação é apresentado por $\rho$ ou `r`. Ele é formado por um <u>valor numérico</u> e um <u>sinal</u>. A tabela abaixo descreve as possíveis interpretações [@Cohen1988].
 
   | Valor/ Sinal  | Positivo (+)          | Negativo (-)       | 
   | :-----------  | :-----------          | :-----------       |
@@ -33,12 +33,12 @@ O coeficiente de correlação é formado por um <u>valor numérico</u> e um <u>s
   | 0.3           | Moderada positiva     | Moderada negativa  |
   | 0.5           | Forte positiva        | Forte negativa     |
 
-As imagens abaixo demonstram tais conceitos.  
+O gráfico de dispersão é uma excelente forma de apresentar o relacionamento bivariado e as imagens abaixo demonstram tais conceitos.  
 
 ```{r}
 grid.arrange(
   ggplot(data = data.frame(MASS::mvrnorm(n=200, mu=c(0, 0), Sigma=matrix(c(1, .1, .1, 1), nrow=2), empirical=TRUE)), 
-         aes(x = X1, y = X2)) + geom_jitter() + labs(x= "", y = "Y") +
+         aes(x = X1, y = X2)) + geom_jitter() + labs(x= "", y = "Y (corr. positiva)") +
     geom_text(aes(label=paste("r=+0.1 - fraca")),  x=-Inf, y=Inf, hjust=-0.2, vjust=1.2),
   ggplot(data = data.frame(MASS::mvrnorm(n=200, mu=c(0, 0), Sigma=matrix(c(1, .3, .3, 1), nrow=2), empirical=TRUE)), 
          aes(x = X1, y = X2)) + geom_jitter() + labs(x= "X", y = "") +
@@ -48,7 +48,7 @@ grid.arrange(
     geom_text(aes(label=paste("r=+0.5 - forte")),  x=-Inf, y=Inf, hjust=-0.2, vjust=1.2), 
   
   ggplot(data = data.frame(MASS::mvrnorm(n=200, mu=c(0, 0), Sigma=matrix(c(1, -.1, -.1, 1), nrow=2), empirical=TRUE)), 
-         aes(x = X1, y = X2)) + geom_jitter() + labs(x= "", y = "Y") +
+         aes(x = X1, y = X2)) + geom_jitter() + labs(x= "", y = "Y (corr. negativa)") +
     geom_text(aes(label=paste("r=-0.1 - fraca")),  x=-Inf, y=Inf, hjust=-0.2, vjust=1.2),
   ggplot(data = data.frame(MASS::mvrnorm(n=200, mu=c(0, 0), Sigma=matrix(c(1, -.3, -.3, 1), nrow=2), empirical=TRUE)), 
          aes(x = X1, y = X2)) + geom_jitter() + labs(x= "X", y = "") +
@@ -64,10 +64,11 @@ Para realização da Correlação de Pearson, é necessário que ambas as variá
 
 1. É limitado entre -1 e +1, com 0 indicando ausência de correlação    
 2. O sinal indica a natureza, enquanto o número a força  
-3. É simétrico, ou seja, r(x,y) = r(y,x)  
-4. É adimensional e invariante em transformações lineares  
-5. Sensível aos outliers  
-6. Não indica causalidade  
+3. A correlação de uma variável com ela própria é igual a 1  
+4. É simétrico, ou seja, `r(x,y) = r(y,x)`  
+5. É adimensional e invariante em transformações lineares  
+6. Sensível aos outliers  
+7. Não indica causalidade  
 
 
 
@@ -79,43 +80,95 @@ Para realização da Correlação de Pearson, é necessário que ambas as variá
 </div>  
 
 
-Vamos utilizar a pesquisa intitulada ["Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students"](https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students), publicada em 2018 no Global Journal of Educational Studies, que sou co-autor.
+Vamos utilizar a pesquisa intitulada ["Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students"](https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students), publicada em 2018 no Global Journal of Educational Studies, que sou coautor.
 
-O objetivo dessa pesquisa foi explorar os fatores envolvidos em transtornos alimentares e aspectos da percepção da imagem corporal, bem como verificar a capacidade que uma medida possuia em predizer os resultados de outra. Esse artigo contou com a utilização de escalas aplicadas em 219 participantes no Brasil. Para acessar aspectos relacionados aos Transtornos alimentares, a escala EAT-26 foi aplicada. Para verificar aspectos da imagem corporal, a escala BSQ-34 foi aplicada.  
-
-Segue abaixo uma tabela inicial com dados descritivos dos resultados.  
+O objetivo dessa pesquisa foi explorar os fatores envolvidos em transtornos alimentares e percepção da imagem corporal, bem como verificar a correlação entre eles. Esse artigo contou com a utilização de escalas aplicadas em 219 participantes no Brasil. Para acessar aspectos relacionados aos Transtornos alimentares, a escala EAT-26 foi aplicada. Já para aspectos da imagem corporal, a escala BSQ-34 foi aplicada.  
 
 
-```{r}
-dados_brasil %>% 
-  select(sexo,eat_soma, bsq_soma, imc, faz_esporte, familia_esporte) %>% 
-  psych::describeBy(.,group = "sexo") %>% pander::pander()
-```
+Para verificar a correlação entre os resultados, é possível escrever a hipótese da seguinte maneira:  
+
+$$H_0: \rho_{(x,y)} = 0 \\ H_a:  \rho_{(x,y)} \neq 0 \\ \alpha = 0.05$$
 
 
 
 ## Execução no R  
 
-Inicialmente, a escrita da hipótese é:
 
-$$H_0: \rho_{(x,y)} = 0 \\ H_a:  \rho_{(x,y)} \neq 0 \\ \alpha = 0.05$$
+A primeira etapa da análise é orientada a fazer tabelas e gráficos que possam auxiliar na interpretação dos resultados. Abaixo há uma tabela inicial com dados descritivos dos resultados. 
 
-O gráfico de dispersão auxilia na visualização da relação entre as variáveis e permite verificar se o relacionamento é ou não linear. 
+```{r}
+dados_brasil %>% 
+  summarise_at(vars(eat_soma, bsq_soma), lst(n=~n(),media=mean,DP=sd)) %>% t() %>% 
+  pander::pander(., split.table = Inf)
+```
+
+
+Após isso realizado, o gráfico de dispersão traz um importante auxilio na visualização da relação entre as variáveis e permite verificar se o relacionamento é ou não linear. Apesar de técnicas correlacionais não elegerem uma VI e uma VD, com muita frequência, se usa o eixo X para colocar a variável que se assume (mesmo que teoricamente) como independente.  
 
 ```{r}
 ggplot(dados_brasil, aes(x = bsq_soma, y = eat_soma)) +
-  geom_jitter() +
-  labs(x = "Resultados da Escala BSQ-34", y = "Resultados da Escala EAT-26", 
-       title = "Correlação entre o BSQ-34 e o EAT-26")
+  geom_jitter()
 ```
   
 O gráfico indica que as duas variáveis são relacionadas. Apesar do padrão deste relacionamento não ser estritamente linear, é possível verificar formalmente a correlação entre ambas as variáveis,
+
+Isso pode ser feito pela função `cor.test`, que é nativa do R.  
 
 ```{r}
 cor.test(dados_brasil$eat_soma, dados_brasil$bsq_soma)
 ```
 
 Os resultados permitem concluir que a correlação é positiva e forte (r = 0.675), além de significativa (p < 0.001). Isso indica que ambas as variáveis covariam de maneira proporcional, em que valores altos em uma tendem a acompanhar valores altos em outra. É importante atentar que esse relacionamento não indica causalidade e, dessa forma, essa covariação pode ser explicada por diferentes fatores não analisados neste método.  
+
+A correlação de Pearson não depende estritamente da normalidade das variáveis, apesar desse tema ser bastante discutido. Dessa forma, não há pressupostos para se checar além dos já discutidos no decorrer deste capítulo. 
+
+
+## Execução no JASP  
+
+Para executar as rotinas, será necessário carregar a base [csv eat bsq brasil](https://www.dropbox.com/s/l8xkxi5z5fntrd9/csv%20eat%20bsq%20brasil.csv?dl=0). Após fazer isso, para realizar tabelas e gráficos descritivos, deve-se clicar em `Descriptives` , na parte superior do programa.
+
+![](./img/cap_correlacao_descritivo.png)
+Ao clicar nesta opção, será possível eleger as variáveis que irão ser analisadas e as variáveis que irão funcionar como agrupadores. Apesar de na correlação os conceitos de VI e VD não serem formalmente empregados, a lista `Variables` costuma reunir as variáveis dependentes, enquanto a seção `Split` costuma receber a variável independente. É importante atentar à opção `Frequency tables (nominal and ordinal)`, que deve ser marcada quando o nível de medida da variável de interesse for nominal ou ordinal. 
+
+
+![](./img/cap_correlacao_descritivo2.png)
+Será necessário arrastar tanto <u>eat_soma</u> como <u>bsq_soma</u> para o espaço de `Variables`. Ao fazer isso, o JASP automaticamente irá preencher a tabela previamente exposta com os valores estatísticos obtidos. A média e o desvio-padrão indicam a posição típica dos dados e o afastamento esperado desta localização. Apenas para melhor apresentação dos resultados, é importante que a primeira variável da lista seja <u>bsq_soma</u>.
+
+
+![](./img/cap_correlacao_descritivo3.png)
+
+Em seguida, ao clicar na opção `Plots`, será possível selecionar o `Scatter Plots`. O gráfico aparecerá abaixo da tabela e irá apresentar diferentes informações estatísticas da relação entre os transtornos alimentares e aspectos da percepção da imagem corporaldo participante.  
+
+![](./img/cap_correlacao_grafico_dispersao.png)
+
+Por definição, o JASP irá apresentar mais elementos no gráfico. Entretanto, para fins pedagógicos, o importante é conseguir notar o relacionamento que ambas as variáveis apresentam. Para realizar um gráfico mais simples, será necessário <u>desmarcar</u> (ou clicar em `none`) as opções `Graph above scatter plot`, `Graph righ of scatter plot` e `Add regression line`. 
+
+![](./img/cap_correlacao_grafico_dispersao2.png)
+
+Para execução da correlação, será necessário clicar em `Regression` e `Correlation`.
+
+![](./img/cap_correlacao_interface.png)
+Ao realizar isso, a tela a ser exibida será próxima à imgem abaixo. Repare que, por padrão, o JASP ativa a opção `Pearson's r` em `Sample Correlation Coefficient` com `Report significance` em `Additional Options`.
+
+![](./img/cap_correlacao_interface2.png)
+
+O espaço `Variables` é o local onde todas as variáveis serão colocadas e o espaço `Condition on` não será utilizado no momento. Ao inserir o <u>eat_soma</u> e o <u>bsq_soma</u>, o JASP automaticamente irá realizar as contas e apresentar os resultados. 
+
+O coeficiente de correlação e o valor de p serão apresentados em uma lista. No entanto, algumas condições são imoprtantes neste resultado e devem ser explicadas:
+
+1. As variáveis serão alocadas tanto nas linhas, como nas colunas  
+2. Todas as correlação de uma variável com ela própria será igual a 1 e o JASP não apresentará    
+3. A ordem das correlações não interfere no resultado e o JASP somente apresentará uma correlação   
+
+A interpretação dos resultados deve ser feita com base no coeficiente de correlação e no valor de P. Há um grande debate na literatura sobre a necessidade de normalidade na Correlação de Pearson, com grande parte dos argumentos apontam que ela <u>não</u> depende estritamente da normalidade das variáveis. Dessa maneira, não há a necessidade de avaliar outros pressupostos além dos já discutidos no decorrer deste capítulo. 
+
+
+![](./img/cap_correlacao_resultados.png)
+
+## Escrita dos resultados
+
+
+Os resultados serão escritos apresentado os três principais ingredientes da correlação, que são o resultado e o sinal do coeficiente de correlação de Pearson, além do valor de p. O estilo da escrita é baseado nas recomendações da American Psychological Association (APA). Como os resultados do R e do JASP foram um pouco diferente nas comparações pareadas, o R será utilizado como principal.  
 
 
 
@@ -132,3 +185,12 @@ A correlação entre o comportamento alimentar (EAT-26) e a percepção corporal
 2. A correlação de Pearson assume que ambas as variáveis são linearmente correlacionadas   
 3. O coeficiente sempre indicará a direção (por um sinal) e a força (por um número entre -1 e +1) do relacionamento bivariado  
 4. Correlação não indica causalidade  
+
+
+## Pesquisas adicionais  
+
+1. Perception of an ambiguous figure is affected by own-age social biases (DOI: 10.1038/s41598-018-31129-7)    
+Nesse estudo, 393 participantes de idades variadas foram recrutados e viram uma imagem ambígua em que é possível identificar tanto uma moça jovem, como uma senhora de idade. Os participantes deveriam olhar a imagem e indicar a idade a pessoa. Com estes resultados, os pesquisadores calcularam a correlação entre a idade do participante e a idade que as pessoas deram à pessoa.
+
+
+

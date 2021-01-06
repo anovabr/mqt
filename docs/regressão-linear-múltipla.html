@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2021-01-05" />
+<meta name="date" content="2021-01-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -257,7 +257,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10" data-path="correlação.html"><a href="correlação.html"><i class="fa fa-check"></i><b>10</b> Correlação</a><ul>
 <li class="chapter" data-level="10.1" data-path="correlação.html"><a href="correlação.html#pesquisa-7"><i class="fa fa-check"></i><b>10.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="10.2" data-path="correlação.html"><a href="correlação.html#execução-no-r-11"><i class="fa fa-check"></i><b>10.2</b> Execução no R</a></li>
-<li class="chapter" data-level="10.3" data-path="correlação.html"><a href="correlação.html#resumo-9"><i class="fa fa-check"></i><b>10.3</b> Resumo</a></li>
+<li class="chapter" data-level="10.3" data-path="correlação.html"><a href="correlação.html#execução-no-jasp-11"><i class="fa fa-check"></i><b>10.3</b> Execução no JASP</a></li>
+<li class="chapter" data-level="10.4" data-path="correlação.html"><a href="correlação.html#escrita-dos-resultados-10"><i class="fa fa-check"></i><b>10.4</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="10.5" data-path="correlação.html"><a href="correlação.html#resumo-9"><i class="fa fa-check"></i><b>10.5</b> Resumo</a></li>
+<li class="chapter" data-level="10.6" data-path="correlação.html"><a href="correlação.html#pesquisas-adicionais-2"><i class="fa fa-check"></i><b>10.6</b> Pesquisas adicionais</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>11</b> Regressão linear simples</a><ul>
 <li class="chapter" data-level="11.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#legenda-1"><i class="fa fa-check"></i><b>11.1</b> Legenda</a></li>
@@ -318,9 +321,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Vamos utilizar a pesquisa intitulada <a href="https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students">“Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students”</a>, publicada em 2018 no Global Journal of Educational Studies, que sou co-autor.</p>
 <p>O objetivo dessa pesquisa foi explorar os fatores envolvidos em transtornos alimentares e aspectos da percepção da imagem corporal, bem como verificar a capacidade que uma medida possuia em predizer os resultados de outra. Esse artigo contou com a utilização de escalas aplicadas em 219 participantes no Brasil. Para acessar aspectos relacionados aos Transtornos alimentares, a escala EAT-26 foi aplicada. Para verificar aspectos da imagem corporal, a escala BSQ-34 foi aplicada.</p>
 <p>Segue abaixo uma tabela inicial com dados descritivos dos resultados.</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="regressão-linear-múltipla.html#cb199-1"></a>dados_brasil <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb199-2"><a href="regressão-linear-múltipla.html#cb199-2"></a><span class="st">  </span><span class="kw">select</span>(sexo,eat_soma, bsq_soma, imc, faz_esporte, familia_esporte) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb199-3"><a href="regressão-linear-múltipla.html#cb199-3"></a><span class="st">  </span>psych<span class="op">::</span><span class="kw">describeBy</span>(.,<span class="dt">group =</span> <span class="st">&quot;sexo&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="regressão-linear-múltipla.html#cb198-1"></a>dados_brasil <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb198-2"><a href="regressão-linear-múltipla.html#cb198-2"></a><span class="st">  </span><span class="kw">select</span>(sexo,eat_soma, bsq_soma, imc, faz_esporte, familia_esporte) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb198-3"><a href="regressão-linear-múltipla.html#cb198-3"></a><span class="st">  </span>psych<span class="op">::</span><span class="kw">describeBy</span>(.,<span class="dt">group =</span> <span class="st">&quot;sexo&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
 <pre><code>## Warning in pander.default(.): No pander.method for &quot;psych&quot;, reverting to
 ## default.No pander.method for &quot;describeBy&quot;, reverting to default.</code></pre>
 <ul>
@@ -664,9 +667,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="execução-no-r-13" class="section level2">
 <h2><span class="header-section-number">12.2</span> Execução no R</h2>
 <p>Para crir o modelo no R, basta adicionar uma nova variável à equação. Neste caso, além de verificar o efeito da <u>percepção de imagem corporal</u>, o <u>peso</u> também irá ser utilizado como preditor. É importante notar que, por padrão, o R não usa linhas com dados ausentes e isso pode reduzir o poder do teste.</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="regressão-linear-múltipla.html#cb201-1"></a>mod_linear_multiplo &lt;-<span class="st"> </span><span class="kw">lm</span>(eat_soma <span class="op">~</span><span class="st"> </span>bsq_soma <span class="op">+</span><span class="st"> </span>peso_atual, <span class="dt">data =</span> dados_brasil)</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="regressão-linear-múltipla.html#cb200-1"></a>mod_linear_multiplo &lt;-<span class="st"> </span><span class="kw">lm</span>(eat_soma <span class="op">~</span><span class="st"> </span>bsq_soma <span class="op">+</span><span class="st"> </span>peso_atual, <span class="dt">data =</span> dados_brasil)</span></code></pre></div>
 <p>A apresentação segue o mesmo formato da realizada no capítulo específico de regressão linear simples.</p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="regressão-linear-múltipla.html#cb202-1"></a><span class="kw">ols_regress</span>(mod_linear_multiplo) </span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="regressão-linear-múltipla.html#cb201-1"></a><span class="kw">ols_regress</span>(mod_linear_multiplo) </span></code></pre></div>
 <pre><code>##                         Model Summary                          
 ## --------------------------------------------------------------
 ## R                       0.697       RMSE                7.082 
@@ -698,23 +701,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## ----------------------------------------------------------------------------------------</code></pre>
 <p>Os resultados devem ser analisados de maneira cuidadosa. Inicialmente, é possível concluir que o modelo foi globalmente significativo (F(2, 213) = 100.675, p &lt; 0.001) e que cerca de 48% da variabilidade do EAT-26 pode ser atribuída aos valores do BSQ-34 e do peso do participante. Cada um dos preditores tem um comportamento específico. Em relação ao BSQ-34, cada unidade a mais em seu resultado impacta, em média, 0.18 pontos a mais no EAT-26, controlando pelo peso do participante (p &lt; 0.001). Além disso, cada 1 kg a mais no peso do participante impacta em -0.121 (p &lt; 0.001), em média, nos resultados do EAT-26, controlando pelos valores do BSQ-34.</p>
 <p>A ideia de verificar o efeito de uma variável controlando por outra tem um significado particular. Assumindo duas pessoas que <u>tem o peso atual igual ao peso médio do grupo</u> ou <u>o mesmo peso</u>, cada ponto extra no BSQ gera, em média, 0.18 pontos a mais no EAT-26. Assim, o valor estimado no <u>EAT-26</u> de Um participante que teve 45 pontos no <u>BSQ</u> e <u>peso</u> de 66.51 (o peso médio) é de 9.41. Já o valor estimado no <u>EAT-26</u> de um outro participante com 46 pontos no <u>BSQ</u> e mesmo <u>peso</u> do primeiro participante (66.51) é de 9.59. A diferença entre os valores é exatamente igual ao coeficiente calculado na regressão (b = 0.18). Abaixo há duas linhas de código apresentando esses resultados.</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="regressão-linear-múltipla.html#cb204-1"></a>peso_medio &lt;-<span class="st"> </span><span class="kw">mean</span>(dados_brasil<span class="op">$</span>peso_atual, <span class="dt">na.rm=</span>T)</span>
-<span id="cb204-2"><a href="regressão-linear-múltipla.html#cb204-2"></a><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">45</span>), <span class="dt">peso_atual=</span>peso_medio))</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="regressão-linear-múltipla.html#cb203-1"></a>peso_medio &lt;-<span class="st"> </span><span class="kw">mean</span>(dados_brasil<span class="op">$</span>peso_atual, <span class="dt">na.rm=</span>T)</span>
+<span id="cb203-2"><a href="regressão-linear-múltipla.html#cb203-2"></a><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">45</span>), <span class="dt">peso_atual=</span>peso_medio))</span></code></pre></div>
 <pre><code>##        1 
 ## 9.416621</code></pre>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="regressão-linear-múltipla.html#cb206-1"></a><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">46</span>), <span class="dt">peso_atual=</span>peso_medio))</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="regressão-linear-múltipla.html#cb205-1"></a><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">46</span>), <span class="dt">peso_atual=</span>peso_medio))</span></code></pre></div>
 <pre><code>##        1 
 ## 9.596919</code></pre>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="regressão-linear-múltipla.html#cb208-1"></a><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">46</span>), <span class="dt">peso_atual=</span>peso_medio))<span class="op">-</span><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">45</span>), <span class="dt">peso_atual=</span>peso_medio))</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="regressão-linear-múltipla.html#cb207-1"></a><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">46</span>), <span class="dt">peso_atual=</span>peso_medio))<span class="op">-</span><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">45</span>), <span class="dt">peso_atual=</span>peso_medio))</span></code></pre></div>
 <pre><code>##         1 
 ## 0.1802979</code></pre>
 <p>Tal como apresentado anteriores, a interpretação dos resultados depende da adequação de seus pressupostos. O relacionamento <u>linear</u> já havia sido investigado no gráfico de dispersão nos capítulos anteriores. A <u>Normalidade</u> dos resíduos pode ser vista pelo QQ-Plot (abaixo):</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="regressão-linear-múltipla.html#cb210-1"></a><span class="kw">ols_plot_resid_qq</span>(mod_linear_multiplo)</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="regressão-linear-múltipla.html#cb209-1"></a><span class="kw">ols_plot_resid_qq</span>(mod_linear_multiplo)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-168-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="regressão-linear-múltipla.html#cb211-1"></a><span class="kw">ols_plot_resid_stud_fit</span>(mod_linear_multiplo)</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="regressão-linear-múltipla.html#cb210-1"></a><span class="kw">ols_plot_resid_stud_fit</span>(mod_linear_multiplo)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-168-2.png" width="672" style="display: block; margin: auto;" /></p>
 <p>e por testes estatísticos formais. De forma análoga ao que aconteceu no capítulo de regressão linear simples, apesar de algo discordantes, o pressuposto de normalidade foi rejeitado.</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="regressão-linear-múltipla.html#cb212-1"></a><span class="kw">ols_test_normality</span>(mod_linear_multiplo)</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="regressão-linear-múltipla.html#cb211-1"></a><span class="kw">ols_test_normality</span>(mod_linear_multiplo)</span></code></pre></div>
 <pre><code>## Warning in ks.test(y, &quot;pnorm&quot;, mean(y), sd(y)): ties should not be present for
 ## the Kolmogorov-Smirnov test</code></pre>
 <pre><code>## -----------------------------------------------
@@ -726,15 +729,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Anderson-Darling          2.2135         0.0000 
 ## -----------------------------------------------</code></pre>
 <p>A <u>independência</u> dos resíduos pode ser avaliada pelo Durbin Watson. É importante lemrbar que a Hipótees nula é de que os resíduos não são correlacionados.</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="regressão-linear-múltipla.html#cb215-1"></a>car<span class="op">::</span><span class="kw">durbinWatsonTest</span>(mod_linear_multiplo)</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="regressão-linear-múltipla.html#cb214-1"></a>car<span class="op">::</span><span class="kw">durbinWatsonTest</span>(mod_linear_multiplo)</span></code></pre></div>
 <pre><code>##  lag Autocorrelation D-W Statistic p-value
 ##    1      0.02410462      1.947272   0.642
 ##  Alternative hypothesis: rho != 0</code></pre>
 <p>As homocedasticidade, ou seja, <u>variâncias constantes</u> pode ser vista em um gráfico de dispersão dos resíduos (residual) contra os valores previstos (fitted).</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="regressão-linear-múltipla.html#cb217-1"></a><span class="kw">ols_plot_resid_fit</span>(mod_linear_multiplo)</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="regressão-linear-múltipla.html#cb216-1"></a><span class="kw">ols_plot_resid_fit</span>(mod_linear_multiplo)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-171-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O teste Breusch-Pagan também é um indicador importante e a Hipótese nula assume homocedasticidade. Portanto, a estatística de teste deveria ser insignificante para que a homocedasticidade pudeSSR ser aceita, o que não é o caso aqui.</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="regressão-linear-múltipla.html#cb218-1"></a><span class="kw">ols_test_breusch_pagan</span>(mod_linear_multiplo)</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="regressão-linear-múltipla.html#cb217-1"></a><span class="kw">ols_test_breusch_pagan</span>(mod_linear_multiplo)</span></code></pre></div>
 <pre><code>## 
 ##  Breusch Pagan Test for Heteroskedasticity
 ##  -----------------------------------------
@@ -752,7 +755,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Chi2          =    5.723583 
 ##  Prob &gt; Chi2   =    0.01673854</code></pre>
 <p>Como esse modelo pode reunir diversas variáveis independentes, é importante verificar o quanto elas são correlacionadas entre si. Isso é feito pela análise de Variance Inflaction Factor (VIF). Valores de VIF superiores a 4 indicam que as variáveis indepenentes são fortemente correlacionadas e, com isso, as estimativas podem ser distorcidas. Neste caso, isso não aconteceu.</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="regressão-linear-múltipla.html#cb220-1"></a><span class="kw">ols_coll_diag</span>(mod_linear_multiplo)</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="regressão-linear-múltipla.html#cb219-1"></a><span class="kw">ols_coll_diag</span>(mod_linear_multiplo)</span></code></pre></div>
 <pre><code>## Tolerance and Variance Inflation Factor
 ## ---------------------------------------
 ##    Variables Tolerance      VIF

@@ -17,8 +17,8 @@ library(kableExtra) #tables with different styles
 2. Discutir os pressupostos de execução do Teste T  
 3. Realizar gráficos relacionados à comparação de médias  
 4. Apresentar e interpretar métricas de tamanho do efeito  
-5. Dar exemplos relacionados à escrita dos resultados 
-6. Apresentar versões não paramétricas do Teste T (Wilcoxon-Mann-Whitney)
+5. Dar exemplos relacionados à escrita dos resultados   
+6. Apresentar testes robustos e não paramétricos   
 ```
 
 O Teste T é um teste estatístico frequentemente utilizado para testar hipóteses sobre <u>diferenças entre médias</u>. Por utilizar dados amostrais para estimar um parâmetro ($\mu$), ele é um teste parâmetrico. Apenas por um preâmbulo histórico, a origem do Teste T remonta o artigo publicado em 1908 por William Gosset. Na época, em função de seu trabalho na cervejaria Guiness, ele não assinou o artigo, mas apenas usou seu pseudônimo *Student*, motivo pelo qual o Teste T também é chamado de Teste T de Student.   
@@ -96,7 +96,7 @@ asq_12months %>%
 
 Em seguida, a realização de um gráfico é bastante informativa para apresentação dos resultados. Apesar desse recurso não ser decisivo na tomada de decisão, ele auxilia a visualilzação da distribuição da variável que temos interesse, bem como oferece um entendimento inicial dos resultados.
 
-Uma vez que a VI é tratada como discreta e a VD é continua, tanto o gráfico de colunas/barras como o histograma/densidade são úteis. O gráfico de barras tem uma vantagem de ser possível adicionar barras de erros, que já apresentam uma primeira evidência inferencial.
+Uma vez que a VI é tratada como discreta e a VD é continua, tanto o gráfico de colunas/barras como o histograma/densidade são úteis. O gráfico de barras tem uma vantagem de ser possível adicionar barras de erros, que já apresentam uma primeira evidência inferencial. Por sua vez, histogramas e gráficos de densidade descrevem bem o formato da distribuição de dados.  
 
 
 ```{r}
@@ -125,15 +125,15 @@ t_test_12m %>% pander::pander(., split.table = Inf)
 
 Os achados trazem a média de ambos os grupos (`r round(t_test_12m$estimate[1],2)` e `r round(t_test_12m$estimate[2],2)`), a estatística do teste (`r round(t_test_12m$statistic,2)`), chamada de T calculado, os graus de liberdade (`r t_test_12m$parameter`) e o valor de p `r round(t_test_12m$p.value,2)`. 
 
-Repare que como <mark>o valor de p é superior ao valor estipulado do nível de significância (0.05), falha-se em rejeitar a hipótese nula</mark>, indicando que, apesar de numericamente distintos, os resultados não são estatisticamente significativos (na população).
+Repare que como <mark>o valor de p é superior ao valor estipulado do nível de significância (0.05), falha-se em rejeitar a hipótese nula</mark>. Nesse sentido, apesar dos resultados serem numericamente distintos, eles não são estatisticamente significativos (na população).
 
 Um aspecto importante é que a validade da interpretação dos resultados depende dos pressupostos do modelo estatístico. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer [@Lix1996; @Barker2015; @Ernst2017]. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.
 
-<mark> Normalidade</mark>: O Teste T de duas amostras independentes assume que os resultados da variável de interesse se distribuam normalmente. É importante relembrar que o Teste T é um caso especial de um modelo de regressão, o que significa que a normalidade se refere aos <u>resíduos</u> do modelo. Neste caso pode, isso pode ser aproximado testando a distribuição marginal dos resultados de ambos os grupos.  
+<mark> Normalidade</mark>: O Teste T de duas amostras independentes assume que os resultados da variável de interesse se distribuam normalmente. É importante relembrar que o Teste T é um caso especial de um modelo de regressão, o que significa que a normalidade se refere aos <u>resíduos</u> do modelo. Neste caso, isso pode ser aproximado testando a distribuição marginal dos resultados de ambos os grupos.  
 
-A normalidade pode ser avaliada graficamente por QQ-plots e por testes específicos, como o Shapiro-wilk, Anderson-Darling e Jarque Bera.
+A normalidade pode ser avaliada graficamente por QQ plots e por testes específicos, como o Shapiro-wilk, Anderson-Darling e Jarque Bera.
 
-O QQ plot é um gráfico que reúne a distribuição empírica ordenada dos quantis conta os quantis da distribuição teórica (aqui, normal). Se os dados e a linha diagonal se soprepuserem, isso é uma evidencia de que a distribuição empírica é a mesma da distribuição teórica. Caso haja discrepância, isso aponta para desvio da normalidade.
+O QQ plot é um gráfico que reúne a distribuição empírica ordenada dos quantis contra os quantis da distribuição teórica (aqui, normal). Se os dados e a linha diagonal se soprepuserem, isso é uma evidencia de que a distribuição empírica é a mesma da distribuição teórica. Caso haja discrepância, isso aponta para desvio da normalidade.
 
 ```{r}
 ggplot(asq_12months, aes(sample = total_12)) + 
@@ -142,7 +142,7 @@ ggplot(asq_12months, aes(sample = total_12)) +
   facet_wrap(~sex)
 ```
 
-Apesar do gráfico já ter sido bastante claro e sugerir fortemente desvio da normalidade em ambos os grupos, o teste formal é importante. O Shapiro-wilk costuma ser utilizado neste caso, uma vez que ele reúne diferentes características positivas no balanço entre erro do tipo 1 e 2 [@Yap2011]. A hipótese nula desse teste assume que a variável de interesse tem distribuiÇào (aproximadamente) normal. Assim, rejeitar a hipótese nula sugere que esse princípio foi violado e, com isso, o Teste T pode ter resultados distorcidos.
+Apesar do gráfico já ter sido bastante claro e sugerir fortemente desvio da normalidade em ambos os grupos, o teste formal é importante. O Shapiro-wilk costuma ser utilizado neste caso, uma vez que ele reúne diferentes características positivas no balanço entre erro do tipo 1 e 2 [@Yap2011]. A hipótese nula desse teste assume que a variável de interesse tem distribuição (aproximadamente) normal. Assim, rejeitar a hipótese nula sugere que esse princípio foi violado e, com isso, o Teste T pode gerar resultados distorcidos.
 
 
 ```{r}
@@ -154,14 +154,14 @@ asq_12months %>%
 De maneira convergente ao gráfico, o Shapiro-wilk também apontou que o princípio da normalidade foi violado.  
 
 
-<mark>Homocedasticidade</mark>: A homogeneidade ou igualdade das variâncias pode ser testada visualmente, pelo teste de Levene ou teste de Bartlett. De maneira análoga ao Shapiro-wilk, estes últimos assumem como hipótese nula a homogeneidade das variâncias. Consequemente, a rejeição desse pressuposto pode também trazer resultados distorcidos ao resultado do Teste T. Diferentemente do pressuposto da normalidade, o pressuposto da homocedasticidade foi preservado, tal como apresentado abaixo:  
+<mark>Homocedasticidade</mark>: A homogeneidade ou igualdade das variâncias pode ser testada visualmente, pelo teste Breusch-pagan, Levene ou Bartlett. De maneira análoga ao Shapiro-wilk, estes últimos assumem como hipótese nula a homogeneidade das variâncias. Consequemente, a rejeição desse pressuposto pode também trazer resultados distorcidos ao resultado do Teste T. Diferentemente do pressuposto da normalidade, o pressuposto da homocedasticidade foi preservado, tal como apresentado abaixo:  
 
 
 ```{r}
 car::leveneTest(total_12 ~ sex, data = asq_12months) %>% pander::pander()
 ```
   
-Após testar estes pressupostos, é importante avaliar o quanto a interpretação originalmente deve ser mantida. Existem diferentes recomendações sobre o que fazer quando os pressupostos são violados. Entre eles, transformar a distribuição da variável de interesse, usar versões robustas do Teste T, usar testes não-paramétricos com objetivos próximos ao Teste T ou eleger algum modelo estatístico mais adequado à distribuição empírica obtida pelos dados. Parte dessas recomendações serão demonstradas a seguir.
+Após testar estes pressupostos, é importante avaliar o quanto a interpretação originalmente deve ser mantida. Existem diferentes recomendações sobre o que fazer quando os pressupostos são violados. Entre elas, transformar a distribuição da variável de interesse, usar versões robustas do Teste T, usar testes não-paramétricos com objetivos próximos ao Teste T ou eleger algum modelo estatístico mais adequado à distribuição empírica obtida pelos dados. Parte dessas recomendações serão demonstradas a seguir.
 
 ---
 
@@ -194,9 +194,9 @@ t_test_18m <- t.test(total_18 ~ sex, var.equal = T,data = asq_18months)
 t_test_18m %>% pander::pander(., split.table = Inf)
 ```
 
-Diferentemente do anterior, agora o resultado foi significativo (p < 0.01), trazendo evidências que permitem concluir pela rejeição da hipótese nula. Da mesma forma que feito anteriormente, a verificação dos pressupostos é um elemento fundamental para validade da interpretação dos resultados. Dessa vez, tanto normalidade como a homocedasticidade foram violados, fazendo que com as interpretações tornem-se frágeis, apesar de possíveis.  
+Diferentemente do anterior, agora o resultado foi significativo (p < 0.01), trazendo evidências que permitem concluir pela rejeição da hipótese nula. Da mesma forma que feito anteriormente, a verificação dos pressupostos é um elemento fundamental para validade da interpretação dos resultados. Uma vez que tais testes foram demonstrados na seção anterior, eles não serão repdroduzidos agora. No entanto, dessa vez, a normalidade e a homocedasticidade foram violadas, fazendo que com as interpretações tornem-se frágeis, apesar de possíveis.  
 
-Isso posto, é importante ter uma atenção especial ao conceito subjacente à significância estatística. Um resultado que rejeita a hipótese nula, <u>de forma alguma</u>, deve ser entendido como "aceitação da hipótese alternativa" ou causal, especialmente em delineamentos transversais.  
+Isso posto, é importante ter uma atenção especial ao conceito subjacente à significância estatística. Um resultado que rejeita a hipótese nula, <u>de forma alguma</u>, deve ser entendido como "aceitação da hipótese alternativa" ou como evidência de causalidade, especialmente em delineamentos transversais.  
 
 É fundamental lembrar que o valor de P se refere à probabilidade de encontrar a estatística de teste calculada, ou uma ainda mais exterma, assumindo que a hipótese nula é verdadeira [@Wasserstein2016]. Apesar de algo contra-intuitivo (e talvez desanimador), é assim que a estatística frequentista funciona.
 
@@ -204,7 +204,7 @@ Isso posto, é importante ter uma atenção especial ao conceito subjacente à s
 
 Resultados significativos não são informativos em relação ao tamanho do efeito. Esta última métrica tem mais contato com as perguntas originalmente realizadas em uma pesquisa e é entendida como uma medida objetiva e padronizada da magnitude de um efeito observado independente da significância estatística. Dessa maneira, o tamanho do efeito pode ser considerado um indicador da <u>relevância clínica</u> dos grupos, cujo uso é sempre importante em pesquisas em Psicologia e áreas da saúde.
 
-Existem duas famílias principais no ambiente do tamanho do efeito, que são a família "d" e a família "r". Tecnicamente, quando comparamos médias, usamos o d de Cohen para calcular a distância entre as médias das distribuições normais sobrepostas.
+Existem duas famílias principais no ambiente do tamanho do efeito, que são a família "d" e a família "r". Tecnicamente, quando comparamos médias, usamos o d de Cohen para calcular a distância entre as médias das distribuições sobrepostas.
 
 A interpretação é a seguinte:
 
@@ -214,12 +214,15 @@ A interpretação é a seguinte:
   | d $\geq$ 0.2   | Pequeno
   | d $\geq$ 0.5   | Moderado      
   | d $\geq$ 0.8   | Grande 
-  
-Com esse conjunto de dados, o tamanho do efeito foi irrelevante, indicando que a diferença dos resultados não apresenta uma relevância clínica importante.   
+    
+
+Para executar este teste no R, é possível contar com o pacote `effsize`, tal como demonstrado abaixo:    
 
 ```{r}
 effsize::cohen.d(total_18 ~ sex, data = asq_18months)
 ```
+
+Com esse conjunto de dados, o tamanho do efeito foi irrelevante, indicando que a diferença dos resultados não apresenta uma relevância clínica importante. 
 
 ## Execução no JASP
 
@@ -256,11 +259,11 @@ Repare que a `Grouping variable` é o local onde a VI deverá ser colocada, enqu
 
 ![](./img/cap_testet_resultados_iniciais.png)
 
-Entretanto, da mesma forma como apresentado no ambiente R, a interpretação deste resultado <u>não pode ser feita de uma forma automática</u>. É necessário saber se os pressupostos foram ou não atendidos, bem como calcular o tamanho do efeito. Para verificar os pressupostos, será necessário utilizar as opções dispostas na parte inferior à esquerda do programa.
+Entretanto, da mesma forma como apresentado no ambiente R, a interpretação deste resultado <u>não pode ser feita de uma forma automática</u>. É necessário saber se os pressupostos foram ou não atendidos, bem como calcular o tamanho do efeito. Para verificar os pressupostos, será necessário utilizar as opções dispostas na parte inferior à esquerda do programa. Na imagem abaixo, elas foram destacadas pelo retângulo roxo.  
 
 ![](./img/cap_testet_pressupostos.png)
 
-É necessário marcar ambas as opções para que os testes sejam realizados. Os resultados são os mesmos já obtidos pelo R e indicam que Ambos os pressupostos foram violados, sugerindo uma interpretação bastante cautelosa dos achados.
+É necessário marcar as duas opções para que os testes sejam realizados. Os resultados são os mesmos já obtidos pelo R e indicam que ambos os pressupostos foram violados, sugerindo uma interpretação bastante cautelosa dos achados.
 
 ![](./img/cap_testet_pressupostos2.png)
 
@@ -270,7 +273,7 @@ Para inserir o tamanho do efeito ao lado do Teste T, é necessário clicar em `E
 
 ![](./img/cap_testet_tamanho_do_efeito.png)
 
-Com estas informações marcadas, agora os resultados podem ser analisados em conjunto. O valor de P irá indicar se a hipótese nula foi rejeitada ou não.
+Com estas informações marcadas, agora os resultados podem ser analisados em conjunto. O valor de P irá indicar se a hipótese nula foi rejeitada ou não. O tamanho do efeito indicará a relevância ou importância prática dos resultados.  
 
 
 ![](./img/cap_testet_resultados.png)
@@ -388,6 +391,8 @@ Conforme alertado ao início do capítulo, o Teste T é um caso particular de um
 
 Neste modelo, $b_0$ (intercepto) é o grupo <u>referência</u> que recebeu o valor 0. Já $b_1$ (inclinação) é a diferença entre os valores do grupo definido para o intercepto e o outro grupo, que recebeu o valor de 1 e é chamado de <u>comparação</u>. Caso isso não tenha sido explicitamente definido, ao se usar o R, será necessário codificar a variável como <u>fator</u>.
 
+O exemplo abaixo ilustra os resultados utilizando a base `asq_18months`. 
+
 
 ```{r}
 lm(total_18 ~ sex, data = asq_18months) %>%
@@ -395,7 +400,7 @@ lm(total_18 ~ sex, data = asq_18months) %>%
 ```
 
 
-Em função da ordem alfabética, o R atribuiu os meninos (`male`) como intercepto e, consequentemente, grupo referência. Assim, o valor de $b_0$ será o valor médio obtido pelos dos meninos, que foi de `27.53`. A inclinação $b_1$ é justamente a diferença entre os valores dos meninos e das meninas (`24.95-27.53`) e, nesse caso, -2.58. A estatística F é equivalente a $t^2$ do Teste T em sua versão tradicional, que assume variâncias iguais entre grupos.
+Em função da ordem alfabética, o R atribuiu os meninos (`male`) como intercepto e, consequentemente, grupo referência. Assim, o valor de $b_0$ será o valor médio obtido pelos dos meninos, que foi de `27.53`. A inclinação $b_1$ é justamente a diferença entre os valores dos meninos e das meninas (`24.95-27.53`) e, nesse caso, `-2.58`. A estatística F é equivalente a $t^2$ do Teste T em sua versão tradicional, que assume variâncias iguais entre grupos.
 
 Agora torna-se mais intuitivo mostrar que a <u>normalidade no Teste T se refere à normalidade dos resíduos deste modelo de regressão</u>. Isso pode ser visualmente pela análise de um QQ plot, tal como a seguir.
 
@@ -403,7 +408,7 @@ Agora torna-se mais intuitivo mostrar que a <u>normalidade no Teste T se refere 
 olsrr::ols_plot_resid_qq(lm(total_18 ~ sex, data = asq_18months))
 ```
   
-Há também testes estatísticos formais, como o Shapiro-Wilk ou o Anderson-Darling. Nestes, a hipótese nula é de que os resíduos são normalmente distribuídos e idealmente não se deve rejeitá-la.
+Há também testes estatísticos formais, como o Shapiro-Wilk ou o Anderson-Darling. Nestes, a hipótese nula é de que os resíduos são normalmente distribuídos e idealmente não se deve rejeitá-la. Abaixo segue a execução do Anderson-Darling, uma vez que o Shapiro-wilk não lida bem mais de 500 valores residuais. 
 
 ```{r}
 nortest::ad.test(lm(total_18 ~ sex, data = asq_18months)$residuals)
@@ -430,6 +435,7 @@ Mais detalhes sobre modelos de regressão são apresentados em capítulos espec�
 ## Resumo  
 
 1. O Teste T é um teste paramétrico que visa comparar duas médias  
+2. Gráfico de barras ou boxplots são extremamente úteis para verificar os resultados   
 2. O Teste T é um caso particular de um modelo de regressão  
 3. Os pressupostos do Teste T devem ser checados antes da interpretação dos resultados   
 4. Quando os pressupostos são violados, o pesquisador deverá tomar decisões sobre a manutenção, modificação ou substituição deste teste por outro  
