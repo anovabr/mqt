@@ -28,9 +28,161 @@ library(janitor) #descritipve stats
 3. Oferecer heurísticas ou regras gerais para criação de gráficos
 ```
 
-A Estatística descritiva visa <mark>descrever, resumir e apresentar</mark> os dados obtidos em uma pesquisa de maneira a tornar os resultados mais fáceis de serem compreendedidos. É possível fazer isso de maneira <u>textual</u>, <u>tabular</u> e <u>gráfica</u>. Cada uma dessa formas apresenta vantagens e desvantagens. Tabelas e texxtos permitem agrupar e detalhar bem os resultados e, com isso, torná-los mais precisos e abrangentes. Entretanto, esse detalhamento pode também dificultar um pouco no entendimento geral dos resultados. Por sua vez, gráficos geram sumários descritivos em que se é possível ter um entendimento rápido dos resultados. Além disso, os gráficos podem incorporar outros elementos que oferecem um primeiro entendimento inferencial, tal como barras de erro e intervalos de confiança.  
+Quando pesquisadores e acadêmicos fazem seus estudos, com muita frequência, eles obtêm um grande conjunto de dados, sendo pouco informativo ou até mesmo inviável apresentar detalhadamente todos os resultados. A estatística descritiva oferece uma diversidade de ferramentas que auxiliam a <mark>descrever, resumir e apresentar</mark> os dados obtidos, de forma que os resultados sejam mais fáceis de serem compreendidos e analisados.   
 
-Em todas estas técnicas, mas especialmente no desenvolvimento de gráficos, deve-se evitar gerar distorções na interpretação dos resultados. 
+Frequentemente, a massa completa de dados obtidos em uma pesquisa é resumida por alguns números específicos, que possuem certas propriedades estatísticas, e conseguem resumir adequadamente o volume de dados. Por sua vez, esses números são usados em análises específicas que possam ser necessárias. 
+
+Na apresentação dos dados, é possível utilizar <u>informações textuais</u>, <u>tabelas</u> e <u>gráficos</u>. Cada uma dessa formas traz vantagens e desvantagens. Tabelas e textos permitem agrupar e detalhar os resultados e, com isso, torná-los mais precisos e extensivos. Entretanto, esse detalhamento pode também dificultar um pouco no entendimento geral e abrangente do estudo. Por sua vez, gráficos geram sumários descritivos, em que é possível ter um entendimento rápido dos principais resultados. Gráficos também podem incorporar outros elementos que auxiliam em uma primeira análise inferencial, tal como barras de erro e intervalos de confiança e além disso, dependendo do tipo de pesquisa, os gráficos podem descrever tanto <u>diferenças</u> entre grupos, como <u>relações</u> entre variáveis. No entanto, uma vez que os gráficos oferecem uma condensação de um grande conjunto de resultados, eles também podem dificultar um pouco no entendimento das conclusões.  
+
+O diagrama a seguir apresenta tais características:
+
+![](./img/cap_desc_graficos_tabelas.png)
+
+É importante atentar que em todas estas técnicas, mas especialmente nas gráficas, deve-se evitar gerar distorções ao entendimento e interpretação dos resultados obtidos no estudo. Existem recomendações nacionais e internacionais que visam auxiliar no  desenvolvimento de gráficos e tabelas e, com grande frequência, periódicos e editoras também requerem que formatos específicos na apresentação dos resultados sejam seguidos.
+ 
+
+
+## Medidas de posição e dispersão  
+
+Uma vez que é pragamaticamente inviável apresentar detalhadamente todo o volume de dados obtidos em uma pesquisa, há um conjunto de números podem ser utilizados para <u>resumir</u> todo o conjunto. Eles costumam ser chamadados de números-síntese, medidas estatísticas ou apenas estatísticas e podem ser agrupados em <u>medidas de posição</u> e <u>medidas de dispersão</u>, que serão descritas a seguir.
+
+<mark>Medidas de posição</mark>: valores que representam a concentração dos dados observados. Podem ser divididas em medidas de tendência central, medidas separatrizes ou de ordenamentos e medidas de posição relativa. As medidas de tendência central (MTC) indicam o valor em torno do qual uma grande proporção de outros valores está centralizada. As MTC mais usadas são a moda, a média e a mediana. As separatrizes são valores que indicam posições em uma distribuição ordenada acumulada dos dados. Frequentemente, a mediana e os quantis são utilizados e este último é formado pelos quartis, decis e percentis. As medidas de posição relativa são valores que indicam as posições que cada valor do conjunto de dados em relação a todos os dados. Frequentemente, o Escore Z, o Escore T e o Escore QI são utilizados como medidas de posição de relativa. A verdade é que essa divisão tão detalhada sempre apresenta inconsistências e quase nunca é utilizada na prática. No dia a dia, o termo MTC é utilizado de maneira virtualmente idêntica a medidas de posição.  
+
+<Mark>Medidas de dispersão </mark>. Também chamadas de medidas de variabilidade ou afastamento. São Valores que indicam o quão dispersa se encontra a distribuição dos valores em relação à alguma medida de tendência central. Entre as medidas de dispersão, estão a amplitude, a amplitude (ou intervalo) interquartil, a variância, o desvio-padrão e o coeficiente de variação. Em Psicologia, o desvio-padrão e a amplitude interquartil (também chamado de intervalo interquartil) são as mais utilizada.  
+O diagrama abaixo apresenta estas informações.
+
+
+![](./img/cap_desc_medidas_posicao_dispersao.png)
+
+
+
+É importante notar que esse conjunto de divisões tem pouco sentido prático na maioria das pesquisas e do cotidiano dos pesquisadores. Apenas em raras exceções, como em Psicometria, é que discussões sobre percentis e Escores Z serão feitas. Dessa maneira, apesar dessa apresentação representar um esforço para reunir as principais medidas estatísticas utilizadas, ela não traduz bem a realidade cotidiana da maior parte das pesquisas e, consequetemente, dos pesquisadores. 
+
+
+Com muita frequeência, as medidas de posição e as medidas de tendência central são vistas como sinônimos, bem como utiliza-se apenas o termo "medidas de dispersão" para todas as medidas de afastamento. Dessa forma, a organização apresentada no diagrama abaixo talvez possa ser mais útil.
+
+
+
+
+![](./img/cap_desc_medidas_posicao_dispersao2.png)
+
+As principais medidas serão agora apresentadas de uma maneira simples. Esse formato é proposital, uma vez que a proposta do livro é discutir tais conceitos pela apresentação de pesquisas específicas e previamente publicadas.  
+
+
+## Média
+
+A média é a MTC mais comum e mais intuitiva. Seu valor representa o “centro de gravidade” da distribuição, descrevendo a maior concentração dos valores em torno dela. Assim, ela resume o conjunto de dados e pode ser utilizada para substituir os outros valores, o que é especialmente útil quando há casos ausentes.  
+
+Imagine a seguinte situacão. 10 pacientes foram avaliados por um teste de inteligência e apresentaram os resultados abaixo descritos:  
+
+```{r}
+set.seed(1)
+rnorm(11, mean = 100, sd = 15) %>% pander()
+```
+
+A média indicará o valor central da distribuição em relação à distância entre os outros valores.
+
+```{r}
+set.seed(1)
+mean(rnorm(11, mean = 100, sd = 15)) %>% pander()
+```
+   
+Repare que Caso uma tabela seja apresentada e nela seja calculado a distância de todos os valores em relação à média, os resultados seriam assim:
+
+```{r}
+set.seed(1)
+rnorm(11, mean = 100, sd = 15) %>% data.frame() %>% setNames(., c("Resultado")) %>% 
+mutate(media = mean(Resultado)) %>% 
+mutate(distancia = Resultado-media) %>% 
+pander()
+```
+Somando as distâncias, o resultado será `0`, indicando que elas se anulam e que a média é o centro da distribuição.
+
+```{r}
+set.seed(1)
+rnorm(11, mean = 100, sd = 15) %>% 
+  data.frame() %>% setNames(., c("Resultado")) %>% 
+  mutate(media = mean(Resultado)) %>% 
+  mutate(distancia = Resultado-media) %>%
+  mutate_if(is.numeric, round, 1) %>% 
+  mutate(media = as.character(media)) %>% 
+  janitor::adorn_totals() %>% 
+  pander()
+```
+
+A tabela a seguir descreve algumas características vantajosas e possíveis limitações da média.
+
+
+  | Vantagem                           | Limitação                          |  
+  | :-----------                       | :-----------                       | 
+  | É intuitiva                        | Sensível                           | 
+  | Algebricamente tratável            | Não adequada a dados nominais      | 
+  | Estimador não viesado              |                                    | 
+  | Sensível                           |                                    | 
+
+Nota: Uma medida sensível significa que ela é influenciada por todos os outros valores.  
+
+
+## Mediana
+
+A mediana é uma medida que representa o centro do conjunto de dados quando se considera a quantidade de elementos presentes. Uma vez que ela divide a distribuição em duas partes iguais com a mesma quantidade de elementos, ela pode tanto ser vista como uma medida de tendência central, como uma separatriz. Comparada com a média, os resultados obtido pela mediana são mais robustos aos valores atípicos ou anômalos, apesar de menos intuitivos.  
+
+Para dividir a distribuição em duas partes iguais, a realização da mediana precisa de alguns procedimentos. Repare que abaixo estão os mesmo resultados apresentados na seção da média:
+
+
+```{r}
+set.seed(1)
+rnorm(11, mean = 100, sd = 15) %>% pander()
+```
+
+Ao organizar essa série de valores de maneira ascendente (chamado de rol), o valor ao centro é `104.9` . Este valor divide os dados em duas partes iguais de elementos abaixo ou acima dele.
+
+
+```{r}
+set.seed(1)
+rnorm(11, mean = 100, sd = 15) %>% sort(.) %>% pander()
+```
+
+Caso a quantidade de elementos seja par, a mediana será a média artimética dos dois elementos centrais.
+
+A tabela a seguir descreve algumas características vantajosas e possíveis limitações da mediana.
+
+
+  | Vantagem                                                   | Limitação                          |  
+  | :-----------                                               | :-----------                       | 
+  | Resistente a valor anômalos/Outliers                       | Não representa todos os valores    | 
+  | Adequada para dados ordinais, intervalares e de razão      | Não adequada a dados nominais      | 
+  | Adequada para dados ordinais, intervalares e de razão      | Pouco adequada a tratamentos algébricos futuros     | 
+
+
+## Moda  
+
+A moda é a realização mais frequente de um conjunto de dados. Com poucas excessões, a moda é pouco utilizada em estatística, uma vez que representa mal o conjunto de dados.  
+
+
+## Amplitude
+
+A amplitude é uma medida de dispersão que indica a variabilidade dos dados. O procedimento para seu cálculo é a subtração entre o maior e o menor valor de um conjunto de dados.  
+
+## Amplitude interquartil
+
+A amplitude interquartil também é chamada de intervalo interquartil. Essa medida apresenta a variabilidade dos dados de maneira insensível a valores extremos. Ela é computada pela subtração do primeiro quartil (Q1) pelo terceiro quartil (Q3), ou seja, `Q3-Q1`. Os quartis são medidas que indicam posições de separação no conjunto ordenado de dados.  
+
+O primeiro quartil indica o valor onde estão até 25% dos dados, o segundo quartil tem o mesmo valor da mediana e o terceiro quartil indica o valor onde estão até 75% dos dados. 
+
+Como a amplitude interquartil considera apenas a variabilidade em torno do centro, ela é uma medida considerada mais estável ou robusta quando comparada a outras.
+
+## Variância e Desvio-padrão
+
+A variância e o desvio-padrão são duas medidas de dispersão frequentemente utilizadas em estatística, mas que apresentam algumas características diferentes. A variância é uma medida que indica a variabilidade (quadrática) de um conjunto de dados, considerando todos os valores da distribuição. Pela sua estrutura matemática, seu resultado expressa o desvio <u>quadrático</u> médio e, com isso, seu valor <u>não</u> está na mesma unidade dos dados originais.  
+
+A variância é uma medida fundamental no estudo das famílias de distribuições de probabilidades e análises estatísticas. No entanto, na prática, ela é pouco usada para descrever a variabilidade dos dados e acaba sendo usada apenas de forma transitória para o cálculo do desvio-padrão. 
+
+
+Por sua vez, o desvio-padrão é uma medida com melhores características descritivas. Ele indica a variação dos valores em torno da média, e como seus resultados são calculados pela raiz quadrada da variância, o desvio-padrão está na mesma unidade dos dados originais. . 
+
+
+Em síntese, enquanto a variância tem maior importância em aspectos matemáticos relacionados às famílias de distribuições de probabilidade, o desvio-padrão tem melhor adequação descritiva de um conjunto de dados.  
 
 
 
@@ -47,7 +199,7 @@ Um diferencial importante do trabalho foi a seleção amostral. Partiu-se de uma
 
 ## Execução no R 
 
-### Tabelas   
+## Tabelas   
 
 Tabelas apresentam os sumários informativos de uma pesquisa de maneira reunida e objetiva. É possível utilizá-las com apenas uma ou com múltiplas variáveis, sejam elas categóricas ou contínuas. As tabelas precisam ter um título, bem como colunas e linhas. Com frequência, as instrução para desenvolvimento de tabelas variam de editora para editora e, segundo a APA, apenas as linhas superiores e inferiores recebem bordas e números decimais são arredondados até a segunda casa decimal.  
 
@@ -61,7 +213,7 @@ Dataset %>%
 
 ```
 
-A adição de um um outro agrupador relacionado ao sexo é também importante. Note que existem casos ausentes na variável <u>sexo</u>. Isso ocorre com bastante frequência e há diferentes estratégias para lidar com isso, que serão discutidas em momento oportuno. Para que tais condições não sejam apresentadas, a função `filter` será implementada.   
+A adição de um um outro agrupador relacionado ao sexo é também importante. Note que existem casos ausentes nesta variável. Isso ocorre com bastante frequência e há diferentes estratégias para lidar com isso, que serão discutidas em momento oportuno. Para que valores ausentes não sejam apresentados, a função `filter` será implementada.   
 
 ```{r}
 Dataset %>% 
@@ -122,7 +274,7 @@ Dataset %>%
 ```
 
 
-### Gráficos
+## Gráficos
 
 A máquina gráfica do tidyverse é o ggplot. Para executar um gráfico, <mark>pelo menos</mark> 3 argumentos são necessários para criação de gráficos, que são:
 
@@ -192,7 +344,7 @@ grViz("digraph flowchart {
 Nota: Nessa apresentação, pragmaticamente as variáveis categóricas são tratadas como discretas.
 
 
-### 1 variável discreta
+## 1 variável discreta
 
 Quando há apenas uma variável discreta (incluindo aqui as categóricas), os gráficos são criados para apresentar as contagens e/ou suas proporções. Nesse caso, é recomendado utilização de um <u>gráfico de barras</u> ou <u>gráfico de setor</u>. Apesar de ser possível apresentar as frequências absolutas, esses resultados podem gerar distorção da informação e, portanto, é preferível sempre apresentar as proporções de ocorrência de uma determinada variável ou valor. Por definição, quando se trabalha com proporções, o valor máximo da soma das proporções é 100.
 
@@ -204,7 +356,7 @@ ggplot(Dataset, aes(x = country)) +
   labs(x = "País", title = "Número de participantes nos países investigados")
 ```
 
-Apesar desse gráfico auxiliar em um primeiro entendimento dos dados, a mudança da contagem para proporções é indicada. Para fazer isso, um recurso do pacote `scales` foi implementado para adequar o eixo y e adicionar o valor textual às colunas.
+Apesar desse gráfico auxiliar em um primeiro entendimento dos dados, a mudança da contagem para proporções é indicada. Para fazer isso, um recurso do pacote `scales` pode ser usado para adequar o eixo y e adicionar o valor textual às colunas.
 
 ```{r}
 ggplot(Dataset, aes(x = country, y = ..prop.., group = 1)) + 
@@ -215,7 +367,7 @@ ggplot(Dataset, aes(x = country, y = ..prop.., group = 1)) +
   labs(x = "País", title = "Proporção de participantes em cada país investigado")
 ```
 
-O gráfico de setor (as vezes chamado de polar, pizza ou torta) pode também ser utilizado. O aspecto principal desse gráfico é apresentar os setores de maneira proporcional às frequências.
+O gráfico de setor (as vezes chamado de polar, pizza ou torta) também pode ser utilizado. O aspecto principal desse gráfico é apresentar o tamanho dos setores de maneira proporcional às frequências.
 
 ```{r}
 Dataset %>% 
@@ -229,7 +381,7 @@ Dataset %>%
 ```
 
 
-### 1 variável contínua
+## 1 variável contínua
 
 Quando uma única variável deve ser apresentada e ela é continua, os melhor gráficos são o histograma, densidade (kernel) e o boxplot.
 
@@ -270,12 +422,12 @@ ggplot(Dataset, aes(y = age, x = "")) +
   stat_summary(
     aes(label=sprintf("%1.1f", ..y..)),
     geom="text", 
-    fun.y = function(y) boxplot.stats(y)$stats,
+    fun = function(y) boxplot.stats(y)$stats,
     position=position_nudge(x=0.5), 
     size=3.5)
 ```
 
-Apesar de ser um pouco difícil de se visualizar ao início, a informação apresentada em um boxplot e no gráfico de densidade são virtualmente as mesmas, tal como demonstrado a seguir.   
+Apesar de ser um pouco difícil de se visualizar ao início, a informação apresentada em um boxplot e no histograma ou gráfico densidade são virtualmente as mesmas, tal como demonstrado a seguir.   
 
 ```{r}
 gridExtra::grid.arrange(
@@ -321,7 +473,7 @@ ggplot(Dataset, aes(x = country, y = bai_sum)) +
 
 ## 2 variáveis com VI contínua (e VD contínua)  
 
-Assumindo que a VI é contínua e a VD também, o gráfico de pontos e de dispersão são virtualmente identicos e indicados. Esses gráficos permitem verificar a <u>associação</u> entre as variáveis. No ggoplot, o argumento `geom_point` (à esquerda) e `geom_jitter` (à direita) são possíveis. 
+Quando tanto a VI como a VD são contínuas, o gráfico de pontos e de dispersão são indicados. Eles são virtualmente identicos e ajudam a verificar a <u>associação</u> entre as variáveis. No `ggplot`, o argumento `geom_point` (à esquerda) e `geom_jitter` (à direita) são possíveis. 
 
 ```{r}
 gridExtra::grid.arrange(
@@ -334,12 +486,10 @@ gridExtra::grid.arrange(
   geom_jitter(),
   nrow=1
 )
-
-
 ```
 
 
-Tradicionalmente, de maneira análoga às barras de erros apresentadas em gráficos cujas VIs são discretas, adiciona-se uma reta de regressão amostral (FRA) quando a VI é contínua, tal como apresentado a seguir. É importante atentar que o capítulo sobre modelos de regressão irá trabalhar melhor este conceito.
+De maneira análoga às barras de erros apresentadas em gráficos com VIs são discretas, reta de regressão amostral (FRA) costumem ser adicionadas em gráficos em que a VI é contínua. A seguir, segue um exemplo. No capítulo sobre modelos de regressão, esse conceito será novamente revisitado.  
 
 ```{r}
 ggplot(Dataset, aes(x = age, y = bai_sum)) +
@@ -349,7 +499,7 @@ ggplot(Dataset, aes(x = age, y = bai_sum)) +
 
 ## Outros gráficos e configurações
 
-Evidentemente, é possível apresentar mais informações nos gráficos com mais de um variável apresentada, desde que elas sejam relacionadas ao problema de pesquisa estudado e não sobrecarreguem a visualização dos resultados. Frequentemente, as informações adicionais são feitas pela inclusão de <u>clusters</u> ou <u>agrupamentos</u>. Isso é tanto possível em gráficos cuja VI seja discreta quanto contínua.
+É possível construir gráficos com diversas variáveis, desde que elas sejam relacionadas ao problema de pesquisa estudado e nem sobrecarreguem, nem distorçam a visualização e entendimento dos resultados. Frequentemente, as informações adicionais são feitas pela inclusão de <u>clusters</u> ou <u>agrupamentos</u>. Isso é tanto possível em gráficos cuja VI seja discreta quanto contínua.
 
 No exemplo abaixo, o gráfico dos resultados do Inventário Beck de Ansiedade entre os 3 países investigados (VI discreta) agora está agrupado pelo sexo do participante.
 
@@ -360,7 +510,7 @@ Dataset %>%
   geom_bar(stat = "summary", position = "dodge") +
   stat_summary(geom="errorbar", fun.data = mean_se, position = position_dodge(0.95), width = .5) 
 ```
-
+Repare que este gráfico traz uma informação importante sobre os resultados de homens e mulheres nos três países. Além disso, as barras de erro ajudam em um primeiro entendimento de possíveis diferenças significativas. Esse conceito irá ser revisitado em capítulos subsequentes.  
 Já no exemplo abaixo, a relação entre idade e pontuação no Inventário Beck de Ansiedade está agora agrupada pelo sexo do participante.
 
 ```{r}
@@ -370,8 +520,9 @@ Dataset %>%
   geom_jitter() +
   geom_smooth(method = "lm") 
 ```
+Neste gráfico de agora, é possível perceber que os a relação entre a idade e os resultados do Inventário Beck de Ansiedade é muito pequena tanto para homens como para mulheres. Especialmente no capítulo de correlação, esse assunto será revisitado e parte dos termos utilizados aqui será alterado.  
 
-Em situações onde existe uma grande quantidade de informação para ser apresentada, os resultados começam a se tornar difíceis de serem entendidos. O gráfico abaixo, por exemplo, é excessivamente carregado de informação e, consequentemente, inadequado.
+Por sua vez, situações em que há uma grande quantidade de variáveis apresentadas tendem a tornar os resultados difíceis de serem entendidos. O gráfico abaixo tenta traduzir essa condição, criando uma visualização de difícil entendimento justamente pelo excesso de variáveis presentes. 
 
 ```{r}
 Dataset %>% 
@@ -381,16 +532,9 @@ Dataset %>%
   geom_smooth(method = "lm") 
 ```
 
-Em outro sentido, o gráfico a seguir quebra a apresentação dos resultados por país e, com isso, potencializa que a informação seja melhor compreendida.
+Espera-se que seja possível constantar que este gráfico é <mark>totalmente inadequado</mark>, já que é carregado por informações, permite um baixo entendimento dos resultados da pesquisa e, eventualmente, pode gerar conclusões incorretas ou viesadas.  
 
-```{r}
-Dataset %>% 
-  filter(!is.na(sex)) %>% 
-  ggplot(., aes(x = age, y = bai_sum, color = sex)) +
-  geom_jitter() +
-  geom_smooth(method = "lm") +
-  facet_wrap( ~ country)
-```
+## Execução no JASP  
 
 
 ## Resumo  
