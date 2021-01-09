@@ -23,9 +23,11 @@ library(janitor) #descritipve stats
 
 ```{block, type="objectives"}
 **Objetivos do capítulo**  
-1. Apresentar tabelas e gráficos  
-2. Introduzir os verbos do dplyr e funções do ggplot.  
-3. Oferecer heurísticas ou regras gerais para criação de gráficos
+1. Introduzir conceitos importantes em estatística descritiva  
+2. Apresentar tabelas e gráficos  
+3. Apresentar funções do dplyr e ggplot    
+4. Apresentar um módulo específico do JASP   
+5. Sugerir heurísticas ou regras gerais na criação de gráficos  
 ```
 
 Quando pesquisadores e acadêmicos fazem seus estudos, com muita frequência, eles obtêm um grande conjunto de dados, sendo pouco informativo ou até mesmo inviável apresentar detalhadamente todos os resultados. A estatística descritiva oferece uma diversidade de ferramentas que auxiliam a <mark>descrever, resumir e apresentar</mark> os dados obtidos, de forma que os resultados sejam mais fáceis de serem compreendidos e analisados.   
@@ -46,7 +48,7 @@ O diagrama a seguir apresenta tais características:
 
 Uma vez que é pragamaticamente inviável apresentar detalhadamente todo o volume de dados obtidos em uma pesquisa, há um conjunto de números podem ser utilizados para <u>resumir</u> todo o conjunto. Eles costumam ser chamadados de números-síntese, medidas estatísticas ou apenas estatísticas e podem ser agrupados em <u>medidas de posição</u> e <u>medidas de dispersão</u>, que serão descritas a seguir.
 
-<mark>Medidas de posição</mark>: valores que representam a concentração dos dados observados. Podem ser divididas em medidas de tendência central, medidas separatrizes ou de ordenamentos e medidas de posição relativa. As medidas de tendência central (MTC) indicam o valor em torno do qual uma grande proporção de outros valores está centralizada. As MTC mais usadas são a moda, a média e a mediana. As separatrizes são valores que indicam posições em uma distribuição ordenada acumulada dos dados. Frequentemente, a mediana e os quantis são utilizados e este último é formado pelos quartis, decis e percentis. As medidas de posição relativa são valores que indicam as posições que cada valor do conjunto de dados em relação a todos os dados. Frequentemente, o Escore Z, o Escore T e o Escore QI são utilizados como medidas de posição de relativa. A verdade é que essa divisão tão detalhada sempre apresenta inconsistências e quase nunca é utilizada na prática. No dia a dia, o termo MTC é utilizado de maneira virtualmente idêntica a medidas de posição.  
+<mark>Medidas de posição</mark>: valores que representam a concentração dos dados observados. Podem ser divididas em medidas de tendência central, medidas separatrizes ou de ordenamentos e medidas de posição relativa. As medidas de tendência central (MTC) indicam o valor em torno do qual uma grande proporção de outros valores está centralizada. As MTC mais usadas são a moda, a média e a mediana. As separatrizes são valores que indicam posições em uma distribuição ordenada acumulada dos dados. Frequentemente, a mediana e os quantis são utilizados e este último é formado pelos quartis (divisão dos dados em 4 partes iguais), decis (divisão em 10 partes iguais) e percentis (divisão em 100 partes iguais). As medidas de posição relativa são valores que indicam as posições que cada valor do conjunto de dados em relação a todos os dados. Frequentemente, o Escore Z, o Escore T e o Escore QI são utilizados como medidas de posição de relativa. A verdade é que essa divisão tão detalhada sempre apresenta inconsistências e quase nunca é utilizada na prática. No dia a dia, o termo MTC é utilizado de maneira virtualmente idêntica a medidas de posição.  
 
 <Mark>Medidas de dispersão </mark>. Também chamadas de medidas de variabilidade ou afastamento. São Valores que indicam o quão dispersa se encontra a distribuição dos valores em relação à alguma medida de tendência central. Entre as medidas de dispersão, estão a amplitude, a amplitude (ou intervalo) interquartil, a variância, o desvio-padrão e o coeficiente de variação. Em Psicologia, o desvio-padrão e a amplitude interquartil (também chamado de intervalo interquartil) são as mais utilizada.  
 O diagrama abaixo apresenta estas informações.
@@ -122,10 +124,12 @@ A tabela a seguir descreve algumas características vantajosas e possíveis limi
 
 Nota: Uma medida sensível significa que ela é influenciada por todos os outros valores.  
 
+<mark>Exemplo de aplicações</mark>:  Praticamente, em todas as pesqusias se utiliza a média para sumarizar os resultados obtidos. Como exemplos em Psicologia, a média de valores de inventários e testes psicológicos, a média do tempo de reação que um participante demora para responder à uma atividade específica e a média de consultas clínicas que em média um profissional realiza.    
+
 
 ## Mediana
 
-A mediana é uma medida que representa o centro do conjunto de dados quando se considera a quantidade de elementos presentes. Uma vez que ela divide a distribuição em duas partes iguais com a mesma quantidade de elementos, ela pode tanto ser vista como uma medida de tendência central, como uma separatriz. Comparada com a média, os resultados obtido pela mediana são mais robustos aos valores atípicos ou anômalos, apesar de menos intuitivos.  
+A mediana é uma medida que representa o centro do conjunto de dados quando se considera a quantidade de elementos presentes. Uma vez que ela divide a distribuição em duas partes iguais com a mesma quantidade de elementos, ela pode tanto ser vista como uma medida de tendência central, como uma separatriz (5º decil e percentil 50). Comparada com a média, os resultados obtido pela mediana são mais robustos ou resistentes aos valores atípicos ou anômalos, apesar de menos intuitivos.  
 
 Para dividir a distribuição em duas partes iguais, a realização da mediana precisa de alguns procedimentos. Repare que abaixo estão os mesmo resultados apresentados na seção da média:
 
@@ -135,7 +139,7 @@ set.seed(1)
 rnorm(11, mean = 100, sd = 15) %>% pander()
 ```
 
-Ao organizar essa série de valores de maneira ascendente (chamado de rol), o valor ao centro é `104.9` . Este valor divide os dados em duas partes iguais de elementos abaixo ou acima dele.
+Para o cálculo da mediana, é necessário organizar essa série de valores de maneira ascendente (chamado de rol) e localizar o resultado ao centro. Nesse caso, o valor ao centro é `104.9` . Note que este valor divide os dados em duas partes iguais de elementos abaixo ou acima dele.
 
 
 ```{r}
@@ -155,9 +159,13 @@ A tabela a seguir descreve algumas características vantajosas e possíveis limi
   | Adequada para dados ordinais, intervalares e de razão      | Pouco adequada a tratamentos algébricos futuros     | 
 
 
+<mark>Exemplo de aplicações</mark>:  Situações em que a distribuição é muito assimétrica. Variáveis econômicas como salário e pobreza costumam trabalhar com a mediana dos dados.    
+
 ## Moda  
 
-A moda é a realização mais frequente de um conjunto de dados. Com poucas excessões, a moda é pouco utilizada em estatística, uma vez que representa mal o conjunto de dados.  
+A moda é a realização mais frequente de um conjunto de dados. Salvo algumas excessões, a moda não costuma ser utilizada em análises estatísticas, uma vez que representa mal o conjunto de dados.  
+
+<mark>Exemplo de aplicações</mark>:  Situações em saúde pública, como a idade mais típica que uma menina tem o primeiro filho, dia e/ou horário modal de Admissão em um hospital. Situações economômicas de determinação de salários mínimos, eventualmente, também pode contar com resultados modais.  
 
 
 ## Amplitude
@@ -174,17 +182,29 @@ Como a amplitude interquartil considera apenas a variabilidade em torno do centr
 
 ## Variância e Desvio-padrão
 
-A variância e o desvio-padrão são duas medidas de dispersão frequentemente utilizadas em estatística, mas que apresentam algumas características diferentes. A variância é uma medida que indica a variabilidade (quadrática) de um conjunto de dados, considerando todos os valores da distribuição. Pela sua estrutura matemática, seu resultado expressa o desvio <u>quadrático</u> médio e, com isso, seu valor <u>não</u> está na mesma unidade dos dados originais.  
+A variância e o desvio-padrão são duas medidas de dispersão frequentemente utilizadas em estatística, mas que apresentam algumas características diferentes. 
+
+A variância é uma medida que indica a variabilidade (quadrática) de um conjunto de dados, considerando todos os valores da distribuição. Pela sua estrutura matemática, seu resultado expressa o desvio <u>quadrático</u> médio e, com isso, seu valor <u>não</u> está na mesma unidade dos dados originais.  
 
 A variância é uma medida fundamental no estudo das famílias de distribuições de probabilidades e análises estatísticas. No entanto, na prática, ela é pouco usada para descrever a variabilidade dos dados e acaba sendo usada apenas de forma transitória para o cálculo do desvio-padrão. 
 
 
-Por sua vez, o desvio-padrão é uma medida com melhores características descritivas. Ele indica a variação dos valores em torno da média, e como seus resultados são calculados pela raiz quadrada da variância, o desvio-padrão está na mesma unidade dos dados originais. . 
+O desvio-padrão, por sua vez, é uma medida com melhores características descritivas. Ele indica a variação dos valores em torno da média, e como seus resultados são calculados pela raiz quadrada da variância, o desvio-padrão está na mesma unidade dos dados originais. . 
+
+Em síntese, enquanto a variância tem maior importância em aspectos matemáticos relacionados às famílias de distribuições de probabilidade, o desvio-padrão tem melhor adequação descritiva de um conjunto de dados.  Conceitualmente, as equações a seguir descrevem à variância amostral (à esquerda) e o desvio-padrão amostral (à direita):
+
+\begin{equation}
+  \begin{split}
+    S^2 = \sqrt\frac{\sum\limits_{i=1}^N (X -\mu)^2}{N-1}
+  \end{split}
+\qquad\qquad\qquad
+  \begin{split}
+    S = \frac{\sum\limits_{i=1}^N (X -\mu)^2}{N-1}
+  \end{split}
+\end{equation}
 
 
-Em síntese, enquanto a variância tem maior importância em aspectos matemáticos relacionados às famílias de distribuições de probabilidade, o desvio-padrão tem melhor adequação descritiva de um conjunto de dados.  
-
-
+Após estas apresentações teóricas, espera-se que seja possível apresentar a pesquisa a seguir, bem como implementar parte dos conceitos nos dados obtidos.  
 
 ## Pesquisa
   
@@ -198,6 +218,8 @@ Um diferencial importante do trabalho foi a seleção amostral. Partiu-se de uma
 
 
 ## Execução no R 
+
+Inicialmente, é necessário carregar a base de dados previamente descrita para o ambiente R. Este procedimento será necessário para todos os capítulos do livro.  
 
 ## Tabelas   
 
@@ -536,11 +558,156 @@ Espera-se que seja possível constantar que este gráfico é <mark>totalmente in
 
 ## Execução no JASP  
 
+Da mesma forma que feito no R, será necessário carregar a {base}(https://osf.io/e639b/) para o JASP. 
+
+
+## Tabelas  
+
+Após ter a base disposta no JASP, para gerar tabelas e gráficos, será necessário acessar a opção `Descriptives`. O JASP tratará todas as variáveis com um símbolo de diagrama de venn ou barras como categórias e todas as variáveis com símbolo de régua como contínuas.  
+
+![](./img/cap_desc_jasp_descritivo.png)
+  
+Ao clicar nesta opção, será possível eleger as variáveis que irão ser analisadas e as variáveis que irão funcionar como agrupadores. Na prática, quando há duas ou mais variáveis para serem analisadas, a lista `Variables` irá reunir as variáveis dependentes, enquanto a variável independente será colocada na seção `Split`. É importante atentar à opção `Frequency tables (nominal and ordinal)`, que deve ser marcada quando o nível de medida da variável de interesse for nominal ou ordinal. 
+
+
+
+![](./img/cap_desc_jasp_descritivo2.png)
+
+Isto posto, vamos reproduzir parcialmente as mesmas análises feitas no ambiente R. Inicialmente, uma tabela descrevendo os participantes em cada um dos país é importante para apresentar ao leitor algumas das principais características da amostra. Para fazer isso, será necessário levar a variável <u>country</u> para a seção `Variables` e clicar em `Frequency tables (nominal and ordinal)`.
+
+
+![](./img/cap_desc_jasp_proporcao.png)
+
+Por padrão o JASP irá apresentar as contagens (frequências absolutas) e as proporções. A parte mais esquerda da tabela descreverá os dados considerando todos os valores presentes na base. A parte mais à direita irá apresentar apenas os dados válidos, que <u>não consideram casos ausentes</u>. É importante antentar que o JASP <u>não</u> exclui estes casos, mas apenas não os mostra.
+
+
+Para verificar a frequência e a proporção de homens e mulheres na amostra, será necessário colocar também a variável <u>sex</u> na opção `Variables`. Não é preciso retirar a variável <u>country</u> antes de fazer isso. O JASP irá apresentar ambas as tabelas de maneira empilhada.
+
+
+![](./img/cap_desc_jasp_proporcao_duas_variaveis.png)
+
+
+Para fazer uma tabela agrupando tanto <u>country</u>, como <u>sex</u>, é necessário arrastar a variável que será apresentada nas linhas para o espaço `Split`. Em uma tabela em que se descreve a contagem e porcentagem de homens e mulheres em cada um dos três países de maneira independente, é necessário preencher o `Split` com a variável <u>country</u>. O JASP aceita que se arraste a variável de um local para o outro e, ao fazer isso, todas as contas serão automaticamente atualizadas.
+
+![](./img/cap_desc_jasp_proporcao_duas_variaveis_split.png) 
+
+É possível perceber que as variáveis categóricas são descritas por suas frequências e proporções. Por sua vez, variáveis contínuas costumam ser resumidas por medidas de posição e dispersão, tal como a média e o desvio-padrão. Como exemplo, para calcular tais medidas estatísticas dos valores do BDI e do BAI em função do país do participante, é necessário deixar a variável <u>country</u> em `Split` e levar as variáveis <u>bdi_sum</u> e <u>bai_sum</u> para `Variables`. 
+
+![](./img/cap_desc_jasp_proporcao_duas_variaveis_split2.png) 
+
+Dessa vez, não é necessário ativar a opção `Frequency tables (nominal and ordinal)`. O símbolo de régua ao lado das variáveis <u>bdi_sum</u> e <u>bai_sum</u> indicadom de que elas são contínuas. O símbolo de diagrama de Venn ao lado de <u>country</u>, por sua vez, indica que ela é categórica.
+
+
+Para fazer essas análises considerando <u>sex</u> como agrupador, será necessário substituir <u>country</u> por <u>sex</u> no espaço de `Split`.
+
+![](./img/cap_desc_jasp_proporcao_duas_variaveis_split3.png) 
+
+Nesta versão do JASP, não é possível colocar duas variáveis como agrupadoras. Dessa maneira, a reprodução das tabelas feitas anteriormente no ambiente R é apenas parcial.  
+
+## Gráficos
+
+O JASP é um exelente programa para gerar gráficos. Tal como previamente apresentado, a criação de um gráfico apropriado dependerá tanto da quantidade de variáveis que devem ser apresentadas, como do nível de medida da VI, especialmente em análises bi ou multivariadas.  O JASP pode fazer gráficos tanto seção `Descriptives` como em após análise de dados específicas. Na seção `Descriptives`, será necessário primeiro arrastar as variáveis de interesse para seus respectivos lugares e, em seguida, clicar na opção `Plot`.
+
+
+![](./img/cap_desc_jasp_graficos.png) 
+
+
+
+
+## 1 variável discreta
+
+Para este tipo de variável, gráfico de barras, colunas e setor são indicados. Para realizar um gráfico de barras, é necessário colocar a variável de interesse em `Variables` e, dentro de `Plots`, clicar em `Distribuition plots`. O JASP organiza as barras de ordem crescente. 
+
+
+![](./img/cap_desc_jasp_grafico_barras.png)
+
+Para realizar um gráfico de setor, basta selecionar a opção `Pie Charts`. A visualização ocorrerá automaticamente. Uma vantagem deste gráfico é a apresentação proporção do elementos gráficos, em vez de contagens. Infelizmente, nesta versão do JASP, não é possível adicionar um rótulo com a porcentagem de cada cateogoria.  
+
+
+![](./img/cap_desc_jasp_grafico_setor.png)
+
+
+O JASP permite customizar as cores de alguns gráficos. Para fazer isso, basta clicar em `Color Palette` e escolher entre as opções disponíveis. Existem algumas possibilidade e recomendo optar por aquelas que permitem que pessoas com limitações visuais possam também se beneficiar. Entretanto, apenas como demonstração, o tema `ggplot2` é apresentado abaixo.  
+
+![](./img/cap_desc_jasp_grafico_setor2.png)
+
+## 1 variável discreta  
+
+Histogramas, gráficos de densidade e boxplots costumam ser indicados para variáveis discretas. Para o JASP fazer tais gráficos, é necessário que o espaço `Variables` seja preenchido por alguma variável que tenha o símbolo da régua ao lado. A variável <u>age</u> é um bom exemplo. Ao colocá-la neste local e marcar a opção `Distribution plots`, um histograma será automaticamente apresentado.  
+
+
+![](./img/cap_desc_jasp_grafico_histograma.png)
+
+
+É possível adicionar a densidade de maneira sobreposta ao histograma clicando em `Display density`.
+
+![](./img/cap_desc_jasp_grafico_densidade.png)
+
+Por sua vez, o boxplot pode ser criado ao clicar na opção `Boxplots` e, em seguida, `Boxplot element`. 
+
+
+![](./img/cap_desc_jasp_grafico_boxplot.png)
+
+
+Customizar o boxplot é possível, bem como adicionar outros gráficos que vem sendo mais utilizados recentemente, como o gráfico de violino.  Isso não será demonstrado aqui, mas para fazer isso, basta ativar as opções desejadas na seção `Customizable plots`.
+
+Tal como discutido anteriormente, O boxplot apresenta vantagens em comparação com os outros gráficos apresentados até agora. Além de apresentar o formato da distribuição, ele também (1) apresenta na área da caixa a concetração onde 50% dos dados estão, (2) a mediana dos resultados, na linha interna e mais espessa da caixa, (3) os valores mínimos e máximos e (4) os eventuais outliers. É importante notar que a parte inferior da caixa é formada pelo valor do primeiro quartil (Q1), a linha mais espessa interna apresenta o segundo quartil (Q2) ou a mediana e a parte superior da caixa apresenta o valor do terceiro quartil (Q3). Os bigodes são frequentemente construídos com base em `Q1 - 1.5*IQR`  e `Q3 + 1.5*IQR` e valores acima ou abaixo dele são entendidos como anômalos ou outliers. Por definição, os outliers são sempre poucos, mesmo que isso possa ser um pouco contraintuitivo nesta apresentação de agora.
+
+
+
+## 2 variáveis com VI discreta (e VD contínua)
+
+Para situações em que há duas variáveis, a VI é tratada como discreta e a VD é contínua, gráficos de barras, colunas ou boxplots são indicados. Nesta versão do JASP, apenas o boxplot pode ser feito. Para verificar, por exemplo, a distribuição dos resultados do <u>bai_sum</u> em função do <u>país</u>, é necessário levar às variáveis a seus respectivos locais e, em seguida, o JASP permite realizar o boxplot.  
+
+![](./img/cap_desc_jasp_grafico_boxplot_grupo.png)
+
+
+## 2 variáveis com VI contínua (e VD contínua)
+
+Quando há duas variáveis contínuas, tanto o gráfico de pontos como de dispersão são possíveis. Para fazer isso, é necessário incluir ambas as variáveis de interesse em `Variables`. Por exemplo, <u>age</u> e <u>bai_sum</u>.
+
+![](./img/cap_desc_jasp_grafico_scatter1.png)
+
+É tanto possível marcar a opção `Scatter Plots`, como a opção `Correlation Plots`.
+
+![](./img/cap_desc_jasp_grafico_scatter2.png)
+
+A escolha de cada opção é relacionada com os elementos que devem (ou não) serem incluídos neste gráfico. Na opção `Scatter Plot`, o gráfico irá exibir os pontos dos respectivos pares ordenados das variáveis x e y, suas densidade e também adicionar uma reta de regressão. Este último conceito será revisitado no capítulo de regressão. Um aspecto visualmente importante é a eleição de qual variável irá em x. Com bastante frequência, deve-se inserir a VI (mesmo que teórica) em x, enquanto a VD em y. Isso é feito alterando a ordem das variáveis em `Variables`. 
+
+
+![](./img/cap_desc_jasp_grafico_scatter3.png)
+
+## Outros gráficos e configurações
+
+O JASP é bastante versátil na realização de gráficos e permite que mais variáveis sejam inseridas. Há também um módulo (`Module`) chamado `Visual Modeling`, que permite uma grande customização de gráficos. Para acessá-lo, é necessário clicar na cruz azul, tal como destacado abaixo no quadrado roxo.
+
+![](./img/cap_desc_jasp_modules.png)
+
+Na lista de opções, é necessário ativar `Visual Modeling`. Ao fazer isso, o icone será ativado na barra de ferramentas. 
+
+
+![](./img/cap_desc_jasp_visual_modeling.png)
+
+Com isso feito, dentro de `Visual Modeling`, a opção `Flexplot` adiciona uma melhora substancial aos gráficos que o JASP executa. Agora é possível, por exemplo, fazer um gráfico incluindo um <u>cluster</u> ou <u>agrupamento</u>, em que os resultados do Inventário Beck de Ansiedade sejam apresentados tanto em função dos países investigados, como do seo do participante.
+
+
+![](./img/cap_desc_jasp_flexplot.png)
+
+
+Uma série de outras opções e combinações podem ser feitas ao clicar em `Options` e `Plot Labels`. Elas não serão apresentadas nesta seção.
+
 
 ## Resumo  
 
-Este capítulo apresentou os aspectos tabulares e gráficos corriqueiramente encontrados em pesquisas de Psicologia e áreas congêneres. Entre os pontos principais, a heurística típica de construção de gráficos é um conteúdo importante para ser sempre lembrado e tem as seguintes condições:
+Este capítulo apresentou os aspectos tabulares e gráficos corriqueiramente encontrados em pesquisas de Psicologia e áreas congêneres. Entre os pontos principais, estão os seguintes:  
 
-1. O gráfico deve ser sempre informativo e não oferecer distorções dos resultados
-2. A quantidade e a natureza (escala ou nível de medida) das variáveis definem o gráfico a ser feito
-3. Quando bem feitos, gráficos permitem um primeiro resultado inferencial
+1. Medidas de posição e dispersão são fundamentais na apresentação dos resultados de uma pesquisa   
+2. A média e o desvio-padrão são, respectivamente, as medidas de posição e dispersão mais utilizadas   
+3. Tabelas e gráficos visam informar o leitor, sem criar viés ou distorção dos resultados  
+4. As tabelas são muito úteis para uma apresentação mais detalhada dos resultados  
+5. Gráficos condensam um grande volume de dados de uma forma mais facilmente interpretável    
+6. A heurística típica em gráficos solicita responder a quantidade e a natureza das variáveis a serem apresenadas   
+
+## Pesquisas adicionais  
+
+
