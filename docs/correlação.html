@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 10 Correlação | Métodos quantitativos em Psicologia com R</title>
+  <title>Cap. 10 Correlação | Métodos quantitativos em Psicologia com R</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 10 Correlação | Métodos quantitativos em Psicologia com R" />
+  <meta property="og:title" content="Cap. 10 Correlação | Métodos quantitativos em Psicologia com R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="cjvanlissa/gitbook-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 10 Correlação | Métodos quantitativos em Psicologia com R" />
+  <meta name="twitter:title" content="Cap. 10 Correlação | Métodos quantitativos em Psicologia com R" />
   
   <meta name="twitter:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2021-01-08" />
+<meta name="date" content="2021-01-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -147,6 +147,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#pacotes-e-sintaxes"><i class="fa fa-check"></i><b>1.7</b> Pacotes e sintaxes</a></li>
 <li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#outros-recursos"><i class="fa fa-check"></i><b>1.8</b> Outros recursos</a></li>
 <li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#capa"><i class="fa fa-check"></i><b>1.9</b> Capa</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#agradecimentos"><i class="fa fa-check"></i><b>1.10</b> Agradecimentos</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html"><i class="fa fa-check"></i><b>2</b> Aspectos gerais</a><ul>
 <li class="chapter" data-level="2.1" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#principais-áreas-da-estatística"><i class="fa fa-check"></i><b>2.1</b> Principais áreas da estatística</a></li>
@@ -278,8 +279,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.6" data-path="correlação.html"><a href="correlação.html#pesquisas-adicionais-3"><i class="fa fa-check"></i><b>10.6</b> Pesquisas adicionais</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>11</b> Regressão linear simples</a><ul>
-<li class="chapter" data-level="11.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#legenda-1"><i class="fa fa-check"></i><b>11.1</b> Legenda</a></li>
-<li class="chapter" data-level="11.2" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#explicação-conceitual"><i class="fa fa-check"></i><b>11.2</b> Explicação conceitual</a></li>
+<li class="chapter" data-level="11.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#glossário"><i class="fa fa-check"></i><b>11.1</b> Glossário</a></li>
+<li class="chapter" data-level="11.2" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#breve-explicação-conceitual"><i class="fa fa-check"></i><b>11.2</b> Breve explicação conceitual</a></li>
 <li class="chapter" data-level="11.3" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisa-8"><i class="fa fa-check"></i><b>11.3</b> Pesquisa</a></li>
 <li class="chapter" data-level="11.4" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-r-13"><i class="fa fa-check"></i><b>11.4</b> Execução no R</a></li>
 <li class="chapter" data-level="11.5" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#resumo-10"><i class="fa fa-check"></i><b>11.5</b> Resumo</a></li>
@@ -311,7 +312,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="correlação" class="section level1">
-<h1><span class="header-section-number">Capítulo 10</span> Correlação</h1>
+<h1><span class="header-section-number">Cap. 10</span> Correlação</h1>
 <p>A análise de correlação é um procedimento estatístico para verificar a relação entre duas variáveis. Existem diferentes técnicas correlacionais e a maioria busca medir a <u>força</u> e a <u>direção</u> da <u>associação linear</u> entre duas variáveis aleatórias. A tabela a seguir descreve algumas técnicas.</p>
 <table>
 <thead>
@@ -410,8 +411,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Vamos utilizar a pesquisa intitulada <a href="https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students">“Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students”</a>, publicada em 2018 no Global Journal of Educational Studies, que sou coautor.</p>
 <p>O objetivo dessa pesquisa foi explorar os fatores envolvidos em transtornos alimentares e percepção da imagem corporal, bem como verificar a correlação entre eles. Esse artigo contou com a utilização de escalas aplicadas em 219 participantes no Brasil. Para acessar aspectos relacionados aos Transtornos alimentares, a escala EAT-26 foi aplicada. Já para aspectos da imagem corporal, a escala BSQ-34 foi aplicada.</p>
-<p>Para verificar a correlação entre os resultados, é possível escrever a hipótese da seguinte maneira:</p>
-<p><span class="math display">\[H_0: \rho_{(x,y)} = 0 \\ H_a:  \rho_{(x,y)} \neq 0 \\ \alpha = 0.05\]</span></p>
 </div>
 <div id="execução-no-r-12" class="section level2">
 <h2><span class="header-section-number">10.2</span> Execução no R</h2>
@@ -457,18 +456,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-143-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O gráfico indica que as duas variáveis são relacionadas. Apesar do padrão deste relacionamento não ser estritamente linear, é possível verificar formalmente a correlação entre ambas as variáveis,</p>
 <p>Isso pode ser feito pela função <code>cor.test</code>, que é nativa do R.</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="correlação.html#cb175-1"></a><span class="kw">cor.test</span>(dados_brasil<span class="op">$</span>eat_soma, dados_brasil<span class="op">$</span>bsq_soma)</span></code></pre></div>
-<pre><code>## 
-##  Pearson&#39;s product-moment correlation
-## 
-## data:  dados_brasil$eat_soma and dados_brasil$bsq_soma
-## t = 13.523, df = 218, p-value &lt; 2.2e-16
-## alternative hypothesis: true correlation is not equal to 0
-## 95 percent confidence interval:
-##  0.5964405 0.7414562
-## sample estimates:
-##       cor 
-## 0.6754262</code></pre>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="correlação.html#cb175-1"></a><span class="kw">cor.test</span>(dados_brasil<span class="op">$</span>eat_soma, dados_brasil<span class="op">$</span>bsq_soma) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
+<table style="width:100%;">
+<caption>Pearson’s product-moment correlation: <code>dados_brasil$eat_soma</code> and <code>dados_brasil$bsq_soma</code></caption>
+<colgroup>
+<col width="22%" />
+<col width="8%" />
+<col width="24%" />
+<col width="33%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Test statistic</th>
+<th align="center">df</th>
+<th align="center">P value</th>
+<th align="center">Alternative hypothesis</th>
+<th align="center">cor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">13.52</td>
+<td align="center">218</td>
+<td align="center">1.156e-30 * * *</td>
+<td align="center">two.sided</td>
+<td align="center">0.6754</td>
+</tr>
+</tbody>
+</table>
 <p>Os resultados permitem concluir que a correlação é positiva e forte (r = 0.675), além de significativa (p &lt; 0.001). Isso indica que ambas as variáveis covariam de maneira proporcional, em que valores altos em uma tendem a acompanhar valores altos em outra. É importante atentar que esse relacionamento não indica causalidade e, dessa forma, essa covariação pode ser explicada por diferentes fatores não analisados neste método.</p>
 <p>A correlação de Pearson não depende estritamente da normalidade das variáveis, apesar desse tema ser bastante discutido. Dessa forma, não há pressupostos para se checar além dos já discutidos no decorrer deste capítulo.</p>
 </div>

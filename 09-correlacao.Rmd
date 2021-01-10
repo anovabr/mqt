@@ -85,12 +85,6 @@ Vamos utilizar a pesquisa intitulada ["Aspects Related to Body Image and Eating 
 O objetivo dessa pesquisa foi explorar os fatores envolvidos em transtornos alimentares e percepção da imagem corporal, bem como verificar a correlação entre eles. Esse artigo contou com a utilização de escalas aplicadas em 219 participantes no Brasil. Para acessar aspectos relacionados aos Transtornos alimentares, a escala EAT-26 foi aplicada. Já para aspectos da imagem corporal, a escala BSQ-34 foi aplicada.  
 
 
-Para verificar a correlação entre os resultados, é possível escrever a hipótese da seguinte maneira:  
-
-$$H_0: \rho_{(x,y)} = 0 \\ H_a:  \rho_{(x,y)} \neq 0 \\ \alpha = 0.05$$
-
-
-
 ## Execução no R  
 
 
@@ -115,7 +109,7 @@ O gráfico indica que as duas variáveis são relacionadas. Apesar do padrão de
 Isso pode ser feito pela função `cor.test`, que é nativa do R.  
 
 ```{r}
-cor.test(dados_brasil$eat_soma, dados_brasil$bsq_soma)
+cor.test(dados_brasil$eat_soma, dados_brasil$bsq_soma) %>% pander()
 ```
 
 Os resultados permitem concluir que a correlação é positiva e forte (r = 0.675), além de significativa (p < 0.001). Isso indica que ambas as variáveis covariam de maneira proporcional, em que valores altos em uma tendem a acompanhar valores altos em outra. É importante atentar que esse relacionamento não indica causalidade e, dessa forma, essa covariação pode ser explicada por diferentes fatores não analisados neste método.  
