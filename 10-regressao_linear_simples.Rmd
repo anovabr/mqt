@@ -162,36 +162,34 @@ Regression and Other Stories, de Andrew Gelman
 </div>  
 
 
-Vamos utilizar a pesquisa intitulada ["Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students"](https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students), publicada em 2018 no Global Journal of Educational Studies, que sou coautor.
+Neste capítulo, vamos utilizar a pesquisa intitulada ["Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students"](https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students), publicada em 2018 no Global Journal of Educational Studies, que sou coautor.
 
 O objetivo dessa pesquisa foi explorar os fatores envolvidos em transtornos alimentares e na percepção da imagem corporal. Os primeiros aspectos foram avaliados pela escala EAT-26, enquanto o segundo foi avaliado pela escala BSQ-34.  
 
-Uma das principais hipóteses era que alterações na percepção da imagem corporal seriam preditores para possíveis transtornos alimentares. Operacionalmente, a hipótese era de que os valores da BSQ-34 poderiam predizer os valores da EAT-26 e que quão maior fossem os primeiros, maior seriam o efeito para também maximizar os segundos.    
+Uma das principais hipóteses era que alterações na percepção da imagem corporal seriam preditores para possíveis transtornos alimentares. Operacionalmente, a hipótese era de que os valores da BSQ-34 poderiam predizer os valores da EAT-26 e que quão maior fossem os primeiros, maior seriam os efeitos na maximização dos segundos.    
 
-Em modelos de regressão, as hipóteses costumam ser feitas em cascata. Quase sempre, se compara o modelo de regressão desenvolvido com um modelo mais simples. Em seguida, verifica-se cada preditor de forma individual e assim sucessivamente. Uma vez que a definição de cada hipótese ocuparia um espaço grande aqui, elas serão suprimidas.  
+Em modelos de regressão, as hipóteses costumam ser feitas em cascata. Quase sempre, se compara o modelo de desenvolvido com um modelo mais simples. Em seguida, verifica-se cada preditor de forma individual e assim sucessivamente. Uma vez que a definição de cada hipótese ocuparia um espaço grande aqui, elas serão suprimidas.  
 
 
 
 ## Execução no R  
 
 
-A primeira etapa da análise é orientada a fazer tabelas e gráficos que possam auxiliar na interpretação dos resultados. Abaixo há uma tabela inicial com dados descritivos dos resultados. 
+A primeira etapa da análise é realizada pelo desenvolvimento de tabelas e gráficos que possam auxiliar na interpretação dos resultados. De maneira similar à feita em outros capítulos, abaixo há uma tabela descritiva . 
 
-```{r}
-dados_brasil %>% 
-  summarise_at(vars(eat_soma, bsq_soma), lst(n=~n(),media=mean,DP=sd)) %>% t() %>% 
-  pander::pander(., split.table = Inf)
+```{r results="asis" }
+arsenal::tableby(~eat_soma + bsq_soma, dados_brasil) %>% summary() 
 ```
 
 
 
-Tabelas e gráficos auxiliam a entender a relação entre as variáveis. A correlação entre ambas as medidas expressa a força e a direção que elas possuem. Enquanto a força é interpretada em `fraca` (0.1), `moderada` (0.3) ou `forte` (0.5) [@Cohen1988], a direção pode ser positiva ou negativa, a depender do sinal. A correlação entre as variáveis foi 0.675 e significativa (p < 0.001). 
+O cálculo da correlação entre ambas as variáveis também é importante e, apesar de tecnicamente desnecessário neste capítulo, os resultados apresentam evidências iniciais sobre o relacionamento bivariado. Em linhas gerais, o coeficiente de correlação expressa a força e a direção do relacionamento entre as variáveis. A força pode ser interpretada como `fraca` (0.1), `moderada` (0.3) ou `forte` (0.5) [@Cohen1988] e a direção pode ser positiva ou negativa, a depender do sinal. A correlação entre as variáveis foi 0.675 e significativa (p < 0.001). 
 
 ```{r}
 cor.test(dados_brasil$eat_soma, dados_brasil$bsq_soma) %>% pander()
 ```
    
-O gráfico de dispersão demonstra esse relacionamento. No eixo X deve-se inserir a VI, enquanto a VD é inserida em Y.
+O gráfico de dispersão descreve esse relacionamento. No eixo X deve-se inserir a VI (neste caso, os resultados da BSQ-34), enquanto a VD é inserida em Y.
 
 ```{r}
 ggplot(dados_brasil, aes(x = bsq_soma, y = eat_soma)) +
@@ -200,7 +198,7 @@ ggplot(dados_brasil, aes(x = bsq_soma, y = eat_soma)) +
 
 Tanto a tabela como o gráfico deixam claro que existe um padrão (aproximadamente linear) entre ambas as variáveis que ocorre de maneira forte e significativa. Com isso, é natural que o interesse seja verificar o quanto os resultados do <u>EAT-26</u> variam em função do <u>BSQ-34</u>.   
 
-Para executar esse procedimento, o R conta com a função nativa `lm` e o pacote `olsrr` oferece excelentes complementos para interpretar os resultados.  O vetor `mod_linear_simples` será criado e armazenará os resultados. Lembre-se que, no R, é importante <u>sempre</u> atentar para o nível de medida das variáveis para que os resultados sejam adequados.  
+Para executar esse procedimento, o R conta com a função nativa `lm`. Por sua vez, o pacote `olsrr` oferece excelentes complementos para interpretar os achados.  O vetor `mod_linear_simples` será criado e armazenará os resultados. Lembre-se que, no R, é importante <u>sempre</u> atentar para o nível de medida das variáveis para que os resultados sejam adequados.  
 
 
 ```{r}
@@ -208,83 +206,93 @@ mod_linear_simples <- lm(eat_soma ~ bsq_soma, data = dados_brasil)
 ```
 
 
-Na maioria dos programas comerciais, os resultados do modelo de regressão são apresentados em uma tabela padronizada. Essa tabela é virtualmente identica à que foi exposta no capítulo sobre a ANOVA de uma via, abaixo descrita:    
+Na maioria dos programas comerciais, os resultados do modelo de regressão são apresentados em uma tabela padronizada. Essa tabela é virtualmente identica à que foi exposta no capítulo sobre a ANOVA de uma via e encontra-se abaixo descrita:    
 
-  | Source        | SS               | df  | MS     | F-Value        | P-Value  |  
-  | :-----        | :-----           | :-- | :----- | :-----         | :-----   |   
-  | Regressão     | SSR (Regressão)  | K-1 | MSR    | SSR/K-1        | MSR/MSE  |   
-  | Erro          | SSE (Erro)       | N-K | MSE    | SSE/N-K        | --       |   
-  | Total         | SST (Total)      | N-1 | --     |  --            | --       |    
+  | Fonte de variação | SS               | df  | MS     | F-Value        | P-Value  |  
+  | :-----            | :-----           | :-- | :----- | :-----         | :-----   |   
+  | Regressão         | SSR (Regressão)  | K-1 | MSR    | SSR/K-1        | MSR/MSE  |   
+  | Erro              | SSE (Erro)       | N-K | MSE    | SSE/N-K        | --       |     
+  | Total             | SST (Total)      | N-1 | --     |  --            | --       |       
+  | R2 = SSR/SST                                                                    |   
   
-  
-Nota: Nessa tabela, K considera dois preditores na regressão, que são o intercepto e a inclinação. É possível também encontrar`N-K-1` em alguns livros que não explicitam o intercepto na tabela.  
+Nota: Nessa tabela, K considera dois preditores na regressão, que são o intercepto e a inclinação. É possível também encontrar `N-K-1` em alguns livros que não explicitam o intercepto na tabela.  
 
-Isto posto, a função `ols_regress` do pacote `olsrr` dispoõe os resultados neste padrão:  
+Isto explicado, a função `ols_regress` do pacote `olsrr` dispoõe os resultados neste padrão:  
 
 
 ```{r }
 ols_regress(mod_linear_simples)
 ```
 
-Os resultados devem ser vistos em uma ordem específica. Em <u>primeiro momento</u>, é necessário verificar o ajuste do modelo na seção `ANOVA`. Esse resultado compara o modelo em questão contra um modelo em que apenas o intercepto é utilizado para prever todos os valores. Tecnicamente, o modelo analisado é chamado de <u>irrestrito</u> (ou Aumentado) e o modelo que tem apenas o intercepto é chamado de <u>restrito</u> ou nulo. Valores significativos são necessários nesta etapa.  Nesta análise, o resultado foi F(1, 218) = 182.883, p < 0.0001.
+Os resultados apresentados na tabela de regressão são muitos e se recomenda uma ordem específica para interpretá-los.   
 
-O <u>segundo momento</u> é a interpretação do $R^2$. Como exposto no início do capítulo, essa medida mensura a parte da variação da variável dependente (Y) que pode ser atribuída às variáveis independentes do modelo (X). Repare que ele é computado pela razão entre o SSR e o SST e indica que cerca de 46% dos resultados do EAT-26 podem ser explicados pelo modelo.     
+Em <u>primeiro momento</u>, é necessário verificar o ajuste do modelo na seção `ANOVA`. Esse resultado compara o modelo em questão contra um modelo em que apenas o intercepto é utilizado para prever todos os valores. Tecnicamente, o modelo analisado é chamado de <u>irrestrito</u> (ou aumentado) e o modelo que tem apenas o intercepto é chamado de <u>restrito</u> ou nulo. Valores significativos são necessários nesta etapa.  Nesta análise, o resultado foi F(1, 218) = 182.883, p < 0.0001, indicando que os outros resultados podem ser interpretados.  
+
+O <u>segundo momento</u> é a interpretação do $R^2$. Como exposto no início do capítulo, essa indicador mensura a parte da variação da variável dependente (Y) que pode ser atribuída às variáveis independentes do modelo (X). Repare que ele é computado pela razão entre o SSR e o SST e indica que cerca de 46% dos resultados da variabilidade do EAT-26 podem ser explicados pelo modelo.     
 
 
-O <u>terceiro momento </u> é a análise do $R^2 ajustado$. Em modelos de regressão, modelos com mais parâmetros/preditores sempre vão sempre ter $R^2$ maior do que modelos mais compactos, independente da signficância destes outros parâmetros. O $R^2 ajustado$ é uma medida que considera a complexidade do modelo. Neste caso, como há apenas dois preditores (intercepto e bsq_soma), o $R^2 ajustado$ e o $R^2$ são quase idênticos.  
+O <u>terceiro momento </u> é a análise do $R^2 ajustado$. Em modelos de regressão, modelos com mais parâmetros/preditores sempre vão sempre ter $R^2$ maior do que modelos mais compactos, independente da signficância destes outros parâmetros. O $R^2 ajustado$ é uma medida que considera a complexidade do modelo e pune a entrada de novas variáveis. Neste caso, como há apenas dois preditores (intercepto e bsq_soma), o $R^2 ajustado$ e o $R^2$ são quase idênticos.  
 
 Finalmente, o <u>quarto momento</u> é análise dos preditores, que é feito na seção `Parameter Estimates`. Para isso, deve-se identificar os preditores um a um, seus valores de `Beta` e de P (`Sig`). O `Beta` indica a diferença média em unidades da <u>variável dependente</u> quando se altera uma unidade de X. Por exemplo, mais 1 ponto no BSQ-34, mais `0.178` pontos, em média, no EAT-26. Esse resultado é significativo, tal como é indicado na coluna `Sig`.  
 
-O intercepto é chamado de `constante` na maior parte dos programas e indica o valor médio (esperado) de Y quando `X=0`. Nesse caso, se alguém tivesse tirado o valor `0` na escala BSQ-34, o valor previsto para os resultados da Escala EAT-26 seria de 1.46. O `Sig` indica que esse valor é significativo, ou seja, diferente de 0. 
+O intercepto é chamado de `constante` na maior parte dos programas e indica o valor médio (esperado) de Y quando `X=0`. Nesse caso, se alguém tivesse tirado o valor `0` na escala BSQ-34, o valor previsto para os resultados da Escala EAT-26 seria de 1.46. O `Sig` indica que esse valor é significativo, ou seja, diferente de 0. O indicador de beta padronizado `Std. Beta` traz as mesmas informações, mas trabalha em unidades de desvios-padrão em todas as variáveis presentes no modelo.  
 
-É importante notar que frequentemente o intercepto não tem interpretação lógica e, por isso, costuma ser desconsiderado. Para que ele tenha melhor capacidade de interpretação e se torne o valor médio da variável dependente, é necessário centralizar os valores do preditor $(x_i-\bar{x})$.   
+É importante notar que frequentemente o intercepto não tem interpretação lógica e, por isso, costuma ser desconsiderado. Para que ele tenha melhor capacidade de interpretação e se torne o valor médio da variável dependente, é necessário centralizar os valores do preditor $(x_i-\bar{x})$, que não será realizado aqui.   
+
+
+Essa interpretação é muito auxiliada na apresentação de gráficos de dispersão, tal como feito no início do capítulo. Entretanto, agora estes gráficos ganham dois elementos a mais: uma reta de regressão que irá indicar o intercepto, a inclinação e o intervalo de confiança das estimativas e uma indicação textual com as equações características e seus respectivos resultados. Essas adições gráficas são feitas pelo pacote `ggpubr`. 
+
+```{r}
+ggplot(dados_brasil, aes(x = bsq_soma, y = eat_soma)) +
+  geom_jitter() + geom_smooth(method = "lm") + 
+  ggpubr::stat_regline_equation(label.x = 3, label.y = 40) +
+  ggpubr::stat_cor(method = "pearson", label.x = 3, label.y = 44)
+```
 
 
 Uma vez que o modelo já foi realizado, a interpretação dos resultados depende da adequação de seus pressupostos. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer [@Lix1996; @Barker2015; @Ernst2017]. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.
 
 <mark> Normalidade</mark>: O pressuposto da Normalidade é atendido se os <u>resíduos</u> do modelo de regressão seguirem uma distribuição normal. Isso pode ser avaliado graficamente por QQ plots e também por testes específicos, como o Shapiro-wilk, Anderson-Darling e Jarque Bera.
 
-O QQ plot é um gráfico que reúne a distribuição empírica ordenada dos quantis contra os quantis da distribuição teórica (aqui, normal). Se os dados e a linha diagonal se soprepuserem, isso é uma evidencia de que a distribuição empírica é a mesma da distribuição teórica. Caso haja discrepância, isso aponta para desvio da normalidade.
+O QQ plot é um gráfico que reúne a distribuição empírica ordenada dos quantis contra os quantis da distribuição teórica (aqui, normal). Se os dados e a linha diagonal se soprepuserem, isso é uma evidencia de que a distribuição empírica é a mesma da distribuição teórica. Caso haja discrepância, isso aponta para desvio da normalidade.  Caso os pontos e a reta diagonal estejam superpostos, se considera que este pressuposto foi atendido. 
 
 ```{r}
 ols_plot_resid_qq(mod_linear_simples)
 ```
 
-Caso os pontos e a reta diagonal estejam superpostos, se considera que este pressuposto foi atendido. Testes estatísticos formais também podem ser utilizados. Apesar dos resultados obtidos por tais testes serem algo discordantes, os achados sugerem violação deste pressuposto.  
+Testes estatísticos formais também podem ser utilizados, tal como abaixo:  
 
 ```{r}
 ols_test_normality(mod_linear_simples)
 ```
+Apesar dos resultados obtidos por tais testes serem algo discordantes, os achados sugerem violação deste pressuposto.  
 
-A <u>independência</u> dos resíduos depende bastante do delineamento utilizado e transversal ou longitudinal. O teste de Durbin Watson pode ser utilizado e a Hipótees nula é de que os resíduos não são correlacionados. Este pressuposto foi atendido, o que já era esperado.  
+<mark>Independência</mark>: A independência dos resíduos depende bastante do delineamento utilizado ser transversal ou longitudinal. O teste de Durbin Watson pode ser utilizado e a hipótees nula é de que os resíduos não são correlacionados. Este pressuposto foi atendido, o que já era esperado.  
 
 ```{r}
 car::durbinWatsonTest(mod_linear_simples)
 ```
 
-As homocedasticidade, ou seja, <u>variâncias constantes</u> pode ser vista em um gráfico de dispersão dos resíduos (residual) contra os valores previstos (fitted).  
+<mark>Homocedasticidade</mark>: Este pressuposto de variâncias constantes pode ser analisada em um gráfico de dispersão dos resíduos (residual) contra os valores previstos (fitted).  
 
 ```{r}
 ols_plot_resid_fit(mod_linear_simples)
 ```
 
-Caso haja padrões neste gráfico, isso sugere que este pressuposto foi violado. A visualização costuma ser um pouco complicada e abaixo há três exemplos:
-
-
-```{r, out.width = "400px"}
-#include_graphics("img/cap_reg_homocedasticidade.png")
-```
-
-
-Existem também testes formais, como o Bartlett e o Breusch-Pagan. Os resultados costumam convergir e, em função da praticidade computacional, o teste de Breusch-Pagan será utilizado. Nesse teste, os resultados tem distribuição qui-quadrado e a Hipótese nula assume homocedasticidade. Portanto, a estatística de teste deveria ser insignificante para que a homocedasticidade pudeSSR ser aceita, o que não é o caso aqui.
+Caso haja padrões neste gráfico, isso sugere que este pressuposto foi violado. O gráfico não sugere padrões específicos. No entanto, testes formais são recomendados para que a decisão tomada tenha maior apoio. Existem diferentes testes para isso e, entre eles, o teste de Bartlett, Levene e Breusch-Pagan. Os resultados dependem das propriedades de cada um dos modelos e, em função da praticidade computacional, o teste de Breusch-Pagan será utilizado. Em todos estes testes, a hipótese nula assume homocedasticidade. Portanto, a estatística de teste não deveria ser significativa para que a homocedasticidade fosse apoiada.
 
 
 ```{r}
 ols_test_breusch_pagan(mod_linear_simples)
 ```
+Os resultados indicaram que a homocedasticidade foi violada. Isso vai na direção oposta da percepção gráfica, o que pode ocorrer sem nenhum problema.  
+
 
 Isso posto, os diagnósticos executados indicaram que o modelo violou a normalidade e a homocedasticidade e preservou a linearidade e a independência dos resíduos. Apesar desse tipo de resultado ser frequente em Psicologia, a interpretação dos resultados é limitada e deve ser feita de forma apenas preliminar. Abaixo uma orientação de como escrever os resultados.
 
+## Tamanho do efeito  
+
+Em modelos de regressão, o valor de 
 
 
 uma vez que alguns achados da literatura comentam que a <u>alterações da alimentação</u> ocorrem em função da percepção da <u>imagem corporal</u>. Dando a este objetivo uma leitura estatística, o interesse é o de prever os valores do <u>EAT-26</u> a partir dos valores do <u>BSQ-34</u> ou o quanto a variabilidade dos resultados do <u>EAT-26</u> pode ser atribuída pelos resultados do <u>BSQ-34</u>. 
