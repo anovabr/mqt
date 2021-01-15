@@ -74,58 +74,38 @@ Diferentes termos são empregados em modelos de regressão. Alguns deles são ap
 RMSEA ($Res. St. Error$): Desvio padrão dos valores previstos da variável dependente ao redor da linha de regressão estimada   
 ```
 
-O conhecimento de algumas fórmulas fechadas também auxilia no entendimento da modelagem.
-
-```{block, type="writing"}
-Soma dos Quadrados da Regressão: $SSR =  \sum_{i=1}^{n}(\hat{y} - \bar{y})^2$  
-
-Soma dos Quadrados dos Erros: $SSE =  \sum_{i=1}^{n}(y_i - \hat{y})^2$  
-
-Soma dos Quadrados Total: $SST =  \sum_{i=1}^{n}(y_i - \bar{y})^2$  
-
-Variabilidade total: $SST = SSR + SSE$  
-
-$R^2$:  $\frac{SSR}{SST} = 1- \frac{SSE}{SST}$  
-
-Erro quadrático médio: $MSE =  \sum_{i=1}^{n}(y_i - \hat{y})^2 /(N-K)$  
-
-$R^2_{adj}$: $1-\frac{MSE}{MSR}$  
-
-$Res. St. Error = \sqrt\frac{SSE}{N-K}$  
-```
-
 
 ## Breve explicação conceitual
 
 
-Conforme descrito, modelos de regressão conseguem substituir a maior parte dos testes estatísticos realizados para testar hipóteses. Neste sentido, a maior parte dos livros tenta fazer uma introdução a estes modelos de forma que tanto aspectos conceituais, como algumas características analíticas possam ser melhor entendidas. Nesta seção, essa apresentação será feita de uma forma mais intuitiva. 
+Conforme descrito, modelos de regressão conseguem substituir a maior parte dos testes estatísticos realizados para testar hipóteses. Neste sentido, a maior parte dos livros tenta fazer uma introdução a estes modelos de forma que tanto aspectos conceituais, como algumas características analíticas possam ser melhor entendidas. Nesta seção, essa apresentação será feita de uma forma mais intuitiva. Caso você queira pular esta seção e ir direto à {pesquisa}(##pesquisa), não há problema. 
 
-Se pensarmos que as variáveis podem ser representadas por conjuntos, é possível imaginar que tanto Y como X podem ser independentes. Neste sentido, a realização de Y não dependente da realização de X e vice-versa. 
+Inicialmente, se pensarmos que as variáveis da pesquisa podem ser representadas por conjuntos, é possível imaginar que tanto Y como X são independentes. Neste sentido, a realização de Y não dependente da realização de X e vice-versa. 
 
 ![](./img/cap_reg_xy.png)
 
 
-No entanto, o que frequentemente ocorre é que existe algum grau de relacionamento entre as variáveis, tal como exposto abaixo.  
+No entanto, isso não é o que costuma ocorrer. Na verdade, com muita frequência, existe algum grau de relacionamento entre as variáveis, tal como exposto abaixo.  
 
 ![](./img/cap_reg_x_y2.png)
 
 
-Caso se assuma que X é um fator de causalidade à realização de Y, isso significa que uma parte da realização de Y, necessariamente, depende de X. Tecnicamente, é isso que faz com que X seja entendido como variável independente, enquanto Y seja entendido como variável dependente. A área de intersecção destacada é importante e representa a parte de Y que pode ser atribuída ou explicada por X.  
+Caso se assuma que X é um fator de causalidade à realização de Y, isso significa que uma parte da realização de Y, necessariamente, depende de X. Tecnicamente, é isso que faz com que X seja chamada de variável independente e Y variável dependente. A área de intersecção destacada representa a parte de Y que pode ser atribuída ou explicada por X.  
 
-Analiticamente, essa área precisa de algumas transformações algébricas e, em função delas, recebe o nome de `Soma dos Quadrados da Regressão` (SSR, em inglês).  
+Analiticamente, essa área passará por algumas transformações algébricas e receberá o nome de `Soma dos Quadrados da Regressão` (SSR, em inglês).  
 
 ![](./img/cap_reg_xy_SSR.png)
 
-No entanto, nem toda a variabilidade de Y pode ser atribuída à X. Essa região de Y que está fora da intersecção também sofre algumas transformações algébricas e recebe o nome de `Soma dos Quadrados dos Erros` (SSE, em inglês).  
+No entanto, nem toda a variabilidade de Y pode ser atribuída à X. Essa região de Y que está fora da intersecção também sofrerá transformações algébricas e será chamada de `Soma dos Quadrados dos Erros` (SSE, em inglês).  
 
-Essa área representa a variabilidade de Y que não pode ser atribuída/explicada por X. Nesse caso: 
+Essa área representa a variabilidade de Y que não pode ser atribuída ou explicada por X.   
 
 ![](./img/cap_reg_x_y_SSE.png)
 
 
-Agora, tecnicamente Y existe independentemente de X e possui uma variabilidade (interna) total. Essa variabilidade é bastante próxima do conceito de variância visto em estatística descritiva e pode ser obtida pelo somatório da área explicada pela regressão (SSR) com a área não explicada (SSE). 
+Agora, tecnicamente Y existe independentemente de X e possui uma variabilidade ou dispersão interna. Essa variabilidade é bastante próxima do conceito de variância visto em estatística descritiva e pode ser obtida pelo somatório da área explicada pela regressão (SSR) com a área não explicada (SSE). 
 
-Essa região total também passará por transformações algébricas e é chamada de `Soma dos Quadrados Total` (SST, em inglês).
+Essa região total também passará por transformações algébricas e será chamada de `Soma dos Quadrados Total` (SST, em inglês).
 
 
 ![](./img/cap_reg_xy_SST.png)
@@ -137,7 +117,7 @@ Vendo todas as partições de uma única vez, temos o seguinte:
 ![](./img/cap_reg_x_y_SSE_SSR_SST.png)
 
 
-A porcentagem de variação de Y que pode ser atribuída à variabilidade de X é uma razão entre a Soma dos Quadrados da Regressão (SSR) e a Soma dos Quadrados Total (SST). O coeficiente obtido por essa razão recebe o nome de **Coeficiente de Determinação** ou $R^2$, apresentado inicialmente.
+A porcentagem de variação de Y que pode ser atribuída à variabilidade de X é uma razão entre a Soma dos Quadrados da Regressão (SSR) e a Soma dos Quadrados Total (SST). O coeficiente obtido por essa razão recebe o nome de <u>Coeficiente de Determinação</u> ou $R^2$, e indica a porcentagem de variação de Y que pode ser atribuída à variabilida de X.
 
 ![](./img/cap_regr2.png) 
 
@@ -147,35 +127,36 @@ Isso é equivalente a subtração do espaço máximo de variabilidade (1 ou 100%
 ![](./img/cap_reg_r21.png)
 
 
-Evidentemente, essa explicação conceitual conta apenas uma parte da estória É igualmente possível entender os modelos de regressão a partir da ampliação de uma análise de correlação. Por exemplo, se duas variáveis aleatórias contínuas são correlacionadas de maneira linear e positiva, tal como demonstrado abaixo:
+Evidentemente, essa explicação conceitual conta apenas uma parte da estória. É igualmente possível entender os modelos de regressão a partir da ampliação de uma análise de correlação. Por exemplo, se duas variáveis aleatórias contínuas são correlacionadas de maneira linear e positiva, tal como demonstrado abaixo:
 
 
-```{r}
+```{r, echo=FALSE }
 ggplot(dados_brasil, aes(x = bsq_soma, y = eat_soma)) +
   geom_jitter() +
   labs(x = "X", y = "Y") 
 ```
   
-É possível criar um modelo estatístico que descreva o quanto os valores de Y podem ser atribuídos a X por meio de uma função que gere uma reta bem próxima aos pontos reais. Tecnicamente, quão mais próximo essa reta estiver dos pontos, menor serão os erros. No entanto, muitas retas podem ser traçadas, tal como demonstrado a seguir.  
+É possível verificar quanto os valores de Y podem ser atribuídos à X a partir de um modelo estatístico. Este modelo irá computar uma função para ajustar uma reta bem próxima aos pontos reais. Tecnicamente, quão mais próximo essa reta estiver dos pontos, melhor ajustada ela estará e, consequentemente, menor os erros serão. No entanto, muitas retas podem ser traçadas, tal como demonstrado a seguir.  
 
-```{r}
+```{r, echo=FALSE}
+set.seed(123)
 ggplot(dados_brasil, aes(x = bsq_soma, y = eat_soma)) +
   geom_jitter() +
   labs(x = "X", y = "Y") +
   xlim(10,200) +
-  geom_abline(slope = c(rnorm(10,0.4,0.55), rnorm(10,0.2,0.15)),color = 1:20)
+  geom_abline(slope = c(rnorm(10,0.4,0.5), rnorm(10,0.2,0.15)),color = 1:20)
 ```
 
-Repare que entre as retas, de maneira geral, todas acertam alguns pontos e erram outros. Há aquelas que parecem melhores, outras que tem um desempenho muito ruim. De fato, o que isso demonstra é que encontrar o <u>melhor</u> modelo estatístico para este caso é um problema de otimização. Isso pode ser feito justamente resgatando um pouco o conceito de função afim, exposto no ensino médio e ilustrado ao início do capítulo:
+De maneira geral, todas as retas traçadas acertam alguns pontos e erram outros. Há aquelas que se saem melhores e outras que tem um desempenho muito ruim. O que isso demonstra é que encontrar o <u>melhor</u> modelo estatístico para este caso é um problema de otimização. Isso pode ser feito justamente resgatando um pouco o conceito de função de primeiro grau, aprendido no ensino médio:
 
-$$\hat{y} = a + bX$$
+$$y = a + bX$$
 
 
-No entanto, agora o valor previsto ($\hat{y}$) depende de duas constantes (<u>a: intercepto ou coeficiente linear</u> e <u>b: inclinação ou coeficiente angular</u>) e uma variável (X). Apenas por uma questão de simbologia, três alterações são feitas com a equação:    
+Nesta equação, $y$ depende de duas constantes e uma variável. As constante são $a$, que também é chamada de intercepto ou coeficiente linear e $b$, que é chamada de inclinação ou coeficiente angular. A variável da equação é apresentada por $X$. Por uma questão de simbologia, três alterações são feitas com a equação:    
 
 (i) Os símbolos são alterados. Agora $a = b_0$ e $b = b_1$. A alteração de simbologia não altera em nada os cálculos.  
 
-(ii) Como se sabe que essa reta vai <u>estimar</u> os valores reais de $Y$, letras minúsculas ou um chapéu sobre as letras será utilizado em vez das letras maiúsculas ou gregas.  
+(ii) Como se sabe que função vai <u>estimar</u> os valores reais de $Y$, letras minúsculas ou um chapéu sobre as letras será utilizado em vez das letras maiúsculas ou gregas.  
 
 (iii) Para que cada valor estimado seja associado a um participante a letra $i$ será adicionada abaixo do $y$ e do $b_1$.   
 
@@ -185,18 +166,135 @@ $$\hat{y}_i = b_0 + b_1X{_1}_i$$
 
 
 
+Acredito que fique claro que essa equação possibilitará construir uma reta que minimize os erros e não que os anule totalmente. Ou seja, entre o valor real de y (os pontos que estão no gráfico) e os valores estinados pela equação $\hat{y}$, haverá <u>sempre</u> uma certa quantidade de erro de estimativa. O erro é simbolizado por $e_i$, é aleatório e abrange todas as influências no comportamento de Y que não podem ser explicadas linearmente pelo comportamento de X. Além disso, alguns pressupostos estatísticos são impostos a este termo para que as mudanças em X tenham efeito (ceteris paribus) em Y.  
 
-Isso é feito justamente resgatando o conceito de função afim, exposto no ensino médio (e ilustrado ao início do capítulo):
+É possível agora reescrever a equação anterior, considerando que qualquer que seja o valor estimado, sempre haverá uma quantidade de erro. 
+
+$$y_i = a + b_1X{_1}_i+\underbrace{e_i}_\text{aleatório}$$
+
+A melhor reta a ser construída será a que melhor minimize o erro. Por sua vez, os erros se formam pela diferença entre os valores obtidos e previstos.
+
+$$e_i = y_i - \hat{y_i}$$
+O que é análogo à:
+
+$$e_i = y_i - (b_0 + b_1X{_1}_i) \\ =  y_i - b_0 - b_1X{_1}_i$$
+
+O método de Mínimos Quadrados Ordinários (em inglês, Ordinary Least Squares -- OLS) é o mais frequentemente utilizado para estimar os valores de $b_0$ e $b_1$ que possam minimizar o erro quadrático, chamado de $SSE$. A intuição de calcular o erro quadrático em vez do absoluto é a de punir mais severamente os desvios grandes. 
+
+$$SSE = \sum_{i=1}^n e_i^2 = \sum_{i=1}^n (y_i - b_0 - b_1 X_i)^2$$
+
+
+Para encontrar o mínimo, é necessário derivar $SSE$ em relação à $b_0$ e e $b_1$ e, em seguida, igualar à 0:
+
+$$\frac{\partial e^2}{\partial b_0}  = 0,\\ \frac{\partial e^2}{\partial b_1} = 0$$
+
+Rearrumando um pouco os resultados, eles permitem concluir que a inclinação da reta (slope) é dada por:
+$$b_1=\frac{\sum\limits_{i=1}^{n} (x_i-\overline{x}) (y_i-\overline{y})}{\sum\limits_{i=1}^{n} (x_i-\overline{x})^2} = \frac{COV(x,y)}{VAR(X)}$$
+
+Enquanto o intercepto é dado por:
+
+$$b_0 = \overline{y} - b_1 \overline{x}$$
+
+Pela forma como são calculados, o $b_0$ e o $b_1$ são chamados de estimadores de mínimos quadrados ordinários. O $b_1$ representa o quanto a média de Y varia para um aumento de uma unidade da variável X. O $b_0$ indica o ponto onde a reta corta o eixo das ordenadas e pode ser
+interpretável ou não, tal como descrito no [glossário](#glossario).  
+
+Implementando as fórmulas, agora é possível traçar a <u>melhor</u> reta para descrever o relacionamento entre as variáveis, tal como abaixo:
+
+```{r, echo = FALSE }
+b1 <- cov(dados_brasil$bsq_soma, dados_brasil$eat_soma)/var(dados_brasil$bsq_soma)
+b0 <- mean(dados_brasil$eat_soma)-(b1*mean(dados_brasil$bsq_soma))
+```
+
+```{r, echo = FALSE }
+ggplot(dados_brasil, aes(x = bsq_soma, y = eat_soma)) +
+  geom_jitter() +
+  labs(x = "", y = "") +
+  geom_abline(intercept = b0, slope = b1)
+
+```
+
+Essa reta passará necessariamente pela média de ambas as variáveis.
+
+```{r, echo = FALSE }
+ggplot(dados_brasil, aes(x = bsq_soma, y = eat_soma)) +
+  geom_jitter() +
+  labs(x = "X", y = "Y") +
+  geom_abline(intercept = b0, slope = b1) +
+  geom_vline(xintercept = mean(dados_brasil$bsq_soma), size=1.5, color = "red", linetype = "dashed") +
+  geom_hline(yintercept = mean(dados_brasil$eat_soma), size=1.5, color = "red", linetype = "dashed")
+```
+
+
+Aproveitando o gráfico, agora é possível apresentar os dados reais, a linha de regressão e as distâncias entre ela e os pontos reais,
+
+```{r, echo = FALSE, message=FALSE }
+eat_soma_2 <- transform(dados_brasil, Fitted = fitted(mod_linear_simples))
+gridExtra::grid.arrange(
+  ggplot(dados_brasil, aes(bsq_soma, eat_soma)) +
+    geom_jitter(color ="darkgray"),
+  
+  ggplot(dados_brasil, aes(bsq_soma, eat_soma)) +
+    geom_jitter(color ="darkgray") +
+    geom_smooth(method="lm", se = FALSE),
+  
+  ggplot(eat_soma_2, aes(bsq_soma, eat_soma)) +
+    geom_jitter(color ="darkgray") +
+    geom_smooth(method="lm", se = FALSE) +
+    geom_segment(aes(x = bsq_soma, y = eat_soma,
+                     xend = bsq_soma, yend = Fitted), color = "lightgrey"),
+  ncol=3
+)
+```
+
+Com esse sistema de equações, é possível verificar que a variabilidade total de Y pode ser descrita por uma parte explicada pelo modelo de regressão e uma parte não explicada. Existem muitas siglas para expressar estes conceitos e aqui vou utilizar a versão em inglês. SST (total sum of squares) se refere à Soma Total dos Quadrados, SSR (regression sum of squares) se refere à Soma dos Quadrados da Regressão e SSE (error sum of squares) se refere à Soma dos Quadrados dos Erros, que é a parte não explicada pelo modelo.  
+
+Conceitualmente, isso é descrito da seguinte manteira:  
+
+
+$$\underbrace{\sum\limits_{i=1}^{n} (y_i-\overline{y})^2}_\text{SST} = \underbrace{\sum\limits_{i=1}^{n} (\widehat{y_i}-\overline{y})^2}_\text{SSR} + \underbrace{\sum\limits_{i=1}^{n} (y_1-\widehat{y_i})^2}_\text{SSE}$$
+
+
+Adicionando as equações ao gráfico, tem-se o seguinte:  
+
+![](./img/cap_reg_equacoes.png)
+
+A avaliação deste modelo pode ser feita de maneira análoga ao apresentado anteriormente, em que SSR e SST são divididos e geram um coeficiente de determinação, representado por $R^2$. 
+
+$$R^2=\frac{\sum\limits_{i=1}^{n} (\widehat{y_i}-\overline{y})^2}{\sum\limits_{i=1}^{n} (y_i-\overline{y})^2} = \frac{SSR}{SST}$$
+Rearrumando a equação, o $R^2$ também pode ser obtido por:
+
+$$R^2 = 1- \frac{SSE}{SST}$$  
+
+
+Este coeficiente varia entre 0 até 1 e indica a proporção da variação total da variável dependente que pode ser atribuída à variável independente. Ele pode ser utilizado como uma medida da qualidade do ajustamento da reta de regressão aos dados e um indicador da confiança das previsões geradas pelo modelo de regressão.
+
+
+Isso feito, o sumário de algumas fórmulas fechadas pode auxiliar no entendimento desta modelagem àqueles com este interesse específico.  
+
+```{block, type="writing"}
+Soma dos Quadrados da Regressão: $SSR =  \sum\limits_{i=1}^{n} (\widehat{y_i}-\overline{y})^2$  
+
+Soma dos Quadrados dos Erros: $SSE =  \sum\limits_{i=1}^{n} (y_1-\widehat{y_i})^2$  
+
+Soma dos Quadrados Total: $SST =  \sum\limits_{i=1}^{n} (y_i-\overline{y})^2$  
+
+Variabilidade total: $SST = SSR + SSE$  
+
+$R^2= \frac{\sum\limits_{i=1}^{n} (\widehat{y_i}-\overline{y})^2}{\sum\limits_{i=1}^{n} (y_i-\overline{y})^2} = \frac{SSR}{SST} = 1 - \frac{SSE}{SST}$  
+
+
+$R^2_{adj}$: $1-\frac{SSE/N-K}{SST/N-1}$  
+
+```
 
 
 
+É importante destacar que esta introdução é inicial e serve apenas para introduzir as principais ideia da modelagem de regressão de uma maneira intuitiva. Existem excelente obras mais detalhadas e com aplicações à Psicologia, entre elas:  
 
-é apenas inicial e serve apenas para introduzir as principais ideia da modelagem de regressão de uma maneira intuitiva. Existem excelente obras mais detalhadas e com aplicações à Psicologia, entre elas:  
-Data Analysis: A Model Comparison Approach To Regression, ANOVA, and Beyond, de Charles M. Judd,  Gary H. McClelland e Carey S. Ryan   
-
-Regression, ANOVA, and the General Linear Model": A Statistics Primer, de Paul Vik  
-
-Regression and Other Stories, de Andrew Gelman  
+Data Analysis: A Model Comparison Approach To Regression, ANOVA, and Beyond, de Charles M. Judd,  Gary H. McClelland e Carey S. Ryan;   
+Regression, ANOVA, and the General Linear Model": A Statistics Primer, de Paul Vik;   
+Regression: Linear Models in Statistics e N.H. Bingham e J.M. Fry, e
+Regression and Other Stories, de Andrew Gelman   
 
 ## Pesquisa  
 
@@ -431,9 +529,13 @@ Um modelo de regressão foi calculado para verificar os resultados dos comportam
 
 ## Resumo  
 
-1. Existem diferentes modelos de regressão e eles sempre visam prever um resultado a partir de uma ou um conjunto de variáveis  
-2. O tipo de modelagem depedente tanto da natureza e quantidade das VIs e VDs, sempre possível entender grande parte dos testes estatísticos estudados como casos particulares dos modelos de regressão  
-3. Os principais indicadores de um modelo de regressão são sua significância geral, o $R^2$,o o $R^2_{adj}$, bem como o coeficiente e a significância dos preditores  
-4. o diagnóstico é uma parte essencial desta modelagem e o mnemônico LINE pode ajudar na lembrança dos pressupostos  
+1. Existem diferentes modelos de regressão e eles sempre visam prever/explicar um resultado a partir de uma ou um conjunto de variáveis  
+2. O tipo de modelagem depedente tanto da natureza e quantidade das VIs e VDs e é possível entender grande parte dos testes estatísticos estudados como casos particulares dos modelos de regressão   
+3. Os principais indicadores de um modelo de regressão são sua significância geral, o $R^2$,o o $R^2_{adj}$, bem como o coeficiente e a significância dos preditores   
+4. o diagnóstico é uma parte essencial desta modelagem e o mnemônico LINE pode ajudar na lembrança dos pressupostos   
 
 
+## Pesquisas adicionais  
+
+1. Influence of Age and Education on the Performance of Elderly in the Brazilian Version of the Montreal Cognitive Assessment Battery (DOI: 10.1159/000489774)
+Nesta pesquisa, 110 participantes foram recrutados para que os pesquisadores pudessem produzir tabelas estatísticas para um novo exame neuropsicológico. Uma das análises feitas verificou o impacto dos anos de estudo no desempenho neste exame neuropsicológico, concluindo pelo seu efeito protetivo. 
