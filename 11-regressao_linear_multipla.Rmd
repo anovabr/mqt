@@ -12,26 +12,25 @@ library(gridExtra) #plot together
 library(stargazer) #presenting results
 ```
 
-Os modelos de regressão linear múltipla são desenvolvidos para predizer os valores médios de uma variável resposta (Y) em função de duas ou mais variáveis independentes (X). Nestes modelos, a VD deve ser contínua e as VIs podem ser tanto contínuas como categóricas. Tecnicamente, a família da ANOVA vista anteriormente são casos particulares de modelos de regressão múltipla.
+Os modelos de regressão linear múltipla são desenvolvidos para predizer os valores médios de uma variável resposta (Y) em função de duas ou mais variáveis independentes (X). Estes modelos tendem a ampliar a acurácia obtida por uma regressão linear simples, apesar de também aumentarem a complexidade de sua realização e interpretação. Nestes modelos, a VD deve ser contínua e as VIs podem ser tanto contínuas como categóricas. Tecnicamente, a família da ANOVA vista anteriormente são casos particulares de modelos de regressão múltipla.
 
 
-Conceitualmente, neste modelo, se adiciona um outro preditor à equação vista no capítulo de regressão linear simples. Assim:
+Conceitualmente, neste modelo, se adicionam outros preditores à equação vista no capítulo de regressão linear simples. Assim:
 
-\[y_i = b_0 + b_1X{_1}_i + b_2X{_2}_i+ \epsilon_{i}\]
+\[y_i = b_0 + b_1X{_1}_i + b_2X{_2}_i + ... + b_pX{_p}_i+ \epsilon_{i}\]
 
 $y_i$ representa a variável dependente  
 $b_0$ é o intercepto (coeficiente linear)   
-$b_1$ e $b_2$ indicam a inclinação dos preditores (coeficiente angular)  
+$b_p$ indica a inclinação de cada um dos preditores      
 $\epsilon_{i}$ é o erro/resíduo   
 
 
-Os seguintes pressupostos devem ser avaliados:
-
-
+A interpretação dos resultados obtidos depende dos seguintes pressupostos:  
+ 
 (i) A relação entre as variáveis é linear
 (ii) Os resíduos são independentes  
-(ii) Os resíduos são normalmente distribuídos
-(iii) A variância dos resíduos é constante
+(ii) Os resíduos são normalmente distribuídos (com média)    
+(iii) A variância dos resíduos é constante  
 
 O mnemônico <u>LINE</u> (linearity, independence, normality, equal variance) talvez ajude a lembrar destes pressupostos.
 
@@ -44,88 +43,117 @@ O mnemônico <u>LINE</u> (linearity, independence, normality, equal variance) ta
 </div>  
 
 
-Vamos utilizar a pesquisa intitulada ["Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students"](https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students), publicada em 2018 no Global Journal of Educational Studies, que sou co-autor.
+Neste capítulo, vamos utilizar a pesquisa intitulada ["Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students"](https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students), publicada em 2018 no Global Journal of Educational Studies, que sou coautor.
 
-O objetivo dessa pesquisa foi explorar os fatores envolvidos em transtornos alimentares e aspectos da percepção da imagem corporal, bem como verificar a capacidade que uma medida possuia em predizer os resultados de outra. Esse artigo contou com a utilização de escalas aplicadas em 219 participantes no Brasil. Para acessar aspectos relacionados aos Transtornos alimentares, a escala EAT-26 foi aplicada. Para verificar aspectos da imagem corporal, a escala BSQ-34 foi aplicada.  
+O objetivo dessa pesquisa foi explorar os fatores envolvidos em transtornos alimentares e na percepção da imagem corporal. Os primeiros aspectos foram avaliados pela escala EAT-26, enquanto o segundo foi avaliado pela escala BSQ-34.  
 
-Segue abaixo uma tabela inicial com dados descritivos dos resultados.  
+Uma das principais hipóteses era possíveis alterações na percepção da imagem corporal, bem como o índice de massa corporal (IMC) poderiam ser  preditores no desenvolvimento de transtornos alimentares. Neste sentido, pessoas com uma distorção na percepção de imagem corporal (dadas por resultados altos do BSQ), além de alto IMC tenderiam a fazer uma restrição alimentar mais intensa (obtidas pelos valores do EAT) 
 
-
-```{r}
-dados_brasil %>% 
-  select(sexo,eat_soma, bsq_soma, imc, faz_esporte, familia_esporte) %>% 
-  psych::describeBy(.,group = "sexo") %>% pander::pander()
-```
-
+Da mesma forma que apresentado no capítulo de regressão linear simples, a definição estatística das hipóteses em modelos de regressão costumam ser feitas em cascata. Quase sempre, se compara o modelo de desenvolvido com um modelo mais simples. Em seguida, verifica-se cada preditor de forma individual e assim sucessivamente. Uma vez que a definição de cada hipótese ocuparia um espaço grande aqui, elas serão suprimidas.  
 
 
 ## Execução no R  
 
-Para crir o modelo no R, basta adicionar uma nova variável à equação. Neste caso, além de verificar o efeito da <u>percepção de imagem corporal</u>, o <u>peso</u> também irá ser utilizado como preditor. É importante notar que, por padrão, o R não usa linhas com dados ausentes e isso pode reduzir o poder do teste.
+A primeira etapa da análise é realizada pelo desenvolvimento de tabelas e gráficos que possam auxiliar na interpretação dos resultados. De maneira similar à feita em outros capítulos, abaixo há uma tabela descritiva. 
+
+```{r results="asis" }
+arsenal::tableby(~eat_soma + bsq_soma + imc, dados_brasil) %>% summary() 
+```
+
+
+
+É também possível, inicialmente, implementar um modelo de correlação ou correlação parcial visando produzir maior suporte à regressão linear múltipla. O modelo de correlação estima a força e a direção da correlação bivariada e o modelo de correlação parcial é feita para estimar o quanto uma variável se correlaciona com outra após controlar essa relação por uma terceira variável. No entanto, ambas as análise apenas trariam suporte indireto à regressão linear múltipla e por isso não serão feitas.
+
+Para criar o modelo de regressão linear múltipla no R, será necessário resgatar o modelo visto em regressão linear simples para introduzir nova variável à equação.   
+
+Neste caso, o vetor `mod_linear_multiplo` será armazenado para verificar o efeito da <u>percepção de imagem corporal</u> e do <u>IMC</u> no <u>EAT-26</u>, que se refere ao comportamento alimentar. É importante notar que, por padrão, o R não usa linhas com dados ausentes e isso pode reduzir o poder do teste. Neste base, há 215 linhas completas.
 
 
 ```{r}
-mod_linear_multiplo <- lm(eat_soma ~ bsq_soma + peso_atual, data = dados_brasil)
+mod_linear_multiplo <- lm(eat_soma ~ bsq_soma + imc, data = dados_brasil)
 ```
 
-A apresentação segue o mesmo formato da realizada no capítulo específico de regressão linear simples.
+A apresentação dos resultados pode ser feita pelo pacote `olsrr`. Ela segue o mesmo formato da realizada no capítulo específico de regressão linear simples, apenas com a diferença da inclusão de um novo preditor.
 
 ```{r }
-ols_regress(mod_linear_multiplo) 
+ols_regress(mod_linear_multiplo)
 ```
   
-Os resultados devem ser analisados de maneira cuidadosa. Inicialmente, é possível concluir que o modelo foi globalmente significativo (F(2, 213) = 100.675, p < 0.001) e que cerca de 48% da variabilidade do EAT-26 pode ser atribuída aos valores do BSQ-34 e do peso do participante. Cada um dos preditores tem um comportamento específico. Em relação ao BSQ-34, cada unidade a mais em seu resultado impacta, em média, 0.18 pontos a mais no EAT-26, controlando pelo peso do participante (p < 0.001). Além disso, cada 1 kg a mais no peso do participante impacta em -0.121 (p < 0.001), em média, nos resultados do EAT-26, controlando pelos valores do BSQ-34.
+Da mesma forma que exposto anteriormente, os resultados devem ser analisados aos poucos e de maneira cautelosa. 
 
-A ideia de verificar o efeito de uma variável controlando por outra tem um significado particular. Assumindo duas pessoas que <u>tem o peso atual igual ao peso médio do grupo</u> ou <u>o mesmo peso</u>, cada ponto extra no BSQ gera, em média, 0.18 pontos a mais no EAT-26. Assim, o valor estimado no <u>EAT-26</u> de Um participante que teve 45 pontos no <u>BSQ</u> e <u>peso</u> de 66.51 (o peso médio) é de 9.41. Já o valor estimado no <u>EAT-26</u> de um outro participante com 46 pontos no <u>BSQ</u> e mesmo <u>peso</u> do primeiro participante (66.51) é de  9.59. A diferença entre os valores é exatamente igual ao coeficiente calculado na regressão (b = 0.18). Abaixo há duas linhas de código apresentando esses resultados.
+<u>Inicialmente</u>, deve-se olhar a seçao `ANOVA` e verificar se o modelo testado é significativo ou não. Neste caso, é possível concluir que o modelo foi globalmente significativo (F(2, 212) = 99.976, p < 0.001).   
+
+Em <u>segundo momento</u>, verifica-se o $R^2$, que indicou que carca de 48.5% da variabilidade dos resultados do EAT-26 podem ser atribuídos aos preditores do modelo (BSQ-34 e IMC).   
+
+Em <u>terceiro momento</u>, o $R^2 ajustado$ deve ser interpretado Esse indicador pune a entrada de preditores e oferece uma métrica que protege o superajuste e que ajuda a comparar modelos com diferentes números de preditores, quando necessário. Neste caso, o valor foi muito similar ao obtido previamente, mantendo a conclusão feita anteriormente.
+
+O <u>quarto momento</u> consiste na interpretação dos resultados de cada um dos preditores do modelo. Em relação ao BSQ-34, cada unidade a mais em seu resultado impacta, em média, 0.19 pontos a mais no EAT-26, controlando pelo IMC do participante (p < 0.001). Além disso, cada 1 unidade a mais no IMC do participante impacta em -0.447 (p < 0.001), em média, nos resultados do EAT-26, controlando pelos valores do BSQ-34. O intercepto não tem interpretação lógica, uma vez que valores 0 no IMC não existem.  
+
+A ideia de estimar o efeito de uma variável controlando por outra faz com que esses coeficientes sejam chamados de <u>coeficientes parciais</u>. A forma pela qual isso é feito tem características particulares.   
+
+Assumindo duas pessoas que <u>tem o mesmo IMC</u> (por exemplo, o IMC médio), cada ponto extra no BSQ gera, em média, 0.19 pontos a mais no EAT-26. A função `predict` do R permite essa demonstração.  
+
+O valor estimado no <u>EAT-26</u> de Um participante que teve 45 pontos no <u>BSQ</u> e tem <u>IMC</u> de 23.2 (o IMC médio) é de 9.06. 
 
 ```{r}
-peso_medio <- mean(dados_brasil$peso_atual, na.rm=T)
-predict(mod_linear_multiplo, data.frame(bsq_soma=c(45), peso_atual=peso_medio))
-```
-```{r}
-predict(mod_linear_multiplo, data.frame(bsq_soma=c(46), peso_atual=peso_medio))
+imc_medio <- mean(dados_brasil$imc, na.rm=T)
+predict(mod_linear_multiplo, data.frame(bsq_soma=c(45), imc=imc_medio))
 ```
 
-```{r}
-predict(mod_linear_multiplo, data.frame(bsq_soma=c(46), peso_atual=peso_medio))-predict(mod_linear_multiplo, data.frame(bsq_soma=c(45), peso_atual=peso_medio))
-```
+Já o valor estimado no <u>EAT-26</u> de um outro participante com 46 pontos no <u>BSQ</u> (ou seja, 1 ponto a mais) e mesmo <u>IMC</u> do primeiro participante (23.2) é de 9.25. 
 
-Tal como apresentado anteriores, a interpretação dos resultados depende da adequação de seus pressupostos. O relacionamento <u>linear</u> já havia sido investigado no gráfico de dispersão nos capítulos anteriores. A <u>Normalidade</u> dos resíduos pode ser vista pelo QQ-Plot (abaixo):
+```{r}
+predict(mod_linear_multiplo, data.frame(bsq_soma=c(46), imc=imc_medio))
+```
+A diferença entre esses dois valores é exatamente igual ao coeficiente calculado na regressão (b = 0.19). Abaixo há duas linhas de código apresentando esses resultados.
+
+```{r}
+round(predict(mod_linear_multiplo, data.frame(bsq_soma=c(46), imc=imc_medio)) - predict(mod_linear_multiplo, data.frame(bsq_soma=c(45), imc=imc_medio)),2)
+```
+Esse formato analítico é similar para o resultado do <u>IMC</u>. Caso duas pessoas tenham o mesmo resultado do <u>BSQ</u>, uma unidade a mais no IMC impactará em uma redução de 0.447, em média, no <u>EAT-26</u>. 
+
+Uma vez que o modelo já foi realizado, a interpretação dos resultados depende da adequação de seus pressupostos. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer [@Lix1996; @Barker2015; @Ernst2017]. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.
+
+<mark> Normalidade</mark>: O pressuposto da Normalidade é atendido se os <u>resíduos</u> do modelo de regressão seguirem uma distribuição normal. Isso pode ser avaliado graficamente por QQ plots e também por testes específicos, como o Shapiro-wilk, Anderson-Darling e Jarque Bera.
+
+O QQ plot é um gráfico que reúne a distribuição empírica ordenada dos quantis contra os quantis da distribuição teórica (aqui, normal). Se os dados e a linha diagonal se soprepuserem, isso é uma evidencia de que a distribuição empírica é a mesma da distribuição teórica. Caso haja discrepância, isso aponta para desvio da normalidade.  Caso os pontos e a reta diagonal estejam superpostos, se considera que este pressuposto foi atendido
 
 
 ```{r}
 ols_plot_resid_qq(mod_linear_multiplo)
-ols_plot_resid_stud_fit(mod_linear_multiplo)
 ```
 
-e por testes estatísticos formais. De forma análoga ao que aconteceu no capítulo de regressão linear simples, apesar de algo discordantes, o pressuposto de normalidade foi rejeitado.
+Testes estatísticos formais também podem ser utilizados, tal como abaixo:  
 
 ```{r}
 ols_test_normality(mod_linear_multiplo)
 ```
 
-A <u>independência</u> dos resíduos pode ser avaliada pelo Durbin Watson. É importante lemrbar que a Hipótees nula é de que os resíduos não são correlacionados.   
+Tanto a visualização do QQ plot, como a maior parte dos testes estatísticos específicos convergiram, indicando que a normalidade foi violada. 
 
-```{r}
-car::durbinWatsonTest(mod_linear_multiplo)
-```
-
-As homocedasticidade, ou seja, <u>variâncias constantes</u> pode ser vista em um gráfico de dispersão dos resíduos (residual) contra os valores previstos (fitted).  
-
+<mark>Homocedasticidade</mark>: Este pressuposto de variâncias constantes pode ser analisada em um gráfico de dispersão dos resíduos (residual) contra os valores previstos (fitted).  
 
 ```{r}
 ols_plot_resid_fit(mod_linear_multiplo)
 ```
 
-O teste Breusch-Pagan também é um indicador importante e a Hipótese nula assume homocedasticidade. Portanto, a estatística de teste deveria ser insignificante para que a homocedasticidade pudeSSR ser aceita, o que não é o caso aqui.
+Caso haja padrões neste gráfico, isso sugere que este pressuposto foi violado. Pelo gráfico, parece não haver padrões específicos. No entanto, testes formais são recomendados para que a decisão tomada tenha maior apoio. Existem diferentes testes para isso e, entre eles, o teste de Bartlett, Levene e Breusch-Pagan. Os resultados dependem das propriedades de cada um dos modelos e, em função da praticidade computacional, o teste de Breusch-Pagan será utilizado. Em todos estes testes, a hipótese nula assume homocedasticidade. Portanto, a estatística de teste não deveria ser significativa para que a homocedasticidade fosse apoiada.
 
 
 ```{r}
 ols_test_breusch_pagan(mod_linear_multiplo)
 ```
+Os resultados indicaram que a homocedasticidade foi violada (assumingo alfa = 0.05). Isso vai em direção distinta à percepção gráfica, o que pode ocorrer sem nenhum problema.  
 
+<mark>Independência</mark>: A independência dos resíduos depende bastante do delineamento utilizado ser transversal ou longitudinal. O teste de Durbin Watson pode ser utilizado e a hipótees nula é de que os resíduos não são correlacionados. Este pressuposto foi atendido, o que já era esperado.  
 
-Como esse modelo pode reunir diversas variáveis independentes, é importante verificar o quanto elas são correlacionadas entre si. Isso é feito pela análise de Variance Inflaction Factor (VIF). Valores de VIF superiores a 4 indicam que as variáveis indepenentes são fortemente correlacionadas e, com isso, as estimativas podem ser distorcidas. Neste caso, isso não aconteceu.
+```{r}
+car::durbinWatsonTest(mod_linear_multiplo)
+```
+<mark>Multicolinearidaed</mark>: Diferente da regressão linear simples,  a regressão múltipla reúne diversas variáveis independentes. É possível
+que essas variáveis sejam muito correlacionadas entre si, impactando na interpretação dos resultados. Uma maneira de verificar isso é pela análise chamada Variance Inflaction Factor (VIF).   
+
+Valores de VIF superiores a 4 indicam que as variáveis indepenentes são fortemente correlacionadas e suas estimativas podem ser distorcidas. Neste caso, isso não aconteceu.
 
 ```{r}
 ols_coll_diag(mod_linear_multiplo)
@@ -140,6 +168,11 @@ Com isso realizado, os diagnósticos indicaram que a normalidade e a homocedasti
 Um modelo de regressão múltipla foi calculado para verificar os resultados dos comportamentos alimentares (EAT-26) em função da percepção de imagem corporal (BSQ-34) e do peso do participante. Os resultados indicaram que cerca de 48% da variância do EAT-26 pode ser atribuída aos preditores (R2 = 0.486, F(2,213) = 100.675, p < 0.001). Cada ponto a mais no BSQ-34 impacta, em média, em 0.180 no EAT-26 (p < 0.001), controlando pelo peso do participante. 
 
 ```  
+
+
+## Execução no JASP
+
+
 
 
 ## Técnicas automáticas de seleção de variáveis  
