@@ -1,67 +1,86 @@
-# Aspectos gerais
+---
+output:
+  word_document: default
+  html_document: default
+---
+# Aspectos gerais  
+ 
+Os subtópicos a seguir apresentam conceitos gerais e importantes que costumam ser apresentados antes mesmo de introduzir aspectos mais específicos de estatística. Uma vez que são conceitos transversais, eles também costumam aparecer em livros de métodos e técnicas de pesquisa e história da ciência. 
 
-  Os subtópicos a seguir ilustram um conjunto de conceitos importantes que tendem a ser apresentados antes mesmo de introduzir conceitos em Estatística. Como os conceitos são transversais, eles podem também ser úteis em métodos e técnicas de pesquisa em geral.
+A apresentação e descrição de cada um dos temas e conceitos é feita de maneira sucinta. As referências bibliográficas dispostas ao fim do capítulo servem para o aprofundamento teórico entre aqueles interessados.   
 
 ## Fundações da pesquisa e estatística
 
-Existem alguns conceitos muito utilizados em pesquisa e estatística que servem como fundações da maior parte dos métodos e técnicas implementados quando se investiga um determinado fenômeno ou objeto através do método científico. Apesar de manuais técnicos divergirem em quantos e quais conceitos podem ser entendidos como elementos base em pesquisa e estatística, existe grande concordância em relação à (1) realidade e modelo e (2) constante e variáveis. Ambos serão introduzidos a seguir.     
+Existem alguns conceitos muito utilizados em pesquisa e estatística que servem como fundações da maior parte dos métodos e técnicas implementados quando se investiga um determinado fenômeno ou objeto através do método científico. Apesar de manuais técnicos divergirem em quantos e quais conceitos podem ser entendidos como elementos-base em pesquisa e estatística, existe grande concordância em relação à (1) realidade e modelo e (2) constante e variáveis. Ambos serão introduzidos a seguir.     
 
 Frequentemente, uma pesquisa é feita para responder uma pergunta específica sobre um fenômeno ou objeto. Muitas perguntas são possíveis a depender da área de interesse do investigador, bem como de sua época. Físicos e astrônomos do século XVI queriam investigar a organização do sistema solar, economistas do século XVIII tinham interesse em investigar a relação entre recursos e rendimentos financeiros e, mais recentemente, psicólogos do século XX se debruçaram a estudar o efeito da escolaridade no desenvolvimento de habilidades cognitivas, especialmente a inteligência. Esses três exemplos remontam à teoria heliocêntrica, a lei dos retornos marginais decrescentes e a teoria da reserva cognitiva.  
 
-Apesar da diferença entre os interesses, uma característica compartilhada nestas pesquisas é a impossibilidade ou improbabilidade de se investigar diretamente a realidade. No exemplo da astronomia isso parece ser bastante claro, já que mesmo que pesquisas em física tenham características mais mecanicistas, só atualmente que o acesso mais direto da realidade foi possível e permitiu responder melhor essa questão. Além disso, na grande maioria das pesquisas, os fenômenos e objetos de interesse <u>não são sistemas fechados</u>. Isso significa que não é possível ou viável controlar todos os fatores relacionados ao que se tem interesse de estudar. Por exemplo, quando se investiga como a escolaridade impacta nas habilidades cognitivas, os resultados podem (ou não) responder apenas inicialmente sobre um dos fatores relacionado à habilidade cognitiva, mas não todos.
+Apesar da diferença entre os interesses, uma característica compartilhada nestas pesquisas é a impossibilidade ou improbabilidade de se investigar diretamente a realidade. No exemplo da astronomia isso parece ser bastante claro, já que mesmo que pesquisas em física tenham características mais mecanicistas, só atualmente que o acesso mais direto da realidade foi possível e permitiu responder melhor essa questão. Além disso, na grande maioria das pesquisas, os fenômenos e objetos de interesse não são sistemas fechados. Isso significa que não é possível ou viável controlar todos os fatores relacionados ao que se tem interesse de estudar. Por exemplo, quando se investiga como a escolaridade impacta nas habilidades cognitivas, os resultados podem (ou não) responder apenas inicialmente sobre um dos fatores relacionado à habilidade cognitiva, mas não todos.
 
-Entre as maneiras desenvolvidas por cientistas para lidar com esta situação estão a construção de modelos teóricos e instrumentos de medida. Modelos científicos são representações da realidade e podem ser criados sob perspectiva visual, matemática, computacional ou experimental. Eles tendem a ser sistemas fechados e visam reproduzir, precisamente, o fenômeno ou objeto de interesse. A qualidade desses modelos pode variar e entre as principais características positivas de um modelo estão a sua aderência com a realidade e a possibilidade de realizar simulações e fazer predições com ele. A figura a seguir apresenta tais características.
+Entre as maneiras desenvolvidas por cientistas para lidar com esta situação estão a <u>construção de modelos teóricos</u> e <u>instrumentos de medida</u>. Modelos teóricos científicos são representações da realidade e podem ser criados sob perspectiva visual, matemática, computacional ou experimental. Eles tendem a ser sistemas fechados e visam reproduzir, precisamente, o fenômeno ou objeto de interesse. A qualidade desses modelos pode variar e entre as principais características positivas de um modelo com alta aderência à realidade estão a possibilidade de se realizar simulações e também fazer predições com ele. 
+
+A figura a seguir apresenta algumas características dos modelos científicos.  
 
 ![](./img/cap_modelos_cientificos.png)
 
-Em um modelo ideal, aquilo que fosse descoberto a partir dele, ocorreria identicamente na realidade. Evidentemente, modelos ideais não existem na grande maioria das áreas científicas, o que leva à conclusão de que os modelos são absolutamente essenciais à pesquisa, apesar de possuírem limitações [@Putnam1980; @Feigelson1992; @Firgg2020]. Mapas cartográficos ilustram bem a importancia dos modelos. Apesar deles terem uma importância vital à pesquisa, todos os mapas que produzimos sobre o planeta distorcem algo da área e localização dos países.
+
+Em um modelo ideal, aquilo que fosse descoberto a partir dele, ocorreria identicamente na realidade. Evidentemente, modelos ideais não existem na grande maioria das áreas científicas, o que leva à conclusão de que os modelos são absolutamente essenciais à pesquisa, apesar de possuírem limitações [@Putnam1980; @Feigelson1992; @Firgg2020]. Por exemplo, engenheiros utilizam modelos computacionais com muita frequência para verificar itens de segurança de um carro; economistas utilizam modelos matemáticos (e também jogos!) para investigar características da tomada de decisão e psicólogos utilizam modelos experimentais e matemáticos para investigar transtornos mentais e desenvolvimento de funções emocionais e cognitivas.   
+
+
+Ainda neste sentido, mapas cartográficos ilustram bem a importância dos modelos. Apesar de todos os mapas disponíveis distorcerem um pouco a área e localização dos continentes, a utilização deles é fundamental tanto na ciência como no dia-a-dia das pessoas.  
 
 ![](./img/cap_mapas.png) 
 
  
-Por sua vez, os instrumentos de medida são recursos tecnológicos que permitem uma avaliação mais detalhada do fenômeno ou do objeto de investigação, bem como produzir dados que podem ser estudados, compartilhados e comparados. Todas as áreas científicas desenvolvem e refinam instrumentos de medida e há autores que sugerem que tais recursos podem indicar também o quão madura e desenvolvida uma área é. Com muita frequência, o registro que temos da realidade é baseado em nossos órgãos sensoriais que, por sua vez, são influenciados pela cultura em que estamos inseridos e pela aprendizagem prévia pela qual passamos.   
+Por sua vez, os instrumentos de medida são recursos tecnológicos que permitem uma avaliação mais detalhada do fenômeno ou do objeto de investigação. A utilização de instrumentos também gera um conjunto de dados que podem ser analisados, comparados e compartilhados. Todas as áreas científicas desenvolvem e refinam instrumentos de medida e há autores que sugerem que a existência e a qualidade de tais recursos indicam o quão madura e desenvolvida uma área se encontra. Com muita frequência, o registro que temos da realidade é baseado em nossos órgãos sensoriais que, por sua vez, são influenciados pela cultura em que estamos inseridos e pela aprendizagem prévia pela qual passamos.   
+
+![](./img/cap_instrumentos.png) 
 
 A principal proposta dos instrumentos de medida é a captura da realidade de uma maneira mais direta, evitando possíveis interferência ou ruídos e produzindo dados confiáveis sobre o fenômeno ou objeto estudado. Existe uma grande translação entre modelos teóricos e instrumentos de medida. Apesar de não ser uma regra geral, muitas áreas científicas primeiro constroem modelos teóricos e o processo de medida ocorre nestes modelos. Por exemplo, há um conjunto de modelos psicológicos visando entender como ocorre o esquecimento que, por sua vez, permitiram desenvolver testes e escalas específicas para isso.   
 
-Uma dos exemplos mais interessantes sobre a limitação que nossos sentidos possuem ao capturar a realidade e a importância do desenvolvimento de instrumentos de medida é perceção que temos do sol. A maioria das representações feitas do sol o apresentam como amarelo, quando na verdade ele é branco. Isso ocorre em função da atmosfera do planeta Terra e de diferentes gáses presentes no céu.   
+
+Uma dos exemplos mais interessantes sobre a limitação que nossos sentidos possuem ao capturar a realidade e a importância do desenvolvimento de instrumentos de medida é percepção que temos do sol. A maioria das representações feitas do sol o apresentam como amarelo, quando na verdade ele é branco. Isso ocorre em função da atmosfera do planeta Terra e de diferentes gases presentes no céu.   
 
 ![](./img/cap_sol.png) 
 
 
-Isso posto, o desenvolvimento de modelos teóricos e de instrumentos de medida são atividades essenciais de pesquisadores e cientistas para lidar com a impossibilidade ou improbabilidade de acessar a realidade de forma direta, bem como pela limitação perceptual que temos.
+Isso posto, o desenvolvimento de modelos teóricos e de instrumentos de medida são atividades essenciais de pesquisadores e cientistas para lidar com a impossibilidade ou improbabilidade de acessar a realidade de forma direta, bem como pela limitação perceptual que temos. Como Popper comenta no livro "Os dois problemas fundamentais da teoria do conhecimento", essas características fazem com que cientistas quase nunca digam que estão em busca da verdade, mas sim que estão em busca de evidências sobre um determinado fenômeno ou objeto.
 
-O segundo conceito se dá na dicotomia constante vs. variáveis. De maneira geral, um fenômeno constante não apresenta dispersão em seus valores. Em oposição, fenômenos variáveis podem assumir quaisquer valores em suas características. Enquanto a velocidade da luz e do som é, respectivamente, 324 m/s e 299.792 m/s; a renda, altura ou inteligência das pessoas podem variar bastante. De fato, essa dicotomia também poderia ser vista pelo conceito de modelos determinísticos e probabilísticos. Modelos determinísticos são aqueles que as condições iniciais determinam os resultados, enquanto modelos probabilísticos são os que  associam probabilidades aos resultados.
+O segundo conceito se dá na dicotomia constante vs. variáveis. De maneira geral, um fenômeno constante não apresenta dispersão em seus valores. Em oposição, fenômenos variáveis podem assumir quaisquer valores em suas características. Enquanto a velocidade da luz e do som é, respectivamente, 324 m/s e 299.792 m/s; a renda, altura ou inteligência das pessoas podem variar bastante. De fato, essa dicotomia também poderia ser vista pelo conceito de modelos determinísticos e probabilísticos ou, superficialmente, em algumas diferenças entre ciências naturais e ciências humanas. Modelos determinísticos são aqueles que as condições iniciais determinam os resultados, enquanto modelos probabilísticos são os que associam probabilidades aos resultados. Por vezes, em ciências naturais recorre-se menos à noção de probabilidade, enquanto em ciências humanas este é um conceito central.  
 
-Em estatística e pesquisa, o termo variável pode ser entendido tanto de uma maneira bastante informal, como de uma forma mais rigorosa. Informalmente, uma variável é uma característica de um determinado objeto, tal como peso, altura, inteligência ou renda. Essa característica podem apresentar quaisquer valores e, assim, exemplificam o conceito de uma variável. No entanto, formalmente em estatística, quando o termo variável é utilizado, o que está em jogo é o conceito de variável aleatória. Por sua vez, este conceito se refere à uma classe de variáveis em que o conjunto possível de suas realizações (ou seja, seus valores ou desfechos) ocorrem de acordo com uma distribuição de probabilidade [@everitt2002cambridge]. Em estatística, uma variável aleatória é uma função que associa elementos do espaço amostral ao conjunto de números reais. 
+Em estatística e pesquisa, o termo variável pode ser entendido tanto de uma maneira bastante informal, como de uma forma mais rigorosa. Informalmente, uma variável é uma característica de um determinado objeto, tal como peso, altura, inteligência ou renda. Essa característica podem apresentar quaisquer valores e, assim, exemplificam o conceito de uma variável. No entanto, formalmente em estatística, quando o termo variável é utilizado, o que está em jogo é o conceito de <u>variável aleatória</u>. Por sua vez, este conceito se refere à uma classe de variáveis em que o conjunto possível de suas realizações (ou seja, seus valores ou desfechos) ocorrem de acordo com uma distribuição de probabilidade [@everitt2002cambridge]. Em estatística, uma variável aleatória é uma função que associa elementos do espaço amostral ao conjunto de números reais. 
 
 Assim, o estudo das variáveis (aleatórias), tanto de maneira mais descritiva, como de forma inferencial, são os principais insumos da estatística. 
 
 As variáveis podem ser organizadas por seu <u>relacionamento em uma pesquisa</u>, seu <u>nível ou escala de medida</u> e sua <u>capacidade informacional</u>.  
 
 
-Em relação ao relacionamento entre as variáveis, inicialmente, é possível classificá-las em <u>independentes</u> e <u>dependentes</u>. Variáveis independentes são abreviadas pela sigla VI e também são chamadas de antecedentes, preditores, fatores ou variáveis de entrada. Variáveis dependentes são abreviadas por VD e também são chamadas de consequentes, previstas, desfechos ou variáveis saída. Em pesquisa, assume-se que ambas as variáveis são contectadas e que a VI gera ou causa a VD. No entanto, nem sempre essa lógica se aplica.   
+Em relação ao relacionamento entre as variáveis, inicialmente, é possível classificá-las em <u>independentes</u> e <u>dependentes</u>. Variáveis independentes são abreviadas pela sigla VI e também são chamadas de antecedentes, preditores, fatores ou variáveis manipuladas ou de entrada. Variáveis dependentes são abreviadas por VD e também são chamadas de consequentes, previstas, desfechos ou variáveis medidas ou de saída. Em pesquisa, assume-se que ambas as variáveis são contectadas e que a VI gera ou causa a VD. No entanto, nem sempre essa lógica se aplica.   
 
-Nesse sentido, as variáveis que são entendidas como VI e VD são definidas por condições temporais, lógicas ou teóricas [@BabbieEarlR1990]. Como exemplos de uma condição temporal, é possível verificar a influência do sexo (VI) na escolha profissional (VD) ou o efeito de um medicamento (VI) na dor de cabeça (VD). Em relação à condição lógica, ao se Verificar como a escolaridade afeta o preconceito é possível assumir que a escolaridade ;e a VI e o preconceito é a VD. Entretanto, alguém pode sugerir que pessoas mais ou menos preconceituosas podem se dedicar mais ou menos em atividades acadêmicas, invertendo a relação de causalidade. Finalmente, uma organização teórica ocorre quando se pretende investigar os efeitos da ansiedade na depressão. A eleição da ansiedade como VI foi uma escolha do pesquisador e não, necessariamente, uma condição temporal ou lógica. 
+A definição de uma VI e uma VD segue condições temporais, lógicas ou teóricas [@BabbieEarlR1990]. Como exemplos de uma condição temporal, é possível verificar a influência do sexo (VI) na escolha profissional (VD) ou o efeito de um medicamento (VI) na dor de cabeça (VD). Nesses dois casos, os efeitos não podem alterar as causas. Uma escolha profissional não faz com que a pessoa altere seu sexo, bem como a dor de cabeça é uma condição que antecede a tomada do medicamento. 
+
+Em relação à condição lógica, ao se Verificar como a escolaridade afeta o preconceito é possível assumir que a escolaridade é a VI e o preconceito é a VD. Entretanto, alguém pode sugerir que pessoas mais ou menos preconceituosas podem se dedicar mais ou menos em atividades acadêmicas, invertendo a relação de causalidade.   
+
+Finalmente, uma organização teórica ocorre quando se pretende investigar os efeitos da ansiedade na depressão ou do casamento no bem estar pessoal. A eleição da ansiedade como VI foi uma escolha do pesquisador e não, necessariamente, uma condição temporal ou lógica. Da mesma forma, eleger o casamento como VI é uma escolha feita para responder a uma determinada questão. 
 
 
-
-A figura a seguir expõe estes conceitos.
+A figura diagrama algo destes conceitos.
 
 
 ![](./img/cap_vi_vd.png) 
 
 
-## Principais áreas da estatística 
+É importante notar que a ideia de uma única variável impactando ou causando diretamente uma outra variável é apenas metafórica. Para que isso pudesse ocorrer na natureza, seria necessário que todas as outras fontes de influência e erros existentes neste relacionamento fossem controladas ou suprimidas [@Dumsday2012]. Essa noção de controle total é visto pelo termo *ceteris paribus*, que é uma expressão em latim que significa "tudo o mais constante". Muitas vezes, em pesquisa e estatística, este termo é utilizado quando alguns ajustes são implementados em modelos estatísticos para tentar expressar a ideia de uma causalidade parcial, em que a VI impactaria a VD de uma determinada forma, caso tudo o mais fosse controlado [@Fennell2005]. Evidentemente, há condições encontradas com certa regularidade em fenômenos e objetos sociais e o termo "fato estilizado" tende a ser empregado nestas situações.  
 
-A estatística pode ser dividida em duas áreas interligadas: estatística descritiva e estatística inferencial. O objetivo da estatística descritiva é apresentar sínteses e resumos dos resultados de uma pesquisa pela utilização de gráficos e tabelas. Não é intenção dessa área fazer generalizações ou extrapolar os resultados obtidos a pessoas (ou objetos) não investigadas durante a coleta de dados. Por contraste, a estatística inferencial visa extrapolar os dados e fazer generalizações que toquem toda população de onde aquela mostra foi retirada e é representativa. Dessa maneira, o principal objetivo da estatística inferencial é, de fato, fazer inferências. 
 
-Essa divisão é certamente mais didática do que pragmática e, com muita frequência, ambas as áreas estão presentes em uma pesquisa. No entanto, alguns pontos merecem destaque:
+Ao se realizar uma pesquisa em que a VI e VD são definidas, é fácil notar que existe um conjunto grande de outras variáveis que podem impactar neste relacionamento. Essas variáveis recebem muitos nomes, entre eles variáveis intervenientes, variáveis estranhas e terceiras variáveis.  
 
-1. A estatística descritiva surgiu antes que a inferencial. A etimologia da palavra talvez ajude a entender. Estatística vem da palavra estado e este sempre teve interesse em saber quantos eram os cidadãos de um determinado local para, entre outras atividades, taxá-los. Assim, aspectos descritivos antecedem os inferenciais. Por sua vez, a estatística inferencial guarda origem e proximidade com a teoria dos jogos e, consequentemente, isso ajuda a entender o motivo pelo qual a maioria dos exemplos inferenciais envolvem jogos de azar.
 
-2. A estatística tem duas "escolas" ou "formas de pensamento". A estatística frequentista e a estatística bayesiana. Aspectos fundamentais que tocam à definição de probabilidade são diferentes, bem como a definição de dados e parâmetros também o são. Pela perspectiva histórica, a estatística bayesiana é mais antiga que a frequentista. No entanto, se for comparado a proporção de uso entre os pesquisadores, a estatística frequentista é ainda a mais frequente e justifica a ênfase deste livro nesta área.
 
-3. A relação entre estatística e Machine Learning (ML) e seus derivados é relativamente recente. Apesar de grande interface e do fato que as análises realizadas em estatística e ML encontram resultados virtualmente idênticos, há diferentes argumentos apontando que as áreas têm objetivos diferentes, o que eu não necessariamente concordo. Ainda sob perspectiva histórica, a estatística, como uma área do conhecimento, é anterior à ML, que não será abordada neste livro.
+
+Em relação ao nível ou escala de medida e a capacidade informacional, a seção abaixo apresentará o extrato de um capítulo em que esse tema é abordado.
+
+Neste sentido, uma vez que um dos principais interesses das ciências é o estudo de variáveis, é bastante infrequente que cientistas digam que estão certos de uma determinada condição ou assunto. Na maioria das vezes, cientistas substituem a palavra certeza por probabilidade.
 
 
 
@@ -173,5 +192,26 @@ Apesar de rígida, essa consideração tem fundamento, já que pela hierarquia d
 Em outro sentido, um grupo maior de acadêmicos consideram os resultados obtidos por um processo de testagem como intervalares e, consequentemente, utilizam técnicas estatísticas mais robustas para os dados. Essa condição quase sempre era justificada de maneira pragmática, vem ganhando maior sustentação hoje em dia, especialmente em estudos de simulação, em que os pesquisadores criam a possibilidade de comparar resultados estatísticos obtidos considerando os dados ou como ordinais ou como intervalares [@Wu2017].  
 
 Dessa forma, uma vez que esse tema ainda reflete uma questão em aberta, respostas definitivas não são possíveis (nem desejáveis), colocando sobre o pesquisador a justificativa analítica e teórica das decisões por ele tomadas.
+
+
+
+## Principais áreas da estatística 
+
+A estatística pode ser dividida em duas áreas interligadas: estatística descritiva e estatística inferencial. O objetivo da estatística descritiva é apresentar sínteses e resumos dos resultados de uma pesquisa pela utilização de gráficos e tabelas. Não é intenção dessa área fazer generalizações ou extrapolar os resultados obtidos a pessoas (ou objetos) não investigadas durante a coleta de dados. Por contraste, a estatística inferencial visa extrapolar os dados e fazer generalizações que toquem toda população de onde aquela mostra foi retirada e é representativa. Dessa maneira, o principal objetivo da estatística inferencial é, de fato, fazer inferências. 
+
+Essa divisão é certamente mais didática do que pragmática e, com muita frequência, ambas as áreas estão presentes em uma pesquisa. No entanto, alguns pontos merecem destaque:
+
+1. A estatística descritiva surgiu antes que a inferencial. A etimologia da palavra talvez ajude a entender. Estatística vem da palavra estado e este sempre teve interesse em saber quantos eram os cidadãos de um determinado local para, entre outras atividades, taxá-los. Assim, aspectos descritivos antecedem os inferenciais. Por sua vez, a estatística inferencial guarda origem e proximidade com a teoria dos jogos e, consequentemente, isso ajuda a entender o motivo pelo qual a maioria dos exemplos inferenciais envolvem jogos de azar.
+
+2. A estatística tem duas "escolas" ou "formas de pensamento". A estatística frequentista e a estatística bayesiana. Aspectos fundamentais que tocam à definição de probabilidade são diferentes, bem como a definição de dados e parâmetros também o são. Pela perspectiva histórica, a estatística bayesiana é mais antiga que a frequentista. No entanto, se for comparado a proporção de uso entre os pesquisadores, a estatística frequentista é ainda a mais frequente e justifica a ênfase deste livro nesta área.
+
+3. A relação entre estatística e Machine Learning (ML) e seus derivados é relativamente recente. Apesar de grande interface e do fato que as análises realizadas em estatística e ML encontram resultados virtualmente idênticos, há diferentes argumentos apontando que as áreas têm objetivos diferentes, o que eu não necessariamente concordo. Ainda sob perspectiva histórica, a estatística, como uma área do conhecimento, é anterior à ML, que não será abordada neste livro.
+
+
+
+## Resumo  
+
+1. As dicotomias realidade vs. modelo e constantes e variáveis são conceitos fundamentais em estatística e pesquisa  
+3. Com muita frequência, em ciência se substitui os termos certeza e verdade por evidência e probabilidade.
 
 
