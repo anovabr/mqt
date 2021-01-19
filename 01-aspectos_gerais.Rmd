@@ -10,6 +10,7 @@ Os subtópicos a seguir apresentam conceitos gerais e importantes que costumam s
 A apresentação e descrição de cada um dos temas e conceitos é feita de maneira sucinta. As referências bibliográficas dispostas ao fim do capítulo servem para o aprofundamento teórico entre aqueles interessados.   
 
 ## Fundações da pesquisa e estatística
+- *L. Anunciação & J. Landeira-Fernandez* 
 
 Existem alguns conceitos muito utilizados em pesquisa e estatística que servem como fundações da maior parte dos métodos e técnicas implementados quando se investiga um determinado fenômeno ou objeto através do método científico. Apesar de manuais técnicos divergirem em quantos e quais conceitos podem ser entendidos como elementos-base em pesquisa e estatística, existe grande concordância em relação à (1) realidade e modelo e (2) constante e variáveis. Ambos serão introduzidos a seguir.     
 
@@ -55,26 +56,97 @@ Assim, o estudo das variáveis (aleatórias), tanto de maneira mais descritiva, 
 As variáveis podem ser organizadas por seu <u>relacionamento em uma pesquisa</u>, seu <u>nível ou escala de medida</u> e sua <u>capacidade informacional</u>.  
 
 
-Em relação ao relacionamento entre as variáveis, inicialmente, é possível classificá-las em <u>independentes</u> e <u>dependentes</u>. Variáveis independentes são abreviadas pela sigla VI e também são chamadas de antecedentes, preditores, fatores ou variáveis manipuladas ou de entrada. Variáveis dependentes são abreviadas por VD e também são chamadas de consequentes, previstas, desfechos ou variáveis medidas ou de saída. Em pesquisa, assume-se que ambas as variáveis são contectadas e que a VI gera ou causa a VD. No entanto, nem sempre essa lógica se aplica.   
+Em relação ao relacionamento entre as variáveis, inicialmente, é possível classificá-las em <u>independentes</u> e <u>dependentes</u>. Variáveis independentes são abreviadas pela sigla VI e também são chamadas de antecedentes, preditores, fatores ou variáveis manipuladas ou de entrada. Variáveis dependentes são abreviadas por VD e também são chamadas de consequentes, previstas, desfechos ou variáveis medidas ou de saída.   
 
-A definição de uma VI e uma VD segue condições temporais, lógicas ou teóricas [@BabbieEarlR1990]. Como exemplos de uma condição temporal, é possível verificar a influência do sexo (VI) na escolha profissional (VD) ou o efeito de um medicamento (VI) na dor de cabeça (VD). Nesses dois casos, os efeitos não podem alterar as causas. Uma escolha profissional não faz com que a pessoa altere seu sexo, bem como a dor de cabeça é uma condição que antecede a tomada do medicamento. 
 
-Em relação à condição lógica, ao se Verificar como a escolaridade afeta o preconceito é possível assumir que a escolaridade é a VI e o preconceito é a VD. Entretanto, alguém pode sugerir que pessoas mais ou menos preconceituosas podem se dedicar mais ou menos em atividades acadêmicas, invertendo a relação de causalidade.   
+Os termos VI e VD explicitam que ambas as variáveis são contectadas e que a VI gera ou causa a VD. Neste sentido, representações matemáticas costumam apresentar a VI por X e a VD por Y, tal como no estudo de funções.  
+
+![](./img/cap_vi_vd1.png)  
+
+Em alguns fenômenos naturais, é relativamente fácil identificar a VI e a VD. Por exemplo, quanto mais profundo uma pessoa mergulha no mar, mais gelada a água fica. Neste caso, a profundidade seria a VI, enquanto a temperatura seria a VD. Da mesma forma, quanto mais alto um avião viaja, menor é a pressão atmosférica. Nesse outro exemplo, a altitude é a VI e a pressão atmosférica é a VD. 
+
+![](./img/cap_vivd_fisica.png) 
+
+
+No entanto, esses exemplos descritos são oportunos e têm apenas finalidade pedagógica. Na realidade, a definição de VI e VD nem sempre é fácil e, especialmente em ciências humanas e da saúde, isso se torna ainda mais sutil. É possível definir tais variáveis a partir de condições temporais, lógicas ou teóricas [@BabbieEarlR1990], bem como é possível desenvolver pesquisas com características específicas para que essa relação possa ser definida com acurácia, e consequentemente, corretamente medida. 
+
+
+Como exemplos de uma condição temporal, uma pessoa pode estar interessada em investigar a influência do sexo (VI) na escolha profissional (VD) ou o efeito de um medicamento (VI) na dor de cabeça (VD). Nesses dois casos, os efeitos não podem alterar as causas. Uma escolha profissional não faz com que a pessoa altere seu sexo, bem como a dor de cabeça é uma condição que antecede a tomada do medicamento. 
+
+Em relação à condição lógica (as vezes chamada de quase-temporal), é possível que alguém queira investigar como a escolaridade afeta o preconceito. Neste caso, é viável assumir que a escolaridade é a VI e o preconceito é a VD. Entretanto, alguém pode sugerir que pessoas mais ou menos preconceituosas podem se dedicar mais ou menos em atividades acadêmicas, invertendo a relação de causalidade.   
 
 Finalmente, uma organização teórica ocorre quando se pretende investigar os efeitos da ansiedade na depressão ou do casamento no bem estar pessoal. A eleição da ansiedade como VI foi uma escolha do pesquisador e não, necessariamente, uma condição temporal ou lógica. Da mesma forma, eleger o casamento como VI é uma escolha feita para responder a uma determinada questão. 
 
 
-A figura diagrama algo destes conceitos.
+A figura a seguir traz um diagrama inicial destes conceitos.
 
 
 ![](./img/cap_vi_vd.png) 
 
 
-É importante notar que a ideia de uma única variável impactando ou causando diretamente uma outra variável é apenas metafórica. Para que isso pudesse ocorrer na natureza, seria necessário que todas as outras fontes de influência e erros existentes neste relacionamento fossem controladas ou suprimidas [@Dumsday2012]. Essa noção de controle total é visto pelo termo *ceteris paribus*, que é uma expressão em latim que significa "tudo o mais constante". Muitas vezes, em pesquisa e estatística, este termo é utilizado quando alguns ajustes são implementados em modelos estatísticos para tentar expressar a ideia de uma causalidade parcial, em que a VI impactaria a VD de uma determinada forma, caso tudo o mais fosse controlado [@Fennell2005]. Evidentemente, há condições encontradas com certa regularidade em fenômenos e objetos sociais e o termo "fato estilizado" tende a ser empregado nestas situações.  
+É importante notar que a ideia de uma única variável impactando ou causando diretamente uma outra variável é quase metafórica. Para que isso pudesse ocorrer tanto em fenômenos físicos como em quaiquer outros, seria necessário que todas as possíveis fontes de influência existentes neste relacionamento fossem controladas ou suprimidas [@Dumsday2012]. Essa noção de controle total é visto pelo termo *ceteris paribus*, que é uma expressão em latim que significa "tudo o mais constante". Muitas vezes, em pesquisa e estatística, este termo é utilizado quando alguns ajustes são implementados em modelos estatísticos para tentar expressar a ideia de uma causalidade parcial, em que a VI impactaria a VD de uma determinada forma, caso tudo o mais fosse controlado [@Fennell2005]. Evidentemente, há condições encontradas com certa regularidade em fenômenos e objetos sociais e o termo "fato estilizado" tende a ser empregado nestas situações [@Hirschman2016].  
 
 
-Ao se realizar uma pesquisa em que a VI e VD são definidas, é fácil notar que existe um conjunto grande de outras variáveis que podem impactar neste relacionamento. Essas variáveis recebem muitos nomes, entre eles variáveis intervenientes, variáveis estranhas e terceiras variáveis.  
+Ao se pensar em condições em que a VI e VD estejam definidas, é fácil notar que existe um conjunto grande de outras variáveis que podem impactar neste relacionamento. Essas variáveis recebem muitos nomes e o termo <u>variáveis estranhas</u> pode servir para designá-las. A imagem a seguir ilustra algumas das variáveis que poderiam impactar na relação entre horas de estudo e notas na prova.
+ 
 
+![](./img/cap_variavel_estranha.png)
+
+A natureza desta variável estranha e o local em que ela impacta no relacionamento entre a VI e a VD entram em cena quando conceitos específicos são estudados. No capítulo sobre correlação e regressão essa discussão será revisitada.   
+
+Alguns autores defendem que quando esta outra variável é uma consequência da VI e também impacta a VD, o termo variável mediadora deveria ser empregado. Quando esta variável interfere no relacionamento VI e VD, podendo alterar sua natureza e intensidade, mas não é gerada pela VI, o termo variável moderada seria adequado. Quando a variável influencia tanto a VI como a VD, o termo terceira variável ou confundidora deveria ser empregado. Finalmente, quando a variável é psicológica, como motivação, o termo variável interveniente deveria ser empregado. 
+
+Abaixo há uma ilustração que sintetiza esses conceitos, com exemplos pontuais. 
+
+
+![](./img/cap_mediacao.png)
+
+
+A literatura é bastante rica de exemplos para tais condições, mas também de discussões e debates acadêmicos sobre esses conceitos. A tabela a seguir reúne esforços e exemplifica onde tais conceitos são implementados.  
+
+
+  | Relacionamento       |  Exemplo   
+  | :-----------         | :---------------------------------------------------------------------------------------------------|   
+  | Moderação            | Relação entre ansiedade (X) e performance (Y), o tipo de atividade poderia ser uma variável moderadora    
+  | Moderação            | Relação entre idade (X) e problemas cognitivos (Y), a escolaridade poderia ser uma variável moderadora    
+  | Moderação            | Relação entre stress (X) e depressão(Y), o suporte social poderia ser uma variável moderadora    
+  | Mediação             | Relação entre idade (X) e uso de mídias sociais (Y), a quantidade de tempo livre pode ser mediadora   
+  | Mediação             | Relação entre quantidade de hora de trabalho (X) e desgaste (Y), o retorno financeiro poderia ser mediador   
+  | Mediação             | Relação entre conscienciozidade (X) e saúde (Y), comportamentos saudáveis poderia ser mediador   
+
+Nota: A definição de variável mediadora e moderadora pode ser tornar mais difícil, como é visto no caso entre idade e problemas cognitivos, já que a escolaridade costuma depender também da idade
+
+
+
+É possível notar que estes são exemplos gerais e úteis para introduzir o tema. Eles descrevem condições pelas quais as variáveis se relacionam ou se conectam, bem como os diversos cenários de complexidade desse relacionamento. No entanto, eles contam apenas uma parte da história, já que não abrangem as principais estratégias que os pesquisadores possuem para lidar com tais condições em suas pesquisas.  
+
+
+Na realidade, quando pesquisadores visam estudar o relacionamento entre variáveis, todas essas condições costumam ser levadas em consideração antes mesmo da coleta de dados pelo que é chamado de delineamento de pesquisa. Este termo é definido como a "parte do planejamento da pesquisa que envolve tanto a diagramação quanto a coleta de dados, com função de possibilitar que novos pesquisadores executem a mesma pesquisa e possam chegar às mesmas conclusões" [@gil2002]. Assim, o delineamento de pesquisa serve tal como um manual ou roteiro amplo da pesquisa, com especial foco nos procedimentos técnicos de coleta e análise de dados e que mapeia as principais características e limitações existentes durante o estudo. 
+
+
+Existem diferentes classificações dos delineamentos de pesquisa e cada área tem particularidades. A definição do tipo de delineamento é algo importante, uma vez que técnicas e análises estatísticas são conectadas a eles. Em Psicologia, frequentemente se encontra delineamentos observacionais, correlacionais e experimentais e, as vezes, o termo delineamento descritivo é utilizado em vez de observacional [@stangor2010]. Por sua vez, em epidemiologia, saúde pública e bioestatística, os delineamentos costumam ser divididos experimentais e observacionais [@friis2013]. Apesar das diferenças de nomenclaturas, a lógica por detrás dos delineamentos é bastante atrelada à possibilidade e viabilidade de uma manipulação ativa da VI. 
+
+
+Em Psicologia, a tabela abaixo é bastante utilizada:
+
+  | Delineamento    | Característica                              | Vantagens               |  Limitações    
+  | :-----------    | :-----------                                | :-----------              |  :-----------      
+  | Observacional   | Apenas 1 grupo é necessário. Descrever um determinado fenômeno ou objeto | Oferece uma foto de um objeto ou fenômeno que tende a ser precisa e permite que novos estudos sejam conduzidos  |  Não acessa o relacionamento entre duas ou mais variáveis    
+  | Correlacional    | Apenas 1 grupo é necessário. Acessar a natureza e a força do relacionamento entre duas variáveis | É possível testar hipóteses sobre este relacionamento e fazer previsões de resultados futuros | Não permite indicação de causalidade  
+  | Experimental     | São necessários 2 grupos em que os participantes sejam selecionados de maneira aleatória. Existe uma manipulação intencional da VI e nem os participantes nem o pesquisador sabe quem está em cada grupo (duplo cego)  | A aleatorização evita que as variáveis estranhas gerem viéses e a comparação entre os grupos permite conclusões sobre causalidade |  Impossível, impraticável ou até mesmo antiético em algumas situações.  O custo envolvido costuma ser alto.  
+
+
+Em Epidemiologia, saúde pública e bioestatística, costuma-se unir o delineamnento observacional e correlacional, em uma configuração um pouco distinta:
+
+  | Delineamento    | Característica                              | Vantagens               |  Limitações    
+  | :-----------    | :-----------                                | :-----------              |  :-----------      
+  | Observacional   | Apenas 1 grupo é necessário. Descrever um determinado fenômeno ou objeto, bem como investigar a relação entre eles | Oferece uma foto de um objeto ou fenômeno que tende a ser precisa, permite que novos estudos sejam conduzidos e é possível testar hipóteses sobre este relacionamento e prever valores futuros  |  Não acessa o relacionamento entre duas ou mais variáveis    
+  | Experimental     | São necessários 2 grupos em que os participantes sejam selecionados de maneira aleatória. Existe uma manipulação intencional da VI e nem os participantes nem o pesquisador sabe quem está em cada grupo (duplo cego)  | A aleatorização evita que as variáveis estranhas gerem viéses e a comparação entre os grupos permite conclusões sobre causalidade |  Impossível, impraticável ou até mesmo antiético em algumas situações.  O custo envolvido costuma ser alto.  
+
+
+De maneira geral, delineamentos observacionais (ou observacionais e correlacionais) são aqueles em que o pesquisador não intervem nos fenômenos, ou seja, não há uma manipulação da VI. Nestes estudos, com frequência um único grupo é avaliado e os resultados auxiliam em um entendimento inicial do fenômeno ou objeto de interesse. Diferentes técnicas estatísticas podem ser utilizadas, mas em momento algum é possível falar sobre relação de causa e efeito.  Investigar habitos de pesquisa [@Wenke2017], alimentação durante a pandemia [@Amatori2020] ou aspectos epidemiológicos de universitários [@AfonsoJunior2020] exemplificam bem este delineamento.
+
+Delineamentos experimentais ocorrem quando há uma manipulação intencional do pesquisador sobre a VI, dois grupos foram aleatoriamente formados e nem o participante, nem o pesquisador sabem em que grupo cada um está (duplo cego). A aleatorização neste tipo de pesquisa impossibilita ou dificulta que as variáveis estranhas ocasionem viés nos resultados e a comparação entre os grupos podem indicar resultados causais. Estudar o efeito da exposição à violência no comportamento agressivo durante a interação social de crianças [@Bandura1961], o tipo de cor de pele na possibilidade ou não de ganhar uma carona no ônibus [@Mujcic2020] ou [Alguma pequisa do Landeira] ilustra bem uma delineamento experimental.
 
 
 

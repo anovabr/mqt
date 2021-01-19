@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2021-01-18" />
+<meta name="date" content="2021-01-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -324,6 +324,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>A apresentação e descrição de cada um dos temas e conceitos é feita de maneira sucinta. As referências bibliográficas dispostas ao fim do capítulo servem para o aprofundamento teórico entre aqueles interessados.</p>
 <div id="fundações-da-pesquisa-e-estatística" class="section level2">
 <h2><span class="header-section-number">2.1</span> Fundações da pesquisa e estatística</h2>
+<ul>
+<li><em>L. Anunciação &amp; J. Landeira-Fernandez</em></li>
+</ul>
 <p>Existem alguns conceitos muito utilizados em pesquisa e estatística que servem como fundações da maior parte dos métodos e técnicas implementados quando se investiga um determinado fenômeno ou objeto através do método científico. Apesar de manuais técnicos divergirem em quantos e quais conceitos podem ser entendidos como elementos-base em pesquisa e estatística, existe grande concordância em relação à (1) realidade e modelo e (2) constante e variáveis. Ambos serão introduzidos a seguir.</p>
 <p>Frequentemente, uma pesquisa é feita para responder uma pergunta específica sobre um fenômeno ou objeto. Muitas perguntas são possíveis a depender da área de interesse do investigador, bem como de sua época. Físicos e astrônomos do século XVI queriam investigar a organização do sistema solar, economistas do século XVIII tinham interesse em investigar a relação entre recursos e rendimentos financeiros e, mais recentemente, psicólogos do século XX se debruçaram a estudar o efeito da escolaridade no desenvolvimento de habilidades cognitivas, especialmente a inteligência. Esses três exemplos remontam à teoria heliocêntrica, a lei dos retornos marginais decrescentes e a teoria da reserva cognitiva.</p>
 <p>Apesar da diferença entre os interesses, uma característica compartilhada nestas pesquisas é a impossibilidade ou improbabilidade de se investigar diretamente a realidade. No exemplo da astronomia isso parece ser bastante claro, já que mesmo que pesquisas em física tenham características mais mecanicistas, só atualmente que o acesso mais direto da realidade foi possível e permitiu responder melhor essa questão. Além disso, na grande maioria das pesquisas, os fenômenos e objetos de interesse não são sistemas fechados. Isso significa que não é possível ou viável controlar todos os fatores relacionados ao que se tem interesse de estudar. Por exemplo, quando se investiga como a escolaridade impacta nas habilidades cognitivas, os resultados podem (ou não) responder apenas inicialmente sobre um dos fatores relacionado à habilidade cognitiva, mas não todos.</p>
@@ -343,14 +346,137 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Em estatística e pesquisa, o termo variável pode ser entendido tanto de uma maneira bastante informal, como de uma forma mais rigorosa. Informalmente, uma variável é uma característica de um determinado objeto, tal como peso, altura, inteligência ou renda. Essa característica podem apresentar quaisquer valores e, assim, exemplificam o conceito de uma variável. No entanto, formalmente em estatística, quando o termo variável é utilizado, o que está em jogo é o conceito de <u>variável aleatória</u>. Por sua vez, este conceito se refere à uma classe de variáveis em que o conjunto possível de suas realizações (ou seja, seus valores ou desfechos) ocorrem de acordo com uma distribuição de probabilidade <span class="citation">(Everitt, <a href="#ref-everitt2002cambridge" role="doc-biblioref">2002</a>)</span>. Em estatística, uma variável aleatória é uma função que associa elementos do espaço amostral ao conjunto de números reais.</p>
 <p>Assim, o estudo das variáveis (aleatórias), tanto de maneira mais descritiva, como de forma inferencial, são os principais insumos da estatística.</p>
 <p>As variáveis podem ser organizadas por seu <u>relacionamento em uma pesquisa</u>, seu <u>nível ou escala de medida</u> e sua <u>capacidade informacional</u>.</p>
-<p>Em relação ao relacionamento entre as variáveis, inicialmente, é possível classificá-las em <u>independentes</u> e <u>dependentes</u>. Variáveis independentes são abreviadas pela sigla VI e também são chamadas de antecedentes, preditores, fatores ou variáveis manipuladas ou de entrada. Variáveis dependentes são abreviadas por VD e também são chamadas de consequentes, previstas, desfechos ou variáveis medidas ou de saída. Em pesquisa, assume-se que ambas as variáveis são contectadas e que a VI gera ou causa a VD. No entanto, nem sempre essa lógica se aplica.</p>
-<p>A definição de uma VI e uma VD segue condições temporais, lógicas ou teóricas <span class="citation">(Babbie, <a href="#ref-BabbieEarlR1990" role="doc-biblioref">1990</a>)</span>. Como exemplos de uma condição temporal, é possível verificar a influência do sexo (VI) na escolha profissional (VD) ou o efeito de um medicamento (VI) na dor de cabeça (VD). Nesses dois casos, os efeitos não podem alterar as causas. Uma escolha profissional não faz com que a pessoa altere seu sexo, bem como a dor de cabeça é uma condição que antecede a tomada do medicamento.</p>
-<p>Em relação à condição lógica, ao se Verificar como a escolaridade afeta o preconceito é possível assumir que a escolaridade é a VI e o preconceito é a VD. Entretanto, alguém pode sugerir que pessoas mais ou menos preconceituosas podem se dedicar mais ou menos em atividades acadêmicas, invertendo a relação de causalidade.</p>
+<p>Em relação ao relacionamento entre as variáveis, inicialmente, é possível classificá-las em <u>independentes</u> e <u>dependentes</u>. Variáveis independentes são abreviadas pela sigla VI e também são chamadas de antecedentes, preditores, fatores ou variáveis manipuladas ou de entrada. Variáveis dependentes são abreviadas por VD e também são chamadas de consequentes, previstas, desfechos ou variáveis medidas ou de saída.</p>
+<p>Os termos VI e VD explicitam que ambas as variáveis são contectadas e que a VI gera ou causa a VD. Neste sentido, representações matemáticas costumam apresentar a VI por X e a VD por Y, tal como no estudo de funções.</p>
+<p><img src="img/cap_vi_vd1.PNG" /></p>
+<p>Em alguns fenômenos naturais, é relativamente fácil identificar a VI e a VD. Por exemplo, quanto mais profundo uma pessoa mergulha no mar, mais gelada a água fica. Neste caso, a profundidade seria a VI, enquanto a temperatura seria a VD. Da mesma forma, quanto mais alto um avião viaja, menor é a pressão atmosférica. Nesse outro exemplo, a altitude é a VI e a pressão atmosférica é a VD.</p>
+<p><img src="img/cap_vivd_fisica.PNG" /></p>
+<p>No entanto, esses exemplos descritos são oportunos e têm apenas finalidade pedagógica. Na realidade, a definição de VI e VD nem sempre é fácil e, especialmente em ciências humanas e da saúde, isso se torna ainda mais sutil. É possível definir tais variáveis a partir de condições temporais, lógicas ou teóricas <span class="citation">(Babbie, <a href="#ref-BabbieEarlR1990" role="doc-biblioref">1990</a>)</span>, bem como é possível desenvolver pesquisas com características específicas para que essa relação possa ser definida com acurácia, e consequentemente, corretamente medida.</p>
+<p>Como exemplos de uma condição temporal, uma pessoa pode estar interessada em investigar a influência do sexo (VI) na escolha profissional (VD) ou o efeito de um medicamento (VI) na dor de cabeça (VD). Nesses dois casos, os efeitos não podem alterar as causas. Uma escolha profissional não faz com que a pessoa altere seu sexo, bem como a dor de cabeça é uma condição que antecede a tomada do medicamento.</p>
+<p>Em relação à condição lógica (as vezes chamada de quase-temporal), é possível que alguém queira investigar como a escolaridade afeta o preconceito. Neste caso, é viável assumir que a escolaridade é a VI e o preconceito é a VD. Entretanto, alguém pode sugerir que pessoas mais ou menos preconceituosas podem se dedicar mais ou menos em atividades acadêmicas, invertendo a relação de causalidade.</p>
 <p>Finalmente, uma organização teórica ocorre quando se pretende investigar os efeitos da ansiedade na depressão ou do casamento no bem estar pessoal. A eleição da ansiedade como VI foi uma escolha do pesquisador e não, necessariamente, uma condição temporal ou lógica. Da mesma forma, eleger o casamento como VI é uma escolha feita para responder a uma determinada questão.</p>
-<p>A figura diagrama algo destes conceitos.</p>
+<p>A figura a seguir traz um diagrama inicial destes conceitos.</p>
 <p><img src="img/cap_vi_vd.PNG" /></p>
-<p>É importante notar que a ideia de uma única variável impactando ou causando diretamente uma outra variável é apenas metafórica. Para que isso pudesse ocorrer na natureza, seria necessário que todas as outras fontes de influência e erros existentes neste relacionamento fossem controladas ou suprimidas <span class="citation">(Dumsday, <a href="#ref-Dumsday2012" role="doc-biblioref">2012</a>)</span>. Essa noção de controle total é visto pelo termo <em>ceteris paribus</em>, que é uma expressão em latim que significa “tudo o mais constante”. Muitas vezes, em pesquisa e estatística, este termo é utilizado quando alguns ajustes são implementados em modelos estatísticos para tentar expressar a ideia de uma causalidade parcial, em que a VI impactaria a VD de uma determinada forma, caso tudo o mais fosse controlado <span class="citation">(Fennell, <a href="#ref-Fennell2005" role="doc-biblioref">2005</a>)</span>. Evidentemente, há condições encontradas com certa regularidade em fenômenos e objetos sociais e o termo “fato estilizado” tende a ser empregado nestas situações.</p>
-<p>Ao se realizar uma pesquisa em que a VI e VD são definidas, é fácil notar que existe um conjunto grande de outras variáveis que podem impactar neste relacionamento. Essas variáveis recebem muitos nomes, entre eles variáveis intervenientes, variáveis estranhas e terceiras variáveis.</p>
+<p>É importante notar que a ideia de uma única variável impactando ou causando diretamente uma outra variável é quase metafórica. Para que isso pudesse ocorrer tanto em fenômenos físicos como em quaiquer outros, seria necessário que todas as possíveis fontes de influência existentes neste relacionamento fossem controladas ou suprimidas <span class="citation">(Dumsday, <a href="#ref-Dumsday2012" role="doc-biblioref">2012</a>)</span>. Essa noção de controle total é visto pelo termo <em>ceteris paribus</em>, que é uma expressão em latim que significa “tudo o mais constante”. Muitas vezes, em pesquisa e estatística, este termo é utilizado quando alguns ajustes são implementados em modelos estatísticos para tentar expressar a ideia de uma causalidade parcial, em que a VI impactaria a VD de uma determinada forma, caso tudo o mais fosse controlado <span class="citation">(Fennell, <a href="#ref-Fennell2005" role="doc-biblioref">2005</a>)</span>. Evidentemente, há condições encontradas com certa regularidade em fenômenos e objetos sociais e o termo “fato estilizado” tende a ser empregado nestas situações <span class="citation">(Hirschman, <a href="#ref-Hirschman2016" role="doc-biblioref">2016</a>)</span>.</p>
+<p>Ao se pensar em condições em que a VI e VD estejam definidas, é fácil notar que existe um conjunto grande de outras variáveis que podem impactar neste relacionamento. Essas variáveis recebem muitos nomes e o termo <u>variáveis estranhas</u> pode servir para designá-las. A imagem a seguir ilustra algumas das variáveis que poderiam impactar na relação entre horas de estudo e notas na prova.</p>
+<p><img src="img/cap_variavel_estranha.PNG" /></p>
+<p>A natureza desta variável estranha e o local em que ela impacta no relacionamento entre a VI e a VD entram em cena quando conceitos específicos são estudados. No capítulo sobre correlação e regressão essa discussão será revisitada.</p>
+<p>Alguns autores defendem que quando esta outra variável é uma consequência da VI e também impacta a VD, o termo variável mediadora deveria ser empregado. Quando esta variável interfere no relacionamento VI e VD, podendo alterar sua natureza e intensidade, mas não é gerada pela VI, o termo variável moderada seria adequado. Quando a variável influencia tanto a VI como a VD, o termo terceira variável ou confundidora deveria ser empregado. Finalmente, quando a variável é psicológica, como motivação, o termo variável interveniente deveria ser empregado.</p>
+<p>Abaixo há uma ilustração que sintetiza esses conceitos, com exemplos pontuais.</p>
+<p><img src="img/cap_mediacao.PNG" /></p>
+<p>A literatura é bastante rica de exemplos para tais condições, mas também de discussões e debates acadêmicos sobre esses conceitos. A tabela a seguir reúne esforços e exemplifica onde tais conceitos são implementados.</p>
+<table>
+<colgroup>
+<col width="10%" />
+<col width="89%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Relacionamento</th>
+<th align="left">Exemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Moderação</td>
+<td align="left">Relação entre ansiedade (X) e performance (Y), o tipo de atividade poderia ser uma variável moderadora</td>
+</tr>
+<tr class="even">
+<td align="left">Moderação</td>
+<td align="left">Relação entre idade (X) e problemas cognitivos (Y), a escolaridade poderia ser uma variável moderadora</td>
+</tr>
+<tr class="odd">
+<td align="left">Moderação</td>
+<td align="left">Relação entre stress (X) e depressão(Y), o suporte social poderia ser uma variável moderadora</td>
+</tr>
+<tr class="even">
+<td align="left">Mediação</td>
+<td align="left">Relação entre idade (X) e uso de mídias sociais (Y), a quantidade de tempo livre pode ser mediadora</td>
+</tr>
+<tr class="odd">
+<td align="left">Mediação</td>
+<td align="left">Relação entre quantidade de hora de trabalho (X) e desgaste (Y), o retorno financeiro poderia ser mediador</td>
+</tr>
+<tr class="even">
+<td align="left">Mediação</td>
+<td align="left">Relação entre conscienciozidade (X) e saúde (Y), comportamentos saudáveis poderia ser mediador</td>
+</tr>
+</tbody>
+</table>
+<p>Nota: A definição de variável mediadora e moderadora pode ser tornar mais difícil, como é visto no caso entre idade e problemas cognitivos, já que a escolaridade costuma depender também da idade</p>
+<p>É possível notar que estes são exemplos gerais e úteis para introduzir o tema. Eles descrevem condições pelas quais as variáveis se relacionam ou se conectam, bem como os diversos cenários de complexidade desse relacionamento. No entanto, eles contam apenas uma parte da história, já que não abrangem as principais estratégias que os pesquisadores possuem para lidar com tais condições em suas pesquisas.</p>
+<p>Na realidade, quando pesquisadores visam estudar o relacionamento entre variáveis, todas essas condições costumam ser levadas em consideração antes mesmo da coleta de dados pelo que é chamado de delineamento de pesquisa. Este termo é definido como a “parte do planejamento da pesquisa que envolve tanto a diagramação quanto a coleta de dados, com função de possibilitar que novos pesquisadores executem a mesma pesquisa e possam chegar às mesmas conclusões” <span class="citation">(Gil, <a href="#ref-gil2002" role="doc-biblioref">2002</a>)</span>. Assim, o delineamento de pesquisa serve tal como um manual ou roteiro amplo da pesquisa, com especial foco nos procedimentos técnicos de coleta e análise de dados e que mapeia as principais características e limitações existentes durante o estudo.</p>
+<p>Existem diferentes classificações dos delineamentos de pesquisa e cada área tem particularidades. A definição do tipo de delineamento é algo importante, uma vez que técnicas e análises estatísticas são conectadas a eles. Em Psicologia, frequentemente se encontra delineamentos observacionais, correlacionais e experimentais e, as vezes, o termo delineamento descritivo é utilizado em vez de observacional <span class="citation">(Stangor, <a href="#ref-stangor2010" role="doc-biblioref">2010</a>)</span>. Por sua vez, em epidemiologia, saúde pública e bioestatística, os delineamentos costumam ser divididos experimentais e observacionais <span class="citation">(Friis &amp; Selles, <a href="#ref-friis2013" role="doc-biblioref">2013</a>)</span>. Apesar das diferenças de nomenclaturas, a lógica por detrás dos delineamentos é bastante atrelada à possibilidade e viabilidade de uma manipulação ativa da VI.</p>
+<p>Em Psicologia, a tabela abaixo é bastante utilizada:</p>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Delineamento</th>
+<th align="left">Característica</th>
+<th align="left">Vantagens</th>
+<th align="left">Limitações</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Observacional</td>
+<td align="left">Apenas 1 grupo é necessário. Descrever um determinado fenômeno ou objeto</td>
+<td align="left">Oferece uma foto de um objeto ou fenômeno que tende a ser precisa e permite que novos estudos sejam conduzidos</td>
+<td align="left">Não acessa o relacionamento entre duas ou mais variáveis</td>
+</tr>
+<tr class="even">
+<td align="left">Correlacional</td>
+<td align="left">Apenas 1 grupo é necessário. Acessar a natureza e a força do relacionamento entre duas variáveis</td>
+<td align="left">É possível testar hipóteses sobre este relacionamento e fazer previsões de resultados futuros</td>
+<td align="left">Não permite indicação de causalidade</td>
+</tr>
+<tr class="odd">
+<td align="left">Experimental</td>
+<td align="left">São necessários 2 grupos em que os participantes sejam selecionados de maneira aleatória. Existe uma manipulação intencional da VI e nem os participantes nem o pesquisador sabe quem está em cada grupo (duplo cego)</td>
+<td align="left">A aleatorização evita que as variáveis estranhas gerem viéses e a comparação entre os grupos permite conclusões sobre causalidade</td>
+<td align="left">Impossível, impraticável ou até mesmo antiético em algumas situações. O custo envolvido costuma ser alto.</td>
+</tr>
+</tbody>
+</table>
+<p>Em Epidemiologia, saúde pública e bioestatística, costuma-se unir o delineamnento observacional e correlacional, em uma configuração um pouco distinta:</p>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Delineamento</th>
+<th align="left">Característica</th>
+<th align="left">Vantagens</th>
+<th align="left">Limitações</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Observacional</td>
+<td align="left">Apenas 1 grupo é necessário. Descrever um determinado fenômeno ou objeto, bem como investigar a relação entre eles</td>
+<td align="left">Oferece uma foto de um objeto ou fenômeno que tende a ser precisa, permite que novos estudos sejam conduzidos e é possível testar hipóteses sobre este relacionamento e prever valores futuros</td>
+<td align="left">Não acessa o relacionamento entre duas ou mais variáveis</td>
+</tr>
+<tr class="even">
+<td align="left">Experimental</td>
+<td align="left">São necessários 2 grupos em que os participantes sejam selecionados de maneira aleatória. Existe uma manipulação intencional da VI e nem os participantes nem o pesquisador sabe quem está em cada grupo (duplo cego)</td>
+<td align="left">A aleatorização evita que as variáveis estranhas gerem viéses e a comparação entre os grupos permite conclusões sobre causalidade</td>
+<td align="left">Impossível, impraticável ou até mesmo antiético em algumas situações. O custo envolvido costuma ser alto.</td>
+</tr>
+</tbody>
+</table>
+<p>De maneira geral, delineamentos observacionais (ou observacionais e correlacionais) são aqueles em que o pesquisador não intervem nos fenômenos, ou seja, não há uma manipulação da VI. Nestes estudos, com frequência um único grupo é avaliado e os resultados auxiliam em um entendimento inicial do fenômeno ou objeto de interesse. Diferentes técnicas estatísticas podem ser utilizadas, mas em momento algum é possível falar sobre relação de causa e efeito. Investigar habitos de pesquisa <span class="citation">(Wenke et al., <a href="#ref-Wenke2017" role="doc-biblioref">2017</a>)</span>, alimentação durante a pandemia <span class="citation">(Amatori et al., <a href="#ref-Amatori2020" role="doc-biblioref">2020</a>)</span> ou aspectos epidemiológicos de universitários <span class="citation">(Junior et al., <a href="#ref-AfonsoJunior2020" role="doc-biblioref">2020</a>)</span> exemplificam bem este delineamento.</p>
+<p>Delineamentos experimentais ocorrem quando há uma manipulação intencional do pesquisador sobre a VI, dois grupos foram aleatoriamente formados e nem o participante, nem o pesquisador sabem em que grupo cada um está (duplo cego). A aleatorização neste tipo de pesquisa impossibilita ou dificulta que as variáveis estranhas ocasionem viés nos resultados e a comparação entre os grupos podem indicar resultados causais. Estudar o efeito da exposição à violência no comportamento agressivo durante a interação social de crianças <span class="citation">(Bandura et al., <a href="#ref-Bandura1961" role="doc-biblioref">1961</a>)</span>, o tipo de cor de pele na possibilidade ou não de ganhar uma carona no ônibus <span class="citation">(Mujcic &amp; Frijters, <a href="#ref-Mujcic2020" role="doc-biblioref">2020</a>)</span> ou [Alguma pequisa do Landeira] ilustra bem uma delineamento experimental.</p>
 <p>Em relação ao nível ou escala de medida e a capacidade informacional, a seção abaixo apresentará o extrato de um capítulo em que esse tema é abordado.</p>
 <p>Neste sentido, uma vez que um dos principais interesses das ciências é o estudo de variáveis, é bastante infrequente que cientistas digam que estão certos de uma determinada condição ou assunto. Na maioria das vezes, cientistas substituem a palavra certeza por probabilidade.</p>
 </div>
@@ -452,8 +578,14 @@ Apesar de rígida, essa consideração tem fundamento, já que pela hierarquia d
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
+<div id="ref-Amatori2020">
+<p>Amatori, S., Zeppa, S. D., Preti, A., Gervasi, M., Gobbi, E., Ferrini, F., Rocchi, M. B. L., Baldari, C., Perroni, F., Piccoli, G., Stocchi, V., Sestili, P., &amp; Sisti, D. (2020). Dietary habits and psychological states during COVID-19 home isolation in italian college students: The role of physical exercise. <em>Nutrients</em>, <em>12</em>(12), 3660. <a href="https://doi.org/10.3390/nu12123660">https://doi.org/10.3390/nu12123660</a></p>
+</div>
 <div id="ref-BabbieEarlR1990">
 <p>Babbie, E. R. (1990). <em>Survey research methods / earl babbie.</em> (2nd ed.). Wadsworth Pub. Co.</p>
+</div>
+<div id="ref-Bandura1961">
+<p>Bandura, A., Ross, D., &amp; Ross, S. A. (1961). Transmission of aggression through imitation of aggressive models. <em>The Journal of Abnormal and Social Psychology</em>, <em>63</em>(3), 575–582. <a href="https://doi.org/10.1037/h0045925">https://doi.org/10.1037/h0045925</a></p>
 </div>
 <div id="ref-Borgatta1980">
 <p>Borgatta, E. F., &amp; Bohrnstedt, G. W. (1980). Level of measurement. <em>Sociological Methods &amp; Research</em>, <em>9</em>(2), 147–160. <a href="https://doi.org/10.1177/004912418000900202">https://doi.org/10.1177/004912418000900202</a></p>
@@ -473,14 +605,29 @@ Apesar de rígida, essa consideração tem fundamento, já que pela hierarquia d
 <div id="ref-Firgg2020">
 <p>Frigg, R., &amp; Hartmann, S. (2020). Models in Science. In E. N. Zalta (Ed.), <em>The Stanford encyclopedia of philosophy</em> (Spring 2020). <a href="https://plato.stanford.edu/archives/spr2020/entries/models-science/">https://plato.stanford.edu/archives/spr2020/entries/models-science/</a>; Metaphysics Research Lab, Stanford University.</p>
 </div>
+<div id="ref-friis2013">
+<p>Friis, R. H., &amp; Selles, T. A. (2013). <em>Epidemiology for public health practice</em> (5nd ed.). Jones &amp; Barlett Publishers.</p>
+</div>
+<div id="ref-gil2002">
+<p>Gil, A. C. (2002). <em>Como elaborar de projetos de pesquisa</em>. Editora Atlas S.A.</p>
+</div>
+<div id="ref-Hirschman2016">
+<p>Hirschman, D. (2016). Stylized facts in the social sciences. <em>Sociological Science</em>, <em>3</em>, 604–626. <a href="https://doi.org/10.15195/v3.a26">https://doi.org/10.15195/v3.a26</a></p>
+</div>
 <div id="ref-howell2011">
 <p>Howell, D. C. (2011). <em>Fundamental statistics for the behavioral sciences (7th edition)</em>. Belmont.</p>
+</div>
+<div id="ref-AfonsoJunior2020">
+<p>Junior, A. A., Almeida Portugal, A. C. de, Landeira-Fernandez, J., Bullón, F. F., Santos, E. J. R. dos, Vilhena, J. de, &amp; Anunciação, L. (2020). Depression and anxiety symptoms in a representative sample of undergraduate students in spain, portugal, and brazil. <em>Psicologia: Teoria E Pesquisa</em>, <em>36</em>. <a href="https://doi.org/10.1590/0102.3772e36412">https://doi.org/10.1590/0102.3772e36412</a></p>
 </div>
 <div id="ref-Michell1993">
 <p>Michell, J. (1993). The origins of the representational theory of measurement: Helmholtz, hölder, and russell. <em>Studies in History and Philosophy of Science Part A</em>, <em>24</em>(2), 185–206. <a href="https://doi.org/10.1016/0039-3681(93)90045-l">https://doi.org/10.1016/0039-3681(93)90045-l</a></p>
 </div>
 <div id="ref-morettin_bussab_2010">
 <p>Morettin, P. A., &amp; Bussab, W. de O. (2010). <em>Estatistica basica</em>. Saraiva.</p>
+</div>
+<div id="ref-Mujcic2020">
+<p>Mujcic, R., &amp; Frijters, P. (2020). The colour of a free ride. <em>The Economic Journal</em>. <a href="https://doi.org/10.1093/ej/ueaa090">https://doi.org/10.1093/ej/ueaa090</a></p>
 </div>
 <div id="ref-privitera2016">
 <p>Privitera, G. J. (2016). <em>Statistics for the behavioral sciences</em>. SAGE.</p>
@@ -490,6 +637,9 @@ Apesar de rígida, essa consideração tem fundamento, já que pela hierarquia d
 </div>
 <div id="ref-smart1999">
 <p>Smart, J. C. (1999). <em>Higher education: Handbook of theory and research</em>. Springer.</p>
+</div>
+<div id="ref-stangor2010">
+<p>Stangor, C. (2010). <em>Introduction to psychology</em> (1nd ed.). Flatworld Knowledge.</p>
 </div>
 <div id="ref-stevens1959">
 <p>Stevens, S. S. (1959). Measurement, psychophysics, and utility. In P. Churchman C. W. &amp; Ratoosh (Ed.), <em>Measurement: Definitions and theories</em> (pp. 18–63). Willey.</p>
@@ -502,6 +652,9 @@ Apesar de rígida, essa consideração tem fundamento, já que pela hierarquia d
 </div>
 <div id="ref-Velleman1993">
 <p>Velleman, P. F., &amp; Wilkinson, L. (1993). Nominal, ordinal, interval, and ratio typologies are misleading. <em>The American Statistician</em>, <em>47</em>(1), 65–72. <a href="https://doi.org/10.1080/00031305.1993.10475938">https://doi.org/10.1080/00031305.1993.10475938</a></p>
+</div>
+<div id="ref-Wenke2017">
+<p>Wenke, R. J., Mickan, S., &amp; Bisset, L. (2017). A cross sectional observational study of research activity of allied health teams: Is there a link with self-reported success, motivators and barriers to undertaking research? <em>BMC Health Services Research</em>, <em>17</em>(1). <a href="https://doi.org/10.1186/s12913-017-1996-7">https://doi.org/10.1186/s12913-017-1996-7</a></p>
 </div>
 <div id="ref-Wu2017">
 <p>Wu, H., &amp; Leung, S.-O. (2017). Can likert scales be treated as interval scales?A simulation study. <em>Journal of Social Service Research</em>, <em>43</em>(4), 527–532. <a href="https://doi.org/10.1080/01488376.2017.1329775">https://doi.org/10.1080/01488376.2017.1329775</a></p>
