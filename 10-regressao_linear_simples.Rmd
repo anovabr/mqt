@@ -451,7 +451,13 @@ Ao fazer isso, automaticamente o JASP apresentará as médias e desvios-padrão 
 Há diversas opções, mas a `Scatter Plots` é a mais completa. Ao selecioná-la, o JASP já irá apresentar o gráfico, bem com adicionar elementos que possam maximizar o entendimento do relacionamento entre elas. A este momento, o interesse é fazer uma primeira avaliação sobre o perfil linear no relacionamento entre os dados, o que parece ocorrer.
 
 ![](./img/cap_reg_plot2.png)
-É possível calcular a correlação entre ambas as variáveis, tal como foi realizado no R. Entretanto, essa etapa reproduziria o que foi feito no capítulo anterior e, por isso, não será apresentada. Para execução da regressão linear, será necessário clicar em `Regression` e `Linear Regression`. A tela do JASP irá apresentar algumas opções. É importante notar que a `Covariates` é o local onde as VIs serão colocadas e `Dependent Variable` é onde a VD deverá ser inserida. Enquanto é possível inserir muitas variáveis independentes (fazendo um modelo múltiplo), apenas uma VD poderá ser inserida. O JASP apenas aceitará variáveis contínuas ou definidas como contínuas nos espaços apresentados.  
+É possível calcular a correlação entre ambas as variáveis, tal como foi realizado no R. Entretanto, essa etapa reproduziria o que foi feito no capítulo anterior e, por isso, não será apresentada. 
+
+Para execução da regressão linear, será necessário clicar em `Regression` e `Linear Regression`. 
+
+![](./img/cap_reg_multipla_interface.png)
+
+A tela do JASP irá apresentar algumas opções. É importante notar que a `Covariates` é o local onde as VIs serão colocadas e `Dependent Variable` é onde a VD deverá ser inserida. Enquanto é possível inserir muitas variáveis independentes (fazendo um modelo múltiplo), apenas uma VD poderá ser inserida. O JASP apenas aceitará variáveis contínuas ou definidas como contínuas nos espaços apresentados.  
 
 ![](./img/cap_reg_interface.png)
 
@@ -493,7 +499,7 @@ A <mark>normalidade</mark> é testada ao clicar em `Plots` e `Q-Q plot standardi
 
 Diferente do R, esta versão do JASP não permite testar formalmente a hipótese de normalidade residual. Dessa forma, será necessário contar apenas com a perceção do gráfica para checar se o pressuposto foi respeitado ou violado.  
 
-A <mark>homocedasticidade</mark> é também verificada graficamente. Ao clicar no `Residuals vs. Predicted`, o plano irá apresentar os valores dos resíduos em Y e os valores previstos em X. Nesse gráfico, é importânte não detectar nenhum padrão nos elementos apresenatdos. A disposição do gráfico indica que este pressuposto foi alcançado.  
+A <mark>homocedasticidade</mark> é também verificada graficamente. Ao clicar no `Residuals vs. Predicted`, o plano irá apresentar os valores dos resíduos em Y e os valores previstos em X. Nesse gráfico, é importânte não detectar nenhum padrão nos elementos apresentados. A disposição do gráfico indica que este pressuposto foi alcançado.  
 
 ![](./img/cap_reg_homocedasticidade_jasp.png) 
 

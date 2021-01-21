@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2021-01-19" />
+<meta name="date" content="2021-01-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -295,8 +295,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.1" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisa-9"><i class="fa fa-check"></i><b>12.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="12.2" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-r-14"><i class="fa fa-check"></i><b>12.2</b> Execução no R</a></li>
 <li class="chapter" data-level="12.3" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-jasp-14"><i class="fa fa-check"></i><b>12.3</b> Execução no JASP</a></li>
-<li class="chapter" data-level="12.4" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#técnicas-automáticas-de-seleção-de-variáveis"><i class="fa fa-check"></i><b>12.4</b> Técnicas automáticas de seleção de variáveis</a></li>
-<li class="chapter" data-level="12.5" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#resumo-12"><i class="fa fa-check"></i><b>12.5</b> Resumo</a></li>
+<li class="chapter" data-level="12.4" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#escrita-dos-resultados-12"><i class="fa fa-check"></i><b>12.4</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="12.5" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#técnicas-automáticas-de-seleção-de-variáveis"><i class="fa fa-check"></i><b>12.5</b> Técnicas automáticas de seleção de variáveis</a></li>
+<li class="chapter" data-level="12.6" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#resumo-12"><i class="fa fa-check"></i><b>12.6</b> Resumo</a></li>
+<li class="chapter" data-level="12.7" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisas-adicionais-5"><i class="fa fa-check"></i><b>12.7</b> Pesquisas adicionais</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="http://www.puc-rio.br/" target="blank">PUC-Rio</a></li>
@@ -727,7 +729,10 @@ Regression and Other Stories, de Andrew Gelman</p>
 <p><img src="img/cap_reg_plot.PNG" /></p>
 <p>Há diversas opções, mas a <code>Scatter Plots</code> é a mais completa. Ao selecioná-la, o JASP já irá apresentar o gráfico, bem com adicionar elementos que possam maximizar o entendimento do relacionamento entre elas. A este momento, o interesse é fazer uma primeira avaliação sobre o perfil linear no relacionamento entre os dados, o que parece ocorrer.</p>
 <p><img src="img/cap_reg_plot2.PNG" />
-É possível calcular a correlação entre ambas as variáveis, tal como foi realizado no R. Entretanto, essa etapa reproduziria o que foi feito no capítulo anterior e, por isso, não será apresentada. Para execução da regressão linear, será necessário clicar em <code>Regression</code> e <code>Linear Regression</code>. A tela do JASP irá apresentar algumas opções. É importante notar que a <code>Covariates</code> é o local onde as VIs serão colocadas e <code>Dependent Variable</code> é onde a VD deverá ser inserida. Enquanto é possível inserir muitas variáveis independentes (fazendo um modelo múltiplo), apenas uma VD poderá ser inserida. O JASP apenas aceitará variáveis contínuas ou definidas como contínuas nos espaços apresentados.</p>
+É possível calcular a correlação entre ambas as variáveis, tal como foi realizado no R. Entretanto, essa etapa reproduziria o que foi feito no capítulo anterior e, por isso, não será apresentada.</p>
+<p>Para execução da regressão linear, será necessário clicar em <code>Regression</code> e <code>Linear Regression</code>.</p>
+<p><img src="img/cap_reg_multipla_interface.PNG" /></p>
+<p>A tela do JASP irá apresentar algumas opções. É importante notar que a <code>Covariates</code> é o local onde as VIs serão colocadas e <code>Dependent Variable</code> é onde a VD deverá ser inserida. Enquanto é possível inserir muitas variáveis independentes (fazendo um modelo múltiplo), apenas uma VD poderá ser inserida. O JASP apenas aceitará variáveis contínuas ou definidas como contínuas nos espaços apresentados.</p>
 <p><img src="img/cap_reg_interface.PNG" /></p>
 <p>Para realizar o modelo, será necessário levar a <u>bsq_soma</u> para seção <code>Covariates</code> e a <u>eat_soma</u> para <code>Dependent variable</code>. Ao fazer isso, o JASP irá fazer todas as principais análises e apresentar os resultados em uma tabela específica, ao lado direito da tela. É fácil notar que os resultados apresentados são muitos e se recomenda uma ordem específica para interpretá-los.</p>
 <p>Em <u>primeiro momento</u>, é necessário verificar o ajuste do modelo na seção <code>ANOVA</code>, bem ao centro dos resultados. Este teste compara o modelo em questão contra um modelo em que apenas o intercepto é utilizado para prever todos os valores. No JASP, esses modelos são descritos por <code>H1</code> e <code>H0</code> nas principais tabelas. Tecnicamente, o modelo analisado é chamado de <u>irrestrito</u> (ou aumentado, <code>H1</code>) e o modelo que tem apenas o intercepto é chamado de <u>restrito</u> ou nulo, <code>H0</code>. Valores significativos são necessários nesta etapa. Nesta análise, o resultado foi F(1, 218) = 182.883, p &lt; 0.0001, indicando que os outros resultados podem ser interpretados. Quando isso acontece, deve-se desconsiderar todas as linhas que o JASP apresentar resultados para o modelo nulo, simbolizado por<code>H0</code>, e apenas interpretar os resultados do modelo testado, que é apresentado sempre por <code>H1</code>.</p>
@@ -747,7 +752,7 @@ Regression and Other Stories, de Andrew Gelman</p>
 <p>A <mark>normalidade</mark> é testada ao clicar em <code>Plots</code> e <code>Q-Q plot standardized results</code>. O JASP irá apresentar um QQ plot com duas informações principais: uma diagonal e um conjunto de pontos/círculos. Caso os círculos estejam sobrepostos à linha, isso apoia que os resíduos se distrubem normalmente. No caso abaixo, isso não foi alcançado.</p>
 <p><img src="img/cap_reg_normalidade.PNG" /></p>
 <p>Diferente do R, esta versão do JASP não permite testar formalmente a hipótese de normalidade residual. Dessa forma, será necessário contar apenas com a perceção do gráfica para checar se o pressuposto foi respeitado ou violado.</p>
-<p>A <mark>homocedasticidade</mark> é também verificada graficamente. Ao clicar no <code>Residuals vs. Predicted</code>, o plano irá apresentar os valores dos resíduos em Y e os valores previstos em X. Nesse gráfico, é importânte não detectar nenhum padrão nos elementos apresenatdos. A disposição do gráfico indica que este pressuposto foi alcançado.</p>
+<p>A <mark>homocedasticidade</mark> é também verificada graficamente. Ao clicar no <code>Residuals vs. Predicted</code>, o plano irá apresentar os valores dos resíduos em Y e os valores previstos em X. Nesse gráfico, é importânte não detectar nenhum padrão nos elementos apresentados. A disposição do gráfico indica que este pressuposto foi alcançado.</p>
 <p><img src="img/cap_reg_homocedasticidade_jasp.PNG" /></p>
 <p>A <mark>Independência</mark> dos resíduos é bastante dependente do tipo de delineamento utilizado. No entanto, o JASP permite que esse pressuposto seja formalmente testado pelo teste de Durbin Watson. Isso é feito ao clicar em <code>Statistics</code>, <code>Residuals</code> e <code>Durbin-Watson</code></p>
 <p><img src="img/cap_reg_independencia_jasp.PNG" /></p>
