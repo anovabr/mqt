@@ -27,7 +27,7 @@ A ANOVA de medidas repetidas é um teste estatístico para a análise de dados l
 
 ## Pesquisa
 
-<div class="alert alert-info" role="alert">
+<div class="alert alert-warning">
   <strong>Base: </strong> R - Base Lidia Carprofeno
 </div>  
 
@@ -91,18 +91,10 @@ A modelagem estatística envolve definir claramente que o `resultado` é uma fun
 
 Dessa maneira, a tabela abaixo apresenta os valores da média e do desvio-padrão para todas as condições:
 
-
-```{r }
-tratamento %>%  #base de dados
-  group_by(grupo,tempo) %>% #agrupar
-  summarise_at(vars(resultado),lst(mean, sd)) %>% #tirar estatisticas 
-  pivot_longer(-c(grupo, tempo), names_to = "medida") %>% 
-  mutate(key = paste0(medida,"=", value)) %>%  #criar um unico inexador
-  select(grupo, tempo, key) %>%  #selecionar apenas as 3 variaveis importantes
-  separate(key, into=c("medida","resultado"),sep = "=", convert = TRUE) %>%  #dividir media e desvio
-  pivot_wider(names_from = tempo, values_from = resultado) %>%  #alargar
-  pander()
+```{r results="asis" }
+arsenal::tableby(tempo ~ resultado + grupo, test   = FALSE,tratamento) %>% summary() 
 ```
+
 
 O gráfico abaixo também apresenta as mesmas informações, mas insere uma barra com o erro padrão da média. Isso é útil para interpretação inferencial.
 
@@ -124,14 +116,14 @@ library(ez)
 
 Sua sintaxe envolve as seguintes características:
 
-**data** refere-se à base de dados (no formato longo)   
-**dv** refere-se à variável dependente (contínua)  
-**wid** refere-se à variável com a identificação única de cada participante  
-**within** refere-se à variável independente com efeito <u>dentro</u> do tratamento, ou seja, a variável que se repete. Nesse caso, cada uma das semanas  
-**between** refere-se à variável independente com efeito <u>entre</u> os tratamentos, ou seja, cada um dos grupos  
-**type** refere-se à forma pela qual a soma dos quadrado será calculada. O tipo 3 emula os resultados dos programas típicos e quase sempre é a melhor opção para finalidade de comparação entre resultados  
-**detailed** refere-se à apresentação detalhada dos resultados  
-**return_aov** refere-se à criação de um objeto no formato `aov` que tem utilidade para análises comparadas posteriores  
+`data` refere-se à base de dados (no formato longo)   
+`dv` refere-se à variável dependente (contínua)  
+`wid` refere-se à variável com a identificação única de cada participante  
+`within` refere-se à variável independente com efeito <u>dentro</u> do tratamento, ou seja, a variável que se repete. Nesse caso, cada uma das semanas  
+`between` refere-se à variável independente com efeito <u>entre</u> os tratamentos, ou seja, cada um dos grupos  
+`type` refere-se à forma pela qual a soma dos quadrado será calculada. O tipo 3 emula os resultados dos programas típicos e quase sempre é a melhor opção para finalidade de comparação entre resultados  
+`detailed` refere-se à apresentação detalhada dos resultados  
+`return_aov` refere-se à criação de um objeto no formato `aov` que tem utilidade para análises comparadas posteriores  
 
 Para deixar o ambiente de programação mais organizado o objeto `ez_outcome` será criado e irá para armazenar os resultados.
 
@@ -225,7 +217,7 @@ A base utilizada será a [csv Lidia Carprofeno largo](https://www.dropbox.com/s/
 
 ![](./img/cap_anovarm_descriptives.png)
   
-Ao clicar nesta opção, será possível eleger as variáveis que irão ser analisadas e as variáveis que irão funcionar como agrupadores. Na prática, a lista Variables irá reunir as variáveis dependentes, enquanto a variável independente será colocada na seção Split. É importante atentar à opção Frequency tables (nominal and ordinal), que deve ser marcada quando o nível de medida da variável de interesse for nominal ou ordinal.
+Ao clicar nesta opção, será possível eleger as variáveis que irão ser analisadas e as variáveis que irão funcionar como agrupadores. Na prática, a lista `Variables` irá reunir as variáveis dependentes, enquanto a variável independente será colocada na seção `Split`. É importante atentar à opção `Frequency tables (nominal and ordinal)`, que deve ser marcada quando o nível de medida da variável de interesse for nominal ou ordinal.
 
 ![](./img/cap_anovarm_descriptives2.png)
 
@@ -261,13 +253,34 @@ Agora, será necessário levar as variáveis relacionadas à dor para cada lugar
 ![](./img/cap_anovarm_within.png)
 Ao fazer isso, o JASP está sendo informado da variação <u>dentro</u>, ou seja, do efeito do tempo em todos os participantes, independentemente dos grupos em que eles foram alocados.
 
-No entanto, nesta pesquisa há também um efeito <u>entre os grupos</u> e isso precisa ser estipulado no programa. Para fazer isso, basta arrastar a variaável <u>grupo</u> para `Between Subjects Factor`. A tela final será próxima à apresentada abaixo:  
+No entanto, nesta pesquisa há também um efeito <u>entre os grupos</u> e isso precisa ser estipulado no programa. Para fazer isso, basta arrastar a variável <u>grupo</u> para `Between Subjects Factor`. A tela será próxima à apresentada abaixo:  
 
 ![](./img/cap_anovarm_resultados.png)
 
-Depois que isso tiver sido feito, o JASP automaticamente irá realizar as contas e apresentar os resultados da ANOVA de Medidas Repetidas. É possível ficar nesta tela e interpretar os resultados, começando <u>sempre</u> pela interação. A interação `Tempo x grupo` não foi significativa (F(4, 152) = 0.696, p = 0.596) e o `Grupo` também não (F(1, 38) = 0.706, p = 0.406). De maneira diferente, o efeito do `Tempo` foi significativo (F(4, 152) = 3.304, p = 0.013).  
+Depois que isso tiver sido feito, o JASP automaticamente irá realizar as contas e apresentar os resultados do modelo linear misto a partir de alguns critérios padronizados do programa. 
 
-Entretanto, para que a validade dessa interpretação seja assegurada, é necessário testar se os pressupostos do modelo foram respeitados ou rejeitados. Além disso, o cálculo do tamanho do efeito deve ser realizado para otimizar a interpretação dos achados.
+![](./img/cap_anovarm_resultados2.png)
+
+No entanto, por padrão, o JASP assume que tanto o intercepto como a inclinação são efeitos aleatórios, o que é diferente da hipótese da pesquisa. Para ajustar o modelo de acordo com o previamente definido, deve-se clicar em `Model`
+
+
+![](./img/cap_lmm_model.png)
+Nesta tela, será necessário deixar todas as opções desmarcadas.
+
+![](./img/cap_lmm_model2.png)
+
+
+Ao fazer isso, o JASP irá modificar as notas embaixo da tabela inicial de resultados, que agora podem ser interpretados.
+
+A interpretação dOs resultados deve começar pela interação. Caso este termo seja significativo, os outros resultados não devem ser interpretados diretamente. 
+
+
+![](./img/cap_lmm_resultados.png)
+
+
+É possível ficar nesta tela e interpretar os resultados, começando <u>sempre</u> pela interação. A interação `Tempo x grupo` não foi significativa (F(4, 152) = 0.696, p = 0.596) e o `Grupo` também não (F(1, 38) = 0.706, p = 0.406). De maneira diferente, o efeito do `Tempo` foi significativo (F(4, 152) = 3.304, p = 0.013).  
+
+Entretanto, para qu e a validade dessa interpretação seja assegurada, é necessário testar se os pressupostos do modelo foram respeitados ou rejeitados. Além disso, o cálculo do tamanho do efeito deve ser realizado para otimizar a interpretação dos achados.
 
 Os dois principais pressupostos da ANOVA de Medidas Repetidas são a <mark>normalidade</mark> e a <mark>esfericidade</mark>. Para verificá-los, é necessário clicar em `Assumtpions checks`. 
 
@@ -296,10 +309,7 @@ Agora, a interpretação agora pode ser feita integralmente. O valor de P <u>cor
 Gráficos específicos são recursos úteis para descrição destes resultados. Eles podem ser feitos clicando em `Descriptives Plots`, arrastando o <u>tempo</u> para `Horizontal axis` e a <u>grupo</u> para `Separated lines`. Para colocar o erro padrão, é necessário clicar em `Display error bars` e `Standard error`. Esse gráfico é muito informativo, mas a impressão visual que ele traz é de que há diferença entre os grupos, o que não foi encontrado no teste de hipóteses modelado anteriormente.
 
 ![](./img/cap_anovarm_grafico.png)
-Notas: Infelizmente, o JASP não realiza um gráfico completo dessa maneira na seção `Descriptives`, tal como apresentado. Por vezes, será necessário primeiro rodar integralmente a ANOVA para depois gerar esta apresentação. Quase sempre, o eixo X recebe a variável com maior quantidade de níveis.
-
-
-Nota: Essa pesquisa não teve resultados significativos e, em função disso, testes post hoc não foram realizados. Entretanto, frequentemente os resultados são significativos e a mecânica das comparações pareadas é próxima ao que foi demonstrado no capítulo de ANOVA Fatorial.
+Notas: Infelizmente, o JASP não realiza um gráfico completo dessa maneira na seção `Descriptives`, tal como apresentado. Por vezes, será necessário primeiro rodar integralmente a ANOVA para depois gerar esta apresentação. Quase sempre, o eixo X recebe a variável com maior quantidade de níveis. Essa pesquisa não teve resultados significativos e, em função disso, testes post hoc não foram realizados. Entretanto, frequentemente os resultados são significativos e a mecânica das comparações pareadas é próxima ao que foi demonstrado no capítulo de ANOVA Fatorial.
 
 ## Escrita dos resultados
 

@@ -5,37 +5,38 @@
 load("~/anovabr/mqt/bases/Base R - imagem corporal.RData")
 
 library(tidyverse)
-library(knitr) #tables and graphs
+library(pander)
+
 library(kableExtra) #tables with different styles
 library(olsrr) #regression diagnostics
 library(gridExtra) #plot together
-library(stargazer) #presenting results
 ```
 
-A análise de correlação é um procedimento estatístico para verificar a relação entre duas variáveis. Existem diferentes técnicas correlacionais e a maioria busca medir a <u>força</u> e a <u>direção</u> da <u>associação linear</u> entre duas variáveis aleatórias. A tabela a seguir descreve algumas técnicas.  
+A correlação é um procedimento estatístico utilizado para verificar a relação entre duas variáveis. Há diferentes técnicas correlacionais e a maioria busca medir a <u>força</u> e a <u>direção</u> da <u>associação linear</u> desse relacionamento.
+
+O nível de medida das variáveis indica qual técnica correlacional deve ser empregada. A tabela a seguir apresenta uma síntese:
 
 
+  | Nível de medida                     | Correlação / Coeficiente               |  
+  | :-----------                        | :-----------                           |        
+  | Amas as variáveis são intervalares  | Correlação Produto momento de Pearson  |  
+  | Amas as variáveis são ordinais      | Correlação de Spearman                 |  
+  | Amas as variáveis são nominais      | Coeficiente Phi                        |  
 
-  | Nível de medida | Correlação / Coeficiente                     |  
-  | :-----------    | :-----------                                 |        
-  | Intervalar      | Correlação Produto momento de Pearson        |   
-  | Ordinal         | Correlação de Spearman                       |
-  | Nominal         | Coeficiente Phi                              |
-  
 
-A Correlação de Pearson é uma das mais frequentemente calculadas em Psicologia e outras áreas empíricas e será demonstrada neste capítulo. Entretanto, tenha em mente que algumas áreas específicas costumam utilizar outras correlações. Como exemplo, é bem típico em Psicometria utilizar indicadores categóricos e, com isso, realizar correlações tetracóricas ou policóricas, que não serão abordadas aqui. 
+O Coeficiente de Correlação de Pearson é um dos mais frequentemente calculados em Psicologia e outras áreas empíricas e será demonstrado neste capítulo. É importante, no entanto, ter em mente que algumas áreas específicas outros coeficientes tendem a ser utilizados. Como exemplo, é bem típico em Psicometria trabalhar com variáveis categóricas e, com isso, calcular correlações tetracóricas ou policóricas, que não serão abordadas aqui. 
 
-O coeficiente de correlação é apresentado por $\rho$ ou `r`. Ele é formado por um <u>valor numérico</u> e um <u>sinal</u>. A tabela abaixo descreve as possíveis interpretações [@Cohen1988].
+A correlação de Pearson é apresentada por $\rho$ ou `r`, e é formada por um <u>valor numérico</u> e um <u>sinal</u>. Enquanto o valor numérico indica a força do relacionamento bivariado, o sinal indica a natureza proporcional ou inversamente proporcional desse relacionamento. A tabela abaixo descreve as possíveis interpretações [@Cohen1988].  
 
-  | Valor/ Sinal  | Positivo (+)          | Negativo (-)       | 
+  | Valor         | Sinal Positivo (+)    | Sinal Negativo (-) | 
   | :-----------  | :-----------          | :-----------       |
   | 0.1           | Fraca positiva        | Fraca negativa     |
   | 0.3           | Moderada positiva     | Moderada negativa  |
   | 0.5           | Forte positiva        | Forte negativa     |
 
-O gráfico de dispersão é uma excelente forma de apresentar o relacionamento bivariado e as imagens abaixo demonstram tais conceitos.  
+O gráfico de dispersão é uma excelente forma de ilustrar o relacionamento bivariado e as imagens abaixo demonstram tais conceitos.  
 
-```{r}
+```{r, echo=FALSE }
 grid.arrange(
   ggplot(data = data.frame(MASS::mvrnorm(n=200, mu=c(0, 0), Sigma=matrix(c(1, .1, .1, 1), nrow=2), empirical=TRUE)), 
          aes(x = X1, y = X2)) + geom_jitter() + labs(x= "", y = "Y (corr. positiva)") +
@@ -60,7 +61,7 @@ grid.arrange(
   nrow = 2)
 ```
 
-Para realização da Correlação de Pearson, é necessário que ambas as variáveis sejam contínuas e apresentem relacionamento linear. As seguintes propriedades existem no coeficiente de correlação:   
+Para realização da Correlação de Pearson, é necessário que ambas as variáveis sejam contínuas e apresentem relacionamento linear. O Coeficiente tem as seguintes propriedades:     
 
 1. É limitado entre -1 e +1, com 0 indicando ausência de correlação    
 2. O sinal indica a natureza, enquanto o número a força  
@@ -75,36 +76,34 @@ Para realização da Correlação de Pearson, é necessário que ambas as variá
 
 ## Pesquisa  
 
-<div class="alert alert-info" role="alert">
+<div class="alert alert-warning">
   <strong>Base: </strong> Livro - Dados - Eating disorders
 </div>  
 
 
 Vamos utilizar a pesquisa intitulada ["Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students"](https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students), publicada em 2018 no Global Journal of Educational Studies, que sou coautor.
 
-O objetivo dessa pesquisa foi explorar os fatores envolvidos em transtornos alimentares e percepção da imagem corporal, bem como verificar a correlação entre eles. Esse artigo contou com a utilização de escalas aplicadas em 219 participantes no Brasil. Para acessar aspectos relacionados aos Transtornos alimentares, a escala EAT-26 foi aplicada. Já para aspectos da imagem corporal, a escala BSQ-34 foi aplicada.  
-
+Um dos objetivos dessa pesquisa foi verificar a relação entre percepção da imagem corporal e transtornos alimentares. Esse artigo contou com a utilização de escalas aplicadas em 219 participantes no Brasil. Para acessar características relacionados aos Transtornos alimentares, a escala EAT-26 foi aplicada. Já para aspectos da imagem corporal, a escala BSQ-34 foi aplicada. Em ambas as escalas, quão maior o valor, mais frequentes ou intensos são os sintomas relacionados a distorções na percepção da imagem corporal e em disfunções no comportamento alimentar.    
 
 ## Execução no R  
 
 
-A primeira etapa da análise é orientada a fazer tabelas e gráficos que possam auxiliar na interpretação dos resultados. Abaixo há uma tabela inicial com dados descritivos dos resultados. 
+A primeira etapa da análise consite na apresentação de tabelas e gráficos que possam auxiliar na interpretação dos resultados. Abaixo há uma tabela inicial com os resultados das escalas.  
 
-```{r}
-dados_brasil %>% 
-  summarise_at(vars(eat_soma, bsq_soma), lst(n=~n(),media=mean,DP=sd)) %>% t() %>% 
-  pander::pander(., split.table = Inf)
+```{r, results = "asis" }
+arsenal::tableby(~eat_soma + bsq_soma, test = FALSE, dados_brasil) %>% summary() 
 ```
 
 
-Após isso realizado, o gráfico de dispersão traz um importante auxilio na visualização da relação entre as variáveis e permite verificar se o relacionamento é ou não linear. Apesar de técnicas correlacionais não elegerem uma VI e uma VD, com muita frequência, se usa o eixo X para colocar a variável que se assume (mesmo que teoricamente) como independente.  
+Após isso realizado, a realização do gráfico de dispersão é fundamental para melhor entendimento do relacionamento entre as variáveis, especialmente para verificar se ele linear ou não. Apesar de técnicas correlacionais não elegerem, formalmente, uma VI e uma VD, com muita frequência, se usa o eixo X para colocar a variável que se assume como independente e Y para apresentar os resultados da variável assumida como dependente.    
 
 ```{r}
 ggplot(dados_brasil, aes(x = bsq_soma, y = eat_soma)) +
+  labs(x = "Imagem corporal (BSQ)", Y = "Disfunção alimentar (EAT)")
   geom_jitter()
 ```
   
-O gráfico indica que as duas variáveis são relacionadas. Apesar do padrão deste relacionamento não ser estritamente linear, é possível verificar formalmente a correlação entre ambas as variáveis,
+O gráfico indica que as duas variáveis são relacionadas. Apesar do padrão deste relacionamento não ser estritamente linear, é possível testar formalmente a correlação entre ambas as variáveis,
 
 Isso pode ser feito pela função `cor.test`, que é nativa do R.  
 
@@ -112,7 +111,7 @@ Isso pode ser feito pela função `cor.test`, que é nativa do R.
 cor.test(dados_brasil$eat_soma, dados_brasil$bsq_soma) %>% pander()
 ```
 
-Os resultados permitem concluir que a correlação é positiva e forte (r = 0.675), além de significativa (p < 0.001). Isso indica que ambas as variáveis covariam de maneira proporcional, em que valores altos em uma tendem a acompanhar valores altos em outra. É importante atentar que esse relacionamento não indica causalidade e, dessa forma, essa covariação pode ser explicada por diferentes fatores não analisados neste método.  
+Os resultados permitem concluir que a correlação é positiva e forte (r = 0.675), além de significativa (p < 0.001). Isso indica que ambas as variáveis covariam de maneira proporcional, em que valores altos em uma tendem a acompanhar valores altos em outra. É importante atentar que esse relacionamento não indica causalidade e, dessa forma, essa covariação pode ser explicada por diferentes fatores não analisados ou controlados neste método, tal como previamente apresentado nas características de delineamentos observacionais.    
 
 A correlação de Pearson não depende estritamente da normalidade das variáveis, apesar desse tema ser bastante discutido. Dessa forma, não há pressupostos para se checar além dos já discutidos no decorrer deste capítulo. 
 
@@ -126,23 +125,29 @@ Ao clicar nesta opção, será possível eleger as variáveis que irão ser anal
 
 
 ![](./img/cap_correlacao_descritivo2.png)
-Será necessário arrastar tanto <u>eat_soma</u> como <u>bsq_soma</u> para o espaço de `Variables`. Ao fazer isso, o JASP automaticamente irá preencher a tabela previamente exposta com os valores estatísticos obtidos. A média e o desvio-padrão indicam a posição típica dos dados e o afastamento esperado desta localização. Apenas para melhor apresentação dos resultados, é importante que a primeira variável da lista seja <u>bsq_soma</u>.
+Será necessário arrastar tanto <u>eat_soma</u> como <u>bsq_soma</u> para o espaço de `Variables`. Apenas para melhor apresentação dos resultados, é importante que a primeira variável da lista seja <u>bsq_soma</u>. Ao fazer isso, o JASP automaticamente irá preencher a tabela previamente exposta com os valores estatísticos obtidos. A média e o desvio-padrão indicam a posição típica dos dados e o afastamento esperado desta localização. .
 
 
 ![](./img/cap_correlacao_descritivo3.png)
 
-Em seguida, ao clicar na opção `Plots`, será possível selecionar o `Scatter Plots`. O gráfico aparecerá abaixo da tabela e irá apresentar diferentes informações estatísticas da relação entre os transtornos alimentares e aspectos da percepção da imagem corporaldo participante.  
+Em seguida, para apresentar graficamente este relacionamento, será necessário clicar na opção `Plots`. 
+
+
+![](./img/cap_correlacao_plot.png)
+
+
+Dentro das opções, será possível selecionar `Scatter Plots`. O gráfico aparecerá na parte inferior do lado direito e trará diferentes informações estatísticas da relação entre aspectos da percepção da imagem corporal e possíveis disfunções alimentares dos participantes.  
 
 ![](./img/cap_correlacao_grafico_dispersao.png)
 
-Por definição, o JASP irá apresentar mais elementos no gráfico. Entretanto, para fins pedagógicos, o importante é conseguir notar o relacionamento que ambas as variáveis apresentam. Para realizar um gráfico mais simples, será necessário <u>desmarcar</u> (ou clicar em `none`) as opções `Graph above scatter plot`, `Graph righ of scatter plot` e `Add regression line`. 
+Por padrão, o JASP irá adicionar vários elementos extras no gráfico. Entretanto, para fins pedagógicos, o importante é conseguir notar o relacionamento que ambas as variáveis apresentam. Para realizar um gráfico mais simples, será necessário <u>desmarcar</u> (ou clicar em `none`) as opções `Graph above scatter plot`, `Graph righ of scatter plot` e `Add regression line`. 
 
 ![](./img/cap_correlacao_grafico_dispersao2.png)
 
 Para execução da correlação, será necessário clicar em `Regression` e `Correlation`.
 
 ![](./img/cap_correlacao_interface.png)
-Ao realizar isso, a tela a ser exibida será próxima à imgem abaixo. Repare que, por padrão, o JASP ativa a opção `Pearson's r` em `Sample Correlation Coefficient` com `Report significance` em `Additional Options`.
+Ao realizar isso, a tela a ser exibida será próxima à imgaem abaixo. Por padrão, em `Sample Correlation`, o JASP já deixa marcada a opção `Pearson's r`. Além disso, em `Additional Options`, a opção  `Report significance` também estará previamente ativada`.
 
 ![](./img/cap_correlacao_interface2.png)
 

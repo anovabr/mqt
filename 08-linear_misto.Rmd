@@ -2,14 +2,10 @@
 
 ```{r base e ajustes, include = FALSE }
 load("~/anovabr/mqt/bases/R - Base Lidia Carprofeno.RData") 
-#remove uneccessary data
 ```
 
 ```{r, include = FALSE }
 library(tidyverse)
-library(knitr) #tables and graphs
-library(kableExtra) #tables with different styles
-
 ```
 
 
@@ -22,11 +18,13 @@ library(kableExtra) #tables with different styles
 
 ```
 
-O modelo linear misto (LMM) é um modelo linear, frequentemente utilizado para trabalhar dados longitudinais ou de medidas repetidas, que possibilita definir tanto  parâmetros populacionais (efeitos fixos), como coeficientes individuais (efeitos aleatórios), além do erro experimental. Pragmaticamente, este modelo oferece mais flexibildiade à ANOVA de medidas repetidas e sua utilização vem ganhando mais espaço em Psicologia [@Gueorguieva2004]. 
 
-É importante atentar que os efeitos fixos são compatilhados por todos os indivíduos, enquanto os aleatórios são especificos de cada um dos participantes. Com isso, cada indivíduo tem a sua própria trajetória média (tanto intercepto como inclinação) e um subconjunto dos parâmetros de regressão são tomados como aleatórios.
 
-A tabela a seguir compara a ANOVA de medidas repetidas e o LMM
+O modelo linear misto (LMM) é um modelo linear, frequentemente utilizado para trabalhar dados longitudinais ou de medidas repetidas, que possibilita definir tanto parâmetros populacionais (efeitos fixos), como coeficientes individuais (efeitos aleatórios), além do erro experimental. Pragmaticamente, este modelo oferece mais flexibildiade à ANOVA de medidas repetidas e sua utilização vem ganhando mais espaço em Psicologia e áreas da saúde [@Gueorguieva2004]. 
+
+Os efeitos fixos são compatilhados por todos os indivíduos, enquanto os aleatórios são especificos de cada um dos participantes. Com isso, a trajetória de cada indivíduo pode ser modelada, permitindo que um subconjunto dos parâmetros de regressão sejam definidos como aleatórios.
+
+Tanto O LMM, como a ANOVa de Medidas Repetidas costumam ser utilizados em dados longitudinais. A tabela a seguir apresenta algumas das principais características de ambas as análises.   
 
   | Característica                             | ANOVA (MR)     |   Modelo Linear Misto  |  
   | :-----------                               | :-----------   | :-----------           |        
@@ -36,11 +34,21 @@ A tabela a seguir compara a ANOVA de medidas repetidas e o LMM
   | Covariáveis tempo-depenentes               | Não            | Sim                    |
   | Complexidade computacional                 | Baixa          | Alta                   |
 
+
+
 ## Pesquisa
 
-A esse momento, vamos ter como referência de análise a pesquisa intitulada ["Avaliação psicométrica em português do indicador de dor crônica de Helsinki em cães com sinais crônicos de osteoartrite"](https://www.scielo.br/scielo.php?script=sci_arttext&pid=S0102-09352019000100109), que tem como primeira autora Lídia Matsubara e eu sou co-autor. Essa pesquisa foi previamente utilizada no capítulo de ANOVA de medidas repetidas.  
+<div class="alert alert-warning">
+  <strong>Base: </strong> R - Base Lidia Carprofeno
+</div>
 
-Nessa pesquisa, temos um <u>grupo controle</u> e um <u>grupo experimental</u> e todos os participantes foram avaliados em 5 momentos diferentes do tempo: 1 semana antes do início do tratamento (W2), imediatamente antes (W0), duas semanas e quatro semanas após o tratamento ter iniciado (S2 e s4) e após uma semana da retirada do tratamento (s6). Dessa forma, trata-se de um delineamento 2x5, considerando os 2 grupos e as 5 medições ao longo do tempo. A base `dados` reúne as varáveis da pesquisa em formato largo (wide) Entretanto, o formato longo é o mais tipicamente encontrado para análises longitudinais e, por isso, será imeplementado a seguir.
+A esse momento, vamos ter como referência de análise a pesquisa intitulada ["Avaliação psicométrica em português do indicador de dor crônica de Helsinki em cães com sinais crônicos de osteoartrite"](https://www.scielo.br/scielo.php?script=sci_arttext&pid=S0102-09352019000100109), que tem como primeira autora Lídia Matsubara e eu sou coautor. Os dados dessa pesquisa foram previamente utilizados no capítulo de ANOVA de medidas repetidas.  
+
+Nessa pesquisa, temos um <u>grupo controle</u> e um <u>grupo experimental</u> e todos os participantes foram avaliados em 5 momentos diferentes do tempo: 1 semana antes do início do tratamento (W2), imediatamente antes do início do tratamento (W0), duas semanas e quatro semanas após o tratamento ter iniciado (S2 e s4) e após uma semana da retirada do tratamento (s6). Trata-se de um delineamento 2x5, considerando os 2 grupos e as 5 medições ao longo do tempo.
+
+## execução no R
+
+A base `dados` reúne as varáveis da pesquisa. No entanto, ela está em formato largo (wide). Na maioria das vezes, o formato longo é o mais tipicamente encontrado para análises longitudinais e, por isso, será imeplementado pela função `pivot_longer` do `tidyverse`. 
 
 ```{r}
 tratamento <- dados %>% 
@@ -61,7 +69,7 @@ tratamento <- dados %>%
   )))
 ```
 
-As variávies neste conjunto de dados são:
+As variávies neste conjunto de dados são as seguintes:
 
 ```{r }
 tratamento %>% names()
@@ -69,42 +77,49 @@ tratamento %>% names()
 
 Dessa forma:  
 
-**id** refere-se a uma identificação única de cada participante.  
-**grupo** refere-se ao grupo em que o participante foi alocado, tal como previamente apresentado (controle ou experimental).  
-**tempo** diz respeito aos 5 pontos de medida e     
-**resultado** é uma variável aleatória contínua do valor obtido na escala utilizada. 
+`id` Identificação única de cada participante.       
+`grupo` Indica o grupo em que o participante foi alocado, tal como previamente apresentado (controle ou experimental).      
+`tempo` Indica cada um dos 5 pontos de medida.   
+`resultado` Apresenta os valores obtido pela escala utilizada. Quão maior o resultado, mais intenso são os sintomas.   
 
-## execução no R
 
-A modelagem será feita via LMM. O pacote `lme4` e seu complemento `lmerTest` serão utilizados.
+Como uma primeira etapa, é importante criar tabelas e gráficos. Esses dois recursos apresentam as principais características dos grupos, bem como seus resultados.
+
+```{r results="asis" }
+arsenal::tableby(tempo ~ resultado + grupo, test   = FALSE,tratamento) %>% summary() 
+```
+
+O gráfico de linhas tende a ser utilizado para medidas longitudinais e encontra-se a seguir.  
+
+```{r}
+ggplot(tratamento, aes(x=tempo, y=resultado, group=grupo, color=grupo)) + #variaveis
+  stat_summary(fun = mean, geom = "line", size=1.0, aes(linetype = grupo)) + #linha
+  stat_summary(fun="mean", geom="point", size=2, aes(shape = grupo)) + #pontos
+  stat_summary(fun.data = mean_se, geom = "errorbar",size=1) #barra de erro
+```
+   
+Os resultados já deixam a impressão de que ambos os grupos tiveram desfechos próximos durante toda a pesquisa. Entretanto, testes formais precisam ser feitos para se chegar a esta conclusão. O R oferece alguns pacotes específicos para modelos mistos. Os pacotes `lme4` e `lmerTest` serão utilizados aqui.  
 
 ```{r }
 library(lme4)
 library(lmerTest)
 ```
 
-A estrutura computacional agora permite incluir tanto efeitos fixos como aleatórios. Quando eles são definidos como correlacionados, se utiliza uma barra verticail (|); quando descorrelacionados, duas barras verticais (||) são utilizadas. Nesta pesquisa, pode-se entender que cada participante tem seu próprio intercepto, ou seja, seu próprio valor de início. A sintaxe a seguinte específica o modelo e o armazena sob nome de `mod_lme`.
+A estrutura computacional da sintaxe do `lme4` é bastante similar aos modelos tradicionais de regressão que utilizam a função `lm`. No entanto, agora é possível incluir tanto efeitos fixos como aleatórios. Quando os termos são definidos como correlacionados, se utiliza uma barra verticail (|). Quando são definidos como descorrelacionados, duas barras verticais (||) são utilizadas.  
+
+Nesta pesquisa, se assumiu que cada participante apresentava seu próprio intercepto, ou seja, seu próprio valor de início. A sintaxe a seguir cria o modelo e o armazena os resultados no vertor `mod_lme`.  
 
 ```{r}
 mod_lme <- lmer(resultado ~ tempo*grupo + (1|id) , data = tratamento)
 ```
 
 Repare que esse modelo é composto pelo se seguintes componentes:  
-1. efeito fixo do `tempo`  
-2. efeito fixo do `grupo`,   
-3. efeito fixo da interação `tempo x grupo`  
-4. efeito aleatório do `id`, indicando um intercepto aleatório e específico por participante  
+1. Os resultados são definidos na variável `resultado`  
+2. efeito fixo do `tempo`  
+3. efeito fixo do `grupo`,   
+4. efeito fixo da interação `tempo x grupo`  
+5. efeito aleatório do `id`, indicando um intercepto aleatório e específico por participante  
 
-A visualização dessa modelagem é bastante útil para compreender o que significa a ideia de intercepto aleatório. 
-
-```{r,fig.align='center', fig.width=9, fig.height=7}
-ggplot(tratamento, aes(x=tempo, y=resultado, group=id, color=id, linetype=grupo)) + 
-  geom_line(size=1) +
-  geom_hline(yintercept = mean(tratamento$resultado[tratamento$tempo == "antes"]), linetype="dashed") +
-   annotate(geom = "text", x=0.5, y = mean(tratamento$resultado[tratamento$tempo == "antes"])+1, label = "Média",hjust = 0)
-```
-
-Repare que cada participante (`id`) inicia em um ponto específico e tem uma trajetória específica no decorrer do tratamento. O valor médio antes do tratamento está apresentado pela linha pontilhada. Apesar de informativo, esse gráfico tem pouca aplicação pedagógica e, por isso, não deve ser relatado.  
 
 Uma vez que o modelo já foi criado, agora é necessário recuperar seus resultados. É importante notar que O pressuposto da normalidade é necessário e ele já foi acessado (e aceito) anteriormente. Conforme dito ao início do capítulo, O LMM relaxa o pressuposto esfericidadde e, por consequência, também o da homogeneidade [@Quen2004].
 
@@ -121,12 +136,106 @@ Para obter as informações completas do modelo, é necessário solicitar o `sum
 ```{r}
 summary(mod_lme) 
 ```
+## Execução no JASP  
+
+
+A base utilizada será a [csv Lidia Carprofeno longo](https://www.dropbox.com/s/9q5f047b8o2jqoo/csv%20Lidia%20Carprofeno%20longo.csv?dl=0). Essa base tem o formato longo. Isso significa que os resultados obtidos no decorrer do tempo serão apresentados em cada uma das linhas do conjunto de dados. Modelos Lineares Mistos tendem a solicitar que os dados sejam organizadaos desta maneira.  
+
+Após carregar a base no JASP, será necessário assegurar que a escala de medida de todas as variáveis são corretas. A variável <u>id</u> deverá ser definido como nominal e para fazer isso, clique no símbolo da régua ao lado dela.
+
+![](./img/cap_lmm_nivel_medida.png)
+
+Uma lista de opções irá aparecer. Será necessário selecionar a opção nominal.
+
+
+![](./img/cap_lmm_nivel_medida2.png)
+
+De maneira próxima ao que foi realizado no R, é importante apresentar tabelas e gráficos descritivos. Estes elementos auxiliam em uma primeira visualização do padrão das respostas. Para fazer isso, será necessário apresentar tabelas e gráficos descritivos. Para fazer isso, é necessário clicar em `Descriptives`.
+
+![](./img/cap_lmm_descriptives.png)
+Ao clicar nesta opção, será possível eleger as variáveis que irão ser analisadas e as variáveis que irão funcionar como agrupadores. Na prática, a lista `Variables` irá reunir as variáveis dependentes, enquanto a variável independente será colocada na seção `Split`. É importante atentar à opção `Frequency tables (nominal and ordinal)`, que deve ser marcada quando o nível de medida da variável de interesse for nominal ou ordinal.
+
+![](./img/cap_lmm_descriptives2.png)
+
+
+O JASP permite fazer gráficos com apenas 1 agrupador. É possível, então, apresentar inicialmente os <u>resultados</u> pelo <u>tempo</u> e, em seguida, pelo <u>grupo</u>. Para isso, será necessário arrastar a variável <u>tempo</u> para o local de `Split` e a variável <u>resultado</u> para o local `Variables`. Ao fazer isso, o JASP irá preencher a tabela com várias informações descritivas.
+
+É importante se lembrar que o JASP <u>não</u> está considerando o <u>grupo</u> que o participante foi alocado.
+
+![](./img/cap_lmm_descriptives3.png)
+
+Gráficos permitem um entendimento mais facilitado dos resultados. Para fazer isso, será necessário clicar na opção `Plots`.
+
+![](./img/cap_lmm_plots.png)
+
+Em seguida, será possível selecionar o `Boxplot` e `Boxplot element`. O gráfico aparecerá abaixo da tabela e irá apresentar diferentes informações estatísticas da distribuição dos resultados das variáveis em função do momenot da pesquisa.
+
+![](./img/cap_lmm_boxplots1.png)
+
+
+Para gerar as estatísticas descritivas e a apresentação gráfica sobre a relação entre os <u>resultados</u> e os respectvos <u>grupos</u>, será necessário, substituir a variável <u>tempo</u> por <u>grupo</u> no espaço `Split`.
+
+![](./img/cap_lmm_boxplots2.png)
+
+
+Apesar dessas análises serem informativas, esta versão do JASP não integra todas as três variáveis desejadas nas tabelas e gráficos produzidos. Isso será feito posteriormente.
+
+
+Para realizar um Modelos Linear Misto, será necessário clicar em `Mixed Models` e `Linear Mixed Models`.
+
+![](./img/cap_lmm_interface.png)
+
+Após fazer isso, a interface do programa será próxima à apresentada abaixo. 
+![](./img/cap_lmm_interface2.png)
+O local `Dependent Variable` irá reunir a VD e a variável <u>resultado</u> deverá ser arrastada até este espaço. `Fixed effects` é o local que irá reúnir as variáveis entre participantes e as variáveis <u>tempo</u> e <u>grupo</u> devem ser inseridas neste local. O `Random effects grouping factors` irá reunir a o efeito aleatório e <u>id</u> deverá ser arrastado para lá.
+
+
+Ao fazer isso, o JASP irá realizar a análise e apresentar, automaticamente, os resultados.  
+
+
+![](./img/cap_lmm_interface3.png)
+
+Esses resultados são baseados na configuração padrão do JASP, que define tanto o intercepto como a inclinação como efeitos aleatórios. No entanto, nesta pesquisa, apenas o intercepto foi definido como aleatório. Para alterar essa configuração, será necessário clicar na opção `Model`, na parte esquerda do programa.
+
+![](./img/cap_lmm_model.png)
+
+Todas as caixas de seleção na seção `Random effects` devem ser desmarcarcadas. 
+
+![](./img/cap_lmm_model2.png)
+
+Após isso feito, o JASP irá refazer as análises e apresentar os resultados, mudando também as mensagens de aviso. 
+
+A interpretação dos resultados agora pode ser feita, sempre começando pela interação. A interação `Grupo x Tempo` não foi significativa (F(4, 152) = 0.696, p = 0.596). O efeito do `Grupo` também não foi significativo (F(3, 38) = 0.706, p = 0.406). De maneira distinta, o `Tempo` foi um preditor significativo (F(4, 152) = 3.304, p = 0.013).
+
+![](./img/cap_lmm_resultados.png)
+
+
+Esta versão do JASP não oferece nenhum recurso para avaliar os pressupostos do modelo. Dessa maneira, isso não será realizado. 
+
+Apresentações gráficas são extremamente importantes e para fazer isso, é necessário clicar em `Plots`
+
+![](./img/cap_lmm_resultados_plots.png) 
+
+A variável `Tempo` deve ser inserida no eixo horizontal (`Horizontal axis`) e a variável `gruop` em `Separated lines`. As outras opções nào precisam ser alterada. O gráfico será gerado automaticamente e servirá como um recurso extra para entender os resultados.  
+
+
+![](./img/cap_lmm_resultados_plots2.png)
+Notas: Infelizmente, o JASP não realiza um gráfico completo dessa maneira na seção `Descriptives`, tal como apresentado. Por vezes, será necessário primeiro rodar integralmente o Modelo Linear misto para depois gerar esta apresentação. Quase sempre, o eixo X recebe a variável com maior quantidade de níveis. Essa pesquisa não teve resultados significativos e, em função disso, testes post hoc não foram realizados. Entretanto, frequentemente os resultados são significativos e a mecânica das comparações pareadas é próxima ao que foi demonstrado no capítulo de ANOVA Fatorial.
+
+
+## Escrita dos resultados
+
+
+um dos principais objetivos em delineamentos que contem com termos de interação é verificar se o efeito de uma variável depende dos níveis de outra. Nesta pesquisa, isso ocorreria caso os resultados obtidos dependessem da relação entre o tempo decorrido do tratamento e do grupo em que o participante tivesse sido alocado. No entanto, os resultados da interação não foram significativos, indicando que isso não parece ter ocorrido. Uma vez que o efeito principal do tempo foi significativo, é possível concluir que o tempo é um preditor significativo nos resultados, independente do grupo em que o participante se encontra.  
+
+Abaixo uma sugestão de escrita baseada nas recomendações da American Psychological Association (APA).
 
 
 ```{block, type="writing"}
 **Como escrever os resultados** 
 
-Os dados foram analisados através de um Modelo Linear de Efeitos Mistos, que verificou o efeito do tempo, do grupo, a interação entre esses dois preditores e permitiu um intercepto aleatório para cada participante. Dessa maneira, esse modelo levou em consideração tanto efeitos fixos quanto aleatórios, além de relaxar alguns pressupostos tradicionais dos modelos de regressão. Os resultados permitem concluir que Não há interação significativa tempo x grupo (F(4, 152 = 0.696), p = 0.696), bem como não há efeito significativo do grupo (F(1, 38 = 0.706), p = 0.706). Em outra direção, o efeito o tempo foi significativo (F(4, 152 = 3.304), p = 0.013)
+Os dados foram analisados através de um Modelo Linear de Efeitos Mistos, que verificou o efeito do tempo, do grupo, a interação entre esses dois preditores. Neste modelo, um intercepto aleatório foi definido para cada participante em com isso, essa análise levou em consideração tanto efeitos fixos quanto aleatórios. Os resultados permitiram concluir que Não há interação significativa tempo x grupo (F(4, 152 = 0.696), p = 0.596), bem como não há efeito significativo do grupo (F(1, 38 = 0.706), p = 0.406). Em outra direção, o efeito o tempo teve efeito significativo nos resultados (F(4, 152 = 3.304), p = 0.013).
+
 ```
 
 
@@ -140,4 +249,7 @@ Os dados foram analisados através de um Modelo Linear de Efeitos Mistos, que ve
 
 
 
+## Pesquisas adicionais  
 
+1. Effects of Aerobic Training versus Breathing Exercises on Asthma Control: A Randomized Trial (DOI: 10.1016/j.jaip.2020.06.042)
+Nesta pesquisa, 54 pacientes com asma foram aleatoriamente selecionados para receberem ou um tratamento baseado em exercícios aeróbicos ou um tratamento baseado em técnicas de respiração. Os pesquisadores acompanharam os participantes por 3 meses e concluíram que, em alguns aspectos, o grupo de exercícios aeróbicos teve uma melhora significativamente maior do que o grupo de técnicas respiratórias.  
