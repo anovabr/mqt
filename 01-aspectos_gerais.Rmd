@@ -4,19 +4,41 @@ output:
   html_document: default
 ---
 # Aspectos gerais  
+
+
+```{block, type="objectives"}
+**Objetivos do capítulo**  
+1. Apresentar conceitos transversais encontrados em pesquisa e estatística    
+2. Discutir algumas características das variáveis     
+3. Apresentar funções do dplyr e ggplot    
+4. Apresentar um módulo específico do JASP   
+5. Sugerir heurísticas ou regras gerais na criação de gráficos  
+```
  
 
 Quando as pessoas começam seus estudos em estatística, parece haver uma falsa crença de que a estatística é uma área exclusivamente desenvolvida para analisar dados obtidos em uma pesquisa. Este pensamento acaba por produzir uma dicotomia entre pesquisa e estatística, fazendo com que algumas pessoas pensem que as atividades feitas em estatística somente começam após o termino de uma pesquisa. No entanto, isso não é verdade. Apesar da análise de dados ser uma tarefa intensamente feita em estatística, a atuação desta ciência é muito mais mais ampla do que apenas isso e ocorre em todas as etapas de uma pesquisa.    
 
-Em linhas gerais, a estatística é a ciência que fornece os princípios e a metodologia para <u>coleta, organização, apresentação, resumo, tratamento, análise e interpretação de dados</u>. O mnemônico <mark>CORRETA</mark> quase sempre ajuda a fixar esta definição, já que C se refere à coleta, O se refere à organização, R se refere à resumo, T se refere à tratamento e A se refere à análise, incluindo aspectos descritivos, inferenciais e suas respectivas formas de interpretação, que serão discutidas posteriormente. Assim, aprender estatística da forma "correta" é muito importante no meio acadêmico e científico.   
+Em linhas gerais, a estatística é a ciência que fornece os princípios e a metodologia para <u>coleta</u>, <u>organização</u>, <u>apresentação</u>, <u>resumo</u>, <u>tratamento</u>, <u>análise</u> e <u>interpretação de dados</u>. O mnemônico <mark>CORRETA</mark> quase sempre ajuda a fixar esta definição, já que C se refere à coleta, O se refere à organização, R se refere à resumo, T se refere à tratamento e A se refere à análise, incluindo aspectos descritivos, inferenciais e suas respectivas interpretações, que serão discutidas posteriormente. Assim, aprender estatística da forma "correta" é muito importante no meio acadêmico e científico.   
 
 
-Uma vez que muitas atividades são relacionadas à estatística, o interesse dos pesquisadores tende a se concentrar em alguns de seus elementos específicos. É possível tanto ter interesse na <mark>estatística como ciência</marK> como na <mark>estatística na ciência</mark>. No primeiro  
+Uma vez que o conjunto de atividades possíveis em estatística é bastante longo, é possível distinguir acadêmicos cujos interesses são mais relacionados à <mark>estatística como ciência</marK> daqueles cujos interessem recaem mais na utilização da <mark>estatística na ciência</mark>. Com frequência, estudantes do bacharelado de estatística ou matémática tendem a fazer parte do primeiro grupo, enquanto estudantes de áreas mais aplicadas, incluindo aqui Psicologia, tendem a fazer parte do segundo grupo. Assim, apesar dos conceitos principais da estatística serem os mesmos, essa distinção serve como uma bussóla metodológica para orientar a forma pela qual esses conceitos serão introduzidos e discutidos.
 
-Os subtópicos a seguir apresentam conceitos gerais e importantes que costumam ser apresentados antes mesmo de introduzir aspectos mais específicos de estatística. Uma vez que são conceitos transversais, eles também costumam aparecer em livros de métodos e técnicas de pesquisa e história da ciência. 
+Isso posto, Os subtópicos a seguir introduzem conceitos gerais e importantes que costumam ser apresentados antes mesmo de aspectos mais voltados à análise de dados. Uma vez que esses conceitos são transversais, é possível também encontrar essa discussão em livros de métodos de pesquisa e história da ciência. 
 
-A apresentação e descrição de cada um dos temas e conceitos é feita de maneira sucinta. As referências bibliográficas dispostas ao fim do capítulo servem para o aprofundamento teórico entre aqueles interessados.   
+A apresentação e descrição desses temas será feita de maneira sucinta. As referências bibliográficas dispostas ao fim do capítulo servem para o aprofundamento teórico entre aqueles interessados.   
 
+
+## Os objetivos de uma pesquisa 
+
+Uma pesquisa é um procedimento racional e sistemático de investigação que visa proporcionar respostas específicas a um conjunto de problemas propostos [@gil2002]. A execução de uma pesquisa depende da eleição de problemas específicos, bem como da coleta e análise de dados. É possível classificar as pesquisas a partir de três grandes objetivos, que são as (1) pesquisas exploratórias, (2) pesquisas descritivas e (3) pesquisas explicativas. A tabela a seguir sintetiza as principais características de cada um desses tipos.    
+
+
+  | Tipo de Pesquisa| Quando é feita                                             | Características principais               
+  | :-----------    | :-----------                                               | :-----------                        
+  | Exploratória    | Há pouco ou nenhum conhecimento sobre o tema de interesse. | Não há hipóteses definidas previamente. Os resultados proporcionam maior familiaridade com o problema, apesar de frágeis e pouco generalizáveis.  
+  | Descritiva      | Os fenômenos e objetos já são mais conhecidos. Hipóteses sobre suas características e eventuais relacionamentos podem ser feitas. | Técnicas de coleta de dados mais padronizadas tendem a ser empregadas. Testes de hipóteses são feitos, bem como técnicas estatísticas descritivas e que visem comparar características entre grupos e pessoas diferentes.     
+   | Explicativa    | Há maior conhecimento sobre o tema de interesse e a finalidade é indicar possíveis relações de causa e efeito | O delineamento experimental tende a ser implementado, o que será explicado posteriormente     
+ 
 
 ## Fundações da pesquisa e estatística
 - *L. Anunciação & J. Landeira-Fernandez* 
@@ -334,17 +356,18 @@ Dessa forma, uma vez que esse tema ainda reflete uma questão em aberta, respost
 
 ## Principais áreas da estatística 
 
-A estatística pode ser dividida em duas áreas interligadas: estatística descritiva e estatística inferencial. O objetivo da estatística descritiva é apresentar sínteses e resumos dos resultados de uma pesquisa pela utilização de gráficos e tabelas. Não é intenção dessa área fazer generalizações ou extrapolar os resultados obtidos a pessoas (ou objetos) não investigadas durante a coleta de dados. Por contraste, a estatística inferencial visa extrapolar os dados e fazer generalizações que toquem toda população de onde aquela mostra foi retirada e é representativa. Dessa maneira, o principal objetivo da estatística inferencial é, de fato, fazer inferências. 
+A estatística pode ser dividida em duas áreas interligadas: estatística descritiva e estatística inferencial. O objetivo da estatística descritiva é apresentar sínteses e resumos dos resultados de uma pesquisa pela utilização de gráficos e tabelas. Não é proposta dessa área fazer generalizações ou extrapolar os resultados obtidos a objetos ou pessoas não investigadas durante a coleta de dados. Por contraste, a estatística inferencial visa extrapolar os dados e fazer generalizações que toquem toda população de onde aquela mostra foi retirada e é representativa. Dessa maneira, o principal objetivo da estatística inferencial é, de fato, fazer inferências. 
 
 Essa divisão é certamente mais didática do que pragmática e, com muita frequência, ambas as áreas estão presentes em uma pesquisa. No entanto, alguns pontos merecem destaque:
 
 1. A estatística descritiva surgiu antes que a inferencial. A etimologia da palavra talvez ajude a entender. Estatística vem da palavra estado e este sempre teve interesse em saber quantos eram os cidadãos de um determinado local para, entre outras atividades, taxá-los. Assim, aspectos descritivos antecedem os inferenciais. Por sua vez, a estatística inferencial guarda origem e proximidade com a teoria dos jogos e, consequentemente, isso ajuda a entender o motivo pelo qual a maioria dos exemplos inferenciais envolvem jogos de azar.
 
-2. A estatística tem duas "escolas" ou "formas de pensamento". A estatística frequentista e a estatística bayesiana. Aspectos fundamentais que tocam à definição de probabilidade são diferentes, bem como a definição de dados e parâmetros também o são. Pela perspectiva histórica, a estatística bayesiana é mais antiga que a frequentista. No entanto, se for comparado a proporção de uso entre os pesquisadores, a estatística frequentista é ainda a mais frequente e justifica a ênfase deste livro nesta área.
+2. A estatística (inferencial) tem duas "escolas" ou "formas de pensamento". A estatística frequentista e a estatística bayesiana. Aspectos fundamentais que tocam à definição de probabilidade são diferentes, bem como a definição de dados e parâmetros também o são. Pela perspectiva histórica, a estatística bayesiana é mais antiga que a frequentista. No entanto, a proporção de uso da estatística frequentista é mais frequente.
 
-3. A relação entre estatística e Machine Learning (ML) e seus derivados é relativamente recente. Apesar de grande interface e do fato que as análises realizadas em estatística e ML encontram resultados virtualmente idênticos, há diferentes argumentos apontando que as áreas têm objetivos diferentes, o que eu não necessariamente concordo. Ainda sob perspectiva histórica, a estatística, como uma área do conhecimento, é anterior à ML, que não será abordada neste livro.
+3. A relação entre estatística e Machine Learning é relativamente recente. Apesar de grande interface e do fato que as análises realizadas em estatística e ML encontram resultados virtualmente idênticos, há diferentes argumentos sugerindo que as áreas têm objetivos diferentes (o que eu não necessariamente concordo). Neste livro, técnicas e análises de Machine Learning não serão apresentadas.
 
 
+![](./img/cap_areas_estatistica.png) 
 
 ## Resumo  
 

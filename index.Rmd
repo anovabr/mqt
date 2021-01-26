@@ -7,7 +7,7 @@ description: This book was written for undergraduate level students on Quantitat
 documentclass: book
 github-repo: cjvanlissa/gitbook-demo
 link-citations: yes
-colorlinks: yes
+https://www.google.com/webhp?hl=pt-BR&sa=X&ved=0ahUKEwjttobbj7ruAhVCE7kGHQa7DSgQPAgIcolorlinks: yes
 bibliography:
 - book.bib
 - packages.bib
@@ -17,8 +17,10 @@ biblio-style: apalike
 ---
 
 ```{r}
-knitr::opts_chunk$set(echo = TRUE, fig.align="center")
-knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE,
+                      fig.align="center")
+
 ```
 
 
@@ -26,72 +28,80 @@ knitr::opts_chunk$set(message = FALSE)
 
 ![](./img/capa_jolie.png)
 
-
 ## A proposta
   
 
-Este livro tem como proposta a de ser um manual técnico, focado na apresentação e realização de um conjunto de conceitos de pesquisa e análises estatísticas no R e no JASP. Em cada capítulo, será apresentada uma pesquisa, o artigo publicado com os resultados, a base de dados utilizada e o conjunto de procedimentos analíticos e computacionais desenvolvidos para analisar os dados. A discussão de conceitos de pesquisa, bem como o desenvolvimento matemático, são implementados de maneira colateral durante o livro.  
+Este livro nasceu como um dos principais e mais frutíferos frutos das aulas de graduação e pós-graduação ministradas por mim em alguns locais, mas com maior intensidade na PUC-Rio, UFRJ e IBNeuro. Por bastante tempo, nas aulas de estatística aplicada à Psicologia e Bioestatística, eu recorri a diferentes livros que, cada qual a sua maneira, apresentavam conceitos de pesquisa,  técnicas estatísticas e análise de dados. No entanto, acabei percebendo (ou tendo a impressão) de que a maior parte dos livros utilizados nessas duas áreas apresentavam a estatística por diferentes atalhos pedagógicos que, consequentemente, geravam a noção de que a área da pesquisa e a área da estatística são distantes, bem como que toda estatística se resume apenas a testes de hipóteses sem nenhum relacionamento entre si.   
+
+Além disso, eu também sentia falta de um livro que pudesse trabalhar com dados reais e previamente publicados, o que ainda é bastante escasso mesmo atualmente. Dessa maneira, nos últimos anos, eu fui sentindo cada vez mais a necessidade de apresentar os conceitos de pesquisa e técnicas estatísticas de forma integrada, contanto com dados reais e seguindo por uma metodologia de aula que pudesse ser pragmática, mas sem reforçar vícios inadequados sobre conceitos de estatística.  
+
+O pragmatismo é fundamental para que o estudante consiga, rapidamente, entender os procedimentos relacionados à análise de dados e implementar técnicas estatísticas para tomar decisões. Acredito que quão antes o estudante entender a utilidade da estatística, maior é a probabilidade dele vir a gostar da área. No entanto, é também necessário ter uma atenção para que pragmatismo não seja muito acentuado e ofereça uma falsa impressão de que toda estatística se resume à utilização de programas de análise de dados.
+Isso posto, este livro é fruto de um grande esforço que tem a proposta de ser um manual técnico, em que são apresentados conceitos de pesquisa e análises estatísticas realizadas no R e no JASP. Em cada capítulo, o estudante terá a oportunidade de acessar:  
+
+1. Uma pesquisa, explicitando o problema que ela se propôs a resolver   
+2. O artigo publicado com os resultados   
+3. A base de dados em formato R ou CSV para reprodução das análises  
+4. O conjunto de procedimentos estatísticos utilizados  
+5. Recursos extras para aprofundamento em tópicos específicos  
+
+A ideia do livro é oferecer ao estudante um ambiente em que ele possa resolver um problema real, utilizando as técnicas e métodos estatísticos como ferramentas para tomada de decisão. Será possível notar que o livro tem maior foco na utilização da <u>estatística na ciência</u>, em vez da <u>ciência da estatística</u>, que será apenas pontualmente detalhada. De forma geral, espera-se que o livro permita que o estudante aprenda a resolver os problemas e não as ferramentas. 
+Espero que este livro possa ser útil a estudantes de graduação e pós-graduação, agradável a leitores de estatística como de Psicologia e um recurso importante para outros docentes que, eventualmente, precisem de um material de apoio.  
+
+
 
 ## Objetivo 
 
-
-Existem muitos livros de estatística e análise de dados disponíveis e, no geral, acredito a maioria tem boa qualidade. Entre
-
-O livro entende a estatística como uma ferramenta para tomada de decisão em diferentes cenários e, neste sentido, aqui visa-se que o estudante aprenda a resolver os problemas e não as ferramentas.
-
-ambiente de Estatística na ciência, em vez da ciência da esatística. Assim
-
-
-"Aprender a resolver os problemas e não as ferramentas" ou "A estatística como uma ferramenta para tomada de decisão" ou 
-
-
-O livro tem como objetivos (1) apresentar, (2) discutir e (3) operacionalizar conceitos de pesquisa e análises estatística de dados. Espera-se que qualquer leitor/usuário de estatística consiga realizar todas as ações descritas no decorrer dos capítulos de maneira guiada e intuitiva. Dessa forma, tanto as sintaxes utilizadas no ambiente R como as telas de execução do JASP estão integralmente disponíveis.  
+O livro tem como objetivos (1) apresentar, (2) discutir e (3) operacionalizar conceitos de pesquisa e análises estatística de dados a partir de pesquisas publicadas e dados reais. Espera-se que qualquer o estudante consiga realizar todas as ações descritas no decorrer dos capítulos de maneira guiada e intuitiva. As sintaxes utilizadas no ambiente R e as telas de execução do JASP são integralmente disponíveis.  
 
 
 ## Público-alvo
 
-Este livro foi desenvolvido de maneira mais focada a estudantes de pós-graduação em Psicologia. O conteúdo surgiu das aulas da disciplina de Métodos Quantitativos na PUC-Rio, Análise de Dados na UFRJ e Estatística Aplicada na ANOVA. Apesar dos exemplos serem mais relacionados à Psicologia, grande parte dos conceitos e análises estatísticas implementadas no livro é interdisciplinar. Com isso, acredito que estudantes de áreas como educação, administração e economia poderão também ter proveito do livro.  
+Este livro foi desenvolvido de maneira mais focada a estudantes de Psicologia e Bioestatística. Nesse sentido, as pesquisas e exemplos utilizados são mais aderentes a essas duas áresa. No entanto, como parte dos conceitos e análises implementadas no livro são interdisciplinares, espera-se que que estudantes de áreas como educação, administração e economia também possam ter proveito do livro.  
 
 
 ## Formato do livro
 
-O livro foi pensando para ter uma estrutura linear formada por capítulos autossuficientes e desenvolvidos para responder questões específicas, particulares e pontuais.  Dessa maneira, acredito que o livro atenda tanto aqueles leitores com interesse em ler a obra inteira, como aqueles que buscam apenas informações mais específicas de um tópico particular.
+O livro foi pensando para ter uma estrutura linear, formada por capítulos autossuficientes e desenvolvidos para responder questões específicas e pontuais. Acredito que, assim, ele possa atender tanto estudantes interessados em ler a obra inteira, como aqueles que buscam informações mais específicas sobre um tópico particular.  
 
-Esse formato adotado tende a gerar uma percepção diferente entre aqueles que consultarem apenas um capítulo ou outro e aqueles que lerem o conteúdo por completo. Isso ocorre pois como muitos testes estatísticos são entendidos como casos particulares de outros, alguns fragmentos que podem parecer destoantes durante uma leitura inicial, tornam-se mais fáceis e articulados àqueles que lerem o trabalho inteiro e se dispuserem a fazer uma releitura de partes específicas.  
+Esse formato adotado tende a gerar uma percepção diferente entre aqueles que consultarem apenas um capítulo ou outro e aqueles que lerem o conteúdo por completo. Isso ocorre pois, como muitos testes estatísticos são entendidos como casos particulares de outros modelos, alguns fragmentos que podem parecer destoantes durante uma leitura inicial, tornam-se articulados para aqueles que lerem o trabalho inteiro ou se dispuserem a uma releitura de partes específicas.  
 
-Para ilustrar, o capítulo sobre o Teste T expõe uma pequena parte sobre modelos de regressão, conteúdo que somente é abordado posteriormente. Se em um primeiro momento isso provavelmente pode gerar alguma (pequena) confusão, a releitura do capítulo após o término da sequência do livro poderá gerar, além de um conhecimento mais profundo por parte do leitor, a percepção da integração tanto da estrutura do livro, como da relação existente entre diferentes modelos estatísticos. 
-
-
+Muitos capítulos recebem o nome de testes de hipóteses (ex: Teste T ou Regressão). Isso foi intencional e visa auxiliar estudantes que precisem apenas de informações pontuais, bem como tende a enfrequecer a ideia de uma relação ponto a ponto tipicamente feita entre testes estatísticos e delineamentos específicos.  
 
 
-## Bases
-Todas as bases de dados utilizadas neste livro são frutos de pesquisas empíricas que apresentam artigos publicados. Visando otimização, alguns ajustes foram feitos às bases para torná-las mais acessíveis. Nenhuma alteração foi realizada nos dados, mas apenas em mudanças em relação a nomes de variáveis e quantidade de vetores.
+## Bases de dados  
 
-Todo material pode ser acessado livre e gratuitamente em https://github.com/anovabr/mqt/tree/master/bases 
+Todas as bases de dados utilizadas neste livro são *Open Science*. Isso significa que elas são universalmente acessíveis e decorrentes de pesquisas empíricas com artigos publicados. Eventualmente, alguns ajustes foram feitos às bases para torná-las mais acessíveis ou remover características de identificação.   
 
-
-## O R
-O livro é feito integralmente no R, utilizando o Rmarkdown e funções nativas e do Tidyverse. Caso alguém apresente o interesse em reproduzir as análises, será necessário seguir todas as linhas de código disponíveis no decorrer dos capítulos.
-A parte textual e a parte de programação do texto se sobrepõem frequentemente e isso foi feito de maneira intencional, visando deixar todo o desenvolvimento deste livro o mais próximo o possível do cotidiano de pesquisadores e estatísticos. 
+Todo material pode ser acessado em https://github.com/anovabr/mqt/tree/master/bases 
 
 
+## O R e os pacotes  
 
-## Pacotes e sintaxes
+O livro é integralmente desenvolvido pelo recurso de "programação letrada" no R Markdown, ou seja, ele entrelaça aspectos textuais e linhas de código. Em todos os capítulos, as funções nativas do R e do Tidyverse serão utilizadas. Caso alguém queira reproduzir as análises, será necessário apenas executar as linhas de código disponíveis no decorrer do livro.  
 
-Este livro utiliza majoritariamente o ambiente [tidyverse](https://www.tidyverse.org/) para realização das análises. Entretanto, sempre que necessário, funções R-base e uso de outros pacotes serão utilizados. Toda codificação utilizada no livro é exibida nos capítulos e integralmente disponível gratuitamente neste (GitHub)[https://github.com/anovabr/mqt]   
-O `tidyverse` costuma ter atualizações frequentes e espero que as funções utilizadas durante o livro não sejam descontinuadas (deprecated) com o tempo.
+O `tidyverse` costuma ter atualizações frequentes. Caso um alerta de `deprecated` seja apresentado, isso significa que a função utilizada foi parcialmente desativada, o que não costuma impactar nas análises.
+
+
+## JASP  
+O JASP é um programa gratuito que tem sido cada vez mais utilizado em Psicologia. Ele é feito integralmente por código aberto e sua interface é bastante amigável e intuitiva. Ao instalar o JASP, o R também será instalado em seu computador e ficará no pano de fundo. Dessa maneira, todas as ações feitas por *Point and Click* no JASP, serão convertidas em linhas de código no R e apresentadas de maneira dinâmica no JASP. 
+
+![](./img/capa_r_jasp.png)
+
+Em todos os capítulos, telas do JASP serão apresentadas para que seja possível a reprodução integral de algumas análises. Da mesma forma que qualquer pacotes estatístico, o JASP é atualizado frequentemente. Esse livro contou com a versão 0.14.1 e espero que futuras atualizações não comprometam a proposta do livro.  
 
 ## Outros recursos
 
-Tão importante como saber como saber estatística e programação, é saber onde buscar ajuda (de qualidade) para as questões que, naturalmente, aparecem no decorrer das atividades. Eu recomendo fortemente a comunidade [stackoverflow](https://stackoverflow.com/) neste sentido.
+Em cada um dos capítulos, aplicações da estatística e referências bibliográficas serão apresentadas. Tenha em mente que há um debate intenso em diferentes conceitos de estatística, da mesma forma que muitas condições computacionais podem aparecer durante a execução das análises propostas. Eu recomendo fortemente a comunidade [stackoverflow](https://stackoverflow.com/) como um recurso pedagógico para auxiliar em ambos os cenários.  
 
 
 ## Capa   
-Com muita frequência, livros de Ciência de Dados utilizam a imagem de algum animal na capa. Há livros com cachorros, papagaios, peixes e veados. Esse livro não foge dessa regra e tem como capa a Jolie, a cachorrinha da Anna e minha.  
+ 
+Frequentemente, livros de Ciência de Dados e Estatística utilizam a imagem de algum animal na capa. Há livros com cachorros, papagaios, peixes, Carangueiros, Lagartos, etc. Esse livro não foge dessa regra e tem como capa a Jolie, a minha cachorrinha com a Anna. Ela foi indispensável para o <u>atraso</u> ao término deste livro.  
 
-## Agradecimentos  
-Nenhum homem é uma ilha. Este livro só foi possível graças a um conjunto de pessoas que auxiliaram. Meus sinceros agradecimentos a (ao):
+## Agradecimentos e revisões técnicas
+
+Nenhum homem é uma ilha. Este livro só foi possível graças a um conjunto de pessoas que auxiliaram e fizeram uma profunda revisão do texto. Meus sinceros agradecimentos a (ao):
 Professor J. Landeira-Fernandez  
 Professor Cristiano Fernandes  
 Anna Carolina de Almeida Portugal 
-Alunos da PUC-Rio, UFRJ e UFRJ  
+Alunos da PUC-Rio, UFRJ, IBNeuro e ANOVA    
