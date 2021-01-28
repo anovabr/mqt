@@ -7,7 +7,6 @@ description: This book was written for undergraduate level students on Quantitat
 documentclass: book
 github-repo: cjvanlissa/gitbook-demo
 link-citations: yes
-https://www.google.com/webhp?hl=pt-BR&sa=X&ved=0ahUKEwjttobbj7ruAhVCE7kGHQa7DSgQPAgIcolorlinks: yes
 bibliography:
 - book.bib
 - packages.bib
@@ -19,8 +18,8 @@ biblio-style: apalike
 ```{r}
 knitr::opts_chunk$set(echo = TRUE, 
                       message = FALSE,
+                      warning = FALSE,
                       fig.align="center")
-
 ```
 
 
@@ -98,10 +97,24 @@ Em cada um dos capítulos, aplicações da estatística e referências bibliogr�
  
 Frequentemente, livros de Ciência de Dados e Estatística utilizam a imagem de algum animal na capa. Há livros com cachorros, papagaios, peixes, Carangueiros, Lagartos, etc. Esse livro não foge dessa regra e tem como capa a Jolie, a minha cachorrinha com a Anna. Ela foi indispensável para o <u>atraso</u> ao término deste livro.  
 
+
+## Versão do livro
+
+Como todos os livros, este também tem uma história de desenvolvimento. A tabela abaixo apresenta a versão, a data de lançamento e algumas características importantes.   
+
+| Versão   |      Data         |  Características
+|:---------|:-------------     | :-------------
+| Beta 1   |  Janeiro, 30 2020 | Primeira versão. Baixa revisão textual e dos conceitos estatísticos. Erros são esperados. A utilização deve ser feita apenas de maneira incipiente   
+
 ## Agradecimentos e revisões técnicas
 
-Nenhum homem é uma ilha. Este livro só foi possível graças a um conjunto de pessoas que auxiliaram e fizeram uma profunda revisão do texto. Meus sinceros agradecimentos a (ao):
+Nenhum homem é uma ilha. Este livro só foi possível graças a um conjunto de pessoas que auxiliaram e fizeram uma profunda revisão do texto. Meus sinceros agradecimentos a (ao):  
 Professor J. Landeira-Fernandez  
 Professor Cristiano Fernandes  
 Anna Carolina de Almeida Portugal 
-Alunos da PUC-Rio, UFRJ, IBNeuro e ANOVA    
+Alunos da PUC-Rio, UFRJ, IBNeuro e ANOVA  
+
+
+
+
+

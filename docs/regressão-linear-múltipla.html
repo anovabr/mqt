@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2021-01-26" />
+<meta name="date" content="2021-01-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -143,7 +143,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#jasp"><i class="fa fa-check"></i><b>1.7</b> JASP</a></li>
 <li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#outros-recursos"><i class="fa fa-check"></i><b>1.8</b> Outros recursos</a></li>
 <li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#capa"><i class="fa fa-check"></i><b>1.9</b> Capa</a></li>
-<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#agradecimentos-e-revisões-técnicas"><i class="fa fa-check"></i><b>1.10</b> Agradecimentos e revisões técnicas</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#versão-do-livro"><i class="fa fa-check"></i><b>1.10</b> Versão do livro</a></li>
+<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#agradecimentos-e-revisões-técnicas"><i class="fa fa-check"></i><b>1.11</b> Agradecimentos e revisões técnicas</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html"><i class="fa fa-check"></i><b>2</b> Aspectos gerais</a><ul>
 <li class="chapter" data-level="2.1" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#os-objetivos-de-uma-pesquisa"><i class="fa fa-check"></i><b>2.1</b> Os objetivos de uma pesquisa</a></li>
@@ -165,10 +166,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#principais-áreas-da-estatística"><i class="fa fa-check"></i><b>2.4</b> Principais áreas da estatística</a></li>
 <li class="chapter" data-level="2.5" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#resumo"><i class="fa fa-check"></i><b>2.5</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="o-r-e-o-tidyverse.html"><a href="o-r-e-o-tidyverse.html"><i class="fa fa-check"></i><b>3</b> O R e o Tidyverse</a><ul>
-<li class="chapter" data-level="3.1" data-path="o-r-e-o-tidyverse.html"><a href="o-r-e-o-tidyverse.html#tidyverse"><i class="fa fa-check"></i><b>3.1</b> Tidyverse</a></li>
-<li class="chapter" data-level="3.2" data-path="o-r-e-o-tidyverse.html"><a href="o-r-e-o-tidyverse.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>3.2</b> Verbos do dplyr</a></li>
-<li class="chapter" data-level="3.3" data-path="o-r-e-o-tidyverse.html"><a href="o-r-e-o-tidyverse.html#resumo-1"><i class="fa fa-check"></i><b>3.3</b> Resumo</a></li>
+<li class="chapter" data-level="3" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html"><i class="fa fa-check"></i><b>3</b> Programas estatísticos</a><ul>
+<li class="chapter" data-level="3.1" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-r"><i class="fa fa-check"></i><b>3.1</b> O R</a></li>
+<li class="chapter" data-level="3.2" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#tidyverse"><i class="fa fa-check"></i><b>3.2</b> Tidyverse</a></li>
+<li class="chapter" data-level="3.3" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>3.3</b> Verbos do dplyr</a></li>
+<li class="chapter" data-level="3.4" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-jasp"><i class="fa fa-check"></i><b>3.4</b> O JASP</a></li>
+<li class="chapter" data-level="3.5" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#resumo-1"><i class="fa fa-check"></i><b>3.5</b> Resumo</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html"><i class="fa fa-check"></i><b>4</b> Estatística Descritiva</a><ul>
 <li class="chapter" data-level="4.1" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#tabelas"><i class="fa fa-check"></i><b>4.1</b> Tabelas</a></li>
@@ -355,7 +358,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="execução-no-r-14" class="section level2">
 <h2><span class="header-section-number">12.2</span> Execução no R</h2>
 <p>A primeira etapa da análise é realizada pelo desenvolvimento de tabelas e gráficos que possam auxiliar na interpretação dos resultados. De maneira similar à feita em outros capítulos, abaixo há uma tabela descritiva.</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="regressão-linear-múltipla.html#cb177-1"></a>arsenal<span class="op">::</span><span class="kw">tableby</span>(<span class="op">~</span>eat_soma <span class="op">+</span><span class="st"> </span>bsq_soma <span class="op">+</span><span class="st"> </span>imc, dados_brasil) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summary</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="regressão-linear-múltipla.html#cb148-1"></a>arsenal<span class="op">::</span><span class="kw">tableby</span>(<span class="op">~</span>eat_soma <span class="op">+</span><span class="st"> </span>bsq_soma <span class="op">+</span><span class="st"> </span>imc, dados_brasil) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summary</span>() </span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -409,9 +412,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>É também possível, inicialmente, implementar um modelo de correlação ou correlação parcial visando produzir maior suporte à regressão linear múltipla. O modelo de correlação estima a força e a direção da correlação bivariada e o modelo de correlação parcial é feita para estimar o quanto uma variável se correlaciona com outra após controlar essa relação por uma terceira variável. No entanto, ambas as análise apenas trariam suporte indireto à regressão linear múltipla e por isso não serão feitas.</p>
 <p>Para criar o modelo de regressão linear múltipla no R, será necessário resgatar o modelo visto em regressão linear simples para introduzir nova variável à equação.</p>
 <p>Neste caso, o vetor <code>mod_linear_multiplo</code> será armazenado para verificar o efeito da <u>percepção de imagem corporal</u> e do <u>IMC</u> no <u>EAT-26</u>, que se refere ao comportamento alimentar. É importante notar que, por padrão, o R não usa linhas com dados ausentes e isso pode reduzir o poder do teste. Neste base, há 215 linhas completas.</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="regressão-linear-múltipla.html#cb178-1"></a>mod_linear_multiplo &lt;-<span class="st"> </span><span class="kw">lm</span>(eat_soma <span class="op">~</span><span class="st"> </span>bsq_soma <span class="op">+</span><span class="st"> </span>imc, <span class="dt">data =</span> dados_brasil)</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="regressão-linear-múltipla.html#cb149-1"></a>mod_linear_multiplo &lt;-<span class="st"> </span><span class="kw">lm</span>(eat_soma <span class="op">~</span><span class="st"> </span>bsq_soma <span class="op">+</span><span class="st"> </span>imc, <span class="dt">data =</span> dados_brasil)</span></code></pre></div>
 <p>A apresentação dos resultados pode ser feita pelo pacote <code>olsrr</code>. Ela segue o mesmo formato da realizada no capítulo específico de regressão linear simples, apenas com a diferença da inclusão de um novo preditor.</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="regressão-linear-múltipla.html#cb179-1"></a><span class="kw">ols_regress</span>(mod_linear_multiplo)</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="regressão-linear-múltipla.html#cb150-1"></a><span class="kw">ols_regress</span>(mod_linear_multiplo)</span></code></pre></div>
 <pre><code>##                         Model Summary                          
 ## --------------------------------------------------------------
 ## R                       0.697       RMSE                7.097 
@@ -449,28 +452,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>A ideia de estimar o efeito de uma variável controlando por outra faz com que esses coeficientes sejam chamados de <u>coeficientes parciais</u>. A forma pela qual isso é feito tem características particulares.</p>
 <p>Assumindo duas pessoas que <u>tem o mesmo IMC</u> (por exemplo, o IMC médio), cada ponto extra no BSQ gera, em média, 0.19 pontos a mais no EAT-26. A função <code>predict</code> do R permite essa demonstração.</p>
 <p>O valor estimado no <u>EAT-26</u> de Um participante que teve 45 pontos no <u>BSQ</u> e tem <u>IMC</u> de 23.2 (o IMC médio) é de 9.06.</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="regressão-linear-múltipla.html#cb181-1"></a>imc_medio &lt;-<span class="st"> </span><span class="kw">mean</span>(dados_brasil<span class="op">$</span>imc, <span class="dt">na.rm=</span>T)</span>
-<span id="cb181-2"><a href="regressão-linear-múltipla.html#cb181-2"></a><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">45</span>), <span class="dt">imc=</span>imc_medio))</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="regressão-linear-múltipla.html#cb152-1"></a>imc_medio &lt;-<span class="st"> </span><span class="kw">mean</span>(dados_brasil<span class="op">$</span>imc, <span class="dt">na.rm=</span>T)</span>
+<span id="cb152-2"><a href="regressão-linear-múltipla.html#cb152-2"></a><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">45</span>), <span class="dt">imc=</span>imc_medio))</span></code></pre></div>
 <pre><code>##        1 
 ## 9.059407</code></pre>
 <p>Já o valor estimado no <u>EAT-26</u> de um outro participante com 46 pontos no <u>BSQ</u> (ou seja, 1 ponto a mais) e mesmo <u>IMC</u> do primeiro participante (23.2) é de 9.25.</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="regressão-linear-múltipla.html#cb183-1"></a><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">46</span>), <span class="dt">imc=</span>imc_medio))</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="regressão-linear-múltipla.html#cb154-1"></a><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">46</span>), <span class="dt">imc=</span>imc_medio))</span></code></pre></div>
 <pre><code>##        1 
 ## 9.249297</code></pre>
 <p>A diferença entre esses dois valores é exatamente igual ao coeficiente calculado na regressão (b = 0.19). Abaixo há duas linhas de código apresentando esses resultados.</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="regressão-linear-múltipla.html#cb185-1"></a><span class="kw">round</span>(<span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">46</span>), <span class="dt">imc=</span>imc_medio)) <span class="op">-</span><span class="st"> </span><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">45</span>), <span class="dt">imc=</span>imc_medio)),<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="regressão-linear-múltipla.html#cb156-1"></a><span class="kw">round</span>(<span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">46</span>), <span class="dt">imc=</span>imc_medio)) <span class="op">-</span><span class="st"> </span><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">45</span>), <span class="dt">imc=</span>imc_medio)),<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##    1 
 ## 0.19</code></pre>
 <p>Esse formato analítico é similar para o resultado do <u>IMC</u>. Caso duas pessoas tenham o mesmo resultado do <u>BSQ</u>, uma unidade a mais no IMC impactará em uma redução de 0.447, em média, no <u>EAT-26</u>.</p>
 <p>Uma vez que o modelo já foi realizado, a interpretação dos resultados depende da adequação de seus pressupostos. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(Barker &amp; Shaw, <a href="#ref-Barker2015" role="doc-biblioref">2015</a>; Ernst &amp; Albers, <a href="#ref-Ernst2017" role="doc-biblioref">2017</a>; Lix et al., <a href="#ref-Lix1996" role="doc-biblioref">1996</a>)</span>. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.</p>
 <p><mark> Normalidade</mark>: O pressuposto da Normalidade é atendido se os <u>resíduos</u> do modelo de regressão seguirem uma distribuição normal. Isso pode ser avaliado graficamente por QQ plots e também por testes específicos, como o Shapiro-wilk, Anderson-Darling e Jarque Bera.</p>
 <p>O QQ plot é um gráfico que reúne a distribuição empírica ordenada dos quantis contra os quantis da distribuição teórica (aqui, normal). Se os dados e a linha diagonal se soprepuserem, isso é uma evidencia de que a distribuição empírica é a mesma da distribuição teórica. Caso haja discrepância, isso aponta para desvio da normalidade. Caso os pontos e a reta diagonal estejam superpostos, se considera que este pressuposto foi atendido</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="regressão-linear-múltipla.html#cb187-1"></a><span class="kw">ols_plot_resid_qq</span>(mod_linear_multiplo)</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="regressão-linear-múltipla.html#cb158-1"></a><span class="kw">ols_plot_resid_qq</span>(mod_linear_multiplo)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-175-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Testes estatísticos formais também podem ser utilizados, tal como abaixo:</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="regressão-linear-múltipla.html#cb188-1"></a><span class="kw">ols_test_normality</span>(mod_linear_multiplo)</span></code></pre></div>
-<pre><code>## Warning in ks.test(y, &quot;pnorm&quot;, mean(y), sd(y)): ties should not be present for
-## the Kolmogorov-Smirnov test</code></pre>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="regressão-linear-múltipla.html#cb159-1"></a><span class="kw">ols_test_normality</span>(mod_linear_multiplo)</span></code></pre></div>
 <pre><code>## -----------------------------------------------
 ##        Test             Statistic       pvalue  
 ## -----------------------------------------------
@@ -481,10 +482,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## -----------------------------------------------</code></pre>
 <p>Tanto a visualização do QQ plot, como a maior parte dos testes estatísticos específicos convergiram, indicando que a normalidade foi violada.</p>
 <p><mark>Homocedasticidade</mark>: Este pressuposto de variâncias constantes pode ser analisada em um gráfico de dispersão dos resíduos (residual) contra os valores previstos (fitted).</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="regressão-linear-múltipla.html#cb191-1"></a><span class="kw">ols_plot_resid_fit</span>(mod_linear_multiplo)</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="regressão-linear-múltipla.html#cb161-1"></a><span class="kw">ols_plot_resid_fit</span>(mod_linear_multiplo)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-177-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Caso haja padrões neste gráfico, isso sugere que este pressuposto foi violado. Pelo gráfico, parece não haver padrões específicos. No entanto, testes formais são recomendados para que a decisão tomada tenha maior apoio. Existem diferentes testes para isso e, entre eles, o teste de Bartlett, Levene e Breusch-Pagan. Os resultados dependem das propriedades de cada um dos modelos e, em função da praticidade computacional, o teste de Breusch-Pagan será utilizado. Em todos estes testes, a hipótese nula assume homocedasticidade. Portanto, a estatística de teste não deveria ser significativa para que a homocedasticidade fosse apoiada.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="regressão-linear-múltipla.html#cb192-1"></a><span class="kw">ols_test_breusch_pagan</span>(mod_linear_multiplo)</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="regressão-linear-múltipla.html#cb162-1"></a><span class="kw">ols_test_breusch_pagan</span>(mod_linear_multiplo)</span></code></pre></div>
 <pre><code>## 
 ##  Breusch Pagan Test for Heteroskedasticity
 ##  -----------------------------------------
@@ -503,13 +504,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Prob &gt; Chi2   =    0.03796432</code></pre>
 <p>Os resultados indicaram que a homocedasticidade foi violada (assumingo alfa = 0.05). Isso vai em direção distinta à percepção gráfica, o que pode ocorrer sem nenhum problema.</p>
 <p><mark>Independência</mark>: A independência dos resíduos depende bastante do delineamento utilizado ser transversal ou longitudinal. O teste de Durbin Watson pode ser utilizado e a hipótees nula é de que os resíduos não são correlacionados. Este pressuposto foi atendido, o que já era esperado.</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="regressão-linear-múltipla.html#cb194-1"></a>car<span class="op">::</span><span class="kw">durbinWatsonTest</span>(mod_linear_multiplo)</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="regressão-linear-múltipla.html#cb164-1"></a>car<span class="op">::</span><span class="kw">durbinWatsonTest</span>(mod_linear_multiplo)</span></code></pre></div>
 <pre><code>##  lag Autocorrelation D-W Statistic p-value
 ##    1      0.01304954      1.969107   0.828
 ##  Alternative hypothesis: rho != 0</code></pre>
 <p><mark>Multicolinearidade</mark>: Diferente da regressão linear simples, a regressão múltipla reúne diversas variáveis independentes. É possível que essas variáveis sejam muito correlacionadas entre si, impactando na interpretação dos resultados. Uma maneira de verificar isso é pela análise chamada Variance Inflaction Factor (VIF).</p>
 <p>Valores de VIF superiores a 4 indicam que as variáveis indepenentes são fortemente correlacionadas e suas estimativas podem ser distorcidas. Neste caso, isso não aconteceu.</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="regressão-linear-múltipla.html#cb196-1"></a><span class="kw">ols_coll_diag</span>(mod_linear_multiplo)</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="regressão-linear-múltipla.html#cb166-1"></a><span class="kw">ols_coll_diag</span>(mod_linear_multiplo)</span></code></pre></div>
 <pre><code>## Tolerance and Variance Inflation Factor
 ## ---------------------------------------
 ##   Variables Tolerance      VIF

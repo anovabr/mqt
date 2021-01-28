@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2021-01-26" />
+<meta name="date" content="2021-01-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -143,7 +143,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#jasp"><i class="fa fa-check"></i><b>1.7</b> JASP</a></li>
 <li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#outros-recursos"><i class="fa fa-check"></i><b>1.8</b> Outros recursos</a></li>
 <li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#capa"><i class="fa fa-check"></i><b>1.9</b> Capa</a></li>
-<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#agradecimentos-e-revisões-técnicas"><i class="fa fa-check"></i><b>1.10</b> Agradecimentos e revisões técnicas</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#versão-do-livro"><i class="fa fa-check"></i><b>1.10</b> Versão do livro</a></li>
+<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#agradecimentos-e-revisões-técnicas"><i class="fa fa-check"></i><b>1.11</b> Agradecimentos e revisões técnicas</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html"><i class="fa fa-check"></i><b>2</b> Aspectos gerais</a><ul>
 <li class="chapter" data-level="2.1" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#os-objetivos-de-uma-pesquisa"><i class="fa fa-check"></i><b>2.1</b> Os objetivos de uma pesquisa</a></li>
@@ -165,10 +166,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#principais-áreas-da-estatística"><i class="fa fa-check"></i><b>2.4</b> Principais áreas da estatística</a></li>
 <li class="chapter" data-level="2.5" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#resumo"><i class="fa fa-check"></i><b>2.5</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="o-r-e-o-tidyverse.html"><a href="o-r-e-o-tidyverse.html"><i class="fa fa-check"></i><b>3</b> O R e o Tidyverse</a><ul>
-<li class="chapter" data-level="3.1" data-path="o-r-e-o-tidyverse.html"><a href="o-r-e-o-tidyverse.html#tidyverse"><i class="fa fa-check"></i><b>3.1</b> Tidyverse</a></li>
-<li class="chapter" data-level="3.2" data-path="o-r-e-o-tidyverse.html"><a href="o-r-e-o-tidyverse.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>3.2</b> Verbos do dplyr</a></li>
-<li class="chapter" data-level="3.3" data-path="o-r-e-o-tidyverse.html"><a href="o-r-e-o-tidyverse.html#resumo-1"><i class="fa fa-check"></i><b>3.3</b> Resumo</a></li>
+<li class="chapter" data-level="3" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html"><i class="fa fa-check"></i><b>3</b> Programas estatísticos</a><ul>
+<li class="chapter" data-level="3.1" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-r"><i class="fa fa-check"></i><b>3.1</b> O R</a></li>
+<li class="chapter" data-level="3.2" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#tidyverse"><i class="fa fa-check"></i><b>3.2</b> Tidyverse</a></li>
+<li class="chapter" data-level="3.3" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>3.3</b> Verbos do dplyr</a></li>
+<li class="chapter" data-level="3.4" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-jasp"><i class="fa fa-check"></i><b>3.4</b> O JASP</a></li>
+<li class="chapter" data-level="3.5" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#resumo-1"><i class="fa fa-check"></i><b>3.5</b> Resumo</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html"><i class="fa fa-check"></i><b>4</b> Estatística Descritiva</a><ul>
 <li class="chapter" data-level="4.1" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#tabelas"><i class="fa fa-check"></i><b>4.1</b> Tabelas</a></li>
@@ -444,18 +447,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Ao trabalhar no R, é <u>fundamental</u> se certificar que os tipos das variáveis estão corretamente definidos em função da escala de medida utilizada. Erros nessa etapa podem gerar resultados absolutamente incorretos. A escolaridade é uma variável categórica (ordinal, tratada como discreta) e é necessário definir claramente isso ao R antes da análise propriamente dita.</p>
 <p>Isso pode ser feito pela função <code>case_when</code> e <code>levels</code>. O <code>case_when</code> irá usar os valores originalmente presentes nessa variável para computar uma nova variável categórica. O <code>levels</code> deixará claro a ordem de cada categoria, o que é útil para que os gráficos sejam feitos corretamente.</p>
 <p>Uma vez que os itens de um instrumento sociodemográfico devem levar em consideração o contexto das pessoas avaliadas as categorias de escolaridade foram definidas como da seguinte maneira: Primário significa escolaridade até o 5º ano, ginásio significa escolaridade até o 9º ano e colegial é equivalente ao ensino médio.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="anova.html#cb74-1"></a>dados_teg &lt;-<span class="st"> </span>dados_teg <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb74-2"><a href="anova.html#cb74-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">escolaridade_fct =</span> <span class="kw">factor</span>(<span class="kw">case_when</span>(</span>
-<span id="cb74-3"><a href="anova.html#cb74-3"></a>      escolaridade <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">~</span><span class="st"> &quot;primario&quot;</span>,</span>
-<span id="cb74-4"><a href="anova.html#cb74-4"></a>      escolaridade <span class="op">==</span><span class="st"> </span><span class="dv">2</span> <span class="op">~</span><span class="st"> &quot;ginasio&quot;</span>,</span>
-<span id="cb74-5"><a href="anova.html#cb74-5"></a>      escolaridade <span class="op">==</span><span class="st"> </span><span class="dv">3</span> <span class="op">~</span><span class="st"> &quot;Colegial&quot;</span>,</span>
-<span id="cb74-6"><a href="anova.html#cb74-6"></a>      escolaridade <span class="op">==</span><span class="st"> </span><span class="dv">4</span> <span class="op">~</span><span class="st"> &quot;superior&quot;</span>), </span>
-<span id="cb74-7"><a href="anova.html#cb74-7"></a>      <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;primario&quot;</span>,<span class="st">&quot;ginasio&quot;</span>,<span class="st">&quot;Colegial&quot;</span>,<span class="st">&quot;superior&quot;</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="anova.html#cb53-1"></a>dados_teg &lt;-<span class="st"> </span>dados_teg <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb53-2"><a href="anova.html#cb53-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">escolaridade_fct =</span> <span class="kw">factor</span>(<span class="kw">case_when</span>(</span>
+<span id="cb53-3"><a href="anova.html#cb53-3"></a>      escolaridade <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">~</span><span class="st"> &quot;primario&quot;</span>,</span>
+<span id="cb53-4"><a href="anova.html#cb53-4"></a>      escolaridade <span class="op">==</span><span class="st"> </span><span class="dv">2</span> <span class="op">~</span><span class="st"> &quot;ginasio&quot;</span>,</span>
+<span id="cb53-5"><a href="anova.html#cb53-5"></a>      escolaridade <span class="op">==</span><span class="st"> </span><span class="dv">3</span> <span class="op">~</span><span class="st"> &quot;Colegial&quot;</span>,</span>
+<span id="cb53-6"><a href="anova.html#cb53-6"></a>      escolaridade <span class="op">==</span><span class="st"> </span><span class="dv">4</span> <span class="op">~</span><span class="st"> &quot;superior&quot;</span>), </span>
+<span id="cb53-7"><a href="anova.html#cb53-7"></a>      <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;primario&quot;</span>,<span class="st">&quot;ginasio&quot;</span>,<span class="st">&quot;Colegial&quot;</span>,<span class="st">&quot;superior&quot;</span>)))</span></code></pre></div>
 <p>Os resultados descritivos devem ser calculados. A média irá apresentar a concentração dos dados, enquanto o desvio-padrão o afastamento dos valores em torno da respectiva média.</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="anova.html#cb75-1"></a>dados_teg <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb75-2"><a href="anova.html#cb75-2"></a><span class="st">  </span><span class="kw">group_by</span>(escolaridade_fct) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb75-3"><a href="anova.html#cb75-3"></a><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(teg), <span class="kw">lst</span>(<span class="dt">n=</span><span class="op">~</span><span class="kw">n</span>(),mean,sd)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb75-4"><a href="anova.html#cb75-4"></a><span class="st">  </span><span class="kw">pander</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="anova.html#cb54-1"></a>dados_teg <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb54-2"><a href="anova.html#cb54-2"></a><span class="st">  </span><span class="kw">group_by</span>(escolaridade_fct) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb54-3"><a href="anova.html#cb54-3"></a><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(teg), <span class="kw">lst</span>(<span class="dt">n=</span><span class="op">~</span><span class="kw">n</span>(),mean,sd)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb54-4"><a href="anova.html#cb54-4"></a><span class="st">  </span><span class="kw">pander</span>() </span></code></pre></div>
 <table style="width:56%;">
 <colgroup>
 <col width="26%" />
@@ -499,14 +502,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Tal como ilustrado no decorrer dos outros capítulos, gráficos são fundamentais para entendimento do relacionamento entre as variáveis. Uma vez que a escolaridade (VI) é tratada como discreta e a TEG (VD) é contínua, um gráfico de barras é adequado. A inclusão das barras de erro permite uma compreensão inferencial inicial.</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="anova.html#cb76-1"></a><span class="kw">ggplot</span>(dados_teg, <span class="kw">aes</span>(<span class="dt">x=</span>escolaridade_fct, <span class="dt">y =</span> teg, <span class="dt">fill =</span> escolaridade_fct)) <span class="op">+</span></span>
-<span id="cb76-2"><a href="anova.html#cb76-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">fun =</span> mean) <span class="op">+</span></span>
-<span id="cb76-3"><a href="anova.html#cb76-3"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>) <span class="op">+</span></span>
-<span id="cb76-4"><a href="anova.html#cb76-4"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="anova.html#cb55-1"></a><span class="kw">ggplot</span>(dados_teg, <span class="kw">aes</span>(<span class="dt">x=</span>escolaridade_fct, <span class="dt">y =</span> teg, <span class="dt">fill =</span> escolaridade_fct)) <span class="op">+</span></span>
+<span id="cb55-2"><a href="anova.html#cb55-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">fun =</span> mean) <span class="op">+</span></span>
+<span id="cb55-3"><a href="anova.html#cb55-3"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>) <span class="op">+</span></span>
+<span id="cb55-4"><a href="anova.html#cb55-4"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-67-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>A visualização dos resultados já permite identificar algumas caracteríticas gerais. Primeiro, quão maior a escolaridade, maior o valor obtido na escala. Segundo, algumas barras de erros estão superpostas e outras não, o que nos leva à conclusão preliminar de que resultados significativos estarão presentes na próxima etapa, que é a modelagem formal dessa hipótese.</p>
 <p>Para realizar a ANOVA, é possível contar com a função <code>lm</code> ou <code>aov</code>. Aqui, a escolha da <code>lm</code> foi apenas por conveniência e o vetor <code>mod_escolaridade</code> irá armazenar os resultados.</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="anova.html#cb77-1"></a>mod_escolaridade &lt;-<span class="st"> </span><span class="kw">lm</span>(teg <span class="op">~</span><span class="st"> </span>escolaridade_fct, dados_teg)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="anova.html#cb56-1"></a>mod_escolaridade &lt;-<span class="st"> </span><span class="kw">lm</span>(teg <span class="op">~</span><span class="st"> </span>escolaridade_fct, dados_teg)</span></code></pre></div>
 <p>Para apresentação, a função <code>apa.aov.table</code> do pacote <code>apatables</code> pode ser utilizada. Este pacote gera uma tabela parecida com a dos principais pacotes estatísticos comerciais e apresenta os principais elementos interpretáveis de uma ANOVA. A tabela a seguir sintetiza tais características.</p>
 <table>
 <colgroup>
@@ -550,9 +553,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Aqui, K significa quantidade de categorias dentro de um fator e N significa a quantidade de observações consideradas. As siglas em inglês são utilizadas para apresentar a “Soma dos quadrados entre os grupos” (SSB), “Soma dos quadrados dentro dos grupos” (SSW), “Quadrado médio entre grupos” (MSB) e “Quadrado médio dentro dos grupos” (MSW).</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="anova.html#cb78-1"></a>apaTables<span class="op">::</span><span class="kw">apa.aov.table</span>(mod_escolaridade) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>(., <span class="dt">split.table =</span> <span class="ot">Inf</span>)</span></code></pre></div>
-<pre><code>## Warning in pander.default(., split.table = Inf): No pander.method for
-## &quot;apa_table&quot;, reverting to default.</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="anova.html#cb57-1"></a>apaTables<span class="op">::</span><span class="kw">apa.aov.table</span>(mod_escolaridade) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>(., <span class="dt">split.table =</span> <span class="ot">Inf</span>)</span></code></pre></div>
 <ul>
 <li><p><strong>table_number</strong>: <em>NA</em></p></li>
 <li><p><strong>table_title</strong>: ANOVA results using teg as the dependent variable</p></li>
@@ -626,10 +627,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Neste caso: F(3,143) = 8.23, p &lt; 0.01, <span class="math inline">\(\eta_p^2\)</span> = 0.15, 90% CI [.06, .22]. Nota-se de <u>jamais</u> apresentar <code>p = 0.0</code>. A última parte do resultado é uma medida de tamanho do efeito, que terá a interpretação apresentada e discutida na próxima seção.</p>
 <p>Um aspecto importante é que a validade da interpretação dos resultados depende dos pressupostos do modelo estatístico. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(Barker &amp; Shaw, <a href="#ref-Barker2015" role="doc-biblioref">2015</a>; Ernst &amp; Albers, <a href="#ref-Ernst2017" role="doc-biblioref">2017</a>; Lix et al., <a href="#ref-Lix1996" role="doc-biblioref">1996</a>)</span>. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.</p>
 <p><mark>Normalidade</mark>: A ANOVA tem como um dos pressupostos a normalidade da distribuição dos resíduos. Isso pode ser feito de diferentes maneiras e abaixo há um QQ plot. Caso ambas as linhas estejam sobrepostas, isso gera evidências que o pressuposto foi atendido. Neste caso, isso parece ocorrer.</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="anova.html#cb81-1"></a>olsrr<span class="op">::</span><span class="kw">ols_plot_resid_qq</span>(mod_escolaridade)</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="anova.html#cb59-1"></a>olsrr<span class="op">::</span><span class="kw">ols_plot_resid_qq</span>(mod_escolaridade)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-70-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Apesar do gráfico ter sido bastante claro, testes como o Shapiro-wilk, Anderson-Darling e Jarque Bera também podem ser utilizado neste caso. A hipótese nula desses testes assumem que os resíduos são normalmente distribuídos.</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="anova.html#cb82-1"></a><span class="kw">shapiro.test</span>(<span class="kw">residuals</span>(mod_escolaridade))</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="anova.html#cb60-1"></a><span class="kw">shapiro.test</span>(<span class="kw">residuals</span>(mod_escolaridade))</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -637,10 +638,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## W = 0.97502, p-value = 0.008721</code></pre>
 <p>De maneira diferente à conclusão gráfica, o teste concluiu pela rejeção da normalidade.</p>
 <p><mark>Homocedasticidade</mark>: Este pressuposto pode ser testado por um gráfico dos resíduos contra os valores previstos. O ideal é não encontrar padrões no gráfico, tal como o gráfico a seguir.</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="anova.html#cb84-1"></a>olsrr<span class="op">::</span><span class="kw">ols_plot_resid_fit</span>(mod_escolaridade)</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="anova.html#cb62-1"></a>olsrr<span class="op">::</span><span class="kw">ols_plot_resid_fit</span>(mod_escolaridade)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-72-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O teste de Levene, de Bartlett ou de Breusch-Pagan podem também serem utilzados de maneira formal. Eles estipulam <span class="math inline">\(H_0\)</span> como homocedasticidade e, idealmente, não deve ser rejeitada.</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="anova.html#cb85-1"></a>car<span class="op">::</span><span class="kw">leveneTest</span>(mod_escolaridade)</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="anova.html#cb63-1"></a>car<span class="op">::</span><span class="kw">leveneTest</span>(mod_escolaridade)</span></code></pre></div>
 <pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = median)
 ##        Df F value Pr(&gt;F)
 ## group   3  1.1372 0.3362
@@ -739,10 +740,10 @@ Os dados foram analisados a partir de uma ANOVA de uma via investigando o efeito
 <h2><span class="header-section-number">7.9</span> Execução no R</h2>
 <p>Para a comparação pareada, o pacote <code>emmeans</code> será utilizado. A mecânica do por detrás do post hoc é a comparação pareada de todos os níveis presentes no fator, seguido pelo ajuste do valor de P. Existem muitas técnicas para tal ajuste e elas costumam ser agrupadas em função da sua robustez à violação da homocedasticidade. Para fins práticos, vamos utilizar uma técnica considerada bastante conservadora, chamada de Bonferroni, que multiplica o valor de p encontrado pela quantidade de comparações.</p>
 <p>O resultado das comparações dois a dois será armazenado em um objeto específico, nomeado como <code>post_hoc_escolaridade</code>. Isso será útil para apresentar sumários e gráficos.</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="anova.html#cb87-1"></a>post_hoc_escolaridade &lt;-<span class="st"> </span><span class="kw">emmeans</span>(mod_escolaridade, <span class="st">&quot;escolaridade_fct&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb87-2"><a href="anova.html#cb87-2"></a><span class="st">  </span><span class="kw">pairs</span>(., <span class="dt">reverse =</span> <span class="ot">TRUE</span>, <span class="dt">adjust =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="anova.html#cb65-1"></a>post_hoc_escolaridade &lt;-<span class="st"> </span><span class="kw">emmeans</span>(mod_escolaridade, <span class="st">&quot;escolaridade_fct&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb65-2"><a href="anova.html#cb65-2"></a><span class="st">  </span><span class="kw">pairs</span>(., <span class="dt">reverse =</span> <span class="ot">TRUE</span>, <span class="dt">adjust =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
 <p>A apresentação tabular é fundamental e apresenta as estatísticas inferenciais de interesse. A principal vantagem desta tabela é a correção do valor de P apresentado na coluna <code>p.value</code>. Este é o valor ajustado pelas comparações feitas.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="anova.html#cb88-1"></a>post_hoc_escolaridade <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">data.frame</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="anova.html#cb66-1"></a>post_hoc_escolaridade <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">data.frame</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
 <table style="width:96%;">
 <colgroup>
 <col width="30%" />
@@ -814,19 +815,19 @@ Os dados foram analisados a partir de uma ANOVA de uma via investigando o efeito
 </tbody>
 </table>
 <p>O gráfico das comparações com barras de erro proporciona uma conclusão mais rápida e simples para todas as comparações. Para interpretar o gráfico, é necessário ter como referência o valor 0 no eixo horizontal e, em seguida, verificar todas as comparações no eixo vertical. Quando alguma comparação toca o valor 0, isso indica que os grupos <u>não</u> são significativamente diferentes. Quando isso não ocorre, é possível sugerir que há diferença nos grupos.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="anova.html#cb89-1"></a>CI &lt;-<span class="st"> </span><span class="kw">confint</span>(post_hoc_escolaridade)</span>
-<span id="cb89-2"><a href="anova.html#cb89-2"></a><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(contrast, estimate)) <span class="op">+</span></span>
-<span id="cb89-3"><a href="anova.html#cb89-3"></a><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> lower.CL, <span class="dt">ymax =</span> upper.CL), <span class="dt">data =</span> CI) <span class="op">+</span></span>
-<span id="cb89-4"><a href="anova.html#cb89-4"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">summary</span>(post_hoc_escolaridade)) <span class="op">+</span></span>
-<span id="cb89-5"><a href="anova.html#cb89-5"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb89-6"><a href="anova.html#cb89-6"></a><span class="st">  </span><span class="kw">scale_size</span>(<span class="dt">trans =</span> <span class="st">&quot;reverse&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb89-7"><a href="anova.html#cb89-7"></a><span class="st">  </span><span class="kw">coord_flip</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="anova.html#cb67-1"></a>CI &lt;-<span class="st"> </span><span class="kw">confint</span>(post_hoc_escolaridade)</span>
+<span id="cb67-2"><a href="anova.html#cb67-2"></a><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(contrast, estimate)) <span class="op">+</span></span>
+<span id="cb67-3"><a href="anova.html#cb67-3"></a><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> lower.CL, <span class="dt">ymax =</span> upper.CL), <span class="dt">data =</span> CI) <span class="op">+</span></span>
+<span id="cb67-4"><a href="anova.html#cb67-4"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">summary</span>(post_hoc_escolaridade)) <span class="op">+</span></span>
+<span id="cb67-5"><a href="anova.html#cb67-5"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb67-6"><a href="anova.html#cb67-6"></a><span class="st">  </span><span class="kw">scale_size</span>(<span class="dt">trans =</span> <span class="st">&quot;reverse&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb67-7"><a href="anova.html#cb67-7"></a><span class="st">  </span><span class="kw">coord_flip</span>()</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-77-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>No geral, as comparações <code>Superior - Primário</code>, <code>Superior - Ginásio</code> e <code>Superior - Colegial</code> são significativas. Em todas elas, os resultados da TEG foram mais elevados nos participantes com ensino superior.</p>
 <p>No início desta seção, foi comentando que o controle do erro do tipo 1 era uma vantagem da realização deste procedimento que inclui fazer uma ANOVA, verificar quantas comparações serão feitas e corrigir os resultados dos valores de P. Um exemplo pode ser útil a este momento. Repare que a correção implementada no teste post hoc concluiu que a comparação entre <code>colegial - primário</code> não é significativa. Nesta comparação, o valor de p foi de <code>0.102</code>. No entanto, caso um Teste T tivesse sido realizado selecionando apenas esta comparação, os resultados seriam significativos (<code>0.01</code>), tal como demonstrado a seguir:</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="anova.html#cb90-1"></a>dados_teg <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb90-2"><a href="anova.html#cb90-2"></a><span class="st">  </span><span class="kw">filter</span>(escolaridade_fct <span class="op">==</span><span class="st"> &quot;Colegial&quot;</span> <span class="op">|</span><span class="st"> </span>escolaridade_fct <span class="op">==</span><span class="st"> &quot;ginasio&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb90-3"><a href="anova.html#cb90-3"></a><span class="st">  </span>{<span class="kw">t.test</span>(teg <span class="op">~</span><span class="st"> </span>escolaridade_fct, <span class="dt">data =</span> .)<span class="op">$</span>p.value} <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="anova.html#cb68-1"></a>dados_teg <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb68-2"><a href="anova.html#cb68-2"></a><span class="st">  </span><span class="kw">filter</span>(escolaridade_fct <span class="op">==</span><span class="st"> &quot;Colegial&quot;</span> <span class="op">|</span><span class="st"> </span>escolaridade_fct <span class="op">==</span><span class="st"> &quot;ginasio&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb68-3"><a href="anova.html#cb68-3"></a><span class="st">  </span>{<span class="kw">t.test</span>(teg <span class="op">~</span><span class="st"> </span>escolaridade_fct, <span class="dt">data =</span> .)<span class="op">$</span>p.value} <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
 <p><em>0.01099</em></p>
 <p>Caso um Teste T tivesse sido feito no lugar do procedimento demonstrado nesta seção, essa conclusão seria fortemente sugestiva de um erro do tipo 1 ou falso positivo.</p>
 </div>
@@ -897,20 +898,20 @@ Nesta pesquisa, cerca de 150 estudantes foram apresentados a um filme e depois t
 <div id="execução-no-r-7" class="section level2">
 <h2><span class="header-section-number">7.16</span> Execução no R</h2>
 <p>A modelagem no R segue o mesmo padrão da feita anteriormente, iniciando pela codificação dos dados. É importante frisar que erros nesta etapa podem distorcer totalmente os resultados. Na variável <u>faixa etária</u> há rótulos para cada intervalo, tornando a interpretação bastante fácil e intuitiva. Na variável <u>escolaridade</u>, se utilizou valores de 1 a 3 para identificar o ensino fundamental, médio e superior.</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="anova.html#cb91-1"></a>ds &lt;-<span class="st"> </span>ds <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb91-2"><a href="anova.html#cb91-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">escolaridade_grupo =</span> <span class="kw">factor</span>(escolaridade_grupo),</span>
-<span id="cb91-3"><a href="anova.html#cb91-3"></a>         <span class="dt">faixa_etaria =</span> <span class="kw">factor</span>(faixa_etaria))</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="anova.html#cb69-1"></a>ds &lt;-<span class="st"> </span>ds <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb69-2"><a href="anova.html#cb69-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">escolaridade_grupo =</span> <span class="kw">factor</span>(escolaridade_grupo),</span>
+<span id="cb69-3"><a href="anova.html#cb69-3"></a>         <span class="dt">faixa_etaria =</span> <span class="kw">factor</span>(faixa_etaria))</span></code></pre></div>
 <p>Os dados apresentam casos ausentes na variável <u>faxa etária</u> e <u>escolaridade</u>. Muitas ações <mark>devem</mark> ser feitas para lidar com esta condição. No entanto, apenas para finalidade pedagógica, esses valores não serão utilizados nestas análises de agora.</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="anova.html#cb92-1"></a>ds &lt;-<span class="st"> </span>ds <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb92-2"><a href="anova.html#cb92-2"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(faixa_etaria) <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(escolaridade_grupo))</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="anova.html#cb70-1"></a>ds &lt;-<span class="st"> </span>ds <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb70-2"><a href="anova.html#cb70-2"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(faixa_etaria) <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(escolaridade_grupo))</span></code></pre></div>
 <p>A apresentação de tabelas e gráficos que possibilitem uma primeira descrição dos dados é importante e deve ser realizado. Na tabela a seguir, as linhas irão reunir a <u>faixa etária</u>, enquanto as colunas reunirão a <u>escolaridade</u>.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="anova.html#cb93-1"></a>ds <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb93-2"><a href="anova.html#cb93-2"></a><span class="st">  </span><span class="kw">group_by</span>(escolaridade_grupo, faixa_etaria) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb93-3"><a href="anova.html#cb93-3"></a><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(memore_total), <span class="kw">lst</span>(<span class="dt">n=</span><span class="op">~</span><span class="kw">n</span>(), mean, sd)) <span class="op">%&gt;%</span><span class="st">  </span></span>
-<span id="cb93-4"><a href="anova.html#cb93-4"></a><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> escolaridade_grupo, <span class="co">#indexador unico</span></span>
-<span id="cb93-5"><a href="anova.html#cb93-5"></a>              <span class="dt">names_sep =</span> <span class="st">&quot;_&quot;</span>,  <span class="co">#pode ser removido</span></span>
-<span id="cb93-6"><a href="anova.html#cb93-6"></a>              <span class="dt">values_from =</span> <span class="kw">c</span>(n<span class="op">:</span>sd)) <span class="op">%&gt;%</span><span class="st">  </span><span class="co">#organizar valores</span></span>
-<span id="cb93-7"><a href="anova.html#cb93-7"></a><span class="st">  </span><span class="kw">pander</span>(., <span class="dt">split.table =</span> <span class="ot">Inf</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="anova.html#cb71-1"></a>ds <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb71-2"><a href="anova.html#cb71-2"></a><span class="st">  </span><span class="kw">group_by</span>(escolaridade_grupo, faixa_etaria) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb71-3"><a href="anova.html#cb71-3"></a><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(memore_total), <span class="kw">lst</span>(<span class="dt">n=</span><span class="op">~</span><span class="kw">n</span>(), mean, sd)) <span class="op">%&gt;%</span><span class="st">  </span></span>
+<span id="cb71-4"><a href="anova.html#cb71-4"></a><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> escolaridade_grupo, <span class="co">#indexador unico</span></span>
+<span id="cb71-5"><a href="anova.html#cb71-5"></a>              <span class="dt">names_sep =</span> <span class="st">&quot;_&quot;</span>,  <span class="co">#pode ser removido</span></span>
+<span id="cb71-6"><a href="anova.html#cb71-6"></a>              <span class="dt">values_from =</span> <span class="kw">c</span>(n<span class="op">:</span>sd)) <span class="op">%&gt;%</span><span class="st">  </span><span class="co">#organizar valores</span></span>
+<span id="cb71-7"><a href="anova.html#cb71-7"></a><span class="st">  </span><span class="kw">pander</span>(., <span class="dt">split.table =</span> <span class="ot">Inf</span>)</span></code></pre></div>
 <table style="width:100%;">
 <colgroup>
 <col width="18%" />
@@ -1002,25 +1003,25 @@ Nesta pesquisa, cerca de 150 estudantes foram apresentados a um filme e depois t
 </tbody>
 </table>
 <p>Gráficos específicos com relações bivariadas ajudam em uma primeira sondagem dos padrões.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="anova.html#cb94-1"></a>gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(</span>
-<span id="cb94-2"><a href="anova.html#cb94-2"></a>  <span class="kw">ggplot</span>(ds, <span class="kw">aes</span>(<span class="dt">x=</span>escolaridade_grupo, <span class="dt">y =</span> memore_total, <span class="dt">fill =</span> escolaridade_grupo)) <span class="op">+</span></span>
-<span id="cb94-3"><a href="anova.html#cb94-3"></a><span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>) <span class="op">+</span></span>
-<span id="cb94-4"><a href="anova.html#cb94-4"></a><span class="st">    </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>) <span class="op">+</span></span>
-<span id="cb94-5"><a href="anova.html#cb94-5"></a><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>),</span>
-<span id="cb94-6"><a href="anova.html#cb94-6"></a>  </span>
-<span id="cb94-7"><a href="anova.html#cb94-7"></a>  <span class="kw">ggplot</span>(ds, <span class="kw">aes</span>(<span class="dt">x =</span> faixa_etaria, <span class="dt">y =</span> memore_total, <span class="dt">fill =</span> faixa_etaria)) <span class="op">+</span></span>
-<span id="cb94-8"><a href="anova.html#cb94-8"></a><span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>) <span class="op">+</span></span>
-<span id="cb94-9"><a href="anova.html#cb94-9"></a><span class="st">    </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>) <span class="op">+</span></span>
-<span id="cb94-10"><a href="anova.html#cb94-10"></a><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="anova.html#cb72-1"></a>gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(</span>
+<span id="cb72-2"><a href="anova.html#cb72-2"></a>  <span class="kw">ggplot</span>(ds, <span class="kw">aes</span>(<span class="dt">x=</span>escolaridade_grupo, <span class="dt">y =</span> memore_total, <span class="dt">fill =</span> escolaridade_grupo)) <span class="op">+</span></span>
+<span id="cb72-3"><a href="anova.html#cb72-3"></a><span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>) <span class="op">+</span></span>
+<span id="cb72-4"><a href="anova.html#cb72-4"></a><span class="st">    </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>) <span class="op">+</span></span>
+<span id="cb72-5"><a href="anova.html#cb72-5"></a><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>),</span>
+<span id="cb72-6"><a href="anova.html#cb72-6"></a>  </span>
+<span id="cb72-7"><a href="anova.html#cb72-7"></a>  <span class="kw">ggplot</span>(ds, <span class="kw">aes</span>(<span class="dt">x =</span> faixa_etaria, <span class="dt">y =</span> memore_total, <span class="dt">fill =</span> faixa_etaria)) <span class="op">+</span></span>
+<span id="cb72-8"><a href="anova.html#cb72-8"></a><span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>) <span class="op">+</span></span>
+<span id="cb72-9"><a href="anova.html#cb72-9"></a><span class="st">    </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>) <span class="op">+</span></span>
+<span id="cb72-10"><a href="anova.html#cb72-10"></a><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>))</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-84-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Por sua vez, gráficos mais complexos, que reúnem mais informações, também são úteis.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="anova.html#cb95-1"></a><span class="kw">ggplot</span>(ds, <span class="kw">aes</span>(<span class="dt">x =</span> faixa_etaria, <span class="dt">y =</span> memore_total, <span class="dt">fill =</span> escolaridade_grupo)) <span class="op">+</span></span>
-<span id="cb95-2"><a href="anova.html#cb95-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>, <span class="dt">fun =</span> mean) <span class="op">+</span></span>
-<span id="cb95-3"><a href="anova.html#cb95-3"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="anova.html#cb73-1"></a><span class="kw">ggplot</span>(ds, <span class="kw">aes</span>(<span class="dt">x =</span> faixa_etaria, <span class="dt">y =</span> memore_total, <span class="dt">fill =</span> escolaridade_grupo)) <span class="op">+</span></span>
+<span id="cb73-2"><a href="anova.html#cb73-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>, <span class="dt">fun =</span> mean) <span class="op">+</span></span>
+<span id="cb73-3"><a href="anova.html#cb73-3"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-85-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>É importante ter atenção que este gráfico não é necessariamente o melhor para uma ANOVA de 2 vias (aditiva), uma vez que pode sugerir algum relacionamento entre as variáveis independentes. Esse aspecto será melhor debatido na seção de ANOVA Fatorial.</p>
 <p>Agora, formalmente a modelagem poderá será feita. Os passos devem ser exatamente os mesmos aos performados anteriormente, incluindo a verificação de pressupostos e interpretação dos resultados. Para realizar a ANOVA de duas vias, é possível contar com a função lm ou aov. Aqui, a escolha da lm foi apenas por conveniência e o vetor <code>mod_escolaridade_faixa_etaria</code> irá armazenar os resultados.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="anova.html#cb96-1"></a>mod_escolaridade_faixa_etaria &lt;-<span class="st"> </span><span class="kw">lm</span>(memore_total <span class="op">~</span><span class="st"> </span>escolaridade_grupo <span class="op">+</span><span class="st"> </span>faixa_etaria, ds)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="anova.html#cb74-1"></a>mod_escolaridade_faixa_etaria &lt;-<span class="st"> </span><span class="kw">lm</span>(memore_total <span class="op">~</span><span class="st"> </span>escolaridade_grupo <span class="op">+</span><span class="st"> </span>faixa_etaria, ds)</span></code></pre></div>
 <p>A tabela padronizada da ANOVA de duas vias, disponível na maioria dos pacotes comerciais, é a seguinte:</p>
 <table>
 <thead>
@@ -1057,9 +1058,7 @@ Nesta pesquisa, cerca de 150 estudantes foram apresentados a um filme e depois t
 </tbody>
 </table>
 <p>Posto isso, os resultados obtidos são:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="anova.html#cb97-1"></a>apaTables<span class="op">::</span><span class="kw">apa.aov.table</span>(mod_escolaridade_faixa_etaria) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
-<pre><code>## Warning in pander.default(.): No pander.method for &quot;apa_table&quot;, reverting to
-## default.</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="anova.html#cb75-1"></a>apaTables<span class="op">::</span><span class="kw">apa.aov.table</span>(mod_escolaridade_faixa_etaria) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
 <ul>
 <li><p><strong>table_number</strong>: <em>NA</em></p></li>
 <li><p><strong>table_title</strong>: ANOVA results using memore_total as the dependent variable</p></li>
@@ -1143,10 +1142,10 @@ Nesta pesquisa, cerca de 150 estudantes foram apresentados a um filme e depois t
 <p>Note que a tabela já reúne a métrica do <u>tamanho do efeito</u>, que é dada pelo <code>eta quadrado parcial</code>. Uma vez que agora a ANOVA apresenta dois fatores, o valor do <span class="math inline">\(\eta_p^2\)</span> é diferente do <span class="math inline">\(\eta^2\)</span>, mas a interpretação é a mesma da apresentada na ANOVA de 1 via.</p>
 <p>Da mesma forma que apresentado na ANOVA de 1 via, a validade da interpretação dos resultados depende dos pressupostos do modelo estatístico. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(Barker &amp; Shaw, <a href="#ref-Barker2015" role="doc-biblioref">2015</a>; Ernst &amp; Albers, <a href="#ref-Ernst2017" role="doc-biblioref">2017</a>; Lix et al., <a href="#ref-Lix1996" role="doc-biblioref">1996</a>)</span>.</p>
 <p><mark>Normalidade</mark>: O QQ plot abaixo apresenta os valores teóricos e empíricos. Caso ambas as linhas estejam sobrepostas, isso apoia que o pressuposto da normalidade foi atendido. Neste caso, isso não parece ocorrer.</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="anova.html#cb100-1"></a>olsrr<span class="op">::</span><span class="kw">ols_plot_resid_qq</span>(mod_escolaridade_faixa_etaria)</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="anova.html#cb77-1"></a>olsrr<span class="op">::</span><span class="kw">ols_plot_resid_qq</span>(mod_escolaridade_faixa_etaria)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-88-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O Shapiro-wilk, Anderson-Darling e Jarque Bera também podem ser utilizado neste caso. A hipótese nula desses testes assumem que os resíduos são normalmente distribuídos.</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="anova.html#cb101-1"></a><span class="kw">shapiro.test</span>(<span class="kw">residuals</span>(mod_escolaridade_faixa_etaria))</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="anova.html#cb78-1"></a><span class="kw">shapiro.test</span>(<span class="kw">residuals</span>(mod_escolaridade_faixa_etaria))</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -1154,10 +1153,10 @@ Nesta pesquisa, cerca de 150 estudantes foram apresentados a um filme e depois t
 ## W = 0.99336, p-value = 4.896e-06</code></pre>
 <p>Os resultados de ambas as técnicas foram similares, indicando a violação da normalidade dos resíduos.</p>
 <p><mark>Homocedasticidade</mark>: Este pressuposto pode ser testado por um gráfico dos resíduos contra os valores previstos. O ideal é não encontrar padrões no gráfico.</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="anova.html#cb103-1"></a>olsrr<span class="op">::</span><span class="kw">ols_plot_resid_fit</span>(mod_escolaridade_faixa_etaria)</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="anova.html#cb80-1"></a>olsrr<span class="op">::</span><span class="kw">ols_plot_resid_fit</span>(mod_escolaridade_faixa_etaria)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-90-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O teste de Levene, de Bartlett ou de Breusch-Pagan podem também serem utilzados de maneira formal. Eles estipulam <span class="math inline">\(H_0\)</span> como homocedasticidade e, idealmente, não deve ser rejeitada.</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="anova.html#cb104-1"></a>olsrr<span class="op">::</span><span class="kw">ols_test_breusch_pagan</span>(mod_escolaridade_faixa_etaria)</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="anova.html#cb81-1"></a>olsrr<span class="op">::</span><span class="kw">ols_test_breusch_pagan</span>(mod_escolaridade_faixa_etaria)</span></code></pre></div>
 <pre><code>## 
 ##  Breusch Pagan Test for Heteroskedasticity
 ##  -----------------------------------------
@@ -1231,10 +1230,10 @@ Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA de d
 <div id="execução-no-r-8" class="section level2">
 <h2><span class="header-section-number">7.20</span> Execução no R</h2>
 <p>O pacote <code>emmeans</code> será utilizado para, inicialmente, verificar cada uma das comparações entre os níveis de <u>escolaridade</u>. É bom notar que os resultados são ajustados pelas outras variáveis que integram o modelo. O vetor <code>post_hoc_twoway_escolaridade</code> reunirá os resultados.</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="anova.html#cb106-1"></a>post_hoc_twoway_escolaridade &lt;-<span class="st"> </span><span class="kw">emmeans</span>(mod_escolaridade_faixa_etaria, <span class="st">&quot;escolaridade_grupo&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb106-2"><a href="anova.html#cb106-2"></a><span class="st">  </span><span class="kw">pairs</span>(.,<span class="dt">adj =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="anova.html#cb83-1"></a>post_hoc_twoway_escolaridade &lt;-<span class="st"> </span><span class="kw">emmeans</span>(mod_escolaridade_faixa_etaria, <span class="st">&quot;escolaridade_grupo&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb83-2"><a href="anova.html#cb83-2"></a><span class="st">  </span><span class="kw">pairs</span>(.,<span class="dt">adj =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
 <p>A apresentação formal ocorre por tabelas, tal como a exposta a seguir. A última coluna <code>p.value</code> apresenta o valor de P corrigido pela técnica de Bonferroni.</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="anova.html#cb107-1"></a>post_hoc_twoway_escolaridade <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">data.frame</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="anova.html#cb84-1"></a>post_hoc_twoway_escolaridade <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">data.frame</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
 <table style="width:83%;">
 <colgroup>
 <col width="15%" />
@@ -1282,20 +1281,20 @@ Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA de d
 </tbody>
 </table>
 <p>O gráfico a seguir apresenta um resultado mais fácil de interpretar em relação às comparações e também foi realizado também na ANOVA de 1 via. O eixo horizontal tem destaque ao valor <code>0</code> e o eixo vertical apresenta todas as comparações. Caso alguma das comparações passe pelo valor 0, isso indica que ela não é significativa.</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="anova.html#cb108-1"></a>CI &lt;-<span class="st"> </span><span class="kw">confint</span>(post_hoc_twoway_escolaridade)</span>
-<span id="cb108-2"><a href="anova.html#cb108-2"></a><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(contrast, estimate)) <span class="op">+</span></span>
-<span id="cb108-3"><a href="anova.html#cb108-3"></a><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> lower.CL, <span class="dt">ymax =</span> upper.CL), <span class="dt">data =</span> CI) <span class="op">+</span></span>
-<span id="cb108-4"><a href="anova.html#cb108-4"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">summary</span>(post_hoc_twoway_escolaridade)) <span class="op">+</span></span>
-<span id="cb108-5"><a href="anova.html#cb108-5"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb108-6"><a href="anova.html#cb108-6"></a><span class="st">  </span><span class="kw">scale_size</span>(<span class="dt">trans =</span> <span class="st">&quot;reverse&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb108-7"><a href="anova.html#cb108-7"></a><span class="st">  </span><span class="kw">coord_flip</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="anova.html#cb85-1"></a>CI &lt;-<span class="st"> </span><span class="kw">confint</span>(post_hoc_twoway_escolaridade)</span>
+<span id="cb85-2"><a href="anova.html#cb85-2"></a><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(contrast, estimate)) <span class="op">+</span></span>
+<span id="cb85-3"><a href="anova.html#cb85-3"></a><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> lower.CL, <span class="dt">ymax =</span> upper.CL), <span class="dt">data =</span> CI) <span class="op">+</span></span>
+<span id="cb85-4"><a href="anova.html#cb85-4"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">summary</span>(post_hoc_twoway_escolaridade)) <span class="op">+</span></span>
+<span id="cb85-5"><a href="anova.html#cb85-5"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb85-6"><a href="anova.html#cb85-6"></a><span class="st">  </span><span class="kw">scale_size</span>(<span class="dt">trans =</span> <span class="st">&quot;reverse&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb85-7"><a href="anova.html#cb85-7"></a><span class="st">  </span><span class="kw">coord_flip</span>()</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-95-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>É possível concluir que pessoas com nível fundamental, quando comparadas às pessoas de nível médio (Δ = 3.23) e superior (Δ = 2.84), apresentam performance significativamente menor. Pessoas com ensino médio e ensino superior não tem resultados significativamente diferentes.</p>
 <p>Para comparar os resultados em função de todos os níveis de <u>faixa_etaria</u>, basta customizar um pouco a função.</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="anova.html#cb109-1"></a>post_hoc_twoway_faixaetaria &lt;-<span class="st"> </span><span class="kw">emmeans</span>(mod_escolaridade_faixa_etaria, <span class="st">&quot;faixa_etaria&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb109-2"><a href="anova.html#cb109-2"></a><span class="st">  </span><span class="kw">pairs</span>(.,<span class="dt">adj =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="anova.html#cb86-1"></a>post_hoc_twoway_faixaetaria &lt;-<span class="st"> </span><span class="kw">emmeans</span>(mod_escolaridade_faixa_etaria, <span class="st">&quot;faixa_etaria&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb86-2"><a href="anova.html#cb86-2"></a><span class="st">  </span><span class="kw">pairs</span>(.,<span class="dt">adj =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
 <p>Agora, a tabela apresenta os resultados das comparações etárias de maneira detalhada.</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="anova.html#cb110-1"></a>post_hoc_twoway_faixaetaria <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">data.frame</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="anova.html#cb87-1"></a>post_hoc_twoway_faixaetaria <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">data.frame</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
 <table>
 <colgroup>
 <col width="39%" />
@@ -1399,13 +1398,13 @@ Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA de d
 </tbody>
 </table>
 <p>Conforme previamente descrito, O gráfico é um recurso útil à visualização dos resultados, permitindo que as conclusões tornem-se mais fáceis de serem obtidas.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="anova.html#cb111-1"></a>CI &lt;-<span class="st"> </span><span class="kw">confint</span>(post_hoc_twoway_faixaetaria)</span>
-<span id="cb111-2"><a href="anova.html#cb111-2"></a><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(contrast, estimate)) <span class="op">+</span></span>
-<span id="cb111-3"><a href="anova.html#cb111-3"></a><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> lower.CL, <span class="dt">ymax =</span> upper.CL), <span class="dt">data =</span> CI) <span class="op">+</span></span>
-<span id="cb111-4"><a href="anova.html#cb111-4"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">summary</span>(post_hoc_twoway_faixaetaria)) <span class="op">+</span></span>
-<span id="cb111-5"><a href="anova.html#cb111-5"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb111-6"><a href="anova.html#cb111-6"></a><span class="st">  </span><span class="kw">scale_size</span>(<span class="dt">trans =</span> <span class="st">&quot;reverse&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb111-7"><a href="anova.html#cb111-7"></a><span class="st">  </span><span class="kw">coord_flip</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="anova.html#cb88-1"></a>CI &lt;-<span class="st"> </span><span class="kw">confint</span>(post_hoc_twoway_faixaetaria)</span>
+<span id="cb88-2"><a href="anova.html#cb88-2"></a><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(contrast, estimate)) <span class="op">+</span></span>
+<span id="cb88-3"><a href="anova.html#cb88-3"></a><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> lower.CL, <span class="dt">ymax =</span> upper.CL), <span class="dt">data =</span> CI) <span class="op">+</span></span>
+<span id="cb88-4"><a href="anova.html#cb88-4"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">summary</span>(post_hoc_twoway_faixaetaria)) <span class="op">+</span></span>
+<span id="cb88-5"><a href="anova.html#cb88-5"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb88-6"><a href="anova.html#cb88-6"></a><span class="st">  </span><span class="kw">scale_size</span>(<span class="dt">trans =</span> <span class="st">&quot;reverse&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb88-7"><a href="anova.html#cb88-7"></a><span class="st">  </span><span class="kw">coord_flip</span>()</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-98-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>As conclusões indicam que pessoas mais novas (<code>Entre 14 e 24</code>) tem resultados mais elevados do que pessoas <code>Entre 35 e 44</code> , <code>Entre 45 e 54</code> e <code>Entre 55 e 64</code>. Participantes <code>Entre 25 e 34</code> também apresentam resultados maiores do que <code>Entre 35 e 44</code>, <code>Entre 45 e 54</code> e <code>Entre 55 e 64</code>. Não houve diferença significativa <code>Entre 14 e 24</code> e <code>Entre 25 e 34</code>, bem como <code>Entre 35 e 44</code> e <code>Entre 45 e 54</code> e <code>Entre 55 e 64</code>. Finalmente, participantes <code>Entre 45 e 54</code> e <code>Entre 55 e 64</code> também não tiveram resultados significativamente diferentes.</p>
 </div>
@@ -1466,22 +1465,22 @@ Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA de d
 <div id="execução-no-r-9" class="section level2">
 <h2><span class="header-section-number">7.25</span> Execução no R</h2>
 <p>Desta vez, a modelagem no R deverá contar com a alteração dos <code>contrastes</code> para assegurar que os valores obtidos serão os mesmos dos programas comerciais e, consequentemente, irão ter a mesma interpretação. Para isso, basta rodar a linha de código a seguir:</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="anova.html#cb112-1"></a><span class="kw">options</span>(<span class="dt">contrasts =</span> <span class="kw">c</span>(<span class="st">&quot;contr.helmert&quot;</span>, <span class="st">&quot;contr.poly&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="anova.html#cb89-1"></a><span class="kw">options</span>(<span class="dt">contrasts =</span> <span class="kw">c</span>(<span class="st">&quot;contr.helmert&quot;</span>, <span class="st">&quot;contr.poly&quot;</span>))</span></code></pre></div>
 <p>Após esta etapa, todo o restante segue o mesmo padrão da feita anteriormente, iniciando pela codificação dos dados. É importante frisar que erros nesta etapa podem distorcer totalmente os resultados. Na variável <u>faixa etária</u> há rótulos para cada intervalo, tornando a interpretação bastante fácil e intuitiva. Na variável <u>escolaridade</u>, se utilizou valores de 1 a 3 para identificar o ensino fundamental, médio e superior.</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="anova.html#cb113-1"></a>ds &lt;-<span class="st"> </span>ds <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb113-2"><a href="anova.html#cb113-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">escolaridade_grupo =</span> <span class="kw">factor</span>(escolaridade_grupo),</span>
-<span id="cb113-3"><a href="anova.html#cb113-3"></a>         <span class="dt">faixa_etaria =</span> <span class="kw">factor</span>(faixa_etaria))</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="anova.html#cb90-1"></a>ds &lt;-<span class="st"> </span>ds <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb90-2"><a href="anova.html#cb90-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">escolaridade_grupo =</span> <span class="kw">factor</span>(escolaridade_grupo),</span>
+<span id="cb90-3"><a href="anova.html#cb90-3"></a>         <span class="dt">faixa_etaria =</span> <span class="kw">factor</span>(faixa_etaria))</span></code></pre></div>
 <p>Os dados apresentam casos ausentes na variável <u>faxa etária</u> e <u>escolaridade</u>. Muitas ações <mark>devem</mark> ser feitas para lidar com esta condição. No entanto, apenas para finalidade pedagógica, esses valores não serão utilizados nestas análises de agora.</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="anova.html#cb114-1"></a>ds &lt;-<span class="st"> </span>ds <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb114-2"><a href="anova.html#cb114-2"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(faixa_etaria) <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(escolaridade_grupo))</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="anova.html#cb91-1"></a>ds &lt;-<span class="st"> </span>ds <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb91-2"><a href="anova.html#cb91-2"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(faixa_etaria) <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(escolaridade_grupo))</span></code></pre></div>
 <p>A apresentação de tabelas e gráficos que possibilitem uma primeira descrição dos dados é importante e deve ser realizado. Na tabela a seguir, as linhas irão reunir a <u>faixa etária</u>, enquanto as colunas reunirão a <u>escolaridade</u>.</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="anova.html#cb115-1"></a>ds <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb115-2"><a href="anova.html#cb115-2"></a><span class="st">  </span><span class="kw">group_by</span>(escolaridade_grupo, faixa_etaria) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb115-3"><a href="anova.html#cb115-3"></a><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(memore_total), <span class="kw">lst</span>(<span class="dt">n=</span><span class="op">~</span><span class="kw">n</span>(), mean, sd)) <span class="op">%&gt;%</span><span class="st">  </span></span>
-<span id="cb115-4"><a href="anova.html#cb115-4"></a><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> escolaridade_grupo, <span class="co">#indexador unico</span></span>
-<span id="cb115-5"><a href="anova.html#cb115-5"></a>              <span class="dt">names_sep =</span> <span class="st">&quot;_&quot;</span>,  <span class="co">#pode ser removido</span></span>
-<span id="cb115-6"><a href="anova.html#cb115-6"></a>              <span class="dt">values_from =</span> <span class="kw">c</span>(n<span class="op">:</span>sd)) <span class="op">%&gt;%</span><span class="st">  </span><span class="co">#organizar valores</span></span>
-<span id="cb115-7"><a href="anova.html#cb115-7"></a><span class="st">  </span><span class="kw">pander</span>(., <span class="dt">split.table =</span> <span class="ot">Inf</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="anova.html#cb92-1"></a>ds <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb92-2"><a href="anova.html#cb92-2"></a><span class="st">  </span><span class="kw">group_by</span>(escolaridade_grupo, faixa_etaria) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb92-3"><a href="anova.html#cb92-3"></a><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(memore_total), <span class="kw">lst</span>(<span class="dt">n=</span><span class="op">~</span><span class="kw">n</span>(), mean, sd)) <span class="op">%&gt;%</span><span class="st">  </span></span>
+<span id="cb92-4"><a href="anova.html#cb92-4"></a><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> escolaridade_grupo, <span class="co">#indexador unico</span></span>
+<span id="cb92-5"><a href="anova.html#cb92-5"></a>              <span class="dt">names_sep =</span> <span class="st">&quot;_&quot;</span>,  <span class="co">#pode ser removido</span></span>
+<span id="cb92-6"><a href="anova.html#cb92-6"></a>              <span class="dt">values_from =</span> <span class="kw">c</span>(n<span class="op">:</span>sd)) <span class="op">%&gt;%</span><span class="st">  </span><span class="co">#organizar valores</span></span>
+<span id="cb92-7"><a href="anova.html#cb92-7"></a><span class="st">  </span><span class="kw">pander</span>(., <span class="dt">split.table =</span> <span class="ot">Inf</span>)</span></code></pre></div>
 <table style="width:100%;">
 <colgroup>
 <col width="18%" />
@@ -1573,13 +1572,13 @@ Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA de d
 </tbody>
 </table>
 <p>O gráfico dessa vez deve ser o mais completo o possível, indicando as três variáveis que estão sendo trabalhadas: <u>escolaridade</u>, <u>faixa etária</u> e <u>memore_total</u>. Tipicamente, no eixo X se coloca a VI com mais níveis, enquanto no agrupador (ou cluster), se coloca a VI com menos.</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="anova.html#cb116-1"></a><span class="kw">ggplot</span>(ds, <span class="kw">aes</span>(<span class="dt">x =</span> faixa_etaria, <span class="dt">y =</span> memore_total, <span class="dt">fill =</span> escolaridade_grupo)) <span class="op">+</span></span>
-<span id="cb116-2"><a href="anova.html#cb116-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>, <span class="dt">fun =</span> mean) <span class="op">+</span></span>
-<span id="cb116-3"><a href="anova.html#cb116-3"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="anova.html#cb93-1"></a><span class="kw">ggplot</span>(ds, <span class="kw">aes</span>(<span class="dt">x =</span> faixa_etaria, <span class="dt">y =</span> memore_total, <span class="dt">fill =</span> escolaridade_grupo)) <span class="op">+</span></span>
+<span id="cb93-2"><a href="anova.html#cb93-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>, <span class="dt">fun =</span> mean) <span class="op">+</span></span>
+<span id="cb93-3"><a href="anova.html#cb93-3"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-104-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O gráfico parece indicar que a performance no teste varia tanto em função da idade, como em função da escolaridade. Por exemplo, pessoas <u>entre 14 e 24</u> anos, bem como <u>entre 25 e 34</u> anos com <u>ensino médio</u> apresentam o desempenho mais elevado quando comparadas com os outros participantes. No entanto, isso começa a se alterar aos 35 anos. Para estes participantes e aqueles mais velhos, o <u>ensino superior</u> parece ser o principal determinante.</p>
 <p>Agora, formalmente a modelagem poderá será feita. Os passos devem ser exatamente os mesmos aos performados anteriormente, incluindo a verificação de pressupostos e interpretação dos resultados. Para realizar a ANOVA Fatorial, é possível contar com a função <code>lm</code> ou <code>aov</code>. Aqui, a escolha da <code>lm</code> foi apenas por conveniência e o vetor <code>mod_escolaridade_faixa_etaria_fatorial</code> irá armazenar os resultados.</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="anova.html#cb117-1"></a>mod_escolaridade_faixa_etaria_fatorial &lt;-<span class="st"> </span><span class="kw">lm</span>(memore_total <span class="op">~</span><span class="st"> </span>escolaridade_grupo <span class="op">*</span><span class="st"> </span>faixa_etaria, ds)</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="anova.html#cb94-1"></a>mod_escolaridade_faixa_etaria_fatorial &lt;-<span class="st"> </span><span class="kw">lm</span>(memore_total <span class="op">~</span><span class="st"> </span>escolaridade_grupo <span class="op">*</span><span class="st"> </span>faixa_etaria, ds)</span></code></pre></div>
 <p>Repare que <u>não</u> é preciso descrever integralmente a equação na linha de código. Ao usar o símbolo <code>*</code>, o R já faz o restante.</p>
 <p>A tabela padronizada da ANOVA Fatorial, disponível na maioria dos pacotes comerciais, é a seguinte:</p>
 <table>
@@ -1631,10 +1630,8 @@ Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA de d
 </tbody>
 </table>
 <p>Posto isso, os resultados obtidos são:</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="anova.html#cb118-1"></a>apaTables<span class="op">::</span><span class="kw">apa.aov.table</span>(mod_escolaridade_faixa_etaria_fatorial) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb118-2"><a href="anova.html#cb118-2"></a><span class="st">  </span><span class="kw">pander</span>(., <span class="dt">split.table =</span> <span class="ot">Inf</span>)</span></code></pre></div>
-<pre><code>## Warning in pander.default(., split.table = Inf): No pander.method for
-## &quot;apa_table&quot;, reverting to default.</code></pre>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="anova.html#cb95-1"></a>apaTables<span class="op">::</span><span class="kw">apa.aov.table</span>(mod_escolaridade_faixa_etaria_fatorial) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb95-2"><a href="anova.html#cb95-2"></a><span class="st">  </span><span class="kw">pander</span>(., <span class="dt">split.table =</span> <span class="ot">Inf</span>)</span></code></pre></div>
 <ul>
 <li><p><strong>table_number</strong>: <em>NA</em></p></li>
 <li><p><strong>table_title</strong>: ANOVA results using memore_total as the dependent variable</p></li>
@@ -1731,10 +1728,10 @@ faixa_etaria</td>
 <p>Note que a métrica do <u>tamanho do efeito</u> é o <span class="math inline">\(\eta_p^2\)</span> e já está na tabela. Sua interpretação é a mesma dos modelos mostrados anteriormente neste capítulo.</p>
 <p>Da mesma forma que apresentado no decorrer deste capítulo, a validade da interpretação dos resultados depende dos pressupostos do modelo estatístico. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(Barker &amp; Shaw, <a href="#ref-Barker2015" role="doc-biblioref">2015</a>; Ernst &amp; Albers, <a href="#ref-Ernst2017" role="doc-biblioref">2017</a>; Lix et al., <a href="#ref-Lix1996" role="doc-biblioref">1996</a>)</span>.</p>
 <p><mark>Normalidade</mark>: O QQ plot abaixo apresenta os valores teóricos e empíricos. Caso ambas as linhas estejam sobrepostas, isso apoia que o pressuposto da normalidade foi atendido. Neste caso, isso não parece ocorrer.</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="anova.html#cb121-1"></a>olsrr<span class="op">::</span><span class="kw">ols_plot_resid_qq</span>(mod_escolaridade_faixa_etaria_fatorial)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="anova.html#cb97-1"></a>olsrr<span class="op">::</span><span class="kw">ols_plot_resid_qq</span>(mod_escolaridade_faixa_etaria_fatorial)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-107-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O Shapiro-wilk, Anderson-Darling e Jarque Bera também podem ser utilizado neste caso. A hipótese nula desses testes assumem que os resíduos são normalmente distribuídos.</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="anova.html#cb122-1"></a><span class="kw">shapiro.test</span>(<span class="kw">residuals</span>(mod_escolaridade_faixa_etaria_fatorial))</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="anova.html#cb98-1"></a><span class="kw">shapiro.test</span>(<span class="kw">residuals</span>(mod_escolaridade_faixa_etaria_fatorial))</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -1742,10 +1739,10 @@ faixa_etaria</td>
 ## W = 0.99412, p-value = 1.898e-05</code></pre>
 <p>Os resultados de ambas as técnicas foram similares, indicando a violação da normalidade dos resíduos.</p>
 <p><mark>Homocedasticidade</mark>: Este pressuposto pode ser testado por um gráfico dos resíduos contra os valores previstos. O ideal é não encontrar padrões no gráfico.</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="anova.html#cb124-1"></a>olsrr<span class="op">::</span><span class="kw">ols_plot_resid_fit</span>(mod_escolaridade_faixa_etaria_fatorial)</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="anova.html#cb100-1"></a>olsrr<span class="op">::</span><span class="kw">ols_plot_resid_fit</span>(mod_escolaridade_faixa_etaria_fatorial)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-109-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O teste de Levene, de Bartlett ou de Breusch-Pagan podem também serem utilzados de maneira formal. Eles estipulam <span class="math inline">\(H_0\)</span> como homocedasticidade e, idealmente, não deve ser rejeitada.</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="anova.html#cb125-1"></a>olsrr<span class="op">::</span><span class="kw">ols_test_breusch_pagan</span>(mod_escolaridade_faixa_etaria_fatorial)</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="anova.html#cb101-1"></a>olsrr<span class="op">::</span><span class="kw">ols_test_breusch_pagan</span>(mod_escolaridade_faixa_etaria_fatorial)</span></code></pre></div>
 <pre><code>## 
 ##  Breusch Pagan Test for Heteroskedasticity
 ##  -----------------------------------------
@@ -1826,8 +1823,8 @@ Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA Fato
 <p>As comparações Post hoc de uma ANOVA Fatorial <mark>podem ser feitas de duas maneiras</mark>, a depender do interesse do pesquisador. É possível comparar todos os níveis presentes em ambas as variáveis ou comparar todos os níveis de uma variável específica, enquanto outra é mantida constante. No primeiro caso, um exemplo seria a comparação de <u>pessoas com ensino fundamental entre 14 e 24 anos</u> contra <u>pessoas com ensino superior entre 35 e 44 anos</u>. No segundo caso, a comparação ocorreria entre todas as faixas de escolaridade em pessoas entre 14 e 24 anos <u>ou</u> pessoas entre 25 e 34 anos, etc.</p>
 <p>Normalmente, os post hocs são feitos após o pesquisador olhar os gráficos e os resultados obtidos podem confir ou não uma expectativa prévia. Os programas estatísticos comerciais tendem a realizar o segundo formato de análise, em que todas as interações intra-níveis são feitas após manter um nível de outro fator constante. Uma hipótese é que essa escolha ocorre para prevenir o erro do <u>tipo 2</u>. Uma vez que as correções para valor de P implementadas dependem da quantidade de comparações feitas, ao se comparar todos os níveis de um fator contra todos os níveis de outro fator, seria pouco provável ter resultados significativos.</p>
 <p>Neste caso, o post hoc será feito para todos os níveis de <code>escolaridade</code> com pessoas na faixa etária <code>Entre 14 e 24</code>. Em seguida, novamente todos os níveis de <code>escolaridade</code> serão comparados com pessoas na faixa etária <code>Entre 25 e 34</code> e assim por diante. Essa escolha reflete o que foi apresentado no gráfico introdutório desta seção. O vetor <code>post_hoc_fatorial</code> será computado e armazenará os resultados.</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="anova.html#cb127-1"></a>post_hoc_fatorial &lt;-<span class="st"> </span><span class="kw">emmeans</span>(mod_escolaridade_faixa_etaria_fatorial, pairwise <span class="op">~</span><span class="st"> </span>escolaridade_grupo <span class="op">|</span><span class="st"> </span>faixa_etaria, <span class="dt">adj =</span> <span class="st">&quot;bonferroni&quot;</span>) </span>
-<span id="cb127-2"><a href="anova.html#cb127-2"></a>post_hoc_fatorial<span class="op">$</span>contrasts <span class="op">%&gt;%</span><span class="st"> </span>data.frame <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="anova.html#cb103-1"></a>post_hoc_fatorial &lt;-<span class="st"> </span><span class="kw">emmeans</span>(mod_escolaridade_faixa_etaria_fatorial, pairwise <span class="op">~</span><span class="st"> </span>escolaridade_grupo <span class="op">|</span><span class="st"> </span>faixa_etaria, <span class="dt">adj =</span> <span class="st">&quot;bonferroni&quot;</span>) </span>
+<span id="cb103-2"><a href="anova.html#cb103-2"></a>post_hoc_fatorial<span class="op">$</span>contrasts <span class="op">%&gt;%</span><span class="st"> </span>data.frame <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
 <table>
 <colgroup>
 <col width="14%" />
@@ -1988,7 +1985,7 @@ Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA Fato
 </tbody>
 </table>
 <p>O gráfico dessa vez será feito pela função <code>emmip</code> do pacote <code>emmeans</code>, que deve apresentar os mesmos resultados obtidos na tabela.</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="anova.html#cb128-1"></a><span class="kw">emmip</span>(mod_escolaridade_faixa_etaria_fatorial, escolaridade_grupo <span class="op">~</span><span class="st"> </span>faixa_etaria, <span class="dt">CIs =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="anova.html#cb104-1"></a><span class="kw">emmip</span>(mod_escolaridade_faixa_etaria_fatorial, escolaridade_grupo <span class="op">~</span><span class="st"> </span>faixa_etaria, <span class="dt">CIs =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-113-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Entre as conclusões possíveis, se constata, de maneira contraintuitiva, que pessoas entre 14 e 24 anos com ensino médio apresentam performance maior do que pessoas com ensino superior (Δ = 1.145). Por sua vez, não há diferença na performance entre pessoas entre 25 e 34 anos que possuem o ensino médio ou ensino superior. No entanto, pessoas que tem essa idade, mas apresentam o ensino fundamental possuem performance significativamente menor do que seus pares com ensino médio (Δ = -6.317) ou superior (Δ = -5.46). Pessoas entre 35 e 44 anos com ensino superior apresentam performance mais elevada do que seus pares com ensino médio (Δ = 2.365) ou fundamental (Δ = 3.477).</p>
 </div>

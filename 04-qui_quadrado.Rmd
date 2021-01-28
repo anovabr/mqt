@@ -7,22 +7,24 @@ rm(list=setdiff(ls(), "ds_selected"))
 
 
 library(tidyverse)
-library(knitr) #tables and graphs
-library(kableExtra) #tables with different styles
-
 ```
 
 ```{block, type="objectives"}
 **Objetivos do capítulo**  
 1. Apresentar o teste Qui-quadrado  
-2. Diferenciar o qui-quadrado de aderência, homogeneidade e independência  
+2. Diferenciar o Qui-quadrado de aderência, homogeneidade e independência  
 3. Realizar gráficos relacionados à distribuição de porcentagens     
 4. Apresentar e interpretar métricas de tamanho do efeito  
 5. Dar exemplos relacionados à escrita dos resultados  
 ```
 
 
-O Teste Qui-quadrado é um teste não-paramétricos utilizado em três situações específicas: (1) verificar as distribuições de probabilidades de cada categoria de uma variável em relação a um valor teórico esperado (aderência), (2) verificar se as distribuições das categorias são as mesmas para diferentes subpopulações (homogeneidade) e (3) verificar se duas variáveis categóricas são independentes (independência). Apesar da diferenças em relação às perguntas analíticas, o sistema matemático é o mesmo:
+O Teste Qui-quadrado é um teste não-paramétricos utilizado quando se deseja: 
+(1) verificar as distribuições de probabilidades de cada categoria de uma variável em relação a um valor teórico esperado (aderência),   
+(2) verificar se as distribuições das categorias são as mesmas para diferentes subpopulações de interesse (homogeneidade) e   
+(3) verificar se duas variáveis categóricas são independentes (independência).   
+
+Apesar da diferenças em relação às perguntas analíticas, o sistema matemático é o mesmo:
 
 
 
@@ -46,37 +48,52 @@ Se assume os seguintes pressupostos funcionais à execução de um Qui-quadrado:
 A tabela abaixo descreve as condições de análise, com exemplos ilustrativos:
 
 
-  | Versão do teste | Variáveis           | Exemplo                                                                                       |
-  | :-----------    | :-----------        | :-----------                                                                                  |    
-  | Aderência       | 1 categórica        | Verificar se a proporção de caras e coroas é de 50% cada                                      |
-  | Homogeneidade   | 2 categóricas       | Verificar se a proporção de homens e mulheres que gostam de uma marca de celular é similar    |
-  | Independência   | 2 categóricas       | Verificar se o sexo e a escolha do curso de graduação são independentes                       |
+  | Versão do teste | Variáveis         | Exemplo                                                                                       
+  | :-----------    | :-----------      | :-----------                                                                                   
+  | Aderência (Goodness of fit) | 1 categórica| Verificar se a proporção de caras e coroas é de 50% cada                                
+  | Homogeneidade   | 2 categóricas     | Verificar se a proporção de homens e mulheres que gostam de uma marca de celular é similar    
+  | Independência   | 2 categóricas     | Verificar se o sexo e a escolha do curso de graduação são independentes                       
 
-Algumas notas: O Qui-quadrado de aderência também é chamado de "qualidade do ajuste" ou "bondade". Estas são traduções tipicamente feitas para <u>goodnes of fit</u>. Como todas as análises são realizadas de uma maneira virtualmente idêntica, essas distinções são mais teóricas do que práticas. O Qui-quadrado de aderência tem uma proposta parecida com a ANOVA de uma via.
+*Nota: O Qui-quadrado de aderência também é chamado de "qualidade do ajuste" ou "bondade". Estas são traduções tipicamente feitas para "goodnes of fit". Como todas as análises são realizadas de uma maneira virtualmente idêntica, essas distinções são mais teóricas do que práticas. O Qui-quadrado de aderência tem uma proposta parecida com a ANOVA de uma via.*
 
 
-uma curiosidade que remonta a história e explica parte da desavença que Pearson tinha com Fisher. O qui-quadrado foi originalmente desenvolvido em 1900 e 1904 por Karl Pearson [@Pearson1900]. Ronald Fisher detectou um erro no cálculo dos graus de liberdade e rapidamente divulgou isso, para descontentamento de Pearson [@BAIRD1983].
+Apesar de colateral à esta apresentação, o teste Qui-quadrado tem uma curiosidade que remonta o seu desenvolvimento e explica parte da desavença que Pearson tinha com Fisher. As primeiras publicações do Qui-quadrado ocorreram em 1900 e 1904 por Karl Pearson [@Pearson1900]. Ronald Fisher detectou um erro no cálculo dos graus de liberdade e rapidamente divulgou isso, o que gerou um enorme descontentamento de Pearson [@BAIRD1983].
 
 
 ## Pesquisa
   
-<div class="alert alert-info" role="alert">
-  <strong>Base: </strong> Base R TDAH Arruda.Rdata
+<div class="alert alert-warning">
+  <strong>Base: </strong> [Base R TDAH Arruda.Rdata](https://github.com/anovabr/mqt/raw/master/bases/Base%20R%20TDAH%20Arruda.RData)
 </div>  
 
 
-Neste capítulo, vamos utilizar a pesquisa intitulada "Parent-reported diagnosis of Attention Deficit Hyperactivity Disorder and psychostimulant use among children and adolescents: a population-based nationwide study", que está em avaliação pela revista "Social Psychiatry and Psychiatric Epidemiology (SPPE)". Neste trabalho, tivemos o objetivo de verificar aspectos epidemiológicos do Transtorno do Déficit de Atenção com Hiperatividade (TDAH) em uma amostra representativa de crianças e adolescentes brasileiros, bem como explorar eventuais associações entre características sociodemográficas, especialmente os sexo do participante, e possíveis fatores e risco e TDAH.  
+Neste capítulo, vamos utilizar a pesquisa intitulada "Parent-reported diagnosis of Attention Deficit Hyperactivity Disorder and psychostimulant use among children and adolescents: a population-based nationwide study", que está em avaliação pela revista "Social Psychiatry and Psychiatric Epidemiology (SPPE)". Neste trabalho, tivemos o objetivo de verificar aspectos epidemiológicos do Transtorno do Déficit de Atenção com Hiperatividade (TDAH) em uma amostra representativa de crianças e adolescentes brasileiros, bem como explorar eventuais associações entre características sociodemográficas, especialmente os sexo do participante e possíveis fatores e risco e TDAH.  
 
-Neste momento, vamos seguir apenas com o qui-quadrado de independência, que foi o utilizado neste artigo. Como exposto no decorrer de outros capítulos, o teste de hipóteses começa pela formulação conceitual das hipóteses. Apesar de ser possível estipular $H_0$ e $H_a$ a partir de equações específicas,a apresentação será textual/substantiva.
+Neste momento, vamos seguir apenas com o Qui-quadrado de independência, que foi o utilizado neste artigo. Como exposto no decorrer de outros capítulos, o teste de hipóteses começa pela formulação conceitual das hipóteses. Apesar de ser possível estipular $H_0$ e $H_a$ a partir de equações específicas,a apresentação será textual/substantiva.
 
 
 $$H_0: Não\ há\ associação\ entre\ sexo\ e\ TDAH \\ H_a: Há\ associação\ entre\ sexo\ e\ TDAH \\ \alpha = 0.05$$
-Uma característica colateral a esta apresentação textual do teste de hipóteses do Qui-quadrado é evitar confusões que ocorrem em relação ao conceito do teste e sua formulação matemática. Com muita frequência, dividimos os testes de hipóteses naqueles que verificam "associação" e naqueles que verificam "diferenças". Conceitualmente, o Qui-quadrado investiga associação entre variáveis. No entanto, sua formulação matemática é feita pela diferença entre um valor observado e um valor esperado (tal como ilustrado na equação ao início do capítulo). Assim, acredito que a formulação apenas textual evita criar confusões e ainda tornar o conteúdo mais palatável.
+
+
+
+::: {.warning}
+**Atenção**: Com frequência, testes de hipóteses são divididos naqueles que verificam "associação" entre variáveis e naqueles que verificam "diferenças" entre grupos. Conceitualmente, o Qui-quadrado investiga associação entre variáveis, mesmo que sua formulação matemática seja feita computando a diferença entre o valor observado e o valor esperado. A apresentação das hipóteses de forma apenas textual visou também evitar possíveis confusões.
+:::
 
 
 ## Execução no R
 
-O gráfico de barras é sempre um bom início para visualizar os dados. Repare que a barra azul (que representa a porcentagem de TDAH) parece se comportar de maneira diferente nos grupos. 
+A apresentação de tabelas e gráficos são fundamentais antes da realização formal do teste de hipótese. Para apresentar a possível relação entre ambas as variáveis, a tabela de contingência é adequada. Apesar do Qui-quadrado não eleger uma VI e uma VD, quase sempre as linhas são utilizadas para apresentar a variável de maior interesse (neste caso, sexo) e as colunas para indicar o critério ou o eventual desfecho (neste caso, ter ou não TDAH).   
+
+A porcentagem nas linhas e o valor esperado (em caso de independência entre as variáveis) auxiliam bastante na descrição dos resultados. O pacote `descr` é um bom recurso para esta apresentação.  
+
+
+```{r}
+descr::CrossTable(ds_selected$sex_male,ds_selected$adhd_parent,
+           expected = T, prop.c = F, prop.chisq = F, prop.t = F) %>% pander::pander()
+```
+
+Em seguida, a criação de um gráfico de barras é oferece um bom recurso para visualizar os dados. Repare que a barra azul, que representa a porcentagem de TDAH, parece se comportar de maneira diferente nos grupos. 
 
 ```{r}
 ggplot(ds_selected, aes(x= sex_male, fill = adhd_parent)) +
@@ -85,18 +102,9 @@ ggplot(ds_selected, aes(x= sex_male, fill = adhd_parent)) +
   labs(x = "sexo", y = "Proporção", fill = "TDAH")
 ```
 
-
-Em seguida, a tabela de contingência traz informações sobre o relacionamento das variáveis. Apesar do qui-quadrado não eleger uma VI e uma VD, Com bastante frequência utilizamos as linhas para apresentar a variável de maior interesse (neste caso, sexo) e as colunas para indicar o critério ou o eventual desfecho (neste caso, ter ou não TDAH). A porcentagem nas linhas e o valor esperado (em caso de independência entre as variáveis) auxiliam bastante na descrição dos resultados.
-
-
-```{r}
-descr::CrossTable(ds_selected$sex_male,ds_selected$adhd_parent,
-           expected = T, prop.c = F, prop.chisq = F, prop.t = F) %>% pander::pander()
-```
-
 Os pressupostos relacionados <u>à inexistência de células com valores esperados iguais a 0</u> e de <u>no máximo 20% dos valores esperados serem inferiores a 5</u> podem ser investigados na tabela exposta anteriormente e foram atendidos.  
    
-O cálculo do qui-quadrado apresentado abaixo deixa claro que que é possível rejeitar a hipótese nula, uma vez que o valor de P é menor do que o nível de significância previamente estipulado (0.05). 
+O cálculo do Qui-quadrado apresentado abaixo deixa claro que que é possível rejeitar a hipótese nula, uma vez que o valor de P é menor do que o nível de significância previamente estipulado (0.05). 
 
 
 ```{r}
@@ -108,7 +116,7 @@ Quando os pressupostos são violados, há sugestão de colapsar categorias, faze
 
 ## Tamanho do efeito  
 
-Como apresentado no decorrer dos outros capítulos, os valores de P quase nunca são informativos sobre a <u>relevância</u> dos resultados. O tamanho do efeito mais utilizado no ambiente das análises de Qui quadrado é o V de Cramer. Esta estatística gera valores 0-1 e é dada da seguinte maneira:
+Como apresentado no decorrer dos outros capítulos, os valores de P quase nunca são informativos sobre a <u>relevância</u> dos resultados. O tamanho do efeito mais utilizado no ambiente das análises de Qui-quadrado é o V de Cramer. Esta estatística gera valores 0-1 e é dada da seguinte maneira:
 
 $$V=\sqrt\frac{\chi^2}{n*df^`}$$
 Em que:  
@@ -138,7 +146,7 @@ A interpretação é baseada nos graus de liberdade e é feita da seguinte manei
 
 ## Execução no JASP
 
-Da mesma forma que foi feita no R, a apresentação de gráficos auxiliam o pesquisador a verificar padrões diferentes nos dados.  A seção `Descriptives` é a mais relacionada a isso e será utilizada:
+Para executar o Qui-quadrado no JASP, será necessário carregar a base (link!). Com os dados devidamente importados para o programa, a apresentação de tabelas e gráficos auxiliam o pesquisador a verificar padrões diferentes nos dados. Para executar isso, é necessário acessar a seção `Descriptives`:
 
 
 ![](./img/jasp_descriptives.png)
@@ -156,17 +164,17 @@ Para execução do Qui-quadrado (de associação), a tabela de contingência dev
 
 
 ![](./img/cap_x2_interface.png)
-Nesta seção, será necessário indicar a variável que irá nas linhas e nas colunas. Apesar do qui-quadrado não trabalhar com os conceitos de VI e VD, quase sempre se utiliza as linhas para inserir a variável que é, teoricamente, a VI, enquanto a VD teórica é inserida na parte colunas.
+Nesta seção, será necessário indicar a variável que irá nas linhas e nas colunas. Apesar do Qui-quadrado não trabalhar com os conceitos de VI e VD, quase sempre se utiliza as linhas para inserir a variável que é, teoricamente, a VI, enquanto a VD teórica é inserida na parte colunas.
 
 ![](./img/cap_x2_interface2.png)
 
 
-Ao inserir a variável <u>sexo</u> para as linhas e a variável <u>diagnóstico</u> para as colunas, a tabela de contigência será novamente feita e o qui-quadrado será automaticamente calculado. 
+Ao inserir a variável <u>sexo</u> para as linhas e a variável <u>diagnóstico</u> para as colunas, a tabela de contigência será novamente feita e o Qui-quadrado será automaticamente calculado. 
 
 ![](./img/cap_x2_resultados.png)
 
 
-Os resultados inferenciais de interesse estão na parte inferior da apresentação e são os mesmos obtidos na etapa de execução com o R. A estatística qui-quadrado foi `41.6`, com `1`  grau de liberdade e `p < 0.001`. Estes valores estão dispostos no retângulo roxo na imagem a seguir.  
+Os resultados inferenciais de interesse estão na parte inferior da apresentação e são os mesmos obtidos na etapa de execução com o R. A estatística Qui-quadrado foi `41.6`, com `1`  grau de liberdade e `p < 0.001`. Estes valores estão dispostos no retângulo roxo na imagem a seguir.  
 
 ![](./img/cap_x2_resultados2.png)
 

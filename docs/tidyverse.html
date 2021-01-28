@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Cap. 4 Tidyverse | Métodos quantitativos em Psicologia com R</title>
+  <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Cap. 4 Tidyverse | Métodos quantitativos em Psicologia com R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
+  <meta name="github-repo" content="cjvanlissa/gitbook-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Cap. 4 Tidyverse | Métodos quantitativos em Psicologia com R" />
+  
+  <meta name="twitter:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
+  
+
+<meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
+
+
+<meta name="date" content="2021-01-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="programas-estatísticos.html"/>
+<link rel="next" href="estatística-descritiva.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MQT em Psicologia com R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prefácio</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#a-proposta"><i class="fa fa-check"></i><b>1.1</b> A proposta</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#objetivo"><i class="fa fa-check"></i><b>1.2</b> Objetivo</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#público-alvo"><i class="fa fa-check"></i><b>1.3</b> Público-alvo</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#formato-do-livro"><i class="fa fa-check"></i><b>1.4</b> Formato do livro</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#bases-de-dados"><i class="fa fa-check"></i><b>1.5</b> Bases de dados</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#o-r-e-os-pacotes"><i class="fa fa-check"></i><b>1.6</b> O R e os pacotes</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#jasp"><i class="fa fa-check"></i><b>1.7</b> JASP</a></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#outros-recursos"><i class="fa fa-check"></i><b>1.8</b> Outros recursos</a></li>
+<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#capa"><i class="fa fa-check"></i><b>1.9</b> Capa</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#agradecimentos-e-revisões-técnicas"><i class="fa fa-check"></i><b>1.10</b> Agradecimentos e revisões técnicas</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html"><i class="fa fa-check"></i><b>2</b> Aspectos gerais</a><ul>
+<li class="chapter" data-level="2.1" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#os-objetivos-de-uma-pesquisa"><i class="fa fa-check"></i><b>2.1</b> Os objetivos de uma pesquisa</a></li>
+<li class="chapter" data-level="2.2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#fundações-da-pesquisa-e-estatística"><i class="fa fa-check"></i><b>2.2</b> Fundações da pesquisa e estatística</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#delineamentos-observacionais-e-correlacionais"><i class="fa fa-check"></i><b>2.2.1</b> Delineamentos observacionais (e correlacionais)</a></li>
+<li class="chapter" data-level="2.2.2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#delineamentos-experimentais"><i class="fa fa-check"></i><b>2.2.2</b> Delineamentos experimentais</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#considerações-sobre-escalas-de-medida-e-o-processo-de-mensuração-em-psicologia"><i class="fa fa-check"></i><b>2.3</b> Considerações sobre escalas de medida e o processo de mensuração em Psicologia</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#escala-nominal"><i class="fa fa-check"></i><b>2.3.1</b> Escala nominal</a></li>
+<li class="chapter" data-level="2.3.2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#escala-ordinal"><i class="fa fa-check"></i><b>2.3.2</b> Escala ordinal</a></li>
+<li class="chapter" data-level="2.3.3" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#escala-intervalar"><i class="fa fa-check"></i><b>2.3.3</b> Escala intervalar</a></li>
+<li class="chapter" data-level="2.3.4" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#escala-de-razão"><i class="fa fa-check"></i><b>2.3.4</b> Escala de razão</a></li>
+<li class="chapter" data-level="2.3.5" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#síntese-das-características-de-cada-escala"><i class="fa fa-check"></i><b>2.3.5</b> Síntese das características de cada escala</a></li>
+<li class="chapter" data-level="2.3.6" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#as-escalas-de-stevens-e-uma-tentativa-de-agrupamento"><i class="fa fa-check"></i><b>2.3.6</b> As escalas de Stevens e uma tentativa de agrupamento</a></li>
+<li class="chapter" data-level="2.3.7" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#variáveis-discretas-ou-contínuas"><i class="fa fa-check"></i><b>2.3.7</b> Variáveis discretas ou contínuas</a></li>
+<li class="chapter" data-level="2.3.8" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#hierarquia-da-classificação-e-a-importância-desses-conceitos-hoje-em-dia"><i class="fa fa-check"></i><b>2.3.8</b> Hierarquia da classificação e a importância desses conceitos hoje em dia</a></li>
+<li class="chapter" data-level="2.3.9" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#em-qual-escala-devemos-classificar-os-testes-psicológicos"><i class="fa fa-check"></i><b>2.3.9</b> Em qual escala devemos classificar os testes psicológicos</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#principais-áreas-da-estatística"><i class="fa fa-check"></i><b>2.4</b> Principais áreas da estatística</a></li>
+<li class="chapter" data-level="2.5" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#resumo"><i class="fa fa-check"></i><b>2.5</b> Resumo</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html"><i class="fa fa-check"></i><b>3</b> Programas estatísticos</a><ul>
+<li class="chapter" data-level="3.1" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-r"><i class="fa fa-check"></i><b>3.1</b> O R</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>4</b> Tidyverse</a><ul>
+<li class="chapter" data-level="4.1" data-path="tidyverse.html"><a href="tidyverse.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>4.1</b> Verbos do dplyr</a></li>
+<li class="chapter" data-level="4.2" data-path="tidyverse.html"><a href="tidyverse.html#o-jasp"><i class="fa fa-check"></i><b>4.2</b> O JASP</a></li>
+<li class="chapter" data-level="4.3" data-path="tidyverse.html"><a href="tidyverse.html#resumo-1"><i class="fa fa-check"></i><b>4.3</b> Resumo</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html"><i class="fa fa-check"></i><b>5</b> Estatística Descritiva</a><ul>
+<li class="chapter" data-level="5.1" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#tabelas"><i class="fa fa-check"></i><b>5.1</b> Tabelas</a></li>
+<li class="chapter" data-level="5.2" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#gráficos"><i class="fa fa-check"></i><b>5.2</b> Gráficos</a></li>
+<li class="chapter" data-level="5.3" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#medidas-de-posição-e-dispersão"><i class="fa fa-check"></i><b>5.3</b> Medidas de posição e dispersão</a></li>
+<li class="chapter" data-level="5.4" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#média"><i class="fa fa-check"></i><b>5.4</b> Média</a></li>
+<li class="chapter" data-level="5.5" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#mediana"><i class="fa fa-check"></i><b>5.5</b> Mediana</a></li>
+<li class="chapter" data-level="5.6" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#moda"><i class="fa fa-check"></i><b>5.6</b> Moda</a></li>
+<li class="chapter" data-level="5.7" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#amplitude"><i class="fa fa-check"></i><b>5.7</b> Amplitude</a></li>
+<li class="chapter" data-level="5.8" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#amplitude-interquartil"><i class="fa fa-check"></i><b>5.8</b> Amplitude interquartil</a></li>
+<li class="chapter" data-level="5.9" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variância-e-desvio-padrão"><i class="fa fa-check"></i><b>5.9</b> Variância e Desvio-padrão</a></li>
+<li class="chapter" data-level="5.10" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#pesquisa"><i class="fa fa-check"></i><b>5.10</b> Pesquisa</a></li>
+<li class="chapter" data-level="5.11" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#execução-no-r"><i class="fa fa-check"></i><b>5.11</b> Execução no R</a></li>
+<li class="chapter" data-level="5.12" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#gráficos-1"><i class="fa fa-check"></i><b>5.12</b> Gráficos</a></li>
+<li class="chapter" data-level="5.13" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-discreta"><i class="fa fa-check"></i><b>5.13</b> 1 variável discreta</a></li>
+<li class="chapter" data-level="5.14" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-contínua"><i class="fa fa-check"></i><b>5.14</b> 1 variável contínua</a></li>
+<li class="chapter" data-level="5.15" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-discreta-e-vd-contínua"><i class="fa fa-check"></i><b>5.15</b> 2 variáveis com VI discreta (e VD contínua)</a></li>
+<li class="chapter" data-level="5.16" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-contínua-e-vd-contínua"><i class="fa fa-check"></i><b>5.16</b> 2 variáveis com VI contínua (e VD contínua)</a></li>
+<li class="chapter" data-level="5.17" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#outros-gráficos-e-configurações"><i class="fa fa-check"></i><b>5.17</b> Outros gráficos e configurações</a></li>
+<li class="chapter" data-level="5.18" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#execução-no-jasp"><i class="fa fa-check"></i><b>5.18</b> Execução no JASP</a></li>
+<li class="chapter" data-level="5.19" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#tabelas-1"><i class="fa fa-check"></i><b>5.19</b> Tabelas</a></li>
+<li class="chapter" data-level="5.20" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#gráficos-2"><i class="fa fa-check"></i><b>5.20</b> Gráficos</a></li>
+<li class="chapter" data-level="5.21" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-discreta-1"><i class="fa fa-check"></i><b>5.21</b> 1 variável discreta</a></li>
+<li class="chapter" data-level="5.22" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-contínua-1"><i class="fa fa-check"></i><b>5.22</b> 1 variável contínua</a></li>
+<li class="chapter" data-level="5.23" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-discreta-e-vd-contínua-1"><i class="fa fa-check"></i><b>5.23</b> 2 variáveis com VI discreta (e VD contínua)</a></li>
+<li class="chapter" data-level="5.24" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-contínua-e-vd-contínua-1"><i class="fa fa-check"></i><b>5.24</b> 2 variáveis com VI contínua (e VD contínua)</a></li>
+<li class="chapter" data-level="5.25" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#outros-gráficos-e-configurações-1"><i class="fa fa-check"></i><b>5.25</b> Outros gráficos e configurações</a></li>
+<li class="chapter" data-level="5.26" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#resumo-2"><i class="fa fa-check"></i><b>5.26</b> Resumo</a></li>
+<li class="chapter" data-level="5.27" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#pesquisas-adicionais"><i class="fa fa-check"></i><b>5.27</b> Pesquisas adicionais</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="qui-quadrado.html"><a href="qui-quadrado.html"><i class="fa fa-check"></i><b>6</b> Qui quadrado</a><ul>
+<li class="chapter" data-level="6.1" data-path="qui-quadrado.html"><a href="qui-quadrado.html#pesquisa-1"><i class="fa fa-check"></i><b>6.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="6.2" data-path="qui-quadrado.html"><a href="qui-quadrado.html#execução-no-r-1"><i class="fa fa-check"></i><b>6.2</b> Execução no R</a></li>
+<li class="chapter" data-level="6.3" data-path="qui-quadrado.html"><a href="qui-quadrado.html#tamanho-do-efeito"><i class="fa fa-check"></i><b>6.3</b> Tamanho do efeito</a></li>
+<li class="chapter" data-level="6.4" data-path="qui-quadrado.html"><a href="qui-quadrado.html#execução-no-jasp-1"><i class="fa fa-check"></i><b>6.4</b> Execução no JASP</a></li>
+<li class="chapter" data-level="6.5" data-path="qui-quadrado.html"><a href="qui-quadrado.html#escrita-dos-resultados"><i class="fa fa-check"></i><b>6.5</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="6.6" data-path="qui-quadrado.html"><a href="qui-quadrado.html#resumo-3"><i class="fa fa-check"></i><b>6.6</b> Resumo</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="teste-t.html"><a href="teste-t.html"><i class="fa fa-check"></i><b>7</b> Teste T</a><ul>
+<li class="chapter" data-level="7.1" data-path="teste-t.html"><a href="teste-t.html#pesquisa-2"><i class="fa fa-check"></i><b>7.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="7.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-r-2"><i class="fa fa-check"></i><b>7.2</b> Execução no R</a></li>
+<li class="chapter" data-level="7.3" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito-1"><i class="fa fa-check"></i><b>7.3</b> Tamanho do efeito</a></li>
+<li class="chapter" data-level="7.4" data-path="teste-t.html"><a href="teste-t.html#execução-no-jasp-2"><i class="fa fa-check"></i><b>7.4</b> Execução no JASP</a></li>
+<li class="chapter" data-level="7.5" data-path="teste-t.html"><a href="teste-t.html#escrita-dos-resultados-1"><i class="fa fa-check"></i><b>7.5</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="7.6" data-path="teste-t.html"><a href="teste-t.html#versão-robusta-do-teste-t"><i class="fa fa-check"></i><b>7.6</b> Versão robusta do Teste T</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="teste-t.html"><a href="teste-t.html#execução-no-r-3"><i class="fa fa-check"></i><b>7.6.1</b> Execução no R</a></li>
+<li class="chapter" data-level="7.6.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-jasp-3"><i class="fa fa-check"></i><b>7.6.2</b> Execução no JASP</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="teste-t.html"><a href="teste-t.html#mann-whitney"><i class="fa fa-check"></i><b>7.7</b> Mann-whitney</a><ul>
+<li class="chapter" data-level="7.7.1" data-path="teste-t.html"><a href="teste-t.html#execução-no-r-4"><i class="fa fa-check"></i><b>7.7.1</b> Execução No R</a></li>
+<li class="chapter" data-level="7.7.2" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito-2"><i class="fa fa-check"></i><b>7.7.2</b> Tamanho do efeito</a></li>
+<li class="chapter" data-level="7.7.3" data-path="teste-t.html"><a href="teste-t.html#execução-no-jasp-4"><i class="fa fa-check"></i><b>7.7.3</b> Execução no JASP</a></li>
+<li class="chapter" data-level="7.7.4" data-path="teste-t.html"><a href="teste-t.html#escrita-dos-resultados-2"><i class="fa fa-check"></i><b>7.7.4</b> Escrita dos resultados</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>7.8</b> Teste T e regressão</a></li>
+<li class="chapter" data-level="7.9" data-path="teste-t.html"><a href="teste-t.html#resumo-4"><i class="fa fa-check"></i><b>7.9</b> Resumo</a></li>
+<li class="chapter" data-level="7.10" data-path="teste-t.html"><a href="teste-t.html#pesquisas-adicionais-1"><i class="fa fa-check"></i><b>7.10</b> Pesquisas adicionais</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>8</b> ANOVA</a><ul>
+<li class="chapter" data-level="8.1" data-path="anova.html"><a href="anova.html#glossário"><i class="fa fa-check"></i><b>8.1</b> Glossário</a></li>
+<li class="chapter" data-level="8.2" data-path="anova.html"><a href="anova.html#pesquisa-3"><i class="fa fa-check"></i><b>8.2</b> Pesquisa</a></li>
+<li class="chapter" data-level="8.3" data-path="anova.html"><a href="anova.html#anova-de-1-via"><i class="fa fa-check"></i><b>8.3</b> ANOVA de 1 via</a></li>
+<li class="chapter" data-level="8.4" data-path="anova.html"><a href="anova.html#execução-no-r-5"><i class="fa fa-check"></i><b>8.4</b> Execução no R</a></li>
+<li class="chapter" data-level="8.5" data-path="anova.html"><a href="anova.html#tamanho-do-efeito-3"><i class="fa fa-check"></i><b>8.5</b> Tamanho do efeito</a></li>
+<li class="chapter" data-level="8.6" data-path="anova.html"><a href="anova.html#execução-no-jasp-5"><i class="fa fa-check"></i><b>8.6</b> Execução no JASP</a></li>
+<li class="chapter" data-level="8.7" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-3"><i class="fa fa-check"></i><b>8.7</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="8.8" data-path="anova.html"><a href="anova.html#post-hoc"><i class="fa fa-check"></i><b>8.8</b> Post hoc</a></li>
+<li class="chapter" data-level="8.9" data-path="anova.html"><a href="anova.html#execução-no-r-6"><i class="fa fa-check"></i><b>8.9</b> Execução no R</a></li>
+<li class="chapter" data-level="8.10" data-path="anova.html"><a href="anova.html#execução-no-jasp-6"><i class="fa fa-check"></i><b>8.10</b> Execução no JASP</a></li>
+<li class="chapter" data-level="8.11" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-4"><i class="fa fa-check"></i><b>8.11</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="8.12" data-path="anova.html"><a href="anova.html#resumo-5"><i class="fa fa-check"></i><b>8.12</b> Resumo</a></li>
+<li class="chapter" data-level="8.13" data-path="anova.html"><a href="anova.html#pesquisas-adicionais-2"><i class="fa fa-check"></i><b>8.13</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="8.14" data-path="anova.html"><a href="anova.html#pesquisa-4"><i class="fa fa-check"></i><b>8.14</b> Pesquisa</a></li>
+<li class="chapter" data-level="8.15" data-path="anova.html"><a href="anova.html#anova-de-2-vias"><i class="fa fa-check"></i><b>8.15</b> ANOVA de 2 vias</a></li>
+<li class="chapter" data-level="8.16" data-path="anova.html"><a href="anova.html#execução-no-r-7"><i class="fa fa-check"></i><b>8.16</b> Execução no R</a></li>
+<li class="chapter" data-level="8.17" data-path="anova.html"><a href="anova.html#execução-no-jasp-7"><i class="fa fa-check"></i><b>8.17</b> Execução no JASP</a></li>
+<li class="chapter" data-level="8.18" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-5"><i class="fa fa-check"></i><b>8.18</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="8.19" data-path="anova.html"><a href="anova.html#post-hoc-1"><i class="fa fa-check"></i><b>8.19</b> Post hoc</a></li>
+<li class="chapter" data-level="8.20" data-path="anova.html"><a href="anova.html#execução-no-r-8"><i class="fa fa-check"></i><b>8.20</b> Execução no R</a></li>
+<li class="chapter" data-level="8.21" data-path="anova.html"><a href="anova.html#execução-no-jasp-8"><i class="fa fa-check"></i><b>8.21</b> Execução no JASP</a></li>
+<li class="chapter" data-level="8.22" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-6"><i class="fa fa-check"></i><b>8.22</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="8.23" data-path="anova.html"><a href="anova.html#resumo-6"><i class="fa fa-check"></i><b>8.23</b> Resumo</a></li>
+<li class="chapter" data-level="8.24" data-path="anova.html"><a href="anova.html#anova-fatorial"><i class="fa fa-check"></i><b>8.24</b> ANOVA Fatorial</a></li>
+<li class="chapter" data-level="8.25" data-path="anova.html"><a href="anova.html#execução-no-r-9"><i class="fa fa-check"></i><b>8.25</b> Execução no R</a></li>
+<li class="chapter" data-level="8.26" data-path="anova.html"><a href="anova.html#execução-no-jasp-9"><i class="fa fa-check"></i><b>8.26</b> Execução no JASP</a></li>
+<li class="chapter" data-level="8.27" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-7"><i class="fa fa-check"></i><b>8.27</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="8.28" data-path="anova.html"><a href="anova.html#resumo-7"><i class="fa fa-check"></i><b>8.28</b> Resumo</a></li>
+<li class="chapter" data-level="8.29" data-path="anova.html"><a href="anova.html#post-hoc-2"><i class="fa fa-check"></i><b>8.29</b> Post hoc</a></li>
+<li class="chapter" data-level="8.30" data-path="anova.html"><a href="anova.html#execução-no-jasp-10"><i class="fa fa-check"></i><b>8.30</b> Execução no JASP</a></li>
+<li class="chapter" data-level="8.31" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-8"><i class="fa fa-check"></i><b>8.31</b> Escrita dos resultados</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html"><i class="fa fa-check"></i><b>9</b> ANOVA de medidas repetidas</a><ul>
+<li class="chapter" data-level="9.1" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pesquisa-5"><i class="fa fa-check"></i><b>9.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="9.2" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#execução-no-r-10"><i class="fa fa-check"></i><b>9.2</b> Execução no R</a></li>
+<li class="chapter" data-level="9.3" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#tamanho-do-efeito-4"><i class="fa fa-check"></i><b>9.3</b> Tamanho do efeito</a></li>
+<li class="chapter" data-level="9.4" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#execução-no-jasp-11"><i class="fa fa-check"></i><b>9.4</b> Execução no JASP</a></li>
+<li class="chapter" data-level="9.5" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#escrita-dos-resultados-9"><i class="fa fa-check"></i><b>9.5</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="9.6" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#resumo-8"><i class="fa fa-check"></i><b>9.6</b> Resumo</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html"><i class="fa fa-check"></i><b>10</b> Modelo linear misto</a><ul>
+<li class="chapter" data-level="10.1" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#pesquisa-6"><i class="fa fa-check"></i><b>10.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="10.2" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#execução-no-r-11"><i class="fa fa-check"></i><b>10.2</b> execução no R</a></li>
+<li class="chapter" data-level="10.3" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#execução-no-jasp-12"><i class="fa fa-check"></i><b>10.3</b> Execução no JASP</a></li>
+<li class="chapter" data-level="10.4" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#escrita-dos-resultados-10"><i class="fa fa-check"></i><b>10.4</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="10.5" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#resumo-9"><i class="fa fa-check"></i><b>10.5</b> Resumo</a></li>
+<li class="chapter" data-level="10.6" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#pesquisas-adicionais-3"><i class="fa fa-check"></i><b>10.6</b> Pesquisas adicionais</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="correlação.html"><a href="correlação.html"><i class="fa fa-check"></i><b>11</b> Correlação</a><ul>
+<li class="chapter" data-level="11.1" data-path="correlação.html"><a href="correlação.html#pesquisa-7"><i class="fa fa-check"></i><b>11.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="11.2" data-path="correlação.html"><a href="correlação.html#execução-no-r-12"><i class="fa fa-check"></i><b>11.2</b> Execução no R</a></li>
+<li class="chapter" data-level="11.3" data-path="correlação.html"><a href="correlação.html#execução-no-jasp-13"><i class="fa fa-check"></i><b>11.3</b> Execução no JASP</a></li>
+<li class="chapter" data-level="11.4" data-path="correlação.html"><a href="correlação.html#escrita-dos-resultados-11"><i class="fa fa-check"></i><b>11.4</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="11.5" data-path="correlação.html"><a href="correlação.html#resumo-10"><i class="fa fa-check"></i><b>11.5</b> Resumo</a></li>
+<li class="chapter" data-level="11.6" data-path="correlação.html"><a href="correlação.html#pesquisas-adicionais-4"><i class="fa fa-check"></i><b>11.6</b> Pesquisas adicionais</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>12</b> Regressão linear simples</a><ul>
+<li class="chapter" data-level="12.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#glossário-1"><i class="fa fa-check"></i><b>12.1</b> Glossário</a></li>
+<li class="chapter" data-level="12.2" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#breve-explicação-conceitual"><i class="fa fa-check"></i><b>12.2</b> Breve explicação conceitual</a></li>
+<li class="chapter" data-level="12.3" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisa-8"><i class="fa fa-check"></i><b>12.3</b> Pesquisa</a></li>
+<li class="chapter" data-level="12.4" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-r-13"><i class="fa fa-check"></i><b>12.4</b> Execução no R</a></li>
+<li class="chapter" data-level="12.5" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-jasp-14"><i class="fa fa-check"></i><b>12.5</b> Execução no JASP</a></li>
+<li class="chapter" data-level="12.6" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#escrita-dos-resultados-12"><i class="fa fa-check"></i><b>12.6</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="12.7" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#resumo-11"><i class="fa fa-check"></i><b>12.7</b> Resumo</a></li>
+<li class="chapter" data-level="12.8" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisas-adicionais-5"><i class="fa fa-check"></i><b>12.8</b> Pesquisas adicionais</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html"><i class="fa fa-check"></i><b>13</b> Regressão linear múltipla</a><ul>
+<li class="chapter" data-level="13.1" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisa-9"><i class="fa fa-check"></i><b>13.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="13.2" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-r-14"><i class="fa fa-check"></i><b>13.2</b> Execução no R</a></li>
+<li class="chapter" data-level="13.3" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-jasp-15"><i class="fa fa-check"></i><b>13.3</b> Execução no JASP</a></li>
+<li class="chapter" data-level="13.4" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#escrita-dos-resultados-13"><i class="fa fa-check"></i><b>13.4</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="13.5" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#técnicas-automáticas-de-seleção-de-variáveis"><i class="fa fa-check"></i><b>13.5</b> Técnicas automáticas de seleção de variáveis</a></li>
+<li class="chapter" data-level="13.6" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#resumo-12"><i class="fa fa-check"></i><b>13.6</b> Resumo</a></li>
+<li class="chapter" data-level="13.7" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisas-adicionais-6"><i class="fa fa-check"></i><b>13.7</b> Pesquisas adicionais</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="http://www.puc-rio.br/" target="blank">PUC-Rio</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Métodos quantitativos em Psicologia com R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tidyverse" class="section level1">
+<h1><span class="header-section-number">Cap. 4</span> Tidyverse</h1>
+<p>O Tidyverse é um ambiente de pacotes que, além de funcionarem de maneira totalmente integrada, permitem que as linhas de código que fazemos para programar no R se tornem mais intuitivas e mais próximas à forma que temos de pensar, em que primeiro vem o sujeito e depois o verbo. Será possível notar que durante este livro, frequentemente eu vou utilizar uma função de ligação (o pipe, <code>%&gt;%</code>) em vez da estrutura do R-Base, que será usada apenas minoritariamente aqui. Ao instalar o tidyverse <code>install.package("tidyvese")</code>, os pacotes abaixo ficam disponíveis no R.</p>
+<p><img src="img/tidyverse_website.png" /></p>
+<p>No entanto, nem tudo são flores. Apesar do R e seus pacotes oferecem excelentes ferramentas para análise de dados, algumas condições descritivas são demasiadamente custosas. Por exemplo, enquanto realizar algumas tabelas e gráficos no Excel é tremendamente fácil, as vezes o R exige diversas linhas de código. Nesse sentido, na relação entre dificuldade e complexidade, o R sai na frente em tarefas complexas (como exemplo, estimar os coeficientes de um modelo não-linear), mas talvez perca em tarefas fáceis (por exemplo, gerar uma tabela de contingência). A Figura a seguir apresenta esta relação.</p>
+<p><img src="img/excel_r.PNG" /></p>
+<p>Uma outra barreira muito importante que o R traz é que ele é uma <u>linguagem de programação</u> e isso gera uma dificuldade a mais na docência de estatística, especialmente aos alunos de graduação. Tendo em vista que é muito esperado que estes estudantes tenham algum receio <em>a priori</em> em relação à estatística, apresentar o R traria ainda uma outra dificuldade, que é entender e aprender a programar. Em situações como esta, talvez o ideal seja começar motivando o estudante a entender como a estatística é uma ferramenta importante para tomar decisões em relação às pergutas de pesquisa para, só depois e lentamente, apresentar aspectos matemáticos e computacionais.</p>
+<div id="verbos-do-dplyr" class="section level2">
+<h2><span class="header-section-number">4.1</span> Verbos do dplyr</h2>
+<p>O dplyr funciona de maneira muito intuitiva. O padrão original do R considera que as operações são realizadas a partir de uma lógica do tipo <code>verbo(sujeito, complemento)</code> enquanto o ambiente tidyverse opta por <code>sujeito %&gt;% verbo(complemento)</code>, tornando-se o ato de programar mais natural e associado à maneira que organizamos as ideias.</p>
+<p>Os verbos principais do pacote estão listados na tabela a seguir e as sintaxes deixadas no decorrer deste capítulo (e do livro) permitem uma melhor apreensão das funcionalidades. É importante lembrar que, em alguns momentos, em função da praticidade computacional, algumas sintaxes vão contar com o formato base do R.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Verbo</th>
+<th align="center">Ação</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">glimpse</td>
+<td align="center">Inspeciona os dados</td>
+</tr>
+<tr class="even">
+<td align="left">count</td>
+<td align="center">Conta os níveis de uma variável</td>
+</tr>
+<tr class="odd">
+<td align="left">select</td>
+<td align="center">seleciona uma variável específica</td>
+</tr>
+<tr class="even">
+<td align="left">filter</td>
+<td align="center">Filtra os resultados por um nível específico de uma variável</td>
+</tr>
+<tr class="odd">
+<td align="left">group_by</td>
+<td align="center">Agrupa os resultados por níveis de uma variávei específica</td>
+</tr>
+<tr class="even">
+<td align="left">summarise</td>
+<td align="center">Apresenta sumários (com medidas estatísticas)</td>
+</tr>
+<tr class="odd">
+<td align="left">mutate</td>
+<td align="center">Cria novas variáveis ou altera as existentes</td>
+</tr>
+<tr class="even">
+<td align="left">arrange</td>
+<td align="center">Organiza a apresentação dos resultados</td>
+</tr>
+<tr class="odd">
+<td align="left">left_join</td>
+<td align="center">Junta bases ou colunas</td>
+</tr>
+<tr class="even">
+<td align="left">pivot_longer</td>
+<td align="center">Transforma uma base larga em longa</td>
+</tr>
+<tr class="odd">
+<td align="left">pivot_wider</td>
+<td align="center">Transforma uma base longa em larga</td>
+</tr>
+</tbody>
+</table>
+<p>É também importante ficar atento às atualizações do dplyr e do sistema tidyverse como um todo. Eventualmente, mudanças podem ocorrer e impossibilitar (ou dificultar) a reprodução de rotinas antigas. O <a href="https://www.tidyverse.org/">site</a> é o local ideal para acompanhar as atualizações.</p>
+</div>
+<div id="o-jasp" class="section level2">
+<h2><span class="header-section-number">4.2</span> O JASP</h2>
+<p>O JASP é um programa gratuito, com uma interface <em>point and click</em> e altamente versátil para a maioria das análises realizadas. A versão utilizada neste livro é a 0.14.1. O JASP foi desenvolvido por um time de psicólogos e estatísticos liderados pelo Prof. Eric-Jan Wagenmakers, da Universidade de Amsterdam. Isso talvez explique o motivo pelo qual o JASP vem sendo cada vez mais utilizado em análises de dados psicológicos, bem como na docência de matérias relacionadas a métodos estatísticos.</p>
+<p><img src="img/cap_jasp_interface.PNG" /></p>
+<p>Quando se instala o JASP, se instala também o R. Todas as ações feitas no JASP se transformam em linhas de código que são enviadas ao R e, em seguida, retornam pro JASP e são apresentadas na tela. Isso ocorre instantanemanete e não há nenhum incômodo para o usuário. Na maioria das vezes, computadores pessoais rodam o JASP sem grandes problemas.</p>
+<p><img src="img/capa_r_jasp.PNG" /></p>
+<p>O idioma oficial do JASP é o inglês e para fazer qualquer análise, é necessário carregar um arquivo de dados. Isso pode ser feito no símbolo das três linhas, localizado na parte superior à esquerda.</p>
+<p><img src="img/cap_jasp_abrir.PNG" /></p>
+<p>A opção <code>open</code> permite que se acesse algum diretório específico ou se baixe os dados diretos da plataforma <em>Open Science Framework (OSF)</em>. Esta versão do JASP aceita, majoritariamente, arquivos em CSV, que indica que os dados são separados por vírgulas.</p>
+<p><img src="img/cap_jasp_abrir2.PNG" /></p>
+<p>Ao abrir algum arquivo, o JASP irá apresentar os dados no centro do programa e as opções de análise na parte superior. Tenha atenção que essas telas podem variar de versão para versão.</p>
+<p>Em relação aos dados, quase sempre o formato utilizado é o largo. Neste formato, cada coluna representa uma variável, cada linha representa um caso e cada célula (ou vetor) apresenta um valor específico.</p>
+<p><img src="img/cap_jasp_dados.PNG" />
+O JASP adota uma simbologia específica para definir a escala (ou nível) de medida das variáveis. Isso pode ser visto ao lado dos nomes das variáveis. Para alterar o nível, basta clicar sobre o símbolo.</p>
+<p><img src="img/cap_jasp_tipo_de_dados.PNG" /></p>
+<p>É possível também alterar valores e rótulos das variáveis. Para isso, basta clicar no centro da variável.</p>
+<p><img src="img/cap_jasp_alterar_valores.PNG" /></p>
+<p>Na parte superior, o JASP oferece as análises possíveis. As opções podem variar de versão para versão, mas as principais tendem a serem as seguintes.</p>
+<p><img src="img/cap_jasp_features.PNG" /></p>
+<p>É possível adicionar módulos e complementos no JASP. Essas adições funcionam de maneira análoga aos pacotes do R. Para fazer isso, será necessário clicar na cruz azul ao lado direito.</p>
+<p><img src="img/cap_jasp_adicionar_modulos.PNG" /></p>
+<p>Uma barra ao lado direito irá ser exibida. Qualquer opção pode ser selecionada e, ao fazer isso, novos botões irão aparecer na parte superior do programa.</p>
+<p><img src="img/cap_jasp_adicionar_modulos2.PNG" /></p>
+<p>Finalmente, para salvar o trabalho realizado em uma sessão, será necessário clicar na símbolo de três linhas azuis. Por padrão, o formato do arquivo ser.a *.jasp.</p>
+<p><img src="img/cap_jasp_salvar.PNG" /></p>
+</div>
+<div id="resumo-1" class="section level2">
+<h2><span class="header-section-number">4.3</span> Resumo</h2>
+<ol style="list-style-type: decimal">
+<li>Este livro irá apresentar todas as rotinas utilizadas em estatística a partir de linhas de código do R.<br />
+</li>
+<li>O ambiente de programação <code>tidyverse</code> servirá como base principal para programação.</li>
+<li>Entre as principais vantagens do R, estão a gratuidade de seu acesso e uso</li>
+<li>Entre as principais desvantagens do R, estão a necessidade de programação e algumas análises descritivas</li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="programas-estatísticos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="estatística-descritiva.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/02-programas_estatisticos.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["gitbook-demo.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

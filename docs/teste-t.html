@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2021-01-26" />
+<meta name="date" content="2021-01-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -143,7 +143,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#jasp"><i class="fa fa-check"></i><b>1.7</b> JASP</a></li>
 <li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#outros-recursos"><i class="fa fa-check"></i><b>1.8</b> Outros recursos</a></li>
 <li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#capa"><i class="fa fa-check"></i><b>1.9</b> Capa</a></li>
-<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#agradecimentos-e-revisões-técnicas"><i class="fa fa-check"></i><b>1.10</b> Agradecimentos e revisões técnicas</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#versão-do-livro"><i class="fa fa-check"></i><b>1.10</b> Versão do livro</a></li>
+<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#agradecimentos-e-revisões-técnicas"><i class="fa fa-check"></i><b>1.11</b> Agradecimentos e revisões técnicas</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html"><i class="fa fa-check"></i><b>2</b> Aspectos gerais</a><ul>
 <li class="chapter" data-level="2.1" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#os-objetivos-de-uma-pesquisa"><i class="fa fa-check"></i><b>2.1</b> Os objetivos de uma pesquisa</a></li>
@@ -165,10 +166,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#principais-áreas-da-estatística"><i class="fa fa-check"></i><b>2.4</b> Principais áreas da estatística</a></li>
 <li class="chapter" data-level="2.5" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#resumo"><i class="fa fa-check"></i><b>2.5</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="o-r-e-o-tidyverse.html"><a href="o-r-e-o-tidyverse.html"><i class="fa fa-check"></i><b>3</b> O R e o Tidyverse</a><ul>
-<li class="chapter" data-level="3.1" data-path="o-r-e-o-tidyverse.html"><a href="o-r-e-o-tidyverse.html#tidyverse"><i class="fa fa-check"></i><b>3.1</b> Tidyverse</a></li>
-<li class="chapter" data-level="3.2" data-path="o-r-e-o-tidyverse.html"><a href="o-r-e-o-tidyverse.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>3.2</b> Verbos do dplyr</a></li>
-<li class="chapter" data-level="3.3" data-path="o-r-e-o-tidyverse.html"><a href="o-r-e-o-tidyverse.html#resumo-1"><i class="fa fa-check"></i><b>3.3</b> Resumo</a></li>
+<li class="chapter" data-level="3" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html"><i class="fa fa-check"></i><b>3</b> Programas estatísticos</a><ul>
+<li class="chapter" data-level="3.1" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-r"><i class="fa fa-check"></i><b>3.1</b> O R</a></li>
+<li class="chapter" data-level="3.2" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#tidyverse"><i class="fa fa-check"></i><b>3.2</b> Tidyverse</a></li>
+<li class="chapter" data-level="3.3" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>3.3</b> Verbos do dplyr</a></li>
+<li class="chapter" data-level="3.4" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-jasp"><i class="fa fa-check"></i><b>3.4</b> O JASP</a></li>
+<li class="chapter" data-level="3.5" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#resumo-1"><i class="fa fa-check"></i><b>3.5</b> Resumo</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html"><i class="fa fa-check"></i><b>4</b> Estatística Descritiva</a><ul>
 <li class="chapter" data-level="4.1" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#tabelas"><i class="fa fa-check"></i><b>4.1</b> Tabelas</a></li>
@@ -386,15 +389,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="execução-no-r-2" class="section level2">
 <h2><span class="header-section-number">6.2</span> Execução no R</h2>
 <p>No ambiente R, a primeira etapa importante é assegurar que a base de dados tenha o resultado relacionado às competências sociais e emocionais das crianças. Esse valor será computado pela soma de todos os itens da escala. No dplyr, isso é feito pela integração da função <code>mutate</code> com a <code>select</code> e será executado às crianças com 12 (<code>asq_12months</code>) e 18 meses (<code>asq_18months</code>).</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="teste-t.html#cb49-1"></a>asq_12months &lt;-<span class="st"> </span>asq_12months <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb49-2"><a href="teste-t.html#cb49-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total_12 =</span> <span class="kw">rowSums</span>(<span class="kw">select</span>(., <span class="kw">starts_with</span>(<span class="st">&quot;q_&quot;</span>)), <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</span>
-<span id="cb49-3"><a href="teste-t.html#cb49-3"></a></span>
-<span id="cb49-4"><a href="teste-t.html#cb49-4"></a>asq_18months &lt;-<span class="st"> </span>asq_18months <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb49-5"><a href="teste-t.html#cb49-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total_18 =</span> <span class="kw">rowSums</span>(<span class="kw">select</span>(., <span class="kw">starts_with</span>(<span class="st">&quot;q_&quot;</span>)), <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="teste-t.html#cb28-1"></a>asq_12months &lt;-<span class="st"> </span>asq_12months <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb28-2"><a href="teste-t.html#cb28-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total_12 =</span> <span class="kw">rowSums</span>(<span class="kw">select</span>(., <span class="kw">starts_with</span>(<span class="st">&quot;q_&quot;</span>)), <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</span>
+<span id="cb28-3"><a href="teste-t.html#cb28-3"></a></span>
+<span id="cb28-4"><a href="teste-t.html#cb28-4"></a>asq_18months &lt;-<span class="st"> </span>asq_18months <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb28-5"><a href="teste-t.html#cb28-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total_18 =</span> <span class="kw">rowSums</span>(<span class="kw">select</span>(., <span class="kw">starts_with</span>(<span class="st">&quot;q_&quot;</span>)), <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</span></code></pre></div>
 <p>Em seguida, <mark>iremos começar pelos 12 meses</mark>. O processo de testagem da hipótese é feito preliminarmente de maneira tabular e gráfica e, em seguida, pela implementação do teste específico e seus pressupostos. A tabela a seguir apresenta as principais características estatísticas dos resultados:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="teste-t.html#cb50-1"></a>asq_12months <span class="op">%&gt;%</span></span>
-<span id="cb50-2"><a href="teste-t.html#cb50-2"></a><span class="st">  </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb50-3"><a href="teste-t.html#cb50-3"></a><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(total_<span class="dv">12</span>), <span class="kw">lst</span>(<span class="dt">n=</span><span class="op">~</span><span class="kw">n</span>(),<span class="dt">media=</span>mean, <span class="dt">DP=</span>sd)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="teste-t.html#cb29-1"></a>asq_12months <span class="op">%&gt;%</span></span>
+<span id="cb29-2"><a href="teste-t.html#cb29-2"></a><span class="st">  </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb29-3"><a href="teste-t.html#cb29-3"></a><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(total_<span class="dv">12</span>), <span class="kw">lst</span>(<span class="dt">n=</span><span class="op">~</span><span class="kw">n</span>(),<span class="dt">media=</span>mean, <span class="dt">DP=</span>sd)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
 <table style="width:39%;">
 <colgroup>
 <col width="8%" />
@@ -427,20 +430,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>Em seguida, a realização de um gráfico é bastante informativa para apresentação dos resultados. Apesar desse recurso não ser decisivo na tomada de decisão, ele auxilia a visualilzação da distribuição da variável que temos interesse, bem como oferece um entendimento inicial dos resultados.</p>
 <p>Uma vez que a VI é tratada como discreta e a VD é continua, tanto o gráfico de colunas/barras como o histograma/densidade são úteis. O gráfico de barras tem uma vantagem de ser possível adicionar barras de erros, que já apresentam uma primeira evidência inferencial. Por sua vez, histogramas e gráficos de densidade descrevem bem o formato da distribuição de dados.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="teste-t.html#cb51-1"></a>gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(</span>
-<span id="cb51-2"><a href="teste-t.html#cb51-2"></a>  <span class="co">#plot 1 </span></span>
-<span id="cb51-3"><a href="teste-t.html#cb51-3"></a>  <span class="kw">ggplot</span>(asq_12months, <span class="kw">aes</span>(<span class="dt">x =</span> sex, <span class="dt">y =</span> total_<span class="dv">12</span>, <span class="dt">fill =</span> sex)) <span class="op">+</span></span>
-<span id="cb51-4"><a href="teste-t.html#cb51-4"></a><span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">fun =</span> mean) <span class="op">+</span></span>
-<span id="cb51-5"><a href="teste-t.html#cb51-5"></a><span class="st">    </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="dt">width =</span> <span class="fl">.2</span>),</span>
-<span id="cb51-6"><a href="teste-t.html#cb51-6"></a>  <span class="co">#plot 2</span></span>
-<span id="cb51-7"><a href="teste-t.html#cb51-7"></a>    <span class="kw">ggplot</span>(asq_12months, <span class="kw">aes</span>(<span class="dt">x =</span> total_<span class="dv">12</span>, <span class="dt">fill =</span> sex)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb51-8"><a href="teste-t.html#cb51-8"></a><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">color =</span> <span class="ot">NA</span>, <span class="dt">alpha=</span>.<span class="dv">6</span>)</span>
-<span id="cb51-9"><a href="teste-t.html#cb51-9"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="teste-t.html#cb30-1"></a>gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(</span>
+<span id="cb30-2"><a href="teste-t.html#cb30-2"></a>  <span class="co">#plot 1 </span></span>
+<span id="cb30-3"><a href="teste-t.html#cb30-3"></a>  <span class="kw">ggplot</span>(asq_12months, <span class="kw">aes</span>(<span class="dt">x =</span> sex, <span class="dt">y =</span> total_<span class="dv">12</span>, <span class="dt">fill =</span> sex)) <span class="op">+</span></span>
+<span id="cb30-4"><a href="teste-t.html#cb30-4"></a><span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">fun =</span> mean) <span class="op">+</span></span>
+<span id="cb30-5"><a href="teste-t.html#cb30-5"></a><span class="st">    </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="dt">width =</span> <span class="fl">.2</span>),</span>
+<span id="cb30-6"><a href="teste-t.html#cb30-6"></a>  <span class="co">#plot 2</span></span>
+<span id="cb30-7"><a href="teste-t.html#cb30-7"></a>    <span class="kw">ggplot</span>(asq_12months, <span class="kw">aes</span>(<span class="dt">x =</span> total_<span class="dv">12</span>, <span class="dt">fill =</span> sex)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb30-8"><a href="teste-t.html#cb30-8"></a><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">color =</span> <span class="ot">NA</span>, <span class="dt">alpha=</span>.<span class="dv">6</span>)</span>
+<span id="cb30-9"><a href="teste-t.html#cb30-9"></a>)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-41-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Feito isso, o próximo passo é a testagem formal da hipótese. A função <code>t.test</code> é nativa do R o vetor <code>t_test_12_m</code> será criado.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="teste-t.html#cb52-1"></a>t_test_12m &lt;-<span class="st"> </span><span class="kw">t.test</span>(total_<span class="dv">12</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">var.equal =</span> T, <span class="dt">data =</span> asq_12months)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="teste-t.html#cb31-1"></a>t_test_12m &lt;-<span class="st"> </span><span class="kw">t.test</span>(total_<span class="dv">12</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">var.equal =</span> T, <span class="dt">data =</span> asq_12months)</span></code></pre></div>
 <p>A tabela a seguir apresenta os resultados.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="teste-t.html#cb53-1"></a>t_test_12m <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>(., <span class="dt">split.table =</span> <span class="ot">Inf</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="teste-t.html#cb32-1"></a>t_test_12m <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>(., <span class="dt">split.table =</span> <span class="ot">Inf</span>)</span></code></pre></div>
 <table>
 <caption>Two Sample t-test: <code>total_12</code> by <code>sex</code></caption>
 <colgroup>
@@ -478,15 +481,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><mark> Normalidade</mark>: O Teste T de duas amostras independentes assume que os resultados da variável de interesse se distribuam normalmente. É importante relembrar que o Teste T é um caso especial de um modelo de regressão, o que significa que a normalidade se refere aos <u>resíduos</u> do modelo. Neste caso, isso pode ser aproximado testando a distribuição marginal dos resultados de ambos os grupos.</p>
 <p>A normalidade pode ser avaliada graficamente por QQ plots e por testes específicos, como o Shapiro-wilk, Anderson-Darling e Jarque Bera.</p>
 <p>O QQ plot é um gráfico que reúne a distribuição empírica ordenada dos quantis contra os quantis da distribuição teórica (aqui, normal). Se os dados e a linha diagonal se soprepuserem, isso é uma evidencia de que a distribuição empírica é a mesma da distribuição teórica. Caso haja discrepância, isso aponta para desvio da normalidade.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="teste-t.html#cb54-1"></a><span class="kw">ggplot</span>(asq_12months, <span class="kw">aes</span>(<span class="dt">sample =</span> total_<span class="dv">12</span>)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb54-2"><a href="teste-t.html#cb54-2"></a><span class="st">  </span><span class="kw">stat_qq</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb54-3"><a href="teste-t.html#cb54-3"></a><span class="st">  </span><span class="kw">stat_qq_line</span>() <span class="op">+</span></span>
-<span id="cb54-4"><a href="teste-t.html#cb54-4"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>sex)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="teste-t.html#cb33-1"></a><span class="kw">ggplot</span>(asq_12months, <span class="kw">aes</span>(<span class="dt">sample =</span> total_<span class="dv">12</span>)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb33-2"><a href="teste-t.html#cb33-2"></a><span class="st">  </span><span class="kw">stat_qq</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb33-3"><a href="teste-t.html#cb33-3"></a><span class="st">  </span><span class="kw">stat_qq_line</span>() <span class="op">+</span></span>
+<span id="cb33-4"><a href="teste-t.html#cb33-4"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>sex)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-44-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Apesar do gráfico já ter sido bastante claro e sugerir fortemente desvio da normalidade em ambos os grupos, o teste formal é importante. O Shapiro-wilk costuma ser utilizado neste caso, uma vez que ele reúne diferentes características positivas no balanço entre erro do tipo 1 e 2 <span class="citation">(Yap &amp; Sim, <a href="#ref-Yap2011" role="doc-biblioref">2011</a>)</span>. A hipótese nula desse teste assume que a variável de interesse tem distribuição (aproximadamente) normal. Assim, rejeitar a hipótese nula sugere que esse princípio foi violado e, com isso, o Teste T pode gerar resultados distorcidos.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="teste-t.html#cb55-1"></a>asq_12months <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb55-2"><a href="teste-t.html#cb55-2"></a><span class="st">  </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb55-3"><a href="teste-t.html#cb55-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">shapiro =</span> <span class="kw">shapiro.test</span>(total_<span class="dv">12</span>)<span class="op">$</span>p.value) <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="teste-t.html#cb34-1"></a>asq_12months <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb34-2"><a href="teste-t.html#cb34-2"></a><span class="st">  </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb34-3"><a href="teste-t.html#cb34-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">shapiro =</span> <span class="kw">shapiro.test</span>(total_<span class="dv">12</span>)<span class="op">$</span>p.value) <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
 <table style="width:25%;">
 <colgroup>
 <col width="8%" />
@@ -511,7 +514,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>De maneira convergente ao gráfico, o Shapiro-wilk também apontou que o princípio da normalidade foi violado.</p>
 <p><mark>Homocedasticidade</mark>: A homogeneidade ou igualdade das variâncias pode ser testada visualmente, pelo teste Breusch-pagan, Levene ou Bartlett. De maneira análoga ao Shapiro-wilk, estes últimos assumem como hipótese nula a homogeneidade das variâncias. Consequemente, a rejeição desse pressuposto pode também trazer resultados distorcidos ao resultado do Teste T. Diferentemente do pressuposto da normalidade, o pressuposto da homocedasticidade foi preservado, tal como apresentado abaixo:</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="teste-t.html#cb56-1"></a>car<span class="op">::</span><span class="kw">leveneTest</span>(total_<span class="dv">12</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_12months) <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="teste-t.html#cb35-1"></a>car<span class="op">::</span><span class="kw">leveneTest</span>(total_<span class="dv">12</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_12months) <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
 <table style="width:54%;">
 <caption>Levene’s Test for Homogeneity of Variance (center = median)</caption>
 <colgroup>
@@ -546,9 +549,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Após testar estes pressupostos, é importante avaliar o quanto a interpretação originalmente deve ser mantida. Existem diferentes recomendações sobre o que fazer quando os pressupostos são violados. Entre elas, transformar a distribuição da variável de interesse, usar versões robustas do Teste T, usar testes não-paramétricos com objetivos próximos ao Teste T ou eleger algum modelo estatístico mais adequado à distribuição empírica obtida pelos dados. Parte dessas recomendações serão demonstradas a seguir.</p>
 <hr />
 <p>Com este teste inicial concluído, é também possível verificar se existem diferenças em idades mais avançadas, <u>tal como 18 meses</u>. A sintaxe é customizável e torna-se fácil testar a hipótese da diferença apenas modificando a hipótese e a sintaxe. A tabela a seguir apresenta as principais medidas estatísticas:</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="teste-t.html#cb57-1"></a>asq_18months <span class="op">%&gt;%</span></span>
-<span id="cb57-2"><a href="teste-t.html#cb57-2"></a><span class="st">  </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb57-3"><a href="teste-t.html#cb57-3"></a><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(total_<span class="dv">18</span>), <span class="kw">lst</span>(<span class="dt">n=</span><span class="op">~</span><span class="kw">n</span>(),<span class="dt">media=</span>mean, <span class="dt">DP=</span>sd)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="teste-t.html#cb36-1"></a>asq_18months <span class="op">%&gt;%</span></span>
+<span id="cb36-2"><a href="teste-t.html#cb36-2"></a><span class="st">  </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb36-3"><a href="teste-t.html#cb36-3"></a><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(total_<span class="dv">18</span>), <span class="kw">lst</span>(<span class="dt">n=</span><span class="op">~</span><span class="kw">n</span>(),<span class="dt">media=</span>mean, <span class="dt">DP=</span>sd)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
 <table style="width:40%;">
 <colgroup>
 <col width="8%" />
@@ -580,17 +583,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Por sua vez, o gráfico a seguir traz o padrão dos resultados aos 18 meses.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="teste-t.html#cb58-1"></a>gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(</span>
-<span id="cb58-2"><a href="teste-t.html#cb58-2"></a>  <span class="kw">ggplot</span>(asq_18months, <span class="kw">aes</span>(<span class="dt">x =</span> sex, <span class="dt">y =</span> total_<span class="dv">18</span>, <span class="dt">fill =</span> sex)) <span class="op">+</span></span>
-<span id="cb58-3"><a href="teste-t.html#cb58-3"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">fun=</span>mean) <span class="op">+</span></span>
-<span id="cb58-4"><a href="teste-t.html#cb58-4"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="dt">width =</span> <span class="fl">.2</span>),</span>
-<span id="cb58-5"><a href="teste-t.html#cb58-5"></a></span>
-<span id="cb58-6"><a href="teste-t.html#cb58-6"></a>  <span class="kw">ggplot</span>(asq_18months, <span class="kw">aes</span>(<span class="dt">x =</span> total_<span class="dv">18</span>, <span class="dt">fill =</span> sex)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb58-7"><a href="teste-t.html#cb58-7"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">color =</span> <span class="ot">NA</span>, <span class="dt">alpha=</span>.<span class="dv">6</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="teste-t.html#cb37-1"></a>gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(</span>
+<span id="cb37-2"><a href="teste-t.html#cb37-2"></a>  <span class="kw">ggplot</span>(asq_18months, <span class="kw">aes</span>(<span class="dt">x =</span> sex, <span class="dt">y =</span> total_<span class="dv">18</span>, <span class="dt">fill =</span> sex)) <span class="op">+</span></span>
+<span id="cb37-3"><a href="teste-t.html#cb37-3"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">fun=</span>mean) <span class="op">+</span></span>
+<span id="cb37-4"><a href="teste-t.html#cb37-4"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="dt">width =</span> <span class="fl">.2</span>),</span>
+<span id="cb37-5"><a href="teste-t.html#cb37-5"></a></span>
+<span id="cb37-6"><a href="teste-t.html#cb37-6"></a>  <span class="kw">ggplot</span>(asq_18months, <span class="kw">aes</span>(<span class="dt">x =</span> total_<span class="dv">18</span>, <span class="dt">fill =</span> sex)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb37-7"><a href="teste-t.html#cb37-7"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">color =</span> <span class="ot">NA</span>, <span class="dt">alpha=</span>.<span class="dv">6</span>))</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-48-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Tal como feito anteriormente, a realização do Teste T e a verificação de seus pressupostos devem ser realizadas. Em relação aos resultados do Teste T, eles indicaram que ambos os grupos tem resultados médios significativamente diferentes. Meninos apresentam resultados mais elevados (M = 27.53, DP = 21.81) do que meninas (M = 24.95, DP = 21.81).</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="teste-t.html#cb59-1"></a>t_test_18m &lt;-<span class="st"> </span><span class="kw">t.test</span>(total_<span class="dv">18</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">var.equal =</span> T,<span class="dt">data =</span> asq_18months)</span>
-<span id="cb59-2"><a href="teste-t.html#cb59-2"></a>t_test_18m <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>(., <span class="dt">split.table =</span> <span class="ot">Inf</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="teste-t.html#cb38-1"></a>t_test_18m &lt;-<span class="st"> </span><span class="kw">t.test</span>(total_<span class="dv">18</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">var.equal =</span> T,<span class="dt">data =</span> asq_18months)</span>
+<span id="cb38-2"><a href="teste-t.html#cb38-2"></a>t_test_18m <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>(., <span class="dt">split.table =</span> <span class="ot">Inf</span>)</span></code></pre></div>
 <table>
 <caption>Two Sample t-test: <code>total_18</code> by <code>sex</code></caption>
 <colgroup>
@@ -658,7 +661,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Para executar este teste no R, é possível contar com o pacote <code>effsize</code>, tal como demonstrado abaixo:</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="teste-t.html#cb60-1"></a>effsize<span class="op">::</span><span class="kw">cohen.d</span>(total_<span class="dv">18</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_18months)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="teste-t.html#cb39-1"></a>effsize<span class="op">::</span><span class="kw">cohen.d</span>(total_<span class="dv">18</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_18months)</span></code></pre></div>
 <pre><code>## 
 ## Cohen&#39;s d
 ## 
@@ -724,7 +727,7 @@ Os dados foram analisados por um Teste T de amostras independentes para investig
 <h3><span class="header-section-number">6.6.1</span> Execução no R</h3>
 <p>Para executar o O Welch-test no R, deve-se alterar a sintaxe, estipulando <code>var.equal = F</code> na sintaxe previamente exposta. Na verdade, o R executa o Welch test de maneira automática quando faz o Teste T. Dessa maneira, ao se remover este argumento por completo, o Teste T robusto será calculado. Existem outras soluções disponíveis no pacote <code>WRS</code>, que não serão implementadas neste livro.</p>
 <p>O Welch-test será calculado considerando as crianças com <u>18 meses</u>.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="teste-t.html#cb62-1"></a><span class="kw">t.test</span>(total_<span class="dv">18</span> <span class="op">~</span><span class="st"> </span>sex,<span class="dt">data =</span> asq_18months) <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>(., <span class="dt">split.table =</span> <span class="ot">Inf</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="teste-t.html#cb41-1"></a><span class="kw">t.test</span>(total_<span class="dv">18</span> <span class="op">~</span><span class="st"> </span>sex,<span class="dt">data =</span> asq_18months) <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>(., <span class="dt">split.table =</span> <span class="ot">Inf</span>)</span></code></pre></div>
 <table>
 <caption>Welch Two Sample t-test: <code>total_18</code> by <code>sex</code></caption>
 <colgroup>
@@ -772,8 +775,8 @@ Os dados foram analisados por um Teste T de amostras independentes para investig
 <div id="execução-no-r-4" class="section level3">
 <h3><span class="header-section-number">6.7.1</span> Execução No R</h3>
 <p>A sintaxe a seguir apresenta os resultados utilizando a função <code>wilcox.test</code>. Repare que as conclusões estatística são virtualmente identicas às obtidas previamente, em que foi possível rejeitar a hipótese nula.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="teste-t.html#cb63-1"></a>mann_whiyney_18m &lt;-<span class="st"> </span><span class="kw">wilcox.test</span>(total_<span class="dv">18</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_18months)</span>
-<span id="cb63-2"><a href="teste-t.html#cb63-2"></a>mann_whiyney_18m <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="teste-t.html#cb42-1"></a>mann_whiyney_18m &lt;-<span class="st"> </span><span class="kw">wilcox.test</span>(total_<span class="dv">18</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_18months)</span>
+<span id="cb42-2"><a href="teste-t.html#cb42-2"></a>mann_whiyney_18m <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
 <table style="width:83%;">
 <caption>Wilcoxon rank sum test with continuity correction: <code>total_18</code> by <code>sex</code></caption>
 <colgroup>
@@ -800,7 +803,7 @@ Os dados foram analisados por um Teste T de amostras independentes para investig
 <div id="tamanho-do-efeito-2" class="section level3">
 <h3><span class="header-section-number">6.7.2</span> Tamanho do efeito</h3>
 <p>O tamanho do efeito também pode ser calculado por <span class="math inline">\(Z/\sqrt{(n)}\)</span>. O output padrão do R não oferece a informação de <code>Z</code>, mas o pacote <code>coin</code> dispõe dessa métrica.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="teste-t.html#cb64-1"></a>coin<span class="op">::</span><span class="kw">statistic</span>(coin<span class="op">::</span><span class="kw">wilcox_test</span>(total_<span class="dv">18</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_18months))</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="teste-t.html#cb43-1"></a>coin<span class="op">::</span><span class="kw">statistic</span>(coin<span class="op">::</span><span class="kw">wilcox_test</span>(total_<span class="dv">18</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_18months))</span></code></pre></div>
 <pre><code>## [1] 4.41932</code></pre>
 <p>Assim, implementando a fórmula, o tamanho do efeito seria aproximadamete <code>0.06</code>.</p>
 </div>
@@ -827,8 +830,8 @@ Os dados foram analisados pelo teste Wilcoxon-Mann-Whitney para investigar as di
 <p>Conforme alertado ao início do capítulo, o Teste T é um caso particular de um modelo de regressão que assume que a variável independente é uma dummy, ou seja, uma variável categórica com dois níveis. Isso significa que ao realizar um Teste T, o pesquisador está fazendo um modelo de regressão, mesmo que isso não lhe seja intuitivo em primeiro momento.</p>
 <p>Neste modelo, <span class="math inline">\(b_0\)</span> (intercepto) é o grupo <u>referência</u> que recebeu o valor 0. Já <span class="math inline">\(b_1\)</span> (inclinação) é a diferença entre os valores do grupo definido para o intercepto e o outro grupo, que recebeu o valor de 1 e é chamado de <u>comparação</u>. Caso isso não tenha sido explicitamente definido, ao se usar o R, será necessário codificar a variável como <u>fator</u>.</p>
 <p>O exemplo abaixo ilustra os resultados utilizando a base <code>asq_18months</code>.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="teste-t.html#cb66-1"></a><span class="kw">lm</span>(total_<span class="dv">18</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_18months) <span class="op">%&gt;%</span></span>
-<span id="cb66-2"><a href="teste-t.html#cb66-2"></a><span class="st">  </span>olsrr<span class="op">::</span><span class="kw">ols_regress</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="teste-t.html#cb45-1"></a><span class="kw">lm</span>(total_<span class="dv">18</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_18months) <span class="op">%&gt;%</span></span>
+<span id="cb45-2"><a href="teste-t.html#cb45-2"></a><span class="st">  </span>olsrr<span class="op">::</span><span class="kw">ols_regress</span>()</span></code></pre></div>
 <pre><code>##                          Model Summary                          
 ## ---------------------------------------------------------------
 ## R                       0.061       RMSE                21.117 
@@ -859,10 +862,10 @@ Os dados foram analisados pelo teste Wilcoxon-Mann-Whitney para investigar as di
 ## ----------------------------------------------------------------------------------------</code></pre>
 <p>Em função da ordem alfabética, o R atribuiu os meninos (<code>male</code>) como intercepto e, consequentemente, grupo referência. Assim, o valor de <span class="math inline">\(b_0\)</span> será o valor médio obtido pelos dos meninos, que foi de <code>27.53</code>. A inclinação <span class="math inline">\(b_1\)</span> é justamente a diferença entre os valores dos meninos e das meninas (<code>24.95-27.53</code>) e, nesse caso, <code>-2.58</code>. A estatística F é equivalente a <span class="math inline">\(t^2\)</span> do Teste T em sua versão tradicional, que assume variâncias iguais entre grupos.</p>
 <p>Agora torna-se mais intuitivo mostrar que a <u>normalidade no Teste T se refere à normalidade dos resíduos deste modelo de regressão</u>. Isso pode ser visualmente pela análise de um QQ plot, tal como a seguir.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="teste-t.html#cb68-1"></a>olsrr<span class="op">::</span><span class="kw">ols_plot_resid_qq</span>(<span class="kw">lm</span>(total_<span class="dv">18</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_18months))</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="teste-t.html#cb47-1"></a>olsrr<span class="op">::</span><span class="kw">ols_plot_resid_qq</span>(<span class="kw">lm</span>(total_<span class="dv">18</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_18months))</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-58-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Há também testes estatísticos formais, como o Shapiro-Wilk ou o Anderson-Darling. Nestes, a hipótese nula é de que os resíduos são normalmente distribuídos e idealmente não se deve rejeitá-la. Abaixo segue a execução do Anderson-Darling, uma vez que o Shapiro-wilk não lida bem mais de 500 valores residuais.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="teste-t.html#cb69-1"></a>nortest<span class="op">::</span><span class="kw">ad.test</span>(<span class="kw">lm</span>(total_<span class="dv">18</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_18months)<span class="op">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="teste-t.html#cb48-1"></a>nortest<span class="op">::</span><span class="kw">ad.test</span>(<span class="kw">lm</span>(total_<span class="dv">18</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_18months)<span class="op">$</span>residuals)</span></code></pre></div>
 <pre><code>## 
 ##  Anderson-Darling normality test
 ## 
@@ -870,10 +873,10 @@ Os dados foram analisados pelo teste Wilcoxon-Mann-Whitney para investigar as di
 ## A = 116.57, p-value &lt; 2.2e-16</code></pre>
 <p>Os resultados foram convergentes ao alcançados durante o capítulo, indicando pela violação da normalidade.</p>
 <p>A homocedasticidade pode ser investigada também por um gráfico, em que os resíduos são plotados contra os valores ajustados, tal como abaixo.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="teste-t.html#cb71-1"></a>olsrr<span class="op">::</span><span class="kw">ols_plot_resid_fit</span>(<span class="kw">lm</span>(total_<span class="dv">18</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_18months))</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="teste-t.html#cb50-1"></a>olsrr<span class="op">::</span><span class="kw">ols_plot_resid_fit</span>(<span class="kw">lm</span>(total_<span class="dv">18</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_18months))</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-60-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O teste de Levene, de Bartlett ou de Breusch-Pagan também oferecem recursos para tal análise. Todos estes indicam pela hipótese nula a homocedasticidade.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="teste-t.html#cb72-1"></a>olsrr<span class="op">::</span><span class="kw">ols_test_breusch_pagan</span>(<span class="kw">lm</span>(total_<span class="dv">18</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_18months))</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="teste-t.html#cb51-1"></a>olsrr<span class="op">::</span><span class="kw">ols_test_breusch_pagan</span>(<span class="kw">lm</span>(total_<span class="dv">18</span> <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> asq_18months))</span></code></pre></div>
 <pre><code>## 
 ##  Breusch Pagan Test for Heteroskedasticity
 ##  -----------------------------------------

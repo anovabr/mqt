@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2021-01-26" />
+<meta name="date" content="2021-01-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -143,7 +143,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#jasp"><i class="fa fa-check"></i><b>1.7</b> JASP</a></li>
 <li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#outros-recursos"><i class="fa fa-check"></i><b>1.8</b> Outros recursos</a></li>
 <li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#capa"><i class="fa fa-check"></i><b>1.9</b> Capa</a></li>
-<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#agradecimentos-e-revisões-técnicas"><i class="fa fa-check"></i><b>1.10</b> Agradecimentos e revisões técnicas</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#versão-do-livro"><i class="fa fa-check"></i><b>1.10</b> Versão do livro</a></li>
+<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#agradecimentos-e-revisões-técnicas"><i class="fa fa-check"></i><b>1.11</b> Agradecimentos e revisões técnicas</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html"><i class="fa fa-check"></i><b>2</b> Aspectos gerais</a><ul>
 <li class="chapter" data-level="2.1" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#os-objetivos-de-uma-pesquisa"><i class="fa fa-check"></i><b>2.1</b> Os objetivos de uma pesquisa</a></li>
@@ -165,10 +166,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#principais-áreas-da-estatística"><i class="fa fa-check"></i><b>2.4</b> Principais áreas da estatística</a></li>
 <li class="chapter" data-level="2.5" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#resumo"><i class="fa fa-check"></i><b>2.5</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="o-r-e-o-tidyverse.html"><a href="o-r-e-o-tidyverse.html"><i class="fa fa-check"></i><b>3</b> O R e o Tidyverse</a><ul>
-<li class="chapter" data-level="3.1" data-path="o-r-e-o-tidyverse.html"><a href="o-r-e-o-tidyverse.html#tidyverse"><i class="fa fa-check"></i><b>3.1</b> Tidyverse</a></li>
-<li class="chapter" data-level="3.2" data-path="o-r-e-o-tidyverse.html"><a href="o-r-e-o-tidyverse.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>3.2</b> Verbos do dplyr</a></li>
-<li class="chapter" data-level="3.3" data-path="o-r-e-o-tidyverse.html"><a href="o-r-e-o-tidyverse.html#resumo-1"><i class="fa fa-check"></i><b>3.3</b> Resumo</a></li>
+<li class="chapter" data-level="3" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html"><i class="fa fa-check"></i><b>3</b> Programas estatísticos</a><ul>
+<li class="chapter" data-level="3.1" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-r"><i class="fa fa-check"></i><b>3.1</b> O R</a></li>
+<li class="chapter" data-level="3.2" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#tidyverse"><i class="fa fa-check"></i><b>3.2</b> Tidyverse</a></li>
+<li class="chapter" data-level="3.3" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>3.3</b> Verbos do dplyr</a></li>
+<li class="chapter" data-level="3.4" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-jasp"><i class="fa fa-check"></i><b>3.4</b> O JASP</a></li>
+<li class="chapter" data-level="3.5" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#resumo-1"><i class="fa fa-check"></i><b>3.5</b> Resumo</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html"><i class="fa fa-check"></i><b>4</b> Estatística Descritiva</a><ul>
 <li class="chapter" data-level="4.1" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#tabelas"><i class="fa fa-check"></i><b>4.1</b> Tabelas</a></li>
@@ -406,7 +409,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="execução-no-r-12" class="section level2">
 <h2><span class="header-section-number">10.2</span> Execução no R</h2>
 <p>A primeira etapa da análise consite na apresentação de tabelas e gráficos que possam auxiliar na interpretação dos resultados. Abaixo há uma tabela inicial com os resultados das escalas.</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="correlação.html#cb155-1"></a>arsenal<span class="op">::</span><span class="kw">tableby</span>(<span class="op">~</span>eat_soma <span class="op">+</span><span class="st"> </span>bsq_soma, <span class="dt">test =</span> <span class="ot">FALSE</span>, dados_brasil) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summary</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="correlação.html#cb128-1"></a>arsenal<span class="op">::</span><span class="kw">tableby</span>(<span class="op">~</span>eat_soma <span class="op">+</span><span class="st"> </span>bsq_soma, <span class="dt">test =</span> <span class="ot">FALSE</span>, dados_brasil) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summary</span>() </span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -442,16 +445,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Após isso realizado, a realização do gráfico de dispersão é fundamental para melhor entendimento do relacionamento entre as variáveis, especialmente para verificar se ele linear ou não. Apesar de técnicas correlacionais não elegerem, formalmente, uma VI e uma VD, com muita frequência, se usa o eixo X para colocar a variável que se assume como independente e Y para apresentar os resultados da variável assumida como dependente.</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="correlação.html#cb156-1"></a><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> bsq_soma, <span class="dt">y =</span> eat_soma)) <span class="op">+</span></span>
-<span id="cb156-2"><a href="correlação.html#cb156-2"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Imagem corporal (BSQ)&quot;</span>, <span class="dt">Y =</span> <span class="st">&quot;Disfunção alimentar (EAT)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="correlação.html#cb129-1"></a><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> bsq_soma, <span class="dt">y =</span> eat_soma)) <span class="op">+</span></span>
+<span id="cb129-2"><a href="correlação.html#cb129-2"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Imagem corporal (BSQ)&quot;</span>, <span class="dt">Y =</span> <span class="st">&quot;Disfunção alimentar (EAT)&quot;</span>)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-144-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="correlação.html#cb157-1"></a>  <span class="kw">geom_jitter</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="correlação.html#cb130-1"></a>  <span class="kw">geom_jitter</span>()</span></code></pre></div>
 <pre><code>## geom_point: na.rm = FALSE
 ## stat_identity: na.rm = FALSE
 ## position_jitter</code></pre>
 <p>O gráfico indica que as duas variáveis são relacionadas. Apesar do padrão deste relacionamento não ser estritamente linear, é possível testar formalmente a correlação entre ambas as variáveis,</p>
 <p>Isso pode ser feito pela função <code>cor.test</code>, que é nativa do R.</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="correlação.html#cb159-1"></a><span class="kw">cor.test</span>(dados_brasil<span class="op">$</span>eat_soma, dados_brasil<span class="op">$</span>bsq_soma) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="correlação.html#cb132-1"></a><span class="kw">cor.test</span>(dados_brasil<span class="op">$</span>eat_soma, dados_brasil<span class="op">$</span>bsq_soma) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
 <table style="width:100%;">
 <caption>Pearson’s product-moment correlation: <code>dados_brasil$eat_soma</code> and <code>dados_brasil$bsq_soma</code></caption>
 <colgroup>
