@@ -1,3 +1,8 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
 # Qui quadrado
 
 ```{r base e pacotes qui quadrado, include = FALSE }
@@ -19,20 +24,20 @@ library(tidyverse)
 ```
 
 
-O Teste Qui-quadrado é um teste não-paramétricos utilizado quando se deseja: 
+O Teste Qui-quadrado é um teste não-paramétrico utilizado, basicamente, para três finalidades específicas, que são:      
 (1) verificar as distribuições de probabilidades de cada categoria de uma variável em relação a um valor teórico esperado (aderência),   
 (2) verificar se as distribuições das categorias são as mesmas para diferentes subpopulações de interesse (homogeneidade) e   
 (3) verificar se duas variáveis categóricas são independentes (independência).   
 
-Apesar da diferenças em relação às perguntas analíticas, o sistema matemático é o mesmo:
+Apesar da diferenças em relação às perguntas de pesquisa, o sistema matemático é o mesmo:
 
 
 
 $$\chi^2=\sum_{k=1}^{n} \frac{(O_k - E_k)^2}{E_k}$$
 onde:  
-K se refere a quantidade de classes  
-O é o valor observado de uma determinada classe  
-E é o valor esperado desta classe  
+$K$ se refere a quantidade de classes  
+$O$ é o valor observado de uma determinada classe  
+$E$ é o valor esperado desta classe  
 
 
 Pela fórmula, é possível deduzir que quanto maior for a discrepância entre as frequências observadas empiricamente (O) e as frequências esperadas (E), maior será a estatística de teste e, consequentemente, menor será o valor de P.
@@ -50,9 +55,9 @@ A tabela abaixo descreve as condições de análise, com exemplos ilustrativos:
 
   | Versão do teste | Variáveis         | Exemplo                                                                                       
   | :-----------    | :-----------      | :-----------                                                                                   
-  | Aderência (Goodness of fit) | 1 categórica| Verificar se a proporção de caras e coroas é de 50% cada                                
-  | Homogeneidade   | 2 categóricas     | Verificar se a proporção de homens e mulheres que gostam de uma marca de celular é similar    
-  | Independência   | 2 categóricas     | Verificar se o sexo e a escolha do curso de graduação são independentes                       
+  | Aderência (Goodness of fit) | 1 categórica | -Verificar se a proporção de caras e coroas é de 50% cada <br> -Verificar se a proporção das cores de chocolates M&M são aderentes ao que a empresa afirma                                  
+  | Homogeneidade   | 2 categóricas     | -Verificar se a proporção de homens e mulheres que gostam de uma marca de celular é similar<br>-Testar se o uso de anabolizante é homogêneo em atletas de diferentes modalidades esportivas        
+  | Independência   | 2 categóricas     | -Verificar se o sexo e a escolha do curso de graduação são independentes<br>-Testar se classe social e local de interesse para uma viagem são independentes                         
 
 *Nota: O Qui-quadrado de aderência também é chamado de "qualidade do ajuste" ou "bondade". Estas são traduções tipicamente feitas para "goodnes of fit". Como todas as análises são realizadas de uma maneira virtualmente idêntica, essas distinções são mais teóricas do que práticas. O Qui-quadrado de aderência tem uma proposta parecida com a ANOVA de uma via.*
 
@@ -67,9 +72,9 @@ Apesar de colateral à esta apresentação, o teste Qui-quadrado tem uma curiosi
 </div>  
 
 
-Neste capítulo, vamos utilizar a pesquisa intitulada "Parent-reported diagnosis of Attention Deficit Hyperactivity Disorder and psychostimulant use among children and adolescents: a population-based nationwide study", que está em avaliação pela revista "Social Psychiatry and Psychiatric Epidemiology (SPPE)". Neste trabalho, tivemos o objetivo de verificar aspectos epidemiológicos do Transtorno do Déficit de Atenção com Hiperatividade (TDAH) em uma amostra representativa de crianças e adolescentes brasileiros, bem como explorar eventuais associações entre características sociodemográficas, especialmente os sexo do participante e possíveis fatores e risco e TDAH.  
+Neste capítulo, vamos utilizar a pesquisa intitulada "Parent-reported diagnosis of Attention Deficit Hyperactivity Disorder and psychostimulant use among children and adolescents: a population-based nationwide study", que está em avaliação pela revista "Social Psychiatry and Psychiatric Epidemiology (SPPE)". Neste trabalho, tivemos o objetivo de verificar aspectos epidemiológicos do Transtorno do Déficit de Atenção com Hiperatividade (TDAH) em uma amostra representativa de crianças e adolescentes brasileiros, bem como explorar eventuais associações entre o sexo do participante e o diagnóstico de TDAH.  
 
-Neste momento, vamos seguir apenas com o Qui-quadrado de independência, que foi o utilizado neste artigo. Como exposto no decorrer de outros capítulos, o teste de hipóteses começa pela formulação conceitual das hipóteses. Apesar de ser possível estipular $H_0$ e $H_a$ a partir de equações específicas,a apresentação será textual/substantiva.
+Neste momento, vamos seguir apenas com o Qui-quadrado de independência, que foi o utilizado neste artigo. Como exposto no decorrer de outros capítulos, o teste de hipóteses começa pela formulação conceitual das hipóteses. Apesar de ser possível estipular $H_0$ e $H_a$ a partir de equações específicas, a apresentação será textual/substantiva.
 
 
 $$H_0: Não\ há\ associação\ entre\ sexo\ e\ TDAH \\ H_a: Há\ associação\ entre\ sexo\ e\ TDAH \\ \alpha = 0.05$$
@@ -83,17 +88,22 @@ $$H_0: Não\ há\ associação\ entre\ sexo\ e\ TDAH \\ H_a: Há\ associação\ 
 
 ## Execução no R
 
-A apresentação de tabelas e gráficos são fundamentais antes da realização formal do teste de hipótese. Para apresentar a possível relação entre ambas as variáveis, a tabela de contingência é adequada. Apesar do Qui-quadrado não eleger uma VI e uma VD, quase sempre as linhas são utilizadas para apresentar a variável de maior interesse (neste caso, sexo) e as colunas para indicar o critério ou o eventual desfecho (neste caso, ter ou não TDAH).   
+A apresentação de tabelas e gráficos são fundamentais antes da realização formal do teste de hipótese. Para apresentar a possível relação entre ambas as variáveis, a tabela de contingência é adequada. O pacote `descr` é um bom recurso para esta apresentação.
 
-A porcentagem nas linhas e o valor esperado (em caso de independência entre as variáveis) auxiliam bastante na descrição dos resultados. O pacote `descr` é um bom recurso para esta apresentação.  
+Apesar do Qui-quadrado não eleger uma VI e uma VD, quase sempre as linhas são utilizadas para apresentar a variável de maior interesse (neste caso, sexo) e as colunas para indicar o critério ou o eventual desfecho (neste caso, ter ou não TDAH).   
+
+A porcentagem nas linhas e o valor esperado (em caso de independência entre as variáveis) auxiliam bastante na descrição dos resultados.   
 
 
 ```{r}
 descr::CrossTable(ds_selected$sex_male,ds_selected$adhd_parent,
-           expected = T, prop.c = F, prop.chisq = F, prop.t = F) %>% pander::pander()
+           expected = T, prop.c = F, prop.chisq = F, prop.t = F) %>% 
+  pander::pander()
 ```
 
-Em seguida, a criação de um gráfico de barras é oferece um bom recurso para visualizar os dados. Repare que a barra azul, que representa a porcentagem de TDAH, parece se comportar de maneira diferente nos grupos. 
+É possível verificar que existe uma discrepância entre os valores esperados e observados, em que o diagnóstico parece estar mais presente em meninos do que em meninas. No entanto, essas observações são apenas iniciais.
+
+Em seguida, a criação de um gráfico de barras oferece um bom recurso para visualizar os dados. Repare que a barra azul, que representa a porcentagem de TDAH, parece se comportar de maneira diferente nos grupos, o que também havia sido detectado na tabela anterior.   
 
 ```{r}
 ggplot(ds_selected, aes(x= sex_male, fill = adhd_parent)) +
@@ -101,27 +111,34 @@ ggplot(ds_selected, aes(x= sex_male, fill = adhd_parent)) +
   coord_flip() +
   labs(x = "sexo", y = "Proporção", fill = "TDAH")
 ```
-
-Os pressupostos relacionados <u>à inexistência de células com valores esperados iguais a 0</u> e de <u>no máximo 20% dos valores esperados serem inferiores a 5</u> podem ser investigados na tabela exposta anteriormente e foram atendidos.  
-   
-O cálculo do Qui-quadrado apresentado abaixo deixa claro que que é possível rejeitar a hipótese nula, uma vez que o valor de P é menor do que o nível de significância previamente estipulado (0.05). 
-
+  
+Com isto feito, é possível proceder ao cálculo do Qui-quadrado, tal como feito a seguir.    
 
 ```{r}
 descr::CrossTable(ds_selected$sex_male,ds_selected$adhd_parent,chisq = T)$CST %>% pander::pander()
 ```
+  
+Os resultados deixam claro que que é possível rejeitar a hipótese nula, uma vez que o valor de P é menor do que o nível de significância previamente estipulado (0.05). Isso sugere que existe uma associação entre o sexo do participante e o diagnóstico de TDAH.  
 
-Quando os pressupostos são violados, há sugestão de colapsar categorias, fazer correções nos resultados ou contar com outros testes, tal como o Fisher's Exact Test.  
+::: {.warning}
+**Atenção**: A validade das inferências dos resultados depende da adequação ou não dos pressupostos dos testes estatísticos. A avaliação destas condições é parte de um procedimento diagnóstico que deve ser sempre feito.  
+:::
+
+No teste Qui-quadrado, os principais pressupostos a ser investigados são a <mark>inexistência de células com valores esperados iguais a 0</mark> e <mark>no máximo 20% dos valores esperados serem inferiores a 5</mark>. Ambos podem ser checados na tabela exposta anteriormente e foram atendidos.  
+   
+Eventualmente, quando os pressupostos são violados, há sugestão de fazer correções nos resultados, implementar técnicas de bootstrapping e contar com outros testes (Fisher's Exact Test, por exemplo) [@Campbell2007]. Eventualmente, colapsar categorias é uma prática comum, apesar de receber críticas da literatura.  
 
 
 ## Tamanho do efeito  
 
-Como apresentado no decorrer dos outros capítulos, os valores de P quase nunca são informativos sobre a <u>relevância</u> dos resultados. O tamanho do efeito mais utilizado no ambiente das análises de Qui-quadrado é o V de Cramer. Esta estatística gera valores 0-1 e é dada da seguinte maneira:
+Como apresentado no decorrer dos outros capítulos, os valores de P quase nunca são informativos sobre a <u>relevância</u> dos resultados. Por sua vez, o tamanho do efeito é uma medida objetiva e padronizada sobre um efeito observado e, com isso, é mais atrelada à importância da descoberta na pesquisa.  
+
+O tamanho do efeito mais utilizado no ambiente das análises de Qui-quadrado é o V de Cramer. Esta estatística gera valores 0-1 e é dada da seguinte maneira:
 
 $$V=\sqrt\frac{\chi^2}{n*df^`}$$
 Em que:  
 $\chi^2$ = valor do Qui quadrado obtido  
-n = tamanho da amostra  
+$n$ = tamanho da amostra  
 $df^`$ menor valor entre (Linhas - 1) ou (Colunas - 1) da tabela de contingências  
 
 
@@ -132,35 +149,38 @@ rcompanion::cramerV(ds_selected$sex_male,ds_selected$adhd_parent)
 ```
 
 
-A interpretação é baseada nos graus de liberdade e é feita da seguinte maneira:  
+A interpretação é baseada nos graus de liberdade do Qui-quadrado e é feita da seguinte maneira:  
 
 
-  | Graus de liberdade  | Pequeno     | Médio       |  Grande     |
-  | :-----------        | :-----------| :-----------              |     
-  | 1                   | 0.1         | 0.3        |  0.5         |
-  | 2                   | 0.07        | 0.21       |  0.35        |
-  | 3                   | 0.06        | 0.17       |  0.29        |
+  | Graus de liberdade  | Pequeno     | Médio       |  Grande     
+  | :-----------        | :-----------| :-----------|:-----------      
+  | 1$^*$               | 0.1         | 0.3        |  0.5         
+  | 2                   | 0.07        | 0.21       |  0.35        
+  | 3                   | 0.06        | 0.17       |  0.29        
 
-
+*Nota: $^*$ Na maioria das vezes, o Teste Qui-quadrado conta com tabelas 2x2, o que gera 1 grau de liberdade. Assim, essa é a  interpretação mais utilizada na literatura.*  
 
 
 ## Execução no JASP
 
-Para executar o Qui-quadrado no JASP, será necessário carregar a base (link!). Com os dados devidamente importados para o programa, a apresentação de tabelas e gráficos auxiliam o pesquisador a verificar padrões diferentes nos dados. Para executar isso, é necessário acessar a seção `Descriptives`:
+Para executar o Qui-quadrado no JASP, será necessário carregar a base [ADHD 2020 after processing.csv](https://osf.io/zj4c2/download). Com os dados devidamente importados para o programa, a apresentação de tabelas e gráficos auxiliam o pesquisador a verificar padrões diferentes nos dados. Para executar isso, é necessário acessar a seção `Descriptives`:
 
 
 ![](./img/jasp_descriptives.png)
+Ao clicar nesta opção, será possível eleger as variáveis que irão ser analisadas e as variáveis que irão funcionar como agrupadoras. Apesar do Qui-quadrado não trabalhar com os conceitos de VI e VD, na prática, a lista `Variables` irá reunir a possível variável dependente, enquanto a possível variável independente será colocada na seção `Split`. É importante atentar à opção `Frequency tables (nominal and ordinal)`, que deve ser marcada quando o nível de medida da variável de interesse for nominal ou ordinal. 
 
-Em seguida, é necessário inserir ambas as variáveis e marcar a opção `Frequency tables`, para indicar o nível de medida que está sendo trabalhado.
+![](./img/cap_x2_primeira_tabela.png)
+
+É necessário inserir a variável <u>sex_male</u> para `Split` e a variável <u>adhd_parent</u> para `Variables`. Para tabela ser apresentada corretamente, deve-se  selecionar a opção `Frequency tables`.
 
 ![](./img/cap_x2_descritivo.png)
 
 
-O gráfico de barras pode ser acessado clicando na opção `Plots` e, em seguida, indicando `Basic plots`. Esse resultado é um recurso a mais para sondar os dados.  
+O gráfico de barras pode ser acessado clicando na opção `Plots` e, em seguida, `Distribution plots`, em `Basic plots`. Esse resultado é um recurso a mais para sondar os dados.  
 
 ![](./img/cap_x2_grafico.png)
 
-Para execução do Qui-quadrado (de associação), a tabela de contingência deve ser feita. Isso é acessado clicando em `Frequencies` e, em seguida, `Contigency tables`. 
+Para execução do Qui-quadrado (de associação), a tabela de contingência deve ser feita. Isso é realizado ao clicar em `Frequencies` e, em seguida, `Contigency tables`. 
 
 
 ![](./img/cap_x2_interface.png)
@@ -169,7 +189,7 @@ Nesta seção, será necessário indicar a variável que irá nas linhas e nas c
 ![](./img/cap_x2_interface2.png)
 
 
-Ao inserir a variável <u>sexo</u> para as linhas e a variável <u>diagnóstico</u> para as colunas, a tabela de contigência será novamente feita e o Qui-quadrado será automaticamente calculado. 
+Ao inserir a variável <u>sexo</u> para as linhas e a variável <u>diagnóstico</u> para as colunas, a tabela de contingência será novamente feita e o Qui-quadrado será automaticamente calculado. 
 
 ![](./img/cap_x2_resultados.png)
 
@@ -178,21 +198,25 @@ Os resultados inferenciais de interesse estão na parte inferior da apresentaç�
 
 ![](./img/cap_x2_resultados2.png)
 
-A validade dos resultados depende dos pressupostos e o tamanho do efeito precisa também ser calculado para indicar a relevância dos achados. Para verificar <u>se existem células cujos valores esperados sejam iguais a 0</u> e se <u>no máximo 20% dos valores esperados são inferiores a 5</u>, é necessário clicar em `Cells`.  
+::: {.warning}
+**Atenção**: A validade das inferências dos resultados depende da adequação ou não dos pressupostos dos testes estatísticos. A avaliação destas condições é parte de um procedimento diagnóstico que deve ser sempre feito.  
+:::
+
+A validade dos resultados depende dos pressupostos. Além disso, o tamanho do efeito precisa ser calculado para indicar a relevância dos achados. Para verificar <mark>se existem células cujos valores esperados sejam iguais a 0</mark> e se <mark>no máximo 20% dos valores esperados são inferiores a 5</mark>, é necessário clicar em `Cells`.  
 
 
 ![](./img/cap_x2_pressupostos.png)
 
-Em seguida, ao marcar a opção `Expected` e `Row` em `Percentages`, os resultados poderão ser melhor analisados.
+Há dois blocos específicos, `Counts` e `Percentages`. Em `Counts`, é necessário selecionar `Expected`. Em `Percenatges`, é necessário selecionar `Row`. Com isso feito, os resultados poderão ser melhor analisados.
 
 ![](./img/cap_x2_pressupostos2.png)
 
-Com isso feito, a opção `Statistics` deverá ser acessada para que seja possível calcular o tamanho do efeito. Neste caso, deve-se clicar em `Cramer's V`.
+Para adicionar a medida de tamanho de efeito, é necessário ir em `Statistics` e, em seguida, clicar em `Cramer's V`.
 
 ![](./img/cap_x2_tamanho_do_efeito.png)
 
 
-Com estas etapas concluídas, agora é possível analisar integralmente os resultados, em que o valor de P e o tamanho do efeito podem ser interpretados.  
+Após estas etapas realizadas, é possível analisar integralmente os resultados, em que o valor de P e o tamanho do efeito podem ser interpretados.  
 
 
 ![](./img/cap_x2_tabela.png)
@@ -204,6 +228,10 @@ Caso os pressupostos tenham sido violados, o JASP oferece algumas saídas, tal c
 
 ## Escrita dos resultados
 
+
+O principal achado desta pesquisa é que há uma associação entre o sexo da criança (masculino e feminino) e o diagnóstico de TDAH. Esta evidência já é bastante consolidada na literatura psicológica e biomédica. Abaixo uma sugestão de escrita baseada nas recomendações da American Psychological Association (APA).
+
+
 ```{block, type="writing"}
 **Como escrever os resultados**  
   
@@ -212,8 +240,22 @@ A associação entre o sexo do participante e sua condição clínica (ter ou n�
 
 
 ## Resumo  
-
+::: {.explore}
 1. O Qui-quadrado pode ser utilizado para um conjunto de análises realizadas em variáveis categóricas.  
 2. Apesar de diferenças conceituais, o formato matemático é o mesmo.  
 3. O tamanho do efeito apresenta interpretações que podem variar em função dos graus de liberdade.  
+:::  
+
+
+## Pesquisas adicionais  
+
+1. Are Attitudes Towards Smoking Different for Males and Females? (DOI: 10.1136/tc.2.3.201)    
+Nesta pesquisa, cerca de 19378 participantes que eram fumantes, ex-fumantes ou que não fumavam indicavam se concordavam que o fumo poderia provocar doenças. Os resultados indicaram que houve uma associação significativa entre o perfil de consumo de cigarro e a concorância com a afirmativa. Apesar da maioria ter responder afirmativamente que hábitos de fumo podem gerar doenças, a quantidade de participantes fumantes que concordaram com isso foi significativamente menor do que a esperada. 
+ 
+2. The Gender Gap in STEM Fields: The Impact of the Gender Stereotype of Math and Science on Secondary Students' Career Aspirations (DOI: 10.3389/feduc.2019.00060)
+Neste estudo, 1364 estudantes do ensino médio (na Suíça) responderam sobre suas aspirações para o curso de graduação. Houve uma associação significativa entre o sexo do participante seu interesse por áreas de ciências e tecnologia. A frequência de mulheres interessadas na área foi menor do que a esperada, enquanto a frequência dos homens foi superior à esperada.  
+  
+3. Intrinsic honesty and the prevalence of rule violations across societies (DOI: 10.1038/nature17160)
+Nesta pesquisa, 2568 participantes de diferentes países participaram de uma atividade que consistia em jogar um dado dentro de um copo e falar o número que saiu para o pesquisador. Apenas o participante poderia ver o número e não havia nenhuma forma do pesquisador conferir se o número falado pelo participante era o número que, de fato, havia saído. Por características probabilísticas, se espera que cada uma das faces do dado seja igualmente selecionada. Assim, a ocorrência de uma alta proporção de valores altos indicaria desonestidade. O Qui-quadrado utilizado foi o de aderência.   
+
 
