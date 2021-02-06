@@ -24,7 +24,7 @@ library(pander)
 ```
 
 
-A ANOVA representa um conjunto de procedimentos estatísticos muito utilizado para verificar <u>diferenças médias entre diversos grupos</u>. Pragmaticamente, é possível entender ANOVA como um super Teste T ou também um caso particular de um modelo de regressão. Uma vez que a ANOVA verifica a diferença entre todos os grupos e combinações linear de maneira simultânea, ele é classificada como um *Omnibus test*. A relação entre a ANOVA e o Teste T será abordado na seção [Post hoc](#post-hoc)
+A ANOVA representa um conjunto de procedimentos estatísticos muito utilizado para verificar <u>diferenças médias entre diversos grupos</u> e, portanto, é considera um procedimento paramétrico. Pragmaticamente, é possível entender ANOVA como um super Teste T ou também um caso particular de um modelo de regressão. Uma vez que a ANOVA verifica a diferença entre todos os grupos e combinações lineares de maneira simultânea, ele é classificada como um *Omnibus test*. A relação entre a ANOVA e o Teste T será abordado na seção [Post hoc](#post-hoc).
 
 Alguns autores indicam que a ANOVA é a técnica inferencial mais utilizada em Psicologia [@Chartier2008; @Howell2011]. Se por um aspecto, isso é extremamente vantajoso, uma vez que estreita a relação entre Psicologia e Estatística; por outro, isso parece ter contribuído para criação e manutenção de diferentes conceitos equivocados sobre a ANOVA. 
 
@@ -40,10 +40,12 @@ $e_i$ é o erro/resíduo
 
 Os seguintes pressupostos dos modelos lineares são mantidos, que são:
 
-*(i)* A variável dependente é contínua  
-*(ii)* Os resíduos são normalmente distribuídos  
-*(iiI)* Os resíduos são independentes uns dos outros   
-*(iv)* A variância dos resíduos é constante  
+
+*(i)* Os dados são aleatórios e representativos da população  
+*(ii)* A variável dependente é contínua  
+*(iii)* Os resíduos são normalmente distribuídos  
+*(iv)* Os resíduos são independentes uns dos outros   
+*(v)* A variância dos resíduos é constante  
 
 Operacionalmente, o erro representa <u>todos os fatores de pesquisa</u> e problemas de medição que afetam o resultado, além das variáveis independentes consideradas na modelagem.
 
@@ -51,8 +53,8 @@ Operacionalmente, o erro representa <u>todos os fatores de pesquisa</u> e proble
 **Atenção**: Diferente de outros modelos, a linearidade dos resíduos não é formalmente um pressuposto a ser testado na ANOVA. Isso ocorre pois a VI é categórica em vez de contínua.
 :::
 
+Eventualmente, quando os pressupostos do modelo são violados, a literatura mais tradicional recomenda que ajustes ou testes não-paramétricos com propostas parecidas possam ser implementados. A tabela abaixo concatena os testes estatísticos relacionados para fins de comparação com outros trabalhos. Há também autores que sugerem que se use sempre as versões não-paramétricas em resultados obtidos por processos de avaliação psicológica, argumentando que os dados têm nível de medida "ordinal".
 
-Eventualmente, quando os pressupostos são violados, testes não-paramétricas com propostas parecidas podem ser implementadas. A tabela abaixo concatena os testes estatísticos relacionados para fins de comparação com outros trabalhos. Alguns autores sugerem também que testes não-paramétricos sejam sempre implementados para analisar dados psicológicos, argumentando que eles possuem nível de medida "ordinal".  
 
   | Estatística     | Um ou mais fatores            |  Medidas repetidas              |  
   | :-----------    | :-----------                  | :-----------                    |        
@@ -66,7 +68,9 @@ A ANOVA tem diversos termos bastante específicos e utilizados em sua modelagem 
 
 Diferentes termos são empregados em uma ANOVA e em modelos próximos. A legenda a seguir visa auxiliar no entendimento de cada um deles e aproximar o leitor a conceitos amplos utilizados em modelos lineares.
 
-```{block, type="writing"}
+
+```{block, type="glossario"}
+<U>**GLOSSÁRIO**</U>   
 **ANOVA**:  Análise da variância.    
 **Via**: Variável independente, variável fonte, variável preditora, tratamento.  
 **Fator**: Sinônimo de via.      
@@ -80,16 +84,16 @@ Diferentes termos são empregados em uma ANOVA e em modelos próximos. A legenda
 ```
 
 
-Por heurística, se escreve os delineamentos estudados por uma ANOVA com $\eta$. Por exemplo, se o interesse for verificar o efeito da escolaridade (fundamental, médio e superior) e do sexo (masculino ou feminino), a representação será $\eta =  3 \times 2$. Isso significa que a ANOVA tem dois fatores (escolaridade e sexo), o primeiro fator tem três níveis e o segundo tem 2 níveis. 
+Por heurística, se escreve os delineamentos estudados por uma ANOVA com $\eta$. Por exemplo, se o interesse for verificar o efeito da escolaridade (fundamental, médio e superior) em um determinado desfecho, isso é entendido como uma ANOVA de 1 via. Caso o interesse seja verificar o efeito da escolaridade, mas também do sexo (masculino ou feminino), a representação será $\eta =  3 \times 2$. Isso significa que a ANOVA tem dois fatores (escolaridade e sexo), o primeiro fator tem três níveis e o segundo tem 2 níveis. 
 
 
 A tabela a seguir resume as denominações encontradas na literatura:
 
 
-  | Quantas VDs | Uma VI                    |  2 ou mais VIs (sem interação)       | 2 ou mais VIs (com interação)  
+  | Número de VDs | Uma VI                    |  2 ou mais VIs (sem interação)       | 2 ou mais VIs (com interação)  
   | :-----------| :-----------              | :-----------                         | :-----------          
-  | Uma VD      | ANOVA de 1 via (one way)  |  ANOVA 2 (ou mais)  vias (multi way) |   ANOVA Fatorial
-  | + de uma VD | MANOVA     
+  | 1 VD      | ANOVA de 1 via (*one way*)  |  ANOVA 2 (ou mais)  vias (*multi way*) |   ANOVA Fatorial
+  | 2 ou mais VDs | MANOVA     
 
 ## Pesquisa
   
@@ -109,8 +113,8 @@ Em uma ANOVA de 1 via, há apenas um fator com três ou mais níveis. Conceitual
 
 $y_i$ representa a variável dependente      
 $b_0$ é o intercepto (coeficiente linear)   
-$b_1$ é a inclinação (coeficiente angular)  
 $X_1$ é a variável independente em questão  
+$b_1$ é a inclinação (coeficiente angular)  
 $e_i$ é o erro/resíduo   
 
 
@@ -120,6 +124,12 @@ A pergunta que temos neste trabalho é sobre o possível efeito da `escolaridade
 ## Execução no R
 
 Ao trabalhar no R, é <u>fundamental</u> se certificar que os tipos das variáveis estão corretamente definidos em função da escala de medida utilizada. Erros nessa etapa podem gerar resultados absolutamente incorretos. A escolaridade é uma variável categórica (ordinal, tratada como discreta) e é necessário definir claramente isso ao R antes da análise propriamente dita. 
+
+::: {.warning}
+**Atenção**: Tenha atenção à codificação computacional que o R atribuiu à variável de interesse. Erros nesta etapa podem impactar severamente os resultados.   
+:::
+
+
 
 Isso pode ser feito pela função `case_when` e `levels`. O `case_when` irá usar os valores originalmente presentes nessa variável para computar uma nova variável categórica. O `levels` deixará claro a ordem de cada categoria, o que é útil para que os gráficos sejam feitos corretamente.  
 
@@ -169,15 +179,15 @@ Para apresentação, a função `apa.aov.table` do pacote `apatables` pode ser u
 
   | Fonte de variação | Soma dos Quadrados| Graus de liberdade  |  Quadrado médio | Estatística F | 
   | :-----------      | :-----------      | :-----------        |  :-----------   | :-----------  |  
-  | Fator             | Entre (SSB)       | K-1                 |  MSB = SSB/K-1 | F = MSB/MSW    | 
-  | Resíduo           | Dentro (SSW)      | N-K                 |  MSW = SSW/N-K |                |
+  | Fator             | Entre (SSB)       | K-1                 |  MSB = SSB/(K-1) | F = MSB/MSW    | 
+  | Resíduo           | Dentro (SSW)      | N-K                 |  MSW = SSW/(N-K) |                |
   | Total             | Total (SQT)       | N-1                 |  
 
 
 Aqui, K significa quantidade de categorias dentro de um fator e N significa a quantidade de observações consideradas. As siglas em inglês são utilizadas para apresentar a "Soma dos quadrados entre os grupos" (SSB), "Soma dos quadrados dentro dos grupos" (SSW), "Quadrado médio entre grupos" (MSB) e "Quadrado médio dentro dos grupos" (MSW). 
 
 ```{r, warning=FALSE }
-apaTables::apa.aov.table(mod_escolaridade) %>% pander(., split.table = Inf)
+apaTables::apa.aov.table(mod_escolaridade)$table_body %>% pander(., split.table = Inf)
 ```
 
 
@@ -185,7 +195,7 @@ Existe uma convenção utilizada para apresentar os resultados expostos na tabel
 
 $$F(df_{between}, \, df_{within}) = F, P, \eta^2, 90\% \,CI \, [min, \, max]$$
 
-Neste caso: F(3,143) = 8.23, p < 0.01, $\eta_p^2$ = 0.15, 90% CI [.06, .22]. A última parte do resultado é uma medida de tamanho do efeito, que terá a interpretação apresentada e discutida na próxima seção.
+Neste caso, como há 4 grupos de escolaridade, $df_{between}: 4-1=3$. No total, 147 participantes apresentam dados completos e portanto $df_{within}: 147-4 = 143$. Com isso, a apresentação fica F(3,143) = 8.23, p < 0.01, $\eta_p^2$ = 0.15, 90% CI [.06, .22]. A última parte do resultado é uma medida de tamanho do efeito, que terá a interpretação apresentada e discutida na próxima seção.
 
 ::: {.warning}
 **Atenção**: Jamais apresente p = 0.00. Apresente até 3 casas decimais no valor de P ou, quando necessário, apresente p < 0.001.
@@ -240,15 +250,16 @@ Após esses procedimentos feitos, é necessário calcular o tamanho do efeito.
 
 Resultados significativos não são informativos em relação ao tamanho do efeito. Esta última métrica tem mais contato com as perguntas originalmente realizadas em uma pesquisa e é entendida como uma medida objetiva e padronizada da magnitude de um efeito observado independente da significância estatística. Dessa maneira, o tamanho do efeito pode ser considerado um indicador da relevância clínica dos grupos, cujo uso é sempre importante em pesquisas em Psicologia e áreas da saúde.
 
-No ambiente da ANOVA, 3 medidas costumem ser utilizadas para tamanho do efeito, que são:
-<u>eta quadrado</u> ($\eta^2$),  
-o <u>eta quadrado parcial</u> ($\eta_p^2$) e   
-<u>ômega quadrado</u> ($\omega^2$).  
+No ambiente da ANOVA, 3 medidas costumem ser utilizadas para tamanho do efeito, que são:  
+
+eta quadrado ($\eta^2$),  
+eta quadrado parcial ($\eta_p^2$) e   
+ômega quadrado ($\omega^2$).  
 
 
-A ideia dessas medidas é verificar a variância explicada que o modelo testado apresenta quando comparado com um modelo simples, que contou apenas com a média. Em uma ANOVA de uma via, como é o caso aqui, o $\eta^2$ e o $\eta_p^2$ possuem o mesmo valor. 
+A ideia dessas medidas é verificar a variância explicada que o modelo testado apresenta quando comparado com um modelo simples, que conta apenas com a média. Em uma ANOVA de uma via, o $\eta^2$ e o $\eta_p^2$ possuem o mesmo valor. Esses conceitos serão revisitados no capítulo de regressão linear. 
 
-Esses conceitos serão revisitados no capítulo de regressão linear. No caso de agora, o $\eta^2$ e o $\eta_p^2$ indicam a proporção da variabilidade dos resultados do TEG que pode ser atribuídos à escolaridade. 
+No caso de agora, o $\eta^2$ e o $\eta_p^2$ indicam a proporção da variabilidade dos resultados do TEG que pode ser atribuídos à escolaridade. 
 
 
 A interpretação pode ser feita da seguinte maneira:  
@@ -292,7 +303,7 @@ Em seguida, ao clicar na opção `Plots`, será possível selecionar o `Boxplot`
 
 ![](./img/cap_anova_descritivo2.png)
 
-Os resultados tabulares e gráficos são idênticos. Preliminarmente, as evidências sugerem que pessoas com mais anos de ensino aparentam ter maior nível de empreendedorismo. 
+Os resultados tabulares e gráficos são idênticos. Preliminarmente, as evidências sugerem que pessoas com mais anos de ensino aparentam ter maior nível de empreendedorismo. No entanto, isso precisa ser testado formalmente.  
 
 Para execução da ANOVA, deve-se clicar em `ANOVA` e, em seguida, `Classical` e `ANOVA`.  
 
@@ -325,7 +336,7 @@ A <mark>homocedasticidade</mark> é formalmente testada pelo Teste de Levene. O 
 Neste caso, há a impressão visual de que a normalidade está mantida, bem como a homocedasticidade. É importante perceber que esta versão do JASP não oferece um teste formal para testar a normalidade dos resíduos de uma ANOVA, tal como feito no R na seção anterior.
 
 
-Após testar estes pressupostos, é necessário verificar o quanto a interpretação originalmente deve ser mantida. Existem diferentes recomendações sobre o que fazer quando os pressupostos são violados. Entre eles, transformar a distribuição da variável de interesse, usar versões robustas da ANOVA, usar testes não-paramétricos com objetivos próximos à ANOVA ou eleger algum modelo estatístico mais adequado à distribuição empírica obtida pelos dados. No JASP, as técnicas `Brown-Forsythe` e `Welch` são disponíveis para corrigir a violação do pressuposto de homocedasticidade.
+Após testar estes pressupostos, é necessário verificar o quanto a interpretação originalmente deve ser mantida. Existem diferentes recomendações sobre o que fazer quando os pressupostos são violados. Entre eles,  assumir essa condição e justificar a utilização da ANOVA, transformar a distribuição da variável de interesse, usar versões robustas da ANOVA, usar testes não-paramétricos com objetivos próximos à ANOVA ou eleger algum modelo estatístico mais adequado à distribuição empírica obtida pelos dados. No JASP, as técnicas `Brown-Forsythe` e `Welch` são disponíveis para corrigir a violação do pressuposto de homocedasticidade.
 
 
 Como exposto previamente, o tamanho do efeito uma medida objetiva e padronizada da magnitude de um efeito observado. Assim, é sempre muito importante calculá-lo e interpretá-lo. Para inserir o tamanho do efeito na seção de resultados, é necessário clicar em `Estimatives of effect size` e `eta quadrado` ($\eta^2$). 
@@ -354,7 +365,7 @@ Repare que este resultado é bastante informativo, mas não deixa claro quais s�
 ## Post hoc
 
 
-O termo post hoc é uma expressão em latim e significa "após isso", que já sugere em qual momento ocorre a sua participação nos procedimentos analíticos. Quando uma ANOVA é significativa, quase sempre há o interesse de se investigar todas as comparações entre os níveis da VI para identificar em qual delas resultadossignificativos podem ocorrer. Essa série de testes pareados são chamados de testes Post hoc.   
+O termo post hoc é uma expressão em latim e significa "após isso", que já sugere em qual momento ocorre a sua participação nos procedimentos analíticos. Quando uma ANOVA é significativa, quase sempre há o interesse de se investigar todas as comparações entre os níveis da VI para identificar em qual delas resultados significativos podem ocorrer. Essa série de testes pareados são chamados de testes Post hoc.   
 
 É importante alertar que os resultados significativos da ANOVA  não reflete que, necessariamente, haverá diferenças significativas <u>entre as médias dos grupos</u>. Tecnicamente, a diferença pode ocorrer em qualquer comparação possível, como grupo 1 contra grupos 2 + grupo 3 ou grupo 2 contra grupo 1 + grupo 3. Com isso, é possível perceber que o resultado geral da ANOVA e a execução de testes post hoc respondem questões diferentes. 
 
@@ -363,18 +374,21 @@ Na verdade, é possível inclusive realizar qualquer comparação entre os níve
 
 
 ::: {.warning}
-**Atenção**: ANOVA e testes Post hoc respondem a questões diferentes, e é possível ter uma ANOVA significativa e testes Post hoc não significativos. A ANOVA é um teste que verifica todos os níveis de forma simultânea, enquanto testes Post hoc fazem comparações específicas.  
+**Atenção**: ANOVA e testes Post hoc respondem a questões diferentes. É possível ter uma ANOVA significativa e testes Post hoc não significativos. A ANOVA é um teste que verifica todos os níveis de forma simultânea, enquanto testes Post hoc fazem comparações específicas.  
 :::
 
 
-Tendo em vista vez que realizar uma ANOVA não é tecnicamente necessário para comparações pareadas, é possível se perguntar qual é, então, a necessidade da realização da ANOVA ou, até mesmo, Por que não é possível testar as diferenças usando múltiplos Testes T ? Historicamente, a ANOVA era um recurso muito importante em uma época em que o poder computacional era mais limitado. Seus resultados iriam indicar se comparações múltiplas deveriam ser feitas ou não. Hoje em dia, sua realização ocorre mais para que o pesquisador (i) consiga implementar computacionalmente todas as comparações pareadas entre as categorias da variável independente e, em seguida, (ii) corrija a distorção que o valor de P apresenta em cada comparação.  
+Tendo em vista vez que realizar uma ANOVA não é tecnicamente necessário para comparações pareadas, é possível se perguntar qual é, então, a necessidade da realização da ANOVA ou, até mesmo, Por que não é possível testar as diferenças usando múltiplos Testes T ?    
 
-Quando se compara todos os níveis variável independente, é esperado que haja uma inflação do erro do tipo 1. Isso se é chamado *experiment‑wise Type I error rate* e ocorre pela estrutura do nível de significância, que é a seguinte:
+Historicamente, a ANOVA era um recurso muito importante em uma época em que o poder computacional era mais limitado. Seus resultados iriam indicar se comparações múltiplas deveriam ser feitas ou não. Hoje em dia, sua realização ocorre mais para que o pesquisador (i) consiga implementar computacionalmente todas as comparações pareadas entre as categorias da variável independente e, em seguida, (ii) corrija a distorção que o valor de P apresenta em cada comparação.  
+
+Quando se compara todos os níveis variável independente, é esperado que haja uma inflação do erro do tipo 1. Isso é chamado *experiment‑wise Type I error rate* e ocorre pela estrutura do nível de significância, que é a seguinte:
 $$\alpha_{total}=1-(1-\alpha)^C$$
-Onde:
-$\alpha_{total}$: Indica o nível de significância total das comparações  
-$\alpha$: Indica o nível de significância nominal (quase sempre, 0.05)
-$C$: Indica quantas comparações são feitas  
+Onde:   
+
+$\alpha_{total}$: Indica o nível de significância total das comparações   
+$\alpha$: Indica o nível de significância nominal (quase sempre, 0.05)   
+$C$: Indica quantas comparações são feitas   
 
 
 Para encontrar $C$ e ajustar o valor de P, é necessário calcular a quantidade de comparações. Isso pode ser feito da seguinte maneira:
@@ -390,16 +404,18 @@ No caso da pesquisa apresentada agora, como se deseja comparar todos os níveis 
 $$4*(\frac{3}{2})\\=6$$
 
 
+Existem muitas técnicas disponíveis para ajustar o valor de P. Elas costumam ser agrupadas em função da sua robustez à violação da homocedasticidade e por seu perfil ser liberal ou conservador. O termo liberal significa que a correção do valor de P é pequena ou quase nula, enquanto o termo conservado significa que a correção é mais rigorosa. É importante que a técnica consiga minimizar o erro do tipo 1 (falso positivo) sem maximizar o erro do tipo 2 (falso negativo).
+
+
 
 ## Execução no R
 
 Para executar as comparações pareadas, o pacote `emmeans` será utilizado. A mecânica do por detrás do post hoc se dá em dois passos. Primeiro, o pacote compara todos os níveis presentes na VI dois a dois. Em seguida, o valor de P obtido é ajustado por alguma técnica específica. 
 
-Existem muitas técnicas disponíveis para tal ajuste. Elas costumam ser agrupadas em função da sua robustez à violação da homocedasticidade e por seu perfil ser liberal ou conservador. O termo liberal significa que a correção do valor de P é pequena ou quase nula, enquanto o termo conservado significa que a correção é mais rigorosa.
 
 Para fins práticos, vamos utilizar uma técnica considerada bastante conservadora, chamada de Bonferroni. Nesta correção, o valor de p encontrado em cada uma das comparações é multiplicado pela quantidade de comparações feitas. Este procedimento faz com que o Valor de P encontrado em cada comparação seja igual ao que seria obtido pelo nível de significância nominal. 
 
-A.história desta técnica tem aspectos curiosos A correção de Bonferroni não foi desenvolvida peo matemático italiano Carlo Emilio Bonferroni. Na verdade, ela foi inicialmente implementada por uma estaticista americana, chamada Olive Jean Dunn, que utilizou conceitos da desigualdade de Bonferroni para isos. 
+A.história desta técnica tem aspectos curiosos A correção de Bonferroni não foi desenvolvida pelo matemático italiano Carlo Emilio Bonferroni. Na verdade, ela foi inicialmente implementada por uma estaticista americana, chamada Olive Jean Dunn, que utilizou conceitos da desigualdade de Bonferroni para isso.   
 
 O resultado das comparações dois a dois será armazenado em um objeto específico, nomeado como `post_hoc_escolaridade`. Isso será útil para apresentar sumários e gráficos.
 
@@ -410,7 +426,7 @@ post_hoc_escolaridade <- emmeans(mod_escolaridade, "escolaridade_fct") %>%
 ```
 
 
-A apresentação tabular é fundamental e apresenta as estatísticas inferenciais de interesse. Nesta tabela, o valor de P apresentado na coluna `p.value` é o corrigido pelas comparações feitas.
+A apresentação tabular é fundamental e traz as estatísticas inferenciais de interesse. Nesta tabela, o valor de P apresentado na coluna `p.value` é o corrigido pelas comparações feitas.
 
 ```{r}
 post_hoc_escolaridade %>% data.frame() %>% pander()
@@ -439,12 +455,12 @@ Um exemplo pode ser útil a este momento. A correção implementada no teste pos
 ```{r}
 dados_teg %>% 
   filter(escolaridade_fct == "Colegial" | escolaridade_fct == "ginasio") %>% 
-  {t.test(teg ~ escolaridade_fct, data = .)$p.value} %>% pander()
+  {t.test(teg ~ escolaridade_fct, var.equal = T, data = .)$p.value} %>% pander()
 ```
 
 
 ::: {.warning}
-**Atenção**: Não se deve fazer múltiplos Testes T para comparar três ou mais grupos. O valor de P obtido pelo Teste T aumentará o erro do tipo 1
+**Atenção**: Não se deve fazer múltiplos Testes T para comparar três ou mais grupos. O valor de P obtido pelo Teste T aumentará o erro do tipo 1.
 :::
 
 A interpretação dos resultados agora pode ser feita considerando o valor de P, o tamanho do efeito e as comparações pareadas.
@@ -461,7 +477,9 @@ Em seguida, basta colocar ao lado direito a variável de interesse (<u>escolarid
 
 ![](./img/cap_anova_posthoc_resultados.png)
 
-Mesmo sem implementar a correção de Bonferroni, os achados são virtualmente idênticos aos obtidos anteriormente pelo R. Possíveis diferenças de sinal (+ ou -) ocorrem pela codificação das variáveis e não impactam em nada a interpretação dos achados A interpretação dos resultados agora pode ser feita considerando o valor de P, o tamanho do efeito e as comparações pareadas.
+Mesmo sem implementar a correção de Bonferroni, os achados são virtualmente idênticos aos obtidos anteriormente pelo R. Possíveis diferenças de sinal (+ ou -) ocorrem pela codificação das variáveis e não impactam em nada a interpretação dos achados.   
+
+A interpretação dos resultados agora pode ser feita considerando o valor de P, o tamanho do efeito e as comparações pareadas.
 
 ![](./img/cap_anova_posthoc_resultados2.png)  
 
@@ -479,7 +497,7 @@ Em seguida, é necessário levar a variável <u>escolaridade_fct</u> para o `Hor
 ## Escrita dos resultados  
 
 
-A escrita dos resultados deve contemplar tanto a ANOVA, como as comparações pareadas. Eles devem ser escritos apresentando os valores de P corrigidos e, sempre que possível, as interpretações. Abaixo há uma sugesão com estilo baseado nas recomendações da American Psychological Association (APA).
+A escrita dos resultados deve informar os resultados da ANOVA e das comparações pareadas. É importante apresentar os valores de P corrigidos e, sempre que possível, as interpretações teóricas. Abaixo há uma sugesão com estilo baseado nas recomendações da American Psychological Association (APA).
 
 
 ```{block, type="writing"}
@@ -493,7 +511,7 @@ Os dados foram analisados a partir de uma ANOVA de uma via que verificou o efeit
 ::: {.explore}
 1. A ANOVA de uma via pode tanto ser entendida como um super Teste T, como um caso particular de um modelo de regressão  
 2. Testes post hoc e resultados globais da ANOVA não respondem às mesmas perguntas  
-3. As comparações pareadas devem proteger a inflação do erro do tipo 1, sem gerar o erro do tipo 2 
+3. As comparações pareadas devem proteger a inflação do erro do tipo 1, sem gerar o erro do tipo 2  
 ::: 
 
 
@@ -511,7 +529,7 @@ Nesta pesquisa, cerca de 150 estudantes foram apresentados a um filme e depois t
   <strong>Base: </strong> [Base - MEMORE 2020 Automated model selection](https://github.com/anovabr/mqt/raw/master/bases/Base%20-%20MEMORE%202020%20Automated%20model%20selection.RData)
 </div> 
 
-Nas próximas seções, a pesquisa intitulada ["Propriedades psicométricas de instrumento de Memória Visual de Curto Prazo (MEMORE)"](https://www.neuropsicolatina.org/index.php/Neuropsicologia_Latinoamericana/article/view/545) será parcialmente utilizada. Esse artigo foi publicado em 2020 e eu sou o principal autor. Nesta pesquisa, apresentamos algumas propriedades psicométricas de um teste psicológico desenvolvido para avaliar aspectos da memória de curto prazo (MEMORE), bem como análises estatísticas que visaram investigar o efeito de características psicológicas nos resultados obtidos pelos participantes neste teste específico.  
+Nas próximas seções, a pesquisa intitulada ["Propriedades psicométricas de instrumento de Memória Visual de Curto Prazo (MEMORE)"](https://www.neuropsicolatina.org/index.php/Neuropsicologia_Latinoamericana/article/view/545) será parcialmente utilizada. Esse artigo foi publicado em 2020 e eu sou o primeiro autor. Nesta pesquisa, apresentamos algumas propriedades psicométricas de um teste psicológico desenvolvido para avaliar aspectos da memória de curto prazo (MEMORE), bem como análises estatísticas que visaram investigar o efeito de características psicológicas nos resultados obtidos pelos participantes neste teste específico.  
 
 
 ## ANOVA de 2 vias
@@ -524,10 +542,10 @@ rm(list=setdiff(ls(), "ds"))
 Em grande parte das vezes, o interesse do pesquisador é o de investigar como múltiplos fatores impactam a variável de desfecho. Quando se aumenta o número de variáveis independentes no modelo, consequentemente se aumenta a quantidade de vias ou fatores que a ANOVA possui. Na pesquisa de agora, como o interesse foi investigar o efeito da <u>escolaridade</u> e da <u>faixa etária</u>, trata-se de uma ANOVA de 2 vias. 
 
 
-Na ANOVA de 2 vias, dois modelos principais podem ser calculados. O primeiro é chamado de "modelo aditivo", em que <u>não</u> se estipulam interações entre os fatores. O segundo modelo é denominado como "não aditivo" ou "saturado" e ocorre quando uma interação entre os fatores é definida. Nesta seção, será apresentado o modelo aditivo, enquanto na seção ANOVA fatorial, o modelo saturado será descrito. 
+Na ANOVA de 2 vias, dois modelos principais podem ser calculados. O primeiro é chamado de "modelo aditivo", em que <u>não</u> se estipulam interações entre os fatores. O segundo modelo é denominado como "não aditivo" ou "saturado" e ocorre quando uma interação entre os fatores é definida. O termo "saturado" tende a gerar confusão e deve ser evitado, uma vez sua definição varia de área para área. Nesta seção, será apresentado o modelo aditivo, enquanto na seção ANOVA fatorial, o modelo não aditivo será descrito. 
 
 ::: {.warning}
-**Atenção**: Uma ANOVA de duas vias é chamada de aditiva quando tem apenas efeitos principais. Quando há interação, ela é chamada de não-aditiva ou saturada. O termo saturada pode gerar confusão com outras definições.  
+**Atenção**: Uma ANOVA de duas vias é chamada de aditiva quando tem apenas efeitos principais. Quando há interação, ela é chamada de não aditiva ou saturada. O termo saturada pode gerar confusão com outras definições.  
 :::
 
 Conceitualmente, na ANOVA de duas vias sem interação, temos:
@@ -561,7 +579,7 @@ ds <- ds %>%
   filter(!is.na(faixa_etaria) & !is.na(escolaridade_grupo))
 ```
 
-A apresentação de tabelas e gráficos que possibilitem uma primeira descrição dos dados é importante e deve ser realizado.  A tabela a seguir tem um formato 5x3. Nela, as linhas apresentam os níveis da <u>faixa etária</u> e as colunas apresentam os níveis da <u>escolaridade</u>, com seus respectivos resultados.
+A apresentação de tabelas e gráficos que possibilitem uma primeira descrição dos dados é importante e deve ser realizado. A tabela a seguir tem um formato 5x3. Nela, as linhas apresentam os níveis da <u>faixa etária</u> e as colunas apresentam os níveis da <u>escolaridade</u>, com seus respectivos resultados.
 
 ```{r}
 ds %>% 
@@ -573,7 +591,7 @@ ds %>%
   pander(., split.table = Inf)
 ```
 
-Gráficos específicos com relações bivariadas ajudam em uma primeira sondagem dos padrões. 
+Gráficos específicos com relações bivariadas ajudam em uma primeira sondagem dos padrões. Na imagem a seguir, o primeiro gráfico apresenta a relação entre os resultados e os níveis de escolaridade, enquanto o segundo gráfico apresenta a relação que os resultados possuem com a faixa etária dos participantes.  
 
 ```{r, message=FALSE}
 gridExtra::grid.arrange(
@@ -582,23 +600,24 @@ gridExtra::grid.arrange(
     stat_summary(fun.data = mean_se, geom = "errorbar") +
     theme(legend.position = "none"),
   
-  ggplot(ds, aes(x = faixa_etaria, y = memore_total, fill = faixa_etaria)) +
-    geom_bar(stat = "summary") +
-    stat_summary(fun.data = mean_se, geom = "errorbar") +
-    theme(legend.position = "none"))
+  ggplot(ds, aes(x = faixa_etaria, y = memore_total, group = 1)) +
+  stat_summary(geom = "line", fun = mean, size=1.0) +
+  stat_summary(fun.data = mean_se, geom = "errorbar", width = .2))
+
 ```
    
-Por sua vez, gráficos mais complexos, que reúnem mais informações, também são úteis. Repare que a ideia principal do gráfico a seguir é reunir a faixa etária e o nível de escolaridade na mesma apresentação. Conforme explicitado no capítulo sobre estatística descritiva, o eixo X é utilizado pela variável com mais níveis.  
+Por sua vez, gráficos mais complexos, que reúnem mais informações, também são úteis. Repare que a ideia principal da apresentação a seguir é descrever a influência da faixa etária e o nível de escolaridade nos resultados em um único gráfico. Conforme explicitado no capítulo sobre estatística descritiva, o eixo X é utilizado pela variável com mais níveis (faixa etária), enquanto o agrupador reúne a variável com menos níveis (escolaridade).    
 
 ```{r}
-ggplot(ds, aes(x = faixa_etaria, y = memore_total, fill = escolaridade_grupo)) +
-  geom_bar(stat = "summary", position = "dodge", fun = mean) +
+ggplot(ds, aes(x = faixa_etaria, y = memore_total, color = escolaridade_grupo, group  = escolaridade_grupo)) +
+  stat_summary(geom = "line", fun = mean, size = 1) +
+  stat_summary(fun.data = mean_se, geom = "errorbar", width = .2) +
   theme(legend.position = "bottom")
 ```
   
 É importante ter atenção que este gráfico não é necessariamente o melhor para uma ANOVA de 2 vias (aditiva), uma vez que pode sugerir algum relacionamento entre as variáveis independentes. Esse aspecto será melhor debatido na seção de [ANOVA Fatorial](#anova_fatorial).    
 
-Agora, formalmente a modelagem poderá será feita. Os passos devem ser exatamente os mesmos aos performados anteriormente, incluindo a verificação de pressupostos e interpretação dos resultados. Para realizar a ANOVA de duas vias, é possível contar com a função `lm` ou `aov`. Aqui, a escolha da `lm` foi apenas por conveniência. O vetor `mod_escolaridade_faixa_etaria` irá armazenar os resultados.
+É possível analisar descritivamente cada um dos resultados. Entretanto, para tomar decisões inferenciais, é necessário a realização da modelagem formal. Os passos devem ser exatamente os mesmos aos performados anteriormente, incluindo a verificação de pressupostos e interpretação dos resultados. Para realizar a ANOVA de duas vias, é possível contar com a função `lm` ou `aov`. Aqui, a escolha da `lm` foi apenas por conveniência. O vetor `mod_escolaridade_faixa_etaria` irá armazenar os resultados.
 
 
 ```{r}
@@ -611,15 +630,15 @@ A tabela padronizada da ANOVA de duas vias, disponível na maioria dos programas
 
   | Preditor      | Soma dos Quadrados| Graus de liberdade |  Quadrado médio             | Estat. F       | 
   | :-----------  | :-----------      | :-----------       |  :-----------               | :-----------   |  
-  | Fator (A)     | Entre (SS(A))     | K(A)-1             |  MS(A) = SS(A)/K-1          | F = MS(A)/MSW  | 
-  | Fator (B)     | Entre (SS(B))     | K(B)-1             |  MS(B) = SS(B)/K-1          | F = MS(B)/MSW  | 
-  | Resíduo       | Dentro (SSW)      | N-1-(df(A)+df(B))  |  MSW = SSW/N-1-(df(A)+df(B))|                |
+  | Fator (A)     | Entre (SS(A))     | K(A)-1             |  MS(A) = SS(A)/(K-1)          | F = MS(A)/MSW  | 
+  | Fator (B)     | Entre (SS(B))     | K(B)-1             |  MS(B) = SS(B)/(K-1)          | F = MS(B)/MSW  | 
+  | Resíduo       | Dentro (SSW)      | N-1-(df(A)+df(B))  |  MSW = SSW/(N-1-(df(A)+df(B)))|                |
 
 
 Posto isso, os resultados obtidos são:
 
 ```{r }
-apaTables::apa.aov.table(mod_escolaridade_faixa_etaria) %>% pander()
+apaTables::apa.aov.table(mod_escolaridade_faixa_etaria)$table_body %>%  pander(.)
 ```
 
 

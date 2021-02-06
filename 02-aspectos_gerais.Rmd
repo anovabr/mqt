@@ -9,28 +9,46 @@ output:
 ```{block, type="objectives"}
 **Objetivos do capítulo**  
 1. Apresentar conceitos transversais encontrados em pesquisa e estatística    
-2. Discutir algumas características das variáveis     
-3. Apresentar funções do dplyr e ggplot    
-4. Apresentar um módulo específico do JASP   
-5. Sugerir heurísticas ou regras gerais na criação de gráficos  
+2. Descrever as variáveis em função de seu relacionamento, escala de medida e capacidade numérica  
+3. Introduzir o debate sobre a escala de medida em Psicologia  
+4. Apresentar as duas principais áreas da estatística
 ```
  
+```{block, type="glossario"}
+<U>**GLOSSÁRIO**</U>   
+**Pesquisa**: Procedimento racional e sistemático de investigação que visa proporcionar respostas específicas a um conjunto de problemas propostos.  
+**Modelo teórico**: Representação visual, matemática, computacional ou experimental de um sistema de ideias, eventos ou fenômenos.  
+**Instrumentos científicos**: Ferramentas que permitem amplificar o fenômeno de interesse, além de acessar aspectos da realidade que não podem ser percebidos diretamente.  
+**Variável aleatória**: É uma variável que está associada a uma distribuição de probabilidade.  
+**Variável**: Termo genérico usado para se referir às características que estão sendo investigadas ou para se referir às variáveis aleatórias.   
+**Variável Independente (VI)**: Característica que esta sendo manipulada. Entende-se que ela influencia, afetam ou determinam outras variáveis.  
+**Variável dependente (VD)**:   Variável que sofre efeito da VI. Seus valores dependem dos níveis da VI.  
+**Delineamento de pesquisa** Forma de esquematizar o planejamento da pesquisa, especialmente considerando o acesso e controle das variáveis, bem como a coleta e análise de dados.   
+```
+
 
 Quando as pessoas começam seus estudos em estatística, parece haver uma falsa crença de que a estatística é uma área exclusivamente desenvolvida para analisar dados obtidos em uma pesquisa. Este pensamento acaba por produzir uma dicotomia entre pesquisa e estatística, fazendo com que algumas pessoas pensem que as atividades feitas em estatística somente começam após o termino de uma pesquisa. No entanto, isso não é verdade. Apesar da análise de dados ser uma tarefa intensamente feita em estatística, a atuação desta ciência é muito mais mais ampla do que apenas isso e ocorre em todas as etapas de uma pesquisa.    
 
 Em linhas gerais, a estatística é a ciência que fornece os princípios e a metodologia para <u>coleta</u>, <u>organização</u>, <u>apresentação</u>, <u>resumo</u>, <u>tratamento</u>, <u>análise</u> e <u>interpretação de dados</u>. O mnemônico <mark>CORRETA</mark> quase sempre ajuda a fixar esta definição, já que C se refere à coleta, O se refere à organização, R se refere à resumo, T se refere à tratamento e A se refere à análise, incluindo aspectos descritivos, inferenciais e suas respectivas interpretações, que serão discutidas posteriormente. Assim, aprender estatística da forma "correta" é muito importante no meio acadêmico e científico.   
 
 
-Uma vez que o conjunto de atividades possíveis em estatística é bastante longo, é possível distinguir acadêmicos cujos interesses são mais relacionados à <mark>estatística como ciência</marK> daqueles cujos interessem recaem mais na utilização da <mark>estatística na ciência</mark>. Com frequência, estudantes do bacharelado de estatística ou matémática tendem a fazer parte do primeiro grupo, enquanto estudantes de áreas mais aplicadas, incluindo aqui Psicologia, tendem a fazer parte do segundo grupo. Assim, apesar dos conceitos principais da estatística serem os mesmos, essa distinção serve como uma bussóla metodológica para orientar a forma pela qual esses conceitos serão introduzidos e discutidos.
+::: {.warning}
+**Atenção**: A estatística atua em todas as etapas da pesquisa, incluindo o planejamento, execução e análises. O mnemônico CORRETA auxilia a lembrar as principais atividades desempenhadas pela estatística.     
+:::
 
-Isso posto, Os subtópicos a seguir introduzem conceitos gerais e importantes que costumam ser apresentados antes mesmo de aspectos mais voltados à análise de dados. Uma vez que esses conceitos são transversais, é possível também encontrar essa discussão em livros de métodos de pesquisa e história da ciência. 
+
+Uma vez que o conjunto de atividades possíveis em estatística é bastante longo, é possível distinguir acadêmicos cujos interesses são mais relacionados à <mark>estatística como ciência</marK> daqueles cujos interessem recaem mais na utilização da <mark>estatística na ciência</mark>. Com frequência, estudantes do bacharelado de estatística ou matémática tendem a fazer parte do primeiro grupo, enquanto estudantes de áreas mais aplicadas, incluindo aqui Psicologia, tendem a fazer parte do segundo grupo. Apesar dos conceitos principais da estatística serem os mesmos, essa distinção serve como uma bussóla metodológica para orientar a forma pela qual esses conceitos serão introduzidos e discutidos.
+
+Isso posto, os subtópicos a seguir introduzem conceitos gerais e importantes que costumam ser apresentados antes mesmo de aspectos mais voltados à análise de dados. Uma vez que esses conceitos são transversais, é possível também encontrar essa discussão em livros de métodos de pesquisa e história da ciência. 
 
 A apresentação e descrição desses temas será feita de maneira sucinta. As referências bibliográficas dispostas ao fim do capítulo servem para o aprofundamento teórico entre aqueles interessados.   
 
 
 ## Os objetivos de uma pesquisa 
 
-Uma pesquisa é um procedimento racional e sistemático de investigação que visa proporcionar respostas específicas a um conjunto de problemas propostos [@gil2002]. A execução de uma pesquisa depende da eleição de problemas específicos, bem como da coleta e análise de dados. É possível classificar as pesquisas a partir de três grandes objetivos, que são as (1) pesquisas exploratórias, (2) pesquisas descritivas e (3) pesquisas explicativas. A tabela a seguir sintetiza as principais características de cada um desses tipos.    
+Uma pesquisa é um procedimento racional e sistemático de investigação que visa proporcionar respostas específicas a um conjunto de problemas propostos [@gil2002]. Toda pesquisa depende da eleição de problemas, bem como da coleta e análise de dados.
+
+Uma das principais condições a se definir antes de se iniciar uma pesquisa é o seu objetivo geral. Neste sentido, é possível listar 3 grandes grupos de pesquisas, que são as (1) pesquisas exploratórias, (2) pesquisas descritivas e (3) pesquisas explicativas. A tabela a seguir sintetiza as principais características de cada um desses tipos.    
 
 
   | Tipo de Pesquisa| Quando é feita                                             | Características principais               
@@ -40,16 +58,52 @@ Uma pesquisa é um procedimento racional e sistemático de investigação que vi
    | Explicativa    | Há maior conhecimento sobre o tema de interesse e a finalidade é indicar possíveis relações de causa e efeito | O delineamento experimental tende a ser implementado, o que será explicado posteriormente     
  
 
-## Fundações da pesquisa e estatística
+É possível notar que o objetivo da pesquisa indica um pouco a maturidade da área cientifica em questão e a recenticidade que o fenômeno a ser estudado representa. Apesar de não ser uma regra geral, pesquisas exploratórias tendem a ser feitas por ciências mais novas e/ou para estudar fenômenos e objetos em que há pouco conhecimento científico sobre. Tenha atenção que a baixa quantidade de conhecimento se refere a aspectos acadêmicos e científicos, e não a quatidade de conhecimento que os autores da pesquisa apresentam sobre seu objeto de investigação. 
+
+Muitas pesquisas em Psicologia são exploratórias. Explorar quantas e quais funções executivas estão presentes em crianças com autismo [@Skogli2020] ou quais são as atitudes de professores em relação ao ensino de ciência [@Jones1994] retratam bem pesquisas exploratórias. No entanto, mesmo áreas com maior maturidade científica podem realizar pesquisas exploratórias quando o fenômeno a ser estudado é recente. Por exemplo, a eventual relação entre o Zica Vírus e o desenvolvimento de microcefalia nos anos 2015 proporcionou a realização de muitas pesquisas exploratórias em biologia e medicina. 
+
+
+Pesquisas com objetivos descritivos indicam que o fenômeno ou objeto investigado já é mais conhecido pela comunidade científica. Elas são úteis para apresentar o perfil de determinado fenômeno ou objeto, bem como verificar a relação entre variáveis. As pesquisa de intenção de votos, survey sobre opiniões e atitudes sociais e indicadores de prevalência de condições de saúde retratam bem este tipo de pesquisa. 
+
+
+Pesquisas explicativas visam identificar os fatores que determinam ou que contribuem para a ocorrência dos fenômenos [@gil2002]. Esse é o tipo de pesquisa que mais aprofunda o conhecimento da realidade e, consequentemente, é a mais complexa de ser realizada. Estudar fenômenos termodinâmicos, tal como a transformação de um tipo de energia em outra, ou como o processo de detecção de um estímulo se dá [Madsen1988] ou qual é o efeito de programas de televisão na agressividade de crianças [-@Bandura1961] retratam pesquisas explicativas.   
+
+## A dimensão temporal de uma pesquisa
+
+A unidade de tempo de uma pesquisa é um fator importante a ser definido antes de sua execução e a pesquisa pode ser transversal ou longitudinal. Estudos transversais são também chamados de *Cross-sectional* e descrevem uma situação ou fenômeno em um momento específico do tempo. Estudos longitudinais são também chamados de *follow-up* e  contam com uma seqüência temporal previamente definida. A imagem a seguir apresenta este conceito.
+
+![](./img/cap_transversal_longitudinal.png)
+
+
+A realização de cada tipo de estudo é atrealada à pergunta a qual ele visa responder. A tabela abaixo apresesenta algumas características.
+
+
+
+  | Característica | Transversal          | Longitudinal             
+  | :-----------   | :----------          | :-----------                        
+  | Duração        | Um único momento.      | Múltiplos momentos.
+  | Amostra        | Varia em cada estudo.       | Mesmos participantes.  
+  | Resultados     | Mostram uma fotografia momentâna.      | Indicam detalhes da mudança das variáveis.  
+  | Vantagens      | - Tende a ser mais barata.<br>-Rápida.<br>-Participantes são mais fáceis de serem amostrados.<br>- Menos condições burocráticas (Comissão ética, etc). | -Mudanças podem ser descritas.<br>-Maior detalhamento dos resultados.<br>-Pode indicar causalidade<br>
+  | Desvantagens   | -Pouco nível de detalhamento.<br>-Impossibilidade de analisar mudanças.<br>-Dificuldade de verificar aspectos de causalidade. | -Consome tempo e dinheiro para execução.<br>-Perda amostral tende a ocorrer com frequência.<br>-Maior burocracia (Comissão ética, etc).<br>-Definição de intervalo de tempo difícil.  
+
+
+Com regularidade, pesquisas longitudinais se aproximam mais de objetivos explicativos, enquanto pesquisas transversais são mais próximas a objetivos exploratórios e descritivos.  
+
+
+## conceitos fundamentais   
 - *L. Anunciação & J. Landeira-Fernandez* 
 
-Existem alguns conceitos muito utilizados em pesquisa e estatística que servem como fundações da maior parte dos métodos e técnicas implementados quando se deseja investigar um determinado fenômeno ou objeto através do método científico. Apesar de manuais técnicos divergirem em quantos e quais conceitos podem ser entendidos como fundamentais em pesquisa e estatística, existe grande concordância em relação à <mark>(1) realidade e modelo</mark> e <mark>(2) constante e variáveis</mark>. Ambos serão introduzidos a seguir.     
 
-Quando uma pesquisa é feita, ela visa responder uma pergunta específica sobre um fenômeno ou objeto. Muitas perguntas são possíveis a depender da área de interesse do investigador, bem como de sua época. Físicos e astrônomos do século XVI queriam investigar a organização do sistema solar, economistas do século XVIII tinham interesse em investigar a relação entre recursos e rendimentos financeiros e, mais recentemente, psicólogos do século XX se debruçaram a estudar o efeito da escolaridade no desenvolvimento de habilidades cognitivas. Esses três exemplos remontam à teoria heliocêntrica, a lei dos retornos marginais decrescentes e a teoria da reserva cognitiva.  
+Existem alguns conceitos muito utilizados em pesquisa e estatística que servem como fundações da maior parte dos métodos e técnicas implementados quando se deseja investigar um determinado fenômeno ou objeto através do método científico. Apesar de manuais técnicos divergirem em quantos e quais conceitos podem ser entendidos como fundamentais em pesquisa e estatística, existe grande concordância em relação à (1) realidade e modelo e (2) constante e variáveis. Ambos serão introduzidos a seguir.     
 
-Apesar da diferença entre os interesses, uma característica compartilhada nestas pesquisas é a impossibilidade ou improbabilidade de se investigar diretamente a realidade. No exemplo da astronomia isso parece ser bastante claro, já que mesmo que pesquisas em física tenham características mais mecanicistas, só atualmente que o acesso mais direto da realidade foi possível e permitiu responder melhor essa questão. Além disso, na grande maioria das pesquisas, os fenômenos e objetos de interesse não são sistemas fechados. Isso significa que não é possível ou viável controlar todos os fatores relacionados ao que se tem interesse de estudar. Por exemplo, quando se investiga como a escolaridade impacta nas habilidades cognitivas, os resultados podem (ou não) responder apenas inicialmente sobre um dos fatores relacionado às habilidades cognitivas, mas não todos.
+### Modelos científicos
 
-Entre as maneiras desenvolvidas por cientistas para lidar com esta situação estão a <u>construção de modelos teóricos</u> e <u>instrumentos de medida</u>. Modelos teóricos científicos são representações da realidade e podem ser criados sob perspectiva visual, matemática, computacional ou experimental. Eles tendem a ser sistemas fechados e visam reproduzir, precisamente, o fenômeno ou objeto de interesse. A qualidade desses modelos pode variar e entre as principais características positivas de um modelo com alta aderência à realidade estão a possibilidade de se realizar simulações e também fazer predições com ele. 
+Quando uma pesquisa é feita, ela visa responder uma pergunta específica sobre um fenômeno ou objeto, tal como apresentado anteriormente. Muitas perguntas são possíveis a depender da área de interesse do investigador, bem como de sua época. Físicos e astrônomos do século XVI queriam investigar a organização do sistema solar, economistas do século XVIII tinham interesse em investigar a relação entre recursos e rendimentos financeiros e, mais recentemente, psicólogos do século XX se debruçaram a estudar o efeito da escolaridade no desenvolvimento de habilidades cognitivas. Esses três exemplos remontam à teoria heliocêntrica, a lei dos retornos marginais decrescentes e a teoria da reserva cognitiva.  
+
+Apesar da diferença entre os interesses, uma característica compartilhada nestas pesquisas é a impossibilidade ou improbabilidade de se investigar diretamente a realidade. No exemplo da astronomia isso parece ser bastante claro, já que mesmo que pesquisas em física tenham características mais mecanicistas, só atualmente que o acesso mais preciso da realidade foi possível e permitiu responder melhor essa questão. Além disso, na grande maioria das pesquisas, os fenômenos e objetos de interesse não são sistemas fechados. Isso significa que não é possível ou viável controlar todos os fatores relacionados ao que se tem interesse de estudar. Por exemplo, quando se investiga como a escolaridade impacta nas habilidades cognitivas, os resultados podem (ou não) responder apenas inicialmente sobre um dos fatores relacionado às habilidades cognitivas, mas não todos.
+
+Entre as maneiras desenvolvidas por cientistas para lidar com esta situação estão a <u>construção de modelos teóricos</u> e <u>instrumentos de medida</u>. Modelos teóricos científicos são representações da realidade e podem ser criados sob perspectiva visual, matemática, computacional ou experimental [@Weisberg2013]. Eles tendem a ser sistemas fechados e visam reproduzir, precisamente, o fenômeno ou objeto de interesse. A qualidade desses modelos pode variar e entre as principais características positivas de um modelo com alta aderência à realidade estão a possibilidade de se realizar simulações e também fazer predições com ele [@Heidemann2016]. 
 
 A figura a seguir apresenta algumas características dos modelos científicos.  
 
@@ -64,12 +118,12 @@ Ainda neste sentido, mapas cartográficos ilustram bem a importância dos modelo
 ![](./img/cap_mapas.png) 
 
  
-Além disso, quase sempre, o registro que temos da realidade é baseado em nossos órgãos sensoriais que, por sua vez, são influenciados pela cultura em que estamos inseridos e pela aprendizagem prévia pela qual passamos. Com isso é fácil notar que existe um grande hiato entre a realidade e nossa percepção da realidade. Os instrumentos de medida, por sua vez, são recursos tecnológicos que permitem uma avaliação mais detalhada do fenômeno ou do objeto de investigação, além de gerarem dados que podem ser analisados, comparados e compartilhados. Todas as áreas científicas criam e refinam instrumentos de medida e há autores que sugerem que a existência e a qualidade de tais recursos indicam o quão madura e desenvolvida uma área se encontra. Apesar de grande variabilidade em relação à acurácia e precisão dos instrumentos, relógios, bússolas, réguas e testes psicológicos permitem um acesso mais detalhado de um fenômeno ou objeto de interesse.
+Além disso, quase sempre, o registro que temos da realidade é baseado em nossos órgãos sensoriais que, por sua vez, são influenciados pela cultura em que estamos inseridos e pela aprendizagem prévia pela qual passamos. Com isso é fácil notar que existe um grande hiato entre a realidade e nossa percepção da realidade. Os instrumentos de medida, por sua vez, são recursos tecnológicos que permitem uma avaliação mais detalhada do fenômeno ou do objeto de investigação, além de gerarem dados que podem ser analisados, comparados e compartilhados. Todas as áreas científicas criam e refinam instrumentos de medida e há autores que sugerem que a existência e a qualidade de tais recursos indicam o quão madura e desenvolvida uma área se encontra, uma vez que os instrumentos são condições centrais no processo científico [@Bergenholtz2018]. Apesar de grande variabilidade em relação à acurácia e precisão dos instrumentos, relógios, bússolas, réguas e testes psicológicos permitem um acesso mais detalhado de um fenômeno ou objeto de interesse.
 
 
 ![](./img/cap_instrumentos.png) 
 
-Dessa maneira, a principal proposta dos instrumentos de medida é a captura da realidade por uma via mais direta, evitando possíveis interferência ou ruídos e produzindo dados confiáveis sobre o fenômeno ou objeto estudado. Existe uma grande translação entre modelos teóricos e instrumentos de medida. Apesar de não ser uma regra geral, muitas áreas científicas primeiro constroem modelos teóricos e o processo de medida ocorre nestes modelos. Por exemplo, há um conjunto de modelos psicológicos visando entender como ocorre o esquecimento que, por sua vez, permitiram desenvolver testes e escalas específicas para isso.   
+Dessa maneira, a principal proposta dos instrumentos de medida é a captura da realidade sem interferência ou ruídos e, em seguida, a produção de dados confiáveis sobre o fenômeno ou objeto estudado. Existe uma grande translação entre modelos teóricos e instrumentos de medida. Apesar de não ser uma regra geral, muitas áreas científicas primeiro constroem modelos teóricos e o processo de medida ocorre nestes modelos. Por exemplo, há um conjunto de modelos psicológicos visando entender como ocorre o esquecimento que, por sua vez, permitiram desenvolver testes e escalas específicas para isso.   
 
 
 Uma dos exemplos mais interessantes sobre a limitação que nossos sentidos possuem ao capturar a realidade e a importância do desenvolvimento de instrumentos de medida é percepção que temos do sol. A maioria das representações feitas do sol o apresentam como amarelo, quando na verdade ele é branco. Isso ocorre em função da atmosfera do planeta Terra e de diferentes gases presentes no céu.   
@@ -79,16 +133,22 @@ Uma dos exemplos mais interessantes sobre a limitação que nossos sentidos poss
 
 Isso posto, o desenvolvimento de modelos teóricos e de instrumentos de medida são atividades essenciais de pesquisadores e cientistas para lidar com a impossibilidade ou improbabilidade de acessar a realidade de forma direta, bem como pela limitação perceptual que temos. Como Popper comenta no livro "Os dois problemas fundamentais da teoria do conhecimento", essas características fazem com que cientistas quase nunca digam que estão em busca da verdade, mas sim que estão em busca de evidências sobre um determinado fenômeno ou objeto.
 
-O segundo conceito fundamental se dá na dicotomia constante vs. variáveis. De maneira geral, um fenômeno constante não apresenta dispersão em seus valores. Basta uma única medição para que o comportamento de um fenômeno constante possa ser capturado. Em oposição, fenômenos variáveis podem assumir quaisquer valores em suas características. Enquanto a velocidade da luz e do som é, respectivamente, 324 m/s e 299.792 m/s; a renda, altura ou inteligência das pessoas pode variar bastante. De fato, essa dicotomia também poderia ser vista pelo conceito de modelos determinísticos e probabilísticos ou, superficialmente, em diferenças entre ciências naturais e ciências humanas. Modelos determinísticos são aqueles que as condições iniciais determinam os resultados, enquanto modelos probabilísticos são os que associam probabilidades aos resultados. Em ciências naturais recorre-se menos à noção de probabilidade, enquanto em ciências humanas este é um conceito central.   
+### Variáveis  
+
+O segundo conceito fundamental pode ser entendido pela dicotomia entre variáveis e constantes. De maneira geral, um fenômeno constante não apresenta dispersão em seus valores. Basta uma única medição para que o comportamento de um fenômeno constante possa ser capturado. Em oposição, fenômenos variáveis podem assumir quaisquer valores em suas características. Enquanto a velocidade da luz e do som é, respectivamente, 324 m/s e 299.792 m/s; a renda, altura ou inteligência das pessoas pode variar bastante. Essa dicotomia poderia também ser vista pelo conceito de modelos determinísticos e probabilísticos ou, superficialmente, em diferenças entre ciências naturais e ciências humanas. Modelos determinísticos são aqueles que as condições iniciais determinam os resultados, enquanto modelos probabilísticos são os que associam probabilidades aos resultados. Em ciências naturais recorre-se menos à noção de probabilidade, enquanto em ciências humanas este é um conceito central.   
 
 Em estatística e pesquisa, o termo variável pode ser entendido tanto de uma maneira bastante informal, como de uma forma mais rigorosa. Informalmente, uma variável é um símbolo que representa uma característica de um determinado objeto, tal como peso, altura, inteligência ou renda. Como essa característica pode apresentar quaisquer, dá-se o nome de variável. No entanto, formalmente em estatística, quando o termo variável é utilizado, o que está em jogo é o conceito de <u>variável aleatória</u>. Por sua vez, este conceito se refere à uma classe de variáveis em que o conjunto possível de suas realizações (ou seja, seus valores ou desfechos) ocorrem de acordo com uma distribuição de probabilidade [@everitt2002cambridge]. Em estatística, uma variável aleatória é uma função que associa elementos do espaço amostral ao conjunto de números reais. 
+
+::: {.warning}
+**Atenção**: Uma variável é um símbolo que representa uma característica. Uma variável aleatória é uma variável que possui uma distribuição de probabilidade.       
+:::
 
 Dessa maneira, o estudo das variáveis (aleatórias) é central em estatística, seja tanto para análises descritiva, como inferenciais.   
 
 As variáveis podem ser organizadas por seu <u>relacionamento em uma pesquisa</u>, seu <u>nível ou escala de medida</u> e sua <u>capacidade informacional</u>.  
 
 
-No que se refere ao relacionamento entre as variáveis, inicialmente, é possível classificá-las em <u>independentes</u> e <u>dependentes</u>. Variáveis independentes são abreviadas pela sigla VI e também são chamadas de antecedentes, preditores, fatores ou variáveis manipuladas ou de entrada. Variáveis dependentes são abreviadas por VD e também são chamadas de consequentes, previstas, desfechos ou variáveis medidas ou de saída.   
+No que se refere ao relacionamento entre as variáveis, inicialmente, é possível classificá-las em independentes e dependentes. Variáveis independentes são abreviadas pela sigla VI e também são chamadas de antecedentes, preditores, fatores ou variáveis manipuladas ou de entrada. Variáveis dependentes são abreviadas por VD e também são chamadas de consequentes, previstas, desfechos ou variáveis medidas ou de saída.   
 
 
 Os termos VI e VD explicitam que ambas as variáveis são conectadas e que <u>a VI gera ou causa a VD</u>. É justamente por isso que representações matemáticas apresentam a VI por X e a VD por Y, tal como no estudo de funções.  
@@ -110,7 +170,7 @@ Em relação à condição lógica (as vezes chamada de quase-temporal), é poss
 Finalmente, uma organização teórica ocorre quando se pretende investigar os efeitos da ansiedade na depressão ou do casamento no bem estar pessoal. A eleição da ansiedade como VI foi uma escolha do pesquisador e não, necessariamente, uma condição temporal ou lógica. Da mesma forma, eleger o casamento como VI é uma escolha feita para responder a uma determinada questão. 
 
 
-A figura a seguir traz um diagrama inicial destes conceitos.
+A figura a seguir traz um diagrama inicial destes conceitos, utilizando um esquema em que as horas de estudo teriam efeito sobre a nota da prova.  
 
 
 ![](./img/cap_vi_vd.png) 
@@ -119,43 +179,33 @@ A figura a seguir traz um diagrama inicial destes conceitos.
 É importante notar que a ideia de uma única variável impactando ou causando diretamente uma outra variável é quase metafórica. Para que isso pudesse ocorrer tanto em fenômenos físicos como em quaisquer outros, seria necessário que todas as possíveis fontes de influência existentes neste relacionamento fossem controladas ou suprimidas [@Dumsday2012]. Essa noção de controle total é visto pelo termo *ceteris paribus*, que é uma expressão em latim que significa "tudo o mais constante". Muitas vezes, em pesquisa e estatística, este termo é utilizado quando alguns ajustes são implementados em modelos estatísticos para tentar expressar a ideia de uma causalidade parcial, em que a VI impactaria a VD de uma determinada forma, caso tudo o mais fosse controlado [@Fennell2005]. Evidentemente, há fenômenos sociais que parecem obedecer à certa regularidade e o termo "fato estilizado" tende a ser empregado nestas situações [@Hirschman2016].  
 
 
-Ao se pensar nas condições em que a VI e VD estejam definidas, é fácil notar que existe um conjunto grande de outras variáveis que podem impactar neste relacionamento. Essas variáveis recebem muitos nomes e o termo <u>variáveis estranhas</u> (VEs) pode servir para designá-las. A imagem a seguir ilustra algumas das variáveis que poderiam impactar na relação entre horas de estudo e notas na prova, aqui assumidas como VI e VD, respectivamente.  
+Ao se pensar nas condições em que a VI e VD estejam definidas, é fácil notar que existe um conjunto grande de outras variáveis que podem impactar neste relacionamento. Essas variáveis recebem muitos nomes e o termo <u>variáveis estranhas</u> (VEs) pode servir para designá-las. A imagem a seguir ilustra algumas das variáveis que poderiam impactar na relação entre horas de estudo e notas na prova, previamente assumidas como VI e VD.  
  
 
 ![](./img/cap_variavel_estranha.png)
 
-A natureza destas variáveis estranhas e o local em que ela impacta no relacionamento entre a VI e a VD entram em cena quando conceitos específicos são estudados. No capítulo sobre correlação e regressão essa discussão será revisitada.   
+É possível afirmar que em todos os relacionamentos entre duas variáveis, sempre haverá um conjunto de outras variáveis impactando nesta relação. justamente por isso é que cientistas quase nunca digam que estão absolutamente certos de uma determinada condição ou assunto. Na maioria das vezes, como também ilustrado por Popper no livro "Os dois problemas fundamentais da teoria do conhecimento",  cientistas tendem a substituir a palavra certeza por probabilidade.
 
 
-É possível afirmar que em todos os relacionamentos entre duas variáveis, sempre haverá  um conjunto de outras variáveis impactando esta relação. Conseguir mapear essas variáveis depende tanto da maturidade científica de uma área, como do objetivo que a pesquisa se propõe. É possível organizar as pesquisas a partir de três principais objetivos, que são as (1) pesquisas exploratórias, (2) pesquisas descritivas e (3) pesquisas explicativas. A tabela a seguir sintetiza as principais características de cada um desses tipos.    
+Para conseguir mapeaer adequadamente o quanto e como outras variáveis impactam no relacionamento VI-VD em um estudo, é necessário ter claro o objetivo que a pesquisa possui, mas também o delineamento implementado para sua execução, o que será descrito a seguir.
 
 
-  | Tipo de Pesquisa| Quando é feita                                             | Características principais               
-  | :-----------    | :-----------                                               | :-----------                        
-  | Exploratória    | Há pouco ou nenhum conhecimento sobre o tema de interesse. | Não há hipóteses definidas previamente. Os resultados proporcionam maior familiaridade com o problema, apesar de frágeis e pouco generalizáveis.  
-  | Descritiva      | Os fenômenos e objetos já são mais conhecidos. Hipóteses sobre suas características e eventuais relacionamentos podem ser feitas. | Técnicas de coleta de dados mais padronizadas tendem a ser empregadas. Testes de hipóteses são feitos, bem como técnicas estatísticas descritivas e que visem comparar características entre grupos e pessoas diferentes.     
-   | Explicativa    | Há maior conhecimento sobre o tema de interesse e a finalidade é indicar possíveis relações de causa e efeito | O delineamento experimental tende a ser implementado, o que será explicado posteriormente     
-  
+### Delineamentos de pesquisa
+
+O termo delineamento diz respeito a etapa de planejamento de pesquisa em que se "considera o ambiente em que são coletados os dados e as formas de controle das variáveis envolvidas" [@gil2002]. Dessa forma, o delineamento funciona como um manual técnico.  É durante esta etapa que o pesquisador terá a oportunidade de eleger as maneiras pelas quais ele irá executar seu estudo e mapear as principais características e limitações existentes. 
 
 
-Durante o mapeamento do relacionamentos entre VI e VD, objetivo definido para a pesquisa serve como primeiro marcador para auxiliar a mapear todas as possíveis variáveis estranhas que impactam neste relacionamento. Pesquisas exploratórias, por exemplo, quase nunca conseguirão listar todas as possíveis VEs, o que é o oposto do visto em pesquisas explicativas.  
 
-No entanto, é durante o planejamento da pesquisa em sua dimensão mais ampla, mas especialmente focado nas condições de coleta e análise de dados, é que o pesquisador terá a oportunidade de eleger as maneiras pelas quais ele irá executar seu estudo e mapear as principais características e limitações existentes. O conceito de delineamento de pesquisa é justamente utilizado para expressar esta ideia, sendo formalmente entendido como um manual ou roteiro que "considera o ambiente em que são coletados os dados e as formas de controle das variáveis envolvidas" [@gil2002]. 
-
-
-Desta maneira, a integração do tipo de pesquisa e com o tipo de delineamento seve como um dos passos iniciais, mas absolutamente fundamentais, não apenas para execução da pesquisa, como também proporcionam um indicador em que é possível avaliar o quanto os resultados são acurados. 
-
-
-Existem diferentes classificações dos delineamentos de pesquisa e cada área tem particularidades. É importante atentar que definir claramente o tipo de delineamento é essencial, já que as técnicas e análises estatísticas são conectadas a ele. Em Psicologia, costuma-se organizar os delineamentos em observacionais, correlacionais e experimentais. As vezes, o termo delineamento descritivo é utilizado em vez de observacional [@stangor2010]. Por sua vez, em epidemiologia, saúde pública e bioestatística, os delineamentos costumam ser divididos em experimentais e observacionais [@friis2013, @glantz2014]. Apesar das diferenças de nomenclaturas, a lógica por detrás dos delineamentos é bastante atrelada à possibilidade e viabilidade de uma manipulação ativa da VI. 
+Existem diferentes classificações dos delineamentos de pesquisa e cada área tem particularidades. É importante atentar que definir claramente o tipo de delineamento é essencial, já que os objetivos da pesquisa e as análises estatísticas a serem feitas são conectadas a ele. Em Psicologia, costuma-se organizar os delineamentos em observacionais, correlacionais e experimentais. As vezes, o termo delineamento descritivo é utilizado em vez de observacional [@stangor2010]. Por sua vez, em epidemiologia, saúde pública e bioestatística, os delineamentos costumam ser divididos em experimentais e observacionais [@friis2013; @glantz2014]. Apesar das diferenças de nomenclaturas, a lógica por detrás dos delineamentos é bastante atrelada à possibilidade e viabilidade de uma manipulação ativa da VI. 
 
 
 Em Psicologia, a tabela abaixo é bastante utilizada:
 
   | Delineamento    | Característica                              | Vantagens                 |  Limitações    
   | :-----------    | :-----------                                | :-----------              |  :-----------      
-  | Observacional   | Apenas 1 grupo é necessário. Descrever um determinado fenômeno ou objeto. | Oferece uma foto de um objeto ou fenômeno que tende a ser precisa. Permite que novos estudos sejam conduzidos. As vezes, só é possível fazer este delineamento.  |  Não acessa o relacionamento entre duas ou mais variáveis.    
-  | Correlacional    | Apenas 1 grupo é necessário. Acessar a natureza e a força do relacionamento entre duas variáveis. As vezes, só é possível fazer este delineamento. | É possível testar hipóteses sobre este relacionamento e fazer previsões de resultados futuros. Não é necessário ambientes ou intervenções específicas. | Não permite indicar causalidade entre os fenômenos ou objetos estudados.    
-  | Experimental     | São necessários 2 grupos em que os participantes sejam selecionados de maneira aleatória. Existe uma manipulação intencional da VI e nem os participantes nem o pesquisador sabe quem está em cada grupo (duplo cego).  | A aleatorização evita que as variáveis estranhas gerem vieses e a comparação entre os grupos permite conclusões sobre causalidade. |  Impossível, impraticável ou até mesmo antiético em algumas situações, especialmente as clínicas. O custo envolvido costuma ser alto. O tamanho amostral tende a ser pequeno. Há uma baixa possibilidade de generalização em pesquisas laboratoriais.   
+  | Observacional   | -Apenas 1 grupo é necessário.<br>-Descrever um determinado fenômeno ou objeto. | -Oferece uma foto de um objeto ou fenômeno que tende a ser precisa.<br>-Permite que novos estudos sejam conduzidos.<br>-Tende a ser mais barato do que outros delineamentos.<br>-As vezes, só é possível fazer este delineamento.  |  -Não acessa o relacionamento entre duas ou mais variáveis.    
+  | Correlacional    | -Apenas 1 grupo é necessário.<br>-Permite estudar a natureza e a força do relacionamento entre duas variáveis.<br>-As vezes, só é possível fazer este delineamento. | -É possível testar hipóteses sobre este relacionamento e fazer previsões de resultados futuros.<br>-Não é necessário ambientes ou intervenções específicas. | -Não permite indicar causalidade entre os fenômenos ou objetos estudados.    
+  | Experimental     | -São necessários 2 grupos em que os participantes sejam alocados de maneira aleatória.<br>-Existe uma manipulação intencional da VI<br>-nem participantes nem pesquisadores sabem quem está em cada grupo (duplo cego).  | -A aleatorização evita que as variáveis estranhas gerem vieses.<br>-A aleatorização aumenta a probabilidade de ambos os grupos terem participantes com características similares<br>-A comparação entre os grupos permite conclusões sobre causalidade, se assumidas algumas condições. |  -Impossível, impraticável ou até mesmo antiético em algumas situações, especialmente as clínicas.<br>-O custo envolvido costuma ser alto.<br>-O tamanho amostral tende a ser pequeno.<br>-Há uma baixa possibilidade de generalização em pesquisas laboratoriais.
 
 
 Em Epidemiologia, saúde pública e bioestatística, costuma-se unir o delineamento observacional e correlacional. Assim, apenas o delineamento observacional e experimental são definidos, apesar de características virtualmente similares. Pessoalmente, acredito que esta definição evita alguns equívocos, como o de achar que em delineamentos observacionais não é possível realizar correlações ou comparações entre grupos.  
@@ -165,32 +215,40 @@ Todos os delineamentos possuem características específicas e um conjunto de va
 
 ### Delineamentos observacionais (e correlacionais)  
 
-Em delineamentos observacionais (ou observacionais e correlacionais), o pesquisador não intervém nos fenômenos, o que significa que, neste delineamento, não há uma manipulação da VI. Neste tipo de estudo, com frequência um único grupo é avaliado e os resultados auxiliam em um entendimento inicial do fenômeno ou objeto de interesse. Diferentes técnicas estatísticas podem ser utilizadas, mas em momento algum é possível falar sobre relação de causa e efeito. Existem muitas situações onde apenas este delineamento é possível. Por exemplo, estudar os impactos de um desastre natural (furacão, terremoto, etc) na percepção de segurança das pessoas, avaliar o comportamento de grupos em instituições totais, como prisões e hospícios ou as condições relacionadas ao aleitamento materno.  
+Em delineamentos observacionais (ou observacionais e correlacionais), o pesquisador não intervém nos fenômenos estudados. Ou seja, não há uma manipulação da VI. Estudos que utilizam tal delineamento quase sempre contam com um único grupo e os resultados produzidos auxiliam no entendimento inicial do fenômeno interesse, bem como podem indicar o perfil de relacionamento entre variáveis.     
+
+Uma vez que não há a formação de grupos específicos seguindo um rigoroso controle da VI, o pesquisador deve mapear adequadamente todas as possíveis variáveis estranhas presentes no relacionamento entre VI e VD <u>antes</u> da pesquisa. Assim, na etapa de coleta de dados, ele poderá acessar essas variáveis para, futuramente, implementar controles estatísticos que reduzam distorções que este delineamento gera nos dados. Por exemplo, quando artigos biomédicos comentam que os resultados de um medicamento são efetivos para os participantes, controlando pela idade e sexo, essa conclusão é bem próxima de resultados obtidos por pesquisas cujos delineamentos foram observacionais.     
+
+::: {.warning}
+**Atenção**: Em delineamentos observacionais, o mapeamento e acesso de variáveis estranhas auxiliam o pesquisador a implementar técnicas estatísticas que reduzam as distorções que este delineamento costuma produzir aos dados.     
+:::
+
+Nota-se que, apesar de diversas técnicas estatísticas Serem utilizadas neste delineamento, não é possível falar sobre relação de causa e efeito. Apesar desta limitação, há muitas situações em que apenas este delineamento é possível. Por exemplo, estudar os impactos de um desastre natural (furacão, terremoto, etc) na percepção de segurança das pessoas, avaliar o comportamento de grupos em instituições totais, como prisões e hospícios ou as condições relacionadas ao aleitamento materno.  
+
+Uma vez que as eventuais variáveis estranhas foram previamente acessadas durante a coleta de dados, elas deixam de ser estranhas e tornam-se variáveis passíveis de ánalises. A natureza e o local em que essas variáveis impactam no relacionamento entre a VI e a VD indicam se elas serão classificadas como intervenientes, mediadoras ou moderadoras [@Rooney2019; @hayes2013].  
+
+O termo variável interveniente é bastante circunscrito à Psicologia. Ele tende a ser empregado para caracterizar condições psicológicas, como motivação ou neuroticismo. Assim, este é o termo empregado quando as variáveis estranhas são fatores psicológicos.  
 
 
-Neste tipo de delineamento, uma vez que não houve a formação de grupos específicos seguindo um rigoroso controle da VI, as outras variáveis (VEs) podem assumir diferentes papéis no relacionamento entre VI e a VD. Estas variáveis têm definições específicas e podem ser chamadas de intervenientes, mediadoras, moderadoras ou variáveis de confundimento [@Rooney2019].  
-
-
-O termo variável interveniente é bastante circunscrito à Psicologia. Ele costuma ser empregado para caracterizar condições psicológicas, como motivação ou neuroticismo. Assim, variáveis estranhas, quando são fatores psicológicos, tendem a ser apresentadas por tal conceito.  
-
-
-Quando esta outra variável é uma consequência da VI e também impacta a VD, o termo <u>variável mediadora</u> costuma ser empregado. Por exemplo, ao se investigar a relação entre idade (VI) e acidentes de trânsito (VD), pode-se sugerir que pessoas mais velhas tendem a apresentar menor capacidade visual. Por sua vez, essa limitação visual pode gerar acidentes de transito [@Rhodes2011]. Neste sentido, a variável "capacidade visual" é uma variável mediadora.  
+Quando esta variável é uma consequência da VI e também impacta a VD, o termo <u>variável mediadora</u> costuma ser empregado. Por exemplo, ao se investigar a relação entre idade (VI) e acidentes de trânsito (VD), pode-se sugerir que pessoas mais velhas tendem a apresentar menor capacidade visual. Por sua vez, essa limitação visual pode gerar acidentes de transito [@Rhodes2011]. Neste sentido, a variável "capacidade visual" é uma variável mediadora.  
 
 ![](./img/cap_mediacao.png)
 
 
 Quando esta variável interfere no relacionamento entre a VI e a VD, podendo alterar sua natureza e intensidade, mas não é gerada pela VI, o termo <u>variável moderadora</u> pode ser utilizado. Por exemplo, a relação entre a satisfação de um cliente (X) e sua lealdade à marca (Y) é moderada pela sua renda [@Sugianto2017]. Pessoas muito satisfeitas com um produto podem ser mais ou menos leais à marca a depender de sua renda disponível. 
 
-A relação entre horas trabalhadas (X) e quantidade de produção (Y) é moderada pela qualidade do equipamento utilizado. É possível que alguém gaste muitas horas de trabalho, mas não consiga produzir absolutamente nada, uma vez que os equipamentos disponíveis funcionam de maneira irregular ou não funcionam. Com frequência, medicos sugerem que ao tomar medicamentos antigripais, não se deve ingerir álcool. Nesse sentido, os efeitos do medicamento (X) nos sintomas da gripe (Y) podem inclusive ser opostos em função do álcool, que age de forma moderadora.  
+A relação entre horas trabalhadas (X) e quantidade de produção (Y) é moderada pela qualidade do equipamento utilizado. É possível que alguém gaste muitas horas de trabalho, mas não consiga produzir absolutamente nada, se os equipamentos disponíveis funcionarem de maneira irregular. Com frequência, medicos sugerem que ao tomar medicamentos antigripais, não se deve ingerir álcool. Nesse sentido, os efeitos do medicamento (X) nos sintomas da gripe (Y) podem inclusive ser opostos em função do álcool, que age de forma moderadora.  
 
 No exemplo prévio sobre o efeito da idade (X) em acidentes de trânsito (Y), sabe-se hoje que o sexo se comporta como uma variável moderadora neste relacionamento. A literatura indica que pessoas mais novas, quando homens, tem uma alta probabilidade de se envolverem em acidentes de trânsito, especialmente os mais intensos ou graves [@Amarasingha2014; @PRB2006].  
 
   
 ![](./img/cap_moderacao.png)
 
-Finalmente, é também possível que esta outra variável interfira tanto na VI como na VD. Nestes casos, o termo terceira variável ou variável de confundimento deveria ser empregado. Por exemplo, existe uma alta correlação entre venda de sorvete (X) e morte por mordida de tubarão (Y). Esse tipo de correlação é chamada de <u>espúria</u>, uma vez que é a variável "temperatura" gera ambos os fenômenos. Da mesma maneira, existe uma alta correlação entre quantidade de bares e igrejas nas cidades, mas ambos os fenômenos são explicados pela densidade populacional do local.  
+Finalmente, é também possível identificar variáveis estranhas que interfiram tanto na VI como na VD, mas que não foram previamente mapeadas ou acessadas durante a coleta de dados. Nestes casos, é típico chamá-las de "terceira variável" ou "variável de confundimento", bem como chamar a relação entre VI e VD de "espúria". Por exemplo, existe uma alta correlação entre venda de sorvete (X) e morte por mordida de tubarão (Y). No entanto, essa é uma relação espúria, uma vez que é a variável "temperatura" que impacta tanto na VI como na VD. Da mesma maneira, existe uma alta correlação entre quantidade de bares e igrejas nas cidades, mas ambos os fenômenos são explicados pela densidade populacional do local.  
 
-Talvez quando mais novo(a), alguém tenha lhe dito que as cegonhas traziam os bebês. Isso não é verdade, apesar de ser um ótimo exemplo de variável de confundimento. A relação entre número de ninhos de cegonha (X) e número de bebes nascidos (Y) é confundida pela temperatura do local 9 meses atrás [@Matthews2000]. Na verdade, cegonhas e seres humanos tem seus filhos ou filhotes na mesma época. Curiosamente, como as cegonhas por vezes constroem seus ninhos em telhados de casas, especialmente as com chaminés por conta do calor, as pessoas acreditavam que se uma cegonha fizesse o ninho em seu telhado, isso indicaria que o casal iria ter um filho. Em alguns países, se achava também que deixar doces na janela seria uma maneira de informar as cegonhas que a casa estava pronta para ter um bebê.
+![](./img/cap_confundimento.png)
+
+Talvez quando mais novo(a), alguém tenha lhe dito que as cegonhas traziam os bebês. Isso não é verdade, apesar de ser um ótimo exemplo de variável de confundimento. A relação entre número de ninhos de cegonha (X) e número de bebes nascidos (Y) é confundida pela temperatura do local 9 meses atrás [@Matthews2000]. Cegonhas e seres humanos tem seus filhos ou filhotes na mesma época. Curiosamente, como as cegonhas por vezes constroem seus ninhos em telhados de casas, especialmente as com chaminés por conta do calor, as pessoas acreditavam que se uma cegonha fizesse o ninho em seu telhado, isso indicaria que o casal iria ter um filho. Em alguns países, se achava também que deixar doces na janela seria uma maneira de informar as cegonhas que a casa estava pronta para ter um bebê.
 
 
 ![](./img/cap_cegonha.png)
@@ -213,33 +271,39 @@ A literatura é bastante rica de exemplos para tais condições, mas também de 
 
 
 
-Em síntese, delineamentos observacionais são aqueles em que não há a manipulação da VI por parte do pesquisador. Como outros exemplos, pode-se listar estudos em que se objetivou investigar os hábitos, práticas e produtividade de pesquisadores [@Wenke2017], a alimentação durante a pandemia [@Amatori2020] ou aspectos epidemiológicos de transtornos mentais de universitários brasileiros, portugueses e espanhóis [@AfonsoJunior2020].
+Em síntese, a principal característica de estudos com delineamentos observacionais é a <u>não</u> manipulação da VI por parte do pesquisador. 
+
+
+Como outros exemplos, pode-se listar estudos em que se objetivou investigar os hábitos, práticas e produtividade de pesquisadores [@Wenke2017], a alimentação durante a pandemia [@Amatori2020] ou aspectos epidemiológicos de transtornos mentais de universitários brasileiros, portugueses e espanhóis [@AfonsoJunior2020].
 
 ### Delineamentos experimentais    
 
-De maneira geral, delineamentos experimentais representam o melhor exemplo de uma pesquisa científica, além de serem os mais prestigiados no meio acadêmico [@gil2002]. Apesar destes delineamentos poderem apresentar pequenas distinções, o formato mais típico é marcado pelas seguintes características: (1) dois grupos de uma mesma população foram aleatoriamente formados, (2) há uma manipulação intencional do pesquisador sobre a VI e (3) nem o participante, nem o pesquisador sabem em que grupo cada um está, o que é chamado de duplo-cego. 
+De maneira geral, delineamentos experimentais representam o melhor exemplo de uma pesquisa científica, além de serem os mais prestigiados no meio acadêmico [@gil2002]. Apesar destes delineamentos poderem apresentar pequenas distinções, o formato mais típico é marcado pelas seguintes características: (1) dois grupos de uma mesma população são formados de maneira aleatória, (2) deve haver uma manipulação intencional do pesquisador sobre a VI e (3) nem o participante, nem o pesquisador sabem em que grupo cada um está, o que é chamado de duplo-cego. 
 
-Cada um desses elementos confere uma propriedade importante para este delineamento. Inicialmente, dois grupos devem ser formados de uma mesma população. A formação desses grupos é uma condição de base deste delineamento e o diferencia de delineamentos observacionais. Nestes últimos, a composição de grupos também pode ocorrer, mas quase sempre após a coleta de dados e para responder questões estatísticas. 
+Cada um desses elementos confere uma propriedade importante para este delineamento. Inicialmente, a formação de dois grupos é uma condição de base deste delineamento e o diferencia de delineamentos observacionais. Nestes últimos, a composição de grupos também pode ocorrer, mas quase sempre após a coleta de dados e para responder questões estatísticas. A alocação dos participantes em ambos os grupos de maneira aleatória assegura que as variáveis estranhas terão impacto equânime em ambos os grupos, além de aumentar a probabilidade de os grupos serão formados por participantes com características similares.  
 
-A alocação dos participantes em ambos os grupos deve ser feita de maneira aleatória. Isso assegura que os grupos serão formados por participantes com características virtualmente idênticas e que as variáveis estranhas os impactarão de forma equânime.   
+A segunda característica é a atitude ativa do pesquisador. Neste delineamento, a VI será manipulada e apenas um grupo será exposto a ela, enquanto outro não. O grupo em que a VI será inserida é, tradicionalmente, chamado de experimental, enquanto o outro é chamado de controle.
 
-A segunda condição fundamental é a atitude ativa do pesquisador, que irá manipular a VI. Um grupo será exposto a ela, enquanto outro não. O grupo em que a VI será inserida é, tradicionalmente, chamado de experimental, enquanto o outro é chamado de controle. Finalmente, a terceira principal característica é que nem o pesquisador nem o participante sabem quem está em cada grupo. Essa condição recebe o nome de duplo-cego e impede que as expectativas influenciem o procedimento e que haja algum viés tanto do pesquisador como do participante, mesmo que não deliberado.
+Finalmente, como nem o pesquisador nem o participante sabem quem está em cada grupo, isso inibe que os participantes tentem mudar de grupo e reduzem o impacto que as expectativas do pesquisador e/ou do participante possam ter sobre os resultados. 
 
-A principal proposta deste delineamento é conseguir ter resultados que indiquem relações de causa e efeito. Com muita frequência, este delineamento é empregado em pesquisas explicativas, com hipóteses acuradamente definidas, em que testes de hipóteses para diferenças serão implementados. Em epidemiologia e saúde pública, por vezes este delineamento é chamado de Randomized Controlled Trial (RCT) ou Ensaio Clínico Randomizado. Especialmente nestas áreas, existem diversas situações em que em a VI foi <u>selecionada</u> em vez de manipulada. Quando isso ocorre, o delineamento passa a ser chamado de quase-experimental.
-
-A literatura oferece bons exemplos sobre este delineamento. O psicólogo Albert Bandura [-@Bandura1961] teve o interesse de estudar o efeito da exposição à violência no comportamento agressivo durante a interação social de crianças e, para isso, desenvolveu um delineamento experimental. Ele dividiu as crianças em grupos específicos, em que 1 grupo via uma televisão que passava adultos agredindo um boneco João Bobo e outro viam cenas neutras. Os comportamentos agressivos eram avaliados durante o momento do recreio, que ocorria imediatamente após à exposição que os grupos receberam. Os economistas Redzo  e Paul Frijters quisem veriricar o efeito da cor de pele na possibilidade de ganhar ou não uma carona no ônibus. Para isso, eles utilizaram um delineamento quase-experimental, em que atores pretos e brancos entravam em ônibus de uma mesma empresa e perguntavam ao motorista, de uma maneira padronizada, se poderiam viajar de graça 2 estações. A concordância ou não dos motoristas foram tabuladas e, depois, comparadas.
-delineamento experimental.
+A figura a seguir apresesenta estas características.
 
 
-É possível notar que o delineamento experimental é, de longe, o que melhor consegue mapear as VIs, VDs, bem como controlar efetivamente as VEs. Essas vantagens dão força para resultados expressando relações de causa e efeito, mas também geram muitas dificuldades. O custo para realização de pesquisas dessa maneira costuma ser bastante elevado. O tamanho amostral é frequentemente pequeno. Pesquisas laboratoriais tendem a reproduzir mal o cotidiano das pessoas, diminuindo a capacidade de generalização dos resultados. Por sua vez, pesquisas em ambientes naturalísticos tendem a quebrar o princípio da aleatoridade e o controle das variáveis externas é substancialmente reduzido.
+![](./img/cap_experimento.png)
 
-Quando as pesquisas são feitas em condições clínicas, a perda e morte experimental são frequentes, além de muitas condições éticas serem envolvidas. Há também situações em que é impossível ou altamente improvável conseguir implementar este delineamento. Por exemplo, avaliar diferentes situações em relação à amamentação materna, o impacto de desastres naturais no comportamento das pessoas ou o efeito de mudanças abruptas legislativas e sociais na interação entre grupos seria quase que inviável. Por exemplo, não seria possível solicitar que um grupo de mães aleitasse seus filhos e outro não, além de que seria muito difícil encontrar tal condição na realidade.
-
-
-Com isto posto, uma vez que um dos principais interesses das ciências é o estudo de variáveis, é bastante infrequente que cientistas digam que estão absolutamente certos de uma determinada condição ou assunto. Na maioria das vezes, como também ilustrado por Popper no livro "Os dois problemas fundamentais da teoria do conhecimento",  cientistas tendem a substituir a palavra certeza por probabilidade.
+É possível notar que o delineamento experimental é, de longe, o que melhor consegue mapear as VIs, VDs, bem como controlar efetivamente as VEs. Essas vantagens dão força para resultados que visem expressar relações de causa e efeito, mas também geram muitas dificuldades. De fato, para arguir sobre causalidade, é necessário precedência temporal, eliminação de explicações alternativas, que a VI sempre esteja presente (necessidade) e que sempre impacte na VD (suficiência). 
 
 
-Em relação ao nível ou escala de medida e a capacidade informacional, a seção abaixo apresentará o extrato de um capítulo em que esse tema é abordado.
+Além disso, há algumas condições que limitam ou impedem a execução deste delineamento. O custo para sua realização tende a ser bastante elevado, o tamanho amostral é frequentemente pequeno e pesquisas laboratoriais costumam reproduzir mal o cotidiano das pessoas, diminuindo a capacidade de generalização dos resultados. Para aumentar a capacidade de generalização dos resultados, por vezes, tenta-se implementar este delineamento em ambientes naturalísticos (ou ecológicos). No entanto, apesar de vantagens, isso quebra o princípio da aleatoridade, impactando negativamente para o controle das variáveis estranhas.
+
+Quando as pesquisas são feitas em condições clínicas, a perda e morte experimental são frequentes e muitas condições éticas emergem, impedindo a implementação deste delineamento. Por exemplo, avaliar diferentes situações em relação à amamentação materna (um grupo de mães amamenta seus filhos e outro não), o impacto de desastres naturais no comportamento das pessoas ou o efeito de mudanças abruptas legislativas e sociais na interação entre grupos retratam tal condição. 
+
+
+Em epidemiologia e saúde pública, este delineamento é também chamado de *Randomized Controlled Trial (RCT)* ou Ensaio Clínico Randomizado. Especialmente nestas áreas, existem diversas situações em que em a VI foi <u>selecionada</u> em vez de manipulada. Quando isso ocorre, o delineamento passa a ser chamado de quase-experimental.
+
+
+A literatura oferece bons exemplos sobre este delineamento. O psicólogo Albert Bandura [-@Bandura1961] teve o interesse de estudar o efeito da exposição à violência no comportamento agressivo durante a interação social de crianças e, para isso, desenvolveu um delineamento experimental. Ele dividiu as crianças em grupos específicos, em que 1 grupo via uma televisão que passava adultos agredindo um boneco João Bobo e outro via cenas neutras. Os comportamentos agressivos eram avaliados durante o momento do recreio, que ocorria imediatamente após as crianças terem visto televisão. Um grupo de psicólogos visou comparar dois programas de intevenção escolar em um grupo de 164 crianças em vulnerabilidade econômica nos EUA e, para isso, uma parte frequentou aulas de apoio e outra continuou com o ensino usual [@Feil2020]. 
+Finalmente, os economistas Redzo e Paul Frijters [-@Mujcic2020] quisem veriricar o efeito da cor de pele na probabilidade de receber uma carona de ônibus. Para isso, eles utilizaram um delineamento quase-experimental, em que atores pretos e brancos entravam em ônibus de uma mesma empresa e perguntavam ao motorista, de uma maneira padronizada, se poderiam viajar de graça 2 estações. A concordância ou não dos motoristas foram tabuladas e, depois, comparadas.
 
 
 
@@ -369,9 +433,27 @@ Essa divisão é certamente mais didática do que pragmática e, com muita frequ
 
 ![](./img/cap_areas_estatistica.png) 
 
+
+
 ## Resumo  
+::: {.explore}
+1. A estatística está totalmente integrada ao planejamento, execução e análise de dados de uma pesquisa  
+2. As pesquisas apresentam objetivos, dimensões temporais e procedimentos específicos para coleta de dados  
+3. Em relação ao objetivo, uma pesquisa pode ser exploratória, descritiva ou explicativa   
+4. Em relação à dimensão temporal, uma pesquisa pode ser transversal ou longitudinal  
+5. Em relação ao delineamento, uma pesquisa pode ser observacional ou experimental  
+6. Cientistas contróem modelos teóricos pela impossibilidade de acessar diretamente seu objeto ou fenômeno de investigação   
+7. As variáveis são características que podem apresentar quaisquer valores    
+8. A VI também é chamada de preditora, enquanto a VD é chamada de prevista    
+9. Em todo relacionameto bivariado, outros fatores estão envolvidos  e são chamados de variáveis estranhas   
+10. Com muita frequência, em ciência se substitui os termos certeza e verdade por evidência e probabilidade.
+::: 
+## Questões  
 
-1. As dicotomias realidade vs. modelo e constantes e variáveis são conceitos fundamentais em estatística e pesquisa  
-3. Com muita frequência, em ciência se substitui os termos certeza e verdade por evidência e probabilidade.
+<div class="question">
 
+1. (ENADE,2015) O profissional de marketing de uma empresade cosméticos foi encarregado de redesenhar o aparelho de depilação feminino comercializado por essa empresa. Para tanto, o profissional fez uma pesquisa de mercado utilizando entrevistase discussões em grupo (grupo focal) com mulheres de segmentos diferentes do mercado-alvo potencial do produto, tendo em vista que a depilação é considerada uma experiência pessoalpelas mulheres. Esta é uma pesquisa exploratória.<br>a) Verdadeiro<br>b) Falso
+ 
+</div>
 
+<div class="mirror">Gabarito: 1b</div>

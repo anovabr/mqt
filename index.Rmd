@@ -42,8 +42,10 @@ Isso posto, este livro é fruto de um grande esforço que tem a proposta de ser 
 3. A base de dados em formato R ou CSV para reprodução das análises  
 4. O conjunto de procedimentos estatísticos utilizados  
 5. Recursos extras para aprofundamento em tópicos específicos  
+6. Exercícios que podem auxiliar no entendimento do conteúdo, quase sempre retirados de provas externas    
 
-A ideia do livro é oferecer ao estudante um ambiente em que ele possa resolver um problema real, utilizando as técnicas e métodos estatísticos como ferramentas para tomada de decisão. Será possível notar que o livro tem maior foco na utilização da <u>estatística na ciência</u>, em vez da <u>ciência da estatística</u>, que será apenas pontualmente detalhada. De forma geral, espera-se que o livro permita que o estudante aprenda a resolver os problemas e não as ferramentas. 
+A ideia do livro é oferecer ao estudante um ambiente em que ele possa resolver um problema real, utilizando as técnicas e métodos estatísticos como ferramentas para tomada de decisão. Será possível notar que o livro tem maior foco na utilização da <u>estatística na ciência</u>, em vez da <u>ciência da estatística</u>, que será apenas pontualmente detalhada. De forma geral, espera-se que o livro permita que o estudante aprenda a resolver os problemas e não as ferramentas.  
+
 Espero que este livro possa ser útil a estudantes de graduação e pós-graduação, agradável a leitores de estatística como de Psicologia e um recurso importante para outros docentes que, eventualmente, precisem de um material de apoio.  
 
 
@@ -66,10 +68,17 @@ Esse formato adotado tende a gerar uma percepção diferente entre aqueles que c
 
 Muitos capítulos recebem o nome de testes de hipóteses (ex: Teste T ou Regressão). Isso foi intencional e visa auxiliar estudantes que precisem apenas de informações pontuais, bem como tende a enfrequecer a ideia de uma relação ponto a ponto tipicamente feita entre testes estatísticos e delineamentos específicos.  
 
+## Como usar este livro  
+O livro é formado por capítulos teóricos e capítulos voltados à análise de dados. Os capítulos teóricos reúnem alguns conceitos fundamentais de pesquisa e estatística, tais como tipos de variáveis, delineamento de pesquisa e técnicas de amostragem. Estes capítulos foram escritos pensando em alunos de graduação do curso de Psicologia.    
+
+Os capítulos analíticos são focados em testes de hipóteses e contam com uma metodologia direta ao ponto, em que atividades similares às realizadas nos artigos são demonstradas. Estes capítulos foram desenvolvidos para estudantes de pós-graduação. 
+
 
 ## Bases de dados  
 
 Todas as bases de dados utilizadas neste livro são *Open Science*. Isso significa que elas são universalmente acessíveis e decorrentes de pesquisas empíricas com artigos publicados. Eventualmente, alguns ajustes foram feitos às bases para torná-las mais acessíveis ou remover características de identificação.   
+
+As bases em R tem formato .RData e as bases para o JASP tem formato .CSV.  
 
 Todo material pode ser acessado em https://github.com/anovabr/mqt/tree/master/bases 
 
@@ -81,7 +90,8 @@ O livro é integralmente desenvolvido pelo recurso de "programação letrada" no
 O `tidyverse` costuma ter atualizações frequentes. Caso um alerta de `deprecated` seja apresentado, isso significa que a função utilizada foi parcialmente desativada, o que não costuma impactar nas análises.
 
 
-## JASP  
+## JASP   
+
 O JASP é um programa gratuito que tem sido cada vez mais utilizado em Psicologia. Ele é feito integralmente por código aberto e sua interface é bastante amigável e intuitiva. Ao instalar o JASP, o R também será instalado em seu computador e ficará no pano de fundo. Dessa maneira, todas as ações feitas por *Point and Click* no JASP, serão convertidas em linhas de código no R e apresentadas de maneira dinâmica no JASP. 
 
 ![](./img/capa_r_jasp.png)
@@ -92,10 +102,12 @@ Em todos os capítulos, telas do JASP serão apresentadas para que seja possíve
 
 Em cada um dos capítulos, aplicações da estatística e referências bibliográficas serão apresentadas. Tenha em mente que há um debate intenso em diferentes conceitos de estatística, da mesma forma que muitas condições computacionais podem aparecer durante a execução das análises propostas. Eu recomendo fortemente a comunidade [stackoverflow](https://stackoverflow.com/) como um recurso pedagógico para auxiliar em ambos os cenários.  
 
+Quetões relacionadas aos capítulos são listadas de forma a conectar o conteúdo do livro com exigências balizadas por critérios externos, tal como o ENADE e bancas de concurso.  
+
 
 ## Capa   
  
-Frequentemente, livros de Ciência de Dados e Estatística utilizam a imagem de algum animal na capa. Há livros com cachorros, papagaios, peixes, Carangueiros, Lagartos, etc. Esse livro não foge dessa regra e tem como capa a Jolie, a minha cachorrinha com a Anna. Ela foi indispensável para o <u>atraso</u> ao término deste livro.  
+Por tradição, livros de Ciência de Dados e Estatística utilizam a imagem de algum animal na capa. Há livros com cachorros, papagaios, peixes, Carangueiros, Lagartos, etc. Esse livro não foge dessa regra e tem como capa a Jolie, a minha cachorrinha com a Anna. Ela foi indispensável para o <u>atraso</u> ao término deste livro.  
 
 
 ## Versão do livro
@@ -104,14 +116,15 @@ Como todos os livros, este também tem uma história de desenvolvimento. A tabel
 
 | Versão   |      Data         |  Características
 |:---------|:-------------     | :-------------
-| Beta 1   |  Janeiro, 30 2020 | Primeira versão. Baixa revisão textual e dos conceitos estatísticos. Erros são esperados. A utilização deve ser feita apenas de maneira incipiente   
+| Beta 1   |  Fevereiro, 2020 | Primeira versão. Baixa revisão textual e dos conceitos estatísticos. Erros são esperados. A utilização deve ser feita apenas de maneira incipiente   
 
 ## Agradecimentos e revisões técnicas
 
 Nenhum homem é uma ilha. Este livro só foi possível graças a um conjunto de pessoas que auxiliaram e fizeram uma profunda revisão do texto. Meus sinceros agradecimentos a (ao):  
-Professor J. Landeira-Fernandez  
-Professor Cristiano Fernandes  
-Anna Carolina de Almeida Portugal 
+Professor J. Landeira-Fernandez, PUC-Rio  
+Professor Cristiano Fernandes, PUC-Rio  
+Professor Danilo Assis Pereira, IBNeuro  
+Anna Carolina de Almeida Portugal, UFRJ   
 Alunos da PUC-Rio, UFRJ, IBNeuro e ANOVA  
 
 

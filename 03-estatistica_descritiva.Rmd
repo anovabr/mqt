@@ -26,14 +26,19 @@ library(gridExtra) #plot together
 5. Sugerir heurísticas ou regras gerais na criação de gráficos  
 ```
 
-Quando pesquisadores e acadêmicos fazem seus estudos, com muita frequência, eles obtêm um grande conjunto de dados, sendo pouco informativo ou até mesmo inviável apresentar detalhadamente todos eles. A estatística descritiva oferece uma diversidade de ferramentas que auxiliam a <mark>organizar, descrever, resumir e apresentar</mark> os dados obtidos, de forma que os resultados sejam mais fáceis de serem compreendidos e analisados e, consequentemente, que a pesquisa possa ser melhor compreendida por todos os seus leitores.     
+Quando pesquisadores e acadêmicos fazem seus estudos, com muita frequência, eles obtêm um grande conjunto de dados, sendo pouco informativo ou até mesmo inviável apresentar detalhadamente todos eles. A estatística descritiva oferece uma diversidade de ferramentas que auxiliam a organizar, descrever, resumir e apresentar os dados obtidos, de forma que os resultados sejam mais fáceis de serem compreendidos e analisados e, consequentemente, que a pesquisa possa ser melhor compreendida por todos os seus leitores.     
+
+
+::: {.warning}
+**Atenção**: A estatística descritiva dispõe de inúmeras ferramentas para auxiliar na gestão e apresentação de dados.    
+:::
+
 
 Frequentemente, a massa de dados obtidos em uma pesquisa é resumida por alguns números específicos, que possuem certas propriedades estatísticas, e conseguem sintetizar adequadamente o volume de dados. Por sua vez, esses números são úteis em análises que possam ser necessárias e serão descritos em outra seção deste capítulo.   
 
-Na apresentação dos dados, é possível utilizar <u>informações textuais</u>, <u>tabelas</u> e <u>gráficos</u>. Tabelas e textos permitem agrupar e detalhar os resultados e, com isso, torná-los mais precisos e detalhados. Entretanto, esse aprofundamento pode também dificultar um pouco no entendimento geral do estudo. Por sua vez, gráficos geram sumários descritivos, em que é possível ter um entendimento rápido dos principais resultados. Eles também podem incorporar elementos adicionais, que possibilitam uma primeira análise inferencial, tal como barras de erro e intervalos de confiança. 
+Na apresentação dos dados, é possível utilizar <u>informações textuais</u>, <u>tabelas</u> e <u>gráficos</u>. Tabelas e textos permitem agrupar e detalhar os resultados e, com isso, torná-los mais precisos e detalhados. Entretanto, esse aprofundamento pode também dificultar o entendimento geral do estudo. Por sua vez, gráficos geram sumários descritivos, em que é possível ter um entendimento rápido dos principais resultados. Eles também podem incorporar elementos adicionais, que possibilitam uma primeira análise inferencial, tal como barras de erro e intervalos de confiança. Dependendo do tipo de gráfico, além da apresentação de resultados descritivos, é possível também expor <u>diferenças</u> entre grupos ou  <u>relações</u> entre variáveis.   
 
-
-Dependendo do tipo de gráfico, além da apresentação de resultados descritivos, é possível também expor <u>diferenças</u> entre grupos ou  <u>relações</u> entre variáveis. Apesar dessas vantagens, algumas limitações podem ser encontradas nos gráficos. uma vez que os eles condensam um grande conjunto de resultados em uma apresentação mais simples, eles podem dificultar um pouco no entendimento geral das conclusões obtidas pela pesquisa e, ocasionalmente, distorcer os resultados. 
+Apesar dessas vantagens, algumas limitações podem ser encontradas nos gráficos. Uma vez que os eles condensam um grande conjunto de resultados em uma apresentação mais simples, eles podem dificultar um pouco no entendimento geral das conclusões obtidas pela pesquisa e, ocasionalmente, distorcer os resultados. 
 
 
 No geral, cada uma dessa formas de apresentar os resultados de uma peaquisa traz consigo vantagens e desvantagens, listadas a seguir:  
@@ -53,13 +58,13 @@ No geral, cada uma dessa formas de apresentar os resultados de uma peaquisa traz
 
 
  
-É importante atentar que em todas estas técnicas, mas especialmente nas gráficas, deve-se evitar gerar distorções ao entendimento e interpretação dos resultados. Há casos de pessoas e profissionais que chegaram a sofrer sanções jurídicas por distorções intencionais de apresentação estatísticas. Neste sentido, há recomendações nacionais e internacionais que visam auxiliar no  desenvolvimento de gráficos e tabelas e, com grande frequência, periódicos e editoras também exigem formatos específicos na apresentação dos resultados. 
+É importante atentar que em todas estas técnicas, mas especialmente nas gráficas, deve-se evitar gerar distorções ao entendimento e interpretação dos resultados. Há casos de pessoas e profissionais que chegaram a sofrer sanções jurídicas por distorções intencionais em apresentação estatísticas. Há recomendações nacionais e internacionais que visam auxiliar no desenvolvimento de gráficos e tabelas e, com grande frequência, periódicos e editoras também exigem formatos específicos na apresentação dos resultados. 
  
 ## Tabelas   
 
 As tabelas são recursos estatísticos que permitem a apresentação dos resultados de uma pesquisa de maneira resumida, reunida e objetiva. É possível utilizá-las para apresentação de apenas uma ou múltiplas variáveis, que podem ser categóricas ou contínuas. Todas as tabelas precisam de títulos e, eventualmente, algumas notas podem auxiliar no entendimento dos resultados.   
 
-O formato padronizado para desenvolvimento de tabelas costuma variar de editora para editora. No entanto, é possível notar que, quase sempre, os números são arredondados para 2 casas decimais e apenas as linhas possuem bordas. A imagem abaixo apresenta uma tabela construida pelas recomendações da APA.
+O formato padronizado para desenvolvimento de tabelas costuma variar de revista para revista No entanto, é possível notar que, quase sempre, os números são arredondados em 2 casas decimais e apenas as linhas possuem bordas. A imagem abaixo apresenta uma tabela construida pelas recomendações da American Psychological Association (APA).
 
 ![](./img/cap_desc_tabela.png)
 
@@ -71,16 +76,22 @@ Gráficos são representações visuais utilizadas para exibir dados. Da mesma f
 
 Se bem feitos, os gráficos são extremamente úteis e auxiliam o rápido entendimento dos resultados obtidos em uma pesquisa. Como aponta Morettin e Bussab [-@morettin_bussab_2010], eles possibilitam:   
 
-(a) buscar padrões e relações;     
-(b) confirmar (ou não) certas expectativas que se tinha sobre os dados;   
-(c) descobrir novos fenômenos;  
-(d) confirmar (ou não) suposições feitas sobre os procedimentos estatísticos usados; e  
-(e) apresentar resultados de modo mais rápido e fácil.  
+(a) Buscar padrões e relações;     
+(b) Confirmar (ou não) certas expectativas que se tinha sobre os dados;   
+(c) Descobrir novos fenômenos;  
+(d) Confirmar (ou não) suposições feitas sobre os procedimentos estatísticos usados; e  
+(e) Apresentar resultados de modo mais rápido e fácil.  
 
 É sempre importante que o gráfico tenha um título e uma escala e, quando necessário, notas complementares. 
 
 
-A maioria dos gráficos são construídos em um plano com um eixo horizontal (abcissas) e um vertical (ordenadas). Quando há apenas uma variável para apresentar, o eixo X irá reunir os níveis ou possíveis valores desta variável, enquanto o eixo Y irá apresentar suas contagens, proporções ou densidade. Quando há duas variáveis, o eixo X será utilizado para apresentar os níveis ou possíveis valores da variável independente, enquanto o Y apresentará os valores médios encontrados na variável dependente. Quando há mais de uma variável independente, um agrupador ou cluster deverá ser apresentado. Com frequência, o eixo X recebe a variável independente com mais níveis, enquanto o agrupador recebe as outras.   
+A maioria dos gráficos são construídos em um plano com um eixo horizontal (abcissas) e um vertical (ordenadas). Quando há apenas uma variável para apresentar, o eixo X irá reunir os níveis ou possíveis valores desta variável, enquanto o eixo Y irá apresentar suas contagens, proporções ou densidade. Quando há duas variáveis, o eixo X será utilizado para apresentar os níveis ou possíveis valores da variável independente, enquanto o Y apresentará os valores médios encontrados na variável dependente, tal como apresenatdo a seguir.   
+
+![](./img/cap_grafico_tutorial.png)
+
+Quando há mais de uma variável independente, um agrupador ou cluster deverá ser apresentado. Com frequência, o eixo X recebe a variável independente com mais níveis, enquanto o agrupador recebe as outras. A imagem a seguir descreve este cenário.    
+
+![](./img/cap_grafico_tutorial2.png)
 
 Há diferentes heurísticas que auxiliam na escolha de um gráfico adequado para apresentar os resultados de uma pesquisa. De forma geral, essa escolha pode ser pautada por duas perguntas:  
 
@@ -94,7 +105,7 @@ Com isso, o diagrama abaixo oferece uma árvore de decisão funcional.
   
 *Nota: Nessa apresentação, pragmaticamente as variáveis categóricas são tratadas como discretas.*
 
-A imagem a seguir ilutra alguns desses gráficos e algumas de suas características serão apresentadas em seguida. 
+A imagem a seguir ilutra alguns desses gráficos. Suas características serão apresentadas em seguida. 
 
 
 ![](./img/cap_graficos.png) 
@@ -287,7 +298,7 @@ Um diferencial importante do trabalho foi a seleção amostral. Partiu-se de uma
 
 ## Execução no R 
 
-Inicialmente, é necessário carregar a base de dados previamente descrita para o ambiente R. Este procedimento será necessário para todos os capítulos do livro. Frequentemente, Uma primeira tabela informativa começa por variáveis categóricas, que deve apresentar suas contagens e proporções. Nesta pesquisa de agora, tanto a variável <u>country</u> como <u>sex</u> são categóricas e serão utilizadas.  
+Inicialmente, é necessário carregar a base de dados previamente descrita para o ambiente R. Este procedimento será necessário para todos os capítulos do livro. Frequentemente, uma primeira tabela informativa começa descrevendo as variáveis categóricas, que deve apresentar suas contagens e proporções. Nesta pesquisa de agora, tanto a variável <u>country</u> como <u>sex</u> são categóricas e serão utilizadas.  
 
 como três países fizeram parte da pesquisa, os dados serão agrupados por eles. O desenvolvimento desta tabela pode ser feito com pacote `janitor`, tal como demonstrado a seguir.
 
@@ -298,7 +309,7 @@ Dataset %>%
   pander()
 ```
 
-A adição de um um outro agrupador relacionado ao sexo é também importante. Note que existem casos ausentes nesta variável. Isso ocorre com bastante frequência e há diferentes estratégias para lidar com isso, que serão discutidas em momento oportuno. Para que valores ausentes não sejam apresentados, a função `filter` será implementada.   
+A adição de um um outro agrupador relacionado ao sexo é também importante. Note que existem casos ausentes nesta variável. Isso ocorre com bastante frequência e há diferentes estratégias para lidar com isso, que serão discutidas em momento oportuno. Para que valores ausentes não sejam apresentados, a função `filter` será implementada.  É importante atentar que os dados ausentes <u>não</u> foram excluídos. Eles apenas não são apresentados.   
 
 ```{r}
 Dataset %>% 
@@ -320,7 +331,9 @@ Dataset %>%
   adorn_ns() %>%
   pander()
 ```
-Enquanto as tabelas com variáveis categóricas apresentam contagens e suas respectivas porcentagens, tabelas para variáveis contínuas costumam utilizar medidas de posição e dispersão. A média e a mediana são os sumários mais utilizados para indicar a posição ou a concentração dos dados. Por sua vez, o desvio-padrão e a amplitude ou intervalo interquartil são utilizados para indicar o afastamento dos dados dessas medidas de posição. O R oferece muitos pacotes especializados em tabelas descritivas, cada qual com características positivas e limitadoras. Neste capítulo, o pacote `arsenal` será utilizado.   
+Enquanto as tabelas com variáveis categóricas apresentam contagens e suas respectivas porcentagens, tabelas para variáveis contínuas costumam utilizar medidas de posição e dispersão. A média e a mediana são os sumários mais utilizados para indicar a posição ou a concentração dos dados. Por sua vez, o desvio-padrão e a amplitude ou intervalo interquartil são utilizados para indicar o afastamento dos dados dessas medidas de posição.   
+
+O R oferece muitos pacotes especializados em tabelas descritivas, cada qual com características positivas e limitadoras. Neste capítulo, o pacote `arsenal` será utilizado.   
 
 
 De maneira análoga à construção da primeira tabela deste capítuo, os valores do BDI e do BAI serão apresentados em função do país do participante.
@@ -338,7 +351,9 @@ arsenal::tableby(sex ~ bdi_sum + bai_sum, test = FALSE, data = Dataset) %>% summ
 A apresentação agrupando pelo país e sexo do participante é possível e reúne mais informações. A tabela encontra-se abaixo:  
 
 ```{r, results = "asis" }
-arsenal::tableby(interaction(sex ,country) ~ bdi_sum + bai_sum, test = FALSE, data = Dataset) %>% summary()
+arsenal::tableby(interaction(sex ,country) ~ bdi_sum + bai_sum, 
+                 control=arsenal::tableby.control(test=FALSE, total=FALSE),
+                 data = Dataset) %>% summary()
 ```
 
 
@@ -413,7 +428,9 @@ ggplot(Dataset, aes(x = age)) +
   geom_histogram(bins = 30, color = "black", fill = "#56B4E9") +
   labs(title = "Distribuição da idade dos participantes")
 ```
-É possível notar que o histograma é formado por diversas barras unidas, possibilitando ter um entendimento dos intervalos entre cada um dos valores.
+
+   
+O histograma é formado por diversas barras unidas, possibilitando ter um entendimento dos intervalos entre cada um dos valores.
 
 Abaixo um gráfico de densidade da idade:
   
@@ -423,14 +440,14 @@ ggplot(Dataset, aes(x = age)) +
   labs(title = "Distribuição da idade dos participantes")
 ```
 
-De maneira um pouco distinta do histograma, o gráfico de densidade ajusta uma curva aos dados. Com isso, este gráfico permite explorar a distribuição de probabilidade subjacente aos dados.
+De maneira um pouco distinta do histograma, o gráfico de densidade ajusta uma curva aos dados. Com isso, este gráfico permite explorar a distribuição de probabilidade subjacente aos dados, o que será discutido futuramente.  
 
 Todas as distribuições de variáveis possuem uma localização, uma dispersão e um formato. De uma maneira mais direta, tanto o histograma como o gráfico de densidade retratam bem o <u>formato</u> da distribuição. Nesse caso, trata-se de uma assimetria positiva ou à direita. Esse tipo de assimetria é reconhecido pela cauda arrastada à direita.   
 
 
 Por sua vez, o boxplot dessa mesma variável pode ser criado: 
 
-```{r, warning=FALSE}
+```{r, warning=FALSE }
 ggplot(Dataset, aes(y = age, x = "")) +
   geom_boxplot(fill = "#56B4E9") +
   labs(title = "Distribuição da idade dos participantes")
@@ -438,13 +455,13 @@ ggplot(Dataset, aes(y = age, x = "")) +
 
 O boxplot é também chamado de "diagrama de caixa e bigode" e foi desenvolvido pelo matemático John W. Tukey na década de 1960. Este gráfico apresenta vantagens em comparação com os outros apresentados até agora, que são:  
 
-* Ele apresenta o formato da distribuição   
-* Na parte inferior da caixa, ele apresenta o valor do primeiro quartil, indicando os 25% dos dados abaixo ou até ele    
-* Na linha mais espessa dentro da caixa, ele apresenta  a mediana dos resultados   
-* Na parte superior da caixa, ele apresenta o valor do terceiro quartil, indicando os 75% dos dados que abaixo ou até ele  
-* A área da caixa apresenta 50% dos dados, que estão situados entre o primeiro e o terceiro quartil  
-* As linhas abaixo e acima da caixa são chamadas de bigodes e indicam os valores mínimos e máximos sem considerar dados anômalos ou *outliers*
-* Os valores acima ou abaixo da linhas indicam dados anômalos 
+* Ele apresenta o formato da distribuição,   
+* Na parte inferior da caixa, ele apresenta o valor do primeiro quartil, indicando os 25% dos dados abaixo ou até ele,      
+* Na linha mais espessa dentro da caixa, ele apresenta  a mediana dos resultados (ou segundo quartil),     
+* Na parte superior da caixa, ele apresenta o valor do terceiro quartil, indicando os 75% dos dados que abaixo ou até ele,    
+* A área da caixa apresenta 50% dos dados, que estão situados entre o primeiro e o terceiro quartil,    
+* As linhas abaixo e acima da caixa são chamadas de bigodes e indicam os valores mínimos e máximos sem considerar dados anômalos ou *outliers*,  
+* Os valores acima ou abaixo da linhas indicam dados anômalos. 
 
 O cálculo da linha vertical que forma o bigode do gráfico é feito por `Q1 - 1.5*IQR` e `Q3 + 1.5*IQR`. Consiedra-se que os valores acima ou abaixo deste ponto são anômalos. Por definição, os *outliers* são sempre poucos, mesmo que isso possa ser um pouco contraintuitivo nesta apresentação de agora. 
 
@@ -472,7 +489,7 @@ Quando duas variáveis são apresentadas, os gráficos permitem explorar diferen
 
 O gráfico de colunas abaixo apresenta os resultados médios do Inventário Beck de Ansiedade nos 3 países investigados. 
 
-```{r}
+```{r, warning=FALSE }
 ggplot(Dataset, aes(x = country, y = bai_sum)) +
   geom_bar(stat = "summary", fun = mean,fill = "#56B4E9") 
 ```
@@ -480,7 +497,7 @@ ggplot(Dataset, aes(x = country, y = bai_sum)) +
 Tal como exposto, é possível adicionar outros elementos a este gráfico para que uma primeira apreensão inferencial seja possível. Nesse sentido, o gráfico abaixo apresenta também as barras de erro.
 
 
-```{r}
+```{r, warning=FALSE }
 ggplot(Dataset, aes(x = country, y = bai_sum)) +
   geom_bar(stat = "summary", fun = mean,fill = "#56B4E9") +
   stat_summary(geom = "errorbar",fun.data = mean_se, width = .5) 
@@ -489,7 +506,7 @@ ggplot(Dataset, aes(x = country, y = bai_sum)) +
 O boxplot a seguir também é um gráfico indicado. É importante notar que esse gráfico, em um primeiro momento, <u>não</u> traz informações sobre a média dos grupos, mas sim sobre a <u>distribuição</u> dos resultados. No entanto, como esse gráfico é bastante informativo, uma primeira noção inferencial já pode também ser feita.   
 
 
-```{r}
+```{r, warning=FALSE }
 ggplot(Dataset, aes(x = country, y = bai_sum)) +
   geom_boxplot(fill = "#56B4E9")
 ```
@@ -499,7 +516,7 @@ ggplot(Dataset, aes(x = country, y = bai_sum)) +
 
 Quando tanto a VI como a VD são contínuas, os gráficos apresentam a relação entre as variáveis. Tanto o gráfico de pontos como o de dispersão são indicados, uma vez que eles são virtualmente identicos. No `ggplot`, o argumento `geom_point` (à esquerda) e `geom_jitter` (à direita) são possíveis. 
 
-```{r}
+```{r, warning=FALSE }
 gridExtra::grid.arrange(
   #Grafico 1
   ggplot(Dataset, aes(x = age, y = bai_sum)) +
@@ -515,7 +532,7 @@ gridExtra::grid.arrange(
 
 De maneira análoga aos elementos extras que podem ser apresentados em gráficos com VIs discretas, uma reta de regressão amostral (FRA) costuma ser adicionadas em gráficos em que a VI é contínua. Essa reta oferece uma primeira apreensão inferencial. No capítulo sobre modelos de regressão, esse conceito será novamente revisitado. A seguir, segue um exemplo.    
 
-```{r}
+```{r, warning=FALSE }
 ggplot(Dataset, aes(x = age, y = bai_sum)) +
   geom_jitter(color = "#56B4E9") +
   geom_smooth(method = "lm")
@@ -536,6 +553,7 @@ Dataset %>%
   geom_bar(stat = "summary", position = "dodge") +
   stat_summary(geom="errorbar", fun.data = mean_se, position = position_dodge(0.95), width = .5) 
 ```
+   
 Este gráfico traz uma informação importante sobre os resultados de homens e mulheres nos três países. Além disso, as barras de erro ajudam em um primeiro entendimento de possíveis diferenças significativas. Esse conceito irá ser revisitado em capítulos subsequentes.   
 
 No exemplo abaixo, a relação entre idade e pontuação no Inventário Beck de Ansiedade está agora agrupada pelo sexo do participante.
@@ -547,6 +565,7 @@ Dataset %>%
   geom_jitter() +
   geom_smooth(method = "lm") 
 ```
+    
 Neste gráfico de agora, é possível perceber que os a relação entre a idade e os resultados do Inventário Beck de Ansiedade é muito pequena e isso parece valer tanto para homens como para mulheres. Especialmente no capítulo de correlação, esse assunto será revisitado e parte dos termos utilizados aqui será alterado.  
 
 Por sua vez, situações em que há uma grande quantidade de variáveis apresentadas tendem a tornar os resultados difíceis de serem entendidos. O gráfico abaixo tenta traduzir essa condição, criando uma visualização de difícil entendimento justamente pelo excesso de variáveis presentes.    
@@ -559,7 +578,7 @@ Dataset %>%
   geom_smooth(method = "lm") 
 ```
 
-Espera-se que seja possível constatar que este gráfico é <mark>totalmente inadequado</mark>. Ele é carregado por informações, permite um baixo entendimento dos resultados da pesquisa e, eventualmente, pode gerar conclusões incorretas ou viesadas.    
+Espera-se que seja possível constatar que este gráfico é <mark>totalmente inadequado</mark>. Ele é carregado de informações, permite um baixo entendimento dos resultados da pesquisa e, eventualmente, pode gerar conclusões incorretas ou viesadas.    
 
 ## Execução no JASP  
 
@@ -624,12 +643,12 @@ O JASP pode fazer gráficos tanto seção `Descriptives` como após análise de 
 ## 1 variável discreta      
 
 
-Para este tipo de variável, gráfico de barras, colunas e setor são indicados. Para realizar um gráfico de barras, é necessário colocar a variável de interesse em `Variables` e, dentro de `Plots`, clicar em `Distribuiton plots`. O JASP organiza as barras de ordem crescente. 
+Para este tipo de variável, gráfico de barras, colunas e setor são indicados. Para realizar um gráfico de barras, é necessário colocar a variável de interesse em `Variables` e, dentro de `Plots`, clicar em `Distribuiton plots`. O JASP organiza as barras de ordem crescente. No exemplo abaixo, a variável <u>country</u> é apresentada.  
 
 
 ![](./img/cap_desc_jasp_grafico_barras.png)
 
-Para realizar um gráfico de setor, basta selecionar a opção `Pie Charts`. A visualização ocorrerá automaticamente. Uma vantagem deste gráfico é a apresentação proporção do elementos gráficos, em vez de contagens. Infelizmente, nesta versão do JASP, não é possível adicionar um rótulo com a porcentagem de cada cateogoria.  
+Para realizar um gráfico de setor, basta selecionar a opção `Pie Charts`. A visualização ocorrerá automaticamente. Uma vantagem deste gráfico é a apresentação proporcional dos elementos gráficos, em vez de contagens. Infelizmente, nesta versão do JASP, não é possível adicionar um rótulo com a porcentagem de cada cateogoria.  
 
 
 ![](./img/cap_desc_jasp_grafico_setor.png)
@@ -641,13 +660,15 @@ O JASP permite customizar as cores de alguns gráficos. Para fazer isso, basta c
 
 ## 1 variável contínua  
 
-Histogramas, gráficos de densidade e boxplots costumam ser indicados para variáveis contínuas. Para o JASP fazer tais gráficos, é necessário que o espaço `Variables` seja preenchido por alguma variável que tenha o símbolo da régua ao lado. A variável <u>age</u> é um bom exemplo. Ao colocá-la neste local e marcar a opção `Distribution plots`, um histograma será automaticamente apresentado.  
+Histogramas, gráficos de densidade e boxplots costumam ser indicados para variáveis contínuas. Para o JASP fazer tais gráficos, é necessário que o espaço `Variables` seja preenchido por alguma variável que tenha o símbolo da régua ao lado. A variável <u>age</u> é um bom exemplo.   
+
+Ao colocá-la neste local e marcar a opção `Distribution plots`, um histograma será automaticamente apresentado.  
 
 
 ![](./img/cap_desc_jasp_grafico_histograma.png)
 
 
-É possível adicionar a densidade de maneira sobreposta ao histograma clicando em `Display density`.
+É possível adicionar a densidade de maneira sobreposta ao histograma clicando em `Display density`. Ambos os gráficos são importantes para verificar o formato da distribuição dos dados. Neste caso, a distribuição é assimétrica à direita.   
 
 ![](./img/cap_desc_jasp_grafico_densidade.png)
 
@@ -661,25 +682,26 @@ Por sua vez, o boxplot pode ser criado ao se clicar na opção `Boxplots` e, em 
 
 Tal como discutido anteriormente,o boxplot apresenta vantagens em comparação com os outros gráficos apresentados até agora, que são:  
 
-* Ele apresenta o formato da distribuição   
-* Na parte inferior da caixa, ele apresenta o valor do primeiro quartil, indicando os 25% dos dados abaixo ou até ele    
-* Na linha mais espessa dentro da caixa, ele apresenta  a mediana dos resultados   
-* Na parte superior da caixa, ele apresenta o valor do terceiro quartil, indicando os 75% dos dados que abaixo ou até ele  
-* A área da caixa apresenta 50% dos dados, que estão situados entre o primeiro e o terceiro quartil  
-* As linhas abaixo e acima da caixa são chamadas de bigodes e indicam os valores mínimos e máximos sem considerar dados anômalos ou *outliers*
-* Os valores acima ou abaixo da linhas indicam dados anômalos 
+
+* Ele apresenta o formato da distribuição,   
+* Na parte inferior da caixa, ele apresenta o valor do primeiro quartil, indicando os 25% dos dados abaixo ou até ele,      
+* Na linha mais espessa dentro da caixa, ele apresenta  a mediana dos resultados (ou segundo quartil),     
+* Na parte superior da caixa, ele apresenta o valor do terceiro quartil, indicando os 75% dos dados que abaixo ou até ele,    
+* A área da caixa apresenta 50% dos dados, que estão situados entre o primeiro e o terceiro quartil,    
+* As linhas abaixo e acima da caixa são chamadas de bigodes e indicam os valores mínimos e máximos sem considerar dados anômalos ou *outliers*,  
+* Os valores acima ou abaixo da linhas indicam dados anômalos. 
 
 
 ## 2 variáveis com VI discreta (e VD contínua)
 
-Para situações em que há duas variáveis, a VI é tratada como discreta e a VD é contínua, gráficos de barras, colunas ou boxplots são indicados. Nesta versão do JASP, apenas o boxplot pode ser feito. Para verificar, por exemplo, a distribuição dos resultados do <u>bai_sum</u> em função do <u>país</u>, é necessário levar às variáveis a seus respectivos locais e, em seguida, solicitar ao JASP o boxplot.  
+Para situações em que há duas variáveis, a VI é tratada como discreta e a VD é contínua, gráficos de barras, colunas ou boxplots são indicados. Esses gráficos permitem verificar diferenças entre grupos. Nesta versão do JASP, apenas o boxplot pode ser feito. Para verificar, por exemplo, a distribuição dos resultados do <u>bai_sum</u> em função do <u>país</u>, é necessário levar às variáveis a seus respectivos locais e, em seguida, solicitar ao JASP o boxplot.  
 
 ![](./img/cap_desc_jasp_grafico_boxplot_grupo.png)
 
 
 ## 2 variáveis com VI contínua (e VD contínua)
 
-Quando há duas variáveis contínuas, tanto o gráfico de pontos como de dispersão são possíveis. Para fazer isso, é necessário incluir ambas as variáveis de interesse para o espaço `Variables`. Por exemplo, <u>age</u> e <u>bai_sum</u>.
+Quando há duas variáveis contínuas, tanto o gráfico de pontos como de dispersão são possíveis. Esses gráficos permitem verificar o relacionamento entre variáveis. Para fazer isso, é necessário incluir ambas as variáveis de interesse para o espaço `Variables`. Por exemplo, <u>age</u> e <u>bai_sum</u>.
 
 ![](./img/cap_desc_jasp_grafico_scatter1.png)
 
@@ -728,6 +750,14 @@ Este capítulo apresentou os aspectos tabulares e gráficos corriqueiramente enc
 :::  
 
 
-## Pesquisas adicionais  
+## Questões  
 
+<div class="question">
+
+1. Trata-se de um círculo dividido por fatias cujos ângulos internos são proporcionais às partes envolvidas. Este é um gráfico:<br>a) De colunas<br>b) Histograma<br>c)De Setor<br>d) Boxplot<br>e)Barras
+1. É uma medida de posição para variáveis propriamente numéricase que é obtida somando-se todos os valores observados e dividindo-se o resultado pelo número de observações<br>a) Mediana<br>b) Média<br>c) Moda<br>d) Desvio-padrão<br>e) Amplitude interquartil 
+1. (ENADE, Biomedicina - 2010) Para apresentarem gráficos dados referentes à distribuição de frequências de um grupo de medições, pode-se aplicar um modelo semelhante ao estabelecido na figura abaixo, na qual o pesquisador verifica a variação de anticorpos em relação a uma coorte populacional específica.<br>![](./img/exercicio_histograma.png)<br>a) Gráfico de setores, que demonstra a variação de anticorpos na abscissa Y e de população na ordenada X.<br> b) Histograma, que demonstra variações de anticorpos na abscissa X e de população na ordenada Y <br> c) Gráfico de tendência central, que demonstra variações de anticorpos na abscissa X e de população na ordenada Y.<br> d) Gráficos de dispersão, que demonstra a tendência central das médias de concentração dos valores de anticorpos na população.<br> e) Gráfico de linhas, que demonstra a tendência central baseada na mediana das concentrações de anticorpos na população. 
+</div>   
+
+<div class="mirror">Gabarito: 1-c; 2-b; 3-b,</div>
 

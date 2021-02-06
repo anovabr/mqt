@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Cap. 2 Aspectos gerais | Métodos quantitativos em Psicologia com R</title>
+  <title>Cap. 3 Aspectos gerais | Métodos quantitativos em Psicologia com R</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Cap. 2 Aspectos gerais | Métodos quantitativos em Psicologia com R" />
+  <meta property="og:title" content="Cap. 3 Aspectos gerais | Métodos quantitativos em Psicologia com R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="cjvanlissa/gitbook-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Cap. 2 Aspectos gerais | Métodos quantitativos em Psicologia com R" />
+  <meta name="twitter:title" content="Cap. 3 Aspectos gerais | Métodos quantitativos em Psicologia com R" />
   
   <meta name="twitter:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   
@@ -24,15 +24,15 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2021-01-30" />
+<meta name="date" content="2021-02-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="programas-estatísticos.html"/>
+<link rel="prev" href="programas-estatísticos.html"/>
+<link rel="next" href="estatística-descritiva.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -118,6 +118,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="lab.css" type="text/css" />
 </head>
 
 <body>
@@ -138,40 +139,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#objetivo"><i class="fa fa-check"></i><b>1.2</b> Objetivo</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#público-alvo"><i class="fa fa-check"></i><b>1.3</b> Público-alvo</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#formato-do-livro"><i class="fa fa-check"></i><b>1.4</b> Formato do livro</a></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#bases-de-dados"><i class="fa fa-check"></i><b>1.5</b> Bases de dados</a></li>
-<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#o-r-e-os-pacotes"><i class="fa fa-check"></i><b>1.6</b> O R e os pacotes</a></li>
-<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#jasp"><i class="fa fa-check"></i><b>1.7</b> JASP</a></li>
-<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#outros-recursos"><i class="fa fa-check"></i><b>1.8</b> Outros recursos</a></li>
-<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#capa"><i class="fa fa-check"></i><b>1.9</b> Capa</a></li>
-<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#versão-do-livro"><i class="fa fa-check"></i><b>1.10</b> Versão do livro</a></li>
-<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#agradecimentos-e-revisões-técnicas"><i class="fa fa-check"></i><b>1.11</b> Agradecimentos e revisões técnicas</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#como-usar-este-livro"><i class="fa fa-check"></i><b>1.5</b> Como usar este livro</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#bases-de-dados"><i class="fa fa-check"></i><b>1.6</b> Bases de dados</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#o-r-e-os-pacotes"><i class="fa fa-check"></i><b>1.7</b> O R e os pacotes</a></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#jasp"><i class="fa fa-check"></i><b>1.8</b> JASP</a></li>
+<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#outros-recursos"><i class="fa fa-check"></i><b>1.9</b> Outros recursos</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#capa"><i class="fa fa-check"></i><b>1.10</b> Capa</a></li>
+<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#versão-do-livro"><i class="fa fa-check"></i><b>1.11</b> Versão do livro</a></li>
+<li class="chapter" data-level="1.12" data-path="index.html"><a href="index.html#agradecimentos-e-revisões-técnicas"><i class="fa fa-check"></i><b>1.12</b> Agradecimentos e revisões técnicas</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html"><i class="fa fa-check"></i><b>2</b> Aspectos gerais</a><ul>
-<li class="chapter" data-level="2.1" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#os-objetivos-de-uma-pesquisa"><i class="fa fa-check"></i><b>2.1</b> Os objetivos de uma pesquisa</a></li>
-<li class="chapter" data-level="2.2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#fundações-da-pesquisa-e-estatística"><i class="fa fa-check"></i><b>2.2</b> Fundações da pesquisa e estatística</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#delineamentos-observacionais-e-correlacionais"><i class="fa fa-check"></i><b>2.2.1</b> Delineamentos observacionais (e correlacionais)</a></li>
-<li class="chapter" data-level="2.2.2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#delineamentos-experimentais"><i class="fa fa-check"></i><b>2.2.2</b> Delineamentos experimentais</a></li>
+<li class="chapter" data-level="2" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html"><i class="fa fa-check"></i><b>2</b> Programas estatísticos</a><ul>
+<li class="chapter" data-level="2.1" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-r"><i class="fa fa-check"></i><b>2.1</b> O R</a></li>
+<li class="chapter" data-level="2.2" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#tidyverse"><i class="fa fa-check"></i><b>2.2</b> Tidyverse</a></li>
+<li class="chapter" data-level="2.3" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#dificuldades-esperadas"><i class="fa fa-check"></i><b>2.3</b> Dificuldades esperadas</a></li>
+<li class="chapter" data-level="2.4" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>2.4</b> Verbos do dplyr</a></li>
+<li class="chapter" data-level="2.5" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-jasp"><i class="fa fa-check"></i><b>2.5</b> O JASP</a></li>
+<li class="chapter" data-level="2.6" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#resumo"><i class="fa fa-check"></i><b>2.6</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#considerações-sobre-escalas-de-medida-e-o-processo-de-mensuração-em-psicologia"><i class="fa fa-check"></i><b>2.3</b> Considerações sobre escalas de medida e o processo de mensuração em Psicologia</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#escala-nominal"><i class="fa fa-check"></i><b>2.3.1</b> Escala nominal</a></li>
-<li class="chapter" data-level="2.3.2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#escala-ordinal"><i class="fa fa-check"></i><b>2.3.2</b> Escala ordinal</a></li>
-<li class="chapter" data-level="2.3.3" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#escala-intervalar"><i class="fa fa-check"></i><b>2.3.3</b> Escala intervalar</a></li>
-<li class="chapter" data-level="2.3.4" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#escala-de-razão"><i class="fa fa-check"></i><b>2.3.4</b> Escala de razão</a></li>
-<li class="chapter" data-level="2.3.5" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#síntese-das-características-de-cada-escala"><i class="fa fa-check"></i><b>2.3.5</b> Síntese das características de cada escala</a></li>
-<li class="chapter" data-level="2.3.6" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#as-escalas-de-stevens-e-uma-tentativa-de-agrupamento"><i class="fa fa-check"></i><b>2.3.6</b> As escalas de Stevens e uma tentativa de agrupamento</a></li>
-<li class="chapter" data-level="2.3.7" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#variáveis-discretas-ou-contínuas"><i class="fa fa-check"></i><b>2.3.7</b> Variáveis discretas ou contínuas</a></li>
-<li class="chapter" data-level="2.3.8" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#hierarquia-da-classificação-e-a-importância-desses-conceitos-hoje-em-dia"><i class="fa fa-check"></i><b>2.3.8</b> Hierarquia da classificação e a importância desses conceitos hoje em dia</a></li>
-<li class="chapter" data-level="2.3.9" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#em-qual-escala-devemos-classificar-os-testes-psicológicos"><i class="fa fa-check"></i><b>2.3.9</b> Em qual escala devemos classificar os testes psicológicos</a></li>
+<li class="chapter" data-level="3" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html"><i class="fa fa-check"></i><b>3</b> Aspectos gerais</a><ul>
+<li class="chapter" data-level="3.1" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#os-objetivos-de-uma-pesquisa"><i class="fa fa-check"></i><b>3.1</b> Os objetivos de uma pesquisa</a></li>
+<li class="chapter" data-level="3.2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#a-dimensão-temporal-de-uma-pesquisa"><i class="fa fa-check"></i><b>3.2</b> A dimensão temporal de uma pesquisa</a></li>
+<li class="chapter" data-level="3.3" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#conceitos-fundamentais"><i class="fa fa-check"></i><b>3.3</b> conceitos fundamentais</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#modelos-científicos"><i class="fa fa-check"></i><b>3.3.1</b> Modelos científicos</a></li>
+<li class="chapter" data-level="3.3.2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#variáveis"><i class="fa fa-check"></i><b>3.3.2</b> Variáveis</a></li>
+<li class="chapter" data-level="3.3.3" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#delineamentos-de-pesquisa"><i class="fa fa-check"></i><b>3.3.3</b> Delineamentos de pesquisa</a></li>
+<li class="chapter" data-level="3.3.4" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#delineamentos-observacionais-e-correlacionais"><i class="fa fa-check"></i><b>3.3.4</b> Delineamentos observacionais (e correlacionais)</a></li>
+<li class="chapter" data-level="3.3.5" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#delineamentos-experimentais"><i class="fa fa-check"></i><b>3.3.5</b> Delineamentos experimentais</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#principais-áreas-da-estatística"><i class="fa fa-check"></i><b>2.4</b> Principais áreas da estatística</a></li>
-<li class="chapter" data-level="2.5" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#resumo"><i class="fa fa-check"></i><b>2.5</b> Resumo</a></li>
+<li class="chapter" data-level="3.4" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#considerações-sobre-escalas-de-medida-e-o-processo-de-mensuração-em-psicologia"><i class="fa fa-check"></i><b>3.4</b> Considerações sobre escalas de medida e o processo de mensuração em Psicologia</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#escala-nominal"><i class="fa fa-check"></i><b>3.4.1</b> Escala nominal</a></li>
+<li class="chapter" data-level="3.4.2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#escala-ordinal"><i class="fa fa-check"></i><b>3.4.2</b> Escala ordinal</a></li>
+<li class="chapter" data-level="3.4.3" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#escala-intervalar"><i class="fa fa-check"></i><b>3.4.3</b> Escala intervalar</a></li>
+<li class="chapter" data-level="3.4.4" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#escala-de-razão"><i class="fa fa-check"></i><b>3.4.4</b> Escala de razão</a></li>
+<li class="chapter" data-level="3.4.5" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#síntese-das-características-de-cada-escala"><i class="fa fa-check"></i><b>3.4.5</b> Síntese das características de cada escala</a></li>
+<li class="chapter" data-level="3.4.6" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#as-escalas-de-stevens-e-uma-tentativa-de-agrupamento"><i class="fa fa-check"></i><b>3.4.6</b> As escalas de Stevens e uma tentativa de agrupamento</a></li>
+<li class="chapter" data-level="3.4.7" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#variáveis-discretas-ou-contínuas"><i class="fa fa-check"></i><b>3.4.7</b> Variáveis discretas ou contínuas</a></li>
+<li class="chapter" data-level="3.4.8" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#hierarquia-da-classificação-e-a-importância-desses-conceitos-hoje-em-dia"><i class="fa fa-check"></i><b>3.4.8</b> Hierarquia da classificação e a importância desses conceitos hoje em dia</a></li>
+<li class="chapter" data-level="3.4.9" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#em-qual-escala-devemos-classificar-os-testes-psicológicos"><i class="fa fa-check"></i><b>3.4.9</b> Em qual escala devemos classificar os testes psicológicos</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html"><i class="fa fa-check"></i><b>3</b> Programas estatísticos</a><ul>
-<li class="chapter" data-level="3.1" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-r"><i class="fa fa-check"></i><b>3.1</b> O R</a></li>
-<li class="chapter" data-level="3.2" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#tidyverse"><i class="fa fa-check"></i><b>3.2</b> Tidyverse</a></li>
-<li class="chapter" data-level="3.3" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>3.3</b> Verbos do dplyr</a></li>
-<li class="chapter" data-level="3.4" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-jasp"><i class="fa fa-check"></i><b>3.4</b> O JASP</a></li>
-<li class="chapter" data-level="3.5" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#resumo-1"><i class="fa fa-check"></i><b>3.5</b> Resumo</a></li>
+<li class="chapter" data-level="3.5" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#principais-áreas-da-estatística"><i class="fa fa-check"></i><b>3.5</b> Principais áreas da estatística</a></li>
+<li class="chapter" data-level="3.6" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#resumo-1"><i class="fa fa-check"></i><b>3.6</b> Resumo</a></li>
+<li class="chapter" data-level="3.7" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#questões"><i class="fa fa-check"></i><b>3.7</b> Questões</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html"><i class="fa fa-check"></i><b>4</b> Estatística Descritiva</a><ul>
 <li class="chapter" data-level="4.1" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#tabelas"><i class="fa fa-check"></i><b>4.1</b> Tabelas</a></li>
@@ -200,7 +208,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.24" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-contínua-e-vd-contínua-1"><i class="fa fa-check"></i><b>4.24</b> 2 variáveis com VI contínua (e VD contínua)</a></li>
 <li class="chapter" data-level="4.25" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#outros-gráficos-e-configurações-1"><i class="fa fa-check"></i><b>4.25</b> Outros gráficos e configurações</a></li>
 <li class="chapter" data-level="4.26" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#resumo-2"><i class="fa fa-check"></i><b>4.26</b> Resumo</a></li>
-<li class="chapter" data-level="4.27" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#pesquisas-adicionais"><i class="fa fa-check"></i><b>4.27</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="4.27" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#questões-1"><i class="fa fa-check"></i><b>4.27</b> Questões</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="qui-quadrado.html"><a href="qui-quadrado.html"><i class="fa fa-check"></i><b>5</b> Qui quadrado</a><ul>
 <li class="chapter" data-level="5.1" data-path="qui-quadrado.html"><a href="qui-quadrado.html#pesquisa-1"><i class="fa fa-check"></i><b>5.1</b> Pesquisa</a></li>
@@ -209,7 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4" data-path="qui-quadrado.html"><a href="qui-quadrado.html#execução-no-jasp-1"><i class="fa fa-check"></i><b>5.4</b> Execução no JASP</a></li>
 <li class="chapter" data-level="5.5" data-path="qui-quadrado.html"><a href="qui-quadrado.html#escrita-dos-resultados"><i class="fa fa-check"></i><b>5.5</b> Escrita dos resultados</a></li>
 <li class="chapter" data-level="5.6" data-path="qui-quadrado.html"><a href="qui-quadrado.html#resumo-3"><i class="fa fa-check"></i><b>5.6</b> Resumo</a></li>
-<li class="chapter" data-level="5.7" data-path="qui-quadrado.html"><a href="qui-quadrado.html#pesquisas-adicionais-1"><i class="fa fa-check"></i><b>5.7</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="5.7" data-path="qui-quadrado.html"><a href="qui-quadrado.html#pesquisas-adicionais"><i class="fa fa-check"></i><b>5.7</b> Pesquisas adicionais</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="teste-t.html"><a href="teste-t.html"><i class="fa fa-check"></i><b>6</b> Teste T</a><ul>
 <li class="chapter" data-level="6.1" data-path="teste-t.html"><a href="teste-t.html#pesquisa-2"><i class="fa fa-check"></i><b>6.1</b> Pesquisa</a></li>
@@ -229,7 +237,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6.8" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>6.8</b> Teste T e regressão</a></li>
 <li class="chapter" data-level="6.9" data-path="teste-t.html"><a href="teste-t.html#resumo-4"><i class="fa fa-check"></i><b>6.9</b> Resumo</a></li>
-<li class="chapter" data-level="6.10" data-path="teste-t.html"><a href="teste-t.html#pesquisas-adicionais-2"><i class="fa fa-check"></i><b>6.10</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="6.10" data-path="teste-t.html"><a href="teste-t.html#pesquisas-adicionais-1"><i class="fa fa-check"></i><b>6.10</b> Pesquisas adicionais</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>7</b> ANOVA</a><ul>
 <li class="chapter" data-level="7.1" data-path="anova.html"><a href="anova.html#glossário"><i class="fa fa-check"></i><b>7.1</b> Glossário</a></li>
@@ -244,7 +252,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.10" data-path="anova.html"><a href="anova.html#execução-no-jasp-6"><i class="fa fa-check"></i><b>7.10</b> Execução no JASP</a></li>
 <li class="chapter" data-level="7.11" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-4"><i class="fa fa-check"></i><b>7.11</b> Escrita dos resultados</a></li>
 <li class="chapter" data-level="7.12" data-path="anova.html"><a href="anova.html#resumo-5"><i class="fa fa-check"></i><b>7.12</b> Resumo</a></li>
-<li class="chapter" data-level="7.13" data-path="anova.html"><a href="anova.html#pesquisas-adicionais-3"><i class="fa fa-check"></i><b>7.13</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="7.13" data-path="anova.html"><a href="anova.html#pesquisas-adicionais-2"><i class="fa fa-check"></i><b>7.13</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="7.14" data-path="anova.html"><a href="anova.html#pesquisa-4"><i class="fa fa-check"></i><b>7.14</b> Pesquisa</a></li>
 <li class="chapter" data-level="7.15" data-path="anova.html"><a href="anova.html#anova-de-2-vias"><i class="fa fa-check"></i><b>7.15</b> ANOVA de 2 vias</a></li>
 <li class="chapter" data-level="7.16" data-path="anova.html"><a href="anova.html#execução-no-r-7"><i class="fa fa-check"></i><b>7.16</b> Execução no R</a></li>
@@ -278,7 +286,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#execução-no-jasp-12"><i class="fa fa-check"></i><b>9.3</b> Execução no JASP</a></li>
 <li class="chapter" data-level="9.4" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#escrita-dos-resultados-10"><i class="fa fa-check"></i><b>9.4</b> Escrita dos resultados</a></li>
 <li class="chapter" data-level="9.5" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#resumo-9"><i class="fa fa-check"></i><b>9.5</b> Resumo</a></li>
-<li class="chapter" data-level="9.6" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#pesquisas-adicionais-4"><i class="fa fa-check"></i><b>9.6</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="9.6" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#pesquisas-adicionais-3"><i class="fa fa-check"></i><b>9.6</b> Pesquisas adicionais</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="correlação.html"><a href="correlação.html"><i class="fa fa-check"></i><b>10</b> Correlação</a><ul>
 <li class="chapter" data-level="10.1" data-path="correlação.html"><a href="correlação.html#pesquisa-7"><i class="fa fa-check"></i><b>10.1</b> Pesquisa</a></li>
@@ -286,7 +294,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.3" data-path="correlação.html"><a href="correlação.html#execução-no-jasp-13"><i class="fa fa-check"></i><b>10.3</b> Execução no JASP</a></li>
 <li class="chapter" data-level="10.4" data-path="correlação.html"><a href="correlação.html#escrita-dos-resultados-11"><i class="fa fa-check"></i><b>10.4</b> Escrita dos resultados</a></li>
 <li class="chapter" data-level="10.5" data-path="correlação.html"><a href="correlação.html#resumo-10"><i class="fa fa-check"></i><b>10.5</b> Resumo</a></li>
-<li class="chapter" data-level="10.6" data-path="correlação.html"><a href="correlação.html#pesquisas-adicionais-5"><i class="fa fa-check"></i><b>10.6</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="10.6" data-path="correlação.html"><a href="correlação.html#pesquisas-adicionais-4"><i class="fa fa-check"></i><b>10.6</b> Pesquisas adicionais</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>11</b> Regressão linear simples</a><ul>
 <li class="chapter" data-level="11.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#glossário-1"><i class="fa fa-check"></i><b>11.1</b> Glossário</a></li>
@@ -296,7 +304,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.5" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-jasp-14"><i class="fa fa-check"></i><b>11.5</b> Execução no JASP</a></li>
 <li class="chapter" data-level="11.6" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#escrita-dos-resultados-12"><i class="fa fa-check"></i><b>11.6</b> Escrita dos resultados</a></li>
 <li class="chapter" data-level="11.7" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#resumo-11"><i class="fa fa-check"></i><b>11.7</b> Resumo</a></li>
-<li class="chapter" data-level="11.8" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisas-adicionais-6"><i class="fa fa-check"></i><b>11.8</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="11.8" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisas-adicionais-5"><i class="fa fa-check"></i><b>11.8</b> Pesquisas adicionais</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html"><i class="fa fa-check"></i><b>12</b> Regressão linear múltipla</a><ul>
 <li class="chapter" data-level="12.1" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisa-9"><i class="fa fa-check"></i><b>12.1</b> Pesquisa</a></li>
@@ -305,7 +313,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.4" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#escrita-dos-resultados-13"><i class="fa fa-check"></i><b>12.4</b> Escrita dos resultados</a></li>
 <li class="chapter" data-level="12.5" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#técnicas-automáticas-de-seleção-de-variáveis"><i class="fa fa-check"></i><b>12.5</b> Técnicas automáticas de seleção de variáveis</a></li>
 <li class="chapter" data-level="12.6" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#resumo-12"><i class="fa fa-check"></i><b>12.6</b> Resumo</a></li>
-<li class="chapter" data-level="12.7" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisas-adicionais-7"><i class="fa fa-check"></i><b>12.7</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="12.7" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisas-adicionais-6"><i class="fa fa-check"></i><b>12.7</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="12.8" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#questões-2"><i class="fa fa-check"></i><b>12.8</b> Questões</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="http://www.puc-rio.br/" target="blank">PUC-Rio</a></li>
@@ -328,25 +337,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="aspectos-gerais" class="section level1">
-<h1><span class="header-section-number">Cap. 2</span> Aspectos gerais</h1>
+<h1><span class="header-section-number">Cap. 3</span> Aspectos gerais</h1>
 <div class="objectives">
 <p>
 <strong>Objetivos do capítulo</strong><br />
 1. Apresentar conceitos transversais encontrados em pesquisa e estatística<br />
-2. Discutir algumas características das variáveis<br />
-3. Apresentar funções do dplyr e ggplot<br />
-4. Apresentar um módulo específico do JASP<br />
-5. Sugerir heurísticas ou regras gerais na criação de gráficos
+2. Descrever as variáveis em função de seu relacionamento, escala de medida e capacidade numérica<br />
+3. Introduzir o debate sobre a escala de medida em Psicologia<br />
+4. Apresentar as duas principais áreas da estatística
+</p>
+</div>
+<div class="glossario">
+<p>
+<U><strong>GLOSSÁRIO</strong></U><br />
+<strong>Pesquisa</strong>: Procedimento racional e sistemático de investigação que visa proporcionar respostas específicas a um conjunto de problemas propostos.<br />
+<strong>Modelo teórico</strong>: Representação visual, matemática, computacional ou experimental de um sistema de ideias, eventos ou fenômenos.<br />
+<strong>Instrumentos científicos</strong>: Ferramentas que permitem amplificar o fenômeno de interesse, além de acessar aspectos da realidade que não podem ser percebidos diretamente.<br />
+<strong>Variável aleatória</strong>: É uma variável que está associada a uma distribuição de probabilidade.<br />
+<strong>Variável</strong>: Termo genérico usado para se referir às características que estão sendo investigadas ou para se referir às variáveis aleatórias.<br />
+<strong>Variável Independente (VI)</strong>: Característica que esta sendo manipulada. Entende-se que ela influencia, afetam ou determinam outras variáveis.<br />
+<strong>Variável dependente (VD)</strong>: Variável que sofre efeito da VI. Seus valores dependem dos níveis da VI.<br />
+<strong>Delineamento de pesquisa</strong> Forma de esquematizar o planejamento da pesquisa, especialmente considerando o acesso e controle das variáveis, bem como a coleta e análise de dados.
 </p>
 </div>
 <p>Quando as pessoas começam seus estudos em estatística, parece haver uma falsa crença de que a estatística é uma área exclusivamente desenvolvida para analisar dados obtidos em uma pesquisa. Este pensamento acaba por produzir uma dicotomia entre pesquisa e estatística, fazendo com que algumas pessoas pensem que as atividades feitas em estatística somente começam após o termino de uma pesquisa. No entanto, isso não é verdade. Apesar da análise de dados ser uma tarefa intensamente feita em estatística, a atuação desta ciência é muito mais mais ampla do que apenas isso e ocorre em todas as etapas de uma pesquisa.</p>
 <p>Em linhas gerais, a estatística é a ciência que fornece os princípios e a metodologia para <u>coleta</u>, <u>organização</u>, <u>apresentação</u>, <u>resumo</u>, <u>tratamento</u>, <u>análise</u> e <u>interpretação de dados</u>. O mnemônico <mark>CORRETA</mark> quase sempre ajuda a fixar esta definição, já que C se refere à coleta, O se refere à organização, R se refere à resumo, T se refere à tratamento e A se refere à análise, incluindo aspectos descritivos, inferenciais e suas respectivas interpretações, que serão discutidas posteriormente. Assim, aprender estatística da forma “correta” é muito importante no meio acadêmico e científico.</p>
-<p>Uma vez que o conjunto de atividades possíveis em estatística é bastante longo, é possível distinguir acadêmicos cujos interesses são mais relacionados à <mark>estatística como ciência</marK> daqueles cujos interessem recaem mais na utilização da <mark>estatística na ciência</mark>. Com frequência, estudantes do bacharelado de estatística ou matémática tendem a fazer parte do primeiro grupo, enquanto estudantes de áreas mais aplicadas, incluindo aqui Psicologia, tendem a fazer parte do segundo grupo. Assim, apesar dos conceitos principais da estatística serem os mesmos, essa distinção serve como uma bussóla metodológica para orientar a forma pela qual esses conceitos serão introduzidos e discutidos.</p>
-<p>Isso posto, Os subtópicos a seguir introduzem conceitos gerais e importantes que costumam ser apresentados antes mesmo de aspectos mais voltados à análise de dados. Uma vez que esses conceitos são transversais, é possível também encontrar essa discussão em livros de métodos de pesquisa e história da ciência.</p>
+<div class="warning">
+<p><strong>Atenção</strong>: A estatística atua em todas as etapas da pesquisa, incluindo o planejamento, execução e análises. O mnemônico CORRETA auxilia a lembrar as principais atividades desempenhadas pela estatística.</p>
+</div>
+<p>Uma vez que o conjunto de atividades possíveis em estatística é bastante longo, é possível distinguir acadêmicos cujos interesses são mais relacionados à <mark>estatística como ciência</marK> daqueles cujos interessem recaem mais na utilização da <mark>estatística na ciência</mark>. Com frequência, estudantes do bacharelado de estatística ou matémática tendem a fazer parte do primeiro grupo, enquanto estudantes de áreas mais aplicadas, incluindo aqui Psicologia, tendem a fazer parte do segundo grupo. Apesar dos conceitos principais da estatística serem os mesmos, essa distinção serve como uma bussóla metodológica para orientar a forma pela qual esses conceitos serão introduzidos e discutidos.</p>
+<p>Isso posto, os subtópicos a seguir introduzem conceitos gerais e importantes que costumam ser apresentados antes mesmo de aspectos mais voltados à análise de dados. Uma vez que esses conceitos são transversais, é possível também encontrar essa discussão em livros de métodos de pesquisa e história da ciência.</p>
 <p>A apresentação e descrição desses temas será feita de maneira sucinta. As referências bibliográficas dispostas ao fim do capítulo servem para o aprofundamento teórico entre aqueles interessados.</p>
 <div id="os-objetivos-de-uma-pesquisa" class="section level2">
-<h2><span class="header-section-number">2.1</span> Os objetivos de uma pesquisa</h2>
-<p>Uma pesquisa é um procedimento racional e sistemático de investigação que visa proporcionar respostas específicas a um conjunto de problemas propostos <span class="citation">(Gil, <a href="#ref-gil2002" role="doc-biblioref">2002</a>)</span>. A execução de uma pesquisa depende da eleição de problemas específicos, bem como da coleta e análise de dados. É possível classificar as pesquisas a partir de três grandes objetivos, que são as (1) pesquisas exploratórias, (2) pesquisas descritivas e (3) pesquisas explicativas. A tabela a seguir sintetiza as principais características de cada um desses tipos.</p>
+<h2><span class="header-section-number">3.1</span> Os objetivos de uma pesquisa</h2>
+<p>Uma pesquisa é um procedimento racional e sistemático de investigação que visa proporcionar respostas específicas a um conjunto de problemas propostos <span class="citation">(Gil, <a href="#ref-gil2002" role="doc-biblioref">2002</a>)</span>. Toda pesquisa depende da eleição de problemas, bem como da coleta e análise de dados.</p>
+<p>Uma das principais condições a se definir antes de se iniciar uma pesquisa é o seu objetivo geral. Neste sentido, é possível listar 3 grandes grupos de pesquisas, que são as (1) pesquisas exploratórias, (2) pesquisas descritivas e (3) pesquisas explicativas. A tabela a seguir sintetiza as principais características de cada um desses tipos.</p>
 <table>
 <colgroup>
 <col width="33%" />
@@ -378,32 +403,92 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
+<p>É possível notar que o objetivo da pesquisa indica um pouco a maturidade da área cientifica em questão e a recenticidade que o fenômeno a ser estudado representa. Apesar de não ser uma regra geral, pesquisas exploratórias tendem a ser feitas por ciências mais novas e/ou para estudar fenômenos e objetos em que há pouco conhecimento científico sobre. Tenha atenção que a baixa quantidade de conhecimento se refere a aspectos acadêmicos e científicos, e não a quatidade de conhecimento que os autores da pesquisa apresentam sobre seu objeto de investigação.</p>
+<p>Muitas pesquisas em Psicologia são exploratórias. Explorar quantas e quais funções executivas estão presentes em crianças com autismo <span class="citation">(Skogli et al., <a href="#ref-Skogli2020" role="doc-biblioref">2020</a>)</span> ou quais são as atitudes de professores em relação ao ensino de ciência <span class="citation">(Jones &amp; Levin, <a href="#ref-Jones1994" role="doc-biblioref">1994</a>)</span> retratam bem pesquisas exploratórias. No entanto, mesmo áreas com maior maturidade científica podem realizar pesquisas exploratórias quando o fenômeno a ser estudado é recente. Por exemplo, a eventual relação entre o Zica Vírus e o desenvolvimento de microcefalia nos anos 2015 proporcionou a realização de muitas pesquisas exploratórias em biologia e medicina.</p>
+<p>Pesquisas com objetivos descritivos indicam que o fenômeno ou objeto investigado já é mais conhecido pela comunidade científica. Elas são úteis para apresentar o perfil de determinado fenômeno ou objeto, bem como verificar a relação entre variáveis. As pesquisa de intenção de votos, survey sobre opiniões e atitudes sociais e indicadores de prevalência de condições de saúde retratam bem este tipo de pesquisa.</p>
+<p>Pesquisas explicativas visam identificar os fatores que determinam ou que contribuem para a ocorrência dos fenômenos <span class="citation">(Gil, <a href="#ref-gil2002" role="doc-biblioref">2002</a>)</span>. Esse é o tipo de pesquisa que mais aprofunda o conhecimento da realidade e, consequentemente, é a mais complexa de ser realizada. Estudar fenômenos termodinâmicos, tal como a transformação de um tipo de energia em outra, ou como o processo de detecção de um estímulo se dá [Madsen1988] ou qual é o efeito de programas de televisão na agressividade de crianças <span class="citation">(<a href="#ref-Bandura1961" role="doc-biblioref">1961</a>)</span> retratam pesquisas explicativas.</p>
 </div>
-<div id="fundações-da-pesquisa-e-estatística" class="section level2">
-<h2><span class="header-section-number">2.2</span> Fundações da pesquisa e estatística</h2>
+<div id="a-dimensão-temporal-de-uma-pesquisa" class="section level2">
+<h2><span class="header-section-number">3.2</span> A dimensão temporal de uma pesquisa</h2>
+<p>A unidade de tempo de uma pesquisa é um fator importante a ser definido antes de sua execução e a pesquisa pode ser transversal ou longitudinal. Estudos transversais são também chamados de <em>Cross-sectional</em> e descrevem uma situação ou fenômeno em um momento específico do tempo. Estudos longitudinais são também chamados de <em>follow-up</em> e contam com uma seqüência temporal previamente definida. A imagem a seguir apresenta este conceito.</p>
+<p><img src="img/cap_transversal_longitudinal.PNG" /></p>
+<p>A realização de cada tipo de estudo é atrealada à pergunta a qual ele visa responder. A tabela abaixo apresesenta algumas características.</p>
+<table>
+<colgroup>
+<col width="34%" />
+<col width="31%" />
+<col width="34%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Característica</th>
+<th align="left">Transversal</th>
+<th align="left">Longitudinal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Duração</td>
+<td align="left">Um único momento.</td>
+<td align="left">Múltiplos momentos.</td>
+</tr>
+<tr class="even">
+<td align="left">Amostra</td>
+<td align="left">Varia em cada estudo.</td>
+<td align="left">Mesmos participantes.</td>
+</tr>
+<tr class="odd">
+<td align="left">Resultados</td>
+<td align="left">Mostram uma fotografia momentâna.</td>
+<td align="left">Indicam detalhes da mudança das variáveis.</td>
+</tr>
+<tr class="even">
+<td align="left">Vantagens</td>
+<td align="left">- Tende a ser mais barata.<br>-Rápida.<br>-Participantes são mais fáceis de serem amostrados.<br>- Menos condições burocráticas (Comissão ética, etc).</td>
+<td align="left">-Mudanças podem ser descritas.<br>-Maior detalhamento dos resultados.<br>-Pode indicar causalidade<br></td>
+</tr>
+<tr class="odd">
+<td align="left">Desvantagens</td>
+<td align="left">-Pouco nível de detalhamento.<br>-Impossibilidade de analisar mudanças.<br>-Dificuldade de verificar aspectos de causalidade.</td>
+<td align="left">-Consome tempo e dinheiro para execução.<br>-Perda amostral tende a ocorrer com frequência.<br>-Maior burocracia (Comissão ética, etc).<br>-Definição de intervalo de tempo difícil.</td>
+</tr>
+</tbody>
+</table>
+<p>Com regularidade, pesquisas longitudinais se aproximam mais de objetivos explicativos, enquanto pesquisas transversais são mais próximas a objetivos exploratórios e descritivos.</p>
+</div>
+<div id="conceitos-fundamentais" class="section level2">
+<h2><span class="header-section-number">3.3</span> conceitos fundamentais</h2>
 <ul>
 <li><em>L. Anunciação &amp; J. Landeira-Fernandez</em></li>
 </ul>
-<p>Existem alguns conceitos muito utilizados em pesquisa e estatística que servem como fundações da maior parte dos métodos e técnicas implementados quando se deseja investigar um determinado fenômeno ou objeto através do método científico. Apesar de manuais técnicos divergirem em quantos e quais conceitos podem ser entendidos como fundamentais em pesquisa e estatística, existe grande concordância em relação à <mark>(1) realidade e modelo</mark> e <mark>(2) constante e variáveis</mark>. Ambos serão introduzidos a seguir.</p>
-<p>Quando uma pesquisa é feita, ela visa responder uma pergunta específica sobre um fenômeno ou objeto. Muitas perguntas são possíveis a depender da área de interesse do investigador, bem como de sua época. Físicos e astrônomos do século XVI queriam investigar a organização do sistema solar, economistas do século XVIII tinham interesse em investigar a relação entre recursos e rendimentos financeiros e, mais recentemente, psicólogos do século XX se debruçaram a estudar o efeito da escolaridade no desenvolvimento de habilidades cognitivas. Esses três exemplos remontam à teoria heliocêntrica, a lei dos retornos marginais decrescentes e a teoria da reserva cognitiva.</p>
-<p>Apesar da diferença entre os interesses, uma característica compartilhada nestas pesquisas é a impossibilidade ou improbabilidade de se investigar diretamente a realidade. No exemplo da astronomia isso parece ser bastante claro, já que mesmo que pesquisas em física tenham características mais mecanicistas, só atualmente que o acesso mais direto da realidade foi possível e permitiu responder melhor essa questão. Além disso, na grande maioria das pesquisas, os fenômenos e objetos de interesse não são sistemas fechados. Isso significa que não é possível ou viável controlar todos os fatores relacionados ao que se tem interesse de estudar. Por exemplo, quando se investiga como a escolaridade impacta nas habilidades cognitivas, os resultados podem (ou não) responder apenas inicialmente sobre um dos fatores relacionado às habilidades cognitivas, mas não todos.</p>
-<p>Entre as maneiras desenvolvidas por cientistas para lidar com esta situação estão a <u>construção de modelos teóricos</u> e <u>instrumentos de medida</u>. Modelos teóricos científicos são representações da realidade e podem ser criados sob perspectiva visual, matemática, computacional ou experimental. Eles tendem a ser sistemas fechados e visam reproduzir, precisamente, o fenômeno ou objeto de interesse. A qualidade desses modelos pode variar e entre as principais características positivas de um modelo com alta aderência à realidade estão a possibilidade de se realizar simulações e também fazer predições com ele.</p>
+<p>Existem alguns conceitos muito utilizados em pesquisa e estatística que servem como fundações da maior parte dos métodos e técnicas implementados quando se deseja investigar um determinado fenômeno ou objeto através do método científico. Apesar de manuais técnicos divergirem em quantos e quais conceitos podem ser entendidos como fundamentais em pesquisa e estatística, existe grande concordância em relação à (1) realidade e modelo e (2) constante e variáveis. Ambos serão introduzidos a seguir.</p>
+<div id="modelos-científicos" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Modelos científicos</h3>
+<p>Quando uma pesquisa é feita, ela visa responder uma pergunta específica sobre um fenômeno ou objeto, tal como apresentado anteriormente. Muitas perguntas são possíveis a depender da área de interesse do investigador, bem como de sua época. Físicos e astrônomos do século XVI queriam investigar a organização do sistema solar, economistas do século XVIII tinham interesse em investigar a relação entre recursos e rendimentos financeiros e, mais recentemente, psicólogos do século XX se debruçaram a estudar o efeito da escolaridade no desenvolvimento de habilidades cognitivas. Esses três exemplos remontam à teoria heliocêntrica, a lei dos retornos marginais decrescentes e a teoria da reserva cognitiva.</p>
+<p>Apesar da diferença entre os interesses, uma característica compartilhada nestas pesquisas é a impossibilidade ou improbabilidade de se investigar diretamente a realidade. No exemplo da astronomia isso parece ser bastante claro, já que mesmo que pesquisas em física tenham características mais mecanicistas, só atualmente que o acesso mais preciso da realidade foi possível e permitiu responder melhor essa questão. Além disso, na grande maioria das pesquisas, os fenômenos e objetos de interesse não são sistemas fechados. Isso significa que não é possível ou viável controlar todos os fatores relacionados ao que se tem interesse de estudar. Por exemplo, quando se investiga como a escolaridade impacta nas habilidades cognitivas, os resultados podem (ou não) responder apenas inicialmente sobre um dos fatores relacionado às habilidades cognitivas, mas não todos.</p>
+<p>Entre as maneiras desenvolvidas por cientistas para lidar com esta situação estão a <u>construção de modelos teóricos</u> e <u>instrumentos de medida</u>. Modelos teóricos científicos são representações da realidade e podem ser criados sob perspectiva visual, matemática, computacional ou experimental <span class="citation">(Weisberg, <a href="#ref-Weisberg2013" role="doc-biblioref">2013</a>)</span>. Eles tendem a ser sistemas fechados e visam reproduzir, precisamente, o fenômeno ou objeto de interesse. A qualidade desses modelos pode variar e entre as principais características positivas de um modelo com alta aderência à realidade estão a possibilidade de se realizar simulações e também fazer predições com ele <span class="citation">(Heidemann et al., <a href="#ref-Heidemann2016" role="doc-biblioref">2016</a>)</span>.</p>
 <p>A figura a seguir apresenta algumas características dos modelos científicos.</p>
 <p><img src="img/cap_modelos_cientificos.PNG" /></p>
 <p>Em um modelo ideal, aquilo que fosse descoberto a partir dele, ocorreria identicamente na realidade. Evidentemente, modelos ideais não existem na grande maioria das áreas científicas, o que leva à conclusão de que os modelos são absolutamente essenciais à pesquisa, apesar de possuírem limitações <span class="citation">(Feigelson &amp; Babu, <a href="#ref-Feigelson1992" role="doc-biblioref">1992</a>; Frigg &amp; Hartmann, <a href="#ref-Firgg2020" role="doc-biblioref">2020</a>; Putnam, <a href="#ref-Putnam1980" role="doc-biblioref">1980</a>)</span>. Por exemplo, engenheiros utilizam modelos computacionais com muita frequência para verificar itens de segurança de um carro; economistas utilizam modelos matemáticos (e também jogos!) para investigar características da tomada de decisão e psicólogos utilizam modelos experimentais e matemáticos para investigar transtornos mentais e desenvolvimento de funções emocionais e cognitivas.</p>
 <p>Ainda neste sentido, mapas cartográficos ilustram bem a importância dos modelos. Apesar de todos os mapas disponíveis distorcerem um pouco a área e localização dos continentes, a utilização deles é fundamental tanto na ciência como no dia-a-dia das pessoas. Na figura a seguir, o mapa à esquerda apresenta a projeção de Marcator, que é a mais utilizada nos livros. À direta, a projeção de Peters, que apesar de não ser tão utilizada, é a que melhor organiza o tamanho e o local dos continentes.</p>
 <p><img src="img/cap_mapas.PNG" /></p>
-<p>Além disso, quase sempre, o registro que temos da realidade é baseado em nossos órgãos sensoriais que, por sua vez, são influenciados pela cultura em que estamos inseridos e pela aprendizagem prévia pela qual passamos. Com isso é fácil notar que existe um grande hiato entre a realidade e nossa percepção da realidade. Os instrumentos de medida, por sua vez, são recursos tecnológicos que permitem uma avaliação mais detalhada do fenômeno ou do objeto de investigação, além de gerarem dados que podem ser analisados, comparados e compartilhados. Todas as áreas científicas criam e refinam instrumentos de medida e há autores que sugerem que a existência e a qualidade de tais recursos indicam o quão madura e desenvolvida uma área se encontra. Apesar de grande variabilidade em relação à acurácia e precisão dos instrumentos, relógios, bússolas, réguas e testes psicológicos permitem um acesso mais detalhado de um fenômeno ou objeto de interesse.</p>
+<p>Além disso, quase sempre, o registro que temos da realidade é baseado em nossos órgãos sensoriais que, por sua vez, são influenciados pela cultura em que estamos inseridos e pela aprendizagem prévia pela qual passamos. Com isso é fácil notar que existe um grande hiato entre a realidade e nossa percepção da realidade. Os instrumentos de medida, por sua vez, são recursos tecnológicos que permitem uma avaliação mais detalhada do fenômeno ou do objeto de investigação, além de gerarem dados que podem ser analisados, comparados e compartilhados. Todas as áreas científicas criam e refinam instrumentos de medida e há autores que sugerem que a existência e a qualidade de tais recursos indicam o quão madura e desenvolvida uma área se encontra, uma vez que os instrumentos são condições centrais no processo científico <span class="citation">(Bergenholtz et al., <a href="#ref-Bergenholtz2018" role="doc-biblioref">2018</a>)</span>. Apesar de grande variabilidade em relação à acurácia e precisão dos instrumentos, relógios, bússolas, réguas e testes psicológicos permitem um acesso mais detalhado de um fenômeno ou objeto de interesse.</p>
 <p><img src="img/cap_instrumentos.PNG" /></p>
-<p>Dessa maneira, a principal proposta dos instrumentos de medida é a captura da realidade por uma via mais direta, evitando possíveis interferência ou ruídos e produzindo dados confiáveis sobre o fenômeno ou objeto estudado. Existe uma grande translação entre modelos teóricos e instrumentos de medida. Apesar de não ser uma regra geral, muitas áreas científicas primeiro constroem modelos teóricos e o processo de medida ocorre nestes modelos. Por exemplo, há um conjunto de modelos psicológicos visando entender como ocorre o esquecimento que, por sua vez, permitiram desenvolver testes e escalas específicas para isso.</p>
+<p>Dessa maneira, a principal proposta dos instrumentos de medida é a captura da realidade sem interferência ou ruídos e, em seguida, a produção de dados confiáveis sobre o fenômeno ou objeto estudado. Existe uma grande translação entre modelos teóricos e instrumentos de medida. Apesar de não ser uma regra geral, muitas áreas científicas primeiro constroem modelos teóricos e o processo de medida ocorre nestes modelos. Por exemplo, há um conjunto de modelos psicológicos visando entender como ocorre o esquecimento que, por sua vez, permitiram desenvolver testes e escalas específicas para isso.</p>
 <p>Uma dos exemplos mais interessantes sobre a limitação que nossos sentidos possuem ao capturar a realidade e a importância do desenvolvimento de instrumentos de medida é percepção que temos do sol. A maioria das representações feitas do sol o apresentam como amarelo, quando na verdade ele é branco. Isso ocorre em função da atmosfera do planeta Terra e de diferentes gases presentes no céu.</p>
 <p><img src="img/cap_sol.PNG" /></p>
 <p>Isso posto, o desenvolvimento de modelos teóricos e de instrumentos de medida são atividades essenciais de pesquisadores e cientistas para lidar com a impossibilidade ou improbabilidade de acessar a realidade de forma direta, bem como pela limitação perceptual que temos. Como Popper comenta no livro “Os dois problemas fundamentais da teoria do conhecimento”, essas características fazem com que cientistas quase nunca digam que estão em busca da verdade, mas sim que estão em busca de evidências sobre um determinado fenômeno ou objeto.</p>
-<p>O segundo conceito fundamental se dá na dicotomia constante vs. variáveis. De maneira geral, um fenômeno constante não apresenta dispersão em seus valores. Basta uma única medição para que o comportamento de um fenômeno constante possa ser capturado. Em oposição, fenômenos variáveis podem assumir quaisquer valores em suas características. Enquanto a velocidade da luz e do som é, respectivamente, 324 m/s e 299.792 m/s; a renda, altura ou inteligência das pessoas pode variar bastante. De fato, essa dicotomia também poderia ser vista pelo conceito de modelos determinísticos e probabilísticos ou, superficialmente, em diferenças entre ciências naturais e ciências humanas. Modelos determinísticos são aqueles que as condições iniciais determinam os resultados, enquanto modelos probabilísticos são os que associam probabilidades aos resultados. Em ciências naturais recorre-se menos à noção de probabilidade, enquanto em ciências humanas este é um conceito central.</p>
+</div>
+<div id="variáveis" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> Variáveis</h3>
+<p>O segundo conceito fundamental pode ser entendido pela dicotomia entre variáveis e constantes. De maneira geral, um fenômeno constante não apresenta dispersão em seus valores. Basta uma única medição para que o comportamento de um fenômeno constante possa ser capturado. Em oposição, fenômenos variáveis podem assumir quaisquer valores em suas características. Enquanto a velocidade da luz e do som é, respectivamente, 324 m/s e 299.792 m/s; a renda, altura ou inteligência das pessoas pode variar bastante. Essa dicotomia poderia também ser vista pelo conceito de modelos determinísticos e probabilísticos ou, superficialmente, em diferenças entre ciências naturais e ciências humanas. Modelos determinísticos são aqueles que as condições iniciais determinam os resultados, enquanto modelos probabilísticos são os que associam probabilidades aos resultados. Em ciências naturais recorre-se menos à noção de probabilidade, enquanto em ciências humanas este é um conceito central.</p>
 <p>Em estatística e pesquisa, o termo variável pode ser entendido tanto de uma maneira bastante informal, como de uma forma mais rigorosa. Informalmente, uma variável é um símbolo que representa uma característica de um determinado objeto, tal como peso, altura, inteligência ou renda. Como essa característica pode apresentar quaisquer, dá-se o nome de variável. No entanto, formalmente em estatística, quando o termo variável é utilizado, o que está em jogo é o conceito de <u>variável aleatória</u>. Por sua vez, este conceito se refere à uma classe de variáveis em que o conjunto possível de suas realizações (ou seja, seus valores ou desfechos) ocorrem de acordo com uma distribuição de probabilidade <span class="citation">(Everitt, <a href="#ref-everitt2002cambridge" role="doc-biblioref">2002</a>)</span>. Em estatística, uma variável aleatória é uma função que associa elementos do espaço amostral ao conjunto de números reais.</p>
+<div class="warning">
+<p><strong>Atenção</strong>: Uma variável é um símbolo que representa uma característica. Uma variável aleatória é uma variável que possui uma distribuição de probabilidade.</p>
+</div>
 <p>Dessa maneira, o estudo das variáveis (aleatórias) é central em estatística, seja tanto para análises descritiva, como inferenciais.</p>
 <p>As variáveis podem ser organizadas por seu <u>relacionamento em uma pesquisa</u>, seu <u>nível ou escala de medida</u> e sua <u>capacidade informacional</u>.</p>
-<p>No que se refere ao relacionamento entre as variáveis, inicialmente, é possível classificá-las em <u>independentes</u> e <u>dependentes</u>. Variáveis independentes são abreviadas pela sigla VI e também são chamadas de antecedentes, preditores, fatores ou variáveis manipuladas ou de entrada. Variáveis dependentes são abreviadas por VD e também são chamadas de consequentes, previstas, desfechos ou variáveis medidas ou de saída.</p>
+<p>No que se refere ao relacionamento entre as variáveis, inicialmente, é possível classificá-las em independentes e dependentes. Variáveis independentes são abreviadas pela sigla VI e também são chamadas de antecedentes, preditores, fatores ou variáveis manipuladas ou de entrada. Variáveis dependentes são abreviadas por VD e também são chamadas de consequentes, previstas, desfechos ou variáveis medidas ou de saída.</p>
 <p>Os termos VI e VD explicitam que ambas as variáveis são conectadas e que <u>a VI gera ou causa a VD</u>. É justamente por isso que representações matemáticas apresentam a VI por X e a VD por Y, tal como no estudo de funções.</p>
 <p><img src="img/cap_vi_vd1.PNG" /></p>
 <p>Em alguns fenômenos naturais, é relativamente fácil identificar a VI e a VD. Por exemplo, quanto mais profundo uma pessoa mergulha no mar, mais gelada a água fica. Neste caso, a profundidade seria a VI, enquanto a temperatura da água seria a VD. Da mesma forma, quanto mais alto um avião viaja, menor é a pressão atmosférica. Nesse outro exemplo, a altitude é a VI e a pressão atmosférica é a VD.</p>
@@ -412,48 +497,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Como exemplos de uma condição temporal, uma pessoa pode estar interessada em investigar a influência do sexo (VI) na escolha profissional (VD) ou o efeito de um medicamento (VI) na dor de cabeça (VD). Nesses dois casos, os efeitos não podem alterar as causas. Uma escolha profissional não faz com que a pessoa altere seu sexo, bem como a dor de cabeça é uma condição que antecede a tomada do medicamento.</p>
 <p>Em relação à condição lógica (as vezes chamada de quase-temporal), é possível que alguém queira investigar como a escolaridade afeta o preconceito. Neste caso, é viável assumir que a escolaridade é a VI e o preconceito é a VD. Entretanto, alguém pode sugerir que pessoas mais ou menos preconceituosas se dedicam de maneira diferente em atividades acadêmicas, invertendo essa relação de causalidade.</p>
 <p>Finalmente, uma organização teórica ocorre quando se pretende investigar os efeitos da ansiedade na depressão ou do casamento no bem estar pessoal. A eleição da ansiedade como VI foi uma escolha do pesquisador e não, necessariamente, uma condição temporal ou lógica. Da mesma forma, eleger o casamento como VI é uma escolha feita para responder a uma determinada questão.</p>
-<p>A figura a seguir traz um diagrama inicial destes conceitos.</p>
+<p>A figura a seguir traz um diagrama inicial destes conceitos, utilizando um esquema em que as horas de estudo teriam efeito sobre a nota da prova.</p>
 <p><img src="img/cap_vi_vd.PNG" /></p>
 <p>É importante notar que a ideia de uma única variável impactando ou causando diretamente uma outra variável é quase metafórica. Para que isso pudesse ocorrer tanto em fenômenos físicos como em quaisquer outros, seria necessário que todas as possíveis fontes de influência existentes neste relacionamento fossem controladas ou suprimidas <span class="citation">(Dumsday, <a href="#ref-Dumsday2012" role="doc-biblioref">2012</a>)</span>. Essa noção de controle total é visto pelo termo <em>ceteris paribus</em>, que é uma expressão em latim que significa “tudo o mais constante”. Muitas vezes, em pesquisa e estatística, este termo é utilizado quando alguns ajustes são implementados em modelos estatísticos para tentar expressar a ideia de uma causalidade parcial, em que a VI impactaria a VD de uma determinada forma, caso tudo o mais fosse controlado <span class="citation">(Fennell, <a href="#ref-Fennell2005" role="doc-biblioref">2005</a>)</span>. Evidentemente, há fenômenos sociais que parecem obedecer à certa regularidade e o termo “fato estilizado” tende a ser empregado nestas situações <span class="citation">(Hirschman, <a href="#ref-Hirschman2016" role="doc-biblioref">2016</a>)</span>.</p>
-<p>Ao se pensar nas condições em que a VI e VD estejam definidas, é fácil notar que existe um conjunto grande de outras variáveis que podem impactar neste relacionamento. Essas variáveis recebem muitos nomes e o termo <u>variáveis estranhas</u> (VEs) pode servir para designá-las. A imagem a seguir ilustra algumas das variáveis que poderiam impactar na relação entre horas de estudo e notas na prova, aqui assumidas como VI e VD, respectivamente.</p>
+<p>Ao se pensar nas condições em que a VI e VD estejam definidas, é fácil notar que existe um conjunto grande de outras variáveis que podem impactar neste relacionamento. Essas variáveis recebem muitos nomes e o termo <u>variáveis estranhas</u> (VEs) pode servir para designá-las. A imagem a seguir ilustra algumas das variáveis que poderiam impactar na relação entre horas de estudo e notas na prova, previamente assumidas como VI e VD.</p>
 <p><img src="img/cap_variavel_estranha.PNG" /></p>
-<p>A natureza destas variáveis estranhas e o local em que ela impacta no relacionamento entre a VI e a VD entram em cena quando conceitos específicos são estudados. No capítulo sobre correlação e regressão essa discussão será revisitada.</p>
-<p>É possível afirmar que em todos os relacionamentos entre duas variáveis, sempre haverá um conjunto de outras variáveis impactando esta relação. Conseguir mapear essas variáveis depende tanto da maturidade científica de uma área, como do objetivo que a pesquisa se propõe. É possível organizar as pesquisas a partir de três principais objetivos, que são as (1) pesquisas exploratórias, (2) pesquisas descritivas e (3) pesquisas explicativas. A tabela a seguir sintetiza as principais características de cada um desses tipos.</p>
-<table>
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Tipo de Pesquisa</th>
-<th align="left">Quando é feita</th>
-<th align="left">Características principais</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Exploratória</td>
-<td align="left">Há pouco ou nenhum conhecimento sobre o tema de interesse.</td>
-<td align="left">Não há hipóteses definidas previamente. Os resultados proporcionam maior familiaridade com o problema, apesar de frágeis e pouco generalizáveis.</td>
-</tr>
-<tr class="even">
-<td align="left">Descritiva</td>
-<td align="left">Os fenômenos e objetos já são mais conhecidos. Hipóteses sobre suas características e eventuais relacionamentos podem ser feitas.</td>
-<td align="left">Técnicas de coleta de dados mais padronizadas tendem a ser empregadas. Testes de hipóteses são feitos, bem como técnicas estatísticas descritivas e que visem comparar características entre grupos e pessoas diferentes.</td>
-</tr>
-<tr class="odd">
-<td align="left">Explicativa</td>
-<td align="left">Há maior conhecimento sobre o tema de interesse e a finalidade é indicar possíveis relações de causa e efeito</td>
-<td align="left">O delineamento experimental tende a ser implementado, o que será explicado posteriormente</td>
-</tr>
-</tbody>
-</table>
-<p>Durante o mapeamento do relacionamentos entre VI e VD, objetivo definido para a pesquisa serve como primeiro marcador para auxiliar a mapear todas as possíveis variáveis estranhas que impactam neste relacionamento. Pesquisas exploratórias, por exemplo, quase nunca conseguirão listar todas as possíveis VEs, o que é o oposto do visto em pesquisas explicativas.</p>
-<p>No entanto, é durante o planejamento da pesquisa em sua dimensão mais ampla, mas especialmente focado nas condições de coleta e análise de dados, é que o pesquisador terá a oportunidade de eleger as maneiras pelas quais ele irá executar seu estudo e mapear as principais características e limitações existentes. O conceito de delineamento de pesquisa é justamente utilizado para expressar esta ideia, sendo formalmente entendido como um manual ou roteiro que “considera o ambiente em que são coletados os dados e as formas de controle das variáveis envolvidas” <span class="citation">(Gil, <a href="#ref-gil2002" role="doc-biblioref">2002</a>)</span>.</p>
-<p>Desta maneira, a integração do tipo de pesquisa e com o tipo de delineamento seve como um dos passos iniciais, mas absolutamente fundamentais, não apenas para execução da pesquisa, como também proporcionam um indicador em que é possível avaliar o quanto os resultados são acurados.</p>
-<p>Existem diferentes classificações dos delineamentos de pesquisa e cada área tem particularidades. É importante atentar que definir claramente o tipo de delineamento é essencial, já que as técnicas e análises estatísticas são conectadas a ele. Em Psicologia, costuma-se organizar os delineamentos em observacionais, correlacionais e experimentais. As vezes, o termo delineamento descritivo é utilizado em vez de observacional <span class="citation">(Stangor, <a href="#ref-stangor2010" role="doc-biblioref">2010</a>)</span>. Por sua vez, em epidemiologia, saúde pública e bioestatística, os delineamentos costumam ser divididos em experimentais e observacionais <span class="citation">(Friis &amp; Selles, <a href="#ref-friis2013" role="doc-biblioref">2013</a>, p. @glantz2014)</span>. Apesar das diferenças de nomenclaturas, a lógica por detrás dos delineamentos é bastante atrelada à possibilidade e viabilidade de uma manipulação ativa da VI.</p>
+<p>É possível afirmar que em todos os relacionamentos entre duas variáveis, sempre haverá um conjunto de outras variáveis impactando nesta relação. justamente por isso é que cientistas quase nunca digam que estão absolutamente certos de uma determinada condição ou assunto. Na maioria das vezes, como também ilustrado por Popper no livro “Os dois problemas fundamentais da teoria do conhecimento”, cientistas tendem a substituir a palavra certeza por probabilidade.</p>
+<p>Para conseguir mapeaer adequadamente o quanto e como outras variáveis impactam no relacionamento VI-VD em um estudo, é necessário ter claro o objetivo que a pesquisa possui, mas também o delineamento implementado para sua execução, o que será descrito a seguir.</p>
+</div>
+<div id="delineamentos-de-pesquisa" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> Delineamentos de pesquisa</h3>
+<p>O termo delineamento diz respeito a etapa de planejamento de pesquisa em que se “considera o ambiente em que são coletados os dados e as formas de controle das variáveis envolvidas” <span class="citation">(Gil, <a href="#ref-gil2002" role="doc-biblioref">2002</a>)</span>. Dessa forma, o delineamento funciona como um manual técnico. É durante esta etapa que o pesquisador terá a oportunidade de eleger as maneiras pelas quais ele irá executar seu estudo e mapear as principais características e limitações existentes.</p>
+<p>Existem diferentes classificações dos delineamentos de pesquisa e cada área tem particularidades. É importante atentar que definir claramente o tipo de delineamento é essencial, já que os objetivos da pesquisa e as análises estatísticas a serem feitas são conectadas a ele. Em Psicologia, costuma-se organizar os delineamentos em observacionais, correlacionais e experimentais. As vezes, o termo delineamento descritivo é utilizado em vez de observacional <span class="citation">(Stangor, <a href="#ref-stangor2010" role="doc-biblioref">2010</a>)</span>. Por sua vez, em epidemiologia, saúde pública e bioestatística, os delineamentos costumam ser divididos em experimentais e observacionais <span class="citation">(Friis &amp; Selles, <a href="#ref-friis2013" role="doc-biblioref">2013</a>; Glantz, <a href="#ref-glantz2014" role="doc-biblioref">2014</a>)</span>. Apesar das diferenças de nomenclaturas, a lógica por detrás dos delineamentos é bastante atrelada à possibilidade e viabilidade de uma manipulação ativa da VI.</p>
 <p>Em Psicologia, a tabela abaixo é bastante utilizada:</p>
 <table>
 <colgroup>
@@ -473,39 +528,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <tbody>
 <tr class="odd">
 <td align="left">Observacional</td>
-<td align="left">Apenas 1 grupo é necessário. Descrever um determinado fenômeno ou objeto.</td>
-<td align="left">Oferece uma foto de um objeto ou fenômeno que tende a ser precisa. Permite que novos estudos sejam conduzidos. As vezes, só é possível fazer este delineamento.</td>
-<td align="left">Não acessa o relacionamento entre duas ou mais variáveis.</td>
+<td align="left">-Apenas 1 grupo é necessário.<br>-Descrever um determinado fenômeno ou objeto.</td>
+<td align="left">-Oferece uma foto de um objeto ou fenômeno que tende a ser precisa.<br>-Permite que novos estudos sejam conduzidos.<br>-Tende a ser mais barato do que outros delineamentos.<br>-As vezes, só é possível fazer este delineamento.</td>
+<td align="left">-Não acessa o relacionamento entre duas ou mais variáveis.</td>
 </tr>
 <tr class="even">
 <td align="left">Correlacional</td>
-<td align="left">Apenas 1 grupo é necessário. Acessar a natureza e a força do relacionamento entre duas variáveis. As vezes, só é possível fazer este delineamento.</td>
-<td align="left">É possível testar hipóteses sobre este relacionamento e fazer previsões de resultados futuros. Não é necessário ambientes ou intervenções específicas.</td>
-<td align="left">Não permite indicar causalidade entre os fenômenos ou objetos estudados.</td>
+<td align="left">-Apenas 1 grupo é necessário.<br>-Permite estudar a natureza e a força do relacionamento entre duas variáveis.<br>-As vezes, só é possível fazer este delineamento.</td>
+<td align="left">-É possível testar hipóteses sobre este relacionamento e fazer previsões de resultados futuros.<br>-Não é necessário ambientes ou intervenções específicas.</td>
+<td align="left">-Não permite indicar causalidade entre os fenômenos ou objetos estudados.</td>
 </tr>
 <tr class="odd">
 <td align="left">Experimental</td>
-<td align="left">São necessários 2 grupos em que os participantes sejam selecionados de maneira aleatória. Existe uma manipulação intencional da VI e nem os participantes nem o pesquisador sabe quem está em cada grupo (duplo cego).</td>
-<td align="left">A aleatorização evita que as variáveis estranhas gerem vieses e a comparação entre os grupos permite conclusões sobre causalidade.</td>
-<td align="left">Impossível, impraticável ou até mesmo antiético em algumas situações, especialmente as clínicas. O custo envolvido costuma ser alto. O tamanho amostral tende a ser pequeno. Há uma baixa possibilidade de generalização em pesquisas laboratoriais.</td>
+<td align="left">-São necessários 2 grupos em que os participantes sejam alocados de maneira aleatória.<br>-Existe uma manipulação intencional da VI<br>-nem participantes nem pesquisadores sabem quem está em cada grupo (duplo cego).</td>
+<td align="left">-A aleatorização evita que as variáveis estranhas gerem vieses.<br>-A aleatorização aumenta a probabilidade de ambos os grupos terem participantes com características similares<br>-A comparação entre os grupos permite conclusões sobre causalidade, se assumidas algumas condições.</td>
+<td align="left">-Impossível, impraticável ou até mesmo antiético em algumas situações, especialmente as clínicas.<br>-O custo envolvido costuma ser alto.<br>-O tamanho amostral tende a ser pequeno.<br>-Há uma baixa possibilidade de generalização em pesquisas laboratoriais.</td>
 </tr>
 </tbody>
 </table>
 <p>Em Epidemiologia, saúde pública e bioestatística, costuma-se unir o delineamento observacional e correlacional. Assim, apenas o delineamento observacional e experimental são definidos, apesar de características virtualmente similares. Pessoalmente, acredito que esta definição evita alguns equívocos, como o de achar que em delineamentos observacionais não é possível realizar correlações ou comparações entre grupos.</p>
 <p>Todos os delineamentos possuem características específicas e um conjunto de vantagens e limitações, que serão apresentadas a seguir.</p>
+</div>
 <div id="delineamentos-observacionais-e-correlacionais" class="section level3">
-<h3><span class="header-section-number">2.2.1</span> Delineamentos observacionais (e correlacionais)</h3>
-<p>Em delineamentos observacionais (ou observacionais e correlacionais), o pesquisador não intervém nos fenômenos, o que significa que, neste delineamento, não há uma manipulação da VI. Neste tipo de estudo, com frequência um único grupo é avaliado e os resultados auxiliam em um entendimento inicial do fenômeno ou objeto de interesse. Diferentes técnicas estatísticas podem ser utilizadas, mas em momento algum é possível falar sobre relação de causa e efeito. Existem muitas situações onde apenas este delineamento é possível. Por exemplo, estudar os impactos de um desastre natural (furacão, terremoto, etc) na percepção de segurança das pessoas, avaliar o comportamento de grupos em instituições totais, como prisões e hospícios ou as condições relacionadas ao aleitamento materno.</p>
-<p>Neste tipo de delineamento, uma vez que não houve a formação de grupos específicos seguindo um rigoroso controle da VI, as outras variáveis (VEs) podem assumir diferentes papéis no relacionamento entre VI e a VD. Estas variáveis têm definições específicas e podem ser chamadas de intervenientes, mediadoras, moderadoras ou variáveis de confundimento <span class="citation">(Rooney &amp; Evans, <a href="#ref-Rooney2019" role="doc-biblioref">2019</a>)</span>.</p>
-<p>O termo variável interveniente é bastante circunscrito à Psicologia. Ele costuma ser empregado para caracterizar condições psicológicas, como motivação ou neuroticismo. Assim, variáveis estranhas, quando são fatores psicológicos, tendem a ser apresentadas por tal conceito.</p>
-<p>Quando esta outra variável é uma consequência da VI e também impacta a VD, o termo <u>variável mediadora</u> costuma ser empregado. Por exemplo, ao se investigar a relação entre idade (VI) e acidentes de trânsito (VD), pode-se sugerir que pessoas mais velhas tendem a apresentar menor capacidade visual. Por sua vez, essa limitação visual pode gerar acidentes de transito <span class="citation">(Rhodes &amp; Pivik, <a href="#ref-Rhodes2011" role="doc-biblioref">2011</a>)</span>. Neste sentido, a variável “capacidade visual” é uma variável mediadora.</p>
+<h3><span class="header-section-number">3.3.4</span> Delineamentos observacionais (e correlacionais)</h3>
+<p>Em delineamentos observacionais (ou observacionais e correlacionais), o pesquisador não intervém nos fenômenos estudados. Ou seja, não há uma manipulação da VI. Estudos que utilizam tal delineamento quase sempre contam com um único grupo e os resultados produzidos auxiliam no entendimento inicial do fenômeno interesse, bem como podem indicar o perfil de relacionamento entre variáveis.</p>
+<p>Uma vez que não há a formação de grupos específicos seguindo um rigoroso controle da VI, o pesquisador deve mapear adequadamente todas as possíveis variáveis estranhas presentes no relacionamento entre VI e VD <u>antes</u> da pesquisa. Assim, na etapa de coleta de dados, ele poderá acessar essas variáveis para, futuramente, implementar controles estatísticos que reduzam distorções que este delineamento gera nos dados. Por exemplo, quando artigos biomédicos comentam que os resultados de um medicamento são efetivos para os participantes, controlando pela idade e sexo, essa conclusão é bem próxima de resultados obtidos por pesquisas cujos delineamentos foram observacionais.</p>
+<div class="warning">
+<p><strong>Atenção</strong>: Em delineamentos observacionais, o mapeamento e acesso de variáveis estranhas auxiliam o pesquisador a implementar técnicas estatísticas que reduzam as distorções que este delineamento costuma produzir aos dados.</p>
+</div>
+<p>Nota-se que, apesar de diversas técnicas estatísticas Serem utilizadas neste delineamento, não é possível falar sobre relação de causa e efeito. Apesar desta limitação, há muitas situações em que apenas este delineamento é possível. Por exemplo, estudar os impactos de um desastre natural (furacão, terremoto, etc) na percepção de segurança das pessoas, avaliar o comportamento de grupos em instituições totais, como prisões e hospícios ou as condições relacionadas ao aleitamento materno.</p>
+<p>Uma vez que as eventuais variáveis estranhas foram previamente acessadas durante a coleta de dados, elas deixam de ser estranhas e tornam-se variáveis passíveis de ánalises. A natureza e o local em que essas variáveis impactam no relacionamento entre a VI e a VD indicam se elas serão classificadas como intervenientes, mediadoras ou moderadoras <span class="citation">(Hayes, <a href="#ref-hayes2013" role="doc-biblioref">n.d.</a>; Rooney &amp; Evans, <a href="#ref-Rooney2019" role="doc-biblioref">2019</a>)</span>.</p>
+<p>O termo variável interveniente é bastante circunscrito à Psicologia. Ele tende a ser empregado para caracterizar condições psicológicas, como motivação ou neuroticismo. Assim, este é o termo empregado quando as variáveis estranhas são fatores psicológicos.</p>
+<p>Quando esta variável é uma consequência da VI e também impacta a VD, o termo <u>variável mediadora</u> costuma ser empregado. Por exemplo, ao se investigar a relação entre idade (VI) e acidentes de trânsito (VD), pode-se sugerir que pessoas mais velhas tendem a apresentar menor capacidade visual. Por sua vez, essa limitação visual pode gerar acidentes de transito <span class="citation">(Rhodes &amp; Pivik, <a href="#ref-Rhodes2011" role="doc-biblioref">2011</a>)</span>. Neste sentido, a variável “capacidade visual” é uma variável mediadora.</p>
 <p><img src="img/cap_mediacao.PNG" /></p>
 <p>Quando esta variável interfere no relacionamento entre a VI e a VD, podendo alterar sua natureza e intensidade, mas não é gerada pela VI, o termo <u>variável moderadora</u> pode ser utilizado. Por exemplo, a relação entre a satisfação de um cliente (X) e sua lealdade à marca (Y) é moderada pela sua renda <span class="citation">(Sugianto, <a href="#ref-Sugianto2017" role="doc-biblioref">2017</a>)</span>. Pessoas muito satisfeitas com um produto podem ser mais ou menos leais à marca a depender de sua renda disponível.</p>
-<p>A relação entre horas trabalhadas (X) e quantidade de produção (Y) é moderada pela qualidade do equipamento utilizado. É possível que alguém gaste muitas horas de trabalho, mas não consiga produzir absolutamente nada, uma vez que os equipamentos disponíveis funcionam de maneira irregular ou não funcionam. Com frequência, medicos sugerem que ao tomar medicamentos antigripais, não se deve ingerir álcool. Nesse sentido, os efeitos do medicamento (X) nos sintomas da gripe (Y) podem inclusive ser opostos em função do álcool, que age de forma moderadora.</p>
+<p>A relação entre horas trabalhadas (X) e quantidade de produção (Y) é moderada pela qualidade do equipamento utilizado. É possível que alguém gaste muitas horas de trabalho, mas não consiga produzir absolutamente nada, se os equipamentos disponíveis funcionarem de maneira irregular. Com frequência, medicos sugerem que ao tomar medicamentos antigripais, não se deve ingerir álcool. Nesse sentido, os efeitos do medicamento (X) nos sintomas da gripe (Y) podem inclusive ser opostos em função do álcool, que age de forma moderadora.</p>
 <p>No exemplo prévio sobre o efeito da idade (X) em acidentes de trânsito (Y), sabe-se hoje que o sexo se comporta como uma variável moderadora neste relacionamento. A literatura indica que pessoas mais novas, quando homens, tem uma alta probabilidade de se envolverem em acidentes de trânsito, especialmente os mais intensos ou graves <span class="citation">(Amarasingha &amp; Dissanayake, <a href="#ref-Amarasingha2014" role="doc-biblioref">2014</a>; Worley, <a href="#ref-PRB2006" role="doc-biblioref">2006</a>)</span>.</p>
 <p><img src="img/cap_moderacao.PNG" /></p>
-<p>Finalmente, é também possível que esta outra variável interfira tanto na VI como na VD. Nestes casos, o termo terceira variável ou variável de confundimento deveria ser empregado. Por exemplo, existe uma alta correlação entre venda de sorvete (X) e morte por mordida de tubarão (Y). Esse tipo de correlação é chamada de <u>espúria</u>, uma vez que é a variável “temperatura” gera ambos os fenômenos. Da mesma maneira, existe uma alta correlação entre quantidade de bares e igrejas nas cidades, mas ambos os fenômenos são explicados pela densidade populacional do local.</p>
-<p>Talvez quando mais novo(a), alguém tenha lhe dito que as cegonhas traziam os bebês. Isso não é verdade, apesar de ser um ótimo exemplo de variável de confundimento. A relação entre número de ninhos de cegonha (X) e número de bebes nascidos (Y) é confundida pela temperatura do local 9 meses atrás <span class="citation">(Matthews, <a href="#ref-Matthews2000" role="doc-biblioref">2000</a>)</span>. Na verdade, cegonhas e seres humanos tem seus filhos ou filhotes na mesma época. Curiosamente, como as cegonhas por vezes constroem seus ninhos em telhados de casas, especialmente as com chaminés por conta do calor, as pessoas acreditavam que se uma cegonha fizesse o ninho em seu telhado, isso indicaria que o casal iria ter um filho. Em alguns países, se achava também que deixar doces na janela seria uma maneira de informar as cegonhas que a casa estava pronta para ter um bebê.</p>
+<p>Finalmente, é também possível identificar variáveis estranhas que interfiram tanto na VI como na VD, mas que não foram previamente mapeadas ou acessadas durante a coleta de dados. Nestes casos, é típico chamá-las de “terceira variável” ou “variável de confundimento”, bem como chamar a relação entre VI e VD de “espúria”. Por exemplo, existe uma alta correlação entre venda de sorvete (X) e morte por mordida de tubarão (Y). No entanto, essa é uma relação espúria, uma vez que é a variável “temperatura” que impacta tanto na VI como na VD. Da mesma maneira, existe uma alta correlação entre quantidade de bares e igrejas nas cidades, mas ambos os fenômenos são explicados pela densidade populacional do local.</p>
+<p><img src="img/cap_confundimento.PNG" /></p>
+<p>Talvez quando mais novo(a), alguém tenha lhe dito que as cegonhas traziam os bebês. Isso não é verdade, apesar de ser um ótimo exemplo de variável de confundimento. A relação entre número de ninhos de cegonha (X) e número de bebes nascidos (Y) é confundida pela temperatura do local 9 meses atrás <span class="citation">(Matthews, <a href="#ref-Matthews2000" role="doc-biblioref">2000</a>)</span>. Cegonhas e seres humanos tem seus filhos ou filhotes na mesma época. Curiosamente, como as cegonhas por vezes constroem seus ninhos em telhados de casas, especialmente as com chaminés por conta do calor, as pessoas acreditavam que se uma cegonha fizesse o ninho em seu telhado, isso indicaria que o casal iria ter um filho. Em alguns países, se achava também que deixar doces na janela seria uma maneira de informar as cegonhas que a casa estava pronta para ter um bebê.</p>
 <p><img src="img/cap_cegonha.PNG" /></p>
 <p>A literatura é bastante rica de exemplos para tais condições, mas também de discussões e debates acadêmicos sobre esses conceitos. A tabela a seguir reúne esforços e exemplifica onde tais conceitos são implementados.</p>
 <table>
@@ -551,25 +613,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p><em>Nota: A definição de variável mediadora e moderadora pode ser tornar mais difícil, como é visto no caso entre idade e problemas cognitivos, já que a escolaridade costuma depender também da idade</em></p>
-<p>Em síntese, delineamentos observacionais são aqueles em que não há a manipulação da VI por parte do pesquisador. Como outros exemplos, pode-se listar estudos em que se objetivou investigar os hábitos, práticas e produtividade de pesquisadores <span class="citation">(Wenke et al., <a href="#ref-Wenke2017" role="doc-biblioref">2017</a>)</span>, a alimentação durante a pandemia <span class="citation">(Amatori et al., <a href="#ref-Amatori2020" role="doc-biblioref">2020</a>)</span> ou aspectos epidemiológicos de transtornos mentais de universitários brasileiros, portugueses e espanhóis <span class="citation">(Junior et al., <a href="#ref-AfonsoJunior2020" role="doc-biblioref">2020</a>)</span>.</p>
+<p>Em síntese, a principal característica de estudos com delineamentos observacionais é a <u>não</u> manipulação da VI por parte do pesquisador.</p>
+<p>Como outros exemplos, pode-se listar estudos em que se objetivou investigar os hábitos, práticas e produtividade de pesquisadores <span class="citation">(Wenke et al., <a href="#ref-Wenke2017" role="doc-biblioref">2017</a>)</span>, a alimentação durante a pandemia <span class="citation">(Amatori et al., <a href="#ref-Amatori2020" role="doc-biblioref">2020</a>)</span> ou aspectos epidemiológicos de transtornos mentais de universitários brasileiros, portugueses e espanhóis <span class="citation">(Junior et al., <a href="#ref-AfonsoJunior2020" role="doc-biblioref">2020</a>)</span>.</p>
 </div>
 <div id="delineamentos-experimentais" class="section level3">
-<h3><span class="header-section-number">2.2.2</span> Delineamentos experimentais</h3>
-<p>De maneira geral, delineamentos experimentais representam o melhor exemplo de uma pesquisa científica, além de serem os mais prestigiados no meio acadêmico <span class="citation">(Gil, <a href="#ref-gil2002" role="doc-biblioref">2002</a>)</span>. Apesar destes delineamentos poderem apresentar pequenas distinções, o formato mais típico é marcado pelas seguintes características: (1) dois grupos de uma mesma população foram aleatoriamente formados, (2) há uma manipulação intencional do pesquisador sobre a VI e (3) nem o participante, nem o pesquisador sabem em que grupo cada um está, o que é chamado de duplo-cego.</p>
-<p>Cada um desses elementos confere uma propriedade importante para este delineamento. Inicialmente, dois grupos devem ser formados de uma mesma população. A formação desses grupos é uma condição de base deste delineamento e o diferencia de delineamentos observacionais. Nestes últimos, a composição de grupos também pode ocorrer, mas quase sempre após a coleta de dados e para responder questões estatísticas.</p>
-<p>A alocação dos participantes em ambos os grupos deve ser feita de maneira aleatória. Isso assegura que os grupos serão formados por participantes com características virtualmente idênticas e que as variáveis estranhas os impactarão de forma equânime.</p>
-<p>A segunda condição fundamental é a atitude ativa do pesquisador, que irá manipular a VI. Um grupo será exposto a ela, enquanto outro não. O grupo em que a VI será inserida é, tradicionalmente, chamado de experimental, enquanto o outro é chamado de controle. Finalmente, a terceira principal característica é que nem o pesquisador nem o participante sabem quem está em cada grupo. Essa condição recebe o nome de duplo-cego e impede que as expectativas influenciem o procedimento e que haja algum viés tanto do pesquisador como do participante, mesmo que não deliberado.</p>
-<p>A principal proposta deste delineamento é conseguir ter resultados que indiquem relações de causa e efeito. Com muita frequência, este delineamento é empregado em pesquisas explicativas, com hipóteses acuradamente definidas, em que testes de hipóteses para diferenças serão implementados. Em epidemiologia e saúde pública, por vezes este delineamento é chamado de Randomized Controlled Trial (RCT) ou Ensaio Clínico Randomizado. Especialmente nestas áreas, existem diversas situações em que em a VI foi <u>selecionada</u> em vez de manipulada. Quando isso ocorre, o delineamento passa a ser chamado de quase-experimental.</p>
-<p>A literatura oferece bons exemplos sobre este delineamento. O psicólogo Albert Bandura <span class="citation">(<a href="#ref-Bandura1961" role="doc-biblioref">1961</a>)</span> teve o interesse de estudar o efeito da exposição à violência no comportamento agressivo durante a interação social de crianças e, para isso, desenvolveu um delineamento experimental. Ele dividiu as crianças em grupos específicos, em que 1 grupo via uma televisão que passava adultos agredindo um boneco João Bobo e outro viam cenas neutras. Os comportamentos agressivos eram avaliados durante o momento do recreio, que ocorria imediatamente após à exposição que os grupos receberam. Os economistas Redzo e Paul Frijters quisem veriricar o efeito da cor de pele na possibilidade de ganhar ou não uma carona no ônibus. Para isso, eles utilizaram um delineamento quase-experimental, em que atores pretos e brancos entravam em ônibus de uma mesma empresa e perguntavam ao motorista, de uma maneira padronizada, se poderiam viajar de graça 2 estações. A concordância ou não dos motoristas foram tabuladas e, depois, comparadas.
-delineamento experimental.</p>
-<p>É possível notar que o delineamento experimental é, de longe, o que melhor consegue mapear as VIs, VDs, bem como controlar efetivamente as VEs. Essas vantagens dão força para resultados expressando relações de causa e efeito, mas também geram muitas dificuldades. O custo para realização de pesquisas dessa maneira costuma ser bastante elevado. O tamanho amostral é frequentemente pequeno. Pesquisas laboratoriais tendem a reproduzir mal o cotidiano das pessoas, diminuindo a capacidade de generalização dos resultados. Por sua vez, pesquisas em ambientes naturalísticos tendem a quebrar o princípio da aleatoridade e o controle das variáveis externas é substancialmente reduzido.</p>
-<p>Quando as pesquisas são feitas em condições clínicas, a perda e morte experimental são frequentes, além de muitas condições éticas serem envolvidas. Há também situações em que é impossível ou altamente improvável conseguir implementar este delineamento. Por exemplo, avaliar diferentes situações em relação à amamentação materna, o impacto de desastres naturais no comportamento das pessoas ou o efeito de mudanças abruptas legislativas e sociais na interação entre grupos seria quase que inviável. Por exemplo, não seria possível solicitar que um grupo de mães aleitasse seus filhos e outro não, além de que seria muito difícil encontrar tal condição na realidade.</p>
-<p>Com isto posto, uma vez que um dos principais interesses das ciências é o estudo de variáveis, é bastante infrequente que cientistas digam que estão absolutamente certos de uma determinada condição ou assunto. Na maioria das vezes, como também ilustrado por Popper no livro “Os dois problemas fundamentais da teoria do conhecimento”, cientistas tendem a substituir a palavra certeza por probabilidade.</p>
-<p>Em relação ao nível ou escala de medida e a capacidade informacional, a seção abaixo apresentará o extrato de um capítulo em que esse tema é abordado.</p>
+<h3><span class="header-section-number">3.3.5</span> Delineamentos experimentais</h3>
+<p>De maneira geral, delineamentos experimentais representam o melhor exemplo de uma pesquisa científica, além de serem os mais prestigiados no meio acadêmico <span class="citation">(Gil, <a href="#ref-gil2002" role="doc-biblioref">2002</a>)</span>. Apesar destes delineamentos poderem apresentar pequenas distinções, o formato mais típico é marcado pelas seguintes características: (1) dois grupos de uma mesma população são formados de maneira aleatória, (2) deve haver uma manipulação intencional do pesquisador sobre a VI e (3) nem o participante, nem o pesquisador sabem em que grupo cada um está, o que é chamado de duplo-cego.</p>
+<p>Cada um desses elementos confere uma propriedade importante para este delineamento. Inicialmente, a formação de dois grupos é uma condição de base deste delineamento e o diferencia de delineamentos observacionais. Nestes últimos, a composição de grupos também pode ocorrer, mas quase sempre após a coleta de dados e para responder questões estatísticas. A alocação dos participantes em ambos os grupos de maneira aleatória assegura que as variáveis estranhas terão impacto equânime em ambos os grupos, além de aumentar a probabilidade de os grupos serão formados por participantes com características similares.</p>
+<p>A segunda característica é a atitude ativa do pesquisador. Neste delineamento, a VI será manipulada e apenas um grupo será exposto a ela, enquanto outro não. O grupo em que a VI será inserida é, tradicionalmente, chamado de experimental, enquanto o outro é chamado de controle.</p>
+<p>Finalmente, como nem o pesquisador nem o participante sabem quem está em cada grupo, isso inibe que os participantes tentem mudar de grupo e reduzem o impacto que as expectativas do pesquisador e/ou do participante possam ter sobre os resultados.</p>
+<p>A figura a seguir apresesenta estas características.</p>
+<p><img src="img/cap_experimento.PNG" /></p>
+<p>É possível notar que o delineamento experimental é, de longe, o que melhor consegue mapear as VIs, VDs, bem como controlar efetivamente as VEs. Essas vantagens dão força para resultados que visem expressar relações de causa e efeito, mas também geram muitas dificuldades. De fato, para arguir sobre causalidade, é necessário precedência temporal, eliminação de explicações alternativas, que a VI sempre esteja presente (necessidade) e que sempre impacte na VD (suficiência).</p>
+<p>Além disso, há algumas condições que limitam ou impedem a execução deste delineamento. O custo para sua realização tende a ser bastante elevado, o tamanho amostral é frequentemente pequeno e pesquisas laboratoriais costumam reproduzir mal o cotidiano das pessoas, diminuindo a capacidade de generalização dos resultados. Para aumentar a capacidade de generalização dos resultados, por vezes, tenta-se implementar este delineamento em ambientes naturalísticos (ou ecológicos). No entanto, apesar de vantagens, isso quebra o princípio da aleatoridade, impactando negativamente para o controle das variáveis estranhas.</p>
+<p>Quando as pesquisas são feitas em condições clínicas, a perda e morte experimental são frequentes e muitas condições éticas emergem, impedindo a implementação deste delineamento. Por exemplo, avaliar diferentes situações em relação à amamentação materna (um grupo de mães amamenta seus filhos e outro não), o impacto de desastres naturais no comportamento das pessoas ou o efeito de mudanças abruptas legislativas e sociais na interação entre grupos retratam tal condição.</p>
+<p>Em epidemiologia e saúde pública, este delineamento é também chamado de <em>Randomized Controlled Trial (RCT)</em> ou Ensaio Clínico Randomizado. Especialmente nestas áreas, existem diversas situações em que em a VI foi <u>selecionada</u> em vez de manipulada. Quando isso ocorre, o delineamento passa a ser chamado de quase-experimental.</p>
+<p>A literatura oferece bons exemplos sobre este delineamento. O psicólogo Albert Bandura <span class="citation">(<a href="#ref-Bandura1961" role="doc-biblioref">1961</a>)</span> teve o interesse de estudar o efeito da exposição à violência no comportamento agressivo durante a interação social de crianças e, para isso, desenvolveu um delineamento experimental. Ele dividiu as crianças em grupos específicos, em que 1 grupo via uma televisão que passava adultos agredindo um boneco João Bobo e outro via cenas neutras. Os comportamentos agressivos eram avaliados durante o momento do recreio, que ocorria imediatamente após as crianças terem visto televisão. Um grupo de psicólogos visou comparar dois programas de intevenção escolar em um grupo de 164 crianças em vulnerabilidade econômica nos EUA e, para isso, uma parte frequentou aulas de apoio e outra continuou com o ensino usual <span class="citation">(Feil et al., <a href="#ref-Feil2020" role="doc-biblioref">2020</a>)</span>.
+Finalmente, os economistas Redzo e Paul Frijters <span class="citation">(<a href="#ref-Mujcic2020" role="doc-biblioref">2020</a>)</span> quisem veriricar o efeito da cor de pele na probabilidade de receber uma carona de ônibus. Para isso, eles utilizaram um delineamento quase-experimental, em que atores pretos e brancos entravam em ônibus de uma mesma empresa e perguntavam ao motorista, de uma maneira padronizada, se poderiam viajar de graça 2 estações. A concordância ou não dos motoristas foram tabuladas e, depois, comparadas.</p>
 </div>
 </div>
 <div id="considerações-sobre-escalas-de-medida-e-o-processo-de-mensuração-em-psicologia" class="section level2">
-<h2><span class="header-section-number">2.3</span> Considerações sobre escalas de medida e o processo de mensuração em Psicologia</h2>
+<h2><span class="header-section-number">3.4</span> Considerações sobre escalas de medida e o processo de mensuração em Psicologia</h2>
 <ul>
 <li><em>L. Anunciação &amp; J. Landeira-Fernandez</em></li>
 </ul>
@@ -579,20 +643,20 @@ delineamento experimental.</p>
 <p>Em função destas condições, Stevens descreve quatro escalas que se apresentam hierarquicamente como: (i) nominal, (ii) ordinal, (iii) intervalar e (iv) de razão. Desde o trabalho de Stevens, essa relação entre o valor numérico e o objeto para o qual este valor foi utilizado atraiu ao menos dois grupos de pesquisadores, que são aqueles que possuem um interesse mais voltado à análise de informação que este número ou esta escala traz e, neste sentido, tentam responder à pergunta “O que este número está informando” e os que possuem um maior interesse em desenvolver tratamentos estatísticos a tais números ou escalas e, analogamente, tentam responder à pergunta “Como que se trata estatisticamente tais números?”.</p>
 <p>Posto isso, este seção realiza uma síntese deste conceito, bem como apresenta as descrições de cada uma das escalas, especialmente a partir de uma orientação mais pragmática, suas condições de uso e uma breve contextualização atual.</p>
 <div id="escala-nominal" class="section level3">
-<h3><span class="header-section-number">2.3.1</span> Escala nominal</h3>
+<h3><span class="header-section-number">3.4.1</span> Escala nominal</h3>
 <p>Essa escala é a mais primitiva de todas e a única regra relacionada ao processo de mensuração é que o número atribuído a um determinado objeto ou evento deve ser exclusivo, não sendo possível atribuir um mesmo número a diferentes eventos ou objetos. É importante destacar que os números aqui são arbitrários e, além disso, não refletem grandezas ou magnitudes.</p>
 <p>Nessa escala, só é possível contagens e proporções. Em relação a aspectos estatísticos, é possível obter apenas a moda dos valores. Exemplos concretos são: o número da camisa dos jogadores de futebol, atribuir o valor 1 para homens e 2 para mulheres ou 1 para psicólogos, 2 para geógrafos e 3 para pedagogos.</p>
 <p>É importante notar existem livros e manuais que consideram que quando há apenas dois valores possíveis para o objeto ou evento, o ideal é chamar essa escala de “dicotômica”, “binária” ou “dummy”, mas isso varia bastante em função da área e o consenso não é fácil. Por exemplo, em estudos em ciências sociais, é possível encontrar autores chamando a classificação de sexo biológico (por exemplo, 1 para homens e 2 para mulheres) de variável binária; já em estudos epidemiológicos, é frequente à atribuição do valor “1” para um grupo de pessoas com uma determinada doença e “0” para um grupo de pessoas sem esta doença (apesar disso poder ser entendido como ordinal em alguns casos) e, finalmente, em estudos em economia, por vezes os pesquisadores utilizam o valor “1” para indicar algo de interesse (por exemplo, desempregado) e “0” para caso contrário.</p>
 <p>Tirando essas particularidades, é fundamental entender que os números atribuídos à essa escala são arbitrários e apenas identificam objetos ou eventos.</p>
 </div>
 <div id="escala-ordinal" class="section level3">
-<h3><span class="header-section-number">2.3.2</span> Escala ordinal</h3>
+<h3><span class="header-section-number">3.4.2</span> Escala ordinal</h3>
 <p>Nessa escala, os números respeitam uma relação de ordem ranqueada e essa é a regra pela qual os números são atribuídos aos eventos ou objetos.</p>
 <p>É importante ter em perspectiva que essa escala pode ser utilizada pragmaticamente em uma pesquisa mesmo quando o fenômeno que está sendo estudado é facilmente compreendido dentro de uma escala superior, como será visto. Por exemplo, é plenamente possível que um psicólogo meça o tempo de reação de um grupo de pessoas e depois tenha criado categorias ordenadas, como “lento (1)”, “esperado (2)” e “rápido (3)”. Em função disso, alguns livros tentam dividir essa escala a partir de uma origem objeto ou evento que está sendo medido e utilizam de termos como “origem natural” e “origem não natural”, que não serão utilizados aqui (Pasquali, 1998).
 Nessa escala, além da contagem, proporções e moda, é também possível identificar mínimo, máximo e amplitude. Exemplos concretos são a Escala de dureza dos metais (Escala de Mohs), o nível de satisfação de uma empresa, onde 1 é baixo, 2 é moderadamente satisfeito e 3 é alto e a posição ao fim de uma corrida, podendo ser o primeiro lugar, segundo ou terceiro.</p>
 </div>
 <div id="escala-intervalar" class="section level3">
-<h3><span class="header-section-number">2.3.3</span> Escala intervalar</h3>
+<h3><span class="header-section-number">3.4.3</span> Escala intervalar</h3>
 <p>Os números aqui assumem um aspecto propriamente quantitativo e, em outras palavras, quase sempre o número não segue nem uma relação arbitrária (por exemplo, 1 para homens e 2 para mulheres), nem tampouco uma convenção informal (por exemplo, 1 para ensino fundamental e 2 para ensino médio), mas é obtido a partir de um processo em que se contou com a utilização de instrumentos de medida.
 Nessa escala, as distâncias entre as categorias são iguais, apesar do valor zero ser uma conveniência. Dessa maneira, a diferença entre categorias será sempre relacional e jamais absoluta. Assim, nesse nível, é possível ter propriedades aditivas, mas não multiplicativas. Considerando unidades arbitrárias, é possível falar que a diferença entre 30 e 29 (1 unidade) é a mesma que entre 15 e 14 (1 unidade). No entanto, no que diz respeito à magnitude do que está sendo medido, nessa escala não é possível falar que 30 unidades é o dobro de 15 unidades.</p>
 <p>Nessa escala, além da contagem, proporções, moda, identificar mínimo, máximo e amplitude, é possível tirar diferenças e fazer adições, bem como calcular a média, a variância e o desvio-padrão dos resultados.
@@ -603,36 +667,36 @@ Exemplos concretos são o calendário que utilizamos. Repare que utilizamos “A
 <p>Assim, apesar de ser intuitivo pensar que se um ambiente tem 32 graus célsius, ele está o dobro de quente de um ambiente que está 16º celsius, isso não é correto.</p>
 </div>
 <div id="escala-de-razão" class="section level3">
-<h3><span class="header-section-number">2.3.4</span> Escala de razão</h3>
+<h3><span class="header-section-number">3.4.4</span> Escala de razão</h3>
 <p>Aqui há um 0 absoluto e todas as operações previamente podem ser feitas, bem como o produto das categorias. Escalas de razão são mais encontradas na física. Nessa escala, além das capacidades matemáticas previamente descritas, é possível implementar propriedades multiplicativas. Raramente, essa escala será utilizada em um processo de avaliação psicológica. Entretanto, algumas pesquisas costumam utilizar variáveis que pertencem à escala de razão, como pesquisas em psicofísica que medem o tempo de “tempo de reação” ou pesquisas em neuropsicologia da atenção que medem a “quantidade de botões apertados em um minuto”. É importante novamente alertar que mesmo que essa medida tenha um 0 absoluto (por exemplo, uma pessoa não apertou nenhum botão ao fim de um minuo), isso não significa em nada que o fenômeno psicológico subjacente seja inexistente ou ausente.</p>
 </div>
 <div id="síntese-das-características-de-cada-escala" class="section level3">
-<h3><span class="header-section-number">2.3.5</span> Síntese das características de cada escala</h3>
+<h3><span class="header-section-number">3.4.5</span> Síntese das características de cada escala</h3>
 <p>Como exposto logo ao início, os números presentes em cada uma das escalas podem ser entendidos tanto por seus aspectos de informação como pelos procedimentos estatísticos a eles associados. Ambas as iniciativas possuem sua importância e são associadas entre si. Os gráficos expostos abaixo apresentam ambos os conceitos.</p>
 <p><img src="img/cap_escala_medida_informacao.png" /></p>
 <p><img src="img/cap_escala_medida_analises.png" /></p>
 </div>
 <div id="as-escalas-de-stevens-e-uma-tentativa-de-agrupamento" class="section level3">
-<h3><span class="header-section-number">2.3.6</span> As escalas de Stevens e uma tentativa de agrupamento</h3>
+<h3><span class="header-section-number">3.4.6</span> As escalas de Stevens e uma tentativa de agrupamento</h3>
 <p>Apesar de Stevens ter, fundamentalmente, criado quatro escalas em que sempre haverá números associados a objetos a partir de sua capacidade matemática, teóricos posteriores tentaram agrupar essas quatro escalas em dois conjuntos específicos que costumam ser feitos seguindo este critério: uma vez que a escala nominal e ordinal utilizam os números de uma maneira assegurada apenas por convenção, muitos livros e autores as agrupam como “qualitativas”. Por contraste, como a escala intervalar e de razão são obtidas, majoritariamente, por processos que contam com instrumentos de medida, elas quase sempre são agrupadas como “quantitativas”.</p>
 <p>Mesmo que hoje em dia esse agrupamento seja bastante corriqueiro, origem desta iniciativa é algo incerta. Há sugestão que ela tenha começado pelo trabalho de investigação semiótica de Charles Sanders Peirce. Esse filósofo julgava que a ciência avançava em dez níveis distintos e progressivos, começando por um ícone possível (fancy), passando por um pensamento, um objeto, um símbolo numérico, uma quantidade e uma relação <span class="citation">(Smart, <a href="#ref-smart1999" role="doc-biblioref">1999</a>, p. 289)</span>. Infelizmente, essa classificação pode gerar uma divisão desnecessária dentro do próprio conceito desenvolvido por Stevens, além de gerar bastante confusão, já que o termo “pesquisa qualitativa” não costuma se referir às escalas de medida, mas sim à uma área que mais recentemente emergiu com uma forma metodológica distinta e, eventualmente, até mesmo crítica às iniciativas de medida e mensuração. Além disso, o termo “quantitativa” atribuído apenas à escala intervalar e de razão pode dar a impressão inadequada de que não se usa números nas escalas nominais ou ordinais. Finalmente, é importante frisar que há livros que utilizam o termo “categórica” para “qualitativa” e “propriamente numérico” para “quantitativa”, aumentando algo mais os cenários de confusão. A imagem a seguir apresenta esta tentativa.</p>
 <p><img src="img/cap_escala_medida_agrupamento.PNG" /></p>
 </div>
 <div id="variáveis-discretas-ou-contínuas" class="section level3">
-<h3><span class="header-section-number">2.3.7</span> Variáveis discretas ou contínuas</h3>
+<h3><span class="header-section-number">3.4.7</span> Variáveis discretas ou contínuas</h3>
 <p>A iniciativa de classificar as variáveis e, consequentemente, escalas de medida não foi apenas feita em estudos psicológicos. Evidentemente, áreas como matemática, probabilidade e estatística também tiveram (e ainda possuem) interesse em classificar as variáveis e uma das maneiras pelas quais isso é feito diz respeito à forma como os valores se apresentam, especialmente em sua capacidade informacional <span class="citation">(Morettin &amp; Bussab, <a href="#ref-morettin_bussab_2010" role="doc-biblioref">2010</a>)</span>.</p>
 <p>Qualquer variável cujo resultado só possa descreve uma quantidade contável, em que os valores potenciais podem ser enumerados em uma ordem é chamada de discreta e é caracterizada por uma função de massa probabilidade (em inglês, probability mass function). Por sua vez, uma variável cujos valores potenciais não podem ser enumerados em uma ordem inequívoca é chamada de contínua e tem uma função de densidade de probabilidade (em inglês probability density function). Um atalho cognitivo bastante frequente apesar de apenas parcialmente correto pode auxiliar: variáveis discretas costumam ter valores inteiros, tal como número de filhos, caixas de remédios vendidas por uma farmácia e vezes que um paciente buscou auxílio médio; por sua vez, as variáveis continuar reúnem números fracionários, tal como a altura dos filhos, o retorno financeiro em Reais que a venda dos remédios e o tempo gasto em cada em cada consulta média.</p>
 <p>Quando se tenta fazer uma comparação entre a classificação de escalas de medida desenvolvida por Stevens e a classificação das variáveis em discretas e contínuas, é possível considerar que a escala intervalar e de razão podem também ser entendidas como discretas e continuas. Excepcionalmente e apenas para fins de modelagem estatística, as variáveis classificadas como nominais e ordinais podem ser entendidas também como discreta <span class="citation">(Borgatta &amp; Bohrnstedt, <a href="#ref-Borgatta1980" role="doc-biblioref">1980</a>; Privitera, <a href="#ref-privitera2016" role="doc-biblioref">2016</a>, p. 20)</span></p>
 </div>
 <div id="hierarquia-da-classificação-e-a-importância-desses-conceitos-hoje-em-dia" class="section level3">
-<h3><span class="header-section-number">2.3.8</span> Hierarquia da classificação e a importância desses conceitos hoje em dia</h3>
+<h3><span class="header-section-number">3.4.8</span> Hierarquia da classificação e a importância desses conceitos hoje em dia</h3>
 <p>Uma vez que as escalas dependem das capacidades matemáticas associadas, uma escala de maior nível pode ser convertida em uma escala hierarquicamente inferior. Isso foi previamente apresentado na escala ordinal com o exemplo de tempo de resposta. Esse processo de transformação costuma ser chamado de “categorização” e pode ser facilmente visto em outros exemplos. Por exemplo, a altura das pessoas (razão, contínua) pode ser classificada em baixas ou altas e a temperatura em Kelvin (razão, contínua) pode tanto ser entendida de maneira intervalar (Celsius, por exemplo), ordinal (muito frio, frio, quente, muito quente) ou (agradável e desagradável).</p>
 <p>Apesar dessas classificações de escalas/níveis de medida terem importância acadêmica, em situações de análise de dados, quase nunca a diferenciação entre os 4 níveis de medida tem relevância ou utilidade. Além disso, o próprio Stevens, tempos depois, em 1959, reviu algo de sua classificação e reconheceu que as regras de invariância também permitiam uma nova escala, chamada de “log-intervalar” <span class="citation">(Stevens, <a href="#ref-stevens1959" role="doc-biblioref">1959</a>)</span>. Essa escala quase nunca presente em livros didáticos.</p>
 <p>Além disso, como programas estatísticos são frequentemente utilizados para realizar procedimentos de análises de dados, eventualmente eles sequer utilizam as mesmas nomenclaturas ou apenas entendem as variáveis como discretas ou contínuas. Mesmo na academia, autores como D. Howell consideram que esse aspecto da medida tem apenas relevância histórica, sendo irrelevante hoje em dia <span class="citation">(David C. Howell, <a href="#ref-howell2011" role="doc-biblioref">2011</a>, p. 18)</span>.</p>
 <p>Finalmente, a partir da tentativa de desenvolver ou aperfeiçoar o isomorfismo entre relações empíricas e relações algébricas, em que houvessem regras bem definidas articulando os números às coisas (tal como visto em Campbell), e que tivessem propriedades matemáticas específicas e bem definidas (tal como visto em Stevens) outras classificações foram surgindo. Entre eles, a Teoria representacional da medição (Patrick Suppes) e a Teoria da Medida Aditiva Conjunta (TMAC) <span class="citation">(Michell, <a href="#ref-Michell1993" role="doc-biblioref">1993</a>)</span>.</p>
 </div>
 <div id="em-qual-escala-devemos-classificar-os-testes-psicológicos" class="section level3">
-<h3><span class="header-section-number">2.3.9</span> Em qual escala devemos classificar os testes psicológicos</h3>
+<h3><span class="header-section-number">3.4.9</span> Em qual escala devemos classificar os testes psicológicos</h3>
 <p>Psicólogos e outros cientistas comportamentais utilizam com frequência instrumentos de medida para acessar variáveis como atenção, memória, personalidade e inteligência. De maneira análoga às outras áreas empíricas, esses instrumentos geram resultados numéricos que, por sua vez, são utilizados para as mais diferentes finalidades.</p>
 <p>Da mesma forma que para maioria dos fenômenos medidos, o nível de medida não é inerente aos dados <span class="citation">(Velleman &amp; Wilkinson, <a href="#ref-Velleman1993" role="doc-biblioref">1993</a>)</span>. Com isso, o debate sobre qual nível de medida devem ser entendido os números obtidos por instrumentos psicológicos parece estar sempre aberto. Uma primeira resposta veio do próprio Stevens, que assumindo que as operações possíveis em cada escala devem ser invariantes comentou que:</p>
 <blockquote>
@@ -645,7 +709,7 @@ Apesar de rígida, essa consideração tem fundamento, já que pela hierarquia d
 </div>
 </div>
 <div id="principais-áreas-da-estatística" class="section level2">
-<h2><span class="header-section-number">2.4</span> Principais áreas da estatística</h2>
+<h2><span class="header-section-number">3.5</span> Principais áreas da estatística</h2>
 <p>A estatística pode ser dividida em duas áreas interligadas: estatística descritiva e estatística inferencial. O objetivo da estatística descritiva é apresentar sínteses e resumos dos resultados de uma pesquisa pela utilização de gráficos e tabelas. Não é proposta dessa área fazer generalizações ou extrapolar os resultados obtidos a objetos ou pessoas não investigadas durante a coleta de dados. Por contraste, a estatística inferencial visa extrapolar os dados e fazer generalizações que toquem toda população de onde aquela mostra foi retirada e é representativa. Dessa maneira, o principal objetivo da estatística inferencial é, de fato, fazer inferências.</p>
 <p>Essa divisão é certamente mais didática do que pragmática e, com muita frequência, ambas as áreas estão presentes em uma pesquisa. No entanto, alguns pontos merecem destaque:</p>
 <ol style="list-style-type: decimal">
@@ -655,13 +719,42 @@ Apesar de rígida, essa consideração tem fundamento, já que pela hierarquia d
 </ol>
 <p><img src="img/cap_areas_estatistica.PNG" /></p>
 </div>
-<div id="resumo" class="section level2">
-<h2><span class="header-section-number">2.5</span> Resumo</h2>
+<div id="resumo-1" class="section level2">
+<h2><span class="header-section-number">3.6</span> Resumo</h2>
+<div class="explore">
 <ol style="list-style-type: decimal">
-<li>As dicotomias realidade vs. modelo e constantes e variáveis são conceitos fundamentais em estatística e pesquisa<br />
+<li>A estatística está totalmente integrada ao planejamento, execução e análise de dados de uma pesquisa<br />
+</li>
+<li>As pesquisas apresentam objetivos, dimensões temporais e procedimentos específicos para coleta de dados<br />
+</li>
+<li>Em relação ao objetivo, uma pesquisa pode ser exploratória, descritiva ou explicativa<br />
+</li>
+<li>Em relação à dimensão temporal, uma pesquisa pode ser transversal ou longitudinal<br />
+</li>
+<li>Em relação ao delineamento, uma pesquisa pode ser observacional ou experimental<br />
+</li>
+<li>Cientistas contróem modelos teóricos pela impossibilidade de acessar diretamente seu objeto ou fenômeno de investigação<br />
+</li>
+<li>As variáveis são características que podem apresentar quaisquer valores<br />
+</li>
+<li>A VI também é chamada de preditora, enquanto a VD é chamada de prevista<br />
+</li>
+<li>Em todo relacionameto bivariado, outros fatores estão envolvidos e são chamados de variáveis estranhas<br />
 </li>
 <li>Com muita frequência, em ciência se substitui os termos certeza e verdade por evidência e probabilidade.</li>
 </ol>
+</div>
+</div>
+<div id="questões" class="section level2">
+<h2><span class="header-section-number">3.7</span> Questões</h2>
+<div class="question">
+<ol style="list-style-type: decimal">
+<li>(ENADE,2015) O profissional de marketing de uma empresade cosméticos foi encarregado de redesenhar o aparelho de depilação feminino comercializado por essa empresa. Para tanto, o profissional fez uma pesquisa de mercado utilizando entrevistase discussões em grupo (grupo focal) com mulheres de segmentos diferentes do mercado-alvo potencial do produto, tendo em vista que a depilação é considerada uma experiência pessoalpelas mulheres. Esta é uma pesquisa exploratória.<br>a) Verdadeiro<br>b) Falso</li>
+</ol>
+</div>
+<div class="mirror">
+Gabarito: 1b
+</div>
 
 </div>
 </div>
@@ -679,6 +772,9 @@ Apesar de rígida, essa consideração tem fundamento, já que pela hierarquia d
 <div id="ref-Bandura1961">
 <p>Bandura, A., Ross, D., &amp; Ross, S. A. (1961). Transmission of aggression through imitation of aggressive models. <em>The Journal of Abnormal and Social Psychology</em>, <em>63</em>(3), 575–582. <a href="https://doi.org/10.1037/h0045925">https://doi.org/10.1037/h0045925</a></p>
 </div>
+<div id="ref-Bergenholtz2018">
+<p>Bergenholtz, C., MacAulay, S. C., Kolympiris, C., &amp; Seim, I. (2018). Transparency on scientific instruments. <em>EMBO Reports</em>, <em>19</em>(6). <a href="https://doi.org/10.15252/embr.201845853">https://doi.org/10.15252/embr.201845853</a></p>
+</div>
 <div id="ref-Borgatta1980">
 <p>Borgatta, E. F., &amp; Bohrnstedt, G. W. (1980). Level of measurement. <em>Sociological Methods &amp; Research</em>, <em>9</em>(2), 147–160. <a href="https://doi.org/10.1177/004912418000900202">https://doi.org/10.1177/004912418000900202</a></p>
 </div>
@@ -690,6 +786,9 @@ Apesar de rígida, essa consideração tem fundamento, já que pela hierarquia d
 </div>
 <div id="ref-Feigelson1992">
 <p>Feigelson, E. D., &amp; Babu, G. J. (Eds.). (1992). <em>Statistical challenges in modern astronomy</em>. Springer New York. <a href="https://doi.org/10.1007/978-1-4613-9290-3">https://doi.org/10.1007/978-1-4613-9290-3</a></p>
+</div>
+<div id="ref-Feil2020">
+<p>Feil, E. G., Baggett, K., Davis, B., Landry, S., Sheeber, L., Leve, C., &amp; Johnson, U. (2020). Randomized control trial of an internet-based parenting intervention for mothers of infants. <em>Early Childhood Research Quarterly</em>, <em>50</em>, 36–44. <a href="https://doi.org/10.1016/j.ecresq.2018.11.003">https://doi.org/10.1016/j.ecresq.2018.11.003</a></p>
 </div>
 <div id="ref-Fennell2005">
 <p>Fennell, D. J. (2005). <em>A philosophical analysis of causality in econometrics.</em> [PhD thesis]. London School of Economics; Political Science.</p>
@@ -703,11 +802,23 @@ Apesar de rígida, essa consideração tem fundamento, já que pela hierarquia d
 <div id="ref-gil2002">
 <p>Gil, A. C. (2002). <em>Como elaborar de projetos de pesquisa</em>. Editora Atlas S.A.</p>
 </div>
+<div id="ref-glantz2014">
+<p>Glantz, S. A. (2014). <em>Principios de bioestatistica</em> (7 ed.). AMGH.</p>
+</div>
+<div id="ref-hayes2013">
+<p>Hayes, A. F. (n.d.). <em>Introduction to mediation, moderation, and conditional process analysis : A regression-based approach</em>. The Guilford Press.</p>
+</div>
+<div id="ref-Heidemann2016">
+<p>Heidemann, L. A., Araujo, I. S., &amp; Veit, E. A. (2016). Modelagem didático-cientı́fica: Integrando atividades experimentais e o pro-cesso de modelagem cientı́fica no ensino de fı́sica. <em>Caderno Brasileiro de Ensino de Fı́sica</em>, <em>33</em>(1), 3. <a href="https://doi.org/10.5007/2175-7941.2016v33n1p3">https://doi.org/10.5007/2175-7941.2016v33n1p3</a></p>
+</div>
 <div id="ref-Hirschman2016">
 <p>Hirschman, D. (2016). Stylized facts in the social sciences. <em>Sociological Science</em>, <em>3</em>, 604–626. <a href="https://doi.org/10.15195/v3.a26">https://doi.org/10.15195/v3.a26</a></p>
 </div>
 <div id="ref-howell2011">
 <p>Howell, D. C. (2011). <em>Fundamental statistics for the behavioral sciences (7th edition)</em>. Belmont.</p>
+</div>
+<div id="ref-Jones1994">
+<p>Jones, C., &amp; Levin, J. (1994). Primary/elementary teachers’ attitudes toward science in four areas related to gender differences in students’ science performance. <em>Journal of Elementary Science Education</em>, <em>6</em>(1), 46–66. <a href="https://doi.org/10.1007/bf03170649">https://doi.org/10.1007/bf03170649</a></p>
 </div>
 <div id="ref-AfonsoJunior2020">
 <p>Junior, A. A., Almeida Portugal, A. C. de, Landeira-Fernandez, J., Bullón, F. F., Santos, E. J. R. dos, Vilhena, J. de, &amp; Anunciação, L. (2020). Depression and anxiety symptoms in a representative sample of undergraduate students in spain, portugal, and brazil. <em>Psicologia: Teoria E Pesquisa</em>, <em>36</em>. <a href="https://doi.org/10.1590/0102.3772e36412">https://doi.org/10.1590/0102.3772e36412</a></p>
@@ -721,6 +832,9 @@ Apesar de rígida, essa consideração tem fundamento, já que pela hierarquia d
 <div id="ref-morettin_bussab_2010">
 <p>Morettin, P. A., &amp; Bussab, W. de O. (2010). <em>Estatistica basica</em>. Saraiva.</p>
 </div>
+<div id="ref-Mujcic2020">
+<p>Mujcic, R., &amp; Frijters, P. (2020). The colour of a free ride. <em>The Economic Journal</em>. <a href="https://doi.org/10.1093/ej/ueaa090">https://doi.org/10.1093/ej/ueaa090</a></p>
+</div>
 <div id="ref-privitera2016">
 <p>Privitera, G. J. (2016). <em>Statistics for the behavioral sciences</em>. SAGE.</p>
 </div>
@@ -732,6 +846,9 @@ Apesar de rígida, essa consideração tem fundamento, já que pela hierarquia d
 </div>
 <div id="ref-Rooney2019">
 <p>Rooney, B. J., &amp; Evans, A. N. (2019). <em>Methods in psychological research</em>. SAGE Publications, Inc. <a href="https://doi.org/10.4135/9781506384955">https://doi.org/10.4135/9781506384955</a></p>
+</div>
+<div id="ref-Skogli2020">
+<p>Skogli, E. W., Andersen, P. N., &amp; Isaksen, J. (2020). An exploratory study of executive function development in children with autism, after receiving early intensive behavioral training. <em>Developmental Neurorehabilitation</em>, <em>23</em>(7), 439–447. <a href="https://doi.org/10.1080/17518423.2020.1756499">https://doi.org/10.1080/17518423.2020.1756499</a></p>
 </div>
 <div id="ref-smart1999">
 <p>Smart, J. C. (1999). <em>Higher education: Handbook of theory and research</em>. Springer.</p>
@@ -754,6 +871,9 @@ Apesar de rígida, essa consideração tem fundamento, já que pela hierarquia d
 <div id="ref-Velleman1993">
 <p>Velleman, P. F., &amp; Wilkinson, L. (1993). Nominal, ordinal, interval, and ratio typologies are misleading. <em>The American Statistician</em>, <em>47</em>(1), 65–72. <a href="https://doi.org/10.1080/00031305.1993.10475938">https://doi.org/10.1080/00031305.1993.10475938</a></p>
 </div>
+<div id="ref-Weisberg2013">
+<p>Weisberg, M. (2013). Three kinds of models. In <em>Simulation and similarity</em> (pp. 7–23). Oxford University Press. <a href="https://doi.org/10.1093/acprof:oso/9780199933662.003.0002">https://doi.org/10.1093/acprof:oso/9780199933662.003.0002</a></p>
+</div>
 <div id="ref-Wenke2017">
 <p>Wenke, R. J., Mickan, S., &amp; Bisset, L. (2017). A cross sectional observational study of research activity of allied health teams: Is there a link with self-reported success, motivators and barriers to undertaking research? <em>BMC Health Services Research</em>, <em>17</em>(1). <a href="https://doi.org/10.1186/s12913-017-1996-7">https://doi.org/10.1186/s12913-017-1996-7</a></p>
 </div>
@@ -769,8 +889,8 @@ Apesar de rígida, essa consideração tem fundamento, já que pela hierarquia d
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="programas-estatísticos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="programas-estatísticos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="estatística-descritiva.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -801,7 +921,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/01-aspectos_gerais.Rmd",
+"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/02-aspectos_gerais.Rmd",
 "text": "Edit"
 },
 "history": {
