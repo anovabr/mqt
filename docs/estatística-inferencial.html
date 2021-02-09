@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Cap. 5 Qui quadrado | Métodos quantitativos em Psicologia com R</title>
+  <title>Cap. 7 Estatística Inferencial | Métodos quantitativos em Psicologia com R</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Cap. 5 Qui quadrado | Métodos quantitativos em Psicologia com R" />
+  <meta property="og:title" content="Cap. 7 Estatística Inferencial | Métodos quantitativos em Psicologia com R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="cjvanlissa/gitbook-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Cap. 5 Qui quadrado | Métodos quantitativos em Psicologia com R" />
+  <meta name="twitter:title" content="Cap. 7 Estatística Inferencial | Métodos quantitativos em Psicologia com R" />
   
   <meta name="twitter:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="estatística-descritiva.html"/>
-<link rel="next" href="tipos-de-amostragem.html"/>
+<link rel="prev" href="tipos-de-amostragem.html"/>
+<link rel="next" href="teste-t.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -354,316 +354,125 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="qui-quadrado" class="section level1">
-<h1><span class="header-section-number">Cap. 5</span> Qui quadrado</h1>
+<div id="estatística-inferencial" class="section level1">
+<h1><span class="header-section-number">Cap. 7</span> Estatística Inferencial</h1>
 <div class="objectives">
 <p>
 <strong>Objetivos do capítulo</strong><br />
-1. Apresentar o teste Qui-quadrado<br />
-2. Diferenciar o Qui-quadrado de aderência, homogeneidade e independência<br />
-3. Realizar gráficos relacionados à distribuição de porcentagens<br />
-4. Apresentar e interpretar métricas de tamanho do efeito<br />
-5. Dar exemplos relacionados à escrita dos resultados
+1. Introduzir conceitos importantes em estatística descritiva<br />
+2. Apresentar tabelas e gráficos<br />
+3. Apresentar funções do dplyr e ggplot<br />
+4. Apresentar um módulo específico do JASP<br />
+5. Sugerir heurísticas ou regras gerais na criação de gráficos
 </p>
 </div>
-<p>O Teste Qui-quadrado é um teste não-paramétrico utilizado, basicamente, para três finalidades específicas, que são:<br />
-(1) verificar as distribuições de probabilidades de cada categoria de uma variável em relação a um valor teórico esperado (aderência),<br />
-(2) verificar se as distribuições das categorias são as mesmas para diferentes subpopulações de interesse (homogeneidade) e<br />
-(3) verificar se duas variáveis categóricas são independentes (independência).</p>
-<p>Apesar da diferenças em relação às perguntas de pesquisa, o sistema matemático é o mesmo:</p>
-<p><span class="math display">\[\chi^2=\sum_{k=1}^{n} \frac{(O_k - E_k)^2}{E_k}\]</span>
-onde:<br />
-<span class="math inline">\(K\)</span> se refere a quantidade de classes<br />
-<span class="math inline">\(O\)</span> é o valor observado de uma determinada classe<br />
-<span class="math inline">\(E\)</span> é o valor esperado desta classe</p>
-<p>Pela fórmula, é possível deduzir que quanto maior for a discrepância entre as frequências observadas empiricamente (O) e as frequências esperadas (E), maior será a estatística de teste e, consequentemente, menor será o valor de P.</p>
-<p>Se assume os seguintes pressupostos funcionais à execução de um Qui-quadrado:</p>
-<p><em>(i)</em> Os dados são aleatórios e representativos da população<br />
-<em>(ii)</em> as variáveis analisadas são categóricas (e.g., sexo, nível de escolaridade, grau de uma doença)<br />
-<em>(iii)</em> Todas as frequências esperadas são maiores ou iguais a 1<br />
-<em>(iv)</em> No máximo, apenas 20% das frequências esperadas são inferiores a 5.</p>
-<p>A tabela abaixo descreve as condições de análise, com exemplos ilustrativos:</p>
-<table>
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Versão do teste</th>
-<th align="left">Variáveis</th>
-<th align="left">Exemplo</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Aderência (Goodness of fit)</td>
-<td align="left">1 categórica</td>
-<td align="left">-Verificar se a proporção de caras e coroas é de 50% cada <br> -Verificar se a proporção das cores de chocolates M&amp;M são aderentes ao que a empresa afirma</td>
-</tr>
-<tr class="even">
-<td align="left">Homogeneidade</td>
-<td align="left">2 categóricas</td>
-<td align="left">-Verificar se a proporção de homens e mulheres que gostam de uma marca de celular é similar<br>-Testar se o uso de anabolizante é homogêneo em atletas de diferentes modalidades esportivas</td>
-</tr>
-<tr class="odd">
-<td align="left">Independência</td>
-<td align="left">2 categóricas</td>
-<td align="left">-Verificar se o sexo e a escolha do curso de graduação são independentes<br>-Testar se classe social e local de interesse para uma viagem são independentes</td>
-</tr>
-</tbody>
-</table>
-<p><em>Nota: O Qui-quadrado de aderência também é chamado de “qualidade do ajuste” ou “bondade”. Estas são traduções tipicamente feitas para “goodnes of fit”. Como todas as análises são realizadas de uma maneira virtualmente idêntica, essas distinções são mais teóricas do que práticas. O Qui-quadrado de aderência tem uma proposta parecida com a ANOVA de uma via.</em></p>
-<p>Apesar de colateral à esta apresentação, o teste Qui-quadrado tem uma curiosidade que remonta o seu desenvolvimento e explica parte da desavença que Pearson tinha com Fisher. As primeiras publicações do Qui-quadrado ocorreram em 1900 e 1904 por Karl Pearson <span class="citation">(Pearson, <a href="#ref-Pearson1900" role="doc-biblioref">1900</a>)</span>. Ronald Fisher detectou um erro no cálculo dos graus de liberdade e rapidamente divulgou isso, o que gerou um enorme descontentamento de Pearson <span class="citation">(Baird, <a href="#ref-BAIRD1983" role="doc-biblioref">1983</a>)</span>.</p>
-<div id="pesquisa-1" class="section level2">
-<h2><span class="header-section-number">5.1</span> Pesquisa</h2>
-<div class="alert alert-warning">
-<p><strong>Base: </strong> <a href="https://github.com/anovabr/mqt/raw/master/bases/Base%20R%20TDAH%20Arruda.RData">Base R TDAH Arruda.Rdata</a></p>
-</div>
-<p>Neste capítulo, vamos utilizar a pesquisa intitulada “Parent-reported diagnosis of Attention Deficit Hyperactivity Disorder and psychostimulant use among children and adolescents: a population-based nationwide study”, que está em avaliação pela revista “Social Psychiatry and Psychiatric Epidemiology (SPPE)”. Neste trabalho, tivemos o objetivo de verificar aspectos epidemiológicos do Transtorno do Déficit de Atenção com Hiperatividade (TDAH) em uma amostra representativa de crianças e adolescentes brasileiros, bem como explorar eventuais associações entre o sexo do participante e o diagnóstico de TDAH.</p>
-<p>Neste momento, vamos seguir apenas com o Qui-quadrado de independência, que foi o utilizado neste artigo. Como exposto no decorrer de outros capítulos, o teste de hipóteses começa pela formulação conceitual das hipóteses. Apesar de ser possível estipular <span class="math inline">\(H_0\)</span> e <span class="math inline">\(H_a\)</span> a partir de equações específicas, a apresentação será textual/substantiva.</p>
-<p><span class="math display">\[H_0: Não\ há\ associação\ entre\ sexo\ e\ TDAH \\ H_a: Há\ associação\ entre\ sexo\ e\ TDAH \\ \alpha = 0.05\]</span></p>
-<div class="warning">
-<p><strong>Atenção</strong>: Com frequência, testes de hipóteses são divididos naqueles que verificam “associação” entre variáveis e naqueles que verificam “diferenças” entre grupos. Conceitualmente, o Qui-quadrado investiga associação entre variáveis, mesmo que sua formulação matemática seja feita computando a diferença entre o valor observado e o valor esperado. A apresentação das hipóteses de forma apenas textual visou também evitar possíveis confusões.</p>
-</div>
-</div>
-<div id="execução-no-r-1" class="section level2">
-<h2><span class="header-section-number">5.2</span> Execução no R</h2>
-<p>A apresentação de tabelas e gráficos são fundamentais antes da realização formal do teste de hipótese. Para apresentar a possível relação entre ambas as variáveis, a tabela de contingência é adequada. O pacote <code>descr</code> é um bom recurso para esta apresentação.</p>
-<p>Apesar do Qui-quadrado não eleger uma VI e uma VD, quase sempre as linhas são utilizadas para apresentar a variável de maior interesse (neste caso, sexo) e as colunas para indicar o critério ou o eventual desfecho (neste caso, ter ou não TDAH).</p>
-<p>A porcentagem nas linhas e o valor esperado (em caso de independência entre as variáveis) auxiliam bastante na descrição dos resultados.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="qui-quadrado.html#cb23-1"></a>descr<span class="op">::</span><span class="kw">CrossTable</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent,</span>
-<span id="cb23-2"><a href="qui-quadrado.html#cb23-2"></a>           <span class="dt">expected =</span> T, <span class="dt">prop.c =</span> F, <span class="dt">prop.chisq =</span> F, <span class="dt">prop.t =</span> F) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-3"><a href="qui-quadrado.html#cb23-3"></a><span class="st">  </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
-<table>
-<colgroup>
-<col width="30%" />
-<col width="36%" />
-<col width="18%" />
-<col width="14%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center"> <br />
-ds_selected$sex_male</th>
-<th align="center">ds_selected$adhd_parent<br />
-no</th>
-<th align="center"> <br />
-yes</th>
-<th align="center"> <br />
-Total</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center"><strong>female</strong><br />
-N<br />
-Expected N<br />
-Row(%)</td>
-<td align="center"> <br />
-3379<br />
-3309.1451<br />
-94.8624%</td>
-<td align="center"> <br />
-183<br />
-252.8549<br />
-5.1376%</td>
-<td align="center"> <br />
-3562<br />
-<br />
-50.0703%</td>
-</tr>
-<tr class="even">
-<td align="center"><strong>male</strong><br />
-N<br />
-Expected N<br />
-Row(%)</td>
-<td align="center"> <br />
-3230<br />
-3299.8549<br />
-90.9347%</td>
-<td align="center"> <br />
-322<br />
-252.1451<br />
-9.0653%</td>
-<td align="center"> <br />
-3552<br />
-<br />
-49.9297%</td>
-</tr>
-<tr class="odd">
-<td align="center">Total</td>
-<td align="center">6609</td>
-<td align="center">505</td>
-<td align="center">7114</td>
-</tr>
-</tbody>
-</table>
-<p>É possível verificar que existe uma discrepância entre os valores esperados e observados, em que o diagnóstico parece estar mais presente em meninos do que em meninas. No entanto, essas observações são apenas iniciais.</p>
-<p>Em seguida, a criação de um gráfico de barras oferece um bom recurso para visualizar os dados. Repare que a barra azul, que representa a porcentagem de TDAH, parece se comportar de maneira diferente nos grupos, o que também havia sido detectado na tabela anterior.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="qui-quadrado.html#cb24-1"></a><span class="kw">ggplot</span>(ds_selected, <span class="kw">aes</span>(<span class="dt">x=</span> sex_male, <span class="dt">fill =</span> adhd_parent)) <span class="op">+</span></span>
-<span id="cb24-2"><a href="qui-quadrado.html#cb24-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>) <span class="op">+</span></span>
-<span id="cb24-3"><a href="qui-quadrado.html#cb24-3"></a><span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span></span>
-<span id="cb24-4"><a href="qui-quadrado.html#cb24-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;sexo&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Proporção&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;TDAH&quot;</span>)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-35-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Com isto feito, é possível proceder ao cálculo do Qui-quadrado, tal como feito a seguir.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="qui-quadrado.html#cb25-1"></a>descr<span class="op">::</span><span class="kw">CrossTable</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent,<span class="dt">chisq =</span> T)<span class="op">$</span>CST <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
-<table style="width:56%;">
-<caption>Pearson’s Chi-squared test: <code>tab</code></caption>
-<colgroup>
-<col width="23%" />
-<col width="6%" />
-<col width="25%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">Test statistic</th>
-<th align="center">df</th>
-<th align="center">P value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">41.6</td>
-<td align="center">1</td>
-<td align="center">1.117e-10 * * *</td>
-</tr>
-</tbody>
-</table>
-<p>Os resultados deixam claro que que é possível rejeitar a hipótese nula, uma vez que o valor de P é menor do que o nível de significância previamente estipulado (0.05). Isso sugere que existe uma associação entre o sexo do participante e o diagnóstico de TDAH.</p>
-<div class="warning">
-<p><strong>Atenção</strong>: A validade das inferências dos resultados depende da adequação ou não dos pressupostos dos testes estatísticos. A avaliação destas condições é parte de um procedimento diagnóstico que deve ser sempre feito.</p>
-</div>
-<p>No teste Qui-quadrado, os principais pressupostos a ser investigados são a <mark>inexistência de células com valores esperados iguais a 0</mark> e <mark>no máximo 20% dos valores esperados serem inferiores a 5</mark>. Ambos podem ser checados na tabela exposta anteriormente e foram atendidos.</p>
-<p>Eventualmente, quando os pressupostos são violados, há sugestão de fazer correções nos resultados, implementar técnicas de bootstrapping e contar com outros testes (Fisher’s Exact Test, por exemplo) <span class="citation">(Campbell, <a href="#ref-Campbell2007" role="doc-biblioref">2007</a>)</span>. Eventualmente, colapsar categorias é uma prática comum, apesar de receber críticas da literatura.</p>
-</div>
-<div id="tamanho-do-efeito" class="section level2">
-<h2><span class="header-section-number">5.3</span> Tamanho do efeito</h2>
-<p>Como apresentado no decorrer dos outros capítulos, os valores de P quase nunca são informativos sobre a <u>relevância</u> dos resultados. Por sua vez, o tamanho do efeito é uma medida objetiva e padronizada sobre um efeito observado e, com isso, é mais atrelada à importância da descoberta na pesquisa.</p>
-<p>O tamanho do efeito mais utilizado no ambiente das análises de Qui-quadrado é o V de Cramer. Esta estatística gera valores 0-1 e é dada da seguinte maneira:</p>
-<p><span class="math display">\[V=\sqrt\frac{\chi^2}{n*df^`}\]</span>
-Em que:<br />
-<span class="math inline">\(\chi^2\)</span> = valor do Qui quadrado obtido<br />
-<span class="math inline">\(n\)</span> = tamanho da amostra<br />
-<span class="math inline">\(df^`\)</span> menor valor entre (Linhas - 1) ou (Colunas - 1) da tabela de contingências</p>
-<p>A função <code>CramerV</code>do pacote <code>rcompanion</code> gera esses resultados.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="qui-quadrado.html#cb26-1"></a>rcompanion<span class="op">::</span><span class="kw">cramerV</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent)</span></code></pre></div>
-<pre><code>## Cramer V 
-##  0.07647</code></pre>
-<p>A interpretação é baseada nos graus de liberdade do Qui-quadrado e é feita da seguinte maneira:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Graus de liberdade</th>
-<th align="left">Pequeno</th>
-<th align="left">Médio</th>
-<th align="left">Grande</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">1<span class="math inline">\(^*\)</span></td>
-<td align="left">0.1</td>
-<td align="left">0.3</td>
-<td align="left">0.5</td>
-</tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="left">0.07</td>
-<td align="left">0.21</td>
-<td align="left">0.35</td>
-</tr>
-<tr class="odd">
-<td align="left">3</td>
-<td align="left">0.06</td>
-<td align="left">0.17</td>
-<td align="left">0.29</td>
-</tr>
-</tbody>
-</table>
-<p><em>Nota: <span class="math inline">\(^*\)</span> Na maioria das vezes, o Teste Qui-quadrado conta com tabelas 2x2, o que gera 1 grau de liberdade. Assim, essa é a interpretação mais utilizada na literatura.</em></p>
-</div>
-<div id="execução-no-jasp-1" class="section level2">
-<h2><span class="header-section-number">5.4</span> Execução no JASP</h2>
-<p>Para executar o Qui-quadrado no JASP, será necessário carregar a base <a href="https://osf.io/zj4c2/download">ADHD 2020 after processing.csv</a>. Com os dados devidamente importados para o programa, a apresentação de tabelas e gráficos auxiliam o pesquisador a verificar padrões diferentes nos dados. Para executar isso, é necessário acessar a seção <code>Descriptives</code>:</p>
-<p><img src="img/jasp_descriptives.PNG" />
-Ao clicar nesta opção, será possível eleger as variáveis que irão ser analisadas e as variáveis que irão funcionar como agrupadoras. Apesar do Qui-quadrado não trabalhar com os conceitos de VI e VD, na prática, a lista <code>Variables</code> irá reunir a possível variável dependente, enquanto a possível variável independente será colocada na seção <code>Split</code>. É importante atentar à opção <code>Frequency tables (nominal and ordinal)</code>, que deve ser marcada quando o nível de medida da variável de interesse for nominal ou ordinal.</p>
-<p><img src="img/cap_x2_primeira_tabela.PNG" /></p>
-<p>É necessário inserir a variável <u>sex_male</u> para <code>Split</code> e a variável <u>adhd_parent</u> para <code>Variables</code>. Para tabela ser apresentada corretamente, deve-se selecionar a opção <code>Frequency tables</code>.</p>
-<p><img src="img/cap_x2_descritivo.PNG" /></p>
-<p>O gráfico de barras pode ser acessado clicando na opção <code>Plots</code> e, em seguida, <code>Distribution plots</code>, em <code>Basic plots</code>. Esse resultado é um recurso a mais para sondar os dados.</p>
-<p><img src="img/cap_x2_grafico.png" /></p>
-<p>Para execução do Qui-quadrado (de associação), a tabela de contingência deve ser feita. Isso é realizado ao clicar em <code>Frequencies</code> e, em seguida, <code>Contigency tables</code>.</p>
-<p><img src="img/cap_x2_interface.PNG" />
-Nesta seção, será necessário indicar a variável que irá nas linhas e nas colunas. Apesar do Qui-quadrado não trabalhar com os conceitos de VI e VD, quase sempre se utiliza as linhas para inserir a variável que é, teoricamente, a VI, enquanto a VD teórica é inserida na parte colunas.</p>
-<p><img src="img/cap_x2_interface2.PNG" /></p>
-<p>Ao inserir a variável <u>sexo</u> para as linhas e a variável <u>diagnóstico</u> para as colunas, a tabela de contingência será novamente feita e o Qui-quadrado será automaticamente calculado.</p>
-<p><img src="img/cap_x2_resultados.PNG" /></p>
-<p>Os resultados inferenciais de interesse estão na parte inferior da apresentação e são os mesmos obtidos na etapa de execução com o R. A estatística Qui-quadrado foi <code>41.6</code>, com <code>1</code> grau de liberdade e <code>p &lt; 0.001</code>. Estes valores estão dispostos no retângulo roxo na imagem a seguir.</p>
-<p><img src="img/cap_x2_resultados2.PNG" /></p>
-<div class="warning">
-<p><strong>Atenção</strong>: A validade das inferências dos resultados depende da adequação ou não dos pressupostos dos testes estatísticos. A avaliação destas condições é parte de um procedimento diagnóstico que deve ser sempre feito.</p>
-</div>
-<p>A validade dos resultados depende dos pressupostos. Além disso, o tamanho do efeito precisa ser calculado para indicar a relevância dos achados. Para verificar <mark>se existem células cujos valores esperados sejam iguais a 0</mark> e se <mark>no máximo 20% dos valores esperados são inferiores a 5</mark>, é necessário clicar em <code>Cells</code>.</p>
-<p><img src="img/cap_x2_pressupostos.PNG" /></p>
-<p>Há dois blocos específicos, <code>Counts</code> e <code>Percentages</code>. Em <code>Counts</code>, é necessário selecionar <code>Expected</code>. Em <code>Percenatges</code>, é necessário selecionar <code>Row</code>. Com isso feito, os resultados poderão ser melhor analisados.</p>
-<p><img src="img/cap_x2_pressupostos2.PNG" /></p>
-<p>Para adicionar a medida de tamanho de efeito, é necessário ir em <code>Statistics</code> e, em seguida, clicar em <code>Cramer's V</code>.</p>
-<p><img src="img/cap_x2_tamanho_do_efeito.PNG" /></p>
-<p>Após estas etapas realizadas, é possível analisar integralmente os resultados, em que o valor de P e o tamanho do efeito podem ser interpretados.</p>
-<p><img src="img/cap_x2_tabela.PNG" /></p>
-<p>Caso os pressupostos tenham sido violados, o JASP oferece algumas saídas, tal como a correção de Yates.</p>
-<p><img src="img/cap_x2_yates.PNG" /></p>
-</div>
-<div id="escrita-dos-resultados" class="section level2">
-<h2><span class="header-section-number">5.5</span> Escrita dos resultados</h2>
-<p>O principal achado desta pesquisa é que há uma associação entre o sexo da criança (masculino e feminino) e o diagnóstico de TDAH. Esta evidência já é bastante consolidada na literatura psicológica e biomédica. Abaixo uma sugestão de escrita baseada nas recomendações da American Psychological Association (APA).</p>
-<div class="writing">
+<p>Um dos principais objetivos ao se fazer uma pesquisa é conseguir generalizar as descobertas feitas no estudo para toda a população de onde os participantes foram selecionados. Essa tarefa faz parte dos objetivos da estatística inferencial, que se ocupa majoritariamente com desenvolver estimativas sobre os parâmetros populacionais e testar hipóteses. Ambas as</p>
+<div class="glossario">
 <p>
-<strong>Como escrever os resultados</strong>
-</p>
-<p>
-A associação entre o sexo do participante e sua condição clínica (ter ou não TDAH) foi investigada por um Teste Qui-quadrado de independência. Os resultados indicaram que ambas as variáveis são associadas (X2(1) = 41.605). O tamanho do efeito foi calculado pelo V de Cramer, que se mostrou pequeno 0.07.
+<U><strong>GLOSSÁRIO</strong></U><br />
+<strong>População</strong>: Conjunto de indivíduos ou objetos que apresentam, ao menos, uma característica em comum. Todos os membros de um grupo bem definido.<br />
+<strong>Amostra</strong>: Parte representativa da população. A principal característica de uma amostra é sua representatividade da população.<br />
+<strong>Parâmetro</strong>: Valor que descreve uma característica da população. Esse valor é fixo e desconhecido. Sua representação é feita por letras gregas.<br />
+<strong>Estatística</strong>: Valor que descreve uma característica da amostra. Esse valor é aleatório e calculado através dos dados coletados. É apresentado por letras romanas.<br />
+<strong>Inferência</strong>: Processo pelo qual, através de modelos estatísticos, se tiram-se conclusões sobre características da população a partir dos dados amostrais e permite fazer generalizações e previsões a respeito da população. Técnicas inferenciais permitem a estimativa dos parâmetros populacionais e testar hipóteses.<br />
+<strong>Modelo estatístico</strong>: Sistema de equações que descreve ou representa o possível processo gerador de dados do conjunto de dados em análise.<br />
+<strong>NHST</strong>: Sigla que representa Teste de Significância de Hipótese Nula (em Inglês, Null Hypothesis Significance Testing)
 </p>
 </div>
+<div class="warning">
+<p><strong>Atenção</strong>: A estatística descritiva dispõe de inúmeras ferramentas para auxiliar na gestão e apresentação de dados.</p>
 </div>
-<div id="resumo-3" class="section level2">
-<h2><span class="header-section-number">5.6</span> Resumo</h2>
+<p>Frequentemente, a massa de dados obtidos em uma pesquisa é resumida por alguns números específicos, que possuem certas propriedades estatísticas, e conseguem sintetizar adequadamente o volume de dados. Por sua vez, esses números são úteis em análises que possam ser necessárias e serão descritos em outra seção deste capítulo.</p>
+<p>Na apresentação dos dados, é possível utilizar <u>informações textuais</u>, <u>tabelas</u> e <u>gráficos</u>. Tabelas e textos permitem agrupar e detalhar os resultados e, com isso, torná-los mais precisos e detalhados. Entretanto, esse aprofundamento pode também dificultar o entendimento geral do estudo. Por sua vez, gráficos geram sumários descritivos, em que é possível ter um entendimento rápido dos principais resultados. Eles também podem incorporar elementos adicionais, que possibilitam uma primeira análise inferencial, tal como barras de erro e intervalos de confiança. Dependendo do tipo de gráfico, além da apresentação de resultados descritivos, é possível também expor <u>diferenças</u> entre grupos ou <u>relações</u> entre variáveis.</p>
+<p>Apesar dessas vantagens, algumas limitações podem ser encontradas nos gráficos. Uma vez que os eles condensam um grande conjunto de resultados em uma apresentação mais simples, eles podem dificultar um pouco no entendimento geral das conclusões obtidas pela pesquisa e, ocasionalmente, distorcer os resultados.</p>
+<p>No geral, cada uma dessa formas de apresentar os resultados de uma peaquisa traz consigo vantagens e desvantagens, listadas a seguir:</p>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Tabelas</th>
+<th align="left">Gráficos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Vantagens</strong></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Auxiliam a organizar os resultados</td>
+<td align="left">Condensam vários resultados</td>
+</tr>
+<tr class="odd">
+<td align="left">Permitem detalhar e aprofundar os resultados</td>
+<td align="left">Auxiliam a identificar padrões nos resultados</td>
+</tr>
+<tr class="even">
+<td align="left">Apresentam os resultados de maneira mais precisa</td>
+<td align="left">Auxiliam a visualizar o relacionamento entre variáveis</td>
+</tr>
+<tr class="odd">
+<td align="left">Buscadores (google, etc) encontram os resultados</td>
+<td align="left">Permitem confirmar ou não suposiÇões incialmente feitas sobre os dados</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Fáceis de serem entendidos quando bem feitos</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Limitações</strong></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Podem dificultar o entendimento dos resultados</td>
+<td align="left">Podem simplificar demasiadamente os resultados</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Podem distorcer severamente os resultados quando mal feitos</td>
+</tr>
+</tbody>
+</table>
+<p>É importante atentar que em todas estas técnicas, mas especialmente nas gráficas, deve-se evitar gerar distorções ao entendimento e interpretação dos resultados. Há casos de pessoas e profissionais que chegaram a sofrer sanções jurídicas por distorções intencionais em apresentação estatísticas. Há recomendações nacionais e internacionais que visam auxiliar no desenvolvimento de gráficos e tabelas e, com grande frequência, periódicos e editoras também exigem formatos específicos na apresentação dos resultados.</p>
+<div id="tabelas-2" class="section level2">
+<h2><span class="header-section-number">7.1</span> Tabelas</h2>
+</div>
+<div id="resumo-4" class="section level2">
+<h2><span class="header-section-number">7.2</span> Resumo</h2>
 <div class="explore">
+<p>Este capítulo apresentou os aspectos tabulares e gráficos corriqueiramente encontrados em pesquisas de Psicologia e áreas congêneres. Entre os pontos principais, estão os seguintes:</p>
 <ol style="list-style-type: decimal">
-<li>O Qui-quadrado pode ser utilizado para um conjunto de análises realizadas em variáveis categóricas.<br />
+<li>Medidas de posição e dispersão são fundamentais na apresentação dos resultados de uma pesquisa<br />
 </li>
-<li>Apesar de diferenças conceituais, o formato matemático é o mesmo.<br />
+<li>Variáveis categóricas são resumidas por contagens e proporções. Variáveis contínuas por suas médias e desvios-padrão<br />
 </li>
-<li>O tamanho do efeito apresenta interpretações que podem variar em função dos graus de liberdade.<br />
+<li>Tabelas e gráficos devem ser claros ao leitor, sem criar viés ou distorção dos resultados<br />
+</li>
+<li>As tabelas são muito úteis para uma apresentação detalhada dos resultados<br />
+</li>
+<li>Gráficos condensam um grande volume de dados de uma forma mais facilmente interpretável<br />
+</li>
+<li>A heurística típica em gráficos solicita responder a quantidade e a natureza das variáveis a serem apresenadas<br />
 </li>
 </ol>
 </div>
 </div>
-<div id="pesquisas-adicionais" class="section level2">
-<h2><span class="header-section-number">5.7</span> Pesquisas adicionais</h2>
+<div id="questões-2" class="section level2">
+<h2><span class="header-section-number">7.3</span> Questões</h2>
+<div class="question">
 <ol style="list-style-type: decimal">
-<li><p>Are Attitudes Towards Smoking Different for Males and Females? (DOI: 10.1136/tc.2.3.201)<br />
-Nesta pesquisa, cerca de 19378 participantes que eram fumantes, ex-fumantes ou que não fumavam indicavam se concordavam que o fumo poderia provocar doenças. Os resultados indicaram que houve uma associação significativa entre o perfil de consumo de cigarro e a concorância com a afirmativa. Apesar da maioria ter responder afirmativamente que hábitos de fumo podem gerar doenças, a quantidade de participantes fumantes que concordaram com isso foi significativamente menor do que a esperada.</p></li>
-<li><p>The Gender Gap in STEM Fields: The Impact of the Gender Stereotype of Math and Science on Secondary Students’ Career Aspirations (DOI: 10.3389/feduc.2019.00060)
-Neste estudo, 1364 estudantes do ensino médio (na Suíça) responderam sobre suas aspirações para o curso de graduação. Houve uma associação significativa entre o sexo do participante seu interesse por áreas de ciências e tecnologia. A frequência de mulheres interessadas na área foi menor do que a esperada, enquanto a frequência dos homens foi superior à esperada.</p></li>
-<li><p>Intrinsic honesty and the prevalence of rule violations across societies (DOI: 10.1038/nature17160)
-Nesta pesquisa, 2568 participantes de diferentes países participaram de uma atividade que consistia em jogar um dado dentro de um copo e falar o número que saiu para o pesquisador. Apenas o participante poderia ver o número e não havia nenhuma forma do pesquisador conferir se o número falado pelo participante era o número que, de fato, havia saído. Por características probabilísticas, se espera que cada uma das faces do dado seja igualmente selecionada. Assim, a ocorrência de uma alta proporção de valores altos indicaria desonestidade. O Qui-quadrado utilizado foi o de aderência.</p></li>
+<li>Trata-se de um círculo dividido por fatias cujos ângulos internos são proporcionais às partes envolvidas. Este é um gráfico:<br>a) De colunas<br>b) Histograma<br>c)De Setor<br>d) Boxplot<br>e)Barras</li>
+<li>É uma medida de posição para variáveis propriamente numéricase que é obtida somando-se todos os valores observados e dividindo-se o resultado pelo número de observações<br>a) Mediana<br>b) Média<br>c) Moda<br>d) Desvio-padrão<br>e) Amplitude interquartil</li>
+<li>(ENADE, Biomedicina - 2010) Para apresentarem gráficos dados referentes à distribuição de frequências de um grupo de medições, pode-se aplicar um modelo semelhante ao estabelecido na figura abaixo, na qual o pesquisador verifica a variação de anticorpos em relação a uma coorte populacional específica.<br><img src="img/exercicio_histograma.PNG" /><br>a) Gráfico de setores, que demonstra a variação de anticorpos na abscissa Y e de população na ordenada X.<br> b) Histograma, que demonstra variações de anticorpos na abscissa X e de população na ordenada Y <br> c) Gráfico de tendência central, que demonstra variações de anticorpos na abscissa X e de população na ordenada Y.<br> d) Gráficos de dispersão, que demonstra a tendência central das médias de concentração dos valores de anticorpos na população.<br> e) Gráfico de linhas, que demonstra a tendência central baseada na mediana das concentrações de anticorpos na população.</li>
 </ol>
+</div>
+<div class="mirror">
+Gabarito: 1-c; 2-b; 3-b,
+</div>
 
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-BAIRD1983">
-<p>Baird, D. (1983). The fisher/pearson chi-squared controversy: A turning point for inductive inference. <em>The British Journal for the Philosophy of Science</em>, <em>34</em>(2), 105–118. <a href="https://doi.org/10.1093/bjps/34.2.105">https://doi.org/10.1093/bjps/34.2.105</a></p>
-</div>
-<div id="ref-Campbell2007">
-<p>Campbell, I. (2007). Chi-squared and fisherIrwin tests of two-by-two tables with small sample recommendations. <em>Statistics in Medicine</em>, <em>26</em>(19), 3661–3675. <a href="https://doi.org/10.1002/sim.2832">https://doi.org/10.1002/sim.2832</a></p>
-</div>
-<div id="ref-Pearson1900">
-<p>Pearson, K. (1900). X. On the criterion that a given system of deviations from the probable in the case of a correlated system of variables is such that it can be reasonably supposed to have arisen from random sampling. <em>The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science</em>, <em>50</em>(302), 157–175. <a href="https://doi.org/10.1080/14786440009463897">https://doi.org/10.1080/14786440009463897</a></p>
 </div>
 </div>
             </section>
@@ -671,8 +480,8 @@ Nesta pesquisa, 2568 participantes de diferentes países participaram de uma ati
           </div>
         </div>
       </div>
-<a href="estatística-descritiva.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="tipos-de-amostragem.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tipos-de-amostragem.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="teste-t.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -703,7 +512,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/04-qui_quadrado.Rmd",
+"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/05-estatistica_inferencial.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Cap. 5 Qui quadrado | Métodos quantitativos em Psicologia com R</title>
+  <title>Cap. 6 Tipos de amostragem | Métodos quantitativos em Psicologia com R</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Cap. 5 Qui quadrado | Métodos quantitativos em Psicologia com R" />
+  <meta property="og:title" content="Cap. 6 Tipos de amostragem | Métodos quantitativos em Psicologia com R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="cjvanlissa/gitbook-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Cap. 5 Qui quadrado | Métodos quantitativos em Psicologia com R" />
+  <meta name="twitter:title" content="Cap. 6 Tipos de amostragem | Métodos quantitativos em Psicologia com R" />
   
   <meta name="twitter:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="estatística-descritiva.html"/>
-<link rel="next" href="tipos-de-amostragem.html"/>
+<link rel="prev" href="qui-quadrado.html"/>
+<link rel="next" href="estatística-inferencial.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -354,316 +354,176 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="qui-quadrado" class="section level1">
-<h1><span class="header-section-number">Cap. 5</span> Qui quadrado</h1>
+<div id="tipos-de-amostragem" class="section level1">
+<h1><span class="header-section-number">Cap. 6</span> Tipos de amostragem</h1>
 <div class="objectives">
 <p>
 <strong>Objetivos do capítulo</strong><br />
-1. Apresentar o teste Qui-quadrado<br />
-2. Diferenciar o Qui-quadrado de aderência, homogeneidade e independência<br />
-3. Realizar gráficos relacionados à distribuição de porcentagens<br />
-4. Apresentar e interpretar métricas de tamanho do efeito<br />
-5. Dar exemplos relacionados à escrita dos resultados
+1. Apresentar aspectos relacionados à população e amostra<br />
+2. Introduzir as principais questões sobre processos de composição amostral<br />
+3. Introduzir procedimentos probabilísticos e não-probabilísticos para composição amostral<br />
+4. Apresentar o raciocínio geral do cálculo do tamanho amostral
 </p>
 </div>
-<p>O Teste Qui-quadrado é um teste não-paramétrico utilizado, basicamente, para três finalidades específicas, que são:<br />
-(1) verificar as distribuições de probabilidades de cada categoria de uma variável em relação a um valor teórico esperado (aderência),<br />
-(2) verificar se as distribuições das categorias são as mesmas para diferentes subpopulações de interesse (homogeneidade) e<br />
-(3) verificar se duas variáveis categóricas são independentes (independência).</p>
-<p>Apesar da diferenças em relação às perguntas de pesquisa, o sistema matemático é o mesmo:</p>
-<p><span class="math display">\[\chi^2=\sum_{k=1}^{n} \frac{(O_k - E_k)^2}{E_k}\]</span>
-onde:<br />
-<span class="math inline">\(K\)</span> se refere a quantidade de classes<br />
-<span class="math inline">\(O\)</span> é o valor observado de uma determinada classe<br />
-<span class="math inline">\(E\)</span> é o valor esperado desta classe</p>
-<p>Pela fórmula, é possível deduzir que quanto maior for a discrepância entre as frequências observadas empiricamente (O) e as frequências esperadas (E), maior será a estatística de teste e, consequentemente, menor será o valor de P.</p>
-<p>Se assume os seguintes pressupostos funcionais à execução de um Qui-quadrado:</p>
-<p><em>(i)</em> Os dados são aleatórios e representativos da população<br />
-<em>(ii)</em> as variáveis analisadas são categóricas (e.g., sexo, nível de escolaridade, grau de uma doença)<br />
-<em>(iii)</em> Todas as frequências esperadas são maiores ou iguais a 1<br />
-<em>(iv)</em> No máximo, apenas 20% das frequências esperadas são inferiores a 5.</p>
-<p>A tabela abaixo descreve as condições de análise, com exemplos ilustrativos:</p>
-<table>
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Versão do teste</th>
-<th align="left">Variáveis</th>
-<th align="left">Exemplo</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Aderência (Goodness of fit)</td>
-<td align="left">1 categórica</td>
-<td align="left">-Verificar se a proporção de caras e coroas é de 50% cada <br> -Verificar se a proporção das cores de chocolates M&amp;M são aderentes ao que a empresa afirma</td>
-</tr>
-<tr class="even">
-<td align="left">Homogeneidade</td>
-<td align="left">2 categóricas</td>
-<td align="left">-Verificar se a proporção de homens e mulheres que gostam de uma marca de celular é similar<br>-Testar se o uso de anabolizante é homogêneo em atletas de diferentes modalidades esportivas</td>
-</tr>
-<tr class="odd">
-<td align="left">Independência</td>
-<td align="left">2 categóricas</td>
-<td align="left">-Verificar se o sexo e a escolha do curso de graduação são independentes<br>-Testar se classe social e local de interesse para uma viagem são independentes</td>
-</tr>
-</tbody>
-</table>
-<p><em>Nota: O Qui-quadrado de aderência também é chamado de “qualidade do ajuste” ou “bondade”. Estas são traduções tipicamente feitas para “goodnes of fit”. Como todas as análises são realizadas de uma maneira virtualmente idêntica, essas distinções são mais teóricas do que práticas. O Qui-quadrado de aderência tem uma proposta parecida com a ANOVA de uma via.</em></p>
-<p>Apesar de colateral à esta apresentação, o teste Qui-quadrado tem uma curiosidade que remonta o seu desenvolvimento e explica parte da desavença que Pearson tinha com Fisher. As primeiras publicações do Qui-quadrado ocorreram em 1900 e 1904 por Karl Pearson <span class="citation">(Pearson, <a href="#ref-Pearson1900" role="doc-biblioref">1900</a>)</span>. Ronald Fisher detectou um erro no cálculo dos graus de liberdade e rapidamente divulgou isso, o que gerou um enorme descontentamento de Pearson <span class="citation">(Baird, <a href="#ref-BAIRD1983" role="doc-biblioref">1983</a>)</span>.</p>
-<div id="pesquisa-1" class="section level2">
-<h2><span class="header-section-number">5.1</span> Pesquisa</h2>
-<div class="alert alert-warning">
-<p><strong>Base: </strong> <a href="https://github.com/anovabr/mqt/raw/master/bases/Base%20R%20TDAH%20Arruda.RData">Base R TDAH Arruda.Rdata</a></p>
-</div>
-<p>Neste capítulo, vamos utilizar a pesquisa intitulada “Parent-reported diagnosis of Attention Deficit Hyperactivity Disorder and psychostimulant use among children and adolescents: a population-based nationwide study”, que está em avaliação pela revista “Social Psychiatry and Psychiatric Epidemiology (SPPE)”. Neste trabalho, tivemos o objetivo de verificar aspectos epidemiológicos do Transtorno do Déficit de Atenção com Hiperatividade (TDAH) em uma amostra representativa de crianças e adolescentes brasileiros, bem como explorar eventuais associações entre o sexo do participante e o diagnóstico de TDAH.</p>
-<p>Neste momento, vamos seguir apenas com o Qui-quadrado de independência, que foi o utilizado neste artigo. Como exposto no decorrer de outros capítulos, o teste de hipóteses começa pela formulação conceitual das hipóteses. Apesar de ser possível estipular <span class="math inline">\(H_0\)</span> e <span class="math inline">\(H_a\)</span> a partir de equações específicas, a apresentação será textual/substantiva.</p>
-<p><span class="math display">\[H_0: Não\ há\ associação\ entre\ sexo\ e\ TDAH \\ H_a: Há\ associação\ entre\ sexo\ e\ TDAH \\ \alpha = 0.05\]</span></p>
-<div class="warning">
-<p><strong>Atenção</strong>: Com frequência, testes de hipóteses são divididos naqueles que verificam “associação” entre variáveis e naqueles que verificam “diferenças” entre grupos. Conceitualmente, o Qui-quadrado investiga associação entre variáveis, mesmo que sua formulação matemática seja feita computando a diferença entre o valor observado e o valor esperado. A apresentação das hipóteses de forma apenas textual visou também evitar possíveis confusões.</p>
-</div>
-</div>
-<div id="execução-no-r-1" class="section level2">
-<h2><span class="header-section-number">5.2</span> Execução no R</h2>
-<p>A apresentação de tabelas e gráficos são fundamentais antes da realização formal do teste de hipótese. Para apresentar a possível relação entre ambas as variáveis, a tabela de contingência é adequada. O pacote <code>descr</code> é um bom recurso para esta apresentação.</p>
-<p>Apesar do Qui-quadrado não eleger uma VI e uma VD, quase sempre as linhas são utilizadas para apresentar a variável de maior interesse (neste caso, sexo) e as colunas para indicar o critério ou o eventual desfecho (neste caso, ter ou não TDAH).</p>
-<p>A porcentagem nas linhas e o valor esperado (em caso de independência entre as variáveis) auxiliam bastante na descrição dos resultados.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="qui-quadrado.html#cb23-1"></a>descr<span class="op">::</span><span class="kw">CrossTable</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent,</span>
-<span id="cb23-2"><a href="qui-quadrado.html#cb23-2"></a>           <span class="dt">expected =</span> T, <span class="dt">prop.c =</span> F, <span class="dt">prop.chisq =</span> F, <span class="dt">prop.t =</span> F) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-3"><a href="qui-quadrado.html#cb23-3"></a><span class="st">  </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
-<table>
-<colgroup>
-<col width="30%" />
-<col width="36%" />
-<col width="18%" />
-<col width="14%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center"> <br />
-ds_selected$sex_male</th>
-<th align="center">ds_selected$adhd_parent<br />
-no</th>
-<th align="center"> <br />
-yes</th>
-<th align="center"> <br />
-Total</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center"><strong>female</strong><br />
-N<br />
-Expected N<br />
-Row(%)</td>
-<td align="center"> <br />
-3379<br />
-3309.1451<br />
-94.8624%</td>
-<td align="center"> <br />
-183<br />
-252.8549<br />
-5.1376%</td>
-<td align="center"> <br />
-3562<br />
-<br />
-50.0703%</td>
-</tr>
-<tr class="even">
-<td align="center"><strong>male</strong><br />
-N<br />
-Expected N<br />
-Row(%)</td>
-<td align="center"> <br />
-3230<br />
-3299.8549<br />
-90.9347%</td>
-<td align="center"> <br />
-322<br />
-252.1451<br />
-9.0653%</td>
-<td align="center"> <br />
-3552<br />
-<br />
-49.9297%</td>
-</tr>
-<tr class="odd">
-<td align="center">Total</td>
-<td align="center">6609</td>
-<td align="center">505</td>
-<td align="center">7114</td>
-</tr>
-</tbody>
-</table>
-<p>É possível verificar que existe uma discrepância entre os valores esperados e observados, em que o diagnóstico parece estar mais presente em meninos do que em meninas. No entanto, essas observações são apenas iniciais.</p>
-<p>Em seguida, a criação de um gráfico de barras oferece um bom recurso para visualizar os dados. Repare que a barra azul, que representa a porcentagem de TDAH, parece se comportar de maneira diferente nos grupos, o que também havia sido detectado na tabela anterior.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="qui-quadrado.html#cb24-1"></a><span class="kw">ggplot</span>(ds_selected, <span class="kw">aes</span>(<span class="dt">x=</span> sex_male, <span class="dt">fill =</span> adhd_parent)) <span class="op">+</span></span>
-<span id="cb24-2"><a href="qui-quadrado.html#cb24-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>) <span class="op">+</span></span>
-<span id="cb24-3"><a href="qui-quadrado.html#cb24-3"></a><span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span></span>
-<span id="cb24-4"><a href="qui-quadrado.html#cb24-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;sexo&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Proporção&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;TDAH&quot;</span>)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-35-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Com isto feito, é possível proceder ao cálculo do Qui-quadrado, tal como feito a seguir.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="qui-quadrado.html#cb25-1"></a>descr<span class="op">::</span><span class="kw">CrossTable</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent,<span class="dt">chisq =</span> T)<span class="op">$</span>CST <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
-<table style="width:56%;">
-<caption>Pearson’s Chi-squared test: <code>tab</code></caption>
-<colgroup>
-<col width="23%" />
-<col width="6%" />
-<col width="25%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">Test statistic</th>
-<th align="center">df</th>
-<th align="center">P value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">41.6</td>
-<td align="center">1</td>
-<td align="center">1.117e-10 * * *</td>
-</tr>
-</tbody>
-</table>
-<p>Os resultados deixam claro que que é possível rejeitar a hipótese nula, uma vez que o valor de P é menor do que o nível de significância previamente estipulado (0.05). Isso sugere que existe uma associação entre o sexo do participante e o diagnóstico de TDAH.</p>
-<div class="warning">
-<p><strong>Atenção</strong>: A validade das inferências dos resultados depende da adequação ou não dos pressupostos dos testes estatísticos. A avaliação destas condições é parte de um procedimento diagnóstico que deve ser sempre feito.</p>
-</div>
-<p>No teste Qui-quadrado, os principais pressupostos a ser investigados são a <mark>inexistência de células com valores esperados iguais a 0</mark> e <mark>no máximo 20% dos valores esperados serem inferiores a 5</mark>. Ambos podem ser checados na tabela exposta anteriormente e foram atendidos.</p>
-<p>Eventualmente, quando os pressupostos são violados, há sugestão de fazer correções nos resultados, implementar técnicas de bootstrapping e contar com outros testes (Fisher’s Exact Test, por exemplo) <span class="citation">(Campbell, <a href="#ref-Campbell2007" role="doc-biblioref">2007</a>)</span>. Eventualmente, colapsar categorias é uma prática comum, apesar de receber críticas da literatura.</p>
-</div>
-<div id="tamanho-do-efeito" class="section level2">
-<h2><span class="header-section-number">5.3</span> Tamanho do efeito</h2>
-<p>Como apresentado no decorrer dos outros capítulos, os valores de P quase nunca são informativos sobre a <u>relevância</u> dos resultados. Por sua vez, o tamanho do efeito é uma medida objetiva e padronizada sobre um efeito observado e, com isso, é mais atrelada à importância da descoberta na pesquisa.</p>
-<p>O tamanho do efeito mais utilizado no ambiente das análises de Qui-quadrado é o V de Cramer. Esta estatística gera valores 0-1 e é dada da seguinte maneira:</p>
-<p><span class="math display">\[V=\sqrt\frac{\chi^2}{n*df^`}\]</span>
-Em que:<br />
-<span class="math inline">\(\chi^2\)</span> = valor do Qui quadrado obtido<br />
-<span class="math inline">\(n\)</span> = tamanho da amostra<br />
-<span class="math inline">\(df^`\)</span> menor valor entre (Linhas - 1) ou (Colunas - 1) da tabela de contingências</p>
-<p>A função <code>CramerV</code>do pacote <code>rcompanion</code> gera esses resultados.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="qui-quadrado.html#cb26-1"></a>rcompanion<span class="op">::</span><span class="kw">cramerV</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent)</span></code></pre></div>
-<pre><code>## Cramer V 
-##  0.07647</code></pre>
-<p>A interpretação é baseada nos graus de liberdade do Qui-quadrado e é feita da seguinte maneira:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Graus de liberdade</th>
-<th align="left">Pequeno</th>
-<th align="left">Médio</th>
-<th align="left">Grande</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">1<span class="math inline">\(^*\)</span></td>
-<td align="left">0.1</td>
-<td align="left">0.3</td>
-<td align="left">0.5</td>
-</tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="left">0.07</td>
-<td align="left">0.21</td>
-<td align="left">0.35</td>
-</tr>
-<tr class="odd">
-<td align="left">3</td>
-<td align="left">0.06</td>
-<td align="left">0.17</td>
-<td align="left">0.29</td>
-</tr>
-</tbody>
-</table>
-<p><em>Nota: <span class="math inline">\(^*\)</span> Na maioria das vezes, o Teste Qui-quadrado conta com tabelas 2x2, o que gera 1 grau de liberdade. Assim, essa é a interpretação mais utilizada na literatura.</em></p>
-</div>
-<div id="execução-no-jasp-1" class="section level2">
-<h2><span class="header-section-number">5.4</span> Execução no JASP</h2>
-<p>Para executar o Qui-quadrado no JASP, será necessário carregar a base <a href="https://osf.io/zj4c2/download">ADHD 2020 after processing.csv</a>. Com os dados devidamente importados para o programa, a apresentação de tabelas e gráficos auxiliam o pesquisador a verificar padrões diferentes nos dados. Para executar isso, é necessário acessar a seção <code>Descriptives</code>:</p>
-<p><img src="img/jasp_descriptives.PNG" />
-Ao clicar nesta opção, será possível eleger as variáveis que irão ser analisadas e as variáveis que irão funcionar como agrupadoras. Apesar do Qui-quadrado não trabalhar com os conceitos de VI e VD, na prática, a lista <code>Variables</code> irá reunir a possível variável dependente, enquanto a possível variável independente será colocada na seção <code>Split</code>. É importante atentar à opção <code>Frequency tables (nominal and ordinal)</code>, que deve ser marcada quando o nível de medida da variável de interesse for nominal ou ordinal.</p>
-<p><img src="img/cap_x2_primeira_tabela.PNG" /></p>
-<p>É necessário inserir a variável <u>sex_male</u> para <code>Split</code> e a variável <u>adhd_parent</u> para <code>Variables</code>. Para tabela ser apresentada corretamente, deve-se selecionar a opção <code>Frequency tables</code>.</p>
-<p><img src="img/cap_x2_descritivo.PNG" /></p>
-<p>O gráfico de barras pode ser acessado clicando na opção <code>Plots</code> e, em seguida, <code>Distribution plots</code>, em <code>Basic plots</code>. Esse resultado é um recurso a mais para sondar os dados.</p>
-<p><img src="img/cap_x2_grafico.png" /></p>
-<p>Para execução do Qui-quadrado (de associação), a tabela de contingência deve ser feita. Isso é realizado ao clicar em <code>Frequencies</code> e, em seguida, <code>Contigency tables</code>.</p>
-<p><img src="img/cap_x2_interface.PNG" />
-Nesta seção, será necessário indicar a variável que irá nas linhas e nas colunas. Apesar do Qui-quadrado não trabalhar com os conceitos de VI e VD, quase sempre se utiliza as linhas para inserir a variável que é, teoricamente, a VI, enquanto a VD teórica é inserida na parte colunas.</p>
-<p><img src="img/cap_x2_interface2.PNG" /></p>
-<p>Ao inserir a variável <u>sexo</u> para as linhas e a variável <u>diagnóstico</u> para as colunas, a tabela de contingência será novamente feita e o Qui-quadrado será automaticamente calculado.</p>
-<p><img src="img/cap_x2_resultados.PNG" /></p>
-<p>Os resultados inferenciais de interesse estão na parte inferior da apresentação e são os mesmos obtidos na etapa de execução com o R. A estatística Qui-quadrado foi <code>41.6</code>, com <code>1</code> grau de liberdade e <code>p &lt; 0.001</code>. Estes valores estão dispostos no retângulo roxo na imagem a seguir.</p>
-<p><img src="img/cap_x2_resultados2.PNG" /></p>
-<div class="warning">
-<p><strong>Atenção</strong>: A validade das inferências dos resultados depende da adequação ou não dos pressupostos dos testes estatísticos. A avaliação destas condições é parte de um procedimento diagnóstico que deve ser sempre feito.</p>
-</div>
-<p>A validade dos resultados depende dos pressupostos. Além disso, o tamanho do efeito precisa ser calculado para indicar a relevância dos achados. Para verificar <mark>se existem células cujos valores esperados sejam iguais a 0</mark> e se <mark>no máximo 20% dos valores esperados são inferiores a 5</mark>, é necessário clicar em <code>Cells</code>.</p>
-<p><img src="img/cap_x2_pressupostos.PNG" /></p>
-<p>Há dois blocos específicos, <code>Counts</code> e <code>Percentages</code>. Em <code>Counts</code>, é necessário selecionar <code>Expected</code>. Em <code>Percenatges</code>, é necessário selecionar <code>Row</code>. Com isso feito, os resultados poderão ser melhor analisados.</p>
-<p><img src="img/cap_x2_pressupostos2.PNG" /></p>
-<p>Para adicionar a medida de tamanho de efeito, é necessário ir em <code>Statistics</code> e, em seguida, clicar em <code>Cramer's V</code>.</p>
-<p><img src="img/cap_x2_tamanho_do_efeito.PNG" /></p>
-<p>Após estas etapas realizadas, é possível analisar integralmente os resultados, em que o valor de P e o tamanho do efeito podem ser interpretados.</p>
-<p><img src="img/cap_x2_tabela.PNG" /></p>
-<p>Caso os pressupostos tenham sido violados, o JASP oferece algumas saídas, tal como a correção de Yates.</p>
-<p><img src="img/cap_x2_yates.PNG" /></p>
-</div>
-<div id="escrita-dos-resultados" class="section level2">
-<h2><span class="header-section-number">5.5</span> Escrita dos resultados</h2>
-<p>O principal achado desta pesquisa é que há uma associação entre o sexo da criança (masculino e feminino) e o diagnóstico de TDAH. Esta evidência já é bastante consolidada na literatura psicológica e biomédica. Abaixo uma sugestão de escrita baseada nas recomendações da American Psychological Association (APA).</p>
-<div class="writing">
+<div class="glossario">
 <p>
-<strong>Como escrever os resultados</strong>
+<U><strong>GLOSSÁRIO</strong></U><br />
+<strong>População</strong>: Conjunto de objetos que apresentam, ao menos, uma característica em comum.<br />
+<strong>Amostra</strong>: Parte da população. A principal característica de uma amostra é sua representatividade da população.<br />
+<strong>Unidade amostral</strong>: Varia em função do interesse da pesquisa. Em Psicologia, quase sempre é um indivíduo, mas é possível ser uma família, uma empresa, etc.<br />
+<strong>Característica populacional</strong>: Aspecto de interesse a ser acessado ou medido.<br />
+<strong>Censo</strong>: Pesquisa em que todos os elementos da população são acessados.<br />
+<strong>Erro amostral</strong>: Diferença entre o resultado obtido na amostra e o valor verdadeiro populacional.
 </p>
-<p>
-A associação entre o sexo do participante e sua condição clínica (ter ou não TDAH) foi investigada por um Teste Qui-quadrado de independência. Os resultados indicaram que ambas as variáveis são associadas (X2(1) = 41.605). O tamanho do efeito foi calculado pelo V de Cramer, que se mostrou pequeno 0.07.
-</p>
 </div>
-</div>
-<div id="resumo-3" class="section level2">
-<h2><span class="header-section-number">5.6</span> Resumo</h2>
-<div class="explore">
+<p>Ao se planejar e executar uma pesquisa, além de se ter claro os problemas científicos de interesse, é necessário eleger a população que participará do estudo. A população é determinada como todos os membros de um grupo bem definido. Dessa forma, a população é composta por um conjunto de objetos que apresentam, ao menos, uma característica em comum. Em Psicologia, com muita frequência, a população é formada por indivíduos. No entanto, a depender da área, ela pode ser formada por empresas, árvores, animais, etc.</p>
+<p>A população pode ser classificada como finita ou infinita e, a depender de alguns delineamentos de pesquisa, também pode ser entendida como população-alvo ou população externa. Em relação à população ser finita ou infinita, estudantes de métodos quantitativos ou pacientes que um psicólogo atende no ano atual ilustram uma população finita. Por constraste, nascimentos em uma cidade, produção de uma máquina ou horas de duração que uma lâmpada apresenta demonstram uma população infinita. A população externa é definida como todos os indivíduos que se deseja generalizar os resultados de uma pesquisa, tal como brasileiros adultos, enquanto a população alvo são aqueles que a pesquisa tem maior capacidade inferencial, tal como adultos do estado do Rio de Janeiro.</p>
+<p>Quando um estudo é feito considerando todos os participantes de interesse, ele é chamado de censitário. Entretanto, há muitas situações em que isso é impossível, como visto anteriormente. Mesmo quando possível, o custo, o aceso e o tempo necessário para uma pesquisa deste tipo tendem a impossibilitar sua execução. Para resolver este problema, é necessário reunir um conjunto menor da população e, neste novo grupo - chamado de amostra - fazer a pesquisa.</p>
+<p>Apesar desses conceitos parecerem distantes, isso é feito no dia a dia de todas as pessoas. Em exames médicos, não se retira todo o sangue do corpo para verificar algumas características específicas. Da mesma maneira, quando se cozinha uma sopa – por exemplo – é bem típico provar uma colher dela para checar se o tempero está adequado ou não.</p>
+<p>Em estatística, a área da Amostragem é a que se ocupa da composição de uma amostra e dispõe de diferentes técnicas e procedimentos. A composição da amostra depende de critérios de <u>qualidade e quantidade</u> que, sob formato de perguntas, transformam-se nas seguintes questões que devem ser respondidas antes da pesquisa:</p>
 <ol style="list-style-type: decimal">
-<li>O Qui-quadrado pode ser utilizado para um conjunto de análises realizadas em variáveis categóricas.<br />
+<li>Qual tipo de amostragem será utilizada (qualidade) e<br />
 </li>
-<li>Apesar de diferenças conceituais, o formato matemático é o mesmo.<br />
-</li>
-<li>O tamanho do efeito apresenta interpretações que podem variar em função dos graus de liberdade.<br />
-</li>
+<li>Quantos elementos serão necessários para compor a amostra (quantidade)?</li>
 </ol>
+<p>Em relação ao tipo, uma amostra pode ser composta por métodos probabilísticos e não-probabilísticos. Métodos probabilísticos são aqueles em que a seleção dos participantes ocorre de maneira aleatória, ou seja, de uma forma que cada elemento da população tenha uma probabilidade conhecida de fazer parte da amostra. Por oposição, métodos não-probabilísticos ocorrem por uma escolha deliberada dos elementos da amostra.
+Métodos probabilísticos têm clara vantagem em comparação aos não-probabilísticos. Uma vez que a amostra que será composta terá, em proporção, todas as características qualitativas e quantitativas da população, os participantes do estudo representam adequadamente a população e, com isso, processos de generalização tornam-se mais adequados. No entanto, a composição de uma amostra com tal propriedades impõe dificuldades, uma vez que depende do conhecimento populacional, bem como de um investimento em tempo e recursos que tende a ser elevado.</p>
+<div class="warning">
+<p><strong>Atenção</strong>: Pesquisas que contam com amostras representativas permitem que os resultados obtidos sejam generalizados à população de onde a amostra foi extraída.</p>
 </div>
+<p>Amostras formadas por seleção não-probabilística são pouco capazes de estender os resultados obtidos à população de interesse. No entanto, esse tipo de metodologia é mais rápida e menos custosa do que a probabilística. Em situações em que se desconhece a população de interesse ou quando não há necessidade de generalizações, ela é uma opção adequada. A tabela a seguir apresenta algumas vantagens, desvantagens e aplicações de ambas as metodologias.</p>
+<table>
+<colgroup>
+<col width="45%" />
+<col width="54%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Amostragem probabilística</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Vantagem</td>
+<td>- Seleção aleatória.<br>-Elimina o erro sistemático e o viés de seleção.<br>- Representa bem as características populacionais de interesse.<br>-Permite generalização à amostra.</td>
+</tr>
+<tr class="even">
+<td>Desvantagem</td>
+<td>- É necessário conhecer e definir bem a população de interesse.<br>- Custosa.<br>- De difícil acesso, as vezes.<br>- Tende a ser pouco atualizada para mudanças de nomes (ex: casamento) ou mudanças geográficas.<br>- Há situações em que é impossível (ex: verificar a população de usuários de crack).</td>
+</tr>
+<tr class="odd">
+<td>Exemplo</td>
+<td>Quase sempre, pesquisas em que há um valor financeiro associado ou estatísticas oficiais<br>-Pesquisas de intenção de votos<br>-Pesquisa epidemiológica sobre saúde mental no Brasil</td>
+</tr>
+<tr class="even">
+<td><strong>Amostragem não-probabilística</strong></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Vantagem</td>
+<td>- Relativamente fácil de se planejar e executar.<br>- Tende a ser mais barata do que métodos probabilísticos.</td>
+</tr>
+<tr class="even">
+<td>Desvantagem</td>
+<td>- Costuma representar mal a população.<br>- Baixa ou ausente capacidade de generalização</td>
+</tr>
+<tr class="odd">
+<td>Exemplo</td>
+<td>- Pesquisas feitas com coleta de dados online</td>
+</tr>
+</tbody>
+</table>
+<div id="amostragem-aleatória-simples" class="section level2">
+<h2><span class="header-section-number">6.1</span> Amostragem aleatória simples</h2>
+<p>É o processo mais elementar. O método se fundamenta no princípio de que todos os membros de uma população têm a mesma probabilidade de serem incluídos na amostra. Para fazer este tipo de procedimento, cada participante da população “recebe” um número. Este número é sorteado em um procedimento que, as vezes, é chamado de loteria. A amostra é formada pelos participantes sorteados.</p>
+<p><img src="img/cap_aas.PNG" /></p>
+<p><strong>Vantagens</strong>: Evita o erro sistemático e viés de seleção. Tende a ser simples de se planejar e comunicar aos outros.<br />
+<strong>Desvantagens</strong>: Tende a ter execução complexa e cara. Eventualmente, pode não representar bem subgrupos populacionais.</p>
 </div>
-<div id="pesquisas-adicionais" class="section level2">
-<h2><span class="header-section-number">5.7</span> Pesquisas adicionais</h2>
-<ol style="list-style-type: decimal">
-<li><p>Are Attitudes Towards Smoking Different for Males and Females? (DOI: 10.1136/tc.2.3.201)<br />
-Nesta pesquisa, cerca de 19378 participantes que eram fumantes, ex-fumantes ou que não fumavam indicavam se concordavam que o fumo poderia provocar doenças. Os resultados indicaram que houve uma associação significativa entre o perfil de consumo de cigarro e a concorância com a afirmativa. Apesar da maioria ter responder afirmativamente que hábitos de fumo podem gerar doenças, a quantidade de participantes fumantes que concordaram com isso foi significativamente menor do que a esperada.</p></li>
-<li><p>The Gender Gap in STEM Fields: The Impact of the Gender Stereotype of Math and Science on Secondary Students’ Career Aspirations (DOI: 10.3389/feduc.2019.00060)
-Neste estudo, 1364 estudantes do ensino médio (na Suíça) responderam sobre suas aspirações para o curso de graduação. Houve uma associação significativa entre o sexo do participante seu interesse por áreas de ciências e tecnologia. A frequência de mulheres interessadas na área foi menor do que a esperada, enquanto a frequência dos homens foi superior à esperada.</p></li>
-<li><p>Intrinsic honesty and the prevalence of rule violations across societies (DOI: 10.1038/nature17160)
-Nesta pesquisa, 2568 participantes de diferentes países participaram de uma atividade que consistia em jogar um dado dentro de um copo e falar o número que saiu para o pesquisador. Apenas o participante poderia ver o número e não havia nenhuma forma do pesquisador conferir se o número falado pelo participante era o número que, de fato, havia saído. Por características probabilísticas, se espera que cada uma das faces do dado seja igualmente selecionada. Assim, a ocorrência de uma alta proporção de valores altos indicaria desonestidade. O Qui-quadrado utilizado foi o de aderência.</p></li>
-</ol>
+<div id="amostragem-aleatória-sistemática" class="section level2">
+<h2><span class="header-section-number">6.2</span> Amostragem aleatória sistemática</h2>
+<p>É uma variação da amostragem simples. Após a identificação dos participantes, Um determinado critério é eleito (por exemplo, a cada 5) e a seleção segue este formato.</p>
+<p><img src="img/cap_a_sistematica.PNG" /></p>
+<p><strong>Vantagens</strong>: Mais rápida de se implementar do que a amostragem aleatória simples<br />
+<strong>Desvantagem</strong>: Eventualmente, pode não representar bem subgrupos populacionais. A ordenação dos participantes pode ser igual a uma ordenação existente, mas desconhecida, na população. Por exemplo, em uma lista de colégio, todos os estudantes com algum tipo de dificuldade recebem números ímpares e o critério de seleção da amostra seja feita, também, por números ímpares.</p>
+</div>
+<div id="amostragem-estratificada" class="section level2">
+<h2><span class="header-section-number">6.3</span> Amostragem estratificada</h2>
+<p>Neste tipo de amostragem, a população é dividida em subpopulações em função de características em comum, o que é chamado de estrato. Em seguida, cada participante recebe uma identificação dentro de seu estrato e o processo de amostragem aleatória simples é feito dentro em cada estrato. Atente que é possível que os participantes recebam os mesmos números. Por exemplo, se no estrato 1 há 100 pessoas, os números irão de 1 a 100 dentro deste estrato. Se no segundo estrato há também 100 pessoas, os participantes deste estrato também receberão números de 1 a 100. Com muita frequência, as características de interesse na população são desbalanceadas e, com isso, os estratos e a amostra também serão desbalanceados. Por exemplo, se há cerca de 80% de mulheres em uma determinada população, é esperado que a amostra tenha proporção similares de mulheres.</p>
+<p><img src="img/cap_a_estratificada.PNG" /></p>
+<p>Em uma pesquisa de nosso grupo, este tipo de amostragem foi feita. O nome da pesquisa é <em>Depression and Anxiety Symptoms in a Representative Sample
+of Undergraduate Students in Spain, Portugal, and Brazil</em>. Em alguns capítulos, a base desta pesquisa é utilizada.</p>
+<p><strong>Vantagens</strong>:<br />
+<strong>Desvantagem</strong>:</p>
+</div>
+<div id="amostragem-por-conglomerados" class="section level2">
+<h2><span class="header-section-number">6.4</span> Amostragem por conglomerados</h2>
+<p>Neste tipo de amostragem, a população encontra-se localizada - naturalmente - em conglomerados. Estes conglomerados podem ser ruas, bairros ou empresas, por exemplo e são assumidos como heterogêneos. Os conglomerados recebem identificações que, por sua vez, são sorteadas. Todos os participantes dos conglomerados sorteados devem ser acessados.</p>
+<p><img src="img/cap_a_conglomerado.PNG" /></p>
+<p><strong>Vantagens</strong>: Quando a identificação dos elementos da população é dificil, os conglomerados aparecem como solução. A população já está dividida naturalmente.<br />
+<strong>Desvantagens</strong>: Os estratos não serem homogeneos entre eles.</p>
+</div>
+<div id="amostragem-por-conveniência" class="section level2">
+<h2><span class="header-section-number">6.5</span> Amostragem por conveniência</h2>
+<p>Neste tipo de amostragem, a amostra é feita pelos participantes que o pesquisador tem maior acesso.</p>
+<p><strong>Vantagens</strong>: Fácil de se coletar, acessível e tende a crescer rapidamente.<br />
+<strong>Desvantagens</strong>: Pode representar mal a população e, consequentemente, ter viés. Apesar de possível, a generalização é desaconselhada.</p>
+</div>
+<div id="amostragem-por-auto-seleção" class="section level2">
+<h2><span class="header-section-number">6.6</span> Amostragem por auto-seleção</h2>
+<p>Neste tipo de amostragem, os participantes voluntariamente solicitam participar da pesquisa. Isso tende a acontecer em pesquisas em que a coleta de dados é feita online (ex: google survey ou survey monkey) e também em estudos sobre novos medicamentos.</p>
+<p>Vantagens: Relativamente mais fácil de se coletar.<br />
+Desvantagem: similar à amostragem por conveniência.</p>
+</div>
+<div id="amostragem-intencional" class="section level2">
+<h2><span class="header-section-number">6.7</span> Amostragem intencional</h2>
+<p>Neste tipo de amostragem, o pesquisador decide quem irá compor a amostra. É bem frequente em estudos psicométricos de validação de testes psicológicos. Neste tipo de pesquisa, existe uma etapa em que especialistas são convidados para opinar sobre características dos testes.</p>
+<p>Vantagens: Relativamente fácil de se identificar os juízes.<br />
+<strong>Desvantagens</strong>: similar à amostragem por conveniência. Além disso, o tamanho amostral tende a ser baixo.</p>
+</div>
+<div id="amostragem-por-bola-de-neve" class="section level2">
+<h2><span class="header-section-number">6.8</span> Amostragem por bola de neve</h2>
+<p>Neste tipo de amostragem, o pesquisador identifica um participante de interesse que, consequentemente, indica outros participantes para pesquisa. Por exemplo, caso deseje-se avaliar a saúde mental de usuários de cocaína, o pesquisador poderia identificar a primeira pessoa a ser avaliada que, em seguida, indicaria outras possíveis participantes.</p>
+<p><strong>Vantagens</strong>: Pode ser implementada de maneira fácil e o crescimento amostral tende a ocorrer rapidamente.<br />
+<strong>Desvantagens</strong>: similar à amostragem por conveniência.</p>
+</div>
+<div id="amostragem-por-quotas" class="section level2">
+<h2><span class="header-section-number">6.9</span> Amostragem por quotas</h2>
+<p>Este tipo de amostragem tende a ter um rigor mais elevado dentro das técnicas não-probabilísticas. Na amostragem por quotas (ou cotas), o pesquisador define classes populacionais e, em seguida, determinar a proporção da população para cada classe. Pode ser utilizada em situações em que não se tem muitas informações sobre características populacionais para fazer uma técnicas probabilística, mas sabe-se o suficiente para criar classes. Eventualmente, pesquisas eleitorais e análise de mercado podem contar com esta técnica.</p>
+<p><strong>Vantagens</strong>: Pode ser implementada de maneira fácil e tende a ser executada rapidamente. Apreseta um maior rigor dentro do conjunto dos métodos não-probabilísticos.<br />
+<strong>Desvantagens</strong>: similar à amostragem por conveniência.</p>
+</div>
+<div id="o-cálculo-do-tamanho-amostral" class="section level2">
+<h2><span class="header-section-number">6.10</span> O cálculo do tamanho amostral</h2>
+<p>Após decidir qual é o tipo de plano amostral, é necessário que o pesquisador defina quantos participantes irão compor a amostra. Se relativamente poucos participantes de uma população forem amostrados, os resultados podem distorcer o fenômeno investigado. Por contraste, se uma quantidade maior do que a necessária de participantes for amostrada, este excesso pode representar custos desnecessários e também distorcer as conclusões de algumas análises que serão apresentadas no decorrer do livro.</p>
+<p>Existem diferentes formas de se realizar o cálculo do tamanho da amostra. No entanto, todas as maneiras costumam depender das seguintes condições:</p>
+<ul>
+<li>Da variabilidade do fenômeno a ser investigado (maior variabilidade, maior amostra).<br />
+</li>
+<li>Do interesse do pesquisador.<br />
+</li>
+<li>Do tamanho da população.<br />
+</li>
+<li>Do nível de confiança estatística.<br />
+</li>
+<li>Do erro máximo que o pesquisador deseja correr.<br />
+</li>
+<li>Do tipo de amostragem.</li>
+<li>Das possíveis perdas de elementos da amostra.</li>
+</ul>
+<p>Uma das principais características da população que entra em cena para computar um tamanho amostral é a <u>variabilidade do fenômeno a ser investigado</u>. Populações homogênas tendem a precisar de amostras com menos elementos. Por oposição, fenômenos heterogêneos solicitam que o tamanho amostral seja maior. A variabilidade pode ser determinada pela literatura prévia e estudo piloto.</p>
+<p>O <u>interesse do pesquisador</u> pode ser apenas descritivo ou guiado pela execução de testes de hipótese. Quando descritivo, há um sistema fechado de equações que auxiliam no cálculo amostral. Quando teste de hipóteses são desejados, quase sempre, pesquisadores contam com heurísticas acadêmicas e também fazem um cálculo chamado “de poder do teste”. Este cálculo visa otimizar o tamanho da amostra para que nem erros do tipo 1 ou 2 ocorram.</p>
+<p>O <u>tamanho populacional</u> é uma importante característica para definção da amostra. Para populações pequenas, a amostra abrange quase que a totalidade dos elementos. Em populações maiores isso não costuma ocorrer. A relação entre tamanho populacional e tamanho amostral costuma ser apresentado por uma função logarítmica, tal como descrito abaixo.</p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-41-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>O <u>nível de confiança</u> é a probabilidade que o intervalo estimado contenha o parâmetro populacional.</p>
+<p>O <u> erro máximo que o pesquisador deseja correr</u> é materializado pela diferença esperada entre o parâmetro da população e o resultado a ser obtido pela pesquisa. Com frequência, a margem de erro varia de 3 a 5% Os conceitos de nível de confiança e erro são conectados.</p>
+<p>O <u>tipo de amostragem</u> e as <u> possíveis perdas de elementos da amostra</u> também impactam o tamanho amostral. Frequentemente, amostras são calculadas assumindo a Amostragem Aleatória Simples e, em seguida, os números são ajustados por tipos específicos. Finalmente, perdas amostrais são esperadas e tenta-se acrescentar este número ao plano amostral antes da coleta de dados.</p>
+<p>É possível unir todos os conceitos em equações específicas para o cálculo do tamanho amostral. As fórmulas variam e seria pouco efetivo tentar apresentar todas as fórmulas ou eleger uma ou outra equação de maior uso para colocar nesta parte. Desta maneira, deixo o artigo intitulado “A lógica da determinação do tamanho da amostra em investigações Epidemiológicas” como principal referência deste tópico.</p>
+</div>
+<div id="a-importância-da-amostra" class="section level2">
+<h2><span class="header-section-number">6.11</span> A importância da amostra</h2>
 
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-BAIRD1983">
-<p>Baird, D. (1983). The fisher/pearson chi-squared controversy: A turning point for inductive inference. <em>The British Journal for the Philosophy of Science</em>, <em>34</em>(2), 105–118. <a href="https://doi.org/10.1093/bjps/34.2.105">https://doi.org/10.1093/bjps/34.2.105</a></p>
-</div>
-<div id="ref-Campbell2007">
-<p>Campbell, I. (2007). Chi-squared and fisherIrwin tests of two-by-two tables with small sample recommendations. <em>Statistics in Medicine</em>, <em>26</em>(19), 3661–3675. <a href="https://doi.org/10.1002/sim.2832">https://doi.org/10.1002/sim.2832</a></p>
-</div>
-<div id="ref-Pearson1900">
-<p>Pearson, K. (1900). X. On the criterion that a given system of deviations from the probable in the case of a correlated system of variables is such that it can be reasonably supposed to have arisen from random sampling. <em>The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science</em>, <em>50</em>(302), 157–175. <a href="https://doi.org/10.1080/14786440009463897">https://doi.org/10.1080/14786440009463897</a></p>
 </div>
 </div>
             </section>
@@ -671,8 +531,8 @@ Nesta pesquisa, 2568 participantes de diferentes países participaram de uma ati
           </div>
         </div>
       </div>
-<a href="estatística-descritiva.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="tipos-de-amostragem.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="qui-quadrado.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="estatística-inferencial.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -703,7 +563,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/04-qui_quadrado.Rmd",
+"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/04-tipo_de_amostragem.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -1,0 +1,95 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: inline
+---
+# Estatística Inferencial
+
+
+
+```{block, type="objectives"}
+**Objetivos do capítulo**  
+1. Introduzir conceitos importantes em estatística descritiva  
+2. Apresentar tabelas e gráficos  
+3. Apresentar funções do dplyr e ggplot    
+4. Apresentar um módulo específico do JASP   
+5. Sugerir heurísticas ou regras gerais na criação de gráficos  
+```
+
+Um dos principais objetivos ao se fazer uma pesquisa é conseguir generalizar as descobertas feitas no estudo para toda a população de onde os participantes foram selecionados. Essa tarefa faz parte dos objetivos da estatística inferencial, que se ocupa majoritariamente com desenvolver estimativas sobre os parâmetros populacionais e testar hipóteses. Ambas as 
+
+
+
+```{block, type="glossario"}
+<U>**GLOSSÁRIO**</U>   
+**População**:  Conjunto de indivíduos ou objetos que apresentam, ao menos, uma característica em comum. Todos os membros de um grupo bem definido.      
+**Amostra**: Parte representativa da população. A principal característica de uma amostra é sua representatividade da população.      
+**Parâmetro**: Valor que descreve uma característica da população. Esse valor é fixo e desconhecido. Sua representação é feita por letras gregas.  
+**Estatística**: Valor que descreve uma característica da amostra. Esse valor é aleatório e calculado através dos dados coletados.  É apresentado por letras romanas.  
+**Inferência**: Processo pelo qual, através de modelos estatísticos, se tiram-se conclusões sobre características da população a partir dos dados amostrais e permite fazer generalizações e previsões a respeito da população. Técnicas inferenciais permitem a estimativa dos parâmetros populacionais e testar hipóteses.  
+**Modelo estatístico**:  Sistema de equações que descreve ou representa o possível processo gerador de dados do conjunto de dados em análise.    
+**NHST**: Sigla que representa Teste de Significância de Hipótese Nula (em Inglês, Null Hypothesis Significance Testing)
+```
+
+
+
+::: {.warning}
+**Atenção**: A estatística descritiva dispõe de inúmeras ferramentas para auxiliar na gestão e apresentação de dados.    
+:::
+
+
+Frequentemente, a massa de dados obtidos em uma pesquisa é resumida por alguns números específicos, que possuem certas propriedades estatísticas, e conseguem sintetizar adequadamente o volume de dados. Por sua vez, esses números são úteis em análises que possam ser necessárias e serão descritos em outra seção deste capítulo.   
+
+Na apresentação dos dados, é possível utilizar <u>informações textuais</u>, <u>tabelas</u> e <u>gráficos</u>. Tabelas e textos permitem agrupar e detalhar os resultados e, com isso, torná-los mais precisos e detalhados. Entretanto, esse aprofundamento pode também dificultar o entendimento geral do estudo. Por sua vez, gráficos geram sumários descritivos, em que é possível ter um entendimento rápido dos principais resultados. Eles também podem incorporar elementos adicionais, que possibilitam uma primeira análise inferencial, tal como barras de erro e intervalos de confiança. Dependendo do tipo de gráfico, além da apresentação de resultados descritivos, é possível também expor <u>diferenças</u> entre grupos ou  <u>relações</u> entre variáveis.   
+
+Apesar dessas vantagens, algumas limitações podem ser encontradas nos gráficos. Uma vez que os eles condensam um grande conjunto de resultados em uma apresentação mais simples, eles podem dificultar um pouco no entendimento geral das conclusões obtidas pela pesquisa e, ocasionalmente, distorcer os resultados. 
+
+
+No geral, cada uma dessa formas de apresentar os resultados de uma peaquisa traz consigo vantagens e desvantagens, listadas a seguir:  
+
+
+  | Tabelas                                          | Gráficos                   
+  | :-----------                                     | :-----------                        
+  | **Vantagens**      
+  | Auxiliam a organizar os resultados               | Condensam vários resultados      
+  | Permitem detalhar e aprofundar os resultados     | Auxiliam a identificar padrões nos resultados        
+  | Apresentam os resultados de maneira mais precisa | Auxiliam a visualizar o relacionamento entre variáveis      
+  | Buscadores (google, etc) encontram os resultados | Permitem confirmar ou não suposiÇões incialmente feitas sobre os dados    
+  |                                                  | Fáceis de serem entendidos quando bem feitos      
+  | **Limitações**      
+  | Podem dificultar o entendimento dos resultados  | Podem simplificar demasiadamente os resultados        
+  |                                                 | Podem distorcer severamente os resultados quando mal feitos        
+
+
+ 
+É importante atentar que em todas estas técnicas, mas especialmente nas gráficas, deve-se evitar gerar distorções ao entendimento e interpretação dos resultados. Há casos de pessoas e profissionais que chegaram a sofrer sanções jurídicas por distorções intencionais em apresentação estatísticas. Há recomendações nacionais e internacionais que visam auxiliar no desenvolvimento de gráficos e tabelas e, com grande frequência, periódicos e editoras também exigem formatos específicos na apresentação dos resultados. 
+ 
+## Tabelas   
+
+
+
+## Resumo  
+
+::: {.explore}
+Este capítulo apresentou os aspectos tabulares e gráficos corriqueiramente encontrados em pesquisas de Psicologia e áreas congêneres. Entre os pontos principais, estão os seguintes:  
+
+1. Medidas de posição e dispersão são fundamentais na apresentação dos resultados de uma pesquisa   
+2. Variáveis categóricas são resumidas por contagens e proporções. Variáveis contínuas por suas médias e desvios-padrão  
+3. Tabelas e gráficos devem ser claros ao leitor, sem criar viés ou distorção dos resultados  
+4. As tabelas são muito úteis para uma apresentação detalhada dos resultados  
+5. Gráficos condensam um grande volume de dados de uma forma mais facilmente interpretável    
+6. A heurística típica em gráficos solicita responder a quantidade e a natureza das variáveis a serem apresenadas   
+:::  
+
+
+## Questões  
+
+<div class="question">
+
+1. Trata-se de um círculo dividido por fatias cujos ângulos internos são proporcionais às partes envolvidas. Este é um gráfico:<br>a) De colunas<br>b) Histograma<br>c)De Setor<br>d) Boxplot<br>e)Barras
+1. É uma medida de posição para variáveis propriamente numéricase que é obtida somando-se todos os valores observados e dividindo-se o resultado pelo número de observações<br>a) Mediana<br>b) Média<br>c) Moda<br>d) Desvio-padrão<br>e) Amplitude interquartil 
+1. (ENADE, Biomedicina - 2010) Para apresentarem gráficos dados referentes à distribuição de frequências de um grupo de medições, pode-se aplicar um modelo semelhante ao estabelecido na figura abaixo, na qual o pesquisador verifica a variação de anticorpos em relação a uma coorte populacional específica.<br>![](./img/exercicio_histograma.png)<br>a) Gráfico de setores, que demonstra a variação de anticorpos na abscissa Y e de população na ordenada X.<br> b) Histograma, que demonstra variações de anticorpos na abscissa X e de população na ordenada Y <br> c) Gráfico de tendência central, que demonstra variações de anticorpos na abscissa X e de população na ordenada Y.<br> d) Gráficos de dispersão, que demonstra a tendência central das médias de concentração dos valores de anticorpos na população.<br> e) Gráfico de linhas, que demonstra a tendência central baseada na mediana das concentrações de anticorpos na população. 
+</div>   
+
+<div class="mirror">Gabarito: 1-c; 2-b; 3-b,</div>
+
