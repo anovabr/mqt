@@ -1,0 +1,412 @@
+# Regressão logística binária
+
+
+```{r, include = FALSE }
+load("~/anovabr/mqt/bases/Base R - Headache anonymous.RData")
+library(tidyverse)
+library(pander)
+```
+
+
+
+
+```{block, type="writing"}
+**GLOSSÁRIO**
+
+**Modelo Linear Generalizado**: Classe de modelos compostos por uma função de ligação, preditores lineares e uma distribuição de probabilidades. São ampliações de modelos lineares.    
+**Função de ligação**: Termo que associa os valores esperados da resposta aos preditores lineares no modelo.  
+**Logit**: Uma função de ligação que transforma probabilidades em chances.    
+**Risco**: Probabilidade ou proporção.    
+**Chance ou Odds**: Caso particular de uma razão em que o numerador não está contido no denominador. Tradução para Odds.  
+**Razão de Chances ou Odds Ratio**: Medida de tamanho de efeito que indica a chance de ocorrência de um desfecho em um grupo quando comparado a outro. Seus valores variam entre 0 e infinito.  
+
+
+```
+
+
+A regressão logística é um modelo estatístico que permite estimar a chance da ocorrência de um determinado desfecho categórico (Y) em função de um ou mais preditores (X), que podem ser contínuos ou categóricos. Quando a variável dependente apresenta apenas dois níveis ou classes, a regressão é chamada de binária. Quando há mais níveis ou classes, é chamada de multinomial. 
+
+Assim, é possível entender a regressão logística como um complemento da regressão linear aplicada a variáveis categóricas a partir de uma função de ligação ou, de maneira geral, um caso particular da famiília dos modelos lineares generalizados (GLM), que implementa uma ligação logit. 
+
+Conceitualmente, neste modelo há os seguintes termos:
+
+\[\underbrace{ln\left ( \frac{P}{1-P} \right)}_\text{logit} = b_0+b_1X_1+ \dots + b_iX_i\]
+
+Onde:   
+$P$ representa a probabilidade de um desfecho ocorrer     
+$1-P$ representa a probabilidade de um desfecho não ocorrer  
+$ln\left ( \frac{P}{1-P} \right)$ representa uma transformação logit variável dependente  
+$b_0$ é o intercepto    
+$b_i$ indica os preditores 
+
+Os seguintes pressupostos devem ser investigados:  
+
+*(i)* Os dados são aleatórios e representativos da população  
+*(ii)* A variável dependente é dicotômica/binária   
+*(iii)* Os preditores não apresentam alta correlação  
+*(iv)* Há uma relação linear entre preditores contínuos e o logit do desfecho 
+
+
+Há muitas aplicações de modelos logísticos. Em áreas de saúde, eles tendem a ser os modelos de primeira escolha para verificar possíveis condições clínicas e de agravo à saúde. Em Psicologia, por exemplo, ele é util para descrever e investigar os possíveis preditores de condições diagnósticas bem definidas, tal como TDAH e outros transtornos psiquiátricos. Em epidemiologia, eles são fundamentais em estudos do tipo caso-controle. 
+
+Algumas condições são importantes:   
+(1) A variável dependente nesta equação é um transformação logit da probabilidade da presença de um determinado desfecho. Ela não é, por definição, uma probabilidade, mas sim uma função.   
+(2) Não há a definção de um termo de erro (tal como nos modelos de regressão linear) e   
+(3) o desfecho é assumido seguir uma distribuição binomial. 
+
+Como exposto, os resultados da regressão logística informam sobre <u>chances</u> (*Odds*) e <u>Razão de chances</u> (*Odds Ratio*) e não sobre probabilidades, diretamente. Existem muitas formas de demonstrar esta diferença. Entretanto, julgo que a forma mais simples é ilustrá-la matematicamente. 
+
+Uma probabilidade é uma razão entre uma parte contra o todo (*Tudo o que tenho sobre tudo o que posso quero*, em jargão pedagógico). A chance é uma razão em que o numerador é uma probabilidade e o denominador é seu complemento. A figura a seguir ilustra essa diferença.   
+![](./img/cap_reg_log_odds.png)
+
+É legítimo ter dificuldade na interpretação do conceito, além de questionar o motivo pelo qual ele é tão utilizado nestas áreas. No entanto, uma ajuda interpretativa é lembrar que a probabilidade, maior também serão as chances de um determinado evento. A relação entre ambos tem o seguinte formato. 
+
+
+```{r, echo = FALSE }
+cbind(seq(0,1, by = 0.05), seq(0,1, by = 0.05)/(1-seq(0,1, by = 0.05))) %>% 
+  data.frame() %>% 
+  ggplot(., aes(x = X1, y = X2, group = 1)) +
+  xlim(0,1) + ylim(0,25) +
+  geom_line(size = 1.5) +
+  labs(x = "Probabilidade", y = "Chance (Odds)") +
+  geom_hline(yintercept = 1) + geom_vline(xintercept = 0.5) +
+  theme_bw()
+```
+
+A métrica Razão de chances (Odds Ratio ou OR) é utilizada como uma medida de tamanho de efeito que se dá pela comparação entre dois grupos. 
+
+Como em áreas de saúde, tradicionalmente, o interesse é verificar situações clínicas, quanto maior for o OR, maior será a chance da ocorrência de um desfecho negativo em um determinado grupo em comparação à outra e, consequentemente, maior o risco. 
+
+Neste sentido:
+
+Chance | Probabilidade| Interpretação
+:-----|:------------ | :---
+< 1    |< 50% | Fator de risco
+= 1    | 50% | Fator neutro  
+> 1    | > 50% | Fator de proteção  
+
+
+
+## Pesquisa  
+
+<div class="alert alert-warning">
+  <strong>Base: </strong> [Base R - Headache](https://github.com/anovabr/mqt/raw/master/bases/Base%20R%20-%20Headache.RData)
+</div>  
+
+
+Neste capítulo, vamos utilizar a pesquisa intitulada ["Resilience and vulnerability in adolescents with primary headaches: a cross-sectional population-based study"](https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students), publicada em 2021 no Headache, que sou coautor.
+
+Essa é uma pesquisa censitária, que contou com todos os 339 estudantes de uma cidade pequena no interior do Brasil. O estudo visou mapear as possíveis condições de baixos recursos psicológicos e alta vulnerabilidade em adolescentes portadores de enxaqueca de diferentes tipos e intensidades. Na literatura médica internacional, são raros os estudos com finalidade epidemiológica descritiva sobre enxaqueca. No Brasil, por sua vez, este nosso estudo foi o primeiro. Esse fato marcou o caráter inovador da pesquisa e também permitiu impactar positivamente o trabalho de clínicos que, em seu dia a dia, lidam com jovens com tais características.        
+
+Para definir o tipo e a frequência da dor de cabeça, os participantes responderam a diferentes questionários médicos. Por sua vez, para verificar um possível risco de participantes enxaquecocos apresentarem baixos recursos psicológicos e alta vulnerabilidade, eles foram submetidos à escala *Resiliency Scales for Children and Adolescents*, que foi desenvolvida justamente para medir tais condições.
+
+Uma dos objetivos que tivemos na execução das análises foi verificar quais eram os preditores significativos que poderiam impactar na probabilidade de um adolescente estar no grupo de risco de vulnerabilidade psicológica. Os preditores de interesse foram a idade da criança (age), sua etnia (race), sexo (sex), classe sócioeconômica (ses), problemas de sono (sleeping), prematuridade (premature), fumo durante a gestão (smoking), uso de álcool durante a gestação (alcohol) e possível TDAH (sdq_risk).
+
+
+Para isso, modelos de regressão logística binária foram utilizados.  
+
+
+
+## Execução no R  
+
+A primeira etapa da análise é realizada pelo desenvolvimento de tabelas e gráficos que possam auxiliar na interpretação dos resultados. De maneira similar à feita em outros capítulos, abaixo há uma tabela descritiva. 
+
+
+```{r results="asis" }
+arsenal::tableby(risk_cefaleia_resources ~ 
+                   age + race +  sex + ses + sleeping + premature + smoking + alcohol + sdq_risk, 
+                 base_uso) %>% summary() 
+```
+
+Essa tabela oferece uma primeira informação sobre os dados e poderia ser utilizada também para computar vários testes Qui-quadrado. Entretanto, o qui-quadrado serviria para verificar relacionamentos bivariados, mas não controlaria os resultados pelas outras variáveis de interesse. Apesar de ser possível fazer alguns ajustes particulares ou utilizar o teste de Cochran–Mantel–Haenszel, a regressão logística é a modelagem mais adaptada para lidar com esta situação.
+
+Para executar esse tipo de regressão no R, será necessário usar a função nativa `glm` e deixar claro que a família é a `binomial`. Isso indicará que o desfecho é binário e que a função logit deverá ser implementada na equação. 
+
+O vetor `mod_risco` será criado e reunirá os resultados do modelo de regressão logística. 
+
+```{r}
+mod_risco <- glm(risk_cefaleia_resources ~
+                       age + race +  sex + ses + sleeping + premature + smoking + alcohol + sdq_risk, 
+                    family = "binomial", data = base_uso)
+```
+
+Há muitas formas de apresentar os resultados e o pacote `sjPlot` tem ótimas funções para isso. A tabela produzida gera o Odds Ratio de cada preditor, seu intervalo de confiança, a estatística de teste e o valor de P. Ao fim  da tabela, a quantidade de observações utilizada e uma medida de ajuste ($R^2$) é apresentada.   
+
+
+```{r}
+sjPlot::tab_model(mod_risco,show.stat = TRUE, 
+          digits = 2)
+```
+
+Essa apresentação não verifica se o modelo testado é mais informativo do que um modelo nulo, mas apenas assume esta condição. Testá-la é particularmente importante em modelos com menos variáveis e isso pode ser feito pela função nativa `Summary`.
+
+
+```{r, eval = FALSE }
+#deviance do modelo nulo
+base_uso %>% 
+  filter(across(c(age,race,sex,ses,sleeping,premature,smoking,alcohol,sdq_risk), ~!is.na(.x))) %>% 
+  glm(risk_cefaleia_resources ~ 1, family = "binomial", data = .) %>% summary()
+
+#deviance do modelo testado
+mod_risco %>% summary()
+```
+
+
+Nesta tabela, a primeira interpretação a ser feita é relacionada ao $R^2$, que está localizado na parte inferior. Existem diferentes maneiras de calculá-lo e sua interpretação não é igual à feita na regressão linear. Enquanto na regressão linear, o $R^2$ se refere à proporção da variância explicada, em modelos logísticos, no geral, o $R^2$ indica o quanto o modelo testado é próximo de um modelo com ajuste perfeito aos dados (saturado) [@portugues2020]. 
+
+O $R^2 \, de \, Tjur$ é a medida utilizada nesta apresentação e seus valores variam entre 0 e 1. Ele é feito verificando a diferença entre os dados e os valores previstos pelo modelo testado. Quão maior o valor, mais discriminativo é o modelo testado. Neste caso, o o $R^2 \, de \, Tjur$ foi de 0.10.
+
+A segunda interpretação é baseada nos Odds Ratio (OR) e sugere alguma com atenção: o OR indica a <u>chance</u> de ocorrência de um desfecho caso o preditor analisado tenha ocorrido, em comparação com sua não ocorrência. Ele não indica diretamente sobre a probabilidade, apesar disso ser possível de ser feito. 
+
+Os preditores <u>sex[female]</u> e <u>sqd_risk</u> foram significativos. A interpretação pode ser feita da seguinte maneira:
+
+* A chance do participante vir a apresentar baixo recurso psicológico é 3.07 maior em meninas do que em meninos. 
+* A chance do participante vir a apresentar baixo recursos psicológico é 7.53 maior em participantes com TDAH do que em participantes sem TDAH..  
+
+
+Eventualmente, variáveis contínuas também podem ser significativas. Caso a variável <u>age</u> tivesse sido significativa, sua interpretação poderia ser:  
+
+* O aumento de 1 ano de idade impacta a chance de vir a apresentar baixos recursos psicológicos em 0.82, indicando uma característica protetiva. 
+
+
+A apresentação desses resultados é muito beneficada por gráficos e o *Forest plot* pode ser utilizado. Neste gráfico, o eixo horizontal apresenta os valores possíveis de OR ($0-\infty$) e o eixo vertical todos os preditores analisados. A interpretação é feita em contraste ao valor 1, que está ao centro e indica que os resultados não são distintos entre os grupos ou níveis da variáveis. Valores de OR acima de 1 se situam à direita e indicam um possível fator de risco. Valores de OR abaixo de 1 se situam à esquerda e indicam um possível fator protetivo. 
+
+
+```{r}
+sjPlot::plot_model(mod_risco,
+            grid = FALSE, 
+            show.values = TRUE, value.offset = .3, 
+            colors = "bw",
+            vline.color = "darkgray") +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 10)) +
+  theme_bw() +
+  theme(legend.position = "top")
+```
+
+Caso haja interesse, é também possível computar as probabilidades e adicioná-las à tabela aplicando $Odds/(1+Odds)$. Ao fazer isso, uma nova informação será apresentada e poderá ter alguma utilidade para interpretar preditores variáveis categóricas. Tradicionalmente, isso não é feito. 
+
+::: {.warning}
+**Atenção**: A validade das inferências dos resultados depende da adequação ou não dos pressupostos dos testes estatísticos. A avaliação destas condições é parte de um procedimento diagnóstico que deve ser sempre feito.  
+:::
+
+
+Um aspecto importante é que a validade da interpretação dos resultados depende dos pressupostos do modelo estatístico. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer [@Lix1996; @Barker2015; @Ernst2017]. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.
+
+<mark>Multicolinearidade</mark>. A multicolinearidade pode ser investigada pela análise chamada Variance Inflaction Factor (VIF). Essa análise verifica o quão correlacionados são os preditores e gera um resultado numérico. Valores abaixo de 4 são tipicamente utilizados para indicar que os preditores <u>não</u> são fortemente correlacioandos e, consequentemente, considerar este pressuposto atendido.
+
+
+```{r}
+car::vif(mod_risco) %>% pander()
+```
+
+<mark>Relação linear entre preditores contínuos e o logit</mark>. O pacote `sjplot` também pode ser utilizado para testar este pressuposto. Não há um teste formal específico para este pressuposto e, com isso, a decisão é baseada na visualização do relacionamento.  
+
+```{r}
+sjPlot::plot_model(mod_risco, type = "pred", terms =  "age")
+```
+
+
+O gráfico não sugere desvio da linearidade. Com isso, esse pressuposto é considerado mantido.
+
+Após essas análises, é possível interpretar os resultados.  
+
+
+## Execução no JASP
+
+Inicialmente, é necessário carregar a base intitulada "Base CSV - headache (no names)" para o ambiente JASP. A apresentação de tabelas e gráficos é sempre muito importante e pode ser feito ao clicar na opção `Descriptives`.
+
+![](./img/cap_logistica_base.png)
+
+Ao clicar nesta opção, a interface do JASP ser próxima à exposta a seguir. É possível eleger as variáveis que irão ser analisadas e as variáveis que irão funcionar como agrupadores. 
+
+
+![](./img/cap_logistica_descriptives.png)
+
+
+Neste caso, o interesse é agrupar os resultados pelo risco do participante apresentar baixo recurso. Neste sentido, a variável <u>risk_cefaleia_resources</u> deve ser inserido na parte `Split` e as variáveis <u>age</u>, <u>race</u>, <u>sex</u>, <u>ses</u>, <u>sleeping</u>, <u>premature</u>, <u>smoking</u>, <u>alcohol</u> e <u>sdq_risk</u> deverão ser inseridas em `Variables`. 
+
+Para a apresentação ficar adequada à escala de medida, é necessário marcar a opção `Frequency tables (nominal and ordinal variables)`.
+
+
+![](./img/cap_logistica_descriptives2.png)
+
+
+A tabela apresentada será bastante informativa e pode ser utilizada também para uma apreensão inicial dos dados. Variáveis contínuas serão resumidas por suas médias e desvios-padrão e variáveis categórias serão apresentadas por contagens e proporções.   
+
+Gráficos tendem a ser úteis também para verificar o formato da distribuição dos dados. o JASP permite realizá-los clicando em `Plots`.
+
+![](./img/cap_logistica_plots.png)
+
+Como há variáveis contínuas (<u>age</u>) e variáveis categóricas (<u>sex</u>, etc) o ideal é apresentar tanto boxplots como gráficos de barras. Ao clicar na opção `Boxplot` e `Distribution plots`, o JASP irá realizar todos os gráficos e apresentar ao lado direito.   
+
+![](./img/cap_logistica_plots2.png)
+
+A análise conjunta da tabela previamente realizada e os gráficos pode ser feitas. Apesar deste procedimento inicial não ser uma etapa fundamental, ele tem sua aplicação em aspectos descritivos da estatística. Com isto feito, é possível fazer a regressão logística.  
+
+Para execução da regressão logística, será necessário clicar em `Regression` e `Logistic Regression`. 
+
+![](./img/cap_logistica_regression.png)
+
+A tela do JASP irá apresentar algumas opções. O local `Dependent variables` é onde a VD será inserida. Repare que o JASP somente permitirá variáveis nominas ou ordinais neste espaço. `Covariates` é o local onde as VIs contínuas serão colocadas e `Factors` é onde as VIs categóricas serão colocadas.   
+
+![](./img/cap_logistica_interface.png)
+
+
+Para realizar o modelo, será necessário levar a <u>risk_cefaleia_resources</u> para `Dependent Variable`. Em seguida, <u>age</u> para seção `Covariates` e <u>race</u>, <u>sex</u>, <u>ses</u>, <u>sleeping</u>, <u>premature</u>, <u>smoking</u>, <u>alcohol</u> e <u>sdq_risk</u> para `Factors`. Ao fazer isso, o JASP irá fazer as principais análises e apresentar os resultados em uma tabela específica, ao lado direito da tela.
+
+
+![](./img/cap_logistica_resultado_0.png)
+
+
+É fácil notar que os resultados apresentados são muitos. É recomendado uma ordem específica para interpretá-los.   
+
+
+Em <u>primeiro momento</u>, é importante verificar o ajuste do modelo na seção `Model summary`, na parte superior dos resultados. O JASP compara o modelo ajustado `H1` contra um modelo nulo `H0` em uma métrica de desvio (*Deviance*) e pelos critérios de informação de Akaike (AIC) e Bayesiano (BIC). De maneira similar à regressão linear, `H0` indica o modelo mais simples possível (sem preditores) e `H1` indica o modelo com os preditores que estão sendo testados. Valores de p são usados como critérios de decisão. Os critérios AIC e BIC são medidas de comparação entre modelos que visam balencear a acurácia do modelo e sua parcimônia. O melhor modelo tende a ser o que apresenta o menor valor. 
+
+A síntese desses resultados indica que o modelo testado é mais informativo que o modelo nulo, uma vez que o valor de p foi de 0.008 e o AIC do modelo testado foi inferior, apesar do BIC ter sido superior.     
+
+![](./img/cap_logistica_resultado_1.png)
+
+
+
+O <u>segundo momento</u> consiste na interpretação de uma métrica análoga ao $R^2$ em modelos de regressão. Na seção `Model summary`, o JASP apresenta algumas opções de uso. Existem debates na literatura sobre qual resultado é o mais indicado e, cada vez mais, o $R^2 \, de \, Tjur$ tem sido escolhido. Essa é uma métrica entre 0 e 1 que é computada verificando as diferenças médias dos resultados obtidos pelo modelos nulo e pelo modelo testado. Independentemente do $R^2$ escolhido, é importante ter claro que os valores do $R^2 {Cox\,\& \,Snell}$ não estão contido no intervalo 0-1, o que gera dificuldade em sua interpretação. No modelo testado, o $R^2 \, de \, Tjur$ foi de 0.101
+
+![](./img/cap_logistica_resultado_2.png)
+
+O <u>terceiro momento</u> é a análise das estimativas obtidas em cada um dos preditores, que aparece na seção `Coefficients`. No entanto, os valores que o JASP apresentam são o log(odds) dos resultados, cuja interpretação é pouco intuitiva. Antes de interpretar, é necessário adicionar o Odds Ratio à tabela. Para fazer isso, ao lado esquerdo da interface, é necessário clicar em `Statistics` e, em seguida `Odds Ratio`.
+
+![](./img/cap_logistica_resultado_3.png)
+
+O Odds Ratio será adicionado à tabela. Agora, cada um dos preditores poderá ser analisado individualmente, com interpretação levando em consideração o Odds Ratio e os valores de P.
+
+![](./img/cap_logistica_resultado_4.png)
+
+
+A interpretação do Odds Ratio (OR) precisa ser feita com atenção: ele indica a <u>chance</u> de ocorrência de um desfecho caso o preditor analisado tenha ocorrido, em comparação com sua não ocorrência. Eles não indicam diretamente sobre a probabilidade, apesar disso ser possível de ser feito. 
+
+Os preditores <u>sex[1 - Mulheres]</u> e <u>sqd_risk</u> foram significativos. A interpretação pode ser feita da seguinte maneira:
+
+* A chance do participante vir a apresentar baixo recurso psicológico é 3.07 maior em meninas do que em meninos. 
+* A chance do participante vir a apresentar baixo recursos psicológico é 7.53 maior em participantes com TDAH do que em participantes sem TDAH..  
+
+
+Eventualmente, variáveis contínuas também podem ser significativas. Caso a variável <u>age</u> tivesse sido significativa, sua interpretação poderia ser:  
+
+* O aumento de 1 ano de idade impacta a chance de vir a apresentar baixos recursos psicológicos em 0.82, indicando uma característica protetiva. 
+
+
+::: {.warning}
+**Atenção**: A validade das inferências dos resultados depende da adequação ou não dos pressupostos dos testes estatísticos. A avaliação destas condições é parte de um procedimento diagnóstico que deve ser sempre feito.  
+:::
+
+
+Uma vez que o modelo já foi realizado, a interpretação dos resultados depende da adequação de seus pressupostos. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer [@Lix1996; @Barker2015; @Ernst2017]. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.  
+
+Para verificar os pressupostos, será necessário utilizar as opções dispostas na parte inferior à esquerda do programa. 
+
+A <mark>normalidade</mark> é testada ao clicar em `Plots` e `Q-Q plot standardized results`. O JASP irá apresentar um QQ plot com duas informações principais: uma diagonal e um conjunto de pontos/círculos. Caso os círculos estejam sobrepostos à linha, isso apoia que os resíduos se distrubem normalmente. No caso abaixo, isso não foi alcançado.  
+
+![](./img/cap_reg_multipla_normalidade.png)
+Diferente do R, esta versão do JASP não permite testar formalmente a hipótese de normalidade residual. Dessa forma, será necessário contar apenas com a perceção do gráfica para checar se o pressuposto foi respeitado ou violado.  
+
+A <mark>homocedasticidade</mark> é também verificada graficamente. Ao clicar no `Residuals vs. Predicted`, o plano irá apresentar os valores dos resíduos em Y e os valores previstos em X. Nesse gráfico, é importânte não detectar nenhum padrão nos elementos apresentados. Os resultados parecem indicar uma violação deste pressuposto foi alcançado.  
+
+![](./img/cap_reg_multipla_homocedasticidade.png)
+
+A <mark>Independência</mark> dos resíduos é bastante dependente do tipo de delineamento utilizado. No entanto, o JASP permite que esse pressuposto seja formalmente testado pelo teste de Durbin Watson. Isso é feito ao clicar em `Statistics`, `Residuals` e `Durbin-Watson`
+
+![](./img/cap_reg_multipla_ind_residuos.png) 
+
+
+Os resultados irão ser apresentados na parte superior do programa. Caso a hipótese nula não seja rejeitada, isso apoia que os resíduos são independentes. Nesse caso, o valor de p foi 0.769, indicando que isso ocorreu.  
+
+![](./img/cap_reg_multipla_ind_residuos2.png) 
+
+A <mark>Multicolinearidade</mark> é uma condição que, diferente da regressão linear simples, deve ser testada na regressão múltipla. Isso ocorre pois este tipo de modelo estatístico reúne diversas variáveis independentes e é possível que elas sejam muito correlacionadas entre si. Uma maneira de testar essa condição é pela análise chamada Variance Inflaction Factor (VIF).   
+
+No JASP, será necessário clicar, dentro da seção `Statistics`, a opção `Colinearity diagnosis`.
+
+![](./img/cap_reg_multipla_colinearidade_jasp.png) 
+
+O JASP irá fazer os cálculo e irá apresentar os resultados na seção `Coefficients`, nas últimas colunas ao lado direito da tabela. Cada um dos coeficientes apresentará um valor e o ideal é que o VIF seja inferior a 4. Valores acima disso indicam que as variáveis independentes são fortemente correlacionadas e suas estimativas podem ser distorcidas. Neste caso, isso não aconteceu. 
+
+![](./img/cap_reg_multipla_colinearidade2_jasp.png)
+
+
+Com isso realizado, os diagnósticos indicaram que a normalidade e a homocedasticidade foram violadas, novamente sugerindo uma interpretação cautelosa dos resultados. 
+
+
+## Escrita dos resultados  
+
+De uma forma geral, o principal achado do modelo de regressão é que a percepção da imagem corporal e o IMC são preditores significativos ao comportamento alimentar. Possíveis superestimativas da imagem do próprio corpo impactam em alterações no comportamento alimentar. Quanto maior a distorção na percepção corporal, mais intensos e frequentes são algumas características disfuncionais do comportamento alimentar. Além disso, pessoas com maior IMC tendem a apresentar uma redução no comportamento alimentar. Abaixo uma sugestão de escrita baseada nas recomendações da American Psychological Association (APA).
+
+```{block, type="writing"}
+**Como escrever os resultados**  
+
+Um modelo de regressão múltipla foi calculado para verificar os resultados dos comportamentos alimentares (EAT-26) em função da percepção de imagem corporal (BSQ-34) e do peso do participante. Os resultados indicaram que cerca de 48% da variância do EAT-26 pode ser atribuída aos preditores (R2 = 0.486, F(2,213) = 100.675, p < 0.001). Cada ponto a mais no BSQ-34 impacta, em média, em 0.180 no EAT-26 (p < 0.001), controlando pelo peso do participante. 
+
+```  
+
+
+## Técnicas automáticas de seleção de variáveis  
+
+
+```{r }
+mod_1 <- glm(risk_cefaleia_resources ~ sex, family = binomial, data = base_uso) 
+summary(mod_1)$coefficients %>% 
+  data.frame() %>%
+  janitor::clean_names() %>% 
+  rownames_to_column("preditor") %>% 
+  mutate(odds = exp(estimate)) %>%  #get odds
+  mutate(cum_col = cumprod(odds)) %>%  #get probabilities (exp(b0,b1))
+  mutate(prop = cum_col/(1+cum_col)) %>% 
+  select(preditor, estimate, odds, prop, pr_z)
+```
+
+```{r}
+base_uso %>% 
+janitor::tabyl(sex, risk_cefaleia_resources) %>% janitor::adorn_totals(where = c("row","col"))
+(exp(-2.9311937)*exp(0.7880364))/(1+(exp(-2.9311937)*exp(0.7880364)))
+
+0.05333333*2.19907406/(1+0.05333333*2.19907406)
+```
+```{r}
+#odds to probability
+predict(mod_1, newdata=data.frame(sex="Female"), type="response")
+```
+
+
+```{r}
+(19*150)/(162*8)#odds of females have risk (compared to males)
+19/181 #proportion of females with risk
+8/158 #proportion of males with risk
+```
+
+
+
+## Resumo  
+::: {.explore}
+1. O termo regressão múltipla se refere a um modelo de regressão com duas ou mais variáveis independentes   
+2. As VIs podem ser de qualquer natureza, o que significa que toda família da ANOVA pode ser entendida como casos particulares de regressão
+3. As estimativas geradas pela regressão múltipla para uma variável são controlam por todas as variáveis do modelo   
+4. Os diagnósticos são os mesmos dos modelos simples, mas agora é necessário também testar a multicolinearidade do modelo  
+5. Existem diferentes métodos para adicionar preditores e maneiras manuais e automáticas são disponíveis    
+::: 
+
+## Pesquisas adicionais  
+
+1. Influence of Age and Education on the Performance of Elderly in the Brazilian Version of the Montreal Cognitive Assessment Battery (DOI: 10.1159/000489774)
+Nesta pesquisa, 110 participantes foram recrutados para que os pesquisadores pudessem produzir tabelas estatísticas para um novo exame neuropsicológico. Uma das análises feitas verificou o impacto dos anos de estudo no desempenho neste exame neuropsicológico, concluindo pelo seu efeito protetivo.   
+
+
+## Questões  
+
+<div class="question">
+
+1. (Retirado de Andy Field - Dicovering statistics) A regressão logística assume entre seus pressupostos<br>a) Relacionmento linear entre os preditores contínuos e a variável resposta.<br>b) Relacionmento linear entre os preditores contínuos e o logit da variável resposta.<br>c) Relacionamento linear entre os preditores contínuos.<br>d) Relacionamento linear entre todas as observações. <br>e) Todas as opções são incorretas.
+
+
+
+ 
+</div>
+<div class="mirror">Gabarito: 1-b;</div>

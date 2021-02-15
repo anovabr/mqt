@@ -49,7 +49,7 @@ O processo para estimar parâmetros envolve algumas etapas e, apesar de importan
 :::
 
 
-A sigla NHST se refere ao Teste de Significância de Hipótese Nula, que é o procedimento mais utilizado quando pesquisadores desejam testar hipóteses de pesquisa utilizando recursos da estatística. Subjacente a todo o processo, esta o pressuposto de que é possível transformar perguntas científicas em modelos probabilísticos e, com isso, utilizar a linguagem estatística para lidar com tais questões.
+A sigla NHST se refere ao Teste de Significância de Hipótese Nula, que é o procedimento mais utilizado quando pesquisadores desejam testar hipóteses de pesquisa utilizando recursos da estatística. Subjacente a todo o processo, esta o pressuposto de que é possível transformar perguntas científicas em modelos probabilísticos e, com isso, utilizar a linguagem estatística para lidar com tais questões [@Curley013].
 
 ![](./img/cap_inferencia_modelos_estatisticos.png)
 
@@ -107,7 +107,7 @@ O nível de significância é importante pois ele é associado com o conceito de
 
 Entende-se também que é possível que a hipótese nula não seja rejeitada mesmo quando ela é falsa. Esse é o erro do tipo II (2), que também é chamado de "falso negativo" em pesquisas médicas ou "perda" em psicofísica. Note que o erro do tipo 2 e alguns conceitos derivados não se conectam tão diretamente com o conceito de nível de significância. Isso ocorre pois esse conceito não é bem uma defesa de Ronald Fisher, mas foi introjetado posteriormente por Jerzy Neyman e Egon Pearson [@cohen2013explaining]. 
 
-A tabela de tomada de decisão a seguir é a mais tradicionalmente apresentada para apresentar esse conceito. 
+A tabela de tomada de decisão a seguir, uma matriz de confusão, é a mais tradicionalmente usada para ilustrar esse conceito. 
 
 
 ![](./img/cap_inferencia_tabela_decisao.png)
@@ -177,43 +177,85 @@ Em todas as pesquisas amostrais, apenas uma parte da população foi acessada. N
 
 ## Um exemplo intuitivo   
 
+Muitas áreas que trabalham com a noção de incerteza e erro fazem uso de recursos da Teoria da Decisão. A Teoria da Decisão é uma área interdisciplinar que visa descrever e explicar os processos subjacentes à escolha, com larga aplicação em testes de hipótese, detecção de sinal, exames médicos e avaliação psicológica.  
 
 
-## O que não te contaram sobre inferência estatística na graduação e pós-graduação  
+Dessa maneira, apesar de pequenas modificações de simbologia e nomenclatura, a tabela de tomada de decisão apresentada anteriormente costuma se repetir em todas essas áreas para a mesma finalidade: equacionar os custos dos erros e acertos possíveis. 
+
+Isso posto, exames médicos talvez representem a melhor forma de entender este processo de tomada de decisão. Imagine que duas pessoas resolvam fazer exame para verificar se estão ou não grávidas. O resultado do exame tem uma grande importância, já que ele servirá de evidência para que ambas as pessoas planejem suas vidas daqui para frente. 
+
+Apesar de assumirmos intuitivamente que exames médicos, no geral, são muito acurados, é importante introjetarmos que eles podem apresentar resultados incorretos ou distorcidos. Isso acontece pois estes exames não medem diretamente o fenômeno de interesse, mas apenas sinais mais ou menos específicos de determinada condição. No caso da gravidez, esses exames costumam verificar o nível do Beta HCG, que atua como um marcador bioquímico importante relacionado à gravidez e algumas outras condições.  
+
+É possível aproximar este exemplo pedagógico às hipóteses estatísticas descritas. Repare que <u>na realidade</u>, é possível estar ou não gravida. No entanto, na modelagem <u>estatística</u>, se assume inicialmente que a hipótese nula é verdadeira. Neste sentido, uma vez que a hipótese nula apoia a inexistência de padrões, sinais, eventos (etc), <u>não estar</u> grávida é a hipótese definida como verdadeira prelimiarmente.  
+
+O resultado do exame pode indicar que a pessoa está gravida ou que não está grávida. No jargão metrológico, esses resultados são chamados de "Positivo" e "Negativo", respectivamente. Conectando este elemento com a modelagem estatística, se o exame concluir que a pessoa está gravida, isso significa que ele <u>rejeitou a hipótese nula</u>. Em outras palavras, resultados positivos neste exemplo são resultados que rejeitam a hipótese nula. Por oposição, se o exame concluir que a pessoa não está grávida, ele teve um resultado negativo. Pela modelagem estatística, esse tipo de resultado <u>falhou em rejeitar a hipótese nula</u>.
+
+![](./img/cap_inferencia_tabela_decisao2.png)
+
+
+## O que não te contaram sobre inferência estatística   
  
-Conforme previamente exposto, introduzir o conceito de teste de significância de hipótese nula em uma linguagem que seja estatisticamente correta e, ao mesmo tempo, facilmente capturável por todos é uma tarefa que parece já nascer fracassada. Há farta literatura indicando isso, como X, X e X. Sem precisar de grande esforço, algumas inconsistências ou atalhos também podem ser identificados neste texto. 
-
-Em Psicologia e muitas áreas de pesquisa, tais entraves parecem parecem universais e já bastante enraizados na docência de estatística e outros métodos quantitativos. Tendo essa condição como base, a listagem de tópicos a seguir visa, ao menos, reduzir que algumas inconsistências sobre testes de hipóteses sejam mantidas ou reforçadas.    
+Conforme previamente exposto, introduzir o conceito de teste de significância de hipótese nula em uma linguagem que seja estatisticamente correta e, ao mesmo tempo, facilmente capturável por todos é uma tarefa que parece já nascer fracassada. Há farta literatura indicando isso. Cerca de 90% dos pricipais livros-texto em Psicologia apresentam conceitos equivocados sobre teste de hipóteses [@Cassidy2019], o que tambem é frequente em escolas médicas [@OcaaRiola2016; Greenwood2015] e uma das justificativas da dificuldade em reproduzir ou replicar resultados previamente publicados [@Motulsky2014].
 
 
-(1) A ideia de uma tabela de tomada de decisão é uma mistura entre as formas de entender os testes de significância de Ronald Fisher e o Teste de Hipóteses de Neyman e Pearson. Há um excelente capítulo intitulado *The Fisher, Neyman–Pearson and Jeffreys Views of Statistical Tests* indicando passagens históricas sobre a relação agressiva e conturbada entre eles [@Lecoutre2014].   
-
-(2) O valor de P não pressupõe hipótese alternativa. Ele é uma medida de quão compatível os dados são assumindo a hipótese nula como verdadeira.   
-1) A maioria dos testes inferenciais nada mais são do que modelos de regressão. As chamadas variações ou alternativas não-paramétricas tendem a ser modelos de regressão em dados ordenados.  
+É provável que tais entraves quase universais e já bem enraizados na docência de estatística aplicada ocorram também em outras áreas e, provavelmente, uma revisão crítica deste próprio texto tal como está apontaria limitações ou inadequações. Tendo essa condição como base, a listagem de tópicos a seguir visa, ao menos, reduzir que algumas inconsistências sobre testes de hipóteses sejam mantidas ou reforçadas.    
 
 
-(3) Como o valor de P depende exclusivamente da hipótese nula, ele pode ser representado tanto em sentido possibilístico ou, com restrições, como uma probabilidade condicional. 
-
-(4) A grande maioria dos testes estatísticos são versões reduzidas de modelos lineares. Assim, testar a normalidade da variável dependente não é um pressuposto de Teste T ou ANOVA. A normalidade desses modelos estatísticos são assumidas aos resíduos.  
-
-(5) A violação dOs modelos estatísticos costuma ocorrer com relativa frequência em Psicologia. Há uma intensa discussão sobre as consequências disso, incluindo posicionamentos que sugerem que a crise de replicação é em função disso e posicionamentos que julgam que a violação dos pressupostos tem pouco ou nenhum impacto na maioria das vezes. 
-
-(6) O Teorema Central do Limite e a Lei dos Grandes Números são fundamentais na teoria da inferência, mesmo que não tenham sido abordado diretamente aqui.   
-
-() De acordo com a teoria Poperiana, uma teoria ou hipótese jamais podem ser provadas. Só é possível gerar evidências que a corroborem provisoriamente ou a rejeitem. Como diz Einstein “No amount of experimentation can ever prove me right, but a single experiment can prove me wrong”.
-Uma teoria gera um conjunto de hipóteses que, por sua vez, podem produzir dados. 
+**Condições metodológicas**
 
 
-O valor de P  
+- De acordo com a teoria Popperiana, uma teoria ou hipótese jamais podem ser provadas. Só é possível gerar evidências que a corroborem provisoriamente ou a rejeitem. Como diz Einstein “No amount of experimentation can ever prove me right, but a single experiment can prove me wrong”. Assim, nenhum resultado obtido em pesquisas deve ser visto como uma prova cabal ou perfeita de uma teoria.   
+
+- A hipótese nula não necessariamente é zero. É possível que ela defina outros valores. O termo *Nil* é usado para expressar $H_0$ quando ela é zero.   
+
+- O valor de P não pressupõe hipótese alternativa. Ele é uma medida de quão compatível são os dados assumindo a hipótese nula como verdadeira.   
+
+- A maioria dos testes inferenciais nada mais são do que modelos de regressão. As chamadas variações ou alternativas não-paramétricas tendem a ser modelos de regressão em dados ordenados.  
+
+- O valor de P depende exclusivamente da hipótese nula e pode ser representado tanto em sentido possibilístico ou, com restrições e muitas discussões acadêmicas, como uma probabilidade condicional.   
+
+- Tem pouco ou nenhum sentido verificar a normalidade da variável dependente antes de performar um teste estatístico. A grande maioria dos testes estatísticos são versões reduzidas de modelos lineares. Assim, testar a normalidade da variável dependente não é um pressuposto de Teste T ou ANOVA. A normalidade desses modelos estatísticos são assumidas aos resíduos.  
+
+
+- O Teorema Central do Limite e a Lei dos Grandes Números são fundamentais na teoria da inferência, mesmo que não tenham sido abordado diretamente aqui.
+
+- Técnicas de bootstrapping e estatística robusta lidam bem com a violação de alguns pressupostos.   
+
+- Teste paramétrico não significa que a distribuição é normal, mas apenas que são caracterizados por uma família de distribuições indexada por um parâmetro. Neste testes, o formato da distribuição dos dados é importante e eles visam estimar parâmetros (populacionais). O modelo exponencial ou de Poisson, por exemplo, são paramétrico.
+
+- Testes não-paramétrico são melhores descritos como livres de distribuição, já que a distribuição dos dados não é uma preocupação de análise. 
+
+
+**Condições históricas**
+
+- A proposta de uma tabela de confusão para equacionar o processo de tomada de decisão é uma mistura estranha entre as formas de entender os testes de significância de Ronald Fisher e o Teste de Hipóteses de Neyman e Pearson. Há um excelente capítulo intitulado *The Fisher, Neyman–Pearson and Jeffreys Views of Statistical Tests* indicando passagens históricas sobre a relação agressiva e conturbada entre eles [@Lecoutre2014].   
+
+
+**Grandes debates**    
+
+- A violação dos modelos estatísticos costuma ocorrer com relativa frequência em Psicologia. Há uma intensa discussão sobre as consequências disso, incluindo posicionamentos que sugerem que a crise de replicação é em função disso e posicionamentos que julgam que a violação dos pressupostos tem pouco ou nenhum impacto na maioria das vezes. 
+
+- Parece haver uma ênfase muito grande em verificar pressupostos de modelos compactos (Teste T), que não é acompanhada em modelos mais complexos.  
 
 ## Questões  
 
 <div class="question">
 
-1. (Retirado de Business Statistics) Qual ads sentenças é verdadeira<br>a) A hipótese nula não é testada. A hipótese alternativa é testada.<br>b) A hipótese nula é testada. A hipótese alternativa não é testada.<br>c) Ambas as hipóteses (nula e alternativa) são testadas.<br>d) Ambas as hipóteses (nula e alternativa) não são testadas<br>e) Todas as opções.
+1. (Retirado de Business Statistics) Qual das sentenças é verdadeira<br>a) A hipótese nula não é testada. A hipótese alternativa é testada.<br>b) A hipótese nula é testada. A hipótese alternativa não é testada.<br>c) Ambas as hipóteses (nula e alternativa) são testadas.<br>d) Ambas as hipóteses (nula e alternativa) não são testadas<br>e) Todas as opções.
+
+
+1. (Retirado de TJ-MS, Técnico de Nível Superior - Estatístico). Teste de Hipótese compõe um conjunto de regras de decisão para aceitar ou rejeitar uma hipótese estatística com base em dados amostrais. A respeito do Teste de Hipótese, avalie as considerações a seguir.<br>I. A hipótese utilizada como referência no teste é a hipótese nula, representada pela sigla H0.<br>II. A construção da região crítica é feita sob a premissa de que a hipótese utilizada como referência é falsa.<br>III. Ao se testar a hipótese utilizada como referência, está sujeito a cometer dois tipos de erros: rejeitar a hipótese quando ela é verdadeira, ou não rejeitar a hipótese quando ela é falsa.<br>IV. Em caso de teste para diferença entre médias de duas populações normais, a hipótese alternativa assumira a igualdade entre as duas médias.<br> V. Na construção da região crítica com teste bilateral, o nível de significância deve ser dividido entre as duas áreas de rejeição.    
+É CORRETO apenas o que se afirma em:<br>a)	I, III e V.<br>B)	II, III e V.<br>C)	I, II e III.<br>D)	III, IV e V.<br>E)	IV e V.
+
+1. (Retirado de Business Statistics) O nível de significância é<br>a) A probabilidade mínima de rejeição da hipótese nula.<br>b) A probabilidade máxima de rejeição da hipótese nula.<br>c) A probabilidade mínima da rejeição da hipótese alternativa.<br>d) A probabilidade máxima da rejeição da hipótese alternativa.<br>e) Todas as opções.
+
+1. (Retirado de Analista Estatística, CNMP, FCC, 2014) Com relação a testes de hipóteses estatísticas e denominando H0 como sendo a hipótese nula e H1 a hipótese alternativa, a definição de potência de um teste corresponde à probabilidade de:<br>a) não rejeitar H0, quando H0 é verdadeira.<br>b) não rejeitar H0, quando H0 é falsa.<br>c) não rejeitar H0, independentemente de H0 ser falsa ou verdadeira.<br>d) rejeitar H0, quando H0 é verdadeira.<br>e) rejeitar H0, quando H0 é falsa.  
+
+1. (Retirado de Economista, Petrobrás, CESGRANRIO, 2010) No caso de um teste estatístico clássico, com a hipótese nula H0 e a alternativa H1, cometer o erro do tipo II consiste em:<br>a) rejeitar H0, sendo H0 verdadeiro.<br>b) aceitar H0, sendo H0 falso.<br>c) aceitar H1, sendo H1 verdadeiro.<br>d) rejeitar H1, sendo H1 falso.<br>e) aceitar H0 e aceitar H1.
+
  
 </div>
-<div class="mirror">Gabarito: 1b</div>
+<div class="mirror">Gabarito: 1-b; 2-a; 3-b; 4-e; 5-b</div>
 
 
 
@@ -222,4 +264,13 @@ O valor de P
 Como este capítulo apresentou tanto aspectos pragmáticos, como alguns eventos históricos sobre inferência estatística e testes de hipótese, seria possível listar inúmeras referências de qualidade como recursos adicionais. Entretanto, vou optar por apenas algumas obras que eu costumo acessar várias vezes para reler.
 
 1. On some assumptions of the null hypothesis statistical testing (DOI: 10.1177/0013164416667979)
-Este é um trabalho de Alexandre Patriota que, em minha opinião, é uma autoridade tanto na aplicação como na docência em estatística.
+Este é um trabalho de Alexandre Patriota que é uma referência na aplicação e docência em estatística. A discussão sobre valor de P como probabilidade condicional é importante e merece uma atenção.  
+
+2. Fisher,Neyman-PearsonorNHST?Atutorialforteachingdatatesting (DOI: 10.3389/fpsyg.2015.00223)  
+Este é um trabalho interessante que oferece algumas estratégias de docência sobre testes de hipótese. Uma característica bastante positiva deste trabalho é sua diferenciação dos procedimentos do teste de significância de Fisher e o teste de hipóteses de Neyman-Pearson
+
+3. Statistical tests,  P values,  confidence intervals,  and power: a guide to misinterpretations (10.1007/s10654-016-0149-3)
+Este é um trabalho muito interessante que descreve as principais rotinas feitas em testes de hipóteses, mas também 25 equívocos frequentes que pesquisadores fazem ao interpretar os valores de P.   
+
+
+

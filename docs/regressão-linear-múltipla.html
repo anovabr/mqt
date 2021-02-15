@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2021-02-11" />
+<meta name="date" content="2021-02-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="regressão-linear-simples.html"/>
-
+<link rel="next" href="regressão-logística-binária.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -243,7 +243,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#o-valor-de-p"><i class="fa fa-check"></i><b>7.4</b> O valor de P</a></li>
 <li class="chapter" data-level="7.5" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#o-tamanho-do-efeito"><i class="fa fa-check"></i><b>7.5</b> O tamanho do efeito</a></li>
 <li class="chapter" data-level="7.6" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#um-exemplo-intuitivo"><i class="fa fa-check"></i><b>7.6</b> Um exemplo intuitivo</a></li>
-<li class="chapter" data-level="7.7" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#o-que-não-te-contaram-sobre-inferência-estatística-na-graduação-e-pós-graduação"><i class="fa fa-check"></i><b>7.7</b> O que não te contaram sobre inferência estatística na graduação e pós-graduação</a></li>
+<li class="chapter" data-level="7.7" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#o-que-não-te-contaram-sobre-inferência-estatística"><i class="fa fa-check"></i><b>7.7</b> O que não te contaram sobre inferência estatística</a></li>
 <li class="chapter" data-level="7.8" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#questões-2"><i class="fa fa-check"></i><b>7.8</b> Questões</a></li>
 <li class="chapter" data-level="7.9" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#pesquisas-adicionais-1"><i class="fa fa-check"></i><b>7.9</b> Pesquisas adicionais</a></li>
 </ul></li>
@@ -344,6 +344,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.7" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisas-adicionais-7"><i class="fa fa-check"></i><b>14.7</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="14.8" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#questões-3"><i class="fa fa-check"></i><b>14.8</b> Questões</a></li>
 </ul></li>
+<li class="chapter" data-level="15" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html"><i class="fa fa-check"></i><b>15</b> Regressão logística binária</a><ul>
+<li class="chapter" data-level="15.1" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#pesquisa-10"><i class="fa fa-check"></i><b>15.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="15.2" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#execução-no-r-15"><i class="fa fa-check"></i><b>15.2</b> Execução no R</a></li>
+<li class="chapter" data-level="15.3" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#execução-no-jasp-16"><i class="fa fa-check"></i><b>15.3</b> Execução no JASP</a></li>
+<li class="chapter" data-level="15.4" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#escrita-dos-resultados-14"><i class="fa fa-check"></i><b>15.4</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="15.5" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#técnicas-automáticas-de-seleção-de-variáveis-1"><i class="fa fa-check"></i><b>15.5</b> Técnicas automáticas de seleção de variáveis</a></li>
+<li class="chapter" data-level="15.6" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#resumo-13"><i class="fa fa-check"></i><b>15.6</b> Resumo</a></li>
+<li class="chapter" data-level="15.7" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#pesquisas-adicionais-8"><i class="fa fa-check"></i><b>15.7</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="15.8" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#questões-4"><i class="fa fa-check"></i><b>15.8</b> Questões</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="http://www.puc-rio.br/" target="blank">PUC-Rio</a></li>
 
@@ -385,7 +395,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>O mnemônico <u>LINE</u> (linearity, independence, normality, equal variance) talvez ajude a lembrar destes pressupostos.</p>
 <div id="pesquisa-9" class="section level2">
 <h2><span class="header-section-number">14.1</span> Pesquisa</h2>
-<div class="alert alert-info" role="alert">
+<div class="alert alert-warning">
 <p><strong>Base: </strong> Livro - Dados - Eating disorders</p>
 </div>
 <p>Neste capítulo, vamos utilizar a pesquisa intitulada <a href="https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students">“Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students”</a>, publicada em 2018 no Global Journal of Educational Studies, que sou coautor.</p>
@@ -673,197 +683,6 @@ Nesta pesquisa, 110 participantes foram recrutados para que os pesquisadores pud
 ✂ Gabarito: 1e
 </div>
 
-<div id="refs" class="references">
-<div>
-<p>Aguiar Neto, R. R. de. (2010). <em>Estatistica basica aplicada a administracao judiciaria</em>. Colecao Administracao Judiciaria.</p>
-</div>
-<div>
-<p>Amarasingha, N., &amp; Dissanayake, S. (2014). Gender differences of young drivers on injury severity outcome of highway crashes. <em>Journal of Safety Research</em>, <em>49</em>, 113.e1–120. <a href="https://doi.org/10.1016/j.jsr.2014.03.004">https://doi.org/10.1016/j.jsr.2014.03.004</a></p>
-</div>
-<div>
-<p>Amatori, S., Zeppa, S. D., Preti, A., Gervasi, M., Gobbi, E., Ferrini, F., Rocchi, M. B. L., Baldari, C., Perroni, F., Piccoli, G., Stocchi, V., Sestili, P., &amp; Sisti, D. (2020). Dietary habits and psychological states during COVID-19 home isolation in italian college students: The role of physical exercise. <em>Nutrients</em>, <em>12</em>(12), 3660. <a href="https://doi.org/10.3390/nu12123660">https://doi.org/10.3390/nu12123660</a></p>
-</div>
-<div>
-<p>Babbie, E. R. (1990). <em>Survey research methods / earl babbie.</em> (2nd ed.). Wadsworth Pub. Co.</p>
-</div>
-<div>
-<p>Baird, D. (1983). The fisher/pearson chi-squared controversy: A turning point for inductive inference. <em>The British Journal for the Philosophy of Science</em>, <em>34</em>(2), 105–118. <a href="https://doi.org/10.1093/bjps/34.2.105">https://doi.org/10.1093/bjps/34.2.105</a></p>
-</div>
-<div>
-<p>Bandura, A., Ross, D., &amp; Ross, S. A. (1961). Transmission of aggression through imitation of aggressive models. <em>The Journal of Abnormal and Social Psychology</em>, <em>63</em>(3), 575–582. <a href="https://doi.org/10.1037/h0045925">https://doi.org/10.1037/h0045925</a></p>
-</div>
-<div>
-<p>Barker, L. E., &amp; Shaw, K. M. (2015). Best (but oft-forgotten) practices: Checking assumptions concerning regression residuals. <em>The American Journal of Clinical Nutrition</em>, <em>102</em>(3), 533–539. <a href="https://doi.org/10.3945/ajcn.115.113498">https://doi.org/10.3945/ajcn.115.113498</a></p>
-</div>
-<div>
-<p>Bergenholtz, C., MacAulay, S. C., Kolympiris, C., &amp; Seim, I. (2018). Transparency on scientific instruments. <em>EMBO Reports</em>, <em>19</em>(6). <a href="https://doi.org/10.15252/embr.201845853">https://doi.org/10.15252/embr.201845853</a></p>
-</div>
-<div>
-<p>Borgatta, E. F., &amp; Bohrnstedt, G. W. (1980). Level of measurement. <em>Sociological Methods &amp; Research</em>, <em>9</em>(2), 147–160. <a href="https://doi.org/10.1177/004912418000900202">https://doi.org/10.1177/004912418000900202</a></p>
-</div>
-<div>
-<p>Bursztyn, L., González, A., &amp; Yanagizawa-Drott, D. (2018). <em>Misperceived social norms: Female labor force participation in saudi arabia</em>. National Bureau of Economic Research. <a href="https://doi.org/10.3386/w24736">https://doi.org/10.3386/w24736</a></p>
-</div>
-<div>
-<p>Campbell, I. (2007). Chi-squared and fisherIrwin tests of two-by-two tables with small sample recommendations. <em>Statistics in Medicine</em>, <em>26</em>(19), 3661–3675. <a href="https://doi.org/10.1002/sim.2832">https://doi.org/10.1002/sim.2832</a></p>
-</div>
-<div>
-<p>Chartier, S., &amp; Faulkner, A. (2008). General linear models: An integrated approach to statistics. <em>Tutorials in Quantitative Methods for Psychology</em>, <em>4</em>(2), 65–78. <a href="https://doi.org/10.20982/tqmp.04.2.p065">https://doi.org/10.20982/tqmp.04.2.p065</a></p>
-</div>
-<div>
-<p>Cohen, J. (1988). <em>Statistical power analysis for the behavioral sciences</em>. Routledge. <a href="https://doi.org/10.4324/9780203771587">https://doi.org/10.4324/9780203771587</a></p>
-</div>
-<div>
-<p>Dumsday, T. (2012). Laws of nature dontHaveCeteris paribus clauses, TheyAreCeteris paribus clauses. <em>Ratio</em>, <em>26</em>(2), 134–147. <a href="https://doi.org/10.1111/rati.12000">https://doi.org/10.1111/rati.12000</a></p>
-</div>
-<div>
-<p>Ernst, A. F., &amp; Albers, C. J. (2017). Regression assumptions in clinical psychology research practicea systematic review of common misconceptions. <em>PeerJ</em>, <em>5</em>, e3323. <a href="https://doi.org/10.7717/peerj.3323">https://doi.org/10.7717/peerj.3323</a></p>
-</div>
-<div>
-<p>Everitt, B. (2002). <em>The cambridge dictionary of statistics</em>. Cambridge University Press. <a href="http://www.worldcat.org/search?qt=worldcat_org_all&amp;q=052181099X">http://www.worldcat.org/search?qt=worldcat_org_all&amp;q=052181099X</a></p>
-</div>
-<div>
-<p>Feigelson, E. D., &amp; Babu, G. J. (Eds.). (1992). <em>Statistical challenges in modern astronomy</em>. Springer New York. <a href="https://doi.org/10.1007/978-1-4613-9290-3">https://doi.org/10.1007/978-1-4613-9290-3</a></p>
-</div>
-<div>
-<p>Feil, E. G., Baggett, K., Davis, B., Landry, S., Sheeber, L., Leve, C., &amp; Johnson, U. (2020). Randomized control trial of an internet-based parenting intervention for mothers of infants. <em>Early Childhood Research Quarterly</em>, <em>50</em>, 36–44. <a href="https://doi.org/10.1016/j.ecresq.2018.11.003">https://doi.org/10.1016/j.ecresq.2018.11.003</a></p>
-</div>
-<div>
-<p>Fennell, D. J. (2005). <em>A philosophical analysis of causality in econometrics.</em> [PhD thesis]. London School of Economics; Political Science.</p>
-</div>
-<div>
-<p>Field, A. P., &amp; Wilcox, R. R. (2017). Robust statistical methods: A primer for clinical psychology and experimental psychopathology researchers. <em>Behaviour Research and Therapy</em>, <em>98</em>, 19–38. <a href="https://doi.org/10.1016/j.brat.2017.05.013">https://doi.org/10.1016/j.brat.2017.05.013</a></p>
-</div>
-<div>
-<p>Fox, J. (2016). <em>Applied regression analysis and generalized linear models (3th edition)</em>. SAGE.</p>
-</div>
-<div>
-<p>Frigg, R., &amp; Hartmann, S. (2020). Models in Science. In E. N. Zalta (Ed.), <em>The Stanford encyclopedia of philosophy</em> (Spring 2020). <a href="https://plato.stanford.edu/archives/spr2020/entries/models-science/">https://plato.stanford.edu/archives/spr2020/entries/models-science/</a>; Metaphysics Research Lab, Stanford University.</p>
-</div>
-<div>
-<p>Friis, R. H., &amp; Selles, T. A. (2013). <em>Epidemiology for public health practice</em> (5nd ed.). Jones &amp; Barlett Publishers.</p>
-</div>
-<div>
-<p>Gaudio, A. C., &amp; Zandonade, E. (2001). Proposição, validação e análise dos modelos que correlacionam estrutura química e atividade biológica. <em>Quimica Nova</em>, <em>24</em>(5), 658–671. <a href="https://doi.org/10.1590/s0100-40422001000500013">https://doi.org/10.1590/s0100-40422001000500013</a></p>
-</div>
-<div>
-<p>Gil, A. C. (2002). <em>Como elaborar de projetos de pesquisa</em>. Editora Atlas S.A.</p>
-</div>
-<div>
-<p>Glantz, S. A. (2014). <em>Principios de bioestatistica</em> (7 ed.). AMGH.</p>
-</div>
-<div>
-<p>Gueorguieva, R., &amp; Krystal, J. H. (2004). Move over ANOVA. <em>Archives of General Psychiatry</em>, <em>61</em>(3), 310. <a href="https://doi.org/10.1001/archpsyc.61.3.310">https://doi.org/10.1001/archpsyc.61.3.310</a></p>
-</div>
-<div>
-<p>Hayes, A. F. (n.d.). <em>Introduction to mediation, moderation, and conditional process analysis : A regression-based approach</em>. The Guilford Press.</p>
-</div>
-<div>
-<p>Heidemann, L. A., Araujo, I. S., &amp; Veit, E. A. (2016). Modelagem didático-cientı́fica: Integrando atividades experimentais e o pro-cesso de modelagem cientı́fica no ensino de fı́sica. <em>Caderno Brasileiro de Ensino de Fı́sica</em>, <em>33</em>(1), 3. <a href="https://doi.org/10.5007/2175-7941.2016v33n1p3">https://doi.org/10.5007/2175-7941.2016v33n1p3</a></p>
-</div>
-<div>
-<p>Hirschman, D. (2016). Stylized facts in the social sciences. <em>Sociological Science</em>, <em>3</em>, 604–626. <a href="https://doi.org/10.15195/v3.a26">https://doi.org/10.15195/v3.a26</a></p>
-</div>
-<div>
-<p>Howell, D. C. (2011). <em>Fundamental Statistics for the Behavioral Sciences</em>. Wadsworth Cengage Learning.</p>
-</div>
-<div>
-<p>Howell, D. C. (2011). <em>Fundamental statistics for the behavioral sciences (7th edition)</em>. Belmont.</p>
-</div>
-<div>
-<p>Jones, C., &amp; Levin, J. (1994). Primary/elementary teachers’ attitudes toward science in four areas related to gender differences in students’ science performance. <em>Journal of Elementary Science Education</em>, <em>6</em>(1), 46–66. <a href="https://doi.org/10.1007/bf03170649">https://doi.org/10.1007/bf03170649</a></p>
-</div>
-<div>
-<p>Junior, A. A., Almeida Portugal, A. C. de, Landeira-Fernandez, J., Bullón, F. F., Santos, E. J. R. dos, Vilhena, J. de, &amp; Anunciação, L. (2020). Depression and anxiety symptoms in a representative sample of undergraduate students in spain, portugal, and brazil. <em>Psicologia: Teoria E Pesquisa</em>, <em>36</em>. <a href="https://doi.org/10.1590/0102.3772e36412">https://doi.org/10.1590/0102.3772e36412</a></p>
-</div>
-<div>
-<p>Krus, D. J., &amp; Krus, P. H. (1977). Lost: McCalls t scores: Why? <em>Educational and Psychological Measurement</em>, <em>37</em>(1), 257–261. <a href="https://doi.org/10.1177/001316447703700134">https://doi.org/10.1177/001316447703700134</a></p>
-</div>
-<div>
-<p>Lix, L. M., Keselman, J. C., &amp; Keselman, H. J. (1996). Consequences of assumption violations revisited: A quantitative review of alternatives to the one-way analysis of variance "f" test. <em>Review of Educational Research</em>, <em>66</em>(4), 579. <a href="https://doi.org/10.2307/1170654">https://doi.org/10.2307/1170654</a></p>
-</div>
-<div>
-<p>Lumley, T., Diehr, P., Emerson, S., &amp; Chen, L. (2002). The importance of the normality assumption in large public health data sets. <em>Annual Review of Public Health</em>, <em>23</em>(1), 151–169. <a href="https://doi.org/10.1146/annurev.publhealth.23.100901.140546">https://doi.org/10.1146/annurev.publhealth.23.100901.140546</a></p>
-</div>
-<div>
-<p>Matthews, R. (2000). Storks deliver babies ( p = 0.008). <em>Teaching Statistics</em>, <em>22</em>(2), 36–38. <a href="https://doi.org/10.1111/1467-9639.00013">https://doi.org/10.1111/1467-9639.00013</a></p>
-</div>
-<div>
-<p>Michell, J. (1993). The origins of the representational theory of measurement: Helmholtz, hölder, and russell. <em>Studies in History and Philosophy of Science Part A</em>, <em>24</em>(2), 185–206. <a href="https://doi.org/10.1016/0039-3681(93)90045-l">https://doi.org/10.1016/0039-3681(93)90045-l</a></p>
-</div>
-<div>
-<p>Morettin, P. A., &amp; Bussab, W. de O. (2010). <em>Estatistica basica</em>. Saraiva.</p>
-</div>
-<div>
-<p>Mujcic, R., &amp; Frijters, P. (2020). The colour of a free ride. <em>The Economic Journal</em>. <a href="https://doi.org/10.1093/ej/ueaa090">https://doi.org/10.1093/ej/ueaa090</a></p>
-</div>
-<div>
-<p>Neal, J. W., &amp; Neal, Z. (2021). <em>Who are the childfree?</em> <a href="https://doi.org/10.31234/osf.io/57bjr">https://doi.org/10.31234/osf.io/57bjr</a></p>
-</div>
-<div>
-<p>Pearson, K. (1900). X. On the criterion that a given system of deviations from the probable in the case of a correlated system of variables is such that it can be reasonably supposed to have arisen from random sampling. <em>The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science</em>, <em>50</em>(302), 157–175. <a href="https://doi.org/10.1080/14786440009463897">https://doi.org/10.1080/14786440009463897</a></p>
-</div>
-<div>
-<p>Privitera, G. J. (2016). <em>Statistics for the behavioral sciences</em>. SAGE.</p>
-</div>
-<div>
-<p>Putnam, H. (1980). Models and reality. <em>Journal of Symbolic Logic</em>, <em>45</em>(3), 464–482. <a href="https://doi.org/10.2307/2273415">https://doi.org/10.2307/2273415</a></p>
-</div>
-<div>
-<p>Quené, H., &amp; Bergh, H. van den. (2004). On multi-level modeling of data from repeated measures designs: A tutorial. <em>Speech Communication</em>, <em>43</em>(1-2), 103–121. <a href="https://doi.org/10.1016/j.specom.2004.02.004">https://doi.org/10.1016/j.specom.2004.02.004</a></p>
-</div>
-<div>
-<p>Rhodes, N., &amp; Pivik, K. (2011). Age and gender differences in risky driving: The roles of positive affect and risk perception. <em>Accident Analysis &amp; Prevention</em>, <em>43</em>(3), 923–931. <a href="https://doi.org/10.1016/j.aap.2010.11.015">https://doi.org/10.1016/j.aap.2010.11.015</a></p>
-</div>
-<div>
-<p>Rooney, B. J., &amp; Evans, A. N. (2019). <em>Methods in psychological research</em>. SAGE Publications, Inc. <a href="https://doi.org/10.4135/9781506384955">https://doi.org/10.4135/9781506384955</a></p>
-</div>
-<div>
-<p>Skogli, E. W., Andersen, P. N., &amp; Isaksen, J. (2020). An exploratory study of executive function development in children with autism, after receiving early intensive behavioral training. <em>Developmental Neurorehabilitation</em>, <em>23</em>(7), 439–447. <a href="https://doi.org/10.1080/17518423.2020.1756499">https://doi.org/10.1080/17518423.2020.1756499</a></p>
-</div>
-<div>
-<p>Smart, J. C. (1999). <em>Higher education: Handbook of theory and research</em>. Springer.</p>
-</div>
-<div>
-<p>Stangor, C. (2010). <em>Introduction to psychology</em> (1nd ed.). Flatworld Knowledge.</p>
-</div>
-<div>
-<p>Stevens, S. S. (1959). Measurement, psychophysics, and utility. In P. Churchman C. W. &amp; Ratoosh (Ed.), <em>Measurement: Definitions and theories</em> (pp. 18–63). Willey.</p>
-</div>
-<div>
-<p>Stevens, S. S. (1946). On the theory of scales of measurement. <em>Science</em>, <em>103</em>(2684), 677–680. <a href="https://doi.org/10.1126/science.103.2684.677">https://doi.org/10.1126/science.103.2684.677</a></p>
-</div>
-<div>
-<p>Sugianto, D. K. (2017). The moderating effect of age, income, gender, expertise, loyalty program, and critical incident on the influence of customer satisfaction towards customer loyalty in airline industry: A case of pt. X. <em>iBuss Management</em>, <em>5</em>(1), 70–83.</p>
-</div>
-<div>
-<p>Thorndike, E. L. (1914). <em>Educational psychology, vol 3: Mental work and fatigue and individual differences and their causes.</em> Teachers College. <a href="https://doi.org/10.1037/13796-000">https://doi.org/10.1037/13796-000</a></p>
-</div>
-<div>
-<p>Unger, S. H., &amp; Hansch, C. (1973). Model building in structure-activity relations. Reexamination of adrenergic blocking activity of .Beta.-halo-.beta.-arylalkylamines. <em>Journal of Medicinal Chemistry</em>, <em>16</em>(7), 745–749. <a href="https://doi.org/10.1021/jm00265a001">https://doi.org/10.1021/jm00265a001</a></p>
-</div>
-<div>
-<p>Velleman, P. F., &amp; Wilkinson, L. (1993). Nominal, ordinal, interval, and ratio typologies are misleading. <em>The American Statistician</em>, <em>47</em>(1), 65–72. <a href="https://doi.org/10.1080/00031305.1993.10475938">https://doi.org/10.1080/00031305.1993.10475938</a></p>
-</div>
-<div>
-<p>Wasserstein, R. L., &amp; Lazar, N. A. (2016). The ASA statement on p-values: Context, process, and purpose. <em>The American Statistician</em>, <em>70</em>(2), 129–133. <a href="https://doi.org/10.1080/00031305.2016.1154108">https://doi.org/10.1080/00031305.2016.1154108</a></p>
-</div>
-<div>
-<p>Weisberg, M. (2013). Three kinds of models. In <em>Simulation and similarity</em> (pp. 7–23). Oxford University Press. <a href="https://doi.org/10.1093/acprof:oso/9780199933662.003.0002">https://doi.org/10.1093/acprof:oso/9780199933662.003.0002</a></p>
-</div>
-<div>
-<p>Wenke, R. J., Mickan, S., &amp; Bisset, L. (2017). A cross sectional observational study of research activity of allied health teams: Is there a link with self-reported success, motivators and barriers to undertaking research? <em>BMC Health Services Research</em>, <em>17</em>(1). <a href="https://doi.org/10.1186/s12913-017-1996-7">https://doi.org/10.1186/s12913-017-1996-7</a></p>
-</div>
-<div>
-<p>Worley, H. (2006). <em>Road traffic accidents increase dramatically worldwide</em>. <a href="https://www.prb.org/roadtrafficaccidentsincreasedramaticallyworldwide/">https://www.prb.org/roadtrafficaccidentsincreasedramaticallyworldwide/</a></p>
-</div>
-<div>
-<p>Wu, H., &amp; Leung, S.-O. (2017). Can likert scales be treated as interval scales?A simulation study. <em>Journal of Social Service Research</em>, <em>43</em>(4), 527–532. <a href="https://doi.org/10.1080/01488376.2017.1329775">https://doi.org/10.1080/01488376.2017.1329775</a></p>
-</div>
-<div>
-<p>Yap, B. W., &amp; Sim, C. H. (2011). Comparisons of various types of normality tests. <em>Journal of Statistical Computation and Simulation</em>, <em>81</em>(12), 2141–2155. <a href="https://doi.org/10.1080/00949655.2010.520163">https://doi.org/10.1080/00949655.2010.520163</a></p>
-</div>
-</div>
 </div>
 </div>
 <h3>References</h3>
@@ -892,8 +711,8 @@ Nesta pesquisa, 110 participantes foram recrutados para que os pesquisadores pud
           </div>
         </div>
       </div>
-<a href="regressão-linear-simples.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="regressão-linear-simples.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="regressão-logística-binária.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
