@@ -89,8 +89,11 @@ Chance | Probabilidade| Interpretação
 
 ## Pesquisa  
 
-<div class="alert alert-warning">
-  <strong>Base: </strong> [Base R - Headache](https://github.com/anovabr/mqt/raw/master/bases/Base%20R%20-%20Headache.RData)
+<div class="base">
+  A base desta pesquisa está disponível em formato **R (Rdata)** e em **CSV**, que é lido pelo JASP. Clique na opção desejada.     
+      
+  <strong>R Base: </strong> [Base R - Headache anonymous](https://github.com/anovabr/mqt/raw/master/bases/Base%20R%20-%20Headache%20anonymous.RData)   
+  <strong>Base JASP : </strong> [Base CSV - headache (no names)](https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip)
 </div>  
 
 
@@ -213,7 +216,9 @@ Após essas análises, é possível interpretar os resultados.
 
 ## Execução no JASP
 
-Inicialmente, é necessário carregar a base intitulada "Base CSV - headache (no names)" para o ambiente JASP. A apresentação de tabelas e gráficos é sempre muito importante e pode ser feito ao clicar na opção `Descriptives`.
+Inicialmente, é necessário carregar a base intitulada "Base CSV - headache (no names)" para o ambiente JASP. Essa base apresenta as variáveis que foram pesquisadas, bem como um conjunto de variáveis auxiliares que serviram para responder a outras perguntas.
+
+Inicialmente, a apresentação de tabelas e gráficos é sempre muito importante e pode ser feito ao clicar na opção `Descriptives`.
 
 ![](./img/cap_logistica_base.png)
 
@@ -302,65 +307,63 @@ Eventualmente, variáveis contínuas também podem ser significativas. Caso a va
 
 Uma vez que o modelo já foi realizado, a interpretação dos resultados depende da adequação de seus pressupostos. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer [@Lix1996; @Barker2015; @Ernst2017]. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.  
 
-Para verificar os pressupostos, será necessário utilizar as opções dispostas na parte inferior à esquerda do programa. 
 
-A <mark>normalidade</mark> é testada ao clicar em `Plots` e `Q-Q plot standardized results`. O JASP irá apresentar um QQ plot com duas informações principais: uma diagonal e um conjunto de pontos/círculos. Caso os círculos estejam sobrepostos à linha, isso apoia que os resíduos se distrubem normalmente. No caso abaixo, isso não foi alcançado.  
-
-![](./img/cap_reg_multipla_normalidade.png)
-Diferente do R, esta versão do JASP não permite testar formalmente a hipótese de normalidade residual. Dessa forma, será necessário contar apenas com a perceção do gráfica para checar se o pressuposto foi respeitado ou violado.  
-
-A <mark>homocedasticidade</mark> é também verificada graficamente. Ao clicar no `Residuals vs. Predicted`, o plano irá apresentar os valores dos resíduos em Y e os valores previstos em X. Nesse gráfico, é importânte não detectar nenhum padrão nos elementos apresentados. Os resultados parecem indicar uma violação deste pressuposto foi alcançado.  
-
-![](./img/cap_reg_multipla_homocedasticidade.png)
-
-A <mark>Independência</mark> dos resíduos é bastante dependente do tipo de delineamento utilizado. No entanto, o JASP permite que esse pressuposto seja formalmente testado pelo teste de Durbin Watson. Isso é feito ao clicar em `Statistics`, `Residuals` e `Durbin-Watson`
-
-![](./img/cap_reg_multipla_ind_residuos.png) 
+## Escrita dos resultados
 
 
-Os resultados irão ser apresentados na parte superior do programa. Caso a hipótese nula não seja rejeitada, isso apoia que os resíduos são independentes. Nesse caso, o valor de p foi 0.769, indicando que isso ocorreu.  
-
-![](./img/cap_reg_multipla_ind_residuos2.png) 
-
-A <mark>Multicolinearidade</mark> é uma condição que, diferente da regressão linear simples, deve ser testada na regressão múltipla. Isso ocorre pois este tipo de modelo estatístico reúne diversas variáveis independentes e é possível que elas sejam muito correlacionadas entre si. Uma maneira de testar essa condição é pela análise chamada Variance Inflaction Factor (VIF).   
-
-No JASP, será necessário clicar, dentro da seção `Statistics`, a opção `Colinearity diagnosis`.
-
-![](./img/cap_reg_multipla_colinearidade_jasp.png) 
-
-O JASP irá fazer os cálculo e irá apresentar os resultados na seção `Coefficients`, nas últimas colunas ao lado direito da tabela. Cada um dos coeficientes apresentará um valor e o ideal é que o VIF seja inferior a 4. Valores acima disso indicam que as variáveis independentes são fortemente correlacionadas e suas estimativas podem ser distorcidas. Neste caso, isso não aconteceu. 
-
-![](./img/cap_reg_multipla_colinearidade2_jasp.png)
+De uma forma geral, o principal achado do modelo de regressão é que a percepção da imagem corporal é um preditor significativo ao comportamento alimentar. Neste sentido, ao saber informações sobre como uma pessoa percebe o próprio corpo, pode-se estimar condições eventualmente disfuncionar de seu comportamento alimentar. Abaixo uma sugestão de escrita baseada nas recomendações da American Psychological Association (APA).
 
 
-Com isso realizado, os diagnósticos indicaram que a normalidade e a homocedasticidade foram violadas, novamente sugerindo uma interpretação cautelosa dos resultados. 
-
-
-## Escrita dos resultados  
-
-De uma forma geral, o principal achado do modelo de regressão é que a percepção da imagem corporal e o IMC são preditores significativos ao comportamento alimentar. Possíveis superestimativas da imagem do próprio corpo impactam em alterações no comportamento alimentar. Quanto maior a distorção na percepção corporal, mais intensos e frequentes são algumas características disfuncionais do comportamento alimentar. Além disso, pessoas com maior IMC tendem a apresentar uma redução no comportamento alimentar. Abaixo uma sugestão de escrita baseada nas recomendações da American Psychological Association (APA).
 
 ```{block, type="writing"}
 **Como escrever os resultados**  
 
-Um modelo de regressão múltipla foi calculado para verificar os resultados dos comportamentos alimentares (EAT-26) em função da percepção de imagem corporal (BSQ-34) e do peso do participante. Os resultados indicaram que cerca de 48% da variância do EAT-26 pode ser atribuída aos preditores (R2 = 0.486, F(2,213) = 100.675, p < 0.001). Cada ponto a mais no BSQ-34 impacta, em média, em 0.180 no EAT-26 (p < 0.001), controlando pelo peso do participante. 
+Um modelo de regressão foi calculado para verificar os resultados dos comportamentos alimentares (EAT-26) em função da percepção de imagem corporal (BSQ-34). Os resultados indicaram que cerca de 46% da variância do EAT-26 pode ser atribuída ao BSQ-34 (R2 = 0.456, F(1,218) = 182.88, p < 0.001). Cada ponto a mais no BSQ-34 impacta, em média, em 0.178 no EAT-26 (b = 0.178, p < 0.001). 
 
 ```  
 
 
-## Técnicas automáticas de seleção de variáveis  
+## Regressão logística e Qui-quadrado
+
+Em uma regressão logística binária em que há apenas um preditor categórico com dois grupos, a analise é baseada em tabelas de contingência. A tabela a seguir apresenta a relação entre o sexo do participante e ele(a) estar incluído ou não na categoria de baixos recursos psicológicos.
+
+
+```{r}
+library(janitor)
+base_uso %>%
+  tabyl(sex, risk_cefaleia_resources) %>%
+  adorn_totals(c("row", "col")) %>%
+  adorn_percentages("row") %>% 
+  adorn_pct_formatting(rounding = "half up", digits = 0) %>%
+  adorn_ns() %>%
+  pander()
+```
+
+```{r}
+(19/162)/(8/150)
+```
+
+
+Caso o Qui-quadrado de independência fosse calculado, seu valor de P indicara que os grupos não são associados, com estatística de teste = 2.697 e valor de P = 0.206.
+
+```{r}
+base_uso %>% 
+  mutate(risk = if_else(risk_cefaleia_resources == "0",0,1)) %>% 
+  {chisq.test(.$sex, .$risk)}
+```
+
+```{r}
+base_uso %>% 
+  mutate(risk = if_else(risk_cefaleia_resources == "0",0,1)) %>% #nuneric for poisson 
+  glm(risk ~ sex, family = poisson, data = .) %>% 
+  car::Anova(., test.statistic="Wald", type = 2)
+```
+
 
 
 ```{r }
-mod_1 <- glm(risk_cefaleia_resources ~ sex, family = binomial, data = base_uso) 
-summary(mod_1)$coefficients %>% 
-  data.frame() %>%
-  janitor::clean_names() %>% 
-  rownames_to_column("preditor") %>% 
-  mutate(odds = exp(estimate)) %>%  #get odds
-  mutate(cum_col = cumprod(odds)) %>%  #get probabilities (exp(b0,b1))
-  mutate(prop = cum_col/(1+cum_col)) %>% 
-  select(preditor, estimate, odds, prop, pr_z)
+glm(risk_cefaleia_resources ~ sex, family = binomial, data = base_uso) %>% 
+  car::Anova(., test = "Wald")
 ```
 
 ```{r}
@@ -372,7 +375,7 @@ janitor::tabyl(sex, risk_cefaleia_resources) %>% janitor::adorn_totals(where = c
 ```
 ```{r}
 #odds to probability
-predict(mod_1, newdata=data.frame(sex="Female"), type="response")
+#predict(mod_1, newdata=data.frame(sex="Female"), type="response")
 ```
 
 

@@ -349,7 +349,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.2" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#execução-no-r-15"><i class="fa fa-check"></i><b>15.2</b> Execução no R</a></li>
 <li class="chapter" data-level="15.3" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#execução-no-jasp-16"><i class="fa fa-check"></i><b>15.3</b> Execução no JASP</a></li>
 <li class="chapter" data-level="15.4" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#escrita-dos-resultados-14"><i class="fa fa-check"></i><b>15.4</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="15.5" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#técnicas-automáticas-de-seleção-de-variáveis-1"><i class="fa fa-check"></i><b>15.5</b> Técnicas automáticas de seleção de variáveis</a></li>
+<li class="chapter" data-level="15.5" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#regressão-logística-e-qui-quadrado"><i class="fa fa-check"></i><b>15.5</b> Regressão logística e Qui-quadrado</a></li>
 <li class="chapter" data-level="15.6" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#resumo-13"><i class="fa fa-check"></i><b>15.6</b> Resumo</a></li>
 <li class="chapter" data-level="15.7" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#pesquisas-adicionais-8"><i class="fa fa-check"></i><b>15.7</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="15.8" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#questões-4"><i class="fa fa-check"></i><b>15.8</b> Questões</a></li>
@@ -445,8 +445,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <div id="pesquisa-10" class="section level2">
 <h2><span class="header-section-number">15.1</span> Pesquisa</h2>
-<div class="alert alert-warning">
-<p><strong>Base: </strong> <a href="https://github.com/anovabr/mqt/raw/master/bases/Base%20R%20-%20Headache.RData">Base R - Headache</a></p>
+<div class="base">
+<p>A base desta pesquisa está disponível em formato <strong>R (Rdata)</strong> e em <strong>CSV</strong>, que é lido pelo JASP. Clique na opção desejada.</p>
+<p><strong>R Base: </strong> <a href="https://github.com/anovabr/mqt/raw/master/bases/Base%20R%20-%20Headache%20anonymous.RData">Base R - Headache anonymous</a><br />
+<strong>Base JASP : </strong> <a href="https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip">Base CSV - headache (no names)</a></p>
 </div>
 <p>Neste capítulo, vamos utilizar a pesquisa intitulada <a href="https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students">“Resilience and vulnerability in adolescents with primary headaches: a cross-sectional population-based study”</a>, publicada em 2021 no Headache, que sou coautor.</p>
 <p>Essa é uma pesquisa censitária, que contou com todos os 339 estudantes de uma cidade pequena no interior do Brasil. O estudo visou mapear as possíveis condições de baixos recursos psicológicos e alta vulnerabilidade em adolescentes portadores de enxaqueca de diferentes tipos e intensidades. Na literatura médica internacional, são raros os estudos com finalidade epidemiológica descritiva sobre enxaqueca. No Brasil, por sua vez, este nosso estudo foi o primeiro. Esse fato marcou o caráter inovador da pesquisa e também permitiu impactar positivamente o trabalho de clínicos que, em seu dia a dia, lidam com jovens com tais características.</p>
@@ -1060,7 +1062,8 @@ R<sup>2</sup> Tjur
 </div>
 <div id="execução-no-jasp-16" class="section level2">
 <h2><span class="header-section-number">15.3</span> Execução no JASP</h2>
-<p>Inicialmente, é necessário carregar a base intitulada “Base CSV - headache (no names)” para o ambiente JASP. A apresentação de tabelas e gráficos é sempre muito importante e pode ser feito ao clicar na opção <code>Descriptives</code>.</p>
+<p>Inicialmente, é necessário carregar a base intitulada “Base CSV - headache (no names)” para o ambiente JASP. Essa base apresenta as variáveis que foram pesquisadas, bem como um conjunto de variáveis auxiliares que serviram para responder a outras perguntas.</p>
+<p>Inicialmente, a apresentação de tabelas e gráficos é sempre muito importante e pode ser feito ao clicar na opção <code>Descriptives</code>.</p>
 <p><img src="img/cap_logistica_base.PNG" /></p>
 <p>Ao clicar nesta opção, a interface do JASP ser próxima à exposta a seguir. É possível eleger as variáveis que irão ser analisadas e as variáveis que irão funcionar como agrupadores.</p>
 <p><img src="img/cap_logistica_descriptives.PNG" /></p>
@@ -1103,68 +1106,114 @@ R<sup>2</sup> Tjur
 <p><strong>Atenção</strong>: A validade das inferências dos resultados depende da adequação ou não dos pressupostos dos testes estatísticos. A avaliação destas condições é parte de um procedimento diagnóstico que deve ser sempre feito.</p>
 </div>
 <p>Uma vez que o modelo já foi realizado, a interpretação dos resultados depende da adequação de seus pressupostos. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(Barker &amp; Shaw, <a href="#ref-Barker2015" role="doc-biblioref">2015</a>; Ernst &amp; Albers, <a href="#ref-Ernst2017" role="doc-biblioref">2017</a>; Lix et al., <a href="#ref-Lix1996" role="doc-biblioref">1996</a>)</span>. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.</p>
-<p>Para verificar os pressupostos, será necessário utilizar as opções dispostas na parte inferior à esquerda do programa.</p>
-<p>A <mark>normalidade</mark> é testada ao clicar em <code>Plots</code> e <code>Q-Q plot standardized results</code>. O JASP irá apresentar um QQ plot com duas informações principais: uma diagonal e um conjunto de pontos/círculos. Caso os círculos estejam sobrepostos à linha, isso apoia que os resíduos se distrubem normalmente. No caso abaixo, isso não foi alcançado.</p>
-<p><img src="img/cap_reg_multipla_normalidade.PNG" />
-Diferente do R, esta versão do JASP não permite testar formalmente a hipótese de normalidade residual. Dessa forma, será necessário contar apenas com a perceção do gráfica para checar se o pressuposto foi respeitado ou violado.</p>
-<p>A <mark>homocedasticidade</mark> é também verificada graficamente. Ao clicar no <code>Residuals vs. Predicted</code>, o plano irá apresentar os valores dos resíduos em Y e os valores previstos em X. Nesse gráfico, é importânte não detectar nenhum padrão nos elementos apresentados. Os resultados parecem indicar uma violação deste pressuposto foi alcançado.</p>
-<p><img src="img/cap_reg_multipla_homocedasticidade.PNG" /></p>
-<p>A <mark>Independência</mark> dos resíduos é bastante dependente do tipo de delineamento utilizado. No entanto, o JASP permite que esse pressuposto seja formalmente testado pelo teste de Durbin Watson. Isso é feito ao clicar em <code>Statistics</code>, <code>Residuals</code> e <code>Durbin-Watson</code></p>
-<p><img src="img/cap_reg_multipla_ind_residuos.PNG" /></p>
-<p>Os resultados irão ser apresentados na parte superior do programa. Caso a hipótese nula não seja rejeitada, isso apoia que os resíduos são independentes. Nesse caso, o valor de p foi 0.769, indicando que isso ocorreu.</p>
-<p><img src="img/cap_reg_multipla_ind_residuos2.PNG" /></p>
-<p>A <mark>Multicolinearidade</mark> é uma condição que, diferente da regressão linear simples, deve ser testada na regressão múltipla. Isso ocorre pois este tipo de modelo estatístico reúne diversas variáveis independentes e é possível que elas sejam muito correlacionadas entre si. Uma maneira de testar essa condição é pela análise chamada Variance Inflaction Factor (VIF).</p>
-<p>No JASP, será necessário clicar, dentro da seção <code>Statistics</code>, a opção <code>Colinearity diagnosis</code>.</p>
-<p><img src="img/cap_reg_multipla_colinearidade_jasp.PNG" /></p>
-<p>O JASP irá fazer os cálculo e irá apresentar os resultados na seção <code>Coefficients</code>, nas últimas colunas ao lado direito da tabela. Cada um dos coeficientes apresentará um valor e o ideal é que o VIF seja inferior a 4. Valores acima disso indicam que as variáveis independentes são fortemente correlacionadas e suas estimativas podem ser distorcidas. Neste caso, isso não aconteceu.</p>
-<p><img src="img/cap_reg_multipla_colinearidade2_jasp.PNG" /></p>
-<p>Com isso realizado, os diagnósticos indicaram que a normalidade e a homocedasticidade foram violadas, novamente sugerindo uma interpretação cautelosa dos resultados.</p>
 </div>
 <div id="escrita-dos-resultados-14" class="section level2">
 <h2><span class="header-section-number">15.4</span> Escrita dos resultados</h2>
-<p>De uma forma geral, o principal achado do modelo de regressão é que a percepção da imagem corporal e o IMC são preditores significativos ao comportamento alimentar. Possíveis superestimativas da imagem do próprio corpo impactam em alterações no comportamento alimentar. Quanto maior a distorção na percepção corporal, mais intensos e frequentes são algumas características disfuncionais do comportamento alimentar. Além disso, pessoas com maior IMC tendem a apresentar uma redução no comportamento alimentar. Abaixo uma sugestão de escrita baseada nas recomendações da American Psychological Association (APA).</p>
+<p>De uma forma geral, o principal achado do modelo de regressão é que a percepção da imagem corporal é um preditor significativo ao comportamento alimentar. Neste sentido, ao saber informações sobre como uma pessoa percebe o próprio corpo, pode-se estimar condições eventualmente disfuncionar de seu comportamento alimentar. Abaixo uma sugestão de escrita baseada nas recomendações da American Psychological Association (APA).</p>
 <div class="writing">
 <p>
 <strong>Como escrever os resultados</strong>
 </p>
 <p>
-Um modelo de regressão múltipla foi calculado para verificar os resultados dos comportamentos alimentares (EAT-26) em função da percepção de imagem corporal (BSQ-34) e do peso do participante. Os resultados indicaram que cerca de 48% da variância do EAT-26 pode ser atribuída aos preditores (R2 = 0.486, F(2,213) = 100.675, p &lt; 0.001). Cada ponto a mais no BSQ-34 impacta, em média, em 0.180 no EAT-26 (p &lt; 0.001), controlando pelo peso do participante.
+Um modelo de regressão foi calculado para verificar os resultados dos comportamentos alimentares (EAT-26) em função da percepção de imagem corporal (BSQ-34). Os resultados indicaram que cerca de 46% da variância do EAT-26 pode ser atribuída ao BSQ-34 (R2 = 0.456, F(1,218) = 182.88, p &lt; 0.001). Cada ponto a mais no BSQ-34 impacta, em média, em 0.178 no EAT-26 (b = 0.178, p &lt; 0.001).
 </p>
 </div>
 </div>
-<div id="técnicas-automáticas-de-seleção-de-variáveis-1" class="section level2">
-<h2><span class="header-section-number">15.5</span> Técnicas automáticas de seleção de variáveis</h2>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="regressão-logística-binária.html#cb175-1"></a>mod_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(risk_cefaleia_resources <span class="op">~</span><span class="st"> </span>sex, <span class="dt">family =</span> binomial, <span class="dt">data =</span> base_uso) </span>
-<span id="cb175-2"><a href="regressão-logística-binária.html#cb175-2"></a><span class="kw">summary</span>(mod_<span class="dv">1</span>)<span class="op">$</span>coefficients <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb175-3"><a href="regressão-logística-binária.html#cb175-3"></a><span class="st">  </span><span class="kw">data.frame</span>() <span class="op">%&gt;%</span></span>
-<span id="cb175-4"><a href="regressão-logística-binária.html#cb175-4"></a><span class="st">  </span>janitor<span class="op">::</span><span class="kw">clean_names</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb175-5"><a href="regressão-logística-binária.html#cb175-5"></a><span class="st">  </span><span class="kw">rownames_to_column</span>(<span class="st">&quot;preditor&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb175-6"><a href="regressão-logística-binária.html#cb175-6"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">odds =</span> <span class="kw">exp</span>(estimate)) <span class="op">%&gt;%</span><span class="st">  </span><span class="co">#get odds</span></span>
-<span id="cb175-7"><a href="regressão-logística-binária.html#cb175-7"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">cum_col =</span> <span class="kw">cumprod</span>(odds)) <span class="op">%&gt;%</span><span class="st">  </span><span class="co">#get probabilities (exp(b0,b1))</span></span>
-<span id="cb175-8"><a href="regressão-logística-binária.html#cb175-8"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop =</span> cum_col<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>cum_col)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb175-9"><a href="regressão-logística-binária.html#cb175-9"></a><span class="st">  </span><span class="kw">select</span>(preditor, estimate, odds, prop, pr_z)</span></code></pre></div>
-<pre><code>##      preditor   estimate       odds       prop         pr_z
-## 1 (Intercept) -2.5371756 0.07908947 0.07329278 2.993202e-31
-## 2        sex1  0.3940182 1.48292753 0.10497238 7.096515e-02</code></pre>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="regressão-logística-binária.html#cb177-1"></a>base_uso <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb177-2"><a href="regressão-logística-binária.html#cb177-2"></a>janitor<span class="op">::</span><span class="kw">tabyl</span>(sex, risk_cefaleia_resources) <span class="op">%&gt;%</span><span class="st"> </span>janitor<span class="op">::</span><span class="kw">adorn_totals</span>(<span class="dt">where =</span> <span class="kw">c</span>(<span class="st">&quot;row&quot;</span>,<span class="st">&quot;col&quot;</span>))</span></code></pre></div>
+<div id="regressão-logística-e-qui-quadrado" class="section level2">
+<h2><span class="header-section-number">15.5</span> Regressão logística e Qui-quadrado</h2>
+<p>Em uma regressão logística binária em que há apenas um preditor categórico com dois grupos, a analise é baseada em tabelas de contingência. A tabela a seguir apresenta a relação entre o sexo do participante e ele(a) estar incluído ou não na categoria de baixos recursos psicológicos.</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="regressão-logística-binária.html#cb175-1"></a><span class="kw">library</span>(janitor)</span>
+<span id="cb175-2"><a href="regressão-logística-binária.html#cb175-2"></a>base_uso <span class="op">%&gt;%</span></span>
+<span id="cb175-3"><a href="regressão-logística-binária.html#cb175-3"></a><span class="st">  </span><span class="kw">tabyl</span>(sex, risk_cefaleia_resources) <span class="op">%&gt;%</span></span>
+<span id="cb175-4"><a href="regressão-logística-binária.html#cb175-4"></a><span class="st">  </span><span class="kw">adorn_totals</span>(<span class="kw">c</span>(<span class="st">&quot;row&quot;</span>, <span class="st">&quot;col&quot;</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb175-5"><a href="regressão-logística-binária.html#cb175-5"></a><span class="st">  </span><span class="kw">adorn_percentages</span>(<span class="st">&quot;row&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb175-6"><a href="regressão-logística-binária.html#cb175-6"></a><span class="st">  </span><span class="kw">adorn_pct_formatting</span>(<span class="dt">rounding =</span> <span class="st">&quot;half up&quot;</span>, <span class="dt">digits =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span></span>
+<span id="cb175-7"><a href="regressão-logística-binária.html#cb175-7"></a><span class="st">  </span><span class="kw">adorn_ns</span>() <span class="op">%&gt;%</span></span>
+<span id="cb175-8"><a href="regressão-logística-binária.html#cb175-8"></a><span class="st">  </span><span class="kw">pander</span>()</span></code></pre></div>
+<table style="width:62%;">
+<colgroup>
+<col width="12%" />
+<col width="16%" />
+<col width="15%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">sex</th>
+<th align="center">0</th>
+<th align="center">1</th>
+<th align="center">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Male</td>
+<td align="center">95% (150)</td>
+<td align="center">5% (8)</td>
+<td align="center">100% (158)</td>
+</tr>
+<tr class="even">
+<td align="center">Female</td>
+<td align="center">90% (162)</td>
+<td align="center">10% (19)</td>
+<td align="center">100% (181)</td>
+</tr>
+<tr class="odd">
+<td align="center">Total</td>
+<td align="center">92% (312)</td>
+<td align="center">8% (27)</td>
+<td align="center">100% (339)</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="regressão-logística-binária.html#cb176-1"></a>(<span class="dv">19</span><span class="op">/</span><span class="dv">162</span>)<span class="op">/</span>(<span class="dv">8</span><span class="op">/</span><span class="dv">150</span>)</span></code></pre></div>
+<pre><code>## [1] 2.199074</code></pre>
+<p>Caso o Qui-quadrado de independência fosse calculado, seu valor de P indicara que os grupos não são associados, com estatística de teste = 2.697 e valor de P = 0.206.</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="regressão-logística-binária.html#cb178-1"></a>base_uso <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb178-2"><a href="regressão-logística-binária.html#cb178-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">risk =</span> <span class="kw">if_else</span>(risk_cefaleia_resources <span class="op">==</span><span class="st"> &quot;0&quot;</span>,<span class="dv">0</span>,<span class="dv">1</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb178-3"><a href="regressão-logística-binária.html#cb178-3"></a><span class="st">  </span>{<span class="kw">chisq.test</span>(.<span class="op">$</span>sex, .<span class="op">$</span>risk)}</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
+## 
+## data:  .$sex and .$risk
+## X-squared = 2.6973, df = 1, p-value = 0.1005</code></pre>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="regressão-logística-binária.html#cb180-1"></a>base_uso <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb180-2"><a href="regressão-logística-binária.html#cb180-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">risk =</span> <span class="kw">if_else</span>(risk_cefaleia_resources <span class="op">==</span><span class="st"> &quot;0&quot;</span>,<span class="dv">0</span>,<span class="dv">1</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#nuneric for poisson </span></span>
+<span id="cb180-3"><a href="regressão-logística-binária.html#cb180-3"></a><span class="st">  </span><span class="kw">glm</span>(risk <span class="op">~</span><span class="st"> </span>sex, <span class="dt">family =</span> poisson, <span class="dt">data =</span> .) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb180-4"><a href="regressão-logística-binária.html#cb180-4"></a><span class="st">  </span>car<span class="op">::</span><span class="kw">Anova</span>(., <span class="dt">test.statistic=</span><span class="st">&quot;Wald&quot;</span>, <span class="dt">type =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## Analysis of Deviance Table (Type II tests)
+## 
+## Response: risk
+##     Df  Chisq Pr(&gt;Chisq)  
+## sex  1 2.9926    0.08365 .
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="regressão-logística-binária.html#cb182-1"></a><span class="kw">glm</span>(risk_cefaleia_resources <span class="op">~</span><span class="st"> </span>sex, <span class="dt">family =</span> binomial, <span class="dt">data =</span> base_uso) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb182-2"><a href="regressão-logística-binária.html#cb182-2"></a><span class="st">  </span>car<span class="op">::</span><span class="kw">Anova</span>(., <span class="dt">test =</span> <span class="st">&quot;Wald&quot;</span>)</span></code></pre></div>
+<pre><code>## Analysis of Deviance Table (Type II tests)
+## 
+## Response: risk_cefaleia_resources
+##     Df  Chisq Pr(&gt;Chisq)  
+## sex  1 3.2606    0.07097 .
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="regressão-logística-binária.html#cb184-1"></a>base_uso <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb184-2"><a href="regressão-logística-binária.html#cb184-2"></a>janitor<span class="op">::</span><span class="kw">tabyl</span>(sex, risk_cefaleia_resources) <span class="op">%&gt;%</span><span class="st"> </span>janitor<span class="op">::</span><span class="kw">adorn_totals</span>(<span class="dt">where =</span> <span class="kw">c</span>(<span class="st">&quot;row&quot;</span>,<span class="st">&quot;col&quot;</span>))</span></code></pre></div>
 <pre><code>##     sex   0  1 Total
 ##    Male 150  8   158
 ##  Female 162 19   181
 ##   Total 312 27   339</code></pre>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="regressão-logística-binária.html#cb179-1"></a>(<span class="kw">exp</span>(<span class="op">-</span><span class="fl">2.9311937</span>)<span class="op">*</span><span class="kw">exp</span>(<span class="fl">0.7880364</span>))<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>(<span class="kw">exp</span>(<span class="op">-</span><span class="fl">2.9311937</span>)<span class="op">*</span><span class="kw">exp</span>(<span class="fl">0.7880364</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="regressão-logística-binária.html#cb186-1"></a>(<span class="kw">exp</span>(<span class="op">-</span><span class="fl">2.9311937</span>)<span class="op">*</span><span class="kw">exp</span>(<span class="fl">0.7880364</span>))<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>(<span class="kw">exp</span>(<span class="op">-</span><span class="fl">2.9311937</span>)<span class="op">*</span><span class="kw">exp</span>(<span class="fl">0.7880364</span>)))</span></code></pre></div>
 <pre><code>## [1] 0.1049724</code></pre>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="regressão-logística-binária.html#cb181-1"></a><span class="fl">0.05333333</span><span class="op">*</span><span class="fl">2.19907406</span><span class="op">/</span>(<span class="dv">1</span><span class="fl">+0.05333333</span><span class="op">*</span><span class="fl">2.19907406</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="regressão-logística-binária.html#cb188-1"></a><span class="fl">0.05333333</span><span class="op">*</span><span class="fl">2.19907406</span><span class="op">/</span>(<span class="dv">1</span><span class="fl">+0.05333333</span><span class="op">*</span><span class="fl">2.19907406</span>)</span></code></pre></div>
 <pre><code>## [1] 0.1049724</code></pre>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="regressão-logística-binária.html#cb183-1"></a><span class="co">#odds to probability</span></span>
-<span id="cb183-2"><a href="regressão-logística-binária.html#cb183-2"></a><span class="kw">predict</span>(mod_<span class="dv">1</span>, <span class="dt">newdata=</span><span class="kw">data.frame</span>(<span class="dt">sex=</span><span class="st">&quot;Female&quot;</span>), <span class="dt">type=</span><span class="st">&quot;response&quot;</span>)</span></code></pre></div>
-<pre><code>##         1 
-## 0.1049724</code></pre>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="regressão-logística-binária.html#cb185-1"></a>(<span class="dv">19</span><span class="op">*</span><span class="dv">150</span>)<span class="op">/</span>(<span class="dv">162</span><span class="op">*</span><span class="dv">8</span>)<span class="co">#odds of females have risk (compared to males)</span></span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="regressão-logística-binária.html#cb190-1"></a><span class="co">#odds to probability</span></span>
+<span id="cb190-2"><a href="regressão-logística-binária.html#cb190-2"></a><span class="co">#predict(mod_1, newdata=data.frame(sex=&quot;Female&quot;), type=&quot;response&quot;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="regressão-logística-binária.html#cb191-1"></a>(<span class="dv">19</span><span class="op">*</span><span class="dv">150</span>)<span class="op">/</span>(<span class="dv">162</span><span class="op">*</span><span class="dv">8</span>)<span class="co">#odds of females have risk (compared to males)</span></span></code></pre></div>
 <pre><code>## [1] 2.199074</code></pre>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="regressão-logística-binária.html#cb187-1"></a><span class="dv">19</span><span class="op">/</span><span class="dv">181</span> <span class="co">#proportion of females with risk</span></span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="regressão-logística-binária.html#cb193-1"></a><span class="dv">19</span><span class="op">/</span><span class="dv">181</span> <span class="co">#proportion of females with risk</span></span></code></pre></div>
 <pre><code>## [1] 0.1049724</code></pre>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="regressão-logística-binária.html#cb189-1"></a><span class="dv">8</span><span class="op">/</span><span class="dv">158</span> <span class="co">#proportion of males with risk</span></span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="regressão-logística-binária.html#cb195-1"></a><span class="dv">8</span><span class="op">/</span><span class="dv">158</span> <span class="co">#proportion of males with risk</span></span></code></pre></div>
 <pre><code>## [1] 0.05063291</code></pre>
 </div>
 <div id="resumo-13" class="section level2">
