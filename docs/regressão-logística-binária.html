@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2021-02-15" />
+<meta name="date" content="2021-02-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -349,7 +349,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.2" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#execução-no-r-15"><i class="fa fa-check"></i><b>15.2</b> Execução no R</a></li>
 <li class="chapter" data-level="15.3" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#execução-no-jasp-16"><i class="fa fa-check"></i><b>15.3</b> Execução no JASP</a></li>
 <li class="chapter" data-level="15.4" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#escrita-dos-resultados-14"><i class="fa fa-check"></i><b>15.4</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="15.5" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#regressão-logística-e-qui-quadrado"><i class="fa fa-check"></i><b>15.5</b> Regressão logística e Qui-quadrado</a></li>
+<li class="chapter" data-level="15.5" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#regressão-logística-or-e-qui-quadrado"><i class="fa fa-check"></i><b>15.5</b> Regressão logística, OR e Qui-quadrado</a></li>
 <li class="chapter" data-level="15.6" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#resumo-13"><i class="fa fa-check"></i><b>15.6</b> Resumo</a></li>
 <li class="chapter" data-level="15.7" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#pesquisas-adicionais-8"><i class="fa fa-check"></i><b>15.7</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="15.8" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#questões-4"><i class="fa fa-check"></i><b>15.8</b> Questões</a></li>
@@ -1119,17 +1119,11 @@ Um modelo de regressão foi calculado para verificar os resultados dos comportam
 </p>
 </div>
 </div>
-<div id="regressão-logística-e-qui-quadrado" class="section level2">
-<h2><span class="header-section-number">15.5</span> Regressão logística e Qui-quadrado</h2>
-<p>Em uma regressão logística binária em que há apenas um preditor categórico com dois grupos, a analise é baseada em tabelas de contingência. A tabela a seguir apresenta a relação entre o sexo do participante e ele(a) estar incluído ou não na categoria de baixos recursos psicológicos.</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="regressão-logística-binária.html#cb175-1"></a><span class="kw">library</span>(janitor)</span>
-<span id="cb175-2"><a href="regressão-logística-binária.html#cb175-2"></a>base_uso <span class="op">%&gt;%</span></span>
-<span id="cb175-3"><a href="regressão-logística-binária.html#cb175-3"></a><span class="st">  </span><span class="kw">tabyl</span>(sex, risk_cefaleia_resources) <span class="op">%&gt;%</span></span>
-<span id="cb175-4"><a href="regressão-logística-binária.html#cb175-4"></a><span class="st">  </span><span class="kw">adorn_totals</span>(<span class="kw">c</span>(<span class="st">&quot;row&quot;</span>, <span class="st">&quot;col&quot;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb175-5"><a href="regressão-logística-binária.html#cb175-5"></a><span class="st">  </span><span class="kw">adorn_percentages</span>(<span class="st">&quot;row&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb175-6"><a href="regressão-logística-binária.html#cb175-6"></a><span class="st">  </span><span class="kw">adorn_pct_formatting</span>(<span class="dt">rounding =</span> <span class="st">&quot;half up&quot;</span>, <span class="dt">digits =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span></span>
-<span id="cb175-7"><a href="regressão-logística-binária.html#cb175-7"></a><span class="st">  </span><span class="kw">adorn_ns</span>() <span class="op">%&gt;%</span></span>
-<span id="cb175-8"><a href="regressão-logística-binária.html#cb175-8"></a><span class="st">  </span><span class="kw">pander</span>()</span></code></pre></div>
+<div id="regressão-logística-or-e-qui-quadrado" class="section level2">
+<h2><span class="header-section-number">15.5</span> Regressão logística, OR e Qui-quadrado</h2>
+<p>Conforme apresentado em capítulos anteriores, o teste Qui-quadrado é um caso particular do modelo de regressão logística em que há uma única variável independente categórica. Além disso, o Odds Ratio é uma medida de efeito que costuma ser obtida pela mesma tabela de contingência em que o teste Qui-quadrado é calculado.</p>
+<p>Para demonstrar este conceito, a relação entre o <u>sexo</u> do participante (Masculino ou Feminino) e estar em <u>risco</u> de baixo recurso psicológico (sim ou não) será modelada.</p>
+<p>Inicialmente, a tabela de contingência descreve o relacionamento entre as variáveis.</p>
 <table style="width:62%;">
 <colgroup>
 <col width="12%" />
@@ -1166,55 +1160,111 @@ Um modelo de regressão foi calculado para verificar os resultados dos comportam
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="regressão-logística-binária.html#cb176-1"></a>(<span class="dv">19</span><span class="op">/</span><span class="dv">162</span>)<span class="op">/</span>(<span class="dv">8</span><span class="op">/</span><span class="dv">150</span>)</span></code></pre></div>
-<pre><code>## [1] 2.199074</code></pre>
-<p>Caso o Qui-quadrado de independência fosse calculado, seu valor de P indicara que os grupos não são associados, com estatística de teste = 2.697 e valor de P = 0.206.</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="regressão-logística-binária.html#cb178-1"></a>base_uso <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb178-2"><a href="regressão-logística-binária.html#cb178-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">risk =</span> <span class="kw">if_else</span>(risk_cefaleia_resources <span class="op">==</span><span class="st"> &quot;0&quot;</span>,<span class="dv">0</span>,<span class="dv">1</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb178-3"><a href="regressão-logística-binária.html#cb178-3"></a><span class="st">  </span>{<span class="kw">chisq.test</span>(.<span class="op">$</span>sex, .<span class="op">$</span>risk)}</span></code></pre></div>
-<pre><code>## 
-##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
-## 
-## data:  .$sex and .$risk
-## X-squared = 2.6973, df = 1, p-value = 0.1005</code></pre>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="regressão-logística-binária.html#cb180-1"></a>base_uso <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb180-2"><a href="regressão-logística-binária.html#cb180-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">risk =</span> <span class="kw">if_else</span>(risk_cefaleia_resources <span class="op">==</span><span class="st"> &quot;0&quot;</span>,<span class="dv">0</span>,<span class="dv">1</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#nuneric for poisson </span></span>
-<span id="cb180-3"><a href="regressão-logística-binária.html#cb180-3"></a><span class="st">  </span><span class="kw">glm</span>(risk <span class="op">~</span><span class="st"> </span>sex, <span class="dt">family =</span> poisson, <span class="dt">data =</span> .) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb180-4"><a href="regressão-logística-binária.html#cb180-4"></a><span class="st">  </span>car<span class="op">::</span><span class="kw">Anova</span>(., <span class="dt">test.statistic=</span><span class="st">&quot;Wald&quot;</span>, <span class="dt">type =</span> <span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## Analysis of Deviance Table (Type II tests)
-## 
-## Response: risk
-##     Df  Chisq Pr(&gt;Chisq)  
-## sex  1 2.9926    0.08365 .
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="regressão-logística-binária.html#cb182-1"></a><span class="kw">glm</span>(risk_cefaleia_resources <span class="op">~</span><span class="st"> </span>sex, <span class="dt">family =</span> binomial, <span class="dt">data =</span> base_uso) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb182-2"><a href="regressão-logística-binária.html#cb182-2"></a><span class="st">  </span>car<span class="op">::</span><span class="kw">Anova</span>(., <span class="dt">test =</span> <span class="st">&quot;Wald&quot;</span>)</span></code></pre></div>
-<pre><code>## Analysis of Deviance Table (Type II tests)
-## 
-## Response: risk_cefaleia_resources
-##     Df  Chisq Pr(&gt;Chisq)  
-## sex  1 3.2606    0.07097 .
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="regressão-logística-binária.html#cb184-1"></a>base_uso <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb184-2"><a href="regressão-logística-binária.html#cb184-2"></a>janitor<span class="op">::</span><span class="kw">tabyl</span>(sex, risk_cefaleia_resources) <span class="op">%&gt;%</span><span class="st"> </span>janitor<span class="op">::</span><span class="kw">adorn_totals</span>(<span class="dt">where =</span> <span class="kw">c</span>(<span class="st">&quot;row&quot;</span>,<span class="st">&quot;col&quot;</span>))</span></code></pre></div>
-<pre><code>##     sex   0  1 Total
-##    Male 150  8   158
-##  Female 162 19   181
-##   Total 312 27   339</code></pre>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="regressão-logística-binária.html#cb186-1"></a>(<span class="kw">exp</span>(<span class="op">-</span><span class="fl">2.9311937</span>)<span class="op">*</span><span class="kw">exp</span>(<span class="fl">0.7880364</span>))<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>(<span class="kw">exp</span>(<span class="op">-</span><span class="fl">2.9311937</span>)<span class="op">*</span><span class="kw">exp</span>(<span class="fl">0.7880364</span>)))</span></code></pre></div>
-<pre><code>## [1] 0.1049724</code></pre>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="regressão-logística-binária.html#cb188-1"></a><span class="fl">0.05333333</span><span class="op">*</span><span class="fl">2.19907406</span><span class="op">/</span>(<span class="dv">1</span><span class="fl">+0.05333333</span><span class="op">*</span><span class="fl">2.19907406</span>)</span></code></pre></div>
-<pre><code>## [1] 0.1049724</code></pre>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="regressão-logística-binária.html#cb190-1"></a><span class="co">#odds to probability</span></span>
-<span id="cb190-2"><a href="regressão-logística-binária.html#cb190-2"></a><span class="co">#predict(mod_1, newdata=data.frame(sex=&quot;Female&quot;), type=&quot;response&quot;)</span></span></code></pre></div>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="regressão-logística-binária.html#cb191-1"></a>(<span class="dv">19</span><span class="op">*</span><span class="dv">150</span>)<span class="op">/</span>(<span class="dv">162</span><span class="op">*</span><span class="dv">8</span>)<span class="co">#odds of females have risk (compared to males)</span></span></code></pre></div>
-<pre><code>## [1] 2.199074</code></pre>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="regressão-logística-binária.html#cb193-1"></a><span class="dv">19</span><span class="op">/</span><span class="dv">181</span> <span class="co">#proportion of females with risk</span></span></code></pre></div>
-<pre><code>## [1] 0.1049724</code></pre>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="regressão-logística-binária.html#cb195-1"></a><span class="dv">8</span><span class="op">/</span><span class="dv">158</span> <span class="co">#proportion of males with risk</span></span></code></pre></div>
-<pre><code>## [1] 0.05063291</code></pre>
+<p>Essa tabela é particularmente útil e permite explorar possíveis associações entre as variáveis utilizando o teste Qui-quadrado de independência. Os resultados foram significativos, <span class="math inline">\(X^2(1) = 3.398, p = 0.065\)</span>, indicando pela associação entre <u>sexo</u> e <u>risco</u>. No entanto, como o Qui-quadrado não trabalha com a ideia de variável independente e dependente, seus resultados não indicam em quais células os valores esperados e observados são significativamente diferentes.</p>
+<p>Por esta mesma tabela, é possível calcular a Chance (Odds) de um participante do sexo masculino estar estar no grupo de risco:</p>
+<p><span class="math display">\[8/150 = 0.053\]</span></p>
+<p>Bem como a Chance (Odds) de um participante do sexo feminino estar estar no grupo de risco:</p>
+<p><span class="math display">\[19/162 = 0.117\]</span></p>
+<p>Os resultados obtidos às mulheres são superiores ao dos homens. Isso sugere que elas tem uma chance consideravelmente maior de estarem nesta esta condição negativa quando comparadas aos homens. O cálculo do Odds Ratio, neste sentido, é fundamental para indicar o quão maior é a chance. Como o nome indica, a conta é feita pela razão entre as chances, que indica OR = 2.2.</p>
+<p><span class="math display">\[{\overbrace{\left ( \frac{19}{162}\right)}^\text{Odds Mulheres}}/{\underbrace{\left ( \frac{8}{150} \right)}_\text{Odds Homens}} \approx 2.2\]</span></p>
+<p>Esses dois resultados são importantes, mas seriam interpretados separadamente. Eles concluiriam que existe uma associação significativa (com <span class="math inline">\(\alpha &lt; 0.1\)</span>) entre o sexo do participante e estar ou não no grupo de risco problemas psicológicos, bem como uma chance aumentada das mulheres apresentarem baixos recursos psicológicos quando comparados aos homens.</p>
+<p>Ao modelar esses dados por uma regressão logística, automaticamente se esta (1) realizando um teste Qui-quadrado de independência, com a vantagem de definir claramente uma variável independente e outra dependente, bem como se está (2) computando os OR dos preditores. Conceitualmente:</p>
+<p><span class="math display">\[\underbrace{ln\left ( \frac{Risco}{1-Risco} \right)}_\text{logit} = b_0 + b_1X_Sexo\]</span></p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="regressão-logística-binária.html#cb175-1"></a>base_uso <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb175-2"><a href="regressão-logística-binária.html#cb175-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">risk =</span> <span class="kw">if_else</span>(risk_cefaleia_resources <span class="op">==</span><span class="st"> &quot;0&quot;</span>,<span class="dv">0</span>,<span class="dv">1</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#nuneric for poisson </span></span>
+<span id="cb175-3"><a href="regressão-logística-binária.html#cb175-3"></a><span class="st">  </span><span class="kw">count</span>(risk, sex) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb175-4"><a href="regressão-logística-binária.html#cb175-4"></a><span class="st">  </span>{<span class="kw">glm</span>(n <span class="op">~</span><span class="st"> </span>risk <span class="op">*</span><span class="st"> </span>sex, <span class="dt">data =</span> .,<span class="dt">family =</span> <span class="kw">poisson</span>())} <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb175-5"><a href="regressão-logística-binária.html#cb175-5"></a><span class="st">  </span><span class="kw">anova</span>(., <span class="dt">test =</span> <span class="st">&#39;Rao&#39;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb175-6"><a href="regressão-logística-binária.html#cb175-6"></a><span class="st">  </span><span class="kw">pander</span>()</span></code></pre></div>
+<table>
+<caption>Analysis of Deviance Table</caption>
+<colgroup>
+<col width="19%" />
+<col width="6%" />
+<col width="14%" />
+<col width="15%" />
+<col width="17%" />
+<col width="10%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Df</th>
+<th align="center">Deviance</th>
+<th align="center">Resid. Df</th>
+<th align="center">Resid. Dev</th>
+<th align="center">Rao</th>
+<th align="center">Pr(&gt;Chi)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>NULL</strong></td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">3</td>
+<td align="center">286.6</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>risk</strong></td>
+<td align="center">1</td>
+<td align="center">281.5</td>
+<td align="center">2</td>
+<td align="center">5.076</td>
+<td align="center">239.6</td>
+<td align="center">4.801e-54</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>sex</strong></td>
+<td align="center">1</td>
+<td align="center">1.562</td>
+<td align="center">1</td>
+<td align="center">3.514</td>
+<td align="center">1.56</td>
+<td align="center">0.2116</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>risk:sex</strong></td>
+<td align="center">1</td>
+<td align="center">3.514</td>
+<td align="center">0</td>
+<td align="center">3.864e-14</td>
+<td align="center">3.398</td>
+<td align="center">0.06527</td>
+</tr>
+</tbody>
+</table>
+<p>A tabela a seguir apresenta o ajuste deste modelo de regressão (<code>risk*sex: 3.398</code>), que foi o mesmo valor encontrado na estatística de teste do Qui-quadrado. O valor de P é também o mesmo (<span class="math inline">\(0.065\)</span>).</p>
+<p>Por sua vez, o Odds Ratio calculado previamente pela tabela de contingência também é encontrado na tabela de resultados da regressão logística ao se fazer <span class="math inline">\(\exp(b)\)</span>.</p>
+<table style="width:50%;">
+<colgroup>
+<col width="19%" />
+<col width="15%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Preditor</th>
+<th align="center">Estimate</th>
+<th align="center">OR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">(Intercept)</td>
+<td align="center">-2.537</td>
+<td align="center">0.07909</td>
+</tr>
+<tr class="even">
+<td align="center">sex1</td>
+<td align="center">0.394</td>
+<td align="center">1.483</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="resumo-13" class="section level2">
 <h2><span class="header-section-number">15.6</span> Resumo</h2>

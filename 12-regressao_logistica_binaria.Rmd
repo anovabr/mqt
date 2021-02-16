@@ -323,12 +323,17 @@ Um modelo de regressão foi calculado para verificar os resultados dos comportam
 ```  
 
 
-## Regressão logística e Qui-quadrado
+## Regressão logística, OR e Qui-quadrado
 
-Em uma regressão logística binária em que há apenas um preditor categórico com dois grupos, a analise é baseada em tabelas de contingência. A tabela a seguir apresenta a relação entre o sexo do participante e ele(a) estar incluído ou não na categoria de baixos recursos psicológicos.
+Conforme apresentado em capítulos anteriores, o teste Qui-quadrado é um caso particular do modelo de regressão logística em que há uma única variável independente categórica. Além disso, o Odds Ratio é uma medida de efeito que costuma ser obtida pela mesma tabela de contingência em que o teste Qui-quadrado é calculado.  
+
+Para demonstrar este conceito, a relação entre o <u>sexo</u> do participante (Masculino ou Feminino) e estar em <u>risco</u> de baixo recurso psicológico (sim ou não) será modelada.
 
 
-```{r}
+Inicialmente, a tabela de contingência descreve o relacionamento entre as variáveis.      
+
+
+```{r, echo = FALSE, warning = FALSE , message= FALSE }
 library(janitor)
 base_uso %>%
   tabyl(sex, risk_cefaleia_resources) %>%
@@ -339,50 +344,61 @@ base_uso %>%
   pander()
 ```
 
-```{r}
-(19/162)/(8/150)
+Essa tabela é particularmente útil e permite explorar possíveis associações entre as variáveis utilizando o teste Qui-quadrado de independência. Os resultados foram significativos, $X^2(1) = 3.398, p = 0.065$, indicando pela associação entre <u>sexo</u> e <u>risco</u>. No entanto, como o Qui-quadrado não trabalha com a ideia de variável independente e dependente, seus resultados não indicam em quais células os valores esperados e observados são significativamente diferentes.
+
+```{r, echo = FALSE, eval = FALSE }
+descr::CrossTable(base_uso$risk_cefaleia_resources, base_uso$sex, chisq = T)$CST %>% pander()
 ```
 
 
-Caso o Qui-quadrado de independência fosse calculado, seu valor de P indicara que os grupos não são associados, com estatística de teste = 2.697 e valor de P = 0.206.
 
-```{r}
-base_uso %>% 
-  mutate(risk = if_else(risk_cefaleia_resources == "0",0,1)) %>% 
-  {chisq.test(.$sex, .$risk)}
-```
+Por esta mesma tabela, é possível calcular a Chance (Odds) de um participante do sexo masculino estar estar no grupo de risco:
 
-```{r}
-base_uso %>% 
-  mutate(risk = if_else(risk_cefaleia_resources == "0",0,1)) %>% #nuneric for poisson 
-  glm(risk ~ sex, family = poisson, data = .) %>% 
-  car::Anova(., test.statistic="Wald", type = 2)
-```
+$$8/150 = 0.053$$
 
+Bem como a Chance (Odds) de um participante do sexo feminino estar estar no grupo de risco:
+
+$$19/162 = 0.117$$
+
+Os resultados obtidos às mulheres são superiores ao dos homens. Isso sugere que elas tem uma chance consideravelmente maior de estarem nesta esta condição negativa quando comparadas aos homens. O cálculo do Odds Ratio, neste sentido, é fundamental para indicar o quão maior é a chance. Como o nome indica, a conta é feita pela razão entre as chances, que indica OR = 2.2.  
+
+\[{\overbrace{\left ( \frac{19}{162}\right)}^\text{Odds Mulheres}}/{\underbrace{\left ( \frac{8}{150} \right)}_\text{Odds Homens}} \approx 2.2\]
+
+
+Esses dois resultados são importantes, mas seriam interpretados separadamente. Eles concluiriam que existe uma associação significativa (com $\alpha < 0.1$) entre o sexo do participante e estar ou não no grupo de risco problemas psicológicos, bem como uma chance aumentada das mulheres apresentarem baixos recursos psicológicos quando comparados aos homens.  
+
+Ao modelar esses dados por uma regressão logística, automaticamente se esta (1) realizando um teste Qui-quadrado de independência, com a vantagem de definir claramente uma variável independente e outra dependente, bem como se está (2) computando os OR dos preditores. Conceitualmente:  
+
+\[\underbrace{ln\left ( \frac{Risco}{1-Risco} \right)}_\text{logit} = b_0 + b_1X_Sexo\]
 
 
 ```{r }
-glm(risk_cefaleia_resources ~ sex, family = binomial, data = base_uso) %>% 
-  car::Anova(., test = "Wald")
-```
-
-```{r}
 base_uso %>% 
-janitor::tabyl(sex, risk_cefaleia_resources) %>% janitor::adorn_totals(where = c("row","col"))
-(exp(-2.9311937)*exp(0.7880364))/(1+(exp(-2.9311937)*exp(0.7880364)))
-
-0.05333333*2.19907406/(1+0.05333333*2.19907406)
-```
-```{r}
-#odds to probability
-#predict(mod_1, newdata=data.frame(sex="Female"), type="response")
+  mutate(risk = if_else(risk_cefaleia_resources == "0",0,1)) %>% #nuneric for poisson 
+  count(risk, sex) %>% 
+  {glm(n ~ risk * sex, data = .,family = poisson())} %>% 
+  anova(., test = 'Rao') %>% 
+  pander()
 ```
 
+A tabela a seguir apresenta o ajuste deste modelo de regressão (`risk*sex: 3.398`), que foi o mesmo valor encontrado na estatística de teste do Qui-quadrado. O valor de P é também o mesmo ($0.065$).
 
-```{r}
-(19*150)/(162*8)#odds of females have risk (compared to males)
-19/181 #proportion of females with risk
-8/158 #proportion of males with risk
+
+
+
+Por sua vez, o Odds Ratio calculado previamente pela tabela de contingência também é encontrado na tabela de resultados da regressão logística ao se fazer $\exp(b)$. 
+
+
+```{r, echo = FALSE }
+cbind(
+glm(risk_cefaleia_resources ~ sex, family = binomial, data = base_uso) %>% 
+  summary(.) %>% .$coefficients,
+glm(risk_cefaleia_resources ~ sex, family = binomial, data = base_uso) %>% 
+  summary(.) %>% .$coefficients %>% data.frame() %>% mutate(OR = exp(Estimate)) %>% select(OR)) %>% 
+  data.frame() %>%     
+  rownames_to_column("Preditor") %>% 
+  select(Preditor, Estimate, OR) %>% 
+  pander()
 ```
 
 
