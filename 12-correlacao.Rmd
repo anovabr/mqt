@@ -6,22 +6,20 @@ load("~/anovabr/mqt/bases/Base R - imagem corporal.RData")
 
 library(tidyverse)
 library(pander)
-
-library(kableExtra) #tables with different styles
 library(olsrr) #regression diagnostics
 library(gridExtra) #plot together
 ```
 
 A correlação é um procedimento estatístico utilizado para verificar a relação entre duas variáveis. Há diferentes técnicas correlacionais e a maioria busca medir a <u>força</u> e a <u>direção</u> da <u>associação linear</u> desse relacionamento.
 
-O nível de medida das variáveis indica qual técnica correlacional deve ser empregada. A tabela a seguir apresenta uma síntese:
+O nível de medida das variáveis indica qual técnica correlacional deve ser empregada. A tabela a seguir apresenta uma síntese inicial:
 
 
   | Nível de medida                     | Correlação / Coeficiente               |  
   | :-----------                        | :-----------                           |        
-  | Amas as variáveis são intervalares  | Correlação Produto momento de Pearson  |  
-  | Amas as variáveis são ordinais      | Correlação de Spearman                 |  
-  | Amas as variáveis são nominais      | Coeficiente Phi                        |  
+  | Ambas as variáveis são intervalares  | Correlação Produto momento de Pearson  |  
+  | Ambas as variáveis são ordinais      | Correlação de Spearman                 |  
+  | Ambas as variáveis são nominais      | Coeficiente Phi                        |  
 
 
 O Coeficiente de Correlação de Pearson é um dos mais frequentemente calculados em Psicologia e outras áreas empíricas e será demonstrado neste capítulo. É importante, no entanto, ter em mente que algumas áreas específicas outros coeficientes tendem a ser utilizados. Como exemplo, é bem típico em Psicometria trabalhar com variáveis categóricas e, com isso, calcular correlações tetracóricas ou policóricas, que não serão abordadas aqui. 
@@ -76,8 +74,12 @@ Para realização da Correlação de Pearson, é necessário que ambas as variá
 
 ## Pesquisa  
 
-<div class="alert alert-warning">
-  <strong>Base: </strong> Livro - Dados - Eating disorders
+<div class="base">
+  A base desta pesquisa está disponível em formato **R (Rdata)** e em **CSV**, que é lido pelo JASP. Clique na opção desejada.     
+      
+  <strong>R Base: </strong> [Imagem corporal](https://github.com/anovabr/mqt/raw/master/bases/Base%20R%20-%20imagem%20corporal.RData)
+  
+  <strong>Base JASP : </strong> [Base CSV - csv eat bsq brasil](https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip)
 </div>  
 
 
@@ -99,7 +101,7 @@ Após isso realizado, a realização do gráfico de dispersão é fundamental pa
 
 ```{r}
 ggplot(dados_brasil, aes(x = bsq_soma, y = eat_soma)) +
-  labs(x = "Imagem corporal (BSQ)", Y = "Disfunção alimentar (EAT)")
+  labs(x = "Imagem corporal (BSQ)", Y = "Disfunção alimentar (EAT)")+
   geom_jitter()
 ```
   
@@ -118,7 +120,7 @@ A correlação de Pearson não depende estritamente da normalidade das variávei
 
 ## Execução no JASP  
 
-Para executar as rotinas, será necessário carregar a base [csv eat bsq brasil](https://www.dropbox.com/s/l8xkxi5z5fntrd9/csv%20eat%20bsq%20brasil.csv?dl=0). Após fazer isso, para realizar tabelas e gráficos descritivos, deve-se clicar em `Descriptives` , na parte superior do programa.
+Para executar as rotinas, será necessário carregar a base intitulada "csv eat bsq brasil". Após fazer isso, para realizar tabelas e gráficos descritivos, deve-se clicar em `Descriptives` , na parte superior do programa.
 
 ![](./img/cap_correlacao_descritivo.png)
 Ao clicar nesta opção, será possível eleger as variáveis que irão ser analisadas e as variáveis que irão funcionar como agrupadores. Apesar de na correlação os conceitos de VI e VD não serem formalmente empregados, a lista `Variables` costuma reunir as variáveis dependentes, enquanto a seção `Split` costuma receber a variável independente. É importante atentar à opção `Frequency tables (nominal and ordinal)`, que deve ser marcada quando o nível de medida da variável de interesse for nominal ou ordinal. 
@@ -179,12 +181,12 @@ A correlação entre o comportamento alimentar (EAT-26) e a percepção corporal
 
 
 ## Resumo  
-
+::: {.explore}
 1. O termo correlação diz respeito a um conjunto de métodos que visa verificar a direção e a força do relacionamento entre duas variáveis   
-2. A correlação de Pearson assume que ambas as variáveis são linearmente correlacionadas   
-3. O coeficiente sempre indicará a direção (por um sinal) e a força (por um número entre -1 e +1) do relacionamento bivariado  
+2. A correlação de Pearson assume que ambas tem um relacionamento linear     
+3. O coeficiente obtido indica a direção (por um sinal positivo ou negativo) e a força (por um número entre -1 e +1) do relacionamento bivariado  
 4. Correlação não indica causalidade  
-
+::: 
 
 ## Pesquisas adicionais  
 

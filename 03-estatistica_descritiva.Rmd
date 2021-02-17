@@ -287,9 +287,14 @@ Após estas apresentações teóricas, espera-se que seja possível apresentar a
 
 ## Pesquisa
   
-<div class="alert alert-warning">
-  <strong>Base:</strong> [Base R - Pesquisa mapfre.RData](https://github.com/anovabr/mqt/raw/master/bases/Base%20R%20-%20Pesquisa%20mapfre.RData)
+
+<div class="base">
+  A base desta pesquisa está disponível em formato **R (Rdata)** e em **CSV**, que é lido pelo JASP. Clique na opção desejada.     
+      
+  <strong>Base R: </strong> [Base R - Pesquisa mapfre.RData](https://github.com/anovabr/mqt/raw/master/bases/Base%20R%20-%20Pesquisa%20mapfre.RData)   
+  <strong>Base JASP: </strong> [Base CSV - dataset_mapfre](https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip)
 </div>  
+
 
 Neste capítulo, vamos utilizar a pesquisa intitulada ["Depression and Anxiety Symptoms in a Representative Sample of Undergraduate Students in Spain, Portugal, and Brazil"](https://doi.org/10.1590/0102.3772e36412 ). Nessa pesquisa, sou o coautor e o pesquisador responsável para correspondência. O objetivo deste estudo foi desenvolver um mapa epidemiológico de sintomas de ansiedade e depressão em universitários em três países, bem como investigar possíveis relações entre tais condições de saúde e fatores sociodemográficos. Para acessar eventuais transtornos depressivos, o Inventário Beck de Depressão (BDI) foi utilizado e para acessar condições de ansiedade, o Inventário Beck de Ansiedade (BAI) foi utilizado. Em ambos os inventários, valores altos sugerem que condições de agravo à saúde mental podem estar presentes.  
 
@@ -298,7 +303,9 @@ Um diferencial importante do trabalho foi a seleção amostral. Partiu-se de uma
 
 ## Execução no R 
 
-Inicialmente, é necessário carregar a base de dados previamente descrita para o ambiente R. Este procedimento será necessário para todos os capítulos do livro. Frequentemente, uma primeira tabela informativa começa descrevendo as variáveis categóricas, que deve apresentar suas contagens e proporções. Nesta pesquisa de agora, tanto a variável <u>country</u> como <u>sex</u> são categóricas e serão utilizadas.  
+Inicialmente, é necessário carregar a base de dados previamente descrita para o ambiente R. Este procedimento será necessário para todos os capítulos do livro.  
+
+Frequentemente, uma primeira tabela informativa começa descrevendo as variáveis categóricas, que deve apresentar suas contagens e proporções. Nesta pesquisa de agora, tanto a variável <u>country</u> como <u>sex</u> são categóricas e serão utilizadas.  
 
 como três países fizeram parte da pesquisa, os dados serão agrupados por eles. O desenvolvimento desta tabela pode ser feito com pacote `janitor`, tal como demonstrado a seguir.
 
@@ -582,7 +589,7 @@ Espera-se que seja possível constatar que este gráfico é <mark>totalmente ina
 
 ## Execução no JASP  
 
-Da mesma forma que feito no R, será necessário carregar a [base](https://osf.io/e639b/) para o JASP. Durante todos os capítulos, esse procedimento de importação será requisitado.    
+Da mesma forma que feito no R, será necessário carregar a base para o JASP. Durante todos os capítulos, esse procedimento de importação será requisitado.    
 
 
 ## Tabelas  

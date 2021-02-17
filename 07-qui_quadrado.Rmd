@@ -67,8 +67,13 @@ Apesar de colateral à esta apresentação, o teste Qui-quadrado tem uma curiosi
 
 ## Pesquisa
   
-<div class="alert alert-warning">
-  <strong>Base: </strong> [Base R TDAH Arruda.Rdata](https://github.com/anovabr/mqt/raw/master/bases/Base%20R%20TDAH%20Arruda.RData)
+
+<div class="base">
+  A base desta pesquisa está disponível em formato **R (Rdata)** e em **CSV**, que é lido pelo JASP. Clique na opção desejada.     
+      
+  <strong>Base R: </strong> [Base R TDAH Arruda.Rdata](https://github.com/anovabr/mqt/raw/master/bases/Base%20R%20TDAH%20Arruda.RData)   
+  
+  <strong>Base JASP: </strong> [Base CSV - Base CSV - ADHD 2020 after processing](https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip)  
 </div>  
 
 
@@ -124,7 +129,11 @@ Os resultados deixam claro que que é possível rejeitar a hipótese nula, uma v
 **Atenção**: A validade das inferências dos resultados depende da adequação ou não dos pressupostos dos testes estatísticos. A avaliação destas condições é parte de um procedimento diagnóstico que deve ser sempre feito.  
 :::
 
-No teste Qui-quadrado, os principais pressupostos a ser investigados são a <mark>inexistência de células com valores esperados iguais a 0</mark> e <mark>no máximo 20% dos valores esperados serem inferiores a 5</mark>. Ambos podem ser checados na tabela exposta anteriormente e foram atendidos.  
+No teste Qui-quadrado, os principais pressupostos a ser investigados são:  
+<mark>Inexistência de células com valores esperados iguais a 0</mark> e    
+<mark>No máximo 20% dos valores esperados serem inferiores a 5</mark>.   
+
+Ambos podem ser checados na tabela exposta anteriormente e foram atendidos.  
    
 Eventualmente, quando os pressupostos são violados, há sugestão de fazer correções nos resultados, implementar técnicas de bootstrapping e contar com outros testes (Fisher's Exact Test, por exemplo) [@Campbell2007]. Eventualmente, colapsar categorias é uma prática comum, apesar de receber críticas da literatura.  
 
@@ -163,7 +172,7 @@ A interpretação é baseada nos graus de liberdade do Qui-quadrado e é feita d
 
 ## Execução no JASP
 
-Para executar o Qui-quadrado no JASP, será necessário carregar a base [ADHD 2020 after processing.csv](https://osf.io/zj4c2/download). Com os dados devidamente importados para o programa, a apresentação de tabelas e gráficos auxiliam o pesquisador a verificar padrões diferentes nos dados. Para executar isso, é necessário acessar a seção `Descriptives`:
+Para executar o Qui-quadrado no JASP, será necessário carregar a base para o programa. Com os dados devidamente importados para o programa, a apresentação de tabelas e gráficos auxiliam o pesquisador a verificar padrões diferentes nos dados. Para executar isso, é necessário acessar a seção `Descriptives`:
 
 
 ![](./img/jasp_descriptives.png)

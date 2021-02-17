@@ -54,7 +54,7 @@ Eventualmente, quando os pressupostos do modelo são violados, a literatura mais
   | Versão do teste | Um grupo           | Dois grupos independentes |  Grupos pareados    
   | :-----------    | :-----------       | :-----------              |  :-----------      
   | Paramétrica     | One-sample  t test | Two-samples t test        |  Paired t test
-  | Não-paramétrica | Signed rank test   | Mann-whitney              |  Wilcoxon
+  | Não-paramétrica | Signed rank test   | Wilcoxon-Mann-whitney     |  Wilcoxon Signed-Rank
 
 
 *Nota: Existe um intenso debate sobre a utilização de testes paramétricos e não-paramétricos em Psicologia. Algo pouco comentado, apesar de ser o aspecto mais importante em minha opinião, é que a hipótese testada em um teste paramétrico é diferente da teste da testada em um não-paramétrico. Ou seja, a substituição de um teste estatístico por outro, necessariamente, muda a hipótese de pesquisa investigada. O Teste T não assume normalidade da variável dependente, mas sim normalidade dos resíduos do modelo probabilístico, que será explicado em seguida* 
@@ -66,8 +66,12 @@ Apenas por um preâmbulo histórico, a origem do Teste T remonta o artigo public
 
 ## Pesquisa
   
-<div class="alert alert-warning">
-  <strong>Base: </strong> [Livro - R - ASQ SE 12 e 18](https://github.com/anovabr/mqt/raw/master/bases/Livro%20-%20R%20-%20ASQ%20SE%2012%20e%2018.RData)  
+<div class="base">
+  A base desta pesquisa está disponível em formato **R (Rdata)** e em **CSV**, que é lido pelo JASP. Clique na opção desejada.     
+      
+  <strong>Base R: </strong> [Livro - R - ASQ SE 12 e 18](https://github.com/anovabr/mqt/raw/master/bases/Livro%20-%20R%20-%20ASQ%20SE%2012%20e%2018.RData)  
+  
+  <strong>Base JASP: </strong> [Base CSV - ds_18](https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip)
 </div>  
 
 
@@ -250,7 +254,7 @@ Com esse conjunto de dados, o tamanho do efeito foi irrelevante, indicando que a
 
 ## Execução no JASP
 
-Nesta parte, apenas a base de crianças com 18 meses será utilizada. Ela está disponível com o nome de [ds_18.csv](https://osf.io/xr2sq/). Da mesma maneira que foi feito no R, a apresentação de tabelas e gráficos auxiliam o pesquisador a verificar padrões nos dados. Para fazer tais procedimentos, é necessário ir até a seção `Descriptives`, como ilustrado a seguir.  
+Nesta parte, apenas a base de crianças com 18 meses será utilizada. Ela está disponível com o nome de ds_18.csv. Da mesma maneira que foi feito no R, a apresentação de tabelas e gráficos auxiliam o pesquisador a verificar padrões nos dados. Para fazer tais procedimentos, é necessário ir até a seção `Descriptives`, como ilustrado a seguir.  
 
 
 ![](./img/jasp_descriptives.png)
@@ -493,5 +497,25 @@ Este trabalho apresenta uma análise dos resultados de provas de matemática e l
 
 3. Gender Differences in Multiple-Choice Tests: The Role of Differential Guessing Tendencies (DOI: 10.1111/j.1745-3984.1991.tb00341.x)  
 Nesta pesquisa, objetivou-se verificar a diferença no perfil cognitivo e padrão de respostas ao acaso de homens e mulheres. Para isso, 302 mulheres e 302 homens foram selecionados aleatoriamente de uma universidade em Jerusalem e, em seguida, fizeram um conjunto de testes cognitivos.
+
+
+## Questões  
+
+<div class="question">
+
+1. (Retirado de Residencia Médica, UNIFESP, CONSESP, 2015)De 20 mulheres com tensão pré-menstrual que receberam extrato de soja, seis melhoraram em seis meses. De outras 20 mulheres com tensão pré-menstrual que receberam placebo, duas melhoraram em seis meses. Os dois parâmetros resultantes foram, então, comparados.<br>a) Teste t para duas médias provenientes de amostras independentes.<br>b) Teste exato de Fisher para duas proporções provenientes de amostras independentes.<br>c) Teste t para duas médias provenientes de amostras relacionadas (teste t pareado).<br>d) Teste de McNemar para duas proporções provenientes de amostras independentes<br>e) Teste exato de Fisher para duas proporções provenientes de amostras relacionadas.
+
+1. (Retirado de Oficial Técnico de Inteligência Área de Criptoanálise Estatística, ABIN, CESPE, 2010) O teste de Wilcoxon é o equivalente não paramétrico do teste t-Student para comparação de duas médias, e o teste de Kruskal-Wallis é o equivalente não paramétrico da análise de variâncias para um fator.<br>a) Certo.<br>b) Errado.
+
+1. (Retirado de Laboratório de Estatística e Geoinformação-UFPR) Suponha que você tenha sido contratado para conduzir um estudo cujo objetivo seja descobrir qual dentre duas marcas de refrigerantes as pessoas acham que tem o melhor sabor. Em seu estudo, os participantes são submetidos a uma degustação às cegas. Eles pontuamuma marca e então pontuam a outra, em ordem aleatória. As notas são atribuídas numa escala de 1 (horrível) a 5 (delicioso). Qual tipo de teste seria o melhor para comparar estas notas? Justifique sua escolha.<br>a) Teste t para dois grupos pareados.<br>b) Teste t para dois grupos independentes<br>c) Teste qui-quadrado.<br>d) Teste de Mann-Whitney.<br>e) Teste de Wilcoxon.
+</div>
+
+<div class="mirror">✂ Gabarito: 1-b; 2-a<;3-e <div>
+
+
+
+
+
+
 
 Última modificação: `r format(Sys.time(), '%d %B, %Y')`

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Cap. 12 Modelo linear misto | Métodos quantitativos em Psicologia com R</title>
+  <title>Cap. 5 Família de distribuições | Métodos quantitativos em Psicologia com R</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Cap. 12 Modelo linear misto | Métodos quantitativos em Psicologia com R" />
+  <meta property="og:title" content="Cap. 5 Família de distribuições | Métodos quantitativos em Psicologia com R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="cjvanlissa/gitbook-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Cap. 12 Modelo linear misto | Métodos quantitativos em Psicologia com R" />
+  <meta name="twitter:title" content="Cap. 5 Família de distribuições | Métodos quantitativos em Psicologia com R" />
   
   <meta name="twitter:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="anova-de-medidas-repetidas.html"/>
-<link rel="next" href="correlação.html"/>
+<link rel="prev" href="estatística-descritiva.html"/>
+<link rel="next" href="tipos-de-amostragem.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -377,386 +377,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="modelo-linear-misto" class="section level1">
-<h1><span class="header-section-number">Cap. 12</span> Modelo linear misto</h1>
+<div id="família-de-distribuições" class="section level1">
+<h1><span class="header-section-number">Cap. 5</span> Família de distribuições</h1>
 <div class="objectives">
 <p>
 <strong>Objetivos do capítulo</strong><br />
-1. Apresentar a ANOVA de Medidas Repetidas.<br />
-2. Realizar passo-a-passo a modelagem analítica.<br />
-3. Verificar os pressupostos e implementar as correções sugeridas.<br />
-4. Escrever os resultados.
+1. Introduzir conceitos importantes em estatística descritiva<br />
+2. Apresentar tabelas e gráficos<br />
+3. Apresentar funções do dplyr e ggplot<br />
+4. Apresentar um módulo específico do JASP<br />
+5. Sugerir heurísticas ou regras gerais na criação de gráficos
 </p>
 </div>
-<p>O modelo linear misto (LMM) é um modelo linear, frequentemente utilizado para trabalhar dados longitudinais ou de medidas repetidas, que possibilita definir tanto parâmetros populacionais (efeitos fixos), como coeficientes individuais (efeitos aleatórios), além do erro experimental. Conceitualmente, pode ser apresentado como:</p>
-<p><span class="math display">\[y_i = \underbrace{X_i\beta}_\text{Efeito fixo} + \underbrace{Z\gamma + e_i}_\text{Efeito aleatório}\]</span></p>
-<p>Onde:<br />
-<span class="math inline">\(\beta\)</span> representa todos os termos fixos<br />
-<span class="math inline">\(\gamma\)</span> representa os termos aleatórios (assumidos como normalmente distribuídos)<br />
-<span class="math inline">\(e\)</span> representa o erro/resíduo</p>
-<p>Pragmaticamente, este modelo oferece mais flexibildiade à ANOVA de medidas repetidas e sua utilização vem ganhando mais espaço em Psicologia e áreas da saúde <span class="citation">(Gueorguieva &amp; Krystal, <a href="#ref-Gueorguieva2004" role="doc-biblioref">2004</a>)</span>.</p>
-<p>Os efeitos fixos são compatilhados por todos os indivíduos, enquanto os aleatórios são especificos de cada um dos participantes. Com isso, a trajetória de cada indivíduo pode ser modelada, permitindo que um subconjunto dos parâmetros de regressão sejam definidos como aleatórios.</p>
-<p>Tanto O LMM, como a ANOVa de Medidas Repetidas costumam ser utilizados em dados longitudinais. A tabela a seguir apresenta algumas das principais características de ambas as análises.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Característica</th>
-<th align="left">ANOVA (MR)</th>
-<th align="left">Modelo Linear Misto</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Sujeitos medidos em vários momentos</td>
-<td align="left">Sim</td>
-<td align="left">Sim</td>
-</tr>
-<tr class="even">
-<td align="left">Dados completos em todos os segmentos</td>
-<td align="left">Sim</td>
-<td align="left">Não</td>
-</tr>
-<tr class="odd">
-<td align="left">Estimativas de tendências individuais</td>
-<td align="left">Não</td>
-<td align="left">Sim</td>
-</tr>
-<tr class="even">
-<td align="left">Covariáveis tempo-depenentes</td>
-<td align="left">Não</td>
-<td align="left">Sim</td>
-</tr>
-<tr class="odd">
-<td align="left">Complexidade computacional</td>
-<td align="left">Baixa</td>
-<td align="left">Alta</td>
-</tr>
-</tbody>
-</table>
-<div id="pesquisa-6" class="section level2">
-<h2><span class="header-section-number">12.1</span> Pesquisa</h2>
-<div class="base">
-<p>A base desta pesquisa está disponível em formato <strong>R (Rdata)</strong> e em <strong>CSV</strong>, que é lido pelo JASP. Clique na opção desejada.</p>
-<p><strong>Base R: </strong> <a href="https://github.com/anovabr/mqt/raw/master/bases/R%20-%20Base%20Lidia%20Carprofeno.RData">R - Base Lidia Carprofeno</a></p>
-<p><strong>Base JASP : </strong> <a href="https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip">Base CSV - Lidia Carprofeno longo</a></p>
+<p>Quando pesquisadores e acadêmicos fazem seus estudos, com muita frequência, eles obtêm um grande conjunto de dados, sendo pouco informativo ou até mesmo inviável apresentar detalhadamente todos eles. A estatística descritiva oferece uma diversidade de ferramentas que auxiliam a organizar, descrever, resumir e apresentar os dados obtidos, de forma que os resultados sejam mais fáceis de serem compreendidos e analisados e, consequentemente, que a pesquisa possa ser melhor compreendida por todos os seus leitores.</p>
+<div class="warning">
+<p><strong>Atenção</strong>: A estatística descritiva dispõe de inúmeras ferramentas para auxiliar na gestão e apresentação de dados.</p>
 </div>
-<p>A esse momento, vamos ter como referência de análise a pesquisa intitulada <a href="https://www.scielo.br/scielo.php?script=sci_arttext&amp;pid=S0102-09352019000100109">“Avaliação psicométrica em português do indicador de dor crônica de Helsinki em cães com sinais crônicos de osteoartrite”</a>, que tem como primeira autora Lídia Matsubara e eu sou coautor. Os dados dessa pesquisa foram previamente utilizados no capítulo de ANOVA de medidas repetidas.</p>
-<p>Nessa pesquisa, temos um <u>grupo controle</u> e um <u>grupo experimental</u> e todos os participantes foram avaliados em 5 momentos diferentes do tempo: 1 semana antes do início do tratamento (W2), imediatamente antes do início do tratamento (W0), duas semanas e quatro semanas após o tratamento ter iniciado (S2 e s4) e após uma semana da retirada do tratamento (s6). Trata-se de um delineamento 2x5, considerando os 2 grupos e as 5 medições ao longo do tempo.</p>
-</div>
-<div id="execução-no-r-11" class="section level2">
-<h2><span class="header-section-number">12.2</span> execução no R</h2>
-<p>A base <code>dados</code> reúne as varáveis da pesquisa. No entanto, ela está em formato largo (wide). Na maioria das vezes, o formato longo é o mais tipicamente encontrado para análises longitudinais e, por isso, será imeplementado pela função <code>pivot_longer</code> do <code>tidyverse</code>.</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="modelo-linear-misto.html#cb117-1"></a>tratamento &lt;-<span class="st"> </span>dados <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb117-2"><a href="modelo-linear-misto.html#cb117-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">id =</span> <span class="kw">row_number</span>()) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb117-3"><a href="modelo-linear-misto.html#cb117-3"></a><span class="st">  </span><span class="kw">select</span>(id, grupo_dummy,<span class="kw">starts_with</span>(<span class="st">&quot;total_&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb117-4"><a href="modelo-linear-misto.html#cb117-4"></a><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="op">-</span><span class="kw">c</span>(id,grupo_dummy),</span>
-<span id="cb117-5"><a href="modelo-linear-misto.html#cb117-5"></a>                <span class="dt">names_to =</span> <span class="st">&quot;tempo&quot;</span>,</span>
-<span id="cb117-6"><a href="modelo-linear-misto.html#cb117-6"></a>               <span class="dt">values_to=</span> <span class="st">&quot;resultado&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb117-7"><a href="modelo-linear-misto.html#cb117-7"></a><span class="st">  </span><span class="kw">rename</span>(<span class="dt">grupo =</span> grupo_dummy) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb117-8"><a href="modelo-linear-misto.html#cb117-8"></a><span class="st">  </span><span class="kw">filter</span>(grupo <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb117-9"><a href="modelo-linear-misto.html#cb117-9"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">grupo =</span> <span class="kw">factor</span>(<span class="kw">if_else</span>(grupo <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, <span class="st">&quot;Placebo&quot;</span>, <span class="st">&quot;Experimental&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb117-10"><a href="modelo-linear-misto.html#cb117-10"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">tempo =</span> <span class="kw">factor</span>(<span class="kw">case_when</span>(</span>
-<span id="cb117-11"><a href="modelo-linear-misto.html#cb117-11"></a>    tempo <span class="op">==</span><span class="st"> &quot;total_w4&quot;</span> <span class="op">~</span><span class="st"> &quot;antes&quot;</span>,</span>
-<span id="cb117-12"><a href="modelo-linear-misto.html#cb117-12"></a>    tempo <span class="op">==</span><span class="st"> &quot;total_w0&quot;</span> <span class="op">~</span><span class="st"> &quot;no_dia&quot;</span>,</span>
-<span id="cb117-13"><a href="modelo-linear-misto.html#cb117-13"></a>    tempo <span class="op">==</span><span class="st"> &quot;total_s2&quot;</span> <span class="op">~</span><span class="st"> &quot;semana_2&quot;</span>,</span>
-<span id="cb117-14"><a href="modelo-linear-misto.html#cb117-14"></a>    tempo <span class="op">==</span><span class="st"> &quot;total_s4&quot;</span> <span class="op">~</span><span class="st"> &quot;semana_4&quot;</span>,</span>
-<span id="cb117-15"><a href="modelo-linear-misto.html#cb117-15"></a>    tempo <span class="op">==</span><span class="st"> &quot;total_s6&quot;</span> <span class="op">~</span><span class="st"> &quot;semana_6&quot;</span>,</span>
-<span id="cb117-16"><a href="modelo-linear-misto.html#cb117-16"></a>  )))</span></code></pre></div>
-<p>As variávies neste conjunto de dados são as seguintes:</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="modelo-linear-misto.html#cb118-1"></a>tratamento <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">names</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;id&quot;        &quot;grupo&quot;     &quot;tempo&quot;     &quot;resultado&quot;</code></pre>
-<p>Dessa forma:</p>
-<p><code>id</code> Identificação única de cada participante.<br />
-<code>grupo</code> Indica o grupo em que o participante foi alocado, tal como previamente apresentado (controle ou experimental).<br />
-<code>tempo</code> Indica cada um dos 5 pontos de medida.<br />
-<code>resultado</code> Apresenta os valores obtido pela escala utilizada. Quão maior o resultado, mais intenso são os sintomas.</p>
-<p>Como uma primeira etapa, é importante criar tabelas e gráficos. Esses dois recursos apresentam as principais características dos grupos, bem como seus resultados.</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="modelo-linear-misto.html#cb120-1"></a>arsenal<span class="op">::</span><span class="kw">tableby</span>(tempo <span class="op">~</span><span class="st"> </span>resultado <span class="op">+</span><span class="st"> </span>grupo, <span class="dt">test   =</span> <span class="ot">FALSE</span>,tratamento) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summary</span>() </span></code></pre></div>
-<table>
-<colgroup>
-<col width="23%" />
-<col width="12%" />
-<col width="12%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="12%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="center">antes (N=40)</th>
-<th align="center">no_dia (N=40)</th>
-<th align="center">semana_2 (N=40)</th>
-<th align="center">semana_4 (N=40)</th>
-<th align="center">semana_6 (N=40)</th>
-<th align="center">Total (N=200)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><strong>resultado</strong></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="left">   Mean (SD)</td>
-<td align="center">16.475 (6.437)</td>
-<td align="center">16.700 (6.669)</td>
-<td align="center">15.675 (6.719)</td>
-<td align="center">14.250 (6.740)</td>
-<td align="center">15.425 (8.430)</td>
-<td align="center">15.705 (7.020)</td>
-</tr>
-<tr class="odd">
-<td align="left">   Range</td>
-<td align="center">0.000 - 29.000</td>
-<td align="center">0.000 - 28.000</td>
-<td align="center">0.000 - 28.000</td>
-<td align="center">0.000 - 27.000</td>
-<td align="center">0.000 - 34.000</td>
-<td align="center">0.000 - 34.000</td>
-</tr>
-<tr class="even">
-<td align="left"><strong>grupo</strong></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="left">   Experimental</td>
-<td align="center">19 (47.5%)</td>
-<td align="center">19 (47.5%)</td>
-<td align="center">19 (47.5%)</td>
-<td align="center">19 (47.5%)</td>
-<td align="center">19 (47.5%)</td>
-<td align="center">95 (47.5%)</td>
-</tr>
-<tr class="even">
-<td align="left">   Placebo</td>
-<td align="center">21 (52.5%)</td>
-<td align="center">21 (52.5%)</td>
-<td align="center">21 (52.5%)</td>
-<td align="center">21 (52.5%)</td>
-<td align="center">21 (52.5%)</td>
-<td align="center">105 (52.5%)</td>
-</tr>
-</tbody>
-</table>
-<p>O gráfico de linhas tende a ser utilizado para medidas longitudinais e encontra-se a seguir.</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="modelo-linear-misto.html#cb121-1"></a><span class="kw">ggplot</span>(tratamento, <span class="kw">aes</span>(<span class="dt">x=</span>tempo, <span class="dt">y=</span>resultado, <span class="dt">group=</span>grupo, <span class="dt">color=</span>grupo)) <span class="op">+</span><span class="st"> </span><span class="co">#variaveis</span></span>
-<span id="cb121-2"><a href="modelo-linear-misto.html#cb121-2"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun =</span> mean, <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>, <span class="dt">size=</span><span class="fl">1.0</span>, <span class="kw">aes</span>(<span class="dt">linetype =</span> grupo)) <span class="op">+</span><span class="st"> </span><span class="co">#linha</span></span>
-<span id="cb121-3"><a href="modelo-linear-misto.html#cb121-3"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun=</span><span class="st">&quot;mean&quot;</span>, <span class="dt">geom=</span><span class="st">&quot;point&quot;</span>, <span class="dt">size=</span><span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">shape =</span> grupo)) <span class="op">+</span><span class="st"> </span><span class="co">#pontos</span></span>
-<span id="cb121-4"><a href="modelo-linear-misto.html#cb121-4"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>,<span class="dt">size=</span><span class="dv">1</span>) <span class="co">#barra de erro</span></span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-145-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Os resultados já deixam a impressão de que ambos os grupos tiveram desfechos próximos durante toda a pesquisa. Entretanto, testes formais precisam ser feitos para se chegar a esta conclusão. O R oferece alguns pacotes específicos para modelos mistos. Os pacotes <code>lme4</code> e <code>lmerTest</code> serão utilizados aqui.</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="modelo-linear-misto.html#cb122-1"></a><span class="kw">library</span>(lme4)</span>
-<span id="cb122-2"><a href="modelo-linear-misto.html#cb122-2"></a><span class="kw">library</span>(lmerTest)</span></code></pre></div>
-<p>A estrutura computacional da sintaxe do <code>lme4</code> é bastante similar aos modelos tradicionais de regressão que utilizam a função <code>lm</code>. No entanto, agora é possível incluir tanto efeitos fixos como aleatórios. Quando os termos são definidos como correlacionados, se utiliza uma barra verticail (|). Quando são definidos como descorrelacionados, duas barras verticais (||) são utilizadas.</p>
-<p>Nesta pesquisa, se assumiu que cada participante apresentava seu próprio intercepto, ou seja, seu próprio valor de início. A sintaxe a seguir cria o modelo e o armazena os resultados no vertor <code>mod_lme</code>.</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="modelo-linear-misto.html#cb123-1"></a>mod_lme &lt;-<span class="st"> </span><span class="kw">lmer</span>(resultado <span class="op">~</span><span class="st"> </span>tempo<span class="op">*</span>grupo <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">|</span>id) , <span class="dt">data =</span> tratamento)</span></code></pre></div>
-<p>Repare que esse modelo é composto pelo se seguintes componentes:<br />
-1. Os resultados são definidos na variável <code>resultado</code><br />
-2. efeito fixo do <code>tempo</code><br />
-3. efeito fixo do <code>grupo</code>,<br />
-4. efeito fixo da interação <code>tempo x grupo</code><br />
-5. efeito aleatório do <code>id</code>, indicando um intercepto aleatório e específico por participante</p>
-<p>Uma vez que o modelo já foi criado, agora é necessário recuperar seus resultados. É importante notar que O pressuposto da normalidade é necessário e ele já foi acessado (e aceito) anteriormente. Conforme dito ao início do capítulo, O LMM relaxa o pressuposto esfericidadde e, por consequência, também o da homogeneidade <span class="citation">(Quené &amp; Bergh, <a href="#ref-Quen2004" role="doc-biblioref">2004</a>)</span>.</p>
-<p>Inicialmente, a <code>anova</code> permite uma visualização de todos os coeficientes do modelo. Isso é importante para verificar cada um dos preditores estipulados e sua significância. A interpretação dos resultados é similar à realizada em modelos de regressão e totalmente convergente ao resultado obtido na ANOVA. Novamente, a leitura da tabela deve começar pela interação.</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="modelo-linear-misto.html#cb124-1"></a><span class="kw">anova</span>(mod_lme) <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
-<table>
-<caption>Type III Analysis of Variance Table with Satterthwaite’s method</caption>
-<colgroup>
-<col width="24%" />
-<col width="12%" />
-<col width="13%" />
-<col width="10%" />
-<col width="10%" />
-<col width="13%" />
-<col width="13%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center"> </th>
-<th align="center">Sum Sq</th>
-<th align="center">Mean Sq</th>
-<th align="center">NumDF</th>
-<th align="center">DenDF</th>
-<th align="center">F value</th>
-<th align="center">Pr(&gt;F)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center"><strong>tempo</strong></td>
-<td align="center">146.9</td>
-<td align="center">36.72</td>
-<td align="center">4</td>
-<td align="center">152</td>
-<td align="center">3.304</td>
-<td align="center">0.01254</td>
-</tr>
-<tr class="even">
-<td align="center"><strong>grupo</strong></td>
-<td align="center">7.851</td>
-<td align="center">7.851</td>
-<td align="center">1</td>
-<td align="center">38</td>
-<td align="center">0.7063</td>
-<td align="center">0.4059</td>
-</tr>
-<tr class="odd">
-<td align="center"><strong>tempo:grupo</strong></td>
-<td align="center">30.95</td>
-<td align="center">7.738</td>
-<td align="center">4</td>
-<td align="center">152</td>
-<td align="center">0.6962</td>
-<td align="center">0.5957</td>
-</tr>
-</tbody>
-</table>
-<p>Verifique que a tabela apresenta três os resultados: <code>tempo x grupo</code>, <code>grupo</code> e <code>tempo</code>. A técnica de Satterthwaite’s method é utilizada para corrigir os valores do grau de liberdade e, consequentemente, os valores de p. Os resultados são virtualmente identicos aos obtidos pela ANOVA, com a diferença que os graus de liberdade do numerador de do denominador não foram corrigidos.</p>
-<p>Para obter as informações completas do modelo, é necessário solicitar o <code>summary</code>. Essa função retorna 4 informações calculadas: <code>Scaled residuals</code>, <code>Random effects</code>, <code>Fixed effects</code> e <code>Correlation of Fixed Effect</code> e serve para aprofundar a interpretação dos resultados. Uma particular diferença entre esse relatório e o da ANOVA de Medidas Repetidas é o np2, que não faz parte do LMM.</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="modelo-linear-misto.html#cb125-1"></a><span class="kw">summary</span>(mod_lme) </span></code></pre></div>
-<pre><code>## Linear mixed model fit by REML. t-tests use Satterthwaite&#39;s method [
-## lmerModLmerTest]
-## Formula: resultado ~ tempo * grupo + (1 | id)
-##    Data: tratamento
-## 
-## REML criterion at convergence: 1163.6
-## 
-## Scaled residuals: 
-##     Min      1Q  Median      3Q     Max 
-## -2.4365 -0.4386 -0.0476  0.4571  3.8758 
-## 
-## Random effects:
-##  Groups   Name        Variance Std.Dev.
-##  id       (Intercept) 38.77    6.227   
-##  Residual             11.11    3.334   
-## Number of obs: 200, groups:  id, 40
-## 
-## Fixed effects:
-##                Estimate Std. Error        df t value Pr(&gt;|t|)    
-## (Intercept)    15.66241    1.01364  38.00000  15.452  &lt; 2e-16 ***
-## tempo1          0.12719    0.37321 152.00000   0.341  0.73372    
-## tempo2         -0.29971    0.21547 152.00000  -1.391  0.16628    
-## tempo3         -0.49979    0.15236 152.00000  -3.280  0.00129 ** 
-## tempo4         -0.07506    0.11802 152.00000  -0.636  0.52572    
-## grupo1          0.85188    1.01364  38.00000   0.840  0.40593    
-## tempo1:grupo1  -0.29386    0.37321 152.00000  -0.787  0.43228    
-## tempo2:grupo1  -0.08918    0.21547 152.00000  -0.414  0.67954    
-## tempo3:grupo1  -0.17084    0.15236 152.00000  -1.121  0.26393    
-## tempo4:grupo1   0.10125    0.11802 152.00000   0.858  0.39228    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Correlation of Fixed Effects:
-##             (Intr) tempo1 tempo2 tempo3 tempo4 grupo1 tmp1:1 tmp2:1 tmp3:1
-## tempo1       0.000                                                        
-## tempo2       0.000  0.000                                                 
-## tempo3       0.000  0.000  0.000                                          
-## tempo4       0.000  0.000  0.000  0.000                                   
-## grupo1      -0.050  0.000  0.000  0.000  0.000                            
-## tempo1:grp1  0.000 -0.050  0.000  0.000  0.000  0.000                     
-## tempo2:grp1  0.000  0.000 -0.050  0.000  0.000  0.000  0.000              
-## tempo3:grp1  0.000  0.000  0.000 -0.050  0.000  0.000  0.000  0.000       
-## tempo4:grp1  0.000  0.000  0.000  0.000 -0.050  0.000  0.000  0.000  0.000</code></pre>
-</div>
-<div id="execução-no-jasp-12" class="section level2">
-<h2><span class="header-section-number">12.3</span> Execução no JASP</h2>
-<p>A base utilizada será a intitulada “csv Lidia Carprofeno longo”. Essa base tem o formato longo. Isso significa que os resultados obtidos no decorrer do tempo serão apresentados em cada uma das linhas do conjunto de dados. Modelos Lineares Mistos tendem a solicitar que os dados sejam organizadaos desta maneira.</p>
-<p>Após carregar a base no JASP, será necessário assegurar que a escala de medida de todas as variáveis são corretas. A variável <u>id</u> deverá ser definido como nominal e para fazer isso, clique no símbolo da régua ao lado dela.</p>
-<p><img src="img/cap_lmm_nivel_medida.PNG" /></p>
-<p>Uma lista de opções irá aparecer. Será necessário selecionar a opção nominal.</p>
-<p><img src="img/cap_lmm_nivel_medida2.PNG" /></p>
-<p>De maneira próxima ao que foi realizado no R, é importante apresentar tabelas e gráficos descritivos. Estes elementos auxiliam em uma primeira visualização do padrão das respostas. Para fazer isso, será necessário apresentar tabelas e gráficos descritivos. Para fazer isso, é necessário clicar em <code>Descriptives</code>.</p>
-<p><img src="img/cap_lmm_descriptives.PNG" />
-Ao clicar nesta opção, será possível eleger as variáveis que irão ser analisadas e as variáveis que irão funcionar como agrupadores. Na prática, a lista <code>Variables</code> irá reunir as variáveis dependentes, enquanto a variável independente será colocada na seção <code>Split</code>. É importante atentar à opção <code>Frequency tables (nominal and ordinal)</code>, que deve ser marcada quando o nível de medida da variável de interesse for nominal ou ordinal.</p>
-<p><img src="img/cap_lmm_descriptives2.PNG" /></p>
-<p>O JASP permite fazer gráficos com apenas 1 agrupador. É possível, então, apresentar inicialmente os <u>resultados</u> pelo <u>tempo</u> e, em seguida, pelo <u>grupo</u>. Para isso, será necessário arrastar a variável <u>tempo</u> para o local de <code>Split</code> e a variável <u>resultado</u> para o local <code>Variables</code>. Ao fazer isso, o JASP irá preencher a tabela com várias informações descritivas.</p>
-<p>É importante se lembrar que o JASP <u>não</u> está considerando o <u>grupo</u> que o participante foi alocado.</p>
-<p><img src="img/cap_lmm_descriptives3.PNG" /></p>
-<p>Gráficos permitem um entendimento mais facilitado dos resultados. Para fazer isso, será necessário clicar na opção <code>Plots</code>.</p>
-<p><img src="img/cap_lmm_plots.PNG" /></p>
-<p>Em seguida, será possível selecionar o <code>Boxplot</code> e <code>Boxplot element</code>. O gráfico aparecerá abaixo da tabela e irá apresentar diferentes informações estatísticas da distribuição dos resultados das variáveis em função do momenot da pesquisa.</p>
-<p><img src="img/cap_lmm_boxplots1.PNG" /></p>
-<p>Para gerar as estatísticas descritivas e a apresentação gráfica sobre a relação entre os <u>resultados</u> e os respectvos <u>grupos</u>, será necessário, substituir a variável <u>tempo</u> por <u>grupo</u> no espaço <code>Split</code>.</p>
-<p><img src="img/cap_lmm_boxplots2.PNG" /></p>
-<p>Apesar dessas análises serem informativas, esta versão do JASP não integra todas as três variáveis desejadas nas tabelas e gráficos produzidos. Isso será feito posteriormente.</p>
-<p>Para realizar um Modelos Linear Misto, será necessário clicar em <code>Mixed Models</code> e <code>Linear Mixed Models</code>.</p>
-<p><img src="img/cap_lmm_interface.PNG" /></p>
-<p>Após fazer isso, a interface do programa será próxima à apresentada abaixo.
-<img src="img/cap_lmm_interface2.PNG" />
-O local <code>Dependent Variable</code> irá reunir a VD e a variável <u>resultado</u> deverá ser arrastada até este espaço. <code>Fixed effects</code> é o local que irá reúnir as variáveis entre participantes e as variáveis <u>tempo</u> e <u>grupo</u> devem ser inseridas neste local. O <code>Random effects grouping factors</code> irá reunir a o efeito aleatório e <u>id</u> deverá ser arrastado para lá.</p>
-<p>Ao fazer isso, o JASP irá realizar a análise e apresentar, automaticamente, os resultados.</p>
-<p><img src="img/cap_lmm_interface3.PNG" /></p>
-<p>Esses resultados são baseados na configuração padrão do JASP, que define tanto o intercepto como a inclinação como efeitos aleatórios. No entanto, nesta pesquisa, apenas o intercepto foi definido como aleatório. Para alterar essa configuração, será necessário clicar na opção <code>Model</code>, na parte esquerda do programa.</p>
-<p><img src="img/cap_lmm_model.PNG" /></p>
-<p>Todas as caixas de seleção na seção <code>Random effects</code> devem ser desmarcarcadas.</p>
-<p><img src="img/cap_lmm_model2.PNG" /></p>
-<p>Após isso feito, o JASP irá refazer as análises e apresentar os resultados, mudando também as mensagens de aviso.</p>
-<p>A interpretação dos resultados agora pode ser feita, sempre começando pela interação. A interação <code>Grupo x Tempo</code> não foi significativa (F(4, 152) = 0.696, p = 0.596). O efeito do <code>Grupo</code> também não foi significativo (F(3, 38) = 0.706, p = 0.406). De maneira distinta, o <code>Tempo</code> foi um preditor significativo (F(4, 152) = 3.304, p = 0.013).</p>
-<p><img src="img/cap_lmm_resultados.PNG" /></p>
-<p>Esta versão do JASP não oferece nenhum recurso para avaliar os pressupostos do modelo. Dessa maneira, isso não será realizado.</p>
-<p>Apresentações gráficas são extremamente importantes e para fazer isso, é necessário clicar em <code>Plots</code></p>
-<p><img src="img/cap_lmm_resultados_plots.PNG" /></p>
-<p>A variável <code>Tempo</code> deve ser inserida no eixo horizontal (<code>Horizontal axis</code>) e a variável <code>gruop</code> em <code>Separated lines</code>. As outras opções nào precisam ser alterada. O gráfico será gerado automaticamente e servirá como um recurso extra para entender os resultados.</p>
-<p><img src="img/cap_lmm_resultados_plots2.PNG" />
-Notas: Infelizmente, o JASP não realiza um gráfico completo dessa maneira na seção <code>Descriptives</code>, tal como apresentado. Por vezes, será necessário primeiro rodar integralmente o Modelo Linear misto para depois gerar esta apresentação. Quase sempre, o eixo X recebe a variável com maior quantidade de níveis. Essa pesquisa não teve resultados significativos e, em função disso, testes post hoc não foram realizados. Entretanto, frequentemente os resultados são significativos e a mecânica das comparações pareadas é próxima ao que foi demonstrado no capítulo de ANOVA Fatorial.</p>
-</div>
-<div id="escrita-dos-resultados-10" class="section level2">
-<h2><span class="header-section-number">12.4</span> Escrita dos resultados</h2>
-<p>um dos principais objetivos em delineamentos que contem com termos de interação é verificar se o efeito de uma variável depende dos níveis de outra. Nesta pesquisa, isso ocorreria caso os resultados obtidos dependessem da relação entre o tempo decorrido do tratamento e do grupo em que o participante tivesse sido alocado. No entanto, os resultados da interação não foram significativos, indicando que isso não parece ter ocorrido. Uma vez que o efeito principal do tempo foi significativo, é possível concluir que o tempo é um preditor significativo nos resultados, independente do grupo em que o participante se encontra.</p>
-<p>Abaixo uma sugestão de escrita baseada nas recomendações da American Psychological Association (APA).</p>
-<div class="writing">
-<p>
-<strong>Como escrever os resultados</strong>
-</p>
-<p>
-Os dados foram analisados através de um Modelo Linear de Efeitos Mistos, que verificou o efeito do tempo, do grupo, a interação entre esses dois preditores. Neste modelo, um intercepto aleatório foi definido para cada participante em com isso, essa análise levou em consideração tanto efeitos fixos quanto aleatórios. Os resultados permitiram concluir que Não há interação significativa tempo x grupo (F(4, 152 = 0.696), p = 0.596), bem como não há efeito significativo do grupo (F(1, 38 = 0.706), p = 0.406). Em outra direção, o efeito o tempo teve efeito significativo nos resultados (F(4, 152 = 3.304), p = 0.013).
-</p>
-</div>
-</div>
-<div id="resumo-10" class="section level2">
-<h2><span class="header-section-number">12.5</span> Resumo</h2>
+<div id="resumo-3" class="section level2">
+<h2><span class="header-section-number">5.1</span> Resumo</h2>
 <div class="explore">
+<p>Este capítulo apresentou os aspectos tabulares e gráficos corriqueiramente encontrados em pesquisas de Psicologia e áreas congêneres. Entre os pontos principais, estão os seguintes:</p>
 <ol style="list-style-type: decimal">
-<li>O Modelo Linear de Efeitos Mistos (LMM) oferece maior versatilidade à ANOVA de medidas repetidas<br />
+<li>Medidas de posição e dispersão são fundamentais na apresentação dos resultados de uma pesquisa<br />
 </li>
-<li>A ANOVA tem como pressuposto Normalidade e Esfericidade, enquanto o LMM apenas Normalidade dos resíduos</li>
-<li>Os resultados frequentemente encontrados em ambos os modelos vão na mesma direção<br />
+<li>Variáveis categóricas são resumidas por contagens e proporções. Variáveis contínuas por suas médias e desvios-padrão<br />
 </li>
-<li>A implementação computacional é mais trabalhosa<br />
+<li>Tabelas e gráficos devem ser claros ao leitor, sem criar viés ou distorção dos resultados<br />
 </li>
-<li>A escrita apresenta algumas particularidades relacionadas à cada modelo.<br />
+<li>As tabelas são muito úteis para uma apresentação detalhada dos resultados<br />
+</li>
+<li>Gráficos condensam um grande volume de dados de uma forma mais facilmente interpretável<br />
+</li>
+<li>A heurística típica em gráficos solicita responder a quantidade e a natureza das variáveis a serem apresenadas<br />
 </li>
 </ol>
 </div>
 </div>
-<div id="pesquisas-adicionais-4" class="section level2">
-<h2><span class="header-section-number">12.6</span> Pesquisas adicionais</h2>
+<div id="questões-2" class="section level2">
+<h2><span class="header-section-number">5.2</span> Questões</h2>
+<div class="question">
 <ol style="list-style-type: decimal">
-<li>Effects of Aerobic Training versus Breathing Exercises on Asthma Control: A Randomized Trial (DOI: 10.1016/j.jaip.2020.06.042)
-Nesta pesquisa, 54 pacientes com asma foram aleatoriamente selecionados para receberem ou um tratamento baseado em exercícios aeróbicos ou um tratamento baseado em técnicas de respiração. Os pesquisadores acompanharam os participantes por 3 meses e concluíram que, em alguns aspectos, o grupo de exercícios aeróbicos teve uma melhora significativamente maior do que o grupo de técnicas respiratórias. Esses dados foram analisados por mim, apesar de não constar no manuscrito.</li>
+<li>Trata-se de um círculo dividido por fatias cujos ângulos internos são proporcionais às partes envolvidas. Este é um gráfico:<br>a) De colunas<br>b) Histograma<br>c)De Setor<br>d) Boxplot<br>e)Barras</li>
+<li>É uma medida de posição para variáveis propriamente numéricase que é obtida somando-se todos os valores observados e dividindo-se o resultado pelo número de observações<br>a) Mediana<br>b) Média<br>c) Moda<br>d) Desvio-padrão<br>e) Amplitude interquartil</li>
+<li>(ENADE, Biomedicina - 2010) Para apresentarem gráficos dados referentes à distribuição de frequências de um grupo de medições, pode-se aplicar um modelo semelhante ao estabelecido na figura abaixo, na qual o pesquisador verifica a variação de anticorpos em relação a uma coorte populacional específica.<br><img src="img/exercicio_histograma.PNG" /><br>a) Gráfico de setores, que demonstra a variação de anticorpos na abscissa Y e de população na ordenada X.<br> b) Histograma, que demonstra variações de anticorpos na abscissa X e de população na ordenada Y <br> c) Gráfico de tendência central, que demonstra variações de anticorpos na abscissa X e de população na ordenada Y.<br> d) Gráficos de dispersão, que demonstra a tendência central das médias de concentração dos valores de anticorpos na população.<br> e) Gráfico de linhas, que demonstra a tendência central baseada na mediana das concentrações de anticorpos na população.</li>
 </ol>
+</div>
+<div class="mirror">
+Gabarito: 1-c; 2-b; 3-b,
+</div>
 
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-Gueorguieva2004">
-<p>Gueorguieva, R., &amp; Krystal, J. H. (2004). Move over ANOVA. <em>Archives of General Psychiatry</em>, <em>61</em>(3), 310. <a href="https://doi.org/10.1001/archpsyc.61.3.310">https://doi.org/10.1001/archpsyc.61.3.310</a></p>
-</div>
-<div id="ref-Quen2004">
-<p>Quené, H., &amp; Bergh, H. van den. (2004). On multi-level modeling of data from repeated measures designs: A tutorial. <em>Speech Communication</em>, <em>43</em>(1-2), 103–121. <a href="https://doi.org/10.1016/j.specom.2004.02.004">https://doi.org/10.1016/j.specom.2004.02.004</a></p>
 </div>
 </div>
             </section>
@@ -764,8 +433,8 @@ Nesta pesquisa, 54 pacientes com asma foram aleatoriamente selecionados para rec
           </div>
         </div>
       </div>
-<a href="anova-de-medidas-repetidas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="correlação.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="estatística-descritiva.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tipos-de-amostragem.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -796,7 +465,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/11-linear_misto.Rmd",
+"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/04-familia_distribuicoes.Rmd",
 "text": "Edit"
 },
 "history": {

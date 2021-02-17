@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Cap. 10 ANOVA de medidas repetidas | Métodos quantitativos em Psicologia com R</title>
+  <title>Cap. 11 ANOVA de medidas repetidas | Métodos quantitativos em Psicologia com R</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Cap. 10 ANOVA de medidas repetidas | Métodos quantitativos em Psicologia com R" />
+  <meta property="og:title" content="Cap. 11 ANOVA de medidas repetidas | Métodos quantitativos em Psicologia com R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="cjvanlissa/gitbook-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Cap. 10 ANOVA de medidas repetidas | Métodos quantitativos em Psicologia com R" />
+  <meta name="twitter:title" content="Cap. 11 ANOVA de medidas repetidas | Métodos quantitativos em Psicologia com R" />
   
   <meta name="twitter:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2021-02-16" />
+<meta name="date" content="2021-02-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -144,10 +144,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#o-r-e-os-pacotes"><i class="fa fa-check"></i><b>1.7</b> O R e os pacotes</a></li>
 <li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#jasp"><i class="fa fa-check"></i><b>1.8</b> JASP</a></li>
 <li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#outros-recursos"><i class="fa fa-check"></i><b>1.9</b> Outros recursos</a></li>
-<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#preço"><i class="fa fa-check"></i><b>1.10</b> Preço</a></li>
-<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#capa"><i class="fa fa-check"></i><b>1.11</b> Capa</a></li>
-<li class="chapter" data-level="1.12" data-path="index.html"><a href="index.html#versão-do-livro"><i class="fa fa-check"></i><b>1.12</b> Versão do livro</a></li>
-<li class="chapter" data-level="1.13" data-path="index.html"><a href="index.html#agradecimentos-e-revisões-técnicas"><i class="fa fa-check"></i><b>1.13</b> Agradecimentos e revisões técnicas</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#capa"><i class="fa fa-check"></i><b>1.10</b> Capa</a></li>
+<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#versão-do-livro"><i class="fa fa-check"></i><b>1.11</b> Versão do livro</a></li>
+<li class="chapter" data-level="1.12" data-path="index.html"><a href="index.html#agradecimentos-e-revisões-técnicas"><i class="fa fa-check"></i><b>1.12</b> Agradecimentos e revisões técnicas</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html"><i class="fa fa-check"></i><b>2</b> Programas estatísticos</a><ul>
 <li class="chapter" data-level="2.1" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-r"><i class="fa fa-check"></i><b>2.1</b> O R</a></li>
@@ -211,14 +210,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.26" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#resumo-2"><i class="fa fa-check"></i><b>4.26</b> Resumo</a></li>
 <li class="chapter" data-level="4.27" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#questões-1"><i class="fa fa-check"></i><b>4.27</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="qui-quadrado.html"><a href="qui-quadrado.html"><i class="fa fa-check"></i><b>5</b> Qui quadrado</a><ul>
-<li class="chapter" data-level="5.1" data-path="qui-quadrado.html"><a href="qui-quadrado.html#pesquisa-1"><i class="fa fa-check"></i><b>5.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="5.2" data-path="qui-quadrado.html"><a href="qui-quadrado.html#execução-no-r-1"><i class="fa fa-check"></i><b>5.2</b> Execução no R</a></li>
-<li class="chapter" data-level="5.3" data-path="qui-quadrado.html"><a href="qui-quadrado.html#tamanho-do-efeito"><i class="fa fa-check"></i><b>5.3</b> Tamanho do efeito</a></li>
-<li class="chapter" data-level="5.4" data-path="qui-quadrado.html"><a href="qui-quadrado.html#execução-no-jasp-1"><i class="fa fa-check"></i><b>5.4</b> Execução no JASP</a></li>
-<li class="chapter" data-level="5.5" data-path="qui-quadrado.html"><a href="qui-quadrado.html#escrita-dos-resultados"><i class="fa fa-check"></i><b>5.5</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="5.6" data-path="qui-quadrado.html"><a href="qui-quadrado.html#resumo-3"><i class="fa fa-check"></i><b>5.6</b> Resumo</a></li>
-<li class="chapter" data-level="5.7" data-path="qui-quadrado.html"><a href="qui-quadrado.html#pesquisas-adicionais"><i class="fa fa-check"></i><b>5.7</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="5" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html"><i class="fa fa-check"></i><b>5</b> Família de distribuições</a><ul>
+<li class="chapter" data-level="5.1" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html#resumo-3"><i class="fa fa-check"></i><b>5.1</b> Resumo</a></li>
+<li class="chapter" data-level="5.2" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html#questões-2"><i class="fa fa-check"></i><b>5.2</b> Questões</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html"><i class="fa fa-check"></i><b>6</b> Tipos de amostragem</a><ul>
 <li class="chapter" data-level="6.1" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html#amostragem-aleatória-simples"><i class="fa fa-check"></i><b>6.1</b> Amostragem aleatória simples</a></li>
@@ -244,115 +238,124 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#o-tamanho-do-efeito"><i class="fa fa-check"></i><b>7.5</b> O tamanho do efeito</a></li>
 <li class="chapter" data-level="7.6" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#um-exemplo-intuitivo"><i class="fa fa-check"></i><b>7.6</b> Um exemplo intuitivo</a></li>
 <li class="chapter" data-level="7.7" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#o-que-não-te-contaram-sobre-inferência-estatística"><i class="fa fa-check"></i><b>7.7</b> O que não te contaram sobre inferência estatística</a></li>
-<li class="chapter" data-level="7.8" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#questões-2"><i class="fa fa-check"></i><b>7.8</b> Questões</a></li>
-<li class="chapter" data-level="7.9" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#pesquisas-adicionais-1"><i class="fa fa-check"></i><b>7.9</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="7.8" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#questões-3"><i class="fa fa-check"></i><b>7.8</b> Questões</a></li>
+<li class="chapter" data-level="7.9" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#pesquisas-adicionais"><i class="fa fa-check"></i><b>7.9</b> Pesquisas adicionais</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="teste-t.html"><a href="teste-t.html"><i class="fa fa-check"></i><b>8</b> Teste T</a><ul>
-<li class="chapter" data-level="8.1" data-path="teste-t.html"><a href="teste-t.html#pesquisa-2"><i class="fa fa-check"></i><b>8.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="8.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-r-2"><i class="fa fa-check"></i><b>8.2</b> Execução no R</a></li>
-<li class="chapter" data-level="8.3" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito-1"><i class="fa fa-check"></i><b>8.3</b> Tamanho do efeito</a></li>
-<li class="chapter" data-level="8.4" data-path="teste-t.html"><a href="teste-t.html#execução-no-jasp-2"><i class="fa fa-check"></i><b>8.4</b> Execução no JASP</a></li>
-<li class="chapter" data-level="8.5" data-path="teste-t.html"><a href="teste-t.html#escrita-dos-resultados-1"><i class="fa fa-check"></i><b>8.5</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="8.6" data-path="teste-t.html"><a href="teste-t.html#versão-robusta-do-teste-t"><i class="fa fa-check"></i><b>8.6</b> Versão robusta do Teste T</a><ul>
-<li class="chapter" data-level="8.6.1" data-path="teste-t.html"><a href="teste-t.html#execução-no-r-3"><i class="fa fa-check"></i><b>8.6.1</b> Execução no R</a></li>
-<li class="chapter" data-level="8.6.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-jasp-3"><i class="fa fa-check"></i><b>8.6.2</b> Execução no JASP</a></li>
+<li class="chapter" data-level="8" data-path="qui-quadrado.html"><a href="qui-quadrado.html"><i class="fa fa-check"></i><b>8</b> Qui quadrado</a><ul>
+<li class="chapter" data-level="8.1" data-path="qui-quadrado.html"><a href="qui-quadrado.html#pesquisa-1"><i class="fa fa-check"></i><b>8.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="8.2" data-path="qui-quadrado.html"><a href="qui-quadrado.html#execução-no-r-1"><i class="fa fa-check"></i><b>8.2</b> Execução no R</a></li>
+<li class="chapter" data-level="8.3" data-path="qui-quadrado.html"><a href="qui-quadrado.html#tamanho-do-efeito"><i class="fa fa-check"></i><b>8.3</b> Tamanho do efeito</a></li>
+<li class="chapter" data-level="8.4" data-path="qui-quadrado.html"><a href="qui-quadrado.html#execução-no-jasp-1"><i class="fa fa-check"></i><b>8.4</b> Execução no JASP</a></li>
+<li class="chapter" data-level="8.5" data-path="qui-quadrado.html"><a href="qui-quadrado.html#escrita-dos-resultados"><i class="fa fa-check"></i><b>8.5</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="8.6" data-path="qui-quadrado.html"><a href="qui-quadrado.html#resumo-4"><i class="fa fa-check"></i><b>8.6</b> Resumo</a></li>
+<li class="chapter" data-level="8.7" data-path="qui-quadrado.html"><a href="qui-quadrado.html#pesquisas-adicionais-1"><i class="fa fa-check"></i><b>8.7</b> Pesquisas adicionais</a></li>
 </ul></li>
-<li class="chapter" data-level="8.7" data-path="teste-t.html"><a href="teste-t.html#mann-whitney"><i class="fa fa-check"></i><b>8.7</b> Mann-whitney</a><ul>
-<li class="chapter" data-level="8.7.1" data-path="teste-t.html"><a href="teste-t.html#execução-no-r-4"><i class="fa fa-check"></i><b>8.7.1</b> Execução No R</a></li>
-<li class="chapter" data-level="8.7.2" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito-2"><i class="fa fa-check"></i><b>8.7.2</b> Tamanho do efeito</a></li>
-<li class="chapter" data-level="8.7.3" data-path="teste-t.html"><a href="teste-t.html#execução-no-jasp-4"><i class="fa fa-check"></i><b>8.7.3</b> Execução no JASP</a></li>
-<li class="chapter" data-level="8.7.4" data-path="teste-t.html"><a href="teste-t.html#escrita-dos-resultados-2"><i class="fa fa-check"></i><b>8.7.4</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="9" data-path="teste-t.html"><a href="teste-t.html"><i class="fa fa-check"></i><b>9</b> Teste T</a><ul>
+<li class="chapter" data-level="9.1" data-path="teste-t.html"><a href="teste-t.html#pesquisa-2"><i class="fa fa-check"></i><b>9.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="9.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-r-2"><i class="fa fa-check"></i><b>9.2</b> Execução no R</a></li>
+<li class="chapter" data-level="9.3" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito-1"><i class="fa fa-check"></i><b>9.3</b> Tamanho do efeito</a></li>
+<li class="chapter" data-level="9.4" data-path="teste-t.html"><a href="teste-t.html#execução-no-jasp-2"><i class="fa fa-check"></i><b>9.4</b> Execução no JASP</a></li>
+<li class="chapter" data-level="9.5" data-path="teste-t.html"><a href="teste-t.html#escrita-dos-resultados-1"><i class="fa fa-check"></i><b>9.5</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="9.6" data-path="teste-t.html"><a href="teste-t.html#versão-robusta-do-teste-t"><i class="fa fa-check"></i><b>9.6</b> Versão robusta do Teste T</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="teste-t.html"><a href="teste-t.html#execução-no-r-3"><i class="fa fa-check"></i><b>9.6.1</b> Execução no R</a></li>
+<li class="chapter" data-level="9.6.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-jasp-3"><i class="fa fa-check"></i><b>9.6.2</b> Execução no JASP</a></li>
 </ul></li>
-<li class="chapter" data-level="8.8" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>8.8</b> Teste T e regressão</a></li>
-<li class="chapter" data-level="8.9" data-path="teste-t.html"><a href="teste-t.html#resumo-4"><i class="fa fa-check"></i><b>8.9</b> Resumo</a></li>
-<li class="chapter" data-level="8.10" data-path="teste-t.html"><a href="teste-t.html#pesquisas-adicionais-2"><i class="fa fa-check"></i><b>8.10</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="9.7" data-path="teste-t.html"><a href="teste-t.html#mann-whitney"><i class="fa fa-check"></i><b>9.7</b> Mann-whitney</a><ul>
+<li class="chapter" data-level="9.7.1" data-path="teste-t.html"><a href="teste-t.html#execução-no-r-4"><i class="fa fa-check"></i><b>9.7.1</b> Execução No R</a></li>
+<li class="chapter" data-level="9.7.2" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito-2"><i class="fa fa-check"></i><b>9.7.2</b> Tamanho do efeito</a></li>
+<li class="chapter" data-level="9.7.3" data-path="teste-t.html"><a href="teste-t.html#execução-no-jasp-4"><i class="fa fa-check"></i><b>9.7.3</b> Execução no JASP</a></li>
+<li class="chapter" data-level="9.7.4" data-path="teste-t.html"><a href="teste-t.html#escrita-dos-resultados-2"><i class="fa fa-check"></i><b>9.7.4</b> Escrita dos resultados</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>9</b> ANOVA</a><ul>
-<li class="chapter" data-level="9.1" data-path="anova.html"><a href="anova.html#glossário"><i class="fa fa-check"></i><b>9.1</b> Glossário</a></li>
-<li class="chapter" data-level="9.2" data-path="anova.html"><a href="anova.html#pesquisa-3"><i class="fa fa-check"></i><b>9.2</b> Pesquisa</a></li>
-<li class="chapter" data-level="9.3" data-path="anova.html"><a href="anova.html#anova-de-1-via"><i class="fa fa-check"></i><b>9.3</b> ANOVA de 1 via</a></li>
-<li class="chapter" data-level="9.4" data-path="anova.html"><a href="anova.html#execução-no-r-5"><i class="fa fa-check"></i><b>9.4</b> Execução no R</a></li>
-<li class="chapter" data-level="9.5" data-path="anova.html"><a href="anova.html#tamanho-do-efeito-3"><i class="fa fa-check"></i><b>9.5</b> Tamanho do efeito</a></li>
-<li class="chapter" data-level="9.6" data-path="anova.html"><a href="anova.html#execução-no-jasp-5"><i class="fa fa-check"></i><b>9.6</b> Execução no JASP</a></li>
-<li class="chapter" data-level="9.7" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-3"><i class="fa fa-check"></i><b>9.7</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="9.8" data-path="anova.html"><a href="anova.html#post-hoc"><i class="fa fa-check"></i><b>9.8</b> Post hoc</a></li>
-<li class="chapter" data-level="9.9" data-path="anova.html"><a href="anova.html#execução-no-r-6"><i class="fa fa-check"></i><b>9.9</b> Execução no R</a></li>
-<li class="chapter" data-level="9.10" data-path="anova.html"><a href="anova.html#execução-no-jasp-6"><i class="fa fa-check"></i><b>9.10</b> Execução no JASP</a></li>
-<li class="chapter" data-level="9.11" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-4"><i class="fa fa-check"></i><b>9.11</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="9.12" data-path="anova.html"><a href="anova.html#resumo-5"><i class="fa fa-check"></i><b>9.12</b> Resumo</a></li>
-<li class="chapter" data-level="9.13" data-path="anova.html"><a href="anova.html#pesquisas-adicionais-3"><i class="fa fa-check"></i><b>9.13</b> Pesquisas adicionais</a></li>
-<li class="chapter" data-level="9.14" data-path="anova.html"><a href="anova.html#pesquisa-4"><i class="fa fa-check"></i><b>9.14</b> Pesquisa</a></li>
-<li class="chapter" data-level="9.15" data-path="anova.html"><a href="anova.html#anova-de-2-vias"><i class="fa fa-check"></i><b>9.15</b> ANOVA de 2 vias</a></li>
-<li class="chapter" data-level="9.16" data-path="anova.html"><a href="anova.html#execução-no-r-7"><i class="fa fa-check"></i><b>9.16</b> Execução no R</a></li>
-<li class="chapter" data-level="9.17" data-path="anova.html"><a href="anova.html#execução-no-jasp-7"><i class="fa fa-check"></i><b>9.17</b> Execução no JASP</a></li>
-<li class="chapter" data-level="9.18" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-5"><i class="fa fa-check"></i><b>9.18</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="9.19" data-path="anova.html"><a href="anova.html#post-hoc-1"><i class="fa fa-check"></i><b>9.19</b> Post hoc</a></li>
-<li class="chapter" data-level="9.20" data-path="anova.html"><a href="anova.html#execução-no-r-8"><i class="fa fa-check"></i><b>9.20</b> Execução no R</a></li>
-<li class="chapter" data-level="9.21" data-path="anova.html"><a href="anova.html#execução-no-jasp-8"><i class="fa fa-check"></i><b>9.21</b> Execução no JASP</a></li>
-<li class="chapter" data-level="9.22" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-6"><i class="fa fa-check"></i><b>9.22</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="9.23" data-path="anova.html"><a href="anova.html#resumo-6"><i class="fa fa-check"></i><b>9.23</b> Resumo</a></li>
-<li class="chapter" data-level="9.24" data-path="anova.html"><a href="anova.html#anova-fatorial"><i class="fa fa-check"></i><b>9.24</b> ANOVA Fatorial</a></li>
-<li class="chapter" data-level="9.25" data-path="anova.html"><a href="anova.html#execução-no-r-9"><i class="fa fa-check"></i><b>9.25</b> Execução no R</a></li>
-<li class="chapter" data-level="9.26" data-path="anova.html"><a href="anova.html#execução-no-jasp-9"><i class="fa fa-check"></i><b>9.26</b> Execução no JASP</a></li>
-<li class="chapter" data-level="9.27" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-7"><i class="fa fa-check"></i><b>9.27</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="9.28" data-path="anova.html"><a href="anova.html#resumo-7"><i class="fa fa-check"></i><b>9.28</b> Resumo</a></li>
-<li class="chapter" data-level="9.29" data-path="anova.html"><a href="anova.html#post-hoc-2"><i class="fa fa-check"></i><b>9.29</b> Post hoc</a></li>
-<li class="chapter" data-level="9.30" data-path="anova.html"><a href="anova.html#execução-no-jasp-10"><i class="fa fa-check"></i><b>9.30</b> Execução no JASP</a></li>
-<li class="chapter" data-level="9.31" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-8"><i class="fa fa-check"></i><b>9.31</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="9.8" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>9.8</b> Teste T e regressão</a></li>
+<li class="chapter" data-level="9.9" data-path="teste-t.html"><a href="teste-t.html#resumo-5"><i class="fa fa-check"></i><b>9.9</b> Resumo</a></li>
+<li class="chapter" data-level="9.10" data-path="teste-t.html"><a href="teste-t.html#pesquisas-adicionais-2"><i class="fa fa-check"></i><b>9.10</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="9.11" data-path="teste-t.html"><a href="teste-t.html#questões-4"><i class="fa fa-check"></i><b>9.11</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html"><i class="fa fa-check"></i><b>10</b> ANOVA de medidas repetidas</a><ul>
-<li class="chapter" data-level="10.1" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pesquisa-5"><i class="fa fa-check"></i><b>10.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="10.2" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#execução-no-r-10"><i class="fa fa-check"></i><b>10.2</b> Execução no R</a></li>
-<li class="chapter" data-level="10.3" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#tamanho-do-efeito-4"><i class="fa fa-check"></i><b>10.3</b> Tamanho do efeito</a></li>
-<li class="chapter" data-level="10.4" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#execução-no-jasp-11"><i class="fa fa-check"></i><b>10.4</b> Execução no JASP</a></li>
-<li class="chapter" data-level="10.5" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#escrita-dos-resultados-9"><i class="fa fa-check"></i><b>10.5</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="10.6" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#resumo-8"><i class="fa fa-check"></i><b>10.6</b> Resumo</a></li>
+<li class="chapter" data-level="10" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>10</b> ANOVA</a><ul>
+<li class="chapter" data-level="10.1" data-path="anova.html"><a href="anova.html#pesquisa-3"><i class="fa fa-check"></i><b>10.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="10.2" data-path="anova.html"><a href="anova.html#anova-de-1-via"><i class="fa fa-check"></i><b>10.2</b> ANOVA de 1 via</a></li>
+<li class="chapter" data-level="10.3" data-path="anova.html"><a href="anova.html#execução-no-r-5"><i class="fa fa-check"></i><b>10.3</b> Execução no R</a></li>
+<li class="chapter" data-level="10.4" data-path="anova.html"><a href="anova.html#tamanho-do-efeito-3"><i class="fa fa-check"></i><b>10.4</b> Tamanho do efeito</a></li>
+<li class="chapter" data-level="10.5" data-path="anova.html"><a href="anova.html#execução-no-jasp-5"><i class="fa fa-check"></i><b>10.5</b> Execução no JASP</a></li>
+<li class="chapter" data-level="10.6" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-3"><i class="fa fa-check"></i><b>10.6</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="10.7" data-path="anova.html"><a href="anova.html#post-hoc"><i class="fa fa-check"></i><b>10.7</b> Post hoc</a></li>
+<li class="chapter" data-level="10.8" data-path="anova.html"><a href="anova.html#execução-no-r-6"><i class="fa fa-check"></i><b>10.8</b> Execução no R</a></li>
+<li class="chapter" data-level="10.9" data-path="anova.html"><a href="anova.html#execução-no-jasp-6"><i class="fa fa-check"></i><b>10.9</b> Execução no JASP</a></li>
+<li class="chapter" data-level="10.10" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-4"><i class="fa fa-check"></i><b>10.10</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="10.11" data-path="anova.html"><a href="anova.html#resumo-6"><i class="fa fa-check"></i><b>10.11</b> Resumo</a></li>
+<li class="chapter" data-level="10.12" data-path="anova.html"><a href="anova.html#pesquisas-adicionais-3"><i class="fa fa-check"></i><b>10.12</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="10.13" data-path="anova.html"><a href="anova.html#pesquisa-4"><i class="fa fa-check"></i><b>10.13</b> Pesquisa</a></li>
+<li class="chapter" data-level="10.14" data-path="anova.html"><a href="anova.html#anova-de-2-vias"><i class="fa fa-check"></i><b>10.14</b> ANOVA de 2 vias</a></li>
+<li class="chapter" data-level="10.15" data-path="anova.html"><a href="anova.html#execução-no-r-7"><i class="fa fa-check"></i><b>10.15</b> Execução no R</a></li>
+<li class="chapter" data-level="10.16" data-path="anova.html"><a href="anova.html#execução-no-jasp-7"><i class="fa fa-check"></i><b>10.16</b> Execução no JASP</a></li>
+<li class="chapter" data-level="10.17" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-5"><i class="fa fa-check"></i><b>10.17</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="10.18" data-path="anova.html"><a href="anova.html#post-hoc-1"><i class="fa fa-check"></i><b>10.18</b> Post hoc</a></li>
+<li class="chapter" data-level="10.19" data-path="anova.html"><a href="anova.html#execução-no-r-8"><i class="fa fa-check"></i><b>10.19</b> Execução no R</a></li>
+<li class="chapter" data-level="10.20" data-path="anova.html"><a href="anova.html#execução-no-jasp-8"><i class="fa fa-check"></i><b>10.20</b> Execução no JASP</a></li>
+<li class="chapter" data-level="10.21" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-6"><i class="fa fa-check"></i><b>10.21</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="10.22" data-path="anova.html"><a href="anova.html#resumo-7"><i class="fa fa-check"></i><b>10.22</b> Resumo</a></li>
+<li class="chapter" data-level="10.23" data-path="anova.html"><a href="anova.html#anova-fatorial"><i class="fa fa-check"></i><b>10.23</b> ANOVA Fatorial</a></li>
+<li class="chapter" data-level="10.24" data-path="anova.html"><a href="anova.html#execução-no-r-9"><i class="fa fa-check"></i><b>10.24</b> Execução no R</a></li>
+<li class="chapter" data-level="10.25" data-path="anova.html"><a href="anova.html#execução-no-jasp-9"><i class="fa fa-check"></i><b>10.25</b> Execução no JASP</a></li>
+<li class="chapter" data-level="10.26" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-7"><i class="fa fa-check"></i><b>10.26</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="10.27" data-path="anova.html"><a href="anova.html#resumo-8"><i class="fa fa-check"></i><b>10.27</b> Resumo</a></li>
+<li class="chapter" data-level="10.28" data-path="anova.html"><a href="anova.html#post-hoc-2"><i class="fa fa-check"></i><b>10.28</b> Post hoc</a></li>
+<li class="chapter" data-level="10.29" data-path="anova.html"><a href="anova.html#execução-no-jasp-10"><i class="fa fa-check"></i><b>10.29</b> Execução no JASP</a></li>
+<li class="chapter" data-level="10.30" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-8"><i class="fa fa-check"></i><b>10.30</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="10.31" data-path="anova.html"><a href="anova.html#questões-5"><i class="fa fa-check"></i><b>10.31</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html"><i class="fa fa-check"></i><b>11</b> Modelo linear misto</a><ul>
-<li class="chapter" data-level="11.1" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#pesquisa-6"><i class="fa fa-check"></i><b>11.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="11.2" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#execução-no-r-11"><i class="fa fa-check"></i><b>11.2</b> execução no R</a></li>
-<li class="chapter" data-level="11.3" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#execução-no-jasp-12"><i class="fa fa-check"></i><b>11.3</b> Execução no JASP</a></li>
-<li class="chapter" data-level="11.4" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#escrita-dos-resultados-10"><i class="fa fa-check"></i><b>11.4</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="11.5" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#resumo-9"><i class="fa fa-check"></i><b>11.5</b> Resumo</a></li>
-<li class="chapter" data-level="11.6" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#pesquisas-adicionais-4"><i class="fa fa-check"></i><b>11.6</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="11" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html"><i class="fa fa-check"></i><b>11</b> ANOVA de medidas repetidas</a><ul>
+<li class="chapter" data-level="11.1" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pesquisa-5"><i class="fa fa-check"></i><b>11.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="11.2" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#execução-no-r-10"><i class="fa fa-check"></i><b>11.2</b> Execução no R</a></li>
+<li class="chapter" data-level="11.3" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#tamanho-do-efeito-4"><i class="fa fa-check"></i><b>11.3</b> Tamanho do efeito</a></li>
+<li class="chapter" data-level="11.4" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#execução-no-jasp-11"><i class="fa fa-check"></i><b>11.4</b> Execução no JASP</a></li>
+<li class="chapter" data-level="11.5" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#escrita-dos-resultados-9"><i class="fa fa-check"></i><b>11.5</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="11.6" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#resumo-9"><i class="fa fa-check"></i><b>11.6</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="correlação.html"><a href="correlação.html"><i class="fa fa-check"></i><b>12</b> Correlação</a><ul>
-<li class="chapter" data-level="12.1" data-path="correlação.html"><a href="correlação.html#pesquisa-7"><i class="fa fa-check"></i><b>12.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="12.2" data-path="correlação.html"><a href="correlação.html#execução-no-r-12"><i class="fa fa-check"></i><b>12.2</b> Execução no R</a></li>
-<li class="chapter" data-level="12.3" data-path="correlação.html"><a href="correlação.html#execução-no-jasp-13"><i class="fa fa-check"></i><b>12.3</b> Execução no JASP</a></li>
-<li class="chapter" data-level="12.4" data-path="correlação.html"><a href="correlação.html#escrita-dos-resultados-11"><i class="fa fa-check"></i><b>12.4</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="12.5" data-path="correlação.html"><a href="correlação.html#resumo-10"><i class="fa fa-check"></i><b>12.5</b> Resumo</a></li>
-<li class="chapter" data-level="12.6" data-path="correlação.html"><a href="correlação.html#pesquisas-adicionais-5"><i class="fa fa-check"></i><b>12.6</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="12" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html"><i class="fa fa-check"></i><b>12</b> Modelo linear misto</a><ul>
+<li class="chapter" data-level="12.1" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#pesquisa-6"><i class="fa fa-check"></i><b>12.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="12.2" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#execução-no-r-11"><i class="fa fa-check"></i><b>12.2</b> execução no R</a></li>
+<li class="chapter" data-level="12.3" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#execução-no-jasp-12"><i class="fa fa-check"></i><b>12.3</b> Execução no JASP</a></li>
+<li class="chapter" data-level="12.4" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#escrita-dos-resultados-10"><i class="fa fa-check"></i><b>12.4</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="12.5" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#resumo-10"><i class="fa fa-check"></i><b>12.5</b> Resumo</a></li>
+<li class="chapter" data-level="12.6" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#pesquisas-adicionais-4"><i class="fa fa-check"></i><b>12.6</b> Pesquisas adicionais</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>13</b> Regressão linear simples</a><ul>
-<li class="chapter" data-level="13.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#glossário-1"><i class="fa fa-check"></i><b>13.1</b> Glossário</a></li>
-<li class="chapter" data-level="13.2" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#breve-explicação-conceitual"><i class="fa fa-check"></i><b>13.2</b> Breve explicação conceitual</a></li>
-<li class="chapter" data-level="13.3" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisa-8"><i class="fa fa-check"></i><b>13.3</b> Pesquisa</a></li>
-<li class="chapter" data-level="13.4" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-r-13"><i class="fa fa-check"></i><b>13.4</b> Execução no R</a></li>
-<li class="chapter" data-level="13.5" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-jasp-14"><i class="fa fa-check"></i><b>13.5</b> Execução no JASP</a></li>
-<li class="chapter" data-level="13.6" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#escrita-dos-resultados-12"><i class="fa fa-check"></i><b>13.6</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="13.7" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#resumo-11"><i class="fa fa-check"></i><b>13.7</b> Resumo</a></li>
-<li class="chapter" data-level="13.8" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisas-adicionais-6"><i class="fa fa-check"></i><b>13.8</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="13" data-path="correlação.html"><a href="correlação.html"><i class="fa fa-check"></i><b>13</b> Correlação</a><ul>
+<li class="chapter" data-level="13.1" data-path="correlação.html"><a href="correlação.html#pesquisa-7"><i class="fa fa-check"></i><b>13.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="13.2" data-path="correlação.html"><a href="correlação.html#execução-no-r-12"><i class="fa fa-check"></i><b>13.2</b> Execução no R</a></li>
+<li class="chapter" data-level="13.3" data-path="correlação.html"><a href="correlação.html#execução-no-jasp-13"><i class="fa fa-check"></i><b>13.3</b> Execução no JASP</a></li>
+<li class="chapter" data-level="13.4" data-path="correlação.html"><a href="correlação.html#escrita-dos-resultados-11"><i class="fa fa-check"></i><b>13.4</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="13.5" data-path="correlação.html"><a href="correlação.html#resumo-11"><i class="fa fa-check"></i><b>13.5</b> Resumo</a></li>
+<li class="chapter" data-level="13.6" data-path="correlação.html"><a href="correlação.html#pesquisas-adicionais-5"><i class="fa fa-check"></i><b>13.6</b> Pesquisas adicionais</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html"><i class="fa fa-check"></i><b>14</b> Regressão linear múltipla</a><ul>
-<li class="chapter" data-level="14.1" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisa-9"><i class="fa fa-check"></i><b>14.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="14.2" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-r-14"><i class="fa fa-check"></i><b>14.2</b> Execução no R</a></li>
-<li class="chapter" data-level="14.3" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-jasp-15"><i class="fa fa-check"></i><b>14.3</b> Execução no JASP</a></li>
-<li class="chapter" data-level="14.4" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#escrita-dos-resultados-13"><i class="fa fa-check"></i><b>14.4</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="14.5" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#técnicas-automáticas-de-seleção-de-variáveis"><i class="fa fa-check"></i><b>14.5</b> Técnicas automáticas de seleção de variáveis</a></li>
-<li class="chapter" data-level="14.6" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#resumo-12"><i class="fa fa-check"></i><b>14.6</b> Resumo</a></li>
-<li class="chapter" data-level="14.7" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisas-adicionais-7"><i class="fa fa-check"></i><b>14.7</b> Pesquisas adicionais</a></li>
-<li class="chapter" data-level="14.8" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#questões-3"><i class="fa fa-check"></i><b>14.8</b> Questões</a></li>
+<li class="chapter" data-level="14" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>14</b> Regressão linear simples</a><ul>
+<li class="chapter" data-level="14.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#breve-explicação-conceitual"><i class="fa fa-check"></i><b>14.1</b> Breve explicação conceitual</a></li>
+<li class="chapter" data-level="14.2" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisa-8"><i class="fa fa-check"></i><b>14.2</b> Pesquisa</a></li>
+<li class="chapter" data-level="14.3" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-r-13"><i class="fa fa-check"></i><b>14.3</b> Execução no R</a></li>
+<li class="chapter" data-level="14.4" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-jasp-14"><i class="fa fa-check"></i><b>14.4</b> Execução no JASP</a></li>
+<li class="chapter" data-level="14.5" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#escrita-dos-resultados-12"><i class="fa fa-check"></i><b>14.5</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="14.6" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#resumo-12"><i class="fa fa-check"></i><b>14.6</b> Resumo</a></li>
+<li class="chapter" data-level="14.7" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisas-adicionais-6"><i class="fa fa-check"></i><b>14.7</b> Pesquisas adicionais</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html"><i class="fa fa-check"></i><b>15</b> Regressão logística binária</a><ul>
-<li class="chapter" data-level="15.1" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#pesquisa-10"><i class="fa fa-check"></i><b>15.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="15.2" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#execução-no-r-15"><i class="fa fa-check"></i><b>15.2</b> Execução no R</a></li>
-<li class="chapter" data-level="15.3" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#execução-no-jasp-16"><i class="fa fa-check"></i><b>15.3</b> Execução no JASP</a></li>
-<li class="chapter" data-level="15.4" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#escrita-dos-resultados-14"><i class="fa fa-check"></i><b>15.4</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="15.5" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#regressão-logística-or-e-qui-quadrado"><i class="fa fa-check"></i><b>15.5</b> Regressão logística, OR e Qui-quadrado</a></li>
-<li class="chapter" data-level="15.6" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#resumo-13"><i class="fa fa-check"></i><b>15.6</b> Resumo</a></li>
-<li class="chapter" data-level="15.7" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#pesquisas-adicionais-8"><i class="fa fa-check"></i><b>15.7</b> Pesquisas adicionais</a></li>
-<li class="chapter" data-level="15.8" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#questões-4"><i class="fa fa-check"></i><b>15.8</b> Questões</a></li>
+<li class="chapter" data-level="15" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html"><i class="fa fa-check"></i><b>15</b> Regressão linear múltipla</a><ul>
+<li class="chapter" data-level="15.1" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisa-9"><i class="fa fa-check"></i><b>15.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="15.2" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-r-14"><i class="fa fa-check"></i><b>15.2</b> Execução no R</a></li>
+<li class="chapter" data-level="15.3" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-jasp-15"><i class="fa fa-check"></i><b>15.3</b> Execução no JASP</a></li>
+<li class="chapter" data-level="15.4" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#escrita-dos-resultados-13"><i class="fa fa-check"></i><b>15.4</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="15.5" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#técnicas-automáticas-de-seleção-de-variáveis"><i class="fa fa-check"></i><b>15.5</b> Técnicas automáticas de seleção de variáveis</a></li>
+<li class="chapter" data-level="15.6" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#resumo-13"><i class="fa fa-check"></i><b>15.6</b> Resumo</a></li>
+<li class="chapter" data-level="15.7" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisas-adicionais-7"><i class="fa fa-check"></i><b>15.7</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="15.8" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#questões-6"><i class="fa fa-check"></i><b>15.8</b> Questões</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html"><i class="fa fa-check"></i><b>16</b> Regressão logística binária</a><ul>
+<li class="chapter" data-level="16.1" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#pesquisa-10"><i class="fa fa-check"></i><b>16.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="16.2" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#execução-no-r-15"><i class="fa fa-check"></i><b>16.2</b> Execução no R</a></li>
+<li class="chapter" data-level="16.3" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#execução-no-jasp-16"><i class="fa fa-check"></i><b>16.3</b> Execução no JASP</a></li>
+<li class="chapter" data-level="16.4" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#escrita-dos-resultados-14"><i class="fa fa-check"></i><b>16.4</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="16.5" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#regressão-logística-or-e-qui-quadrado"><i class="fa fa-check"></i><b>16.5</b> Regressão logística, OR e Qui-quadrado</a></li>
+<li class="chapter" data-level="16.6" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#resumo-14"><i class="fa fa-check"></i><b>16.6</b> Resumo</a></li>
+<li class="chapter" data-level="16.7" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#pesquisas-adicionais-8"><i class="fa fa-check"></i><b>16.7</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="16.8" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#questões-7"><i class="fa fa-check"></i><b>16.8</b> Questões</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="http://www.puc-rio.br/" target="blank">PUC-Rio</a></li>
@@ -375,7 +378,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="anova-de-medidas-repetidas" class="section level1">
-<h1><span class="header-section-number">Cap. 10</span> ANOVA de medidas repetidas</h1>
+<h1><span class="header-section-number">Cap. 11</span> ANOVA de medidas repetidas</h1>
 <div class="objectives">
 <p>
 <strong>Objetivos do capítulo</strong><br />
@@ -391,9 +394,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <em>(iii)</em> Os resíduos do modelo são normalmente distribuídos<br />
 <em>(iv)</em> há esfericidade dos grupos</p>
 <div id="pesquisa-5" class="section level2">
-<h2><span class="header-section-number">10.1</span> Pesquisa</h2>
-<div class="alert alert-warning">
-<p><strong>Base: </strong> R - Base Lidia Carprofeno</p>
+<h2><span class="header-section-number">11.1</span> Pesquisa</h2>
+<div class="base">
+<p>A base desta pesquisa está disponível em formato <strong>R (Rdata)</strong> e em <strong>CSV</strong>, que é lido pelo JASP. Clique na opção desejada.</p>
+<p><strong>Base R: </strong> <a href="https://github.com/anovabr/mqt/raw/master/bases/R%20-%20Base%20Lidia%20Carprofeno.RData">R - Base Lidia Carprofeno</a></p>
+<p><strong>Base JASP: </strong> <a href="https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip">Base CSV - Lidia Carprofeno largo</a></p>
 </div>
 <p>A esse momento, vamos ter como referência de análise a pesquisa intitulada <a href="https://www.scielo.br/scielo.php?script=sci_arttext&amp;pid=S0102-09352019000100109">“Avaliação psicométrica em português do indicador de dor crônica de Helsinki em cães com sinais crônicos de osteoartrite”</a>, que tem como primeira autora Lídia Matsubara e eu sou coautor. Essa pesquisa foi publicada no “Arquivo Brasileiro de Medicina Veterinária e Zootecnia” em 2019 e objetivou tanto verificar o efeito do medicamento Carprofeno em sintomas relacionados à dor crônica, como apresentar estudos psicométricos de uma nova medida clínica.</p>
 <p>Nessa pesquisa, utilizamos um <mark>delineamento experimental</mark>. No início, todos os participantes foram avaliados em relação a características clínicas da dor crônica e, em seguida, alocados em dois grupos independentes e de maneira aleatória. Os grupos foram chamados de “grupo experimental” e “grupo controle”. Os participantes do grupo experimental receberam o medicamento específico, enquanto os participantes do grupo controle receberam um placebo, que é uma substância que não possui o princípio ativo do medicamento. Nem os participantes, nem os profissionais sabiam quem estava em cada grupo.</p>
@@ -402,36 +407,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Repare que esse tipo de delineamento contou com três elementos importantes em pesquisas experimentais, que são grupos <u>aleatórios</u>, com a presença de uma condição <u>placebo</u> e <u>duplo-cego</u>.</p>
 </div>
 <div id="execução-no-r-10" class="section level2">
-<h2><span class="header-section-number">10.2</span> Execução no R</h2>
+<h2><span class="header-section-number">11.2</span> Execução no R</h2>
 <p>A primeira etapa nesta análise será a consolidação da base de dados. No vetor <code>dados</code>, há todas as variáveis utilizadas na pesquisa em formato largo (wide). Apesar de ser possível trabalhar dessa maneira no R, o formato longo é o mais tipicamente encontrado para análises longitudinais e, por isso, será implementado a seguir. Um novo vetor será chamado de <code>tratamento</code> e irá armazenar os mesmos dados originais, só que agrupados neste novo formato.</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="anova-de-medidas-repetidas.html#cb105-1"></a>tratamento &lt;-<span class="st"> </span>dados <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb105-2"><a href="anova-de-medidas-repetidas.html#cb105-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">id =</span> <span class="kw">row_number</span>()) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb105-3"><a href="anova-de-medidas-repetidas.html#cb105-3"></a><span class="st">  </span><span class="kw">select</span>(id, grupo_dummy,<span class="kw">starts_with</span>(<span class="st">&quot;total_&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb105-4"><a href="anova-de-medidas-repetidas.html#cb105-4"></a><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="op">-</span><span class="kw">c</span>(id,grupo_dummy),</span>
-<span id="cb105-5"><a href="anova-de-medidas-repetidas.html#cb105-5"></a>                <span class="dt">names_to =</span> <span class="st">&quot;tempo&quot;</span>,</span>
-<span id="cb105-6"><a href="anova-de-medidas-repetidas.html#cb105-6"></a>               <span class="dt">values_to=</span> <span class="st">&quot;resultado&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb105-7"><a href="anova-de-medidas-repetidas.html#cb105-7"></a><span class="st">  </span><span class="kw">rename</span>(<span class="dt">grupo =</span> grupo_dummy) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb105-8"><a href="anova-de-medidas-repetidas.html#cb105-8"></a><span class="st">  </span><span class="kw">filter</span>(grupo <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb105-9"><a href="anova-de-medidas-repetidas.html#cb105-9"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">grupo =</span> <span class="kw">factor</span>(<span class="kw">if_else</span>(grupo <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, <span class="st">&quot;Experimental&quot;</span>, <span class="st">&quot;Placebo&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb105-10"><a href="anova-de-medidas-repetidas.html#cb105-10"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">tempo =</span> <span class="kw">factor</span>(<span class="kw">case_when</span>(</span>
-<span id="cb105-11"><a href="anova-de-medidas-repetidas.html#cb105-11"></a>    tempo <span class="op">==</span><span class="st"> &quot;total_w4&quot;</span> <span class="op">~</span><span class="st"> &quot;antes&quot;</span>,</span>
-<span id="cb105-12"><a href="anova-de-medidas-repetidas.html#cb105-12"></a>    tempo <span class="op">==</span><span class="st"> &quot;total_w0&quot;</span> <span class="op">~</span><span class="st"> &quot;no_dia&quot;</span>,</span>
-<span id="cb105-13"><a href="anova-de-medidas-repetidas.html#cb105-13"></a>    tempo <span class="op">==</span><span class="st"> &quot;total_s2&quot;</span> <span class="op">~</span><span class="st"> &quot;semana_2&quot;</span>,</span>
-<span id="cb105-14"><a href="anova-de-medidas-repetidas.html#cb105-14"></a>    tempo <span class="op">==</span><span class="st"> &quot;total_s4&quot;</span> <span class="op">~</span><span class="st"> &quot;semana_4&quot;</span>,</span>
-<span id="cb105-15"><a href="anova-de-medidas-repetidas.html#cb105-15"></a>    tempo <span class="op">==</span><span class="st"> &quot;total_s6&quot;</span> <span class="op">~</span><span class="st"> &quot;semana_6&quot;</span>,</span>
-<span id="cb105-16"><a href="anova-de-medidas-repetidas.html#cb105-16"></a>  )))</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="anova-de-medidas-repetidas.html#cb104-1"></a>tratamento &lt;-<span class="st"> </span>dados <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb104-2"><a href="anova-de-medidas-repetidas.html#cb104-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">id =</span> <span class="kw">row_number</span>()) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb104-3"><a href="anova-de-medidas-repetidas.html#cb104-3"></a><span class="st">  </span><span class="kw">select</span>(id, grupo_dummy,<span class="kw">starts_with</span>(<span class="st">&quot;total_&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb104-4"><a href="anova-de-medidas-repetidas.html#cb104-4"></a><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="op">-</span><span class="kw">c</span>(id,grupo_dummy),</span>
+<span id="cb104-5"><a href="anova-de-medidas-repetidas.html#cb104-5"></a>                <span class="dt">names_to =</span> <span class="st">&quot;tempo&quot;</span>,</span>
+<span id="cb104-6"><a href="anova-de-medidas-repetidas.html#cb104-6"></a>               <span class="dt">values_to=</span> <span class="st">&quot;resultado&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb104-7"><a href="anova-de-medidas-repetidas.html#cb104-7"></a><span class="st">  </span><span class="kw">rename</span>(<span class="dt">grupo =</span> grupo_dummy) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb104-8"><a href="anova-de-medidas-repetidas.html#cb104-8"></a><span class="st">  </span><span class="kw">filter</span>(grupo <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb104-9"><a href="anova-de-medidas-repetidas.html#cb104-9"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">grupo =</span> <span class="kw">factor</span>(<span class="kw">if_else</span>(grupo <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, <span class="st">&quot;Experimental&quot;</span>, <span class="st">&quot;Placebo&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb104-10"><a href="anova-de-medidas-repetidas.html#cb104-10"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">tempo =</span> <span class="kw">factor</span>(<span class="kw">case_when</span>(</span>
+<span id="cb104-11"><a href="anova-de-medidas-repetidas.html#cb104-11"></a>    tempo <span class="op">==</span><span class="st"> &quot;total_w4&quot;</span> <span class="op">~</span><span class="st"> &quot;antes&quot;</span>,</span>
+<span id="cb104-12"><a href="anova-de-medidas-repetidas.html#cb104-12"></a>    tempo <span class="op">==</span><span class="st"> &quot;total_w0&quot;</span> <span class="op">~</span><span class="st"> &quot;no_dia&quot;</span>,</span>
+<span id="cb104-13"><a href="anova-de-medidas-repetidas.html#cb104-13"></a>    tempo <span class="op">==</span><span class="st"> &quot;total_s2&quot;</span> <span class="op">~</span><span class="st"> &quot;semana_2&quot;</span>,</span>
+<span id="cb104-14"><a href="anova-de-medidas-repetidas.html#cb104-14"></a>    tempo <span class="op">==</span><span class="st"> &quot;total_s4&quot;</span> <span class="op">~</span><span class="st"> &quot;semana_4&quot;</span>,</span>
+<span id="cb104-15"><a href="anova-de-medidas-repetidas.html#cb104-15"></a>    tempo <span class="op">==</span><span class="st"> &quot;total_s6&quot;</span> <span class="op">~</span><span class="st"> &quot;semana_6&quot;</span>,</span>
+<span id="cb104-16"><a href="anova-de-medidas-repetidas.html#cb104-16"></a>  )))</span></code></pre></div>
 <p>As variávies neste conjunto de dados são:</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="anova-de-medidas-repetidas.html#cb106-1"></a>tratamento <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">names</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="anova-de-medidas-repetidas.html#cb105-1"></a>tratamento <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">names</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
 <p><em>id</em>, <em>grupo</em>, <em>tempo</em> and <em>resultado</em></p>
 <p><code>id</code> refere-se a uma identificação única de cada participante.<br />
 <code>gupo</code> refere-se ao grupo em que o participante foi alocado, tal como previamente apresentado (controle ou experimental).<br />
 <code>tempo</code> diz respeito aos 5 pontos de medida e<br />
 <code>resultado</code> é uma variável aleatória contínua do valor obtido na escala utilizada.</p>
 <p>É importante saber se os grupos foram balanceados e se houve perda experimental no decorrer do tempo. A tabela a seguir apresenta tais informações.</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="anova-de-medidas-repetidas.html#cb107-1"></a>tratamento <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb107-2"><a href="anova-de-medidas-repetidas.html#cb107-2"></a><span class="st">  </span><span class="kw">group_by</span>(grupo, tempo) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb107-3"><a href="anova-de-medidas-repetidas.html#cb107-3"></a><span class="st">  </span><span class="kw">count</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb107-4"><a href="anova-de-medidas-repetidas.html#cb107-4"></a><span class="st">  </span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="anova-de-medidas-repetidas.html#cb106-1"></a>tratamento <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb106-2"><a href="anova-de-medidas-repetidas.html#cb106-2"></a><span class="st">  </span><span class="kw">group_by</span>(grupo, tempo) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb106-3"><a href="anova-de-medidas-repetidas.html#cb106-3"></a><span class="st">  </span><span class="kw">count</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb106-4"><a href="anova-de-medidas-repetidas.html#cb106-4"></a><span class="st">  </span><span class="kw">pander</span>()</span></code></pre></div>
 <table style="width:43%;">
 <colgroup>
 <col width="20%" />
@@ -501,16 +506,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Nota-se que apesar de não ter havido perda amostral, os grupos não tiveram a mesma quantidade de participantes. Quando isso ocorre, chama-se de desbalanceamento amostral.</p>
 <p>A modelagem estatística envolve definir claramente que o <code>resultado</code> é uma função do <code>tempo</code>, do <code>grupo</code> e da interação <code>tempo x grupo</code>. Conforme exposto no decorrer do livro, a primeira etapa analítica consiste na apresentação de tabelas e gráficos. Essas técnicas descritivas são muito informativas e permitem uma rápida compreensão dos resultados.</p>
 <p>Dessa maneira, a tabela abaixo apresenta os valores da média e do desvio-padrão para todas as condições:</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="anova-de-medidas-repetidas.html#cb108-1"></a>arsenal<span class="op">::</span><span class="kw">tableby</span>(tempo <span class="op">~</span><span class="st"> </span>resultado <span class="op">+</span><span class="st"> </span>grupo, <span class="dt">test   =</span> <span class="ot">FALSE</span>,tratamento) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summary</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="anova-de-medidas-repetidas.html#cb107-1"></a>arsenal<span class="op">::</span><span class="kw">tableby</span>(tempo <span class="op">~</span><span class="st"> </span>resultado <span class="op">+</span><span class="st"> </span>grupo, <span class="dt">test =</span> <span class="ot">FALSE</span>, <span class="dt">total =</span> <span class="ot">FALSE</span>,tratamento) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summary</span>() </span></code></pre></div>
 <table>
 <colgroup>
-<col width="23%" />
-<col width="12%" />
-<col width="12%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="12%" />
+<col width="27%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -520,13 +524,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <th align="center">semana_2 (N=40)</th>
 <th align="center">semana_4 (N=40)</th>
 <th align="center">semana_6 (N=40)</th>
-<th align="center">Total (N=200)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="left"><strong>resultado</strong></td>
-<td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
@@ -540,7 +542,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td align="center">15.675 (6.719)</td>
 <td align="center">14.250 (6.740)</td>
 <td align="center">15.425 (8.430)</td>
-<td align="center">15.705 (7.020)</td>
 </tr>
 <tr class="odd">
 <td align="left">   Range</td>
@@ -549,11 +550,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td align="center">0.000 - 28.000</td>
 <td align="center">0.000 - 27.000</td>
 <td align="center">0.000 - 34.000</td>
-<td align="center">0.000 - 34.000</td>
 </tr>
 <tr class="even">
 <td align="left"><strong>grupo</strong></td>
-<td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
@@ -567,7 +566,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td align="center">21 (52.5%)</td>
 <td align="center">21 (52.5%)</td>
 <td align="center">21 (52.5%)</td>
-<td align="center">105 (52.5%)</td>
 </tr>
 <tr class="even">
 <td align="left">   Placebo</td>
@@ -576,19 +574,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td align="center">19 (47.5%)</td>
 <td align="center">19 (47.5%)</td>
 <td align="center">19 (47.5%)</td>
-<td align="center">95 (47.5%)</td>
 </tr>
 </tbody>
 </table>
 <p>O gráfico abaixo também apresenta as mesmas informações, mas insere uma barra com o erro padrão da média. Isso é útil para interpretação inferencial.</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="anova-de-medidas-repetidas.html#cb109-1"></a><span class="kw">ggplot</span>(tratamento, <span class="kw">aes</span>(<span class="dt">x=</span>tempo, <span class="dt">y=</span>resultado, <span class="dt">group=</span>grupo, <span class="dt">color=</span>grupo)) <span class="op">+</span><span class="st"> </span><span class="co">#variaveis</span></span>
-<span id="cb109-2"><a href="anova-de-medidas-repetidas.html#cb109-2"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun =</span> mean, <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>, <span class="dt">size=</span><span class="fl">1.0</span>, <span class="kw">aes</span>(<span class="dt">linetype =</span> grupo)) <span class="op">+</span><span class="st"> </span><span class="co">#linha</span></span>
-<span id="cb109-3"><a href="anova-de-medidas-repetidas.html#cb109-3"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun=</span><span class="st">&quot;mean&quot;</span>, <span class="dt">geom=</span><span class="st">&quot;point&quot;</span>, <span class="dt">size=</span><span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">shape =</span> grupo)) <span class="op">+</span><span class="st"> </span><span class="co">#pontos</span></span>
-<span id="cb109-4"><a href="anova-de-medidas-repetidas.html#cb109-4"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>,<span class="dt">size=</span><span class="dv">1</span>) <span class="co">#barra de erro</span></span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-130-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="anova-de-medidas-repetidas.html#cb108-1"></a><span class="kw">ggplot</span>(tratamento, <span class="kw">aes</span>(<span class="dt">x=</span>tempo, <span class="dt">y=</span>resultado, <span class="dt">group=</span>grupo, <span class="dt">color=</span>grupo)) <span class="op">+</span><span class="st"> </span><span class="co">#variaveis</span></span>
+<span id="cb108-2"><a href="anova-de-medidas-repetidas.html#cb108-2"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun =</span> mean, <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>, <span class="dt">size=</span><span class="fl">1.0</span>, <span class="kw">aes</span>(<span class="dt">linetype =</span> grupo)) <span class="op">+</span><span class="st"> </span><span class="co">#linha</span></span>
+<span id="cb108-3"><a href="anova-de-medidas-repetidas.html#cb108-3"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun=</span><span class="st">&quot;mean&quot;</span>, <span class="dt">geom=</span><span class="st">&quot;point&quot;</span>, <span class="dt">size=</span><span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">shape =</span> grupo)) <span class="op">+</span><span class="st"> </span><span class="co">#pontos</span></span>
+<span id="cb108-4"><a href="anova-de-medidas-repetidas.html#cb108-4"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>,<span class="dt">size=</span><span class="dv">1</span>) <span class="co">#barra de erro</span></span></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-131-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>É possível notar que as barras de erro estão superpostas, isto é, uma está contida na outra. Isso ocorre quando não há diferença significativa entre as condições. No entanto, o teste formal estatístico deve ser realizado.</p>
 <p>Para realizar a ANOVA de Medidas Repetidas, o pacote <code>ez</code> pode ser utilizado:</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="anova-de-medidas-repetidas.html#cb110-1"></a><span class="kw">library</span>(ez)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="anova-de-medidas-repetidas.html#cb109-1"></a><span class="kw">library</span>(ez)</span></code></pre></div>
 <p>Sua sintaxe envolve as seguintes características:</p>
 <p><code>data</code> refere-se à base de dados (no formato longo)<br />
 <code>dv</code> refere-se à variável dependente (contínua)<br />
@@ -599,18 +596,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <code>detailed</code> refere-se à apresentação detalhada dos resultados<br />
 <code>return_aov</code> refere-se à criação de um objeto no formato <code>aov</code> que tem utilidade para análises comparadas posteriores</p>
 <p>Para deixar o ambiente de programação mais organizado o objeto <code>ez_outcome</code> será criado e irá para armazenar os resultados.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="anova-de-medidas-repetidas.html#cb111-1"></a>ez_outcome &lt;-<span class="st"> </span><span class="kw">ezANOVA</span>(</span>
-<span id="cb111-2"><a href="anova-de-medidas-repetidas.html#cb111-2"></a>  <span class="dt">data =</span> tratamento,</span>
-<span id="cb111-3"><a href="anova-de-medidas-repetidas.html#cb111-3"></a>  <span class="dt">dv =</span> resultado,</span>
-<span id="cb111-4"><a href="anova-de-medidas-repetidas.html#cb111-4"></a>  <span class="dt">wid =</span> id,</span>
-<span id="cb111-5"><a href="anova-de-medidas-repetidas.html#cb111-5"></a>  <span class="dt">within =</span> tempo,</span>
-<span id="cb111-6"><a href="anova-de-medidas-repetidas.html#cb111-6"></a>  <span class="dt">between =</span> grupo,</span>
-<span id="cb111-7"><a href="anova-de-medidas-repetidas.html#cb111-7"></a>  <span class="dt">type =</span> <span class="dv">3</span>,</span>
-<span id="cb111-8"><a href="anova-de-medidas-repetidas.html#cb111-8"></a>  <span class="dt">detailed =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb111-9"><a href="anova-de-medidas-repetidas.html#cb111-9"></a>  <span class="dt">return_aov =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="anova-de-medidas-repetidas.html#cb110-1"></a>ez_outcome &lt;-<span class="st"> </span><span class="kw">ezANOVA</span>(</span>
+<span id="cb110-2"><a href="anova-de-medidas-repetidas.html#cb110-2"></a>  <span class="dt">data =</span> tratamento,</span>
+<span id="cb110-3"><a href="anova-de-medidas-repetidas.html#cb110-3"></a>  <span class="dt">dv =</span> resultado,</span>
+<span id="cb110-4"><a href="anova-de-medidas-repetidas.html#cb110-4"></a>  <span class="dt">wid =</span> id,</span>
+<span id="cb110-5"><a href="anova-de-medidas-repetidas.html#cb110-5"></a>  <span class="dt">within =</span> tempo,</span>
+<span id="cb110-6"><a href="anova-de-medidas-repetidas.html#cb110-6"></a>  <span class="dt">between =</span> grupo,</span>
+<span id="cb110-7"><a href="anova-de-medidas-repetidas.html#cb110-7"></a>  <span class="dt">type =</span> <span class="dv">3</span>,</span>
+<span id="cb110-8"><a href="anova-de-medidas-repetidas.html#cb110-8"></a>  <span class="dt">detailed =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb110-9"><a href="anova-de-medidas-repetidas.html#cb110-9"></a>  <span class="dt">return_aov =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <p>A mensagem de aviso informa que os grupos estão desbalenceados em relação à quantidade de participantes, o que foi previamente descrito.</p>
 <p>Abaixo esta o <code>ez_outcome</code>, que é dividido em 4 blocos diferentes: <code>ANOVA</code>, <code>Mauchly's Test for Sphericity</code>, <code>Sphericity Corrections</code> e <code>aov</code>. O tamanho do efeito é calculado pelo eta quadrado generalizado (<span class="math inline">\(\eta^2_G\)</span>) e está na última coluna da primeira tabela.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="anova-de-medidas-repetidas.html#cb112-1"></a>ez_outcome <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="anova-de-medidas-repetidas.html#cb111-1"></a>ez_outcome <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
 <ul>
 <li><p><strong>ANOVA</strong>:</p>
 <table>
@@ -834,14 +831,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- end of list -->
 <p>A tabela gerada é bastante extensa e para interpretá-la adequadamente, será necessário testar os pressupostos do modelo a partir de testes estatísticos específicos. Estes testes irão tanto indicar <u>quais são os resultados que deverão ser verificados</u>, como se há segurança na interpretação dos achados Na ANOVA de Medidas Repetidas, é necessário verificar a <mark>normalidade</mark> e a <mark>esfericidade</mark>.</p>
 <p><mark>Normalidade</mark>: A ANOVA de tem como um dos pressupostos a normalidade da distribuição dos resíduos. Isso pode ser feito de diferentes maneiras e abaixo há um QQ plot. Caso ambas as linhas estejam sobrepostas, isso gera evidências que o pressuposto foi atendido. Neste caso, isso não ocorre.</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="anova-de-medidas-repetidas.html#cb113-1"></a>tratamento <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb113-2"><a href="anova-de-medidas-repetidas.html#cb113-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">residuos =</span> <span class="kw">proj</span>(ez_outcome<span class="op">$</span>aov)[[<span class="dv">3</span>]][, <span class="st">&quot;Residuals&quot;</span>]) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb113-3"><a href="anova-de-medidas-repetidas.html#cb113-3"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">sample=</span>residuos)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb113-4"><a href="anova-de-medidas-repetidas.html#cb113-4"></a><span class="st">  </span><span class="kw">stat_qq</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb113-5"><a href="anova-de-medidas-repetidas.html#cb113-5"></a><span class="st">  </span><span class="kw">stat_qq_line</span>()</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-134-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="anova-de-medidas-repetidas.html#cb112-1"></a>tratamento <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb112-2"><a href="anova-de-medidas-repetidas.html#cb112-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">residuos =</span> <span class="kw">proj</span>(ez_outcome<span class="op">$</span>aov)[[<span class="dv">3</span>]][, <span class="st">&quot;Residuals&quot;</span>]) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb112-3"><a href="anova-de-medidas-repetidas.html#cb112-3"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">sample=</span>residuos)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb112-4"><a href="anova-de-medidas-repetidas.html#cb112-4"></a><span class="st">  </span><span class="kw">stat_qq</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb112-5"><a href="anova-de-medidas-repetidas.html#cb112-5"></a><span class="st">  </span><span class="kw">stat_qq_line</span>()</span></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-135-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Apesar do gráfico ter sido bastante claro, testes como o Shapiro-wilk, Anderson-Darling e Jarque Bera também podem ser utilizado neste caso. A hipótese nula desses testes assumem que os resíduos são normalmente distribuídos.</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="anova-de-medidas-repetidas.html#cb114-1"></a><span class="kw">shapiro.test</span>(<span class="kw">proj</span>(ez_outcome<span class="op">$</span>aov)[[<span class="dv">3</span>]][, <span class="st">&quot;Residuals&quot;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="anova-de-medidas-repetidas.html#cb113-1"></a><span class="kw">shapiro.test</span>(<span class="kw">proj</span>(ez_outcome<span class="op">$</span>aov)[[<span class="dv">3</span>]][, <span class="st">&quot;Residuals&quot;</span>])</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -850,7 +847,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Este último resultado foi convergente ao já visualizado na apresentação gráfica. Como o valor de p foi inferior ao alfa tipicamente estabelecido (0.05), não seria possível manter o pressuposto da normalidade. Quando isso acontece, é possível implementar ajustes nos dados, substituir o modelo analítico ou seguir a análise após justificar explicitamente essa violação.</p>
 <p><mark>Esfericidade</mark>: A esfericidade na ANOVA de Medidas Repetidas tem um conceito próximo à Homocedasticidade nas ANOVAs vistas anteriormente. Neste delineamento pareado, a esfericidade siginfica que a variância de todas as diferenças entre cada nível de fator é constante. Esse pressuposto é bastante difícil de ser assumido e existem ajustes possíveis em casos em que isso ocorre.</p>
 <p>Na tabela da ANOVA, o <code>Mauchly's Test for Sphericity</code> é o local que deve ser visualizado para verificar se a esfericidade foi violada ou não. A hipótese nula é definida como presença da esfericidade e idealmente não deve ser rejeitada. Abaixo, a reprodução desta parte da tabela.</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="anova-de-medidas-repetidas.html#cb116-1"></a>ez_outcome<span class="op">$</span><span class="st">`</span><span class="dt">Mauchly&#39;s Test for Sphericity</span><span class="st">`</span> <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="anova-de-medidas-repetidas.html#cb115-1"></a>ez_outcome<span class="op">$</span><span class="st">`</span><span class="dt">Mauchly&#39;s Test for Sphericity</span><span class="st">`</span> <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
 <table style="width:72%;">
 <colgroup>
 <col width="12%" />
@@ -888,7 +885,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>É possível concluir que a esfericidade foi violada mas há algumas saídas para isso. As correções Greenhouse-Geisser (p[GG]) e de Huynh-Feldt tentam corrigir essa violação a partir de ajustes nos graus de liberdade da ANOVA. Os resultados das duas correções costumam ser próximos e, frequentemenet, a correção de Greenhouse-Geisser é utilizada para interpretar os resultados.</p>
 <p>Com ambas as verificações feitas, é possível interpretar os resultados, que começam <u>sempre</u> pela interação. A interação <code>grupo x tempo</code> não foi significativa: F(4, 152) = 0.696, p = 0.59, p ajustado = 0.52). O efeito do <code>grupo</code> em que o participante foi alocado também não significativo: F(1, 38) = 0.706, p = 0.406). Por sua vez, o passar do <code>tempo</code> foi signicativo: F(4, 152) = 3.304, p = 0.012, p ajustado = 0.035).</p>
 <p>Frequentemente, os resultados corrigidos e os não-corrigidos concluem na mesma direção. Isso é verdadeiro nesse caso. Repare que os resultados não corrigidos alcancariam as mesmas conclusões:</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="anova-de-medidas-repetidas.html#cb117-1"></a><span class="kw">summary</span>(ez_outcome<span class="op">$</span>aov) <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="anova-de-medidas-repetidas.html#cb116-1"></a><span class="kw">summary</span>(ez_outcome<span class="op">$</span>aov) <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
 <table style="width:88%;">
 <colgroup>
 <col width="25%" />
@@ -955,7 +952,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Nota: Essa pesquisa não teve resultados significativos e, em função disso, testes post hoc não foram realizados. Entretanto, frequentemente os resultados são significativos e a mecânica das comparações pareadas é próxima ao que foi demonstrado no capítulo de ANOVA Fatorial.</p>
 </div>
 <div id="tamanho-do-efeito-4" class="section level2">
-<h2><span class="header-section-number">10.3</span> Tamanho do efeito</h2>
+<h2><span class="header-section-number">11.3</span> Tamanho do efeito</h2>
 <p>Resultados significativos não são informativos em relação ao tamanho do efeito. Esta última métrica tem mais contato com as perguntas originalmente realizadas em uma pesquisa e é entendida como uma medida objetiva e padronizada da magnitude de um efeito observado independente da significância estatística. Dessa maneira, o tamanho do efeito pode ser considerado um indicador da relevância clínica dos grupos, cujo uso é sempre importante em pesquisas em Psicologia e áreas da saúde.</p>
 <p>Na ANOVA de medidas repetidas o <u>eta quadrado parcial</u> (<span class="math inline">\(\eta_p^2\)</span>) e o <u>eta quadrado generalizado</u> (<span class="math inline">\(\eta^2_G\)</span>) podem ser calculados. A interpretação do <span class="math inline">\(\eta_p^2\)</span> é a mesma já apresentada no capítulo sobre ANOVA, enquanto o <span class="math inline">\(\eta^2_G\)</span> pode ser interpretado segundo a tabela disposta a seguir:</p>
 <table>
@@ -987,8 +984,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>O tamanho do efeito foi calculado e apresentado na tabela da ANOVA de Medidas Repetidas.</p>
 </div>
 <div id="execução-no-jasp-11" class="section level2">
-<h2><span class="header-section-number">10.4</span> Execução no JASP</h2>
-<p>A base utilizada será a <a href="https://www.dropbox.com/s/xyh6ndzjbj0s0p8/csv%20Lidia%20Carprofeno%20largo.csv?dl=0">csv Lidia Carprofeno largo</a>. Essa base reúne todas os dados da pesquisa, incluindo os grupos e as medidas de dor. Após carregar a base no JASP, será necessário apresentar tabelas e gráficos descritivos. Para fazer isso, é necessário clicar em <code>Descriptives</code>.</p>
+<h2><span class="header-section-number">11.4</span> Execução no JASP</h2>
+<p>A base utilizada será a intitulada “csv Lidia Carprofeno largo”. Essa base reúne todas os dados da pesquisa, incluindo os grupos e as medidas de dor. Após carregar a base no JASP, será necessário apresentar tabelas e gráficos descritivos. Para fazer isso, é necessário clicar em <code>Descriptives</code>.</p>
 <p><img src="img/cap_anovarm_descriptives.PNG" /></p>
 <p>Ao clicar nesta opção, será possível eleger as variáveis que irão ser analisadas e as variáveis que irão funcionar como agrupadores. Na prática, a lista <code>Variables</code> irá reunir as variáveis dependentes, enquanto a variável independente será colocada na seção <code>Split</code>. É importante atentar à opção <code>Frequency tables (nominal and ordinal)</code>, que deve ser marcada quando o nível de medida da variável de interesse for nominal ou ordinal.</p>
 <p><img src="img/cap_anovarm_descriptives2.PNG" /></p>
@@ -1033,7 +1030,7 @@ Nesta tela, será necessário deixar todas as opções desmarcadas.</p>
 Notas: Infelizmente, o JASP não realiza um gráfico completo dessa maneira na seção <code>Descriptives</code>, tal como apresentado. Por vezes, será necessário primeiro rodar integralmente a ANOVA para depois gerar esta apresentação. Quase sempre, o eixo X recebe a variável com maior quantidade de níveis. Essa pesquisa não teve resultados significativos e, em função disso, testes post hoc não foram realizados. Entretanto, frequentemente os resultados são significativos e a mecânica das comparações pareadas é próxima ao que foi demonstrado no capítulo de ANOVA Fatorial.</p>
 </div>
 <div id="escrita-dos-resultados-9" class="section level2">
-<h2><span class="header-section-number">10.5</span> Escrita dos resultados</h2>
+<h2><span class="header-section-number">11.5</span> Escrita dos resultados</h2>
 <div class="writing">
 <p>
 <strong>Como escrever os resultados</strong>
@@ -1043,8 +1040,9 @@ Os dados foram analisados a partir de uma ANOVA de medidas repetidas investigand
 </p>
 </div>
 </div>
-<div id="resumo-8" class="section level2">
-<h2><span class="header-section-number">10.6</span> Resumo</h2>
+<div id="resumo-9" class="section level2">
+<h2><span class="header-section-number">11.6</span> Resumo</h2>
+<div class="explore">
 <ol style="list-style-type: decimal">
 <li>A ANOVA de medidas repetidas é um teste bastante utilizado quando participantes de mesmos grupos são avaliados longitudinalmente<br />
 </li>
@@ -1056,8 +1054,10 @@ Os dados foram analisados a partir de uma ANOVA de medidas repetidas investigand
 </li>
 <li>Os pacotes estatísticos oferecem correções automáticas para violação de alguns pressupostos<br />
 </li>
-<li>Gráficos são muito informativos para uma análise inicial dos dados</li>
+<li>Gráficos são muito informativos para uma análise inicial dos dados<br />
+</li>
 </ol>
+</div>
 
 </div>
 </div>
@@ -1098,7 +1098,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/07-anova_mr.Rmd",
+"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/10-anova_mr.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -1,6 +1,5 @@
 # Regressão linear simples
 
-
 ```{r, include = FALSE }
 load("~/anovabr/mqt/bases/Base R - imagem corporal.RData")
 
@@ -9,7 +8,32 @@ library(olsrr) #regression diagnostics
 library(pander)
 ```
 
-De forma geral, modelos de regressão são modelos estatísticos que visam predizer o comportamento de uma variável dependente (Y) como uma função de uma ou mais variáveis independentes (X). Em larga escala, eles substituem os outros testes paramétricos vistos até agora. Dessa maneira, quase tudo o que foi visto durante os capítulos anteriores são casos especiais de modelos de regressão [@Chartier2008]. 
+```{block, type="objectives"}
+**Objetivos do capítulo**  
+1. Apresentar o modelo de regressão linear, especialmente a regressão linear simples    
+2. introduzir conceitos analíticos subjacentes à esta modelagem    
+3. Apresentar a utilidade desta modelagem em uma pesquisa   
+4. Demonstrar algumas equivalências entre modelos de regressão e outros testes estatísticos  
+```
+
+
+```{block, type="writing"}
+**GLOSSÁRIO**
+
+**Modelo Linear Geral** (GLM): Família de modelos estatísticos que permite verificar o relacionamento entre uma variável dependente (Y) contínua e variáveis independentes (X) contínuar ou não  
+**intercepto** ($b_0$): Valor previsto (médio) de Y quando X = 0  
+**Inclinação** ($b_i$): Diferença média em unidades da variável dependente quando se altera uma unidade de X   
+**SSR**: Soma dos Quadrados da Regressão   
+**SSE**: Soma dos Quadrados dos Erros  
+**SST**: Soma dos Quadrados Total  
+**Coeficiente de Determinação** ($R^2$): Porcentagem de variação da variável dependente (Y) que pode ser atribuída à variabilida da(s) variável (is) independente(s) (X)  
+**Coeficiente de Determinação ajustado** ($R^2_{adj}$): Coeficiente que pondera o $R^2$ pelo número de variáveis explicativas e pelo número de observações da amostra. É particularmente útil quando deseja-se comparar modelos de regressão múltipla para mesma variável dependente, pois penaliza aquele modelo com maior número de variáveis independentes   
+```
+
+
+Modelos de regressão são modelos estatísticos que visam predizer o comportamento de uma variável dependente (Y) como uma função de uma ou mais variáveis independentes (X). Eles são integrantes da família de Modelos Lineares Gerais (GLM) 
+
+Em larga escala, eles substituem os outros testes paramétricos vistos até agora. Dessa maneira, quase tudo o que foi visto durante os capítulos anteriores são casos especiais de modelos de regressão [@Chartier2008]. 
 
 Existem diferentes nomenclaturas utilizadas para classificar tais modelos e a tabela abaixo apresenta uma classificação funcional.
 
@@ -41,7 +65,9 @@ Pela abrangência dos modelos de regressão, é possível tanto encontrar cursos
 
 Conceitualmente, a regressão linear simples é apresentada como:
 
-\[y_i = b_0 + b_1X{_1}_i + \epsilon_{i}\]
+\[y_i = b_0 + b_1X{_1}_i + \epsilon_{i}\]   
+
+Onde:  
 
 $y_i$ representa a variável dependente  
 $b_0$ é o intercepto (coeficiente linear)   
@@ -58,22 +84,6 @@ A interpretação dos resultados obtidos depende dos seguintes pressupostos:
 
 O mnemônico <u>LINE</u> talvez ajude a lembrar destes pressupostos. Ele se refere à <u>linearity</u>, <u>independence</u>, <u>normality</u> e <u>equal variance </u>.  
 
-
-## Glossário        
- 
-Diferentes termos são empregados em modelos de regressão. Alguns deles são apresentados a seguir para auxiliar no entendimento e também aproximar o leitor a este tipo de modelagem.    
-
-```{block, type="writing"}
-**GLOSSÁRIO**
-
-**intercepto** ($b_0$): Valor previsto (médio) de Y quando X = 0  
-**Inclinação** ($b_i$): Diferença média em unidades da variável dependente quando se altera uma unidade de X   
-**SSR**: Soma dos Quadrados da Regressão   
-**SSE**: Soma dos Quadrados dos Erros  
-**SST**: Soma dos Quadrados Total  
-**Coeficiente de Determinação** ($R^2$): Porcentagem de variação da variável dependente (Y) que pode ser atribuída à variabilida da(s) variável (is) independente(s) (X)  
-**Coeficiente de Determinação ajustado** ($R^2_{adj}$): Coeficiente que pondera o $R^2$ pelo número de variáveis explicativas e pelo número de observações da amostra. É particularmente útil quando deseja-se comparar modelos de regressão múltipla para mesma variável dependente, pois penaliza aquele modelo com maior número de variáveis independentes   
-```
 
 
 ## Breve explicação conceitual
@@ -197,7 +207,7 @@ Enquanto o intercepto é dado por:
 $$b_0 = \overline{y} - b_1 \overline{x}$$
 
 Pela forma como são calculados, o $b_0$ e o $b_1$ são chamados de estimadores de mínimos quadrados ordinários. O $b_1$ representa o quanto a média de Y varia para um aumento de uma unidade da variável X. O $b_0$ indica o ponto onde a reta corta o eixo das ordenadas e pode ser
-interpretável ou não, tal como descrito no [glossário](#glossario).  
+interpretável ou não, tal como descrito no glossário, ao início do capítulo.  
 
 Implementando as fórmulas, agora é possível traçar a <u>melhor</u> reta para descrever o relacionamento entre as variáveis, tal como abaixo:
 
@@ -273,6 +283,9 @@ Este coeficiente varia entre 0 até 1 e indica a proporção da variação total
 Isso feito, o sumário de algumas fórmulas fechadas pode auxiliar no entendimento desta modelagem àqueles com este interesse específico.  
 
 ```{block, type="writing"}
+**EQUAÇÕES**  
+
+
 Soma dos Quadrados da Regressão: $SSR =  \sum\limits_{i=1}^{n} (\widehat{y_i}-\overline{y})^2$  
 
 Soma dos Quadrados dos Erros: $SSE =  \sum\limits_{i=1}^{n} (y_1-\widehat{y_i})^2$  
@@ -299,9 +312,14 @@ Regression and Other Stories, de Andrew Gelman
 
 ## Pesquisa  
 
-<div class="alert alert-warning">
-  <strong>Base: </strong> Livro - Dados - Eating disorders
+<div class="base">
+  A base desta pesquisa está disponível em formato **R (Rdata)** e em **CSV**, que é lido pelo JASP. Clique na opção desejada.     
+      
+  <strong>Base R: </strong> [Imagem corporal](https://github.com/anovabr/mqt/raw/master/bases/Base%20R%20-%20imagem%20corporal.RData)
+  
+  <strong>Base JASP: </strong> [Base CSV - csv eat bsq brasil](https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip)
 </div>  
+
 
 
 Neste capítulo, vamos utilizar a pesquisa intitulada ["Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students"](https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students), publicada em 2018 no Global Journal of Educational Studies, que sou coautor.
@@ -316,8 +334,7 @@ Em modelos de regressão, as hipóteses costumam ser feitas em cascata. Quase se
 
 ## Execução no R  
 
-
-A primeira etapa da análise é realizada pelo desenvolvimento de tabelas e gráficos que possam auxiliar na interpretação dos resultados. De maneira similar à feita em outros capítulos, abaixo há uma tabela descritiva . 
+Inicialmente, é necessário carregar a base no R. Após isso, a primeira etapa analítica é realizada pela criação de tabelas e gráficos. Ambas as apresentações são importantes e oferecem um auxilio à interpretação dos resultados. De maneira similar à feita em outros capítulos, abaixo há uma tabela descritiva feita com o pacote `arsenal`.  
 
 ```{r results="asis" }
 arsenal::tableby(~eat_soma + bsq_soma, dados_brasil) %>% summary() 
@@ -363,7 +380,7 @@ Isto explicado, a função `ols_regress` do pacote `olsrr` dispoõe os resultado
 
 
 ```{r }
-ols_regress(mod_linear_simples)
+ols_regress(mod_linear_simples) 
 ```
 
 É fácil notar que os resultados apresentados são muitos e se recomenda uma ordem específica para interpretá-los.   
@@ -389,7 +406,7 @@ Estes resultados obtidos são muito auxiliados pela apresentação de gráficos 
 ggplot(dados_brasil, aes(x = bsq_soma, y = eat_soma)) +
   geom_jitter() + geom_smooth(method = "lm") + 
   ggpubr::stat_regline_equation(label.x = 3, label.y = 40) +
-  ggpubr::stat_cor(method = "pearson", label.x = 3, label.y = 44)
+  ggpubr::stat_cor(aes(label =  ..rr.label..), method = "pearson", label.x = 3, label.y = 44)
 ```
 
 
@@ -437,7 +454,7 @@ Isso posto, os diagnósticos executados indicaram que o modelo violou a normalid
 
 ## Execução no JASP  
 
-Para executar as rotinas necessárias, será necessário carregar a base de dados para o ambiente JASP. A base chama-se [csv eat bsq brasil](https://www.dropbox.com/s/l8xkxi5z5fntrd9/csv%20eat%20bsq%20brasil.csv?dl=0). Após fazer isso, para realizar tabelas e gráficos descritivos, deve-se clicar em `Descriptives` , na parte superior do programa.
+Para executar as rotinas necessárias, será necessário carregar a base de dados para o ambiente JASP. A base chama-se "csv eat bsq brasil". Após fazer isso, para realizar tabelas e gráficos descritivos, deve-se clicar em `Descriptives` , na parte superior do programa.
 
 ![](./img/cap_correlacao_descritivo.png)
 
@@ -535,14 +552,16 @@ Um modelo de regressão foi calculado para verificar os resultados dos comportam
 
 
 ## Resumo  
-
-1. Existem diferentes modelos de regressão e eles sempre visam prever/explicar um resultado a partir de uma ou um conjunto de variáveis  
-2. O tipo de modelagem depedente tanto da natureza e quantidade das VIs e VDs e é possível entender grande parte dos testes estatísticos estudados como casos particulares dos modelos de regressão   
-3. Os principais indicadores de um modelo de regressão são sua significância geral, o $R^2$,o o $R^2_{adj}$, bem como o coeficiente e a significância dos preditores   
-4. o diagnóstico é uma parte essencial desta modelagem e o mnemônico LINE pode ajudar na lembrança dos pressupostos   
+::: {.explore}
+1. Existem diferentes modelos de regressão. 
+2. A principal proposta dos modelos de regressão é prever/explicar um resultado a partir de uma ou um conjunto de variáveis   
+3. O tipo de modelagem depedente tanto da natureza e quantidade das VIs e VDs e é possível entender grande parte dos testes estatísticos estudados como casos particulares dos modelos de regressão   
+4. Os principais indicadores de um modelo de regressão são sua significância geral, o $R^2$,o o $R^2_{adj}$, bem como o coeficiente e a significância dos preditores   
+5. o diagnóstico é uma parte essencial desta modelagem e o mnemônico LINE pode ajudar na lembrança dos pressupostos   
+::: 
 
 
 ## Pesquisas adicionais  
 
-1. Influence of Age and Education on the Performance of Elderly in the Brazilian Version of the Montreal Cognitive Assessment Battery (DOI: 10.1159/000489774)
+1. Influence of Age and Education on the Performance of Elderly in the Brazilian Version of the Montreal Cognitive Assessment Battery (DOI: 10.1159/000489774)   
 Nesta pesquisa, 110 participantes foram recrutados para que os pesquisadores pudessem produzir tabelas estatísticas para um novo exame neuropsicológico. Uma das análises feitas verificou o impacto dos anos de estudo no desempenho neste exame neuropsicológico, concluindo pelo seu efeito protetivo. 

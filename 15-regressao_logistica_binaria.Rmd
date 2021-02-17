@@ -30,7 +30,7 @@ Desta maneira, é possível entender a regressão logística como um complemento
 
 Conceitualmente, neste modelo há os seguintes termos:
 
-\[\underbrace{ln\left ( \frac{P}{1-P} \right)}_\text{logit} = b_0+b_1X_1+ \dots + b_iX_i\]
+\[\overbrace{y}^{VD} = \underbrace{ln\left ( \frac{P}{1-P} \right)}_\text{logit} \\= b_0+b_1X_1+ \dots + b_iX_i\]
 
 Onde:   
 $P$ representa a probabilidade de um desfecho ocorrer     
@@ -47,7 +47,7 @@ Os seguintes pressupostos devem ser investigados:
 *(iv)* Há uma relação linear entre preditores contínuos e o logit do desfecho 
 
 
-Há muitas aplicações de modelos logísticos. Em áreas de saúde, eles tendem a ser os modelos de primeira escolha para verificar condições clínicas e de agravo à saúde. Em Psicologia, por exemplo, ele é util para descrever e investigar os possíveis preditores de condições diagnósticas bem definidas, tal como TDAH e outros transtornos psiquiátricos. Em epidemiologia, eles são fundamentais em estudos do tipo caso-controle. 
+Há muitas pesquisas em que modelos logísticos são utilizados. Em áreas de saúde, eles tendem a ser os modelos de primeira escolha para verificar condições clínicas e de agravo à saúde. Em Psicologia, por exemplo, ele é util para descrever e investigar os possíveis preditores de condições diagnósticas bem definidas, tal como TDAH e outros transtornos psiquiátricos. Em epidemiologia, eles são fundamentais em estudos do tipo caso-controle. 
 
 Algumas condições são importantes:   
 
@@ -94,8 +94,8 @@ Chance | Probabilidade| Interpretação
 <div class="base">
   A base desta pesquisa está disponível em formato **R (Rdata)** e em **CSV**, que é lido pelo JASP. Clique na opção desejada.     
       
-  <strong>R Base: </strong> [Base R - Headache anonymous](https://github.com/anovabr/mqt/raw/master/bases/Base%20R%20-%20Headache%20anonymous.RData)   
-  <strong>Base JASP : </strong> [Base CSV - headache (no names)](https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip)
+  <strong>Base R: </strong> [Base R - Headache anonymous](https://github.com/anovabr/mqt/raw/master/bases/Base%20R%20-%20Headache%20anonymous.RData)   
+  <strong>Base JASP: </strong> [Base CSV - headache (no names)](https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip)
 </div>  
 
 

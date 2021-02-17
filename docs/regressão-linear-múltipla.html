@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Cap. 14 Regressão linear múltipla | Métodos quantitativos em Psicologia com R</title>
+  <title>Cap. 15 Regressão linear múltipla | Métodos quantitativos em Psicologia com R</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Cap. 14 Regressão linear múltipla | Métodos quantitativos em Psicologia com R" />
+  <meta property="og:title" content="Cap. 15 Regressão linear múltipla | Métodos quantitativos em Psicologia com R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="cjvanlissa/gitbook-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Cap. 14 Regressão linear múltipla | Métodos quantitativos em Psicologia com R" />
+  <meta name="twitter:title" content="Cap. 15 Regressão linear múltipla | Métodos quantitativos em Psicologia com R" />
   
   <meta name="twitter:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2021-02-16" />
+<meta name="date" content="2021-02-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -144,10 +144,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#o-r-e-os-pacotes"><i class="fa fa-check"></i><b>1.7</b> O R e os pacotes</a></li>
 <li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#jasp"><i class="fa fa-check"></i><b>1.8</b> JASP</a></li>
 <li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#outros-recursos"><i class="fa fa-check"></i><b>1.9</b> Outros recursos</a></li>
-<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#preço"><i class="fa fa-check"></i><b>1.10</b> Preço</a></li>
-<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#capa"><i class="fa fa-check"></i><b>1.11</b> Capa</a></li>
-<li class="chapter" data-level="1.12" data-path="index.html"><a href="index.html#versão-do-livro"><i class="fa fa-check"></i><b>1.12</b> Versão do livro</a></li>
-<li class="chapter" data-level="1.13" data-path="index.html"><a href="index.html#agradecimentos-e-revisões-técnicas"><i class="fa fa-check"></i><b>1.13</b> Agradecimentos e revisões técnicas</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#capa"><i class="fa fa-check"></i><b>1.10</b> Capa</a></li>
+<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#versão-do-livro"><i class="fa fa-check"></i><b>1.11</b> Versão do livro</a></li>
+<li class="chapter" data-level="1.12" data-path="index.html"><a href="index.html#agradecimentos-e-revisões-técnicas"><i class="fa fa-check"></i><b>1.12</b> Agradecimentos e revisões técnicas</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html"><i class="fa fa-check"></i><b>2</b> Programas estatísticos</a><ul>
 <li class="chapter" data-level="2.1" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-r"><i class="fa fa-check"></i><b>2.1</b> O R</a></li>
@@ -211,14 +210,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.26" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#resumo-2"><i class="fa fa-check"></i><b>4.26</b> Resumo</a></li>
 <li class="chapter" data-level="4.27" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#questões-1"><i class="fa fa-check"></i><b>4.27</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="qui-quadrado.html"><a href="qui-quadrado.html"><i class="fa fa-check"></i><b>5</b> Qui quadrado</a><ul>
-<li class="chapter" data-level="5.1" data-path="qui-quadrado.html"><a href="qui-quadrado.html#pesquisa-1"><i class="fa fa-check"></i><b>5.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="5.2" data-path="qui-quadrado.html"><a href="qui-quadrado.html#execução-no-r-1"><i class="fa fa-check"></i><b>5.2</b> Execução no R</a></li>
-<li class="chapter" data-level="5.3" data-path="qui-quadrado.html"><a href="qui-quadrado.html#tamanho-do-efeito"><i class="fa fa-check"></i><b>5.3</b> Tamanho do efeito</a></li>
-<li class="chapter" data-level="5.4" data-path="qui-quadrado.html"><a href="qui-quadrado.html#execução-no-jasp-1"><i class="fa fa-check"></i><b>5.4</b> Execução no JASP</a></li>
-<li class="chapter" data-level="5.5" data-path="qui-quadrado.html"><a href="qui-quadrado.html#escrita-dos-resultados"><i class="fa fa-check"></i><b>5.5</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="5.6" data-path="qui-quadrado.html"><a href="qui-quadrado.html#resumo-3"><i class="fa fa-check"></i><b>5.6</b> Resumo</a></li>
-<li class="chapter" data-level="5.7" data-path="qui-quadrado.html"><a href="qui-quadrado.html#pesquisas-adicionais"><i class="fa fa-check"></i><b>5.7</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="5" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html"><i class="fa fa-check"></i><b>5</b> Família de distribuições</a><ul>
+<li class="chapter" data-level="5.1" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html#resumo-3"><i class="fa fa-check"></i><b>5.1</b> Resumo</a></li>
+<li class="chapter" data-level="5.2" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html#questões-2"><i class="fa fa-check"></i><b>5.2</b> Questões</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html"><i class="fa fa-check"></i><b>6</b> Tipos de amostragem</a><ul>
 <li class="chapter" data-level="6.1" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html#amostragem-aleatória-simples"><i class="fa fa-check"></i><b>6.1</b> Amostragem aleatória simples</a></li>
@@ -244,115 +238,124 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#o-tamanho-do-efeito"><i class="fa fa-check"></i><b>7.5</b> O tamanho do efeito</a></li>
 <li class="chapter" data-level="7.6" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#um-exemplo-intuitivo"><i class="fa fa-check"></i><b>7.6</b> Um exemplo intuitivo</a></li>
 <li class="chapter" data-level="7.7" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#o-que-não-te-contaram-sobre-inferência-estatística"><i class="fa fa-check"></i><b>7.7</b> O que não te contaram sobre inferência estatística</a></li>
-<li class="chapter" data-level="7.8" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#questões-2"><i class="fa fa-check"></i><b>7.8</b> Questões</a></li>
-<li class="chapter" data-level="7.9" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#pesquisas-adicionais-1"><i class="fa fa-check"></i><b>7.9</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="7.8" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#questões-3"><i class="fa fa-check"></i><b>7.8</b> Questões</a></li>
+<li class="chapter" data-level="7.9" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#pesquisas-adicionais"><i class="fa fa-check"></i><b>7.9</b> Pesquisas adicionais</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="teste-t.html"><a href="teste-t.html"><i class="fa fa-check"></i><b>8</b> Teste T</a><ul>
-<li class="chapter" data-level="8.1" data-path="teste-t.html"><a href="teste-t.html#pesquisa-2"><i class="fa fa-check"></i><b>8.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="8.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-r-2"><i class="fa fa-check"></i><b>8.2</b> Execução no R</a></li>
-<li class="chapter" data-level="8.3" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito-1"><i class="fa fa-check"></i><b>8.3</b> Tamanho do efeito</a></li>
-<li class="chapter" data-level="8.4" data-path="teste-t.html"><a href="teste-t.html#execução-no-jasp-2"><i class="fa fa-check"></i><b>8.4</b> Execução no JASP</a></li>
-<li class="chapter" data-level="8.5" data-path="teste-t.html"><a href="teste-t.html#escrita-dos-resultados-1"><i class="fa fa-check"></i><b>8.5</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="8.6" data-path="teste-t.html"><a href="teste-t.html#versão-robusta-do-teste-t"><i class="fa fa-check"></i><b>8.6</b> Versão robusta do Teste T</a><ul>
-<li class="chapter" data-level="8.6.1" data-path="teste-t.html"><a href="teste-t.html#execução-no-r-3"><i class="fa fa-check"></i><b>8.6.1</b> Execução no R</a></li>
-<li class="chapter" data-level="8.6.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-jasp-3"><i class="fa fa-check"></i><b>8.6.2</b> Execução no JASP</a></li>
+<li class="chapter" data-level="8" data-path="qui-quadrado.html"><a href="qui-quadrado.html"><i class="fa fa-check"></i><b>8</b> Qui quadrado</a><ul>
+<li class="chapter" data-level="8.1" data-path="qui-quadrado.html"><a href="qui-quadrado.html#pesquisa-1"><i class="fa fa-check"></i><b>8.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="8.2" data-path="qui-quadrado.html"><a href="qui-quadrado.html#execução-no-r-1"><i class="fa fa-check"></i><b>8.2</b> Execução no R</a></li>
+<li class="chapter" data-level="8.3" data-path="qui-quadrado.html"><a href="qui-quadrado.html#tamanho-do-efeito"><i class="fa fa-check"></i><b>8.3</b> Tamanho do efeito</a></li>
+<li class="chapter" data-level="8.4" data-path="qui-quadrado.html"><a href="qui-quadrado.html#execução-no-jasp-1"><i class="fa fa-check"></i><b>8.4</b> Execução no JASP</a></li>
+<li class="chapter" data-level="8.5" data-path="qui-quadrado.html"><a href="qui-quadrado.html#escrita-dos-resultados"><i class="fa fa-check"></i><b>8.5</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="8.6" data-path="qui-quadrado.html"><a href="qui-quadrado.html#resumo-4"><i class="fa fa-check"></i><b>8.6</b> Resumo</a></li>
+<li class="chapter" data-level="8.7" data-path="qui-quadrado.html"><a href="qui-quadrado.html#pesquisas-adicionais-1"><i class="fa fa-check"></i><b>8.7</b> Pesquisas adicionais</a></li>
 </ul></li>
-<li class="chapter" data-level="8.7" data-path="teste-t.html"><a href="teste-t.html#mann-whitney"><i class="fa fa-check"></i><b>8.7</b> Mann-whitney</a><ul>
-<li class="chapter" data-level="8.7.1" data-path="teste-t.html"><a href="teste-t.html#execução-no-r-4"><i class="fa fa-check"></i><b>8.7.1</b> Execução No R</a></li>
-<li class="chapter" data-level="8.7.2" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito-2"><i class="fa fa-check"></i><b>8.7.2</b> Tamanho do efeito</a></li>
-<li class="chapter" data-level="8.7.3" data-path="teste-t.html"><a href="teste-t.html#execução-no-jasp-4"><i class="fa fa-check"></i><b>8.7.3</b> Execução no JASP</a></li>
-<li class="chapter" data-level="8.7.4" data-path="teste-t.html"><a href="teste-t.html#escrita-dos-resultados-2"><i class="fa fa-check"></i><b>8.7.4</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="9" data-path="teste-t.html"><a href="teste-t.html"><i class="fa fa-check"></i><b>9</b> Teste T</a><ul>
+<li class="chapter" data-level="9.1" data-path="teste-t.html"><a href="teste-t.html#pesquisa-2"><i class="fa fa-check"></i><b>9.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="9.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-r-2"><i class="fa fa-check"></i><b>9.2</b> Execução no R</a></li>
+<li class="chapter" data-level="9.3" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito-1"><i class="fa fa-check"></i><b>9.3</b> Tamanho do efeito</a></li>
+<li class="chapter" data-level="9.4" data-path="teste-t.html"><a href="teste-t.html#execução-no-jasp-2"><i class="fa fa-check"></i><b>9.4</b> Execução no JASP</a></li>
+<li class="chapter" data-level="9.5" data-path="teste-t.html"><a href="teste-t.html#escrita-dos-resultados-1"><i class="fa fa-check"></i><b>9.5</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="9.6" data-path="teste-t.html"><a href="teste-t.html#versão-robusta-do-teste-t"><i class="fa fa-check"></i><b>9.6</b> Versão robusta do Teste T</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="teste-t.html"><a href="teste-t.html#execução-no-r-3"><i class="fa fa-check"></i><b>9.6.1</b> Execução no R</a></li>
+<li class="chapter" data-level="9.6.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-jasp-3"><i class="fa fa-check"></i><b>9.6.2</b> Execução no JASP</a></li>
 </ul></li>
-<li class="chapter" data-level="8.8" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>8.8</b> Teste T e regressão</a></li>
-<li class="chapter" data-level="8.9" data-path="teste-t.html"><a href="teste-t.html#resumo-4"><i class="fa fa-check"></i><b>8.9</b> Resumo</a></li>
-<li class="chapter" data-level="8.10" data-path="teste-t.html"><a href="teste-t.html#pesquisas-adicionais-2"><i class="fa fa-check"></i><b>8.10</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="9.7" data-path="teste-t.html"><a href="teste-t.html#mann-whitney"><i class="fa fa-check"></i><b>9.7</b> Mann-whitney</a><ul>
+<li class="chapter" data-level="9.7.1" data-path="teste-t.html"><a href="teste-t.html#execução-no-r-4"><i class="fa fa-check"></i><b>9.7.1</b> Execução No R</a></li>
+<li class="chapter" data-level="9.7.2" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito-2"><i class="fa fa-check"></i><b>9.7.2</b> Tamanho do efeito</a></li>
+<li class="chapter" data-level="9.7.3" data-path="teste-t.html"><a href="teste-t.html#execução-no-jasp-4"><i class="fa fa-check"></i><b>9.7.3</b> Execução no JASP</a></li>
+<li class="chapter" data-level="9.7.4" data-path="teste-t.html"><a href="teste-t.html#escrita-dos-resultados-2"><i class="fa fa-check"></i><b>9.7.4</b> Escrita dos resultados</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>9</b> ANOVA</a><ul>
-<li class="chapter" data-level="9.1" data-path="anova.html"><a href="anova.html#glossário"><i class="fa fa-check"></i><b>9.1</b> Glossário</a></li>
-<li class="chapter" data-level="9.2" data-path="anova.html"><a href="anova.html#pesquisa-3"><i class="fa fa-check"></i><b>9.2</b> Pesquisa</a></li>
-<li class="chapter" data-level="9.3" data-path="anova.html"><a href="anova.html#anova-de-1-via"><i class="fa fa-check"></i><b>9.3</b> ANOVA de 1 via</a></li>
-<li class="chapter" data-level="9.4" data-path="anova.html"><a href="anova.html#execução-no-r-5"><i class="fa fa-check"></i><b>9.4</b> Execução no R</a></li>
-<li class="chapter" data-level="9.5" data-path="anova.html"><a href="anova.html#tamanho-do-efeito-3"><i class="fa fa-check"></i><b>9.5</b> Tamanho do efeito</a></li>
-<li class="chapter" data-level="9.6" data-path="anova.html"><a href="anova.html#execução-no-jasp-5"><i class="fa fa-check"></i><b>9.6</b> Execução no JASP</a></li>
-<li class="chapter" data-level="9.7" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-3"><i class="fa fa-check"></i><b>9.7</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="9.8" data-path="anova.html"><a href="anova.html#post-hoc"><i class="fa fa-check"></i><b>9.8</b> Post hoc</a></li>
-<li class="chapter" data-level="9.9" data-path="anova.html"><a href="anova.html#execução-no-r-6"><i class="fa fa-check"></i><b>9.9</b> Execução no R</a></li>
-<li class="chapter" data-level="9.10" data-path="anova.html"><a href="anova.html#execução-no-jasp-6"><i class="fa fa-check"></i><b>9.10</b> Execução no JASP</a></li>
-<li class="chapter" data-level="9.11" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-4"><i class="fa fa-check"></i><b>9.11</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="9.12" data-path="anova.html"><a href="anova.html#resumo-5"><i class="fa fa-check"></i><b>9.12</b> Resumo</a></li>
-<li class="chapter" data-level="9.13" data-path="anova.html"><a href="anova.html#pesquisas-adicionais-3"><i class="fa fa-check"></i><b>9.13</b> Pesquisas adicionais</a></li>
-<li class="chapter" data-level="9.14" data-path="anova.html"><a href="anova.html#pesquisa-4"><i class="fa fa-check"></i><b>9.14</b> Pesquisa</a></li>
-<li class="chapter" data-level="9.15" data-path="anova.html"><a href="anova.html#anova-de-2-vias"><i class="fa fa-check"></i><b>9.15</b> ANOVA de 2 vias</a></li>
-<li class="chapter" data-level="9.16" data-path="anova.html"><a href="anova.html#execução-no-r-7"><i class="fa fa-check"></i><b>9.16</b> Execução no R</a></li>
-<li class="chapter" data-level="9.17" data-path="anova.html"><a href="anova.html#execução-no-jasp-7"><i class="fa fa-check"></i><b>9.17</b> Execução no JASP</a></li>
-<li class="chapter" data-level="9.18" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-5"><i class="fa fa-check"></i><b>9.18</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="9.19" data-path="anova.html"><a href="anova.html#post-hoc-1"><i class="fa fa-check"></i><b>9.19</b> Post hoc</a></li>
-<li class="chapter" data-level="9.20" data-path="anova.html"><a href="anova.html#execução-no-r-8"><i class="fa fa-check"></i><b>9.20</b> Execução no R</a></li>
-<li class="chapter" data-level="9.21" data-path="anova.html"><a href="anova.html#execução-no-jasp-8"><i class="fa fa-check"></i><b>9.21</b> Execução no JASP</a></li>
-<li class="chapter" data-level="9.22" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-6"><i class="fa fa-check"></i><b>9.22</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="9.23" data-path="anova.html"><a href="anova.html#resumo-6"><i class="fa fa-check"></i><b>9.23</b> Resumo</a></li>
-<li class="chapter" data-level="9.24" data-path="anova.html"><a href="anova.html#anova-fatorial"><i class="fa fa-check"></i><b>9.24</b> ANOVA Fatorial</a></li>
-<li class="chapter" data-level="9.25" data-path="anova.html"><a href="anova.html#execução-no-r-9"><i class="fa fa-check"></i><b>9.25</b> Execução no R</a></li>
-<li class="chapter" data-level="9.26" data-path="anova.html"><a href="anova.html#execução-no-jasp-9"><i class="fa fa-check"></i><b>9.26</b> Execução no JASP</a></li>
-<li class="chapter" data-level="9.27" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-7"><i class="fa fa-check"></i><b>9.27</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="9.28" data-path="anova.html"><a href="anova.html#resumo-7"><i class="fa fa-check"></i><b>9.28</b> Resumo</a></li>
-<li class="chapter" data-level="9.29" data-path="anova.html"><a href="anova.html#post-hoc-2"><i class="fa fa-check"></i><b>9.29</b> Post hoc</a></li>
-<li class="chapter" data-level="9.30" data-path="anova.html"><a href="anova.html#execução-no-jasp-10"><i class="fa fa-check"></i><b>9.30</b> Execução no JASP</a></li>
-<li class="chapter" data-level="9.31" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-8"><i class="fa fa-check"></i><b>9.31</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="9.8" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>9.8</b> Teste T e regressão</a></li>
+<li class="chapter" data-level="9.9" data-path="teste-t.html"><a href="teste-t.html#resumo-5"><i class="fa fa-check"></i><b>9.9</b> Resumo</a></li>
+<li class="chapter" data-level="9.10" data-path="teste-t.html"><a href="teste-t.html#pesquisas-adicionais-2"><i class="fa fa-check"></i><b>9.10</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="9.11" data-path="teste-t.html"><a href="teste-t.html#questões-4"><i class="fa fa-check"></i><b>9.11</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html"><i class="fa fa-check"></i><b>10</b> ANOVA de medidas repetidas</a><ul>
-<li class="chapter" data-level="10.1" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pesquisa-5"><i class="fa fa-check"></i><b>10.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="10.2" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#execução-no-r-10"><i class="fa fa-check"></i><b>10.2</b> Execução no R</a></li>
-<li class="chapter" data-level="10.3" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#tamanho-do-efeito-4"><i class="fa fa-check"></i><b>10.3</b> Tamanho do efeito</a></li>
-<li class="chapter" data-level="10.4" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#execução-no-jasp-11"><i class="fa fa-check"></i><b>10.4</b> Execução no JASP</a></li>
-<li class="chapter" data-level="10.5" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#escrita-dos-resultados-9"><i class="fa fa-check"></i><b>10.5</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="10.6" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#resumo-8"><i class="fa fa-check"></i><b>10.6</b> Resumo</a></li>
+<li class="chapter" data-level="10" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>10</b> ANOVA</a><ul>
+<li class="chapter" data-level="10.1" data-path="anova.html"><a href="anova.html#pesquisa-3"><i class="fa fa-check"></i><b>10.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="10.2" data-path="anova.html"><a href="anova.html#anova-de-1-via"><i class="fa fa-check"></i><b>10.2</b> ANOVA de 1 via</a></li>
+<li class="chapter" data-level="10.3" data-path="anova.html"><a href="anova.html#execução-no-r-5"><i class="fa fa-check"></i><b>10.3</b> Execução no R</a></li>
+<li class="chapter" data-level="10.4" data-path="anova.html"><a href="anova.html#tamanho-do-efeito-3"><i class="fa fa-check"></i><b>10.4</b> Tamanho do efeito</a></li>
+<li class="chapter" data-level="10.5" data-path="anova.html"><a href="anova.html#execução-no-jasp-5"><i class="fa fa-check"></i><b>10.5</b> Execução no JASP</a></li>
+<li class="chapter" data-level="10.6" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-3"><i class="fa fa-check"></i><b>10.6</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="10.7" data-path="anova.html"><a href="anova.html#post-hoc"><i class="fa fa-check"></i><b>10.7</b> Post hoc</a></li>
+<li class="chapter" data-level="10.8" data-path="anova.html"><a href="anova.html#execução-no-r-6"><i class="fa fa-check"></i><b>10.8</b> Execução no R</a></li>
+<li class="chapter" data-level="10.9" data-path="anova.html"><a href="anova.html#execução-no-jasp-6"><i class="fa fa-check"></i><b>10.9</b> Execução no JASP</a></li>
+<li class="chapter" data-level="10.10" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-4"><i class="fa fa-check"></i><b>10.10</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="10.11" data-path="anova.html"><a href="anova.html#resumo-6"><i class="fa fa-check"></i><b>10.11</b> Resumo</a></li>
+<li class="chapter" data-level="10.12" data-path="anova.html"><a href="anova.html#pesquisas-adicionais-3"><i class="fa fa-check"></i><b>10.12</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="10.13" data-path="anova.html"><a href="anova.html#pesquisa-4"><i class="fa fa-check"></i><b>10.13</b> Pesquisa</a></li>
+<li class="chapter" data-level="10.14" data-path="anova.html"><a href="anova.html#anova-de-2-vias"><i class="fa fa-check"></i><b>10.14</b> ANOVA de 2 vias</a></li>
+<li class="chapter" data-level="10.15" data-path="anova.html"><a href="anova.html#execução-no-r-7"><i class="fa fa-check"></i><b>10.15</b> Execução no R</a></li>
+<li class="chapter" data-level="10.16" data-path="anova.html"><a href="anova.html#execução-no-jasp-7"><i class="fa fa-check"></i><b>10.16</b> Execução no JASP</a></li>
+<li class="chapter" data-level="10.17" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-5"><i class="fa fa-check"></i><b>10.17</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="10.18" data-path="anova.html"><a href="anova.html#post-hoc-1"><i class="fa fa-check"></i><b>10.18</b> Post hoc</a></li>
+<li class="chapter" data-level="10.19" data-path="anova.html"><a href="anova.html#execução-no-r-8"><i class="fa fa-check"></i><b>10.19</b> Execução no R</a></li>
+<li class="chapter" data-level="10.20" data-path="anova.html"><a href="anova.html#execução-no-jasp-8"><i class="fa fa-check"></i><b>10.20</b> Execução no JASP</a></li>
+<li class="chapter" data-level="10.21" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-6"><i class="fa fa-check"></i><b>10.21</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="10.22" data-path="anova.html"><a href="anova.html#resumo-7"><i class="fa fa-check"></i><b>10.22</b> Resumo</a></li>
+<li class="chapter" data-level="10.23" data-path="anova.html"><a href="anova.html#anova-fatorial"><i class="fa fa-check"></i><b>10.23</b> ANOVA Fatorial</a></li>
+<li class="chapter" data-level="10.24" data-path="anova.html"><a href="anova.html#execução-no-r-9"><i class="fa fa-check"></i><b>10.24</b> Execução no R</a></li>
+<li class="chapter" data-level="10.25" data-path="anova.html"><a href="anova.html#execução-no-jasp-9"><i class="fa fa-check"></i><b>10.25</b> Execução no JASP</a></li>
+<li class="chapter" data-level="10.26" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-7"><i class="fa fa-check"></i><b>10.26</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="10.27" data-path="anova.html"><a href="anova.html#resumo-8"><i class="fa fa-check"></i><b>10.27</b> Resumo</a></li>
+<li class="chapter" data-level="10.28" data-path="anova.html"><a href="anova.html#post-hoc-2"><i class="fa fa-check"></i><b>10.28</b> Post hoc</a></li>
+<li class="chapter" data-level="10.29" data-path="anova.html"><a href="anova.html#execução-no-jasp-10"><i class="fa fa-check"></i><b>10.29</b> Execução no JASP</a></li>
+<li class="chapter" data-level="10.30" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-8"><i class="fa fa-check"></i><b>10.30</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="10.31" data-path="anova.html"><a href="anova.html#questões-5"><i class="fa fa-check"></i><b>10.31</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html"><i class="fa fa-check"></i><b>11</b> Modelo linear misto</a><ul>
-<li class="chapter" data-level="11.1" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#pesquisa-6"><i class="fa fa-check"></i><b>11.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="11.2" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#execução-no-r-11"><i class="fa fa-check"></i><b>11.2</b> execução no R</a></li>
-<li class="chapter" data-level="11.3" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#execução-no-jasp-12"><i class="fa fa-check"></i><b>11.3</b> Execução no JASP</a></li>
-<li class="chapter" data-level="11.4" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#escrita-dos-resultados-10"><i class="fa fa-check"></i><b>11.4</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="11.5" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#resumo-9"><i class="fa fa-check"></i><b>11.5</b> Resumo</a></li>
-<li class="chapter" data-level="11.6" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#pesquisas-adicionais-4"><i class="fa fa-check"></i><b>11.6</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="11" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html"><i class="fa fa-check"></i><b>11</b> ANOVA de medidas repetidas</a><ul>
+<li class="chapter" data-level="11.1" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pesquisa-5"><i class="fa fa-check"></i><b>11.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="11.2" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#execução-no-r-10"><i class="fa fa-check"></i><b>11.2</b> Execução no R</a></li>
+<li class="chapter" data-level="11.3" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#tamanho-do-efeito-4"><i class="fa fa-check"></i><b>11.3</b> Tamanho do efeito</a></li>
+<li class="chapter" data-level="11.4" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#execução-no-jasp-11"><i class="fa fa-check"></i><b>11.4</b> Execução no JASP</a></li>
+<li class="chapter" data-level="11.5" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#escrita-dos-resultados-9"><i class="fa fa-check"></i><b>11.5</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="11.6" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#resumo-9"><i class="fa fa-check"></i><b>11.6</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="correlação.html"><a href="correlação.html"><i class="fa fa-check"></i><b>12</b> Correlação</a><ul>
-<li class="chapter" data-level="12.1" data-path="correlação.html"><a href="correlação.html#pesquisa-7"><i class="fa fa-check"></i><b>12.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="12.2" data-path="correlação.html"><a href="correlação.html#execução-no-r-12"><i class="fa fa-check"></i><b>12.2</b> Execução no R</a></li>
-<li class="chapter" data-level="12.3" data-path="correlação.html"><a href="correlação.html#execução-no-jasp-13"><i class="fa fa-check"></i><b>12.3</b> Execução no JASP</a></li>
-<li class="chapter" data-level="12.4" data-path="correlação.html"><a href="correlação.html#escrita-dos-resultados-11"><i class="fa fa-check"></i><b>12.4</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="12.5" data-path="correlação.html"><a href="correlação.html#resumo-10"><i class="fa fa-check"></i><b>12.5</b> Resumo</a></li>
-<li class="chapter" data-level="12.6" data-path="correlação.html"><a href="correlação.html#pesquisas-adicionais-5"><i class="fa fa-check"></i><b>12.6</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="12" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html"><i class="fa fa-check"></i><b>12</b> Modelo linear misto</a><ul>
+<li class="chapter" data-level="12.1" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#pesquisa-6"><i class="fa fa-check"></i><b>12.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="12.2" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#execução-no-r-11"><i class="fa fa-check"></i><b>12.2</b> execução no R</a></li>
+<li class="chapter" data-level="12.3" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#execução-no-jasp-12"><i class="fa fa-check"></i><b>12.3</b> Execução no JASP</a></li>
+<li class="chapter" data-level="12.4" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#escrita-dos-resultados-10"><i class="fa fa-check"></i><b>12.4</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="12.5" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#resumo-10"><i class="fa fa-check"></i><b>12.5</b> Resumo</a></li>
+<li class="chapter" data-level="12.6" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#pesquisas-adicionais-4"><i class="fa fa-check"></i><b>12.6</b> Pesquisas adicionais</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>13</b> Regressão linear simples</a><ul>
-<li class="chapter" data-level="13.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#glossário-1"><i class="fa fa-check"></i><b>13.1</b> Glossário</a></li>
-<li class="chapter" data-level="13.2" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#breve-explicação-conceitual"><i class="fa fa-check"></i><b>13.2</b> Breve explicação conceitual</a></li>
-<li class="chapter" data-level="13.3" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisa-8"><i class="fa fa-check"></i><b>13.3</b> Pesquisa</a></li>
-<li class="chapter" data-level="13.4" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-r-13"><i class="fa fa-check"></i><b>13.4</b> Execução no R</a></li>
-<li class="chapter" data-level="13.5" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-jasp-14"><i class="fa fa-check"></i><b>13.5</b> Execução no JASP</a></li>
-<li class="chapter" data-level="13.6" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#escrita-dos-resultados-12"><i class="fa fa-check"></i><b>13.6</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="13.7" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#resumo-11"><i class="fa fa-check"></i><b>13.7</b> Resumo</a></li>
-<li class="chapter" data-level="13.8" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisas-adicionais-6"><i class="fa fa-check"></i><b>13.8</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="13" data-path="correlação.html"><a href="correlação.html"><i class="fa fa-check"></i><b>13</b> Correlação</a><ul>
+<li class="chapter" data-level="13.1" data-path="correlação.html"><a href="correlação.html#pesquisa-7"><i class="fa fa-check"></i><b>13.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="13.2" data-path="correlação.html"><a href="correlação.html#execução-no-r-12"><i class="fa fa-check"></i><b>13.2</b> Execução no R</a></li>
+<li class="chapter" data-level="13.3" data-path="correlação.html"><a href="correlação.html#execução-no-jasp-13"><i class="fa fa-check"></i><b>13.3</b> Execução no JASP</a></li>
+<li class="chapter" data-level="13.4" data-path="correlação.html"><a href="correlação.html#escrita-dos-resultados-11"><i class="fa fa-check"></i><b>13.4</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="13.5" data-path="correlação.html"><a href="correlação.html#resumo-11"><i class="fa fa-check"></i><b>13.5</b> Resumo</a></li>
+<li class="chapter" data-level="13.6" data-path="correlação.html"><a href="correlação.html#pesquisas-adicionais-5"><i class="fa fa-check"></i><b>13.6</b> Pesquisas adicionais</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html"><i class="fa fa-check"></i><b>14</b> Regressão linear múltipla</a><ul>
-<li class="chapter" data-level="14.1" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisa-9"><i class="fa fa-check"></i><b>14.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="14.2" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-r-14"><i class="fa fa-check"></i><b>14.2</b> Execução no R</a></li>
-<li class="chapter" data-level="14.3" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-jasp-15"><i class="fa fa-check"></i><b>14.3</b> Execução no JASP</a></li>
-<li class="chapter" data-level="14.4" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#escrita-dos-resultados-13"><i class="fa fa-check"></i><b>14.4</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="14.5" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#técnicas-automáticas-de-seleção-de-variáveis"><i class="fa fa-check"></i><b>14.5</b> Técnicas automáticas de seleção de variáveis</a></li>
-<li class="chapter" data-level="14.6" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#resumo-12"><i class="fa fa-check"></i><b>14.6</b> Resumo</a></li>
-<li class="chapter" data-level="14.7" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisas-adicionais-7"><i class="fa fa-check"></i><b>14.7</b> Pesquisas adicionais</a></li>
-<li class="chapter" data-level="14.8" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#questões-3"><i class="fa fa-check"></i><b>14.8</b> Questões</a></li>
+<li class="chapter" data-level="14" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>14</b> Regressão linear simples</a><ul>
+<li class="chapter" data-level="14.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#breve-explicação-conceitual"><i class="fa fa-check"></i><b>14.1</b> Breve explicação conceitual</a></li>
+<li class="chapter" data-level="14.2" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisa-8"><i class="fa fa-check"></i><b>14.2</b> Pesquisa</a></li>
+<li class="chapter" data-level="14.3" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-r-13"><i class="fa fa-check"></i><b>14.3</b> Execução no R</a></li>
+<li class="chapter" data-level="14.4" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-jasp-14"><i class="fa fa-check"></i><b>14.4</b> Execução no JASP</a></li>
+<li class="chapter" data-level="14.5" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#escrita-dos-resultados-12"><i class="fa fa-check"></i><b>14.5</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="14.6" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#resumo-12"><i class="fa fa-check"></i><b>14.6</b> Resumo</a></li>
+<li class="chapter" data-level="14.7" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisas-adicionais-6"><i class="fa fa-check"></i><b>14.7</b> Pesquisas adicionais</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html"><i class="fa fa-check"></i><b>15</b> Regressão logística binária</a><ul>
-<li class="chapter" data-level="15.1" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#pesquisa-10"><i class="fa fa-check"></i><b>15.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="15.2" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#execução-no-r-15"><i class="fa fa-check"></i><b>15.2</b> Execução no R</a></li>
-<li class="chapter" data-level="15.3" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#execução-no-jasp-16"><i class="fa fa-check"></i><b>15.3</b> Execução no JASP</a></li>
-<li class="chapter" data-level="15.4" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#escrita-dos-resultados-14"><i class="fa fa-check"></i><b>15.4</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="15.5" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#regressão-logística-or-e-qui-quadrado"><i class="fa fa-check"></i><b>15.5</b> Regressão logística, OR e Qui-quadrado</a></li>
-<li class="chapter" data-level="15.6" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#resumo-13"><i class="fa fa-check"></i><b>15.6</b> Resumo</a></li>
-<li class="chapter" data-level="15.7" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#pesquisas-adicionais-8"><i class="fa fa-check"></i><b>15.7</b> Pesquisas adicionais</a></li>
-<li class="chapter" data-level="15.8" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#questões-4"><i class="fa fa-check"></i><b>15.8</b> Questões</a></li>
+<li class="chapter" data-level="15" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html"><i class="fa fa-check"></i><b>15</b> Regressão linear múltipla</a><ul>
+<li class="chapter" data-level="15.1" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisa-9"><i class="fa fa-check"></i><b>15.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="15.2" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-r-14"><i class="fa fa-check"></i><b>15.2</b> Execução no R</a></li>
+<li class="chapter" data-level="15.3" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-jasp-15"><i class="fa fa-check"></i><b>15.3</b> Execução no JASP</a></li>
+<li class="chapter" data-level="15.4" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#escrita-dos-resultados-13"><i class="fa fa-check"></i><b>15.4</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="15.5" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#técnicas-automáticas-de-seleção-de-variáveis"><i class="fa fa-check"></i><b>15.5</b> Técnicas automáticas de seleção de variáveis</a></li>
+<li class="chapter" data-level="15.6" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#resumo-13"><i class="fa fa-check"></i><b>15.6</b> Resumo</a></li>
+<li class="chapter" data-level="15.7" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisas-adicionais-7"><i class="fa fa-check"></i><b>15.7</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="15.8" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#questões-6"><i class="fa fa-check"></i><b>15.8</b> Questões</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html"><i class="fa fa-check"></i><b>16</b> Regressão logística binária</a><ul>
+<li class="chapter" data-level="16.1" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#pesquisa-10"><i class="fa fa-check"></i><b>16.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="16.2" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#execução-no-r-15"><i class="fa fa-check"></i><b>16.2</b> Execução no R</a></li>
+<li class="chapter" data-level="16.3" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#execução-no-jasp-16"><i class="fa fa-check"></i><b>16.3</b> Execução no JASP</a></li>
+<li class="chapter" data-level="16.4" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#escrita-dos-resultados-14"><i class="fa fa-check"></i><b>16.4</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="16.5" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#regressão-logística-or-e-qui-quadrado"><i class="fa fa-check"></i><b>16.5</b> Regressão logística, OR e Qui-quadrado</a></li>
+<li class="chapter" data-level="16.6" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#resumo-14"><i class="fa fa-check"></i><b>16.6</b> Resumo</a></li>
+<li class="chapter" data-level="16.7" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#pesquisas-adicionais-8"><i class="fa fa-check"></i><b>16.7</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="16.8" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#questões-7"><i class="fa fa-check"></i><b>16.8</b> Questões</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="http://www.puc-rio.br/" target="blank">PUC-Rio</a></li>
@@ -375,7 +378,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="regressão-linear-múltipla" class="section level1">
-<h1><span class="header-section-number">Cap. 14</span> Regressão linear múltipla</h1>
+<h1><span class="header-section-number">Cap. 15</span> Regressão linear múltipla</h1>
 <p>Os modelos de regressão linear múltipla são desenvolvidos para predizer os valores médios de uma variável resposta (Y) em função de duas ou mais variáveis independentes (X). Estes modelos tendem a ampliar a acurácia obtida por uma regressão linear simples, apesar de também aumentarem a complexidade de sua realização e interpretação. Nestes modelos, a VD deve ser contínua e as VIs podem ser tanto contínuas como categóricas. Tecnicamente, a família da ANOVA vista anteriormente são casos particulares de modelos de regressão múltipla.</p>
 <p>Conceitualmente, neste modelo, se adicionam outros preditores à equação vista no capítulo de regressão linear simples. Assim:</p>
 <p><span class="math display">\[y_i = b_0 + b_1X{_1}_i + b_2X{_2}_i + ... + b_pX{_p}_i+ \epsilon_{i}\]</span></p>
@@ -394,9 +397,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>O mnemônico <u>LINE</u> (linearity, independence, normality, equal variance) talvez ajude a lembrar destes pressupostos.</p>
 <div id="pesquisa-9" class="section level2">
-<h2><span class="header-section-number">14.1</span> Pesquisa</h2>
-<div class="alert alert-warning">
-<p><strong>Base: </strong> Livro - Dados - Eating disorders</p>
+<h2><span class="header-section-number">15.1</span> Pesquisa</h2>
+<div class="base">
+<p>A base desta pesquisa está disponível em formato <strong>R (Rdata)</strong> e em <strong>CSV</strong>, que é lido pelo JASP. Clique na opção desejada.</p>
+<p><strong>Base R: </strong> <a href="https://github.com/anovabr/mqt/raw/master/bases/Base%20R%20-%20imagem%20corporal.RData">Imagem corporal</a></p>
+<p><strong>Base JASP: </strong> <a href="https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip">Base CSV - csv eat bsq brasil</a></p>
 </div>
 <p>Neste capítulo, vamos utilizar a pesquisa intitulada <a href="https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students">“Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students”</a>, publicada em 2018 no Global Journal of Educational Studies, que sou coautor.</p>
 <p>O objetivo dessa pesquisa foi explorar os fatores envolvidos em transtornos alimentares e na percepção da imagem corporal. Os primeiros aspectos foram avaliados pela escala EAT-26, enquanto o segundo foi avaliado pela escala BSQ-34.</p>
@@ -404,9 +409,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Da mesma forma que apresentado no capítulo de regressão linear simples, a definição estatística das hipóteses em modelos de regressão costumam ser feitas em cascata. Quase sempre, se compara o modelo de desenvolvido com um modelo mais simples. Em seguida, verifica-se cada preditor de forma individual e assim sucessivamente. Uma vez que a definição de cada hipótese ocuparia um espaço grande aqui, elas serão suprimidas.</p>
 </div>
 <div id="execução-no-r-14" class="section level2">
-<h2><span class="header-section-number">14.2</span> Execução no R</h2>
+<h2><span class="header-section-number">15.2</span> Execução no R</h2>
 <p>A primeira etapa da análise é realizada pelo desenvolvimento de tabelas e gráficos que possam auxiliar na interpretação dos resultados. De maneira similar à feita em outros capítulos, abaixo há uma tabela descritiva.</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="regressão-linear-múltipla.html#cb148-1"></a>arsenal<span class="op">::</span><span class="kw">tableby</span>(<span class="op">~</span>eat_soma <span class="op">+</span><span class="st"> </span>bsq_soma <span class="op">+</span><span class="st"> </span>imc, dados_brasil) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summary</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="regressão-linear-múltipla.html#cb145-1"></a>arsenal<span class="op">::</span><span class="kw">tableby</span>(<span class="op">~</span>eat_soma <span class="op">+</span><span class="st"> </span>bsq_soma <span class="op">+</span><span class="st"> </span>imc, dados_brasil) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summary</span>() </span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -460,9 +465,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>É também possível, inicialmente, implementar um modelo de correlação ou correlação parcial visando produzir maior suporte à regressão linear múltipla. O modelo de correlação estima a força e a direção da correlação bivariada e o modelo de correlação parcial é feita para estimar o quanto uma variável se correlaciona com outra após controlar essa relação por uma terceira variável. No entanto, ambas as análise apenas trariam suporte indireto à regressão linear múltipla e por isso não serão feitas.</p>
 <p>Para criar o modelo de regressão linear múltipla no R, será necessário resgatar o modelo visto em regressão linear simples para introduzir nova variável à equação.</p>
 <p>Neste caso, o vetor <code>mod_linear_multiplo</code> será armazenado para verificar o efeito da <u>percepção de imagem corporal</u> e do <u>IMC</u> no <u>EAT-26</u>, que se refere ao comportamento alimentar. É importante notar que, por padrão, o R não usa linhas com dados ausentes e isso pode reduzir o poder do teste. Neste base, há 215 linhas completas.</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="regressão-linear-múltipla.html#cb149-1"></a>mod_linear_multiplo &lt;-<span class="st"> </span><span class="kw">lm</span>(eat_soma <span class="op">~</span><span class="st"> </span>bsq_soma <span class="op">+</span><span class="st"> </span>imc, <span class="dt">data =</span> dados_brasil)</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="regressão-linear-múltipla.html#cb146-1"></a>mod_linear_multiplo &lt;-<span class="st"> </span><span class="kw">lm</span>(eat_soma <span class="op">~</span><span class="st"> </span>bsq_soma <span class="op">+</span><span class="st"> </span>imc, <span class="dt">data =</span> dados_brasil)</span></code></pre></div>
 <p>A apresentação dos resultados pode ser feita pelo pacote <code>olsrr</code>. Ela segue o mesmo formato da realizada no capítulo específico de regressão linear simples, apenas com a diferença da inclusão de um novo preditor.</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="regressão-linear-múltipla.html#cb150-1"></a><span class="kw">ols_regress</span>(mod_linear_multiplo)</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="regressão-linear-múltipla.html#cb147-1"></a><span class="kw">ols_regress</span>(mod_linear_multiplo)</span></code></pre></div>
 <pre><code>##                         Model Summary                          
 ## --------------------------------------------------------------
 ## R                       0.697       RMSE                7.097 
@@ -500,26 +505,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>A ideia de estimar o efeito de uma variável controlando por outra faz com que esses coeficientes sejam chamados de <u>coeficientes parciais</u>. A forma pela qual isso é feito tem características particulares.</p>
 <p>Assumindo duas pessoas que <u>tem o mesmo IMC</u> (por exemplo, o IMC médio), cada ponto extra no BSQ gera, em média, 0.19 pontos a mais no EAT-26. A função <code>predict</code> do R permite essa demonstração.</p>
 <p>O valor estimado no <u>EAT-26</u> de Um participante que teve 45 pontos no <u>BSQ</u> e tem <u>IMC</u> de 23.2 (o IMC médio) é de 9.06.</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="regressão-linear-múltipla.html#cb152-1"></a>imc_medio &lt;-<span class="st"> </span><span class="kw">mean</span>(dados_brasil<span class="op">$</span>imc, <span class="dt">na.rm=</span>T)</span>
-<span id="cb152-2"><a href="regressão-linear-múltipla.html#cb152-2"></a><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">45</span>), <span class="dt">imc=</span>imc_medio))</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="regressão-linear-múltipla.html#cb149-1"></a>imc_medio &lt;-<span class="st"> </span><span class="kw">mean</span>(dados_brasil<span class="op">$</span>imc, <span class="dt">na.rm=</span>T)</span>
+<span id="cb149-2"><a href="regressão-linear-múltipla.html#cb149-2"></a><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">45</span>), <span class="dt">imc=</span>imc_medio))</span></code></pre></div>
 <pre><code>##        1 
 ## 9.059407</code></pre>
 <p>Já o valor estimado no <u>EAT-26</u> de um outro participante com 46 pontos no <u>BSQ</u> (ou seja, 1 ponto a mais) e mesmo <u>IMC</u> do primeiro participante (23.2) é de 9.25.</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="regressão-linear-múltipla.html#cb154-1"></a><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">46</span>), <span class="dt">imc=</span>imc_medio))</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="regressão-linear-múltipla.html#cb151-1"></a><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">46</span>), <span class="dt">imc=</span>imc_medio))</span></code></pre></div>
 <pre><code>##        1 
 ## 9.249297</code></pre>
 <p>A diferença entre esses dois valores é exatamente igual ao coeficiente calculado na regressão (b = 0.19). Abaixo há duas linhas de código apresentando esses resultados.</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="regressão-linear-múltipla.html#cb156-1"></a><span class="kw">round</span>(<span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">46</span>), <span class="dt">imc=</span>imc_medio)) <span class="op">-</span><span class="st"> </span><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">45</span>), <span class="dt">imc=</span>imc_medio)),<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="regressão-linear-múltipla.html#cb153-1"></a><span class="kw">round</span>(<span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">46</span>), <span class="dt">imc=</span>imc_medio)) <span class="op">-</span><span class="st"> </span><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">45</span>), <span class="dt">imc=</span>imc_medio)),<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##    1 
 ## 0.19</code></pre>
 <p>Esse formato analítico é similar para o resultado do <u>IMC</u>. Caso duas pessoas tenham o mesmo resultado do <u>BSQ</u>, uma unidade a mais no IMC impactará em uma redução de 0.447, em média, no <u>EAT-26</u>.</p>
 <p>Uma vez que o modelo já foi realizado, a interpretação dos resultados depende da adequação de seus pressupostos. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(Barker &amp; Shaw, <a href="#ref-Barker2015" role="doc-biblioref">2015</a>; Ernst &amp; Albers, <a href="#ref-Ernst2017" role="doc-biblioref">2017</a>; Lix et al., <a href="#ref-Lix1996" role="doc-biblioref">1996</a>)</span>. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.</p>
 <p><mark> Normalidade</mark>: O pressuposto da Normalidade é atendido se os <u>resíduos</u> do modelo de regressão seguirem uma distribuição normal. Isso pode ser avaliado graficamente por QQ plots e também por testes específicos, como o Shapiro-wilk, Anderson-Darling e Jarque Bera.</p>
 <p>O QQ plot é um gráfico que reúne a distribuição empírica ordenada dos quantis contra os quantis da distribuição teórica (aqui, normal). Se os dados e a linha diagonal se soprepuserem, isso é uma evidencia de que a distribuição empírica é a mesma da distribuição teórica. Caso haja discrepância, isso aponta para desvio da normalidade. Caso os pontos e a reta diagonal estejam superpostos, se considera que este pressuposto foi atendido</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="regressão-linear-múltipla.html#cb158-1"></a><span class="kw">ols_plot_resid_qq</span>(mod_linear_multiplo)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-184-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="regressão-linear-múltipla.html#cb155-1"></a><span class="kw">ols_plot_resid_qq</span>(mod_linear_multiplo)</span></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-186-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Testes estatísticos formais também podem ser utilizados, tal como abaixo:</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="regressão-linear-múltipla.html#cb159-1"></a><span class="kw">ols_test_normality</span>(mod_linear_multiplo)</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="regressão-linear-múltipla.html#cb156-1"></a><span class="kw">ols_test_normality</span>(mod_linear_multiplo)</span></code></pre></div>
 <pre><code>## -----------------------------------------------
 ##        Test             Statistic       pvalue  
 ## -----------------------------------------------
@@ -530,10 +535,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## -----------------------------------------------</code></pre>
 <p>Tanto a visualização do QQ plot, como a maior parte dos testes estatísticos específicos convergiram, indicando que a normalidade foi violada.</p>
 <p><mark>Homocedasticidade</mark>: Este pressuposto de variâncias constantes pode ser analisada em um gráfico de dispersão dos resíduos (residual) contra os valores previstos (fitted).</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="regressão-linear-múltipla.html#cb161-1"></a><span class="kw">ols_plot_resid_fit</span>(mod_linear_multiplo)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-186-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="regressão-linear-múltipla.html#cb158-1"></a><span class="kw">ols_plot_resid_fit</span>(mod_linear_multiplo)</span></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-188-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Caso haja padrões neste gráfico, isso sugere que este pressuposto foi violado. Pelo gráfico, parece não haver padrões específicos. No entanto, testes formais são recomendados para que a decisão tomada tenha maior apoio. Existem diferentes testes para isso e, entre eles, o teste de Bartlett, Levene e Breusch-Pagan. Os resultados dependem das propriedades de cada um dos modelos e, em função da praticidade computacional, o teste de Breusch-Pagan será utilizado. Em todos estes testes, a hipótese nula assume homocedasticidade. Portanto, a estatística de teste não deveria ser significativa para que a homocedasticidade fosse apoiada.</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="regressão-linear-múltipla.html#cb162-1"></a><span class="kw">ols_test_breusch_pagan</span>(mod_linear_multiplo)</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="regressão-linear-múltipla.html#cb159-1"></a><span class="kw">ols_test_breusch_pagan</span>(mod_linear_multiplo)</span></code></pre></div>
 <pre><code>## 
 ##  Breusch Pagan Test for Heteroskedasticity
 ##  -----------------------------------------
@@ -552,13 +557,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Prob &gt; Chi2   =    0.03796432</code></pre>
 <p>Os resultados indicaram que a homocedasticidade foi violada (assumingo alfa = 0.05). Isso vai em direção distinta à percepção gráfica, o que pode ocorrer sem nenhum problema.</p>
 <p><mark>Independência</mark>: A independência dos resíduos depende bastante do delineamento utilizado ser transversal ou longitudinal. O teste de Durbin Watson pode ser utilizado e a hipótees nula é de que os resíduos não são correlacionados. Este pressuposto foi atendido, o que já era esperado.</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="regressão-linear-múltipla.html#cb164-1"></a>car<span class="op">::</span><span class="kw">durbinWatsonTest</span>(mod_linear_multiplo)</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="regressão-linear-múltipla.html#cb161-1"></a>car<span class="op">::</span><span class="kw">durbinWatsonTest</span>(mod_linear_multiplo)</span></code></pre></div>
 <pre><code>##  lag Autocorrelation D-W Statistic p-value
 ##    1      0.01304954      1.969107   0.828
 ##  Alternative hypothesis: rho != 0</code></pre>
 <p><mark>Multicolinearidade</mark>: Diferente da regressão linear simples, a regressão múltipla reúne diversas variáveis independentes. É possível que essas variáveis sejam muito correlacionadas entre si, impactando na interpretação dos resultados. Uma maneira de verificar isso é pela análise chamada Variance Inflaction Factor (VIF).</p>
 <p>Valores de VIF superiores a 4 indicam que as variáveis indepenentes são fortemente correlacionadas e suas estimativas podem ser distorcidas. Neste caso, isso não aconteceu.</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="regressão-linear-múltipla.html#cb166-1"></a><span class="kw">ols_coll_diag</span>(mod_linear_multiplo)</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="regressão-linear-múltipla.html#cb163-1"></a><span class="kw">ols_coll_diag</span>(mod_linear_multiplo)</span></code></pre></div>
 <pre><code>## Tolerance and Variance Inflation Factor
 ## ---------------------------------------
 ##   Variables Tolerance      VIF
@@ -575,7 +580,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Com isso realizado, os diagnósticos indicaram que a normalidade e a homocedasticidade foram violadas, novamente sugerindo uma interpretação cautelosa dos resultados. Abaixo uma orientação de como escrever os resultados.</p>
 </div>
 <div id="execução-no-jasp-15" class="section level2">
-<h2><span class="header-section-number">14.3</span> Execução no JASP</h2>
+<h2><span class="header-section-number">15.3</span> Execução no JASP</h2>
 <p>Para executar as rotinas necessárias, será necessário carregar a base de dados para o ambiente JASP. A base chama-se <a href="https://www.dropbox.com/s/l8xkxi5z5fntrd9/csv%20eat%20bsq%20brasil.csv?dl=0">csv eat bsq brasil</a>. Após fazer isso, para realizar tabelas e gráficos descritivos, deve-se clicar em <code>Descriptives</code>, na parte superior do programa.</p>
 <p><img src="img/cap_correlacao_descritivo.PNG" /></p>
 <p>Ao clicar nesta opção, será possível eleger as variáveis que irão ser analisadas e as variáveis que irão funcionar como agrupadores. Neste caso, será necessário colocar o <u>bsq_soma</u>, <u>eat_soma</u> e o <u>imc</u> na seção <code>Variables</code>. Essa ordem ajuda em apresentações gráficas futuras.</p>
@@ -622,7 +627,7 @@ Diferente do R, esta versão do JASP não permite testar formalmente a hipótese
 <p>Com isso realizado, os diagnósticos indicaram que a normalidade e a homocedasticidade foram violadas, novamente sugerindo uma interpretação cautelosa dos resultados.</p>
 </div>
 <div id="escrita-dos-resultados-13" class="section level2">
-<h2><span class="header-section-number">14.4</span> Escrita dos resultados</h2>
+<h2><span class="header-section-number">15.4</span> Escrita dos resultados</h2>
 <p>De uma forma geral, o principal achado do modelo de regressão é que a percepção da imagem corporal e o IMC são preditores significativos ao comportamento alimentar. Possíveis superestimativas da imagem do próprio corpo impactam em alterações no comportamento alimentar. Quanto maior a distorção na percepção corporal, mais intensos e frequentes são algumas características disfuncionais do comportamento alimentar. Além disso, pessoas com maior IMC tendem a apresentar uma redução no comportamento alimentar. Abaixo uma sugestão de escrita baseada nas recomendações da American Psychological Association (APA).</p>
 <div class="writing">
 <p>
@@ -634,7 +639,7 @@ Um modelo de regressão múltipla foi calculado para verificar os resultados dos
 </div>
 </div>
 <div id="técnicas-automáticas-de-seleção-de-variáveis" class="section level2">
-<h2><span class="header-section-number">14.5</span> Técnicas automáticas de seleção de variáveis</h2>
+<h2><span class="header-section-number">15.5</span> Técnicas automáticas de seleção de variáveis</h2>
 <p>Entre os principais debates realizados na construção de modelos estatísticos, os critérios sobre quantas, quais e como eleger as variáveis independentes é um dos mais intensos.</p>
 <p>Neste sentido, a seleção das VIs visa otimizar a acurácia do modelo, mas sem perder sua parcimônia, ou seja, simplicidade <span class="citation">(Gaudio &amp; Zandonade, <a href="#ref-Gaudio2001" role="doc-biblioref">2001</a>; Unger &amp; Hansch, <a href="#ref-Unger1973" role="doc-biblioref">1973</a>)</span>. É possível inserir as variáveis por uma justificativa teórica alinhada com a área principal em que o pesquisador se insere, como também é possível implementar seleção automática a partir de algorítimos específicos.</p>
 <p>Apesar do detalhamento das técnicas automáticas estar fora do escopo dete capítulo, a seguir são listadas algumas delas:</p>
@@ -648,8 +653,8 @@ Um modelo de regressão múltipla foi calculado para verificar os resultados dos
 <li>Lasso selection</li>
 </ol>
 </div>
-<div id="resumo-12" class="section level2">
-<h2><span class="header-section-number">14.6</span> Resumo</h2>
+<div id="resumo-13" class="section level2">
+<h2><span class="header-section-number">15.6</span> Resumo</h2>
 <div class="explore">
 <ol style="list-style-type: decimal">
 <li>O termo regressão múltipla se refere a um modelo de regressão com duas ou mais variáveis independentes<br />
@@ -665,14 +670,14 @@ Um modelo de regressão múltipla foi calculado para verificar os resultados dos
 </div>
 </div>
 <div id="pesquisas-adicionais-7" class="section level2">
-<h2><span class="header-section-number">14.7</span> Pesquisas adicionais</h2>
+<h2><span class="header-section-number">15.7</span> Pesquisas adicionais</h2>
 <ol style="list-style-type: decimal">
 <li>Influence of Age and Education on the Performance of Elderly in the Brazilian Version of the Montreal Cognitive Assessment Battery (DOI: 10.1159/000489774)
 Nesta pesquisa, 110 participantes foram recrutados para que os pesquisadores pudessem produzir tabelas estatísticas para um novo exame neuropsicológico. Uma das análises feitas verificou o impacto dos anos de estudo no desempenho neste exame neuropsicológico, concluindo pelo seu efeito protetivo.</li>
 </ol>
 </div>
-<div id="questões-3" class="section level2">
-<h2><span class="header-section-number">14.8</span> Questões</h2>
+<div id="questões-6" class="section level2">
+<h2><span class="header-section-number">15.8</span> Questões</h2>
 <div class="question">
 <ol style="list-style-type: decimal">
 <li>(ENADE, Economia - 2019) Com o objetivo de entender o impacto das internações causadas pela falta de saneamento básico, um pesquisador estimou o modelo apresentado na tabela a seguir, usando a quantidade de dias de internação de uma amostra de 7 260 pacientes do Sistema Único de Saúde como variável explicada. As variáveis explicativas são: (i) gênero do paciente, binária em que é 1 é utilizado para identificar as mulheres e 0 para identificar os homens; (ii) idade do paciente em anos de vida; e (iii) motivo da internação, também binária, em que recebe o valor 1 para identificar internações que são causadas por problemas de saneamento básico e o valor 0 para as demais internações<br><img src="img/exercicio_regressao.PNG" /><br>a) O coeficiente R-quadrado encontra-se abaixo de 30%, o que significa que o modelo deve ser descartado.<br>b) As internações causadas pela deficiência de saneamento básico tendem a gerar um aumento de 1,96% nos gastos de saúde.<br>c) A média de dias de internação para mulheres é estatisticamente maior que a de internação para homens.<br> d) A variável idade não é estatisticamente significativa para explicar o número de dias de internação.<br> e) O teste F mostra que as variáveis explicativas conjuntamente são estatisticamente significativas para explicar o número de dias de internação.<br />
@@ -743,7 +748,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/11-regressao_linear_multipla.Rmd",
+"link": "https://github.com/cjvanlissa/gitbook-demo/edit/master/14-regressao_linear_multipla.Rmd",
 "text": "Edit"
 },
 "history": {

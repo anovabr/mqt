@@ -20,7 +20,17 @@ library(tidyverse)
 
 
 
-O modelo linear misto (LMM) é um modelo linear, frequentemente utilizado para trabalhar dados longitudinais ou de medidas repetidas, que possibilita definir tanto parâmetros populacionais (efeitos fixos), como coeficientes individuais (efeitos aleatórios), além do erro experimental. Pragmaticamente, este modelo oferece mais flexibildiade à ANOVA de medidas repetidas e sua utilização vem ganhando mais espaço em Psicologia e áreas da saúde [@Gueorguieva2004]. 
+O modelo linear misto (LMM) é um modelo linear, frequentemente utilizado para trabalhar dados longitudinais ou de medidas repetidas, que possibilita definir tanto parâmetros populacionais (efeitos fixos), como coeficientes individuais (efeitos aleatórios), além do erro experimental. Conceitualmente, pode ser apresentado como:
+
+$$y_i = \underbrace{X_i\beta}_\text{Efeito fixo} + \underbrace{Z\gamma + e_i}_\text{Efeito aleatório}$$
+
+Onde:  
+$\beta$ representa todos os termos fixos  
+$\gamma$ representa os termos aleatórios (assumidos como normalmente distribuídos)  
+$e$ representa o erro/resíduo
+
+
+Pragmaticamente, este modelo oferece mais flexibildiade à ANOVA de medidas repetidas e sua utilização vem ganhando mais espaço em Psicologia e áreas da saúde [@Gueorguieva2004]. 
 
 Os efeitos fixos são compatilhados por todos os indivíduos, enquanto os aleatórios são especificos de cada um dos participantes. Com isso, a trajetória de cada indivíduo pode ser modelada, permitindo que um subconjunto dos parâmetros de regressão sejam definidos como aleatórios.
 
@@ -38,9 +48,15 @@ Tanto O LMM, como a ANOVa de Medidas Repetidas costumam ser utilizados em dados 
 
 ## Pesquisa
 
-<div class="alert alert-warning">
-  <strong>Base: </strong> R - Base Lidia Carprofeno
-</div>
+<div class="base">
+  A base desta pesquisa está disponível em formato **R (Rdata)** e em **CSV**, que é lido pelo JASP. Clique na opção desejada.     
+      
+  <strong>Base R: </strong> [R - Base Lidia Carprofeno](https://github.com/anovabr/mqt/raw/master/bases/R%20-%20Base%20Lidia%20Carprofeno.RData)  
+
+  <strong>Base JASP : </strong> [Base CSV - Lidia Carprofeno longo](https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip)
+</div> 
+
+
 
 A esse momento, vamos ter como referência de análise a pesquisa intitulada ["Avaliação psicométrica em português do indicador de dor crônica de Helsinki em cães com sinais crônicos de osteoartrite"](https://www.scielo.br/scielo.php?script=sci_arttext&pid=S0102-09352019000100109), que tem como primeira autora Lídia Matsubara e eu sou coautor. Os dados dessa pesquisa foram previamente utilizados no capítulo de ANOVA de medidas repetidas.  
 
@@ -139,7 +155,7 @@ summary(mod_lme)
 ## Execução no JASP  
 
 
-A base utilizada será a [csv Lidia Carprofeno longo](https://www.dropbox.com/s/9q5f047b8o2jqoo/csv%20Lidia%20Carprofeno%20longo.csv?dl=0). Essa base tem o formato longo. Isso significa que os resultados obtidos no decorrer do tempo serão apresentados em cada uma das linhas do conjunto de dados. Modelos Lineares Mistos tendem a solicitar que os dados sejam organizadaos desta maneira.  
+A base utilizada será a intitulada "csv Lidia Carprofeno longo". Essa base tem o formato longo. Isso significa que os resultados obtidos no decorrer do tempo serão apresentados em cada uma das linhas do conjunto de dados. Modelos Lineares Mistos tendem a solicitar que os dados sejam organizadaos desta maneira.  
 
 Após carregar a base no JASP, será necessário assegurar que a escala de medida de todas as variáveis são corretas. A variável <u>id</u> deverá ser definido como nominal e para fazer isso, clique no símbolo da régua ao lado dela.
 
@@ -240,16 +256,16 @@ Os dados foram analisados através de um Modelo Linear de Efeitos Mistos, que ve
 
 
 ## Resumo  
-
+::: {.explore}
 1. O Modelo Linear de Efeitos Mistos (LMM) oferece maior versatilidade à ANOVA de medidas repetidas    
 2. A ANOVA tem como pressuposto Normalidade e Esfericidade, enquanto o LMM apenas Normalidade dos resíduos
 3. Os resultados frequentemente encontrados em ambos os modelos vão na mesma direção  
 4. A implementação computacional é mais trabalhosa  
 5. A escrita apresenta algumas particularidades relacionadas à cada modelo.    
-
+:::
 
 
 ## Pesquisas adicionais  
 
 1. Effects of Aerobic Training versus Breathing Exercises on Asthma Control: A Randomized Trial (DOI: 10.1016/j.jaip.2020.06.042)
-Nesta pesquisa, 54 pacientes com asma foram aleatoriamente selecionados para receberem ou um tratamento baseado em exercícios aeróbicos ou um tratamento baseado em técnicas de respiração. Os pesquisadores acompanharam os participantes por 3 meses e concluíram que, em alguns aspectos, o grupo de exercícios aeróbicos teve uma melhora significativamente maior do que o grupo de técnicas respiratórias.  
+Nesta pesquisa, 54 pacientes com asma foram aleatoriamente selecionados para receberem ou um tratamento baseado em exercícios aeróbicos ou um tratamento baseado em técnicas de respiração. Os pesquisadores acompanharam os participantes por 3 meses e concluíram que, em alguns aspectos, o grupo de exercícios aeróbicos teve uma melhora significativamente maior do que o grupo de técnicas respiratórias. Esses dados foram analisados por mim, apesar de não constar no manuscrito.   

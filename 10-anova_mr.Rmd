@@ -3,9 +3,6 @@
 ```{r, include = FALSE }
 library(tidyverse)
 library(pander)
-library(knitr) #tables and graphs
-library(kableExtra) #tables with different styles
-
 load(file = "~/anovabr/mqt/bases/R - Base Lidia Carprofeno.RData") 
 ```
 
@@ -27,9 +24,13 @@ A ANOVA de medidas repetidas é um teste estatístico para a análise de dados l
 
 ## Pesquisa
 
-<div class="alert alert-warning">
-  <strong>Base: </strong> R - Base Lidia Carprofeno
-</div>  
+<div class="base">
+  A base desta pesquisa está disponível em formato **R (Rdata)** e em **CSV**, que é lido pelo JASP. Clique na opção desejada.     
+      
+  <strong>Base R: </strong> [R - Base Lidia Carprofeno](https://github.com/anovabr/mqt/raw/master/bases/R%20-%20Base%20Lidia%20Carprofeno.RData)  
+
+  <strong>Base JASP: </strong> [Base CSV - Lidia Carprofeno largo](https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip)
+</div> 
 
 
 A esse momento, vamos ter como referência de análise a pesquisa intitulada ["Avaliação psicométrica em português do indicador de dor crônica de Helsinki em cães com sinais crônicos de osteoartrite"](https://www.scielo.br/scielo.php?script=sci_arttext&pid=S0102-09352019000100109), que tem como primeira autora Lídia Matsubara e eu sou coautor. Essa pesquisa foi publicada no "Arquivo Brasileiro de Medicina Veterinária e Zootecnia" em 2019 e objetivou tanto verificar o efeito do medicamento Carprofeno em sintomas relacionados à dor crônica, como apresentar estudos psicométricos de uma nova medida clínica.   
@@ -92,7 +93,7 @@ A modelagem estatística envolve definir claramente que o `resultado` é uma fun
 Dessa maneira, a tabela abaixo apresenta os valores da média e do desvio-padrão para todas as condições:
 
 ```{r results="asis" }
-arsenal::tableby(tempo ~ resultado + grupo, test   = FALSE,tratamento) %>% summary() 
+arsenal::tableby(tempo ~ resultado + grupo, test = FALSE, total = FALSE,tratamento) %>% summary() 
 ```
 
 
@@ -213,7 +214,7 @@ O tamanho do efeito foi calculado e apresentado na tabela da ANOVA de Medidas Re
 
 ## Execução no JASP  
 
-A base utilizada será a [csv Lidia Carprofeno largo](https://www.dropbox.com/s/xyh6ndzjbj0s0p8/csv%20Lidia%20Carprofeno%20largo.csv?dl=0). Essa base reúne todas os dados da pesquisa, incluindo os grupos e as medidas de dor. Após carregar a base no JASP, será necessário apresentar tabelas e gráficos descritivos. Para fazer isso, é necessário clicar em `Descriptives`.
+A base utilizada será a intitulada "csv Lidia Carprofeno largo". Essa base reúne todas os dados da pesquisa, incluindo os grupos e as medidas de dor. Após carregar a base no JASP, será necessário apresentar tabelas e gráficos descritivos. Para fazer isso, é necessário clicar em `Descriptives`.
 
 ![](./img/cap_anovarm_descriptives.png)
   
@@ -324,12 +325,12 @@ Os dados foram analisados a partir de uma ANOVA de medidas repetidas investigand
 
 
 ## Resumo  
-
+::: {.explore}
 1. A ANOVA de medidas repetidas é um teste bastante utilizado quando participantes de mesmos grupos são avaliados longitudinalmente  
 2. Este modelo pode ser entendido como uma expansão de uma ANOVA ou um caso particular de uma regressão linear de efeitos mistos  
 3. A execução deste teste no R solicita que a base seja transformada para o formato longo  
 4. A interpretação dos resultados é, inicialmente, complicada e precisa ser feita de maneira cautelosa  
 5. Os pacotes estatísticos oferecem correções automáticas para violação de alguns pressupostos  
 6. Gráficos são muito informativos para uma análise inicial dos dados  
- 
+:::
 

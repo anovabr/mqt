@@ -23,6 +23,20 @@ library(pander)
  
 ```
 
+```{block, type="glossario"}
+<U>**GLOSSÁRIO**</U>   
+**ANOVA**:  Análise da variância.    
+**Via**: Variável independente, variável fonte, variável preditora, tratamento.  
+**Fator**: Sinônimo de via.      
+**Desfecho**: Variável dependente, variável critério.      
+**Níveis**: Grupos, classes, condições, categorias da variável independente.    
+**Efeito principal**: Efeito da variável independente em questão (controlanddo pelas outras no modelo).    
+**Efeito de interação**: Efeito do termo de interação entre duas ou mais variáveis independentes. Quando significativo, não se interpreta os efeitos principais.   
+**Efeito simples**: Efeito de uma variável independente em um nível (específico) de outra variável independente.  
+**ANCOVA**: Análise de covariância, onde se controla os resultados por uma variável contínua.  
+**MANOVA**: Análise multivariada de variância, onde se estende a ANOVA para incluir duas variáveis dependentes. É um modelo multivariado.    
+```
+
 
 A ANOVA representa um conjunto de procedimentos estatísticos muito utilizado para verificar <u>diferenças médias entre diversos grupos</u> e, portanto, é considera um procedimento paramétrico. Pragmaticamente, é possível entender ANOVA como um super Teste T ou também um caso particular de um modelo de regressão. Uma vez que a ANOVA verifica a diferença entre todos os grupos e combinações lineares de maneira simultânea, ele é classificada como um *Omnibus test*. A relação entre a ANOVA e o Teste T será abordado na seção [Post hoc](#post-hoc).
 
@@ -62,27 +76,6 @@ Eventualmente, quando os pressupostos do modelo são violados, a literatura mais
   | Não-paramétrica | Kruskal-Wallis                |  Teste de Friedman ou Page Test |   
 
 
-A ANOVA tem diversos termos bastante específicos e utilizados em sua modelagem que serão descritos a seguir,
-
-## Glossário  
-
-Diferentes termos são empregados em uma ANOVA e em modelos próximos. A legenda a seguir visa auxiliar no entendimento de cada um deles e aproximar o leitor a conceitos amplos utilizados em modelos lineares.
-
-
-```{block, type="glossario"}
-<U>**GLOSSÁRIO**</U>   
-**ANOVA**:  Análise da variância.    
-**Via**: Variável independente, variável fonte, variável preditora, tratamento.  
-**Fator**: Sinônimo de via.      
-**Desfecho**: Variável dependente, variável critério.      
-**Níveis**: Grupos, classes, condições, categorias da variável independente.    
-**Efeito principal**: Efeito da variável independente em questão (controlanddo pelas outras no modelo).    
-**Efeito de interação**: Efeito do termo de interação entre duas ou mais variáveis independentes. Quando significativo, não se interpreta os efeitos principais.   
-**Efeito simples**: Efeito de uma variável independente em um nível (específico) de outra variável independente.  
-**ANCOVA**: Análise de covariância, onde se controla os resultados por uma variável contínua.  
-**MANOVA**: Análise multivariada de variância, onde se estende a ANOVA para incluir duas variáveis dependentes. É um modelo multivariado.    
-```
-
 
 Por heurística, se escreve os delineamentos estudados por uma ANOVA com $\eta$. Por exemplo, se o interesse for verificar o efeito da escolaridade (fundamental, médio e superior) em um determinado desfecho, isso é entendido como uma ANOVA de 1 via. Caso o interesse seja verificar o efeito da escolaridade, mas também do sexo (masculino ou feminino), a representação será $\eta =  3 \times 2$. Isso significa que a ANOVA tem dois fatores (escolaridade e sexo), o primeiro fator tem três níveis e o segundo tem 2 níveis. 
 
@@ -97,9 +90,14 @@ A tabela a seguir resume as denominações encontradas na literatura:
 
 ## Pesquisa
   
-<div class="alert alert-warning">
-  <strong>Base: </strong> [Livro - R - TEG](https://github.com/anovabr/mqt/raw/master/bases/Livro%20-%20R%20-%20TEG.RData)
+<div class="base">
+  A base desta pesquisa está disponível em formato **R (Rdata)** e em **CSV**, que é lido pelo JASP. Clique na opção desejada.     
+      
+  <strong>Base R: </strong> [Livro - R - TEG](https://github.com/anovabr/mqt/raw/master/bases/Livro%20-%20R%20-%20TEG.RData)     
+  
+  <strong>Base JASP: </strong> [Base CSV - base_csv_teg_processed](https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip)
 </div>  
+
 
 
 Neste capítulo, vamos utilizar a pesquisa intitulada ["A relação entre o nível de Empreendedorismo (TEG) e os aspectos sociodemográficos dos Taxistas cooperados da cidade de Santo André/São Paulo, Brasil"](https://www.metodista.br/revistas/revistas-metodista/index.php/REGS/article/view/6453), publicada em 2016 na Revista Eletrônica de Gestão e Serviços, em que sou coautor. O objetivo dessa pesquisa foi identificar o nível de empreendedorismo em 147 taxistas de Santo André/SP, bem como averiguá-lo em associação aos aspectos sociodemográficos. Muitas perguntas teóricas foram feitas neste trabalho e uma foi verificar o quanto os níveis de escolaridade poderiam impactar o empreendedorismo.  
@@ -128,8 +126,6 @@ Ao trabalhar no R, é <u>fundamental</u> se certificar que os tipos das variáve
 ::: {.warning}
 **Atenção**: Tenha atenção à codificação computacional que o R atribuiu à variável de interesse. Erros nesta etapa podem impactar severamente os resultados.   
 :::
-
-
 
 Isso pode ser feito pela função `case_when` e `levels`. O `case_when` irá usar os valores originalmente presentes nessa variável para computar uma nova variável categórica. O `levels` deixará claro a ordem de cada categoria, o que é útil para que os gráficos sejam feitos corretamente.  
 
@@ -276,7 +272,7 @@ O tamanho do efeito foi calculado automaticamente pelo R e está na tabela anter
 
 ## Execução no JASP
 
-A base utilizada será a [base_csv_teg_processed](https://osf.io/gxbdc/). A primeira etapa da análise é a adequação das variáveis que serão trabalhadas. Isso é importante para criação de tabelas e gráficos. Para ajustar a ordenação dos níveis de <u>Escolaridade</u>, será necessário clicar <u>no centro</u> da variável <u>escolaridade_fct</u>, selecionar o grupo desejado (no caso, <u>primário</u>) e clicar na seta para que ele seja o primeiro grupos.
+A base utilizada será a intitulada base_csv_teg_processed. A primeira etapa da análise é a adequação das variáveis que serão trabalhadas. Isso é importante para criação de tabelas e gráficos. Para ajustar a ordenação dos níveis de <u>Escolaridade</u>, será necessário clicar <u>no centro</u> da variável <u>escolaridade_fct</u>, selecionar o grupo desejado (no caso, <u>primário</u>) e clicar na seta para que ele seja o primeiro grupos.
 
 ![](./img/cap_anova_ordem_variaveis.png)
 
@@ -415,7 +411,7 @@ Para executar as comparações pareadas, o pacote `emmeans` será utilizado. A m
 
 Para fins práticos, vamos utilizar uma técnica considerada bastante conservadora, chamada de Bonferroni. Nesta correção, o valor de p encontrado em cada uma das comparações é multiplicado pela quantidade de comparações feitas. Este procedimento faz com que o Valor de P encontrado em cada comparação seja igual ao que seria obtido pelo nível de significância nominal. 
 
-A.história desta técnica tem aspectos curiosos A correção de Bonferroni não foi desenvolvida pelo matemático italiano Carlo Emilio Bonferroni. Na verdade, ela foi inicialmente implementada por uma estaticista americana, chamada Olive Jean Dunn, que utilizou conceitos da desigualdade de Bonferroni para isso.   
+A história desta técnica tem aspectos curiosos A correção de Bonferroni não foi desenvolvida pelo matemático italiano Carlo Emilio Bonferroni. Na verdade, ela foi inicialmente implementada por uma estaticista americana, chamada Olive Jean Dunn, que utilizou conceitos da desigualdade de Bonferroni para isso.   
 
 O resultado das comparações dois a dois será armazenado em um objeto específico, nomeado como `post_hoc_escolaridade`. Isso será útil para apresentar sumários e gráficos.
 
@@ -484,7 +480,7 @@ A interpretação dos resultados agora pode ser feita considerando o valor de P,
 ![](./img/cap_anova_posthoc_resultados2.png)  
 
 
-Eventualmente, a apresentação de um gráfico de diferenças oferece um recurso visual adicional e importante para auxiliar no entendimento dos achados. Além do gráfico feito inicialmente na seção `Descriptives`, esta seção do JASP tembém permite que um gráfico seja construído. Para fazer isso, é necessário clicar em `Descriptive plots`.
+Eventualmente, a apresentação de um gráfico de diferenças oferece um recurso visual adicional e importante para auxiliar no entendimento dos achados. Além do gráfico feito inicialmente na seção `Descriptives`, esta seção do JASP também permite que um gráfico seja construído. Para fazer isso, é necessário clicar em `Descriptive plots`.
 
 ![](./img/cap_anova_posthoc_plots.png)
 
@@ -497,7 +493,7 @@ Em seguida, é necessário levar a variável <u>escolaridade_fct</u> para o `Hor
 ## Escrita dos resultados  
 
 
-A escrita dos resultados deve informar os resultados da ANOVA e das comparações pareadas. É importante apresentar os valores de P corrigidos e, sempre que possível, as interpretações teóricas. Abaixo há uma sugesão com estilo baseado nas recomendações da American Psychological Association (APA).
+A escrita dos resultados deve informar os resultados da ANOVA e das comparações pareadas. É importante apresentar os valores de P corrigidos e, sempre que possível, as interpretações teóricas. Abaixo há uma sugestão com estilo baseado nas recomendações da American Psychological Association (APA).
 
 
 ```{block, type="writing"}
@@ -525,9 +521,13 @@ Nesta pesquisa, cerca de 150 estudantes foram apresentados a um filme e depois t
 ## Pesquisa
 
   
-<div class="alert alert-warning">
-  <strong>Base: </strong> [Base - MEMORE 2020 Automated model selection](https://github.com/anovabr/mqt/raw/master/bases/Base%20-%20MEMORE%202020%20Automated%20model%20selection.RData)
-</div> 
+<div class="base">
+  A base desta pesquisa está disponível em formato **R (Rdata)** e em **CSV**, que é lido pelo JASP. Clique na opção desejada.     
+      
+  <strong>Base R: </strong>  [Base - MEMORE 2020 Automated model selection](https://github.com/anovabr/mqt/raw/master/bases/Base%20-%20MEMORE%202020%20Automated%20model%20selection.RData)   
+  
+  <strong>Base JASP: </strong> [Base CSV - CSV file - MEMORE Cognitive measurement (1)](https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip)
+</div>  
 
 Nas próximas seções, a pesquisa intitulada ["Propriedades psicométricas de instrumento de Memória Visual de Curto Prazo (MEMORE)"](https://www.neuropsicolatina.org/index.php/Neuropsicologia_Latinoamericana/article/view/545) será parcialmente utilizada. Esse artigo foi publicado em 2020 e eu sou o primeiro autor. Nesta pesquisa, apresentamos algumas propriedades psicométricas de um teste psicológico desenvolvido para avaliar aspectos da memória de curto prazo (MEMORE), bem como análises estatísticas que visaram investigar o efeito de características psicológicas nos resultados obtidos pelos participantes neste teste específico.  
 
@@ -704,7 +704,7 @@ Em seguida, ao clicar na opção `Plots`, será possível selecionar o `Boxplot`
 
 ![](./img/cap_anova_two_way_plot.png)
 
-Para modificar as variáveis de interesse, será necessário subdstituir <u>escolaridade</u> por <u>faixa_etária</u> na seção `Split`. Os resultados serão novamente calculados. A visualização sugere que pessoas mais velhas apresentam menor desempenho.  
+Para modificar as variáveis de interesse, será necessário substituir <u>escolaridade</u> por <u>faixa_etária</u> na seção `Split`. Os resultados serão novamente calculados. A visualização sugere que pessoas mais velhas apresentam menor desempenho.  
 
 ![](./img/cap_anova_two_way_plot1.png)
 
@@ -731,7 +731,7 @@ Nesta tela, basta clicar em `escolaridade x faixa_etaria` e transferir do lado d
 ![](./img/cap_anova_two_way_model2.png)
 Ao fazer isso, o JASP automaticamente irá refazer as contas e apresentar os resultados.   
 
-Pragmaticamente, o valor de P é o indicador costumeiramente utilizado para tomar decisões inferenciais. Os valores são exatamente os mesmos obtidos anteriormente na modelagem pelo R, indicando que <u>ambas as variáveis</u> são significativas. Repare que esta tabela inicial não apresenta o <u>tamanho do efeito</u> que deverá ser calculado em seguida. Além disso, estes resultados ainda nào indicam se os pressupostos do modelo foram respeitados ou violados, o que também deverá ser testado.  
+Pragmaticamente, o valor de P é o indicador costumeiramente utilizado para tomar decisões inferenciais. Os valores são exatamente os mesmos obtidos anteriormente na modelagem pelo R, indicando que <u>ambas as variáveis</u> são significativas. Repare que esta tabela inicial não apresenta o <u>tamanho do efeito</u> que deverá ser calculado em seguida. Além disso, estes resultados ainda não indicam se os pressupostos do modelo foram respeitados ou violados, o que também deverá ser testado.  
 
 
 ![](./img/cap_anova_two_way_resultados.png)
@@ -1017,7 +1017,7 @@ A tabela padronizada da ANOVA Fatorial, disponível na maioria dos pacotes comer
 Posto isso, os resultados obtidos são:  
 
 ```{r}
-apaTables::apa.aov.table(mod_escolaridade_faixa_etaria_fatorial) %>% 
+apaTables::apa.aov.table(mod_escolaridade_faixa_etaria_fatorial)$table_body %>% 
   pander(., split.table = Inf)
 ```
 
@@ -1067,7 +1067,7 @@ Os resultados obtidos pelo teste de ` Breusch Pagan Test` indicaram que a homoce
 
 ## Execução no JASP
 
-Para executar a ANOVA Fatorial no JASP, será necessário baixar a base [CSV file - MEMORE Cognitive measurement.csv](https://osf.io/4hdc2/). Após carregar os dados no programa, a seção `Descriptives` apresentará o gráfico inicial dos resultados.
+Para executar a ANOVA Fatorial no JASP, será necessário baixar a base intitulada CSV file - MEMORE Cognitive measurement.csv. Após carregar os dados no programa, a seção `Descriptives` apresentará o gráfico inicial dos resultados.
 
 
 ![](./img/cap_anova_two_way_descriptives.png)
@@ -1166,10 +1166,10 @@ De forma análoga ao que aconteceu nos outros exemplos, os resultados até aqui 
 
 ## Post hoc
 
-As comparações Post hoc de uma ANOVA Fatorial <mark>podem ser feitas de duas maneiras</mark>, a depender do interesse do pesquisador. É possível comparar todos os níveis presentes em ambas as variáveis ou comparar todos os níveis de uma variável específica, enquanto outra é mantida constante. No primeiro caso, um exemplo seria a comparação de <u>pessoas com ensino fundamental entre 14 e 24 anos</u> contra <u>pessoas com ensino superior entre 35 e 44 anos</u>. No segundo caso, a comparação ocorreria entre todas as faixas de escolaridade em pessoas entre 14 e 24 anos <u>ou</u> pessoas entre 25 e 34 anos, etc.
+Normalmente, os post hocs são feitos após o pesquisador olhar os gráficos e os resultados obtidos, o que justifica este nome. As comparações Post hoc de uma ANOVA Fatorial <mark>podem ser feitas de duas maneiras</mark>, a depender do interesse do pesquisador. É possível comparar todos os níveis presentes em ambas as variáveis ou comparar todos os níveis de uma variável específica, enquanto outra é mantida constante. No primeiro caso, um exemplo seria a comparação de <u>pessoas com ensino fundamental entre 14 e 24 anos</u> contra <u>pessoas com ensino superior entre 35 e 44 anos</u>. No segundo caso, a comparação ocorreria entre todas as faixas de escolaridade em pessoas entre 14 e 24 anos <u>ou</u> pessoas entre 25 e 34 anos, etc.
 
 
-Normalmente, os post hocs são feitos após o pesquisador olhar os gráficos e os resultados obtidos podem confir ou não uma expectativa prévia. Os programas estatísticos comerciais tendem a realizar o segundo formato de análise, em que todas as interações intra-níveis são feitas após manter um nível de outro fator constante. Uma hipótese é que essa escolha ocorre para prevenir o erro do <u>tipo 2</u>. Uma vez que as correções para valor de P implementadas dependem da quantidade de comparações feitas, ao se comparar todos os níveis de um fator contra todos os níveis de outro fator, seria pouco provável ter resultados significativos. 
+Os programas estatísticos comerciais tendem a realizar o segundo formato de análise, em que todas as interações intra-níveis são feitas após manter um nível de outro fator constante. Uma hipótese é que essa escolha ocorre para prevenir o erro do <u>tipo 2</u>. Uma vez que as correções para valor de P implementadas dependem da quantidade de comparações feitas, ao se comparar todos os níveis de um fator contra todos os níveis de outro fator, seria pouco provável ter resultados significativos. 
 
 Neste caso, o post hoc será feito para todos os níveis de `escolaridade` com pessoas na faixa etária `Entre 14 e 24`. Em seguida, novamente todos os níveis de `escolaridade` serão comparados com pessoas na faixa etária `Entre 25 e 34` e assim por diante. Essa escolha reflete o que foi apresentado no gráfico introdutório desta seção. O vetor `post_hoc_fatorial` será computado e armazenará os resultados.    
 
@@ -1229,3 +1229,14 @@ Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA Fato
 
 É importante ter em mente que as comparações e os sinais podem ser invertidos para que os resultados tornem-se mais facilmente interpretáveis.
 
+
+
+
+## Questões  
+
+<div class="question">
+
+1. (Retirado de Médico do Trabalho, BANPARÁ, ESPP, 2012) Uma determinada empresa deseja comparar a média de idade de seus trabalhadores, em três de suas filiais. O melhor teste estatístico para essa comparação é:<br>a) Teste t de Student pareado.<br>b) Análise de variância.<br>c) Teste do Qui-quadrado.<br>d) Diagrama de Pareto.<br>e) Estatística descritiva
+</div>
+
+<div class="mirror">✂ Gabarito: 1-cb/div>
