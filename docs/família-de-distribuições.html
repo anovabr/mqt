@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Cap. 5 Família de distribuições | Métodos quantitativos em Psicologia com R</title>
+  <title>Cap. 5 Família de distribuições | Conceitos e análises estatísticas com R e JASP</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Cap. 5 Família de distribuições | Métodos quantitativos em Psicologia com R" />
+  <meta property="og:title" content="Cap. 5 Família de distribuições | Conceitos e análises estatísticas com R e JASP" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="cjvanlissa/gitbook-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Cap. 5 Família de distribuições | Métodos quantitativos em Psicologia com R" />
+  <meta name="twitter:title" content="Cap. 5 Família de distribuições | Conceitos e análises estatísticas com R e JASP" />
   
   <meta name="twitter:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   
@@ -24,7 +24,6 @@
 <meta name="author" content="Luis Anunciação (PUC-Rio), PhD" />
 
 
-<meta name="date" content="2021-02-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -131,7 +130,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">MQT em Psicologia com R</a></li>
+<li><a href="./">Conceitos e análises estatísticas com R e JASP</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prefácio</a><ul>
@@ -191,28 +190,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.7" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#amplitude"><i class="fa fa-check"></i><b>4.7</b> Amplitude</a></li>
 <li class="chapter" data-level="4.8" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#amplitude-interquartil"><i class="fa fa-check"></i><b>4.8</b> Amplitude interquartil</a></li>
 <li class="chapter" data-level="4.9" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variância-e-desvio-padrão"><i class="fa fa-check"></i><b>4.9</b> Variância e Desvio-padrão</a></li>
-<li class="chapter" data-level="4.10" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#pesquisa"><i class="fa fa-check"></i><b>4.10</b> Pesquisa</a></li>
-<li class="chapter" data-level="4.11" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#execução-no-r"><i class="fa fa-check"></i><b>4.11</b> Execução no R</a></li>
-<li class="chapter" data-level="4.12" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#gráficos-1"><i class="fa fa-check"></i><b>4.12</b> Gráficos</a></li>
-<li class="chapter" data-level="4.13" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-discreta"><i class="fa fa-check"></i><b>4.13</b> 1 variável discreta</a></li>
-<li class="chapter" data-level="4.14" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-contínua"><i class="fa fa-check"></i><b>4.14</b> 1 variável contínua</a></li>
-<li class="chapter" data-level="4.15" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-discreta-e-vd-contínua"><i class="fa fa-check"></i><b>4.15</b> 2 variáveis com VI discreta (e VD contínua)</a></li>
-<li class="chapter" data-level="4.16" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-contínua-e-vd-contínua"><i class="fa fa-check"></i><b>4.16</b> 2 variáveis com VI contínua (e VD contínua)</a></li>
-<li class="chapter" data-level="4.17" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#outros-gráficos-e-configurações"><i class="fa fa-check"></i><b>4.17</b> Outros gráficos e configurações</a></li>
-<li class="chapter" data-level="4.18" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#execução-no-jasp"><i class="fa fa-check"></i><b>4.18</b> Execução no JASP</a></li>
-<li class="chapter" data-level="4.19" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#tabelas-1"><i class="fa fa-check"></i><b>4.19</b> Tabelas</a></li>
-<li class="chapter" data-level="4.20" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#gráficos-2"><i class="fa fa-check"></i><b>4.20</b> Gráficos</a></li>
-<li class="chapter" data-level="4.21" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-discreta-1"><i class="fa fa-check"></i><b>4.21</b> 1 variável discreta</a></li>
-<li class="chapter" data-level="4.22" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-contínua-1"><i class="fa fa-check"></i><b>4.22</b> 1 variável contínua</a></li>
-<li class="chapter" data-level="4.23" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-discreta-e-vd-contínua-1"><i class="fa fa-check"></i><b>4.23</b> 2 variáveis com VI discreta (e VD contínua)</a></li>
-<li class="chapter" data-level="4.24" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-contínua-e-vd-contínua-1"><i class="fa fa-check"></i><b>4.24</b> 2 variáveis com VI contínua (e VD contínua)</a></li>
-<li class="chapter" data-level="4.25" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#outros-gráficos-e-configurações-1"><i class="fa fa-check"></i><b>4.25</b> Outros gráficos e configurações</a></li>
-<li class="chapter" data-level="4.26" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#resumo-2"><i class="fa fa-check"></i><b>4.26</b> Resumo</a></li>
-<li class="chapter" data-level="4.27" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#questões-1"><i class="fa fa-check"></i><b>4.27</b> Questões</a></li>
+<li class="chapter" data-level="4.10" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#momentos-estatísticos"><i class="fa fa-check"></i><b>4.10</b> Momentos estatísticos</a></li>
+<li class="chapter" data-level="4.11" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#pesquisa"><i class="fa fa-check"></i><b>4.11</b> Pesquisa</a></li>
+<li class="chapter" data-level="4.12" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#execução-no-r"><i class="fa fa-check"></i><b>4.12</b> Execução no R</a></li>
+<li class="chapter" data-level="4.13" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#gráficos-1"><i class="fa fa-check"></i><b>4.13</b> Gráficos</a></li>
+<li class="chapter" data-level="4.14" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-discreta"><i class="fa fa-check"></i><b>4.14</b> 1 variável discreta</a></li>
+<li class="chapter" data-level="4.15" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-contínua"><i class="fa fa-check"></i><b>4.15</b> 1 variável contínua</a></li>
+<li class="chapter" data-level="4.16" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-discreta-e-vd-contínua"><i class="fa fa-check"></i><b>4.16</b> 2 variáveis com VI discreta (e VD contínua)</a></li>
+<li class="chapter" data-level="4.17" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-contínua-e-vd-contínua"><i class="fa fa-check"></i><b>4.17</b> 2 variáveis com VI contínua (e VD contínua)</a></li>
+<li class="chapter" data-level="4.18" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#outros-gráficos-e-configurações"><i class="fa fa-check"></i><b>4.18</b> Outros gráficos e configurações</a></li>
+<li class="chapter" data-level="4.19" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#execução-no-jasp"><i class="fa fa-check"></i><b>4.19</b> Execução no JASP</a></li>
+<li class="chapter" data-level="4.20" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#tabelas-1"><i class="fa fa-check"></i><b>4.20</b> Tabelas</a></li>
+<li class="chapter" data-level="4.21" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#gráficos-2"><i class="fa fa-check"></i><b>4.21</b> Gráficos</a></li>
+<li class="chapter" data-level="4.22" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-discreta-1"><i class="fa fa-check"></i><b>4.22</b> 1 variável discreta</a></li>
+<li class="chapter" data-level="4.23" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variável-contínua-1"><i class="fa fa-check"></i><b>4.23</b> 1 variável contínua</a></li>
+<li class="chapter" data-level="4.24" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-discreta-e-vd-contínua-1"><i class="fa fa-check"></i><b>4.24</b> 2 variáveis com VI discreta (e VD contínua)</a></li>
+<li class="chapter" data-level="4.25" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#variáveis-com-vi-contínua-e-vd-contínua-1"><i class="fa fa-check"></i><b>4.25</b> 2 variáveis com VI contínua (e VD contínua)</a></li>
+<li class="chapter" data-level="4.26" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#outros-gráficos-e-configurações-1"><i class="fa fa-check"></i><b>4.26</b> Outros gráficos e configurações</a></li>
+<li class="chapter" data-level="4.27" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#resumo-2"><i class="fa fa-check"></i><b>4.27</b> Resumo</a></li>
+<li class="chapter" data-level="4.28" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#questões-1"><i class="fa fa-check"></i><b>4.28</b> Questões</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html"><i class="fa fa-check"></i><b>5</b> Família de distribuições</a><ul>
-<li class="chapter" data-level="5.1" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html#resumo-3"><i class="fa fa-check"></i><b>5.1</b> Resumo</a></li>
-<li class="chapter" data-level="5.2" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html#questões-2"><i class="fa fa-check"></i><b>5.2</b> Questões</a></li>
+<li class="chapter" data-level="5.1" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html#distribuição-simétrica"><i class="fa fa-check"></i><b>5.1</b> Distribuição simétrica</a></li>
+<li class="chapter" data-level="5.2" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html#assimetria-à-direita"><i class="fa fa-check"></i><b>5.2</b> Assimetria à direita</a></li>
+<li class="chapter" data-level="5.3" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html#assimetria-à-esquerda-ou-negativa"><i class="fa fa-check"></i><b>5.3</b> Assimetria à esquerda (ou negativa)</a></li>
+<li class="chapter" data-level="5.4" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html#a-distribuição-normal"><i class="fa fa-check"></i><b>5.4</b> A distribuição normal</a></li>
+<li class="chapter" data-level="5.5" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html#a-regra-empírica"><i class="fa fa-check"></i><b>5.5</b> A regra empírica</a></li>
+<li class="chapter" data-level="5.6" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html#um-resumo-visual"><i class="fa fa-check"></i><b>5.6</b> Um resumo visual</a></li>
+<li class="chapter" data-level="5.7" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html#importância-inferencial"><i class="fa fa-check"></i><b>5.7</b> Importância inferencial</a></li>
+<li class="chapter" data-level="5.8" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html#resumo-3"><i class="fa fa-check"></i><b>5.8</b> Resumo</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html"><i class="fa fa-check"></i><b>6</b> Tipos de amostragem</a><ul>
 <li class="chapter" data-level="6.1" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html#amostragem-aleatória-simples"><i class="fa fa-check"></i><b>6.1</b> Amostragem aleatória simples</a></li>
@@ -238,7 +244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#o-tamanho-do-efeito"><i class="fa fa-check"></i><b>7.5</b> O tamanho do efeito</a></li>
 <li class="chapter" data-level="7.6" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#um-exemplo-intuitivo"><i class="fa fa-check"></i><b>7.6</b> Um exemplo intuitivo</a></li>
 <li class="chapter" data-level="7.7" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#o-que-não-te-contaram-sobre-inferência-estatística"><i class="fa fa-check"></i><b>7.7</b> O que não te contaram sobre inferência estatística</a></li>
-<li class="chapter" data-level="7.8" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#questões-3"><i class="fa fa-check"></i><b>7.8</b> Questões</a></li>
+<li class="chapter" data-level="7.8" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#questões-2"><i class="fa fa-check"></i><b>7.8</b> Questões</a></li>
 <li class="chapter" data-level="7.9" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#pesquisas-adicionais"><i class="fa fa-check"></i><b>7.9</b> Pesquisas adicionais</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="qui-quadrado.html"><a href="qui-quadrado.html"><i class="fa fa-check"></i><b>8</b> Qui quadrado</a><ul>
@@ -269,7 +275,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.8" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>9.8</b> Teste T e regressão</a></li>
 <li class="chapter" data-level="9.9" data-path="teste-t.html"><a href="teste-t.html#resumo-5"><i class="fa fa-check"></i><b>9.9</b> Resumo</a></li>
 <li class="chapter" data-level="9.10" data-path="teste-t.html"><a href="teste-t.html#pesquisas-adicionais-2"><i class="fa fa-check"></i><b>9.10</b> Pesquisas adicionais</a></li>
-<li class="chapter" data-level="9.11" data-path="teste-t.html"><a href="teste-t.html#questões-4"><i class="fa fa-check"></i><b>9.11</b> Questões</a></li>
+<li class="chapter" data-level="9.11" data-path="teste-t.html"><a href="teste-t.html#questões-3"><i class="fa fa-check"></i><b>9.11</b> Questões</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>10</b> ANOVA</a><ul>
 <li class="chapter" data-level="10.1" data-path="anova.html"><a href="anova.html#pesquisa-3"><i class="fa fa-check"></i><b>10.1</b> Pesquisa</a></li>
@@ -302,7 +308,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.28" data-path="anova.html"><a href="anova.html#post-hoc-2"><i class="fa fa-check"></i><b>10.28</b> Post hoc</a></li>
 <li class="chapter" data-level="10.29" data-path="anova.html"><a href="anova.html#execução-no-jasp-10"><i class="fa fa-check"></i><b>10.29</b> Execução no JASP</a></li>
 <li class="chapter" data-level="10.30" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-8"><i class="fa fa-check"></i><b>10.30</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="10.31" data-path="anova.html"><a href="anova.html#questões-5"><i class="fa fa-check"></i><b>10.31</b> Questões</a></li>
+<li class="chapter" data-level="10.31" data-path="anova.html"><a href="anova.html#questões-4"><i class="fa fa-check"></i><b>10.31</b> Questões</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html"><i class="fa fa-check"></i><b>11</b> ANOVA de medidas repetidas</a><ul>
 <li class="chapter" data-level="11.1" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pesquisa-5"><i class="fa fa-check"></i><b>11.1</b> Pesquisa</a></li>
@@ -345,7 +351,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.5" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#técnicas-automáticas-de-seleção-de-variáveis"><i class="fa fa-check"></i><b>15.5</b> Técnicas automáticas de seleção de variáveis</a></li>
 <li class="chapter" data-level="15.6" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#resumo-13"><i class="fa fa-check"></i><b>15.6</b> Resumo</a></li>
 <li class="chapter" data-level="15.7" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisas-adicionais-7"><i class="fa fa-check"></i><b>15.7</b> Pesquisas adicionais</a></li>
-<li class="chapter" data-level="15.8" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#questões-6"><i class="fa fa-check"></i><b>15.8</b> Questões</a></li>
+<li class="chapter" data-level="15.8" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#questões-5"><i class="fa fa-check"></i><b>15.8</b> Questões</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html"><i class="fa fa-check"></i><b>16</b> Regressão logística binária</a><ul>
 <li class="chapter" data-level="16.1" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#pesquisa-10"><i class="fa fa-check"></i><b>16.1</b> Pesquisa</a></li>
@@ -355,10 +361,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.5" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#regressão-logística-or-e-qui-quadrado"><i class="fa fa-check"></i><b>16.5</b> Regressão logística, OR e Qui-quadrado</a></li>
 <li class="chapter" data-level="16.6" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#resumo-14"><i class="fa fa-check"></i><b>16.6</b> Resumo</a></li>
 <li class="chapter" data-level="16.7" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#pesquisas-adicionais-8"><i class="fa fa-check"></i><b>16.7</b> Pesquisas adicionais</a></li>
-<li class="chapter" data-level="16.8" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#questões-7"><i class="fa fa-check"></i><b>16.8</b> Questões</a></li>
+<li class="chapter" data-level="16.8" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#questões-6"><i class="fa fa-check"></i><b>16.8</b> Questões</a></li>
 </ul></li>
 <li class="divider"></li>
-<li><a href="http://www.puc-rio.br/" target="blank">PUC-Rio</a></li>
+<li><a href="http://www.anovabr.com/" target="blank">ANOVA</a></li>
 
 </ul>
 
@@ -369,7 +375,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Métodos quantitativos em Psicologia com R</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Conceitos e análises estatísticas com R e JASP</a>
           </h1>
         </div>
 
@@ -382,48 +388,249 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="objectives">
 <p>
 <strong>Objetivos do capítulo</strong><br />
-1. Introduzir conceitos importantes em estatística descritiva<br />
-2. Apresentar tabelas e gráficos<br />
-3. Apresentar funções do dplyr e ggplot<br />
-4. Apresentar um módulo específico do JASP<br />
-5. Sugerir heurísticas ou regras gerais na criação de gráficos
+1. Introduzir aspectos voltados ao formato das distribuições<br />
+2. Apresentar a distribuição formal e suas características<br />
+3. Apresentar dados simulados para ilustrar a Lei dos Grandes Números e o Teorema Central do Limite
 </p>
 </div>
-<p>Quando pesquisadores e acadêmicos fazem seus estudos, com muita frequência, eles obtêm um grande conjunto de dados, sendo pouco informativo ou até mesmo inviável apresentar detalhadamente todos eles. A estatística descritiva oferece uma diversidade de ferramentas que auxiliam a organizar, descrever, resumir e apresentar os dados obtidos, de forma que os resultados sejam mais fáceis de serem compreendidos e analisados e, consequentemente, que a pesquisa possa ser melhor compreendida por todos os seus leitores.</p>
+<p><em>Parcialmente adaptado de Anunciação, Portugal, Landeira-Fernandez (2021). Aspectos psicométricos de instrumentos neuropsicológicos: revisão conceitual, proposta de interpretação de percentis e classificações </em></p>
+<p>Em estatística, uma variável aleatória é uma função associa cada elemento de um dado espaço amostral a um número real (<span class="math inline">\(X:\Omega \rightarrow R\)</span>). O mapeamento desses valores depende de um experimento aleatório, seguida pela análise dado conjunto de valores obtidos, chamado de realizações. Apesar desses conceitos serem importantes, o atalho pedagógico utilizado para esta definição entende as variáveis como características que pode apresentar qualquer valor, tal como peso, inteligência e renda.</p>
+<p>Todas as variáveis apresentam resultados numéricos que podem ser contínuos ou discretos. Esses resultados se distribuem de acordo com uma família de distribuições de probabilidades (que também podem ser discretas ou contínuas) e podem ser pragmaticamente apresentados por uma expressão analítica (uma fórmula), tabelas ou gráficos.</p>
+<p>Os gráficos são muito úteis para indicar os três principais aspectos das distribuições, que são: a localização (ou centro), a dispersão e o formato. A tabela abaixo apresenta cada um desses componentes e uma definição.</p>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Componente</th>
+<th align="left">Definição</th>
+<th align="left">Medida</th>
+<th align="left">Gráfico</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Localização</td>
+<td align="left">Expressa o valor médio que está sendo observado</td>
+<td align="left">Média, Moda e Mediana</td>
+<td align="left">Histograma, Boxplot</td>
+</tr>
+<tr class="even">
+<td align="left">Dispersão</td>
+<td align="left">Expressa o afastamento do valor da localização</td>
+<td align="left">Amplitude, Variância, Desvio-padrão, IQR</td>
+<td align="left">Histograma, Boxplot</td>
+</tr>
+<tr class="odd">
+<td align="left">Formato</td>
+<td align="left">Apresenta como a variação ocorre em função da localização</td>
+<td align="left">Assimetria e curtose</td>
+<td align="left">Histograma, Boxplot</td>
+</tr>
+</tbody>
+</table>
+<p>A localização e a dispersão foram trabalhados no capítulo sobre estatística descritiva, que também apresentou resumidamente o Coeficiente de Assimetria e Curtose. Dessa maneira, o capítulo atual tem maior ênfase sobre os possíveis formatos de uma distribuição.</p>
+<p>Em relação ao formato, as distribuições podem ser simétricas ou assimétricas. Quando assimétricas, a assimetria pode ser à direita ou à esquerda.</p>
+<div id="distribuição-simétrica" class="section level2">
+<h2><span class="header-section-number">5.1</span> Distribuição simétrica</h2>
+<p>Este tipo de distribuição é simétrica em torno da média. Existem algumas famílias de probabilidade que apresentam formato similar a esse, que será melhor descrito a seguir, na seção sobre Distribuição normal.</p>
+<p>Visualmente, a distribuição se apresenta da seguinte maneira:</p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-36-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="assimetria-à-direita" class="section level2">
+<h2><span class="header-section-number">5.2</span> Assimetria à direita</h2>
+<p>Este tipo de assimetria é marcada por caudas longas à direita. Em distribuições que obedecem este padrão, os outliers ou pontos anômalos tem valores significativamente altos. Visualmente, esta distribuição tem o seguinte formato.</p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-37-1.png" width="672" style="display: block; margin: auto;" />
+Entre as principais características, (1) a média é maior do que a mediana, (2) a quantidade de observações abaixo da média é superior à quantidade de observações acima da média e (3) o Coeficiente de Assimetria é positivo. No caso da imagem o valor é 1.1241932.</p>
+<p>Entre as distribuições com este formato, estão a gamma e alguns casos particulares, como a exponencial e a qui-quadrado.</p>
+<p><mark>Exemplos reais</mark>: Tempo de espera em uma fila de banco, quilometragem de carros usados que estão à venda, tempo de reação em experimentos psicológicos, preço de casas à venda, número de acidentes de trânsito que uma pessoa se envolve durante um ano, quantidade de filhos que as família possuem</p>
+</div>
+<div id="assimetria-à-esquerda-ou-negativa" class="section level2">
+<h2><span class="header-section-number">5.3</span> Assimetria à esquerda (ou negativa)</h2>
+<p>Este tipo de assimetria é marcada por caudas longas à esquerda. Em distribuições que obedecem este padrão, os outliers ou pontos anômalos tem valores significativamente baixos Visualmente, esta distribuição tem o seguinte formato.</p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-38-1.png" width="672" style="display: block; margin: auto;" />
+Entre as principais características, (1) a média é menor do que a mediana, (2) a quantidade de observações abaixo da média é inferior à quantidade de observações acima da média e (3) o Coeficiente de Assimetria é negativo No caso da imagem o valor é -0.8647527.</p>
+<p><mark>Exemplos reais</mark>: Idade da morte de brasileiros, quantidade de horas que as pessoas passam na internet, quantidade de dedos que a população tem nas mãos.</p>
+</div>
+<div id="a-distribuição-normal" class="section level2">
+<h2><span class="header-section-number">5.4</span> A distribuição normal</h2>
+<p>A distribuição normal é um tipo de distribuição simétrica, considerada a mais importante em estatística e que apresenta características visuais e analíticas marcantes. Seu formato é apresentado a seguir:</p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-39-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Em relação aos aspectos visuais:</p>
+<ol style="list-style-type: decimal">
+<li>Ela é simétrica</li>
+<li>Há um único pico e duas caudas, uma à esquerda e outra à direita (o que gera um formato de sino)</li>
+<li>Apesar de contraintuitivo, essas caudas não se estendem infinitamente à esquerda e à direita</li>
+</ol>
+<p>Em relação às características analíticas</p>
+<ol style="list-style-type: decimal">
+<li>Ela integra a família das distribuições contínuas (e, portanto, tem uma função densidade de probabilidade),</li>
+<li>Ela é definida por dois parâmetros (média e variância), o que significa que é possível construir infinitas distribuições normais<br />
+</li>
+<li>O ponto ao centro reúne o valor da média, moda e mediana, que são iguais</li>
+<li>O Coeficiente de Assimetria é igual a 0</li>
+<li>O Coeficiente de Curtose é igual a 3</li>
+</ol>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-40-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Em Psicologia, os fenômenos psicológicos são assumidos como normais, motivo pela qual essa distribuição possui ainda mais importância na área.</p>
+<p><mark>Exemplos reais</mark>: Altura de homens/mulheres adultos(as), erros em equipamentos de medição em astronomia, pressão arterial de adultos, tamanho de bebês recém-nascidos.</p>
+</div>
+<div id="a-regra-empírica" class="section level2">
+<h2><span class="header-section-number">5.5</span> A regra empírica</h2>
+<p>Uma característica importante da distribuição normal (e outras distribuições simétricas) é a regra empírica.</p>
+<p>De com esta regra, em uma variável aleatória normalmente distribuída, cerca de 68% das observações estará contida no intervalo de -1 a +1 desvio-padrão, cerca de 95% das observações estará entre -2 e +2 desvios-padrão e carca de 99.7% das observações estará entre -3 e +3 desvios-padrão.</p>
+<p>A figura abaixo apresenta esta relação.</p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-41-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="um-resumo-visual" class="section level2">
+<h2><span class="header-section-number">5.6</span> Um resumo visual</h2>
+<p>Este capítulo pode ser entendido de muitas maneiras. Elementos visuais tendem a gerar uma assimilação mais rápida e duradoura desses conteúdos. Abaixo, há três formatos de distribuição. O cachorro no meio ilustra uma distribuição simétrica. Nela, a área embaixo da curva decai da mesma forma com referência ao centro. O cachorro da esquerda ilustra uma assimetria negativa. Repare que o rabo dele está para o lado esquerdo. Por sua vez, o cachorro da direita ilustra uma assimetria à direita. Repare que o rabo dele, por sua vez, está ao lado direito.</p>
+<p><img src="img/cap_desc_assimetria.PNG" /></p>
+</div>
+<div id="importância-inferencial" class="section level2">
+<h2><span class="header-section-number">5.7</span> Importância inferencial</h2>
+<p>Uma das principais atividades realizadas na estatística é a generalização de resultados obtidos em uma pesquisa à população de onde a amostra foi retirada. Este tema será melhor apresentado no capítulo de inferência.</p>
 <div class="warning">
-<p><strong>Atenção</strong>: A estatística descritiva dispõe de inúmeras ferramentas para auxiliar na gestão e apresentação de dados.</p>
+<p><strong>Atenção</strong>: A Lei dos Grandes Números e o Teorema Central do Limite são dois pilares da teoria da probabilidade e de procedimentos inferenciais.</p>
+</div>
+<p>Duas teorias em estatística são muito importantes e impactam tanto no tamanho amostral como na utilização da distribuição normal em processos inferenciais, que são a Lei dos Grandes Números (LLN) e o Teorema Central do Limite (CLT).</p>
+<p><u>Lei dos Grandes Números (LLN)</u>: Essa Lei é um teorema fundamental da teoria da probabilidade. De acordo com ela, a média aritmética dos resultados da realização da mesma experiência repetidas vezes tende a se aproximar do valor esperado à medida que mais tentativas se sucederem. Ou seja, a média amostral converge em probabilidade à média populacional.</p>
+<p>Uma demonstração simples é feita pelo jogo de moedas. Sabe-se que há uma probabilidade de 50% do resultado deste experimento ser cara, da mesma forma que há esta mesma probabilidade de ser coroa. É possível codificar cara como 1 e coroa como 0.</p>
+<p>Se assumirmos que <span class="math inline">\(Sn\)</span> o número de caras em <span class="math inline">\(n\)</span> experimentos,há:</p>
+<p><span class="math display">\[S_n = X_1 + X_2 + \dots + X_n\]</span></p>
+<p>A proporção de caras é dada por:</p>
+<p><span class="math display">\[R_n = \frac{S_n}{n}\]</span></p>
+<p>Pela Lei dos Grandes Números, haverá uma convergência em probabilidade:</p>
+<p><span class="math display">\[R_n \overset{p}{\to} p\quad quando \quad n \rightarrow \infty \]</span>
+Dados simulados apresentando os primeiros resultados são:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="família-de-distribuições.html#cb24-1"></a><span class="kw">head</span>(lln) <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
+<table style="width:78%;">
+<colgroup>
+<col width="18%" />
+<col width="16%" />
+<col width="25%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">lancamento</th>
+<th align="center">resultado</th>
+<th align="center">acumulado_caras</th>
+<th align="center">prob_caras</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">Cara</td>
+<td align="center">1</td>
+<td align="center">100</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">Coroa</td>
+<td align="center">1</td>
+<td align="center">50</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">Cara</td>
+<td align="center">2</td>
+<td align="center">66.67</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">Cara</td>
+<td align="center">3</td>
+<td align="center">75</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">Coroa</td>
+<td align="center">3</td>
+<td align="center">60</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">Cara</td>
+<td align="center">4</td>
+<td align="center">66.67</td>
+</tr>
+</tbody>
+</table>
+<p>A medida que a quantidade de lançamentos aumenta, a probabilidade se aproxima à esperada, ilustrando a Lei dos Grandes Números. O gráfico a seguir demonstra esse resultado.</p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-44-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>O <u>Teorema Central do Limite (CLT)</u>: Se uma variável aleatória (por exemplo, X) puder ser representada pela soma de quaisquer <span class="math inline">\(n\)</span> variáveis aleatórias independentes, que satisfaçam certas condições gerais, esta soma terá distribuição aproximadamente normal para <span class="math inline">\(n\)</span> suficientemente grande.</p>
+<p>Uma demonstração pode ser feita. Se um conjunto de pesquisas forem realizadas em uma variável cuja distribuição tenha formato uniforme, em cada uma das pesquisas (realizações), os resultados terão formato uniforme, tal como demonstrado a seguir:</p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-45-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Caso a média de cada uma das pesquisas (realizações) seja tirada e arquivada em um banco de dados, os 10 primeiros resultados serão os seguintes:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="família-de-distribuições.html#cb25-1"></a><span class="kw">head</span>(clt_sample_means) <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
+<table style="width:28%;">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">samples</th>
+<th align="center">means</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">0.496</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">0.4917</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">0.5188</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">0.4968</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">0.5075</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">0.5008</td>
+</tr>
+</tbody>
+</table>
+<p>A distribuição das médias das médias é, aproximadamente, normal.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="família-de-distribuições.html#cb26-1"></a><span class="kw">ggplot</span>(clt_sample_means, <span class="kw">aes</span>(<span class="dt">x=</span>means))<span class="op">+</span></span>
+<span id="cb26-2"><a href="família-de-distribuições.html#cb26-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>, <span class="dt">bins=</span><span class="dv">15</span>)<span class="op">+</span></span>
+<span id="cb26-3"><a href="família-de-distribuições.html#cb26-3"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-48-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="resumo-3" class="section level2">
-<h2><span class="header-section-number">5.1</span> Resumo</h2>
+<h2><span class="header-section-number">5.8</span> Resumo</h2>
 <div class="explore">
-<p>Este capítulo apresentou os aspectos tabulares e gráficos corriqueiramente encontrados em pesquisas de Psicologia e áreas congêneres. Entre os pontos principais, estão os seguintes:</p>
+<p>Este capítulo introduziu aspectos relacionados ao formato da distribuição das variáveis, com os seguintes pontos principais:</p>
 <ol style="list-style-type: decimal">
-<li>Medidas de posição e dispersão são fundamentais na apresentação dos resultados de uma pesquisa<br />
+<li>Todas as variáveis se distribuem e o formato delas pode ser descrito de maneira analítica, tabular ou gráfica<br />
 </li>
-<li>Variáveis categóricas são resumidas por contagens e proporções. Variáveis contínuas por suas médias e desvios-padrão<br />
+<li>De maneira sintética, as distribuições podem ser simétricas ou assimétricas<br />
 </li>
-<li>Tabelas e gráficos devem ser claros ao leitor, sem criar viés ou distorção dos resultados<br />
+<li>A assimetria à direita é também chamada de positiva<br />
 </li>
-<li>As tabelas são muito úteis para uma apresentação detalhada dos resultados<br />
+<li>A assimetria à esquerda é também chamada de negativa<br />
 </li>
-<li>Gráficos condensam um grande volume de dados de uma forma mais facilmente interpretável<br />
+<li>A distribuição normal é a mais importante em estatística e muito utilizada em Psicologia<br />
 </li>
-<li>A heurística típica em gráficos solicita responder a quantidade e a natureza das variáveis a serem apresenadas<br />
+<li>A Lei dos Grandes Números e o Teorema Central do Limite são fundamentais em aspectos inferenciais<br />
 </li>
 </ol>
-</div>
-</div>
-<div id="questões-2" class="section level2">
-<h2><span class="header-section-number">5.2</span> Questões</h2>
-<div class="question">
-<ol style="list-style-type: decimal">
-<li>Trata-se de um círculo dividido por fatias cujos ângulos internos são proporcionais às partes envolvidas. Este é um gráfico:<br>a) De colunas<br>b) Histograma<br>c)De Setor<br>d) Boxplot<br>e)Barras</li>
-<li>É uma medida de posição para variáveis propriamente numéricase que é obtida somando-se todos os valores observados e dividindo-se o resultado pelo número de observações<br>a) Mediana<br>b) Média<br>c) Moda<br>d) Desvio-padrão<br>e) Amplitude interquartil</li>
-<li>(ENADE, Biomedicina - 2010) Para apresentarem gráficos dados referentes à distribuição de frequências de um grupo de medições, pode-se aplicar um modelo semelhante ao estabelecido na figura abaixo, na qual o pesquisador verifica a variação de anticorpos em relação a uma coorte populacional específica.<br><img src="img/exercicio_histograma.PNG" /><br>a) Gráfico de setores, que demonstra a variação de anticorpos na abscissa Y e de população na ordenada X.<br> b) Histograma, que demonstra variações de anticorpos na abscissa X e de população na ordenada Y <br> c) Gráfico de tendência central, que demonstra variações de anticorpos na abscissa X e de população na ordenada Y.<br> d) Gráficos de dispersão, que demonstra a tendência central das médias de concentração dos valores de anticorpos na população.<br> e) Gráfico de linhas, que demonstra a tendência central baseada na mediana das concentrações de anticorpos na população.</li>
-</ol>
-</div>
-<div class="mirror">
-Gabarito: 1-c; 2-b; 3-b,
 </div>
 
 </div>

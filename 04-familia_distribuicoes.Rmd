@@ -5,45 +5,297 @@ editor_options:
 ---
 # Família de distribuições
 
-```{block, type="objectives"}
-**Objetivos do capítulo**  
-1. Introduzir conceitos importantes em estatística descritiva  
-2. Apresentar tabelas e gráficos  
-3. Apresentar funções do dplyr e ggplot    
-4. Apresentar um módulo específico do JASP   
-5. Sugerir heurísticas ou regras gerais na criação de gráficos  
+
+```{r, include = FALSE}
+library(tidyverse)
 ```
 
-Quando pesquisadores e acadêmicos fazem seus estudos, com muita frequência, eles obtêm um grande conjunto de dados, sendo pouco informativo ou até mesmo inviável apresentar detalhadamente todos eles. A estatística descritiva oferece uma diversidade de ferramentas que auxiliam a organizar, descrever, resumir e apresentar os dados obtidos, de forma que os resultados sejam mais fáceis de serem compreendidos e analisados e, consequentemente, que a pesquisa possa ser melhor compreendida por todos os seus leitores.     
+
+```{block, type="objectives"}
+**Objetivos do capítulo**  
+1. Introduzir aspectos voltados ao formato das distribuições  
+2. Apresentar a distribuição formal e suas características    
+3. Apresentar dados simulados para ilustrar a Lei dos Grandes Números e o Teorema Central do Limite  
+```
+*Parcialmente adaptado de Anunciação, Portugal, Landeira-Fernandez (2021). Aspectos psicométricos de instrumentos neuropsicológicos: revisão conceitual, proposta de interpretação de percentis e classificações *   
+
+
+Em estatística, uma variável aleatória é uma função associa cada elemento de um dado espaço amostral a um número real ($X:\Omega \rightarrow R$). O mapeamento desses valores depende de um experimento aleatório, seguida pela análise dado conjunto de valores obtidos, chamado de realizações. Apesar desses conceitos serem importantes, o atalho pedagógico utilizado para esta definição entende as variáveis como características que pode apresentar qualquer valor, tal como peso, inteligência e renda. 
+
+Todas as variáveis apresentam resultados numéricos que podem ser contínuos ou discretos. Esses resultados se distribuem de acordo com uma família de distribuições de probabilidades (que também podem ser discretas ou contínuas) e podem ser pragmaticamente apresentados por uma expressão analítica (uma fórmula), tabelas ou gráficos. 
+
+
+Os gráficos são muito úteis para indicar os três principais aspectos das distribuições, que são: a localização (ou centro), a dispersão e o formato. A tabela abaixo apresenta cada um desses componentes e uma definição.   
+
+
+Componente | Definição | Medida | Gráfico 
+:--------- | :--------- | :--------- | :--------- |
+Localização | Expressa o valor médio que está sendo observado | Média, Moda e Mediana |  Histograma, Boxplot 
+Dispersão | Expressa o afastamento do valor da localização | Amplitude, Variância, Desvio-padrão, IQR |  Histograma, Boxplot 
+Formato | Apresenta como a variação ocorre em função da localização | Assimetria e curtose |  Histograma, Boxplot 
+
+
+A localização e a dispersão foram trabalhados no capítulo sobre estatística descritiva, que também apresentou resumidamente o Coeficiente de Assimetria e Curtose. Dessa maneira, o capítulo atual tem maior ênfase sobre os possíveis formatos de uma distribuição. 
+
+
+Em relação ao formato, as distribuições podem ser simétricas ou assimétricas. Quando assimétricas, a assimetria pode ser à direita ou à esquerda.
+
+## Distribuição simétrica
+
+Este tipo de distribuição é simétrica em torno da média. Existem algumas famílias de probabilidade que apresentam formato similar a esse, que será melhor descrito a seguir, na seção sobre Distribuição normal. 
+
+Visualmente, a distribuição se apresenta da seguinte maneira:
+
+```{r, echo = FALSE }
+set.seed(123)
+data.frame(x=rnorm(1000, 0,1))%>% mutate(y = dnorm(x)) %>% 
+ggplot(., aes(x=x,y=y)) + #pegar variaveis
+  geom_line(size=1)+
+  theme_bw() 
+```
+
+
+## Assimetria à direita
+
+Este tipo de assimetria é marcada por caudas longas à direita. Em distribuições que obedecem este padrão, os outliers ou pontos anômalos tem valores significativamente altos. Visualmente, esta distribuição tem o seguinte formato.
+
+```{r , echo = FALSE }
+set.seed(3)
+assimetria_positiva <- data.frame(x=rnbinom(1000, size = 4, prob =  .3))
+ggplot(assimetria_positiva, aes(x)) +
+  geom_density(size=2) +
+  geom_rug() +
+  geom_vline(xintercept = mean(assimetria_positiva$x), color = "red", size = 2) +
+  geom_vline(xintercept = median(assimetria_positiva$x), color = "purple", size = 2) +
+  annotate(geom = "text", x = mean(assimetria_positiva$x)+2.2, y = 0.05, label = "Média", color = "red", size = 5)+
+  annotate(geom = "text", x = median(assimetria_positiva$x)-2.7, y = 0.05, label = "Mediana", color = "purple", size = 5) +
+  theme_bw() 
+```
+Entre as principais características, (1) a média é maior do que a mediana, (2) a quantidade de observações abaixo da média é superior à quantidade de observações acima da média e (3) o Coeficiente de Assimetria é positivo. No caso da imagem o valor é `r moments::skewness(assimetria_positiva$x)`.   
+
+Entre as distribuições com este formato, estão a gamma e alguns casos particulares, como a exponencial e a qui-quadrado. 
+
+<mark>Exemplos reais</mark>: Tempo de espera em uma fila de banco, quilometragem de carros usados que estão à venda, tempo de reação em experimentos psicológicos, preço de casas à venda, número de acidentes de trânsito que uma pessoa se envolve durante um ano, quantidade de filhos que as família possuem
+
+## Assimetria à esquerda (ou negativa)
+
+Este tipo de assimetria é marcada por caudas longas à esquerda. Em distribuições que obedecem este padrão, os outliers ou pontos anômalos tem valores significativamente baixos Visualmente, esta distribuição tem o seguinte formato.
+
+
+```{r, echo = FALSE }
+set.seed(123)
+assimetria_negativa <- data.frame(x=rbeta(1000,shape1 = 8, shape2 = 2, ncp = 0.01)) %>% mutate(x=x*15)
+
+ggplot(assimetria_negativa, aes(x)) +
+  geom_density(size=2) +
+  xlim(0,16)+
+  geom_rug() +
+  geom_vline(xintercept = mean(assimetria_negativa$x), color = "red", size = 2) +
+  geom_vline(xintercept = median(assimetria_negativa$x), color = "purple", size = 2) +
+  annotate(geom = "text", x = mean(assimetria_negativa$x)-1.0, y = 0.2, label = "Média", color = "red", size = 5)+
+  annotate(geom = "text", x = median(assimetria_negativa$x)+1.1, y = 0.2, label = "Mediana", color = "purple", size = 5) +
+  theme_bw() 
+```
+Entre as principais características, (1) a média é menor do que a mediana, (2) a quantidade de observações abaixo da média é inferior à quantidade de observações acima da média e (3) o Coeficiente de Assimetria é negativo No caso da imagem o valor é `r moments::skewness(assimetria_negativa$x)`.   
+
+
+<mark>Exemplos reais</mark>: Idade da morte de brasileiros, quantidade de horas que as pessoas passam na internet, quantidade de dedos que a população tem nas mãos.
+
+
+## A distribuição normal
+
+A distribuição normal é um tipo de distribuição simétrica, considerada a mais importante em estatística e que apresenta características visuais e analíticas marcantes. Seu formato é apresentado a seguir: 
+
+
+```{r, echo = FALSE }
+set.seed(123)
+normal <- data.frame(x=rnorm(1000,0,1)) %>% 
+  add_row(x=3) %>% 
+  add_row(x=-3) %>% 
+  mutate(y=dnorm(x))
+
+ggplot(normal, aes(x=x,y=y)) +
+  geom_line(size=1)+
+  scale_x_continuous(breaks = c(-3:3)) + 
+  theme_bw() 
+```
+
+Em relação aos aspectos visuais:  
+
+1) Ela é simétrica
+2) Há um único pico e duas caudas, uma à esquerda e outra à direita (o que gera um formato de sino)
+3) Apesar de contraintuitivo, essas caudas não se estendem infinitamente à esquerda e à direita 
+
+Em relação às características analíticas
+
+1) Ela integra a família das distribuições contínuas (e, portanto, tem uma função densidade de probabilidade), 
+2) Ela é definida por dois parâmetros (média e variância), o que significa que é possível construir infinitas distribuições normais   
+3) O ponto ao centro reúne o valor da média, moda e mediana, que são iguais
+4) O Coeficiente de Assimetria é igual a 0
+5) O Coeficiente de Curtose é igual a 3  
+
+
+```{r, echo = FALSE }
+ggplot(normal, aes(x=x,y=y)) +
+  geom_line(size=1)+
+  scale_x_continuous(breaks = c(-3:3)) + 
+  geom_vline(xintercept = mean(normal$x), color = "red", size = 2) +
+  geom_vline(xintercept = median(normal$x), color = "purple", size = 3) +
+  geom_label(aes(x = mean(x), y = 0.3, label = "Media"), color = "white", fill = "red") +
+  geom_label(aes(x = mean(x), y = 0.25, label = "Mediana"), color = "white", fill = "purple") + 
+  geom_label(aes(x = mean(x), y = 0.20, label = "Moda"), color = "white", fill = "orange") + 
+  theme_bw() 
+```
+
+
+Em Psicologia, os fenômenos psicológicos são assumidos como normais, motivo pela qual essa distribuição possui ainda mais importância na área.  
+
+<mark>Exemplos reais</mark>: Altura de homens/mulheres adultos(as), erros em equipamentos de medição em astronomia, pressão arterial de adultos, tamanho de bebês recém-nascidos.   
+
+
+## A regra empírica
+
+Uma característica importante da distribuição normal (e outras distribuições simétricas) é a regra empírica.  
+
+De com esta regra, em uma variável aleatória normalmente distribuída, cerca de 68% das observações estará contida no intervalo de -1 a +1 desvio-padrão, cerca de 95% das observações estará entre -2 e +2 desvios-padrão e carca de 99.7% das observações estará entre -3 e +3 desvios-padrão.
+
+A figura abaixo apresenta esta relação.  
+
+```{r, echo = FALSE }
+set.seed(35)
+ds_teorica <- data.frame(inteligencia = rnorm(1000, mean=100,sd=15))
+ds_teorica <-  ds_teorica %>% mutate(x = scale(inteligencia))
+ds_teorica <- ds_teorica %>% mutate(y = dnorm(x)) #calcular a densidade da normal
+ds_teorica <- rbind(ds_teorica %>% mutate(sd=1), #adicionar primeiras linhas e mesclar
+               ds_teorica %>% mutate(sd=2), #adicionar segundas linhas e mesclar
+               ds_teorica %>% mutate(sd=3)) %>% #adicionar terceiro desvio e mesclar
+  mutate(CI = ifelse( -sd <= x & x <= sd, 'In', 'Out'), #criar o desvio baseado na densidade nao acumulada
+         label = ifelse( sd == 1, '68%', ifelse(sd == 2, '95%', '99.7%')),
+         sd = paste('mu %+-%', sd, '* sigma'))
+# grafico
+ggplot(ds_teorica, aes(x=x,y=y)) + #pegar variaveis
+  geom_line(size=1) + #plotar uma linha acumulando
+  facet_grid(sd ~ ., labeller=label_parsed) + #dividir pelo desvio padrao (1 a 3) 
+  geom_area(data=ds_teorica %>% filter(CI=='In'), fill='#56B4E9', alpha=.5) + #pintar o fundo
+  geom_text(x=0, y=.2, aes(label=label)) + #colocar o texto de label nas bordas
+  scale_x_continuous(breaks=-3:3, labels=parse(text=paste(-3:3, '*sigma')) ,
+                     "Desvios-padrão") +
+  theme_bw()
+```
+
+
+
+## Um resumo visual  
+
+Este capítulo pode ser entendido de muitas maneiras. Elementos visuais tendem a gerar uma assimilação mais rápida e duradoura desses conteúdos. Abaixo, há três formatos de distribuição. O cachorro no meio ilustra uma distribuição simétrica. Nela, a área embaixo da curva decai da mesma forma com referência ao centro. O cachorro da esquerda ilustra uma assimetria negativa. Repare que o rabo dele está para o lado esquerdo. Por sua vez, o cachorro da direita ilustra uma assimetria à direita. Repare que o rabo dele, por sua vez, está ao lado direito.
+
+
+![](./img/cap_desc_assimetria.png)
+
+## Importância inferencial   
+
+Uma das principais atividades realizadas na estatística é a generalização de resultados obtidos em uma pesquisa à população de onde a amostra foi retirada. Este tema será melhor apresentado no capítulo de inferência. 
 
 
 ::: {.warning}
-**Atenção**: A estatística descritiva dispõe de inúmeras ferramentas para auxiliar na gestão e apresentação de dados.    
+**Atenção**: A Lei dos Grandes Números e o Teorema Central do Limite são dois pilares da teoria da probabilidade e de procedimentos inferenciais.     
 :::
+
+
+Duas teorias em estatística são muito importantes e impactam tanto no tamanho amostral como na utilização da distribuição normal em processos inferenciais, que são a Lei dos Grandes Números (LLN) e o Teorema Central do Limite (CLT). 
+
+<u>Lei dos Grandes Números (LLN)</u>: Essa Lei é um teorema fundamental da teoria da probabilidade. De acordo com ela, a média aritmética dos resultados da realização da mesma experiência repetidas vezes tende a se aproximar do valor esperado à medida que mais tentativas se sucederem. Ou seja, a média amostral converge em probabilidade à média populacional. 
+
+Uma demonstração simples é feita pelo jogo de moedas. Sabe-se que há uma probabilidade de 50% do resultado deste experimento ser cara, da mesma forma que há esta mesma probabilidade de ser coroa. É possível codificar cara como 1 e coroa como 0.
+
+Se assumirmos que $Sn$ o número de caras em $n$ experimentos,há:
+
+$$S_n = X_1 + X_2 + \dots + X_n$$
+
+A proporção de caras é dada por:
+
+$$R_n = \frac{S_n}{n}$$
+
+Pela Lei dos Grandes Números, haverá uma convergência em probabilidade:
+
+$$R_n \overset{p}{\to} p\quad quando \quad n \rightarrow \infty $$
+Dados simulados apresentando os primeiros resultados são:
+
+```{r, echo = FALSE }
+set.seed(15)
+n <- 2000 #lançamentos
+x <- sample(0:1, n, repl=T)  #probabilidade 
+s <- cumsum(x); #acumulada
+r <- s/(1:n) #quantidade de caras
+lln <-data.frame(lancamento=seq(1:n),resultado=ifelse(x==1,"Cara","Coroa"), acumulado_caras = s, prob_caras = round(r*100,2))
+```
+```{r}
+head(lln) %>% pander::pander()
+```
+
+A medida que a quantidade de lançamentos aumenta, a probabilidade se aproxima à esperada, ilustrando a Lei dos Grandes Números. O gráfico a seguir demonstra esse resultado.  
+
+
+```{r, echo = FALSE }
+ggplot(lln, aes(x = lancamento, y = prob_caras/100)) +
+  geom_line(size = 1) +
+  ylim(0,1) +
+  geom_hline(yintercept = 0.5, color = "blue", size = 10, alpha=0.3)+
+  labs(x = "Quantidade de lançamentos", y = "Probabilidade") +
+  theme_bw()
+```
+
+
+
+O <u>Teorema Central do Limite (CLT)</u>: Se uma variável aleatória (por exemplo, X) puder ser representada pela soma de quaisquer $n$ variáveis aleatórias independentes, que satisfaçam certas condições gerais, esta soma terá distribuição aproximadamente normal para $n$ suficientemente grande. 
+
+Uma demonstração pode ser feita. Se um conjunto de pesquisas forem realizadas em uma variável cuja distribuição tenha formato uniforme, em cada uma das pesquisas (realizações), os resultados terão formato uniforme, tal como demonstrado a seguir:
+
+```{r, echo = FALSE }
+set.seed(12)
+scores <- runif(100*1000,0,1)
+samples <- rep(1:100,each=1000)
+clt <- data.frame(samples,scores)
+
+ggplot(clt[1:(12*1000),], aes(x=scores))+
+  geom_histogram(color="white", bins=10)+
+  facet_wrap(~samples)+
+  theme_bw()+
+  ylim(0,200)
+```
+
+Caso a média de cada uma das pesquisas (realizações) seja tirada e arquivada em um banco de dados, os 10 primeiros resultados serão os seguintes:
+
+```{r, echo = FALSE }
+clt_sample_means <- clt %>%
+                group_by(samples) %>%
+                summarise(means=mean(scores))
+```
+
+```{r}
+head(clt_sample_means) %>% pander::pander()
+```
+
+A distribuição das médias das médias é, aproximadamente, normal. 
+
+```{r}
+ggplot(clt_sample_means, aes(x=means))+
+  geom_histogram(color="white", bins=15)+
+  theme_classic()
+```
+
 
 
 ## Resumo  
 
 ::: {.explore}
-Este capítulo apresentou os aspectos tabulares e gráficos corriqueiramente encontrados em pesquisas de Psicologia e áreas congêneres. Entre os pontos principais, estão os seguintes:  
+Este capítulo introduziu aspectos relacionados ao formato da distribuição das variáveis, com os seguintes pontos principais:  
 
-1. Medidas de posição e dispersão são fundamentais na apresentação dos resultados de uma pesquisa   
-2. Variáveis categóricas são resumidas por contagens e proporções. Variáveis contínuas por suas médias e desvios-padrão  
-3. Tabelas e gráficos devem ser claros ao leitor, sem criar viés ou distorção dos resultados  
-4. As tabelas são muito úteis para uma apresentação detalhada dos resultados  
-5. Gráficos condensam um grande volume de dados de uma forma mais facilmente interpretável    
-6. A heurística típica em gráficos solicita responder a quantidade e a natureza das variáveis a serem apresenadas   
+1. Todas as variáveis se distribuem e o formato delas pode ser descrito de maneira analítica, tabular ou gráfica    
+2. De maneira sintética, as distribuições podem ser simétricas ou assimétricas    
+3. A assimetria à direita é também chamada de positiva  
+4. A assimetria à esquerda é também chamada de negativa  
+5. A distribuição normal é a mais importante em estatística e muito utilizada em Psicologia  
+6. A Lei dos Grandes Números e o Teorema Central do Limite são fundamentais em aspectos inferenciais   
 :::  
-
-
-## Questões  
-
-<div class="question">
-
-1. Trata-se de um círculo dividido por fatias cujos ângulos internos são proporcionais às partes envolvidas. Este é um gráfico:<br>a) De colunas<br>b) Histograma<br>c)De Setor<br>d) Boxplot<br>e)Barras
-1. É uma medida de posição para variáveis propriamente numéricase que é obtida somando-se todos os valores observados e dividindo-se o resultado pelo número de observações<br>a) Mediana<br>b) Média<br>c) Moda<br>d) Desvio-padrão<br>e) Amplitude interquartil 
-1. (ENADE, Biomedicina - 2010) Para apresentarem gráficos dados referentes à distribuição de frequências de um grupo de medições, pode-se aplicar um modelo semelhante ao estabelecido na figura abaixo, na qual o pesquisador verifica a variação de anticorpos em relação a uma coorte populacional específica.<br>![](./img/exercicio_histograma.png)<br>a) Gráfico de setores, que demonstra a variação de anticorpos na abscissa Y e de população na ordenada X.<br> b) Histograma, que demonstra variações de anticorpos na abscissa X e de população na ordenada Y <br> c) Gráfico de tendência central, que demonstra variações de anticorpos na abscissa X e de população na ordenada Y.<br> d) Gráficos de dispersão, que demonstra a tendência central das médias de concentração dos valores de anticorpos na população.<br> e) Gráfico de linhas, que demonstra a tendência central baseada na mediana das concentrações de anticorpos na população. 
-</div>   
-
-<div class="mirror">Gabarito: 1-c; 2-b; 3-b,</div>
 

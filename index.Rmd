@@ -1,7 +1,7 @@
 --- 
-title: "Métodos quantitativos em Psicologia com R"
-author: "[Luis Anunciação (PUC-Rio), PhD](mailto: luisfca@gmail.com)"
-date: "`r Sys.Date()`"
+title: "Conceitos e análises estatísticas com R e JASP"
+author: "[Luis Anunciação (PUC-Rio), PhD](mailto: luisfca@puc-rio.br)"
+#date: "`r Sys.Date()`"
 always_allow_html: yes
 description: This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R.
 documentclass: book
@@ -26,6 +26,8 @@ knitr::opts_chunk$set(echo = TRUE,
 # Prefácio
 
 ![](./img/capa_jolie.png)
+<mark>Atenção: Leia com cuidado. Este livro ainda está em sua fase de revisão.</mark>   
+Última modificação: `r format(Sys.time(), '%d %B, %Y')`
 
 ## A proposta
   
@@ -36,7 +38,7 @@ No entanto, acabei percebendo (ou tendo a impressão) de que eles apresentam a e
 
 Em função disso, nos últimos anos, eu fui sentindo necessidade de apresentar os conceitos de pesquisa e técnicas estatísticas de forma integrada, contanto com dados reais e seguindo por uma metodologia de aula que pudesse ser pragmática, mas sem reforçar vícios inadequados sobre conceitos de estatística. 
 
-Conciliar essas condições em um único livro de maneira adequada é bastante improvável. Dessa forma, esse livro opta por uma abordagem majoritariamente pragmática, mas que evita se distanciar de conceitos teóricos. O pragmatismo é fundamental para que o estudante consiga, rapidamente, entender os procedimentos relacionados à análise de dados e implementar técnicas estatísticas para tomar decisões. Quão antes o estudante entender a utilidade da estatística para resolver problemas, maior é a probabilidade dele vir a gostar da área. Por sua vez, os aspectos teóricos são os alicerces para que o estudante possa perceber também que a utilidadde que a estatística tem na ciência só é possível por ela ser uma disciplina sólida e robusta e que veio se aprimorando nas últimas decadas.
+Conciliar essas condições em um único livro de maneira adequada é bastante improvável. Dessa forma, esse livro opta por uma abordagem majoritariamente pragmática, mas que evita se distanciar de conceitos teóricos. O pragmatismo é fundamental para que o estudante consiga, rapidamente, entender os procedimentos relacionados à análise de dados e implementar técnicas estatísticas para tomar decisões. Quão antes o estudante entender a utilidade da estatística para resolver problemas, maior é a probabilidade dele vir a gostar da área. Por sua vez, os aspectos teóricos são os alicerces para que o estudante possa perceber também que a utilidade que a estatística tem na ciência só é possível por ela ser uma disciplina sólida e robusta e que veio se aprimorando nas últimas décadas.
 
 Isso posto, este livro é fruto de um grande esforço que tem a proposta de ser um manual técnico, em que são apresentados conceitos de pesquisa e análises estatísticas realizadas no R e no JASP e com especial aplicação em Psicologia e Bioestatística. Em cada capítulo, o estudante terá a oportunidade de acessar:  
 
@@ -45,7 +47,7 @@ Isso posto, este livro é fruto de um grande esforço que tem a proposta de ser 
 3. A base de dados em formato R ou CSV para reprodução das análises  
 4. O conjunto de procedimentos estatísticos utilizados  
 5. Recursos extras para aprofundamento em tópicos específicos  
-6. Exercícios que axuliem no entendimento do conteúdo, quase sempre retirados de provas externas    
+6. Exercícios que auxiliem no entendimento do conteúdo, quase sempre retirados de provas externas    
 
 Com isso, o livro oferece ao estudante um ambiente em que ele possa resolver um problema real, utilizando as técnicas e métodos estatísticos como ferramentas para tomada de decisão. Apesar do foco ser mais no problema de pesquisa do que nas ferramentas analíticas, em todos os capítulos, a aplicação da <u>estatística na ciência</u> será reforçada pela apresentação de alguns conceitos da <u>ciência da estatística</u>.
 
@@ -68,7 +70,7 @@ O livro foi pensando para ter uma estrutura linear, formada por capítulos autos
 
 Esse formato adotado tende a gerar uma percepção diferente entre aqueles que consultarem apenas um capítulo ou outro e aqueles que lerem o conteúdo por completo. Há uma maior chance disso ocorrer em capítulos sobre testes estatísticos. Uma vez que diversos testes estatísticos são casos particulares de outros, alguns assuntos que parecer destoantes em uma leitura inicial, tornam-se articulados em outros capítulos.  
 
-Muitos capítulos recebem o nome de testes de hipóteses (ex: Teste T ou Regressão). Isso foi intencional e visa auxiliar estudantes que precisem apenas de informações pontuais, bem como tende a enfrequecer a ideia de uma relação ponto a ponto tipicamente feita entre testes estatísticos e delineamentos específicos.  
+Muitos capítulos recebem o nome de testes de hipóteses (ex: Teste T ou Regressão). Isso foi intencional e visa auxiliar estudantes que precisem apenas de informações pontuais, bem como tende a enfraquecer a ideia de uma relação ponto a ponto tipicamente feita entre testes estatísticos e delineamentos específicos.  
 
 ## Como usar este livro  
 
@@ -125,7 +127,7 @@ Quetões relacionadas aos capítulos são listadas de forma a conectar o conteú
 
 ## Capa   
  
-Por tradição, livros de Ciência de Dados e Estatística utilizam a imagem de algum animal na capa. Há livros com cachorros, papagaios, peixes, Carangueiros, Lagartos, etc. Esse livro não foge dessa regra e tem como capa a Jolie, a minha cachorrinha com a Anna. Ela foi indispensável para o <u>atraso</u> ao término deste livro.  
+Por tradição, livros de Ciência de Dados e Estatística utilizam a imagem de algum animal na capa. Há livros com cachorros, papagaios, peixes, carangueijos, Lagartos, etc. Esse livro não foge dessa regra e tem como capa a Jolie, a minha cachorrinha com a Anna. Ela foi indispensável para o <u>atraso</u> ao término deste livro.  
 
 
 ## Versão do livro

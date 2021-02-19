@@ -21,7 +21,7 @@ library(kableExtra) #tables with different styles
 6. Apresentar testes robustos e não paramétricos   
 ```
 
-O Teste T é um teste estatístico frequentemente utilizado para testar hipóteses sobre <u>diferenças entre até duas médias</u>. É possível usar o Teste T para (1) comparar a média de uma amostra com a média populacional (*one sample t test*), (2) para comparar duas médias amostrais (*two sample t test*) ou (3) para comparar duas médias de uma mesma amostra que foi investigada em dois momentos do tempo (*paired ou matched t test*). Por utilizar dados amostrais da média para estimar a média populacional (parâmetro $\mu$), ele é considerado um teste parâmetrico.   
+O Teste T é um teste estatístico frequentemente utilizado para testar hipóteses sobre <u>diferenças entre até duas médias</u>. É possível usar o Teste T para (1) comparar a média de uma amostra com a média populacional (*one sample t test*), (2) para comparar duas médias amostrais (*two sample t test*) ou (3) para comparar duas médias de uma mesma amostra que foi investigada em dois momentos do tempo (*paired ou matched t test*). Por utilizar dados amostrais da média para estimar a média populacional (parâmetro $\mu$), ele é considerado um teste paramétrico.     
 
 Como todo teste inferencial, o Teste T é um modelo estatístico, com os seguintes pressupostos:  
 
@@ -226,7 +226,7 @@ Isso posto, é importante ter uma atenção especial ao conceito subjacente à s
 **Atenção**: Nunca se aceita a hipótese nula ou a hipótese alternativa. Como Fisher (1931, p. 16) comenta, a hipótese nula nunca é provada ou estabelecida, mas é possivelmente refutada. Da mesma forma, rejeitar a hipótese nula não se refere à aceitar a alternativa, mas tão somente que os dados são incompatíveis à hipótese nula.    
 :::
 
-É fundamental lembrar que o valor de P se refere à probabilidade de encontrar a estatística de teste calculada, ou uma ainda mais exterma, assumindo que a hipótese nula é verdadeira [@Wasserstein2016]. Apesar de algo contraintuitivo, é assim que a estatística frequentista funciona.
+É fundamental lembrar que o valor de P se refere à probabilidade de encontrar a estatística de teste calculada, ou uma ainda mais extrema, assumindo que a hipótese nula é verdadeira [@Wasserstein2016]. Apesar de algo contraintuitivo, é assim que a estatística frequentista funciona.
 
 ## Tamanho do efeito  
 
@@ -503,11 +503,11 @@ Nesta pesquisa, objetivou-se verificar a diferença no perfil cognitivo e padrã
 
 <div class="question">
 
-1. (Retirado de Residencia Médica, UNIFESP, CONSESP, 2015)De 20 mulheres com tensão pré-menstrual que receberam extrato de soja, seis melhoraram em seis meses. De outras 20 mulheres com tensão pré-menstrual que receberam placebo, duas melhoraram em seis meses. Os dois parâmetros resultantes foram, então, comparados.<br>a) Teste t para duas médias provenientes de amostras independentes.<br>b) Teste exato de Fisher para duas proporções provenientes de amostras independentes.<br>c) Teste t para duas médias provenientes de amostras relacionadas (teste t pareado).<br>d) Teste de McNemar para duas proporções provenientes de amostras independentes<br>e) Teste exato de Fisher para duas proporções provenientes de amostras relacionadas.
+1. (Retirado de Residência Médica, UNIFESP, CONSESP, 2015)De 20 mulheres com tensão pré-menstrual que receberam extrato de soja, seis melhoraram em seis meses. De outras 20 mulheres com tensão pré-menstrual que receberam placebo, duas melhoraram em seis meses. Os dois parâmetros resultantes foram, então, comparados.<br>a) Teste t para duas médias provenientes de amostras independentes.<br>b) Teste exato de Fisher para duas proporções provenientes de amostras independentes.<br>c) Teste t para duas médias provenientes de amostras relacionadas (teste t pareado).<br>d) Teste de McNemar para duas proporções provenientes de amostras independentes<br>e) Teste exato de Fisher para duas proporções provenientes de amostras relacionadas.
 
 1. (Retirado de Oficial Técnico de Inteligência Área de Criptoanálise Estatística, ABIN, CESPE, 2010) O teste de Wilcoxon é o equivalente não paramétrico do teste t-Student para comparação de duas médias, e o teste de Kruskal-Wallis é o equivalente não paramétrico da análise de variâncias para um fator.<br>a) Certo.<br>b) Errado.
 
-1. (Retirado de Laboratório de Estatística e Geoinformação-UFPR) Suponha que você tenha sido contratado para conduzir um estudo cujo objetivo seja descobrir qual dentre duas marcas de refrigerantes as pessoas acham que tem o melhor sabor. Em seu estudo, os participantes são submetidos a uma degustação às cegas. Eles pontuamuma marca e então pontuam a outra, em ordem aleatória. As notas são atribuídas numa escala de 1 (horrível) a 5 (delicioso). Qual tipo de teste seria o melhor para comparar estas notas? Justifique sua escolha.<br>a) Teste t para dois grupos pareados.<br>b) Teste t para dois grupos independentes<br>c) Teste qui-quadrado.<br>d) Teste de Mann-Whitney.<br>e) Teste de Wilcoxon.
+1. (Retirado de Laboratório de Estatística e Geoinformação-UFPR) Suponha que você tenha sido contratado para conduzir um estudo cujo objetivo seja descobrir qual dentre duas marcas de refrigerantes as pessoas acham que tem o melhor sabor. Em seu estudo, os participantes são submetidos a uma degustação às cegas. Eles pontuam uma marca e então pontuam a outra, em ordem aleatória. As notas são atribuídas numa escala de 1 (horrível) a 5 (delicioso). Qual tipo de teste seria o melhor para comparar estas notas? Justifique sua escolha.<br>a) Teste t para dois grupos pareados.<br>b) Teste t para dois grupos independentes<br>c) Teste qui-quadrado.<br>d) Teste de Mann-Whitney.<br>e) Teste de Wilcoxon.
 </div>
 
 <div class="mirror">✂ Gabarito: 1-b; 2-a<;3-e <div>
@@ -518,4 +518,3 @@ Nesta pesquisa, objetivou-se verificar a diferença no perfil cognitivo e padrã
 
 
 
-Última modificação: `r format(Sys.time(), '%d %B, %Y')`

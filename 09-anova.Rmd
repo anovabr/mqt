@@ -160,7 +160,7 @@ ggplot(dados_teg, aes(x=escolaridade_fct, y = teg, fill = escolaridade_fct)) +
 ```
 
 
-Ambos os resultados já permitem identificar algumas caracteríticas gerais. Primeiro, quão maior a escolaridade, maior o valor obtido na escala. Segundo, algumas barras de erros estão superpostas e outras não, o que nos leva à conclusão preliminar de que resultados significativos estarão presentes na próxima etapa, que é a modelagem formal dessa hipótese. 
+Ambos os resultados já permitem identificar algumas características gerais. Primeiro, quão maior a escolaridade, maior o valor obtido na escala. Segundo, algumas barras de erros estão superpostas e outras não, o que nos leva à conclusão preliminar de que resultados significativos estarão presentes na próxima etapa, que é a modelagem formal dessa hipótese. 
 
 Para realizar a ANOVA, é possível contar com a função `lm` ou `aov`. Aqui, a escolha da `lm` foi apenas por conveniência e o vetor `mod_escolaridade` irá armazenar os resultados.
 
@@ -230,7 +230,7 @@ De maneira diferente à conclusão gráfica, o teste concluiu pela rejeição da
 olsrr::ols_plot_resid_fit(mod_escolaridade)
 ```
 
-O teste de Levene, de Bartlett ou de Breusch-Pagan podem também serem utilzados de maneira formal. Eles estipulam $H_0$ como homocedasticidade que, idealmente, não deve ser rejeitada.
+O teste de Levene, de Bartlett ou de Breusch-Pagan podem também serem utilizados de maneira formal. Eles estipulam $H_0$ como homocedasticidade que, idealmente, não deve ser rejeitada.
 
 ```{r}
 car::leveneTest(mod_escolaridade)
@@ -1216,7 +1216,7 @@ O gráfico feito anteriormente é um forte candidato a também ser inserido para
 ## Escrita dos resultados
 
 
-Os resultados serão escritos apresentado os achados principais da ANOVA, destacando se o efeito da interação foi significativo ou não e as comparações pareadas. O estilo da escrita é baseado nas recomendações da American Psychological Association (APA). Como os resultados do R e do JASP foram um pouco diferente nas comparações pareadas, o R será utilizado como principal.  
+Os resultados serão escritos apresentado os achados principais da ANOVA, destacando se o efeito da interação foi significativo ou não e as comparações pareadas. O estilo da escrita é baseado nas recomendações da American Psychological Association (APA). Como os resultados do R e do JASP foram um pouco diferentes nas comparações pareadas, o R será utilizado como principal.  
 
 
 ```{block, type="writing"}
