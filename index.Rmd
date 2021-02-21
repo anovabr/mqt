@@ -6,9 +6,7 @@ output: pdf_document
 documentclass: book
 github-repo: cjvanlissa/gitbook-demo
 link-citations: yes
-bibliography:
-- book.bib
-- packages.bib
+bibliography: book.bib
 csl: apa.csl
 site: bookdown::bookdown_site
 biblio-style: apalike
@@ -20,7 +18,7 @@ description: This book was written for undergraduate level students on Quantitat
   statistics and anyone who wants to learn R.
 ---
 
-```{r}
+```{r, echo = FALSE }
 knitr::opts_chunk$set(echo = TRUE, 
                       message = FALSE,
                       warning = FALSE,
@@ -29,9 +27,6 @@ knitr::opts_chunk$set(echo = TRUE,
 ```
 
 
----
-css: style.css
----
 
 # Prefácio
 
@@ -40,7 +35,7 @@ css: style.css
 ## Atenção
 
 <mark>Atenção: Leia com cuidado. Este livro ainda está em sua fase de revisão.</mark>   
-Última modificação: `r format(Sys.time(), '%d %B, %Y')`
+Última modificação: `r format(Sys.time(), '%d %B, %Y às %H:%M')`
 
 ## A proposta
   
@@ -97,18 +92,34 @@ A figura abaixo diagrama os dois componentes de forma aproximada.
 
 
 
-## Bases de dados  
+## Pesquisas e dados
 
-Todas as bases de dados utilizadas neste livro são *Open Science*. Isso significa que elas são universalmente acessíveis, decorrentes de pesquisas empíricas e com artigos publicados. Eventualmente, alguns ajustes foram feitos às bases para torná-las mais acessíveis ou remover características de identificação.   
+Neste livro, as seguintes pesquisas e seus materiais são utilizados:
 
-Em cada capítulo, as bases irão aparecer na seção "Pesquisa", da seguinte maneira:
+- ["Depression and Anxiety Symptoms in a Representative Sample of Undergraduate Students in Spain, Portugal, and Brazil"](https://doi.org/10.1590/0102.3772e36412)
+
+- [“Confirmatory analysis and normative tables for the Brazilian Ages and Stages Questionnaires: Social–Emotional”](https://onlinelibrary.wiley.com/doi/abs/10.1111/cch.12649)
+
+- [Psychometric properties of a short-term visual memory test (MEMORE)"](https://www.neuropsicolatina.org/index.php/Neuropsicologia_Latinoamericana/article/view/545)
+ 
+- ["A relação entre o nível de Empreendedorismo (TEG) e os aspectos sociodemográficos dos Taxistas cooperados da cidade de Santo André/São Paulo, Brasil"](https://www.metodista.br/revistas/revistas-metodista/index.php/REGS/article/view/6453)
+
+- ["Avaliação psicométrica em português do indicador de dor crônica de Helsinki em cães com sinais crônicos de osteoartrite"](https://www.scielo.br/scielo.php?script=sci_arttext&pid=S0102-09352019000100109)
+
+- ["Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students"](https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students)
+
+- "Parent-reported diagnosis of Attention Deficit Hyperactivity Disorder and psychostimulant use among children and adolescents: a population-based nationwide study"
+
+- "Resilience and vulnerability in adolescents with primary headaches: a cross-sectional population-based study"
+
+As bases são *Open Science*. Isso significa que elas são gratuitas e universalmente acessíveis para finalidades acadêmicas. Em cada capítulo, as bases irão aparecer na seção "Pesquisa", da seguinte maneira:
 
 
 ::: {.base}
   A base desta pesquisa está disponível em formato **R (Rdata)** e em **CSV**, que é lido pelo JASP. Clique na opção desejada.     
       
-  <strong>R Base: </strong> [Base R]()   
-  <strong>Base JASP : </strong> [Base CSV)]()
+  <strong>Base R: </strong> [Base R]()   
+  <strong>Base JASP: </strong> [Base CSV)]()
 :::
 
 
@@ -150,6 +161,11 @@ Como todos os livros, este também tem uma história de desenvolvimento. A tabel
 | Versão   |      Data         |  Características
 |:---------|:-------------     | :-------------
 | Beta 1   |  Fevereiro, 2020 | Primeira versão. Baixa revisão textual e dos conceitos estatísticos. Erros são esperados. A utilização deve ser feita apenas de maneira incipiente   
+
+## Autor  
+
+[Luis Anunciação](http://lattes.cnpq.br/3982200733248687) é doutor em Psicometria pela Pontifícia Universidade Católica do Rio de Janeiro (PUC-Rio), com intercâmbio na University of Oregon, mestre em saúde pública pela Universidade do Estado do Rio de Janeiro e especialista em Neuropsicologia (IBNeuro) e Bioestatística (Johns Hopkins University). Atualmente, é professor do Departamento de Psicologia da PUC-Rio, coordenador da ANOVA e psicometrista da Nila Press, uma editora especialzada no desenvolvimento de instrumentos psicológicos.  
+
 
 ## Agradecimentos e revisões técnicas
 
