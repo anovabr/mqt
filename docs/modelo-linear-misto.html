@@ -632,8 +632,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Verifique que a tabela apresenta três os resultados: <code>tempo x grupo</code>, <code>grupo</code> e <code>tempo</code>. A técnica de Satterthwaite’s method é utilizada para corrigir os valores do grau de liberdade e, consequentemente, os valores de p. Os resultados são virtualmente identicos aos obtidos pela ANOVA, com a diferença que os graus de liberdade do numerador de do denominador não foram corrigidos.</p>
 <p>Para obter as informações completas do modelo, é necessário solicitar o <code>summary</code>. Essa função retorna 4 informações calculadas: <code>Scaled residuals</code>, <code>Random effects</code>, <code>Fixed effects</code> e <code>Correlation of Fixed Effect</code> e serve para aprofundar a interpretação dos resultados. Uma particular diferença entre esse relatório e o da ANOVA de Medidas Repetidas é o np2, que não faz parte do LMM.</p>
 <div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="modelo-linear-misto.html#cb129-1"></a><span class="kw">summary</span>(mod_lme) </span></code></pre></div>
-<pre><code>## Linear mixed model fit by REML. t-tests use Satterthwaite&#39;s method [
-## lmerModLmerTest]
+<pre><code>## Linear mixed model fit by REML. t-tests use Satterthwaite&#39;s method [&#39;lmerModLmerTest&#39;]
 ## Formula: resultado ~ tempo * grupo + (1 | id)
 ##    Data: tratamento
 ## 
