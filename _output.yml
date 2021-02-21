@@ -10,11 +10,10 @@ bookdown::gitbook:
     edit: http://github.com/anovabr/mqt/edit/master/%s
     download: ["pdf", "epub"]
 bookdown::pdf_book:
-  template: null
   keep_tex: yes
   toc: yes
   includes:
     in_header: preamble.tex
   latex_engine: pdflatex
   citation_package: natbib
-
+bookdown::epub_book: default
