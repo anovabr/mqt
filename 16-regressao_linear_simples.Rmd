@@ -26,7 +26,7 @@ library(pander)
 **SSR**: Soma dos Quadrados da Regressão   
 **SSE**: Soma dos Quadrados dos Erros  
 **SST**: Soma dos Quadrados Total  
-**Coeficiente de Determinação** ($R^2$): Porcentagem de variação da variável dependente (Y) que pode ser atribuída à variabilida da(s) variável (is) independente(s) (X)  
+**Coeficiente de Determinação** ($R^2$): Porcentagem de variação da variável dependente (Y) que pode ser atribuída à variabilidade da(s) variável (is) independente(s) (X)  
 **Coeficiente de Determinação ajustado** ($R^2_{adj}$): Coeficiente que pondera o $R^2$ pelo número de variáveis explicativas e pelo número de observações da amostra. É particularmente útil quando deseja-se comparar modelos de regressão múltipla para mesma variável dependente, pois penaliza aquele modelo com maior número de variáveis independentes   
 ```
 
@@ -47,7 +47,7 @@ Algumas conclusões são possíveis:
 
 1. A variável dependente irá definir se a regressão será linear ou logística. Quando a VD é continua (ex: peso, tempo de resposta, inteligência) trata-se de uma regressão linear. Quando a VD é discreta ou categórica (ex: acidente - sim ou não; orientação política - direita ou esquerda) trata-se de uma regressão logística.    
 2.  Caso haja uma única VI, a regressão é chamada de simples. Com duas ou mais VIs, ela é chamada de múltipla.  
-3.  Se houver mais de uma VD, o modelo será chamado de multivariado (em inglês, path analysis.  
+3.  Se houver mais de uma VD, o modelo será chamado de multivariado (em inglês, *path analysis*).  
 4.  Teste T e ANOVA são casos de regressão linear simples.     
 5.  ANCOVA, ANOVA de k vias e ANOVA fatorial são casos de regressão múltipla.  
 6.  O qui-quadrado pode ser aproximado pela regressão logística simples e vice-versa.  
@@ -58,10 +58,10 @@ Isso posto, a Regressão linear é uma técnica estatística que permite estimar
 (i) <mark>Predizer</marK> os valores da variável dependente (Y) em função dos valores da variável dependente (X);  
 (ii) <mark>Explicar</marK> a variabilidade da variável dependente (Y) em função da variável independente (X). 
 
-Abas as utilidades são virtualmente iguais e como a Regressão linear simples pode ser vista a partir de um incremento ou avanço dos modelos de correlação, os aspectos correlacionais devem (e podem) ser inicialmente investigados.  
+Ambas as utilidades são virtualmente iguais e como a Regressão linear simples pode ser vista a partir de um incremento ou avanço dos modelos de correlação, os aspectos correlacionais devem (e podem) ser inicialmente investigados.  
 
 
-Pela abrangência dos modelos de regressão, é possível tanto encontrar cursos completos e detahados sobre seus detalhes, como abordagens mais pragmáticas e operacionais voltadas a implementação deles em pesquisas. Nesse capítulo, o foco será dado na capacidade operacional.
+Pela abrangência dos modelos de regressão, é possível tanto encontrar cursos completos e detalhados sobre suas características, como abordagens mais pragmáticas e operacionais voltadas a implementação deles em pesquisas. Nesse capítulo, o foco será dado na capacidade operacional.
 
 Conceitualmente, a regressão linear simples é apresentada como:
 
@@ -82,7 +82,7 @@ A interpretação dos resultados obtidos depende dos seguintes pressupostos:
 (ii) Os resíduos são normalmente distribuídos (com média)    
 (iii) A variância dos resíduos é constante  
 
-O mnemônico <u>LINE</u> talvez ajude a lembrar destes pressupostos. Ele se refere à <u>linearity</u>, <u>independence</u>, <u>normality</u> e <u>equal variance </u>.  
+O mnemônico <u>LINE</u> talvez ajude a lembrar destes pressupostos. Ele se refere à <u>*linearity*</u>, <u>*independence*</u>, <u>*normality*</u> e <u>*equal variance*</u>.  
 
 
 
@@ -128,7 +128,7 @@ Vendo todas as partições de uma única vez, temos o seguinte:
 ![](./img/cap_reg_x_y_SSE_SSR_SST.png)
 
 
-A porcentagem de variação de Y que pode ser atribuída à variabilidade de X é uma razão entre a Soma dos Quadrados da Regressão (SSR) e a Soma dos Quadrados Total (SST). O coeficiente obtido por essa razão recebe o nome de <u>Coeficiente de Determinação</u> ou $R^2$, e indica a porcentagem de variação de Y que pode ser atribuída à variabilida de X.
+A porcentagem de variação de Y que pode ser atribuída à variabilidade de X é uma razão entre a Soma dos Quadrados da Regressão (SSR) e a Soma dos Quadrados Total (SST). O coeficiente obtido por essa razão recebe o nome de <u>Coeficiente de Determinação</u> ou $R^2$, e indica a porcentagem de variação de Y que pode ser atribuída à variabilidade de X.
 
 ![](./img/cap_regr2.png) 
 
@@ -163,7 +163,7 @@ De maneira geral, todas as retas traçadas acertam alguns pontos e erram outros.
 $$y = a + bX$$
 
 
-Nesta equação, $y$ depende de duas constantes e uma variável. As constante são $a$, que também é chamada de intercepto ou coeficiente linear e $b$, que é chamada de inclinação ou coeficiente angular. A variável da equação é apresentada por $X$. Por uma questão de simbologia, três alterações são feitas com a equação:    
+Nesta equação, $y$ depende de duas constantes e uma variável. As constantes são $a$, que também é chamada de intercepto ou coeficiente linear e $b$, que é chamada de inclinação ou coeficiente angular. A variável da equação é apresentada por $X$. Por uma questão de simbologia, três alterações são feitas com a equação:    
 
 (i) Os símbolos são alterados. Agora $a = b_0$ e $b = b_1$. A alteração de simbologia não altera em nada os cálculos.  
 
@@ -177,7 +177,7 @@ $$\hat{y}_i = b_0 + b_1X{_1}_i$$
 
 
 
-Acredito que fique claro que essa equação possibilitará construir uma reta que minimize os erros e não que os anule totalmente. Ou seja, entre o valor real de y (os pontos que estão no gráfico) e os valores estinados pela equação $\hat{y}$, haverá <u>sempre</u> uma certa quantidade de erro de estimativa. O erro é simbolizado por $e_i$, é aleatório e abrange todas as influências no comportamento de Y que não podem ser explicadas linearmente pelo comportamento de X. Além disso, alguns pressupostos estatísticos são impostos a este termo para que as mudanças em X tenham efeito (ceteris paribus) em Y.  
+Acredito que fique claro que essa equação possibilitará construir uma reta que minimize os erros e não que os anule totalmente. Ou seja, entre o valor real de y (os pontos que estão no gráfico) e os valores estimados pela equação $\hat{y}$, haverá <u>sempre</u> uma certa quantidade de erro de estimativa. O erro é simbolizado por $e_i$, é aleatório e abrange todas as influências no comportamento de Y que não podem ser explicadas linearmente pelo comportamento de X. Além disso, alguns pressupostos estatísticos são impostos a este termo para que as mudanças em X tenham efeito (*ceteris paribus*) em Y.  
 
 É possível agora reescrever a equação anterior, considerando que qualquer que seja o valor estimado, sempre haverá uma quantidade de erro. 
 
@@ -259,7 +259,7 @@ gridExtra::grid.arrange(
 
 Com esse sistema de equações, é possível verificar que a variabilidade total de Y pode ser descrita por uma parte explicada pelo modelo de regressão e uma parte não explicada. Existem muitas siglas para expressar estes conceitos e aqui vou utilizar a versão em inglês. SST (total sum of squares) se refere à Soma Total dos Quadrados, SSR (regression sum of squares) se refere à Soma dos Quadrados da Regressão e SSE (error sum of squares) se refere à Soma dos Quadrados dos Erros, que é a parte não explicada pelo modelo.  
 
-Conceitualmente, isso é descrito da seguinte manteira:  
+Conceitualmente, isso é descrito da seguinte maneira:  
 
 
 $$\underbrace{\sum\limits_{i=1}^{n} (y_i-\overline{y})^2}_\text{SST} = \underbrace{\sum\limits_{i=1}^{n} (\widehat{y_i}-\overline{y})^2}_\text{SSR} + \underbrace{\sum\limits_{i=1}^{n} (y_1-\widehat{y_i})^2}_\text{SSE}$$
@@ -322,7 +322,7 @@ Regression and Other Stories, de Andrew Gelman
 
 
 
-Neste capítulo, vamos utilizar a pesquisa intitulada ["Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students"](https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students), publicada em 2018 no Global Journal of Educational Studies, que sou coautor.
+Neste capítulo, vamos utilizar a pesquisa intitulada ["Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students"](https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students), publicada em 2018 no *Global Journal of Educational Studies*, que sou coautor.
 
 O objetivo dessa pesquisa foi explorar os fatores envolvidos em transtornos alimentares e na percepção da imagem corporal. Os primeiros aspectos foram avaliados pela escala EAT-26, enquanto o segundo foi avaliado pela escala BSQ-34.  
 
@@ -365,7 +365,7 @@ mod_linear_simples <- lm(eat_soma ~ bsq_soma, data = dados_brasil)
 ```
 
 
-Na maioria dos programas comerciais, os resultados do modelo de regressão são apresentados em uma tabela padronizada. Essa tabela é virtualmente identica à que foi exposta no capítulo sobre a ANOVA de uma via e encontra-se abaixo descrita:    
+Na maioria dos programas comerciais, os resultados do modelo de regressão são apresentados em uma tabela padronizada. Essa tabela é virtualmente idêntica à que foi exposta no capítulo sobre a ANOVA de uma via e encontra-se abaixo descrita:    
 
   | Fonte de variação | SS               | df  | MS     | F-Value        | P-Value  |  
   | :-----            | :-----           | :-- | :----- | :-----         | :-----   |   
@@ -387,16 +387,16 @@ ols_regress(mod_linear_simples)
 
 Em <u>primeiro momento</u>, é necessário verificar o ajuste do modelo na seção `ANOVA`. Este teste compara o modelo em questão contra um modelo em que apenas o intercepto é utilizado para prever todos os valores. Tecnicamente, o modelo analisado é chamado de <u>irrestrito</u> (ou aumentado) e o modelo que tem apenas o intercepto é chamado de <u>restrito</u> ou nulo. Valores significativos são necessários nesta etapa.  Nesta análise, o resultado foi F(1, 218) = 182.883, p < 0.0001, indicando que os outros resultados podem ser interpretados.  
 
-O <u>segundo momento</u> é a interpretação do $R^2$. Como exposto no início do capítulo, essa indicador mensura a parte da variação da variável dependente (Y) que pode ser atribuída às variáveis independentes do modelo (X). Repare que ele é computado pela razão entre o SSR e o SST e indica que cerca de 46% dos resultados da variabilidade do EAT-26 podem ser explicados pelo modelo.     
+O <u>segundo momento</u> é a interpretação do $R^2$. Como exposto no início do capítulo, esse indicador mensura a parte da variação da variável dependente (Y) que pode ser atribuída às variáveis independentes do modelo (X). Repare que ele é computado pela razão entre o SSR e o SST e indica que cerca de 46% dos resultados da variabilidade do EAT-26 podem ser explicados pelo modelo.     
 
 
-O <u>terceiro momento</u> é a análise do $R^2 ajustado$. Em modelos de regressão, modelos com mais parâmetros/preditores sempre vão ter $R^2$ maior do que modelos mais compactos, independente da signficância destes outros parâmetros. O $R^2 ajustado$ é uma medida que considera a complexidade do modelo e pune a entrada de novas variáveis. Neste caso, como há apenas dois preditores (intercepto e bsq_soma), o $R^2 ajustado$ e o $R^2$ são quase idênticos.  
+O <u>terceiro momento</u> é a análise do $R^2 ajustado$. Em modelos de regressão, modelos com mais parâmetros/preditores sempre vão ter $R^2$ maior do que modelos mais compactos, independente da significância destes outros parâmetros. O $R^2 ajustado$ é uma medida que considera a complexidade do modelo e pune a entrada de novas variáveis. Neste caso, como há apenas dois preditores (intercepto e bsq_soma), o $R^2 ajustado$ e o $R^2$ são quase idênticos.  
 
 Finalmente, o <u>quarto momento</u> é análise dos preditores, que é feito na seção `Parameter Estimates`. Para isso, deve-se identificar os preditores um a um, seus valores de `Beta` e de P (`Sig`). O `Beta` indica a diferença média em unidades da <u>variável dependente</u> quando se altera uma unidade de X. Por exemplo, mais 1 ponto no BSQ-34, mais `0.178` pontos, em média, no EAT-26. Esse resultado é significativo, tal como é indicado na coluna `Sig`.  
 
 
 
-O intercepto é chamado de `constante` na maior parte dos programas e indica o valor médio (esperado) de Y quando `X=0`. Nesse caso, se alguém tivesse tirado o valor `0` na escala BSQ-34, o valor previsto para os resultados da Escala EAT-26 seria de 1.46. No entanto, o `Sig` indica que esse valor não é significativo, ou seja, não é diferente de `0`. O indicador de beta padronizado `Std. Beta` traz as mesmas informações, mas trabalha em unidades de desvios-padrão em todas as variáveis presentes no modelo. Eventualmente, o `Std. Beta` pode ser entendido como uma medida perliminar de tamanho do efeito [@fox2016].
+O intercepto é chamado de `constante` na maior parte dos programas e indica o valor médio (esperado) de Y quando `X=0`. Nesse caso, se alguém tivesse tirado o valor `0` na escala BSQ-34, o valor previsto para os resultados da Escala EAT-26 seria de 1.46. No entanto, o `Sig` indica que esse valor não é significativo, ou seja, não é diferente de `0`. O indicador de beta padronizado `Std. Beta` traz as mesmas informações, mas trabalha em unidades de desvios-padrão em todas as variáveis presentes no modelo. Eventualmente, o `Std. Beta` pode ser entendido como uma medida preliminar de tamanho do efeito [@fox2016].
 
 É importante notar que frequentemente o intercepto não tem interpretação lógica e, por isso, costuma ser desconsiderado. Para que ele tenha melhor capacidade de interpretação, algumas estratégias são possíveis, tal como centralizar os valores do preditor $(x_i-\bar{x})$. Caso isso seja feito, o intercepto irá ser o valor médio da variável dependente.  
 
@@ -414,7 +414,7 @@ Uma vez que o modelo já foi realizado, a interpretação dos resultados depende
 
 <mark> Normalidade</mark>: O pressuposto da Normalidade é atendido se os <u>resíduos</u> do modelo de regressão seguirem uma distribuição normal. Isso pode ser avaliado graficamente por QQ plots e também por testes específicos, como o Shapiro-wilk, Anderson-Darling e Jarque Bera.
 
-O QQ plot é um gráfico que reúne a distribuição empírica ordenada dos quantis contra os quantis da distribuição teórica (aqui, normal). Se os dados e a linha diagonal se soprepuserem, isso é uma evidencia de que a distribuição empírica é a mesma da distribuição teórica. Caso haja discrepância, isso aponta para desvio da normalidade.  Caso os pontos e a reta diagonal estejam superpostos, se considera que este pressuposto foi atendido. 
+O QQ plot é um gráfico que reúne a distribuição empírica ordenada dos quantis contra os quantis da distribuição teórica (aqui, normal). Se os dados e a linha diagonal se sobrepuserem, isso é uma evidencia de que a distribuição empírica é a mesma da distribuição teórica. Caso haja discrepância, isso aponta para desvio da normalidade.  Caso os pontos e a reta diagonal estejam superpostos, se considera que este pressuposto foi atendido. 
 
 ```{r}
 ols_plot_resid_qq(mod_linear_simples)
@@ -428,7 +428,7 @@ ols_test_normality(mod_linear_simples)
 Apesar dos resultados obtidos por tais testes serem algo discordantes, os achados sugerem violação deste pressuposto.  
 
 
-<mark>Homocedasticidade</mark>: Este pressuposto de variâncias constantes pode ser analisada em um gráfico de dispersão dos resíduos (residual) contra os valores previstos (fitted).  
+<mark>Homocedasticidade</mark>: Este pressuposto de variâncias constantes pode ser analisada em um gráfico de dispersão dos resíduos (residual) contra os valores previstos (*fitted*).  
 
 ```{r}
 ols_plot_resid_fit(mod_linear_simples)
@@ -442,7 +442,7 @@ ols_test_breusch_pagan(mod_linear_simples)
 ```
 Os resultados indicaram que a homocedasticidade foi violada. Isso vai na direção oposta da percepção gráfica, o que pode ocorrer sem nenhum problema.  
 
-<mark>Independência</mark>: A independência dos resíduos depende bastante do delineamento utilizado ser transversal ou longitudinal. O teste de Durbin Watson pode ser utilizado e a hipótees nula é de que os resíduos não são correlacionados. Este pressuposto foi atendido, o que já era esperado.  
+<mark>Independência</mark>: A independência dos resíduos depende bastante do delineamento utilizado ser transversal ou longitudinal. O teste de Durbin Watson pode ser utilizado e sua hipótese nula é de que os resíduos não são correlacionados. Este pressuposto foi atendido, o que já era esperado.  
 
 ```{r}
 car::durbinWatsonTest(mod_linear_simples)
@@ -467,7 +467,7 @@ Ao fazer isso, automaticamente o JASP apresentará as médias e desvios-padrão 
 ![](./img/cap_reg_plot.png)
 
 
-Há diversas opções, mas a `Scatter Plots` é a mais completa. Ao selecioná-la, o JASP já irá apresentar o gráfico, bem com adicionar elementos que possam maximizar o entendimento do relacionamento entre elas. A este momento, o interesse é fazer uma primeira avaliação sobre o perfil linear no relacionamento entre os dados, o que parece ocorrer.
+Há diversas opções, mas a `Scatter Plots` é a mais completa. Ao selecioná-la, o JASP já irá apresentar o gráfico, bem como adicionar elementos que possam maximizar o entendimento do relacionamento entre elas. A este momento, o interesse é fazer uma primeira avaliação sobre o perfil linear no relacionamento entre os dados, o que parece ocorrer.
 
 ![](./img/cap_reg_plot2.png)
 É possível calcular a correlação entre ambas as variáveis, tal como foi realizado no R. Entretanto, essa etapa reproduziria o que foi feito no capítulo anterior e, por isso, não será apresentada. 
@@ -498,7 +498,7 @@ O <u>terceiro momento</u> é a análise do $R^2 ajustado$, que também está loc
 
 Finalmente, o <u>quarto momento</u> é análise dos preditores, que é feito na seção `Coefficients`. Para isso, deve-se identificar os preditores um a um, seus valores `Unstandardized` e de `P`. O `Unstandardized` indica a diferença média em unidades da <u>variável dependente</u> quando se altera uma unidade de X. Por exemplo, mais 1 ponto no BSQ-34, mais `0.178` pontos, em média, no EAT-26. Esse resultado é significativo, tal como é indicado na coluna `Sig`.  
 
-O intercepto é chamado de `constante` na maior parte dos programas e indica o valor médio (esperado) de Y quando `X=0`. Nesse caso, se alguém tivesse tirado o valor `0` na escala BSQ-34, o valor previsto para os resultados da Escala EAT-26 seria de 1.46. No entanto, o `Sig` indica que esse valor não é significativo, ou seja, não é diferente de `0`. O indicador de beta padronizado `Standardized` traz as mesmas informações, mas trabalha em unidades de desvios-padrão em todas as variáveis presentes no modelo. Eventualmente, o `Standardized` pode ser entendido como uma medida perliminar de tamanho do efeito [@fox2016].
+O intercepto é chamado de `constante` na maior parte dos programas e indica o valor médio (esperado) de Y quando `X=0`. Nesse caso, se alguém tivesse tirado o valor `0` na escala BSQ-34, o valor previsto para os resultados da Escala EAT-26 seria de 1.46. No entanto, o `Sig` indica que esse valor não é significativo, ou seja, não é diferente de `0`. O indicador de beta padronizado `Standardized` traz as mesmas informações, mas trabalha em unidades de desvios-padrão em todas as variáveis presentes no modelo. Eventualmente, o `Standardized` pode ser entendido como uma medida preliminar de tamanho do efeito [@fox2016].
 
 É importante notar que frequentemente o intercepto não tem interpretação lógica e, por isso, costuma ser desconsiderado. Para que ele tenha melhor capacidade de interpretação, algumas estratégias são possíveis, tal como centralizar os valores do preditor $(x_i-\bar{x})$. Caso isso seja feito, o intercepto irá ser o valor médio da variável dependente. 
 
@@ -512,7 +512,7 @@ Uma vez que o modelo já foi realizado, a interpretação dos resultados depende
 
 Para verificar os pressupostos, será necessário utilizar as opções dispostas na parte inferior à esquerda do programa. 
 
-A <mark>normalidade</mark> é testada ao clicar em `Plots` e `Q-Q plot standardized results`. O JASP irá apresentar um QQ plot com duas informações principais: uma diagonal e um conjunto de pontos/círculos. Caso os círculos estejam sobrepostos à linha, isso apoia que os resíduos se distrubem normalmente. No caso abaixo, isso não foi alcançado.
+A <mark>normalidade</mark> é testada ao clicar em `Plots` e `Q-Q plot standardized results`. O JASP irá apresentar um QQ plot com duas informações principais: uma diagonal e um conjunto de pontos/círculos. Caso os círculos estejam sobrepostos à linha, isso apoia que os resíduos se distribuem normalmente. No caso abaixo, isso não foi alcançado.
 
 ![](./img/cap_reg_normalidade.png)
 
@@ -538,7 +538,7 @@ Uma vez que nem todos os pressupostos foram atendidos, é possível proceder a a
 ## Escrita dos resultados
 
 
-De uma forma geral, o principal achado do modelo de regressão é que a percepção da imagem corporal é um preditor significativo ao comportamento alimentar. Neste sentido, ao saber informações sobre como uma pessoa percebe o próprio corpo, pode-se estimar condições eventualmente disfuncionar de seu comportamento alimentar. Abaixo uma sugestão de escrita baseada nas recomendações da American Psychological Association (APA).
+De uma forma geral, o principal achado do modelo de regressão é que a percepção da imagem corporal é um preditor significativo ao comportamento alimentar. Neste sentido, ao saber informações sobre como uma pessoa percebe o próprio corpo, pode-se estimar condições eventualmente disfuncionais de seu comportamento alimentar. Abaixo uma sugestão de escrita baseada nas recomendações da American Psychological Association (APA).
 
 
 
@@ -553,11 +553,12 @@ Um modelo de regressão foi calculado para verificar os resultados dos comportam
 
 ## Resumo  
 ::: {.explore}
-1. Existem diferentes modelos de regressão. 
-2. A principal proposta dos modelos de regressão é prever/explicar um resultado a partir de uma ou um conjunto de variáveis   
-3. O tipo de modelagem depedente tanto da natureza e quantidade das VIs e VDs e é possível entender grande parte dos testes estatísticos estudados como casos particulares dos modelos de regressão   
-4. Os principais indicadores de um modelo de regressão são sua significância geral, o $R^2$,o o $R^2_{adj}$, bem como o coeficiente e a significância dos preditores   
-5. o diagnóstico é uma parte essencial desta modelagem e o mnemônico LINE pode ajudar na lembrança dos pressupostos   
+1. Existem diferentes modelos de regressão.  
+2. O tipo de regressão depende tanto da natureza e quantidade das VIs e VDs.    
+3. Grande parte dos testes estatísticos estudados em estatística inferencial são casos particulares dos modelos de regressão.      
+4. A principal proposta dos modelos de regressão é prever/explicar um resultado a partir de uma ou um conjunto de variáveis.       
+5. Os principais indicadores de um modelo de regressão são sua significância geral, o $R^2$,o o $R^2_{adj}$, bem como o coeficiente e a significância dos preditores.      
+6. o diagnóstico é uma parte essencial desta modelagem e o mnemônico LINE pode ajudar na lembrança dos pressupostos.      
 ::: 
 
 

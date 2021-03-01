@@ -20,7 +20,7 @@ library(tidyverse)
 *Parcialmente adaptado de Anunciação, Portugal, Landeira-Fernandez (2021). Aspectos psicométricos de instrumentos neuropsicológicos: revisão conceitual, proposta de interpretação de percentis e classificações *   
 
 
-Em estatística, uma variável aleatória é uma função associa cada elemento de um dado espaço amostral a um número real ($X:\Omega \rightarrow R$). O mapeamento desses valores depende de um experimento aleatório, seguida pela análise dado conjunto de valores obtidos, chamado de realizações. Apesar desses conceitos serem importantes, o atalho pedagógico utilizado para esta definição entende as variáveis como características que pode apresentar qualquer valor, tal como peso, inteligência e renda. 
+Em estatística, uma variável aleatória é uma função que associa cada elemento de um dado espaço amostral a um número real ($X:\Omega \rightarrow R$). O mapeamento desses valores depende de um experimento aleatório, seguida pela análise do conjunto de valores obtidos, chamado de realizações. Apesar desses conceitos serem importantes, o atalho pedagógico utilizado para esta definição entende as variáveis como características que podem apresentar qualquer valor, tal como peso, inteligência e renda. 
 
 Todas as variáveis apresentam resultados numéricos que podem ser contínuos ou discretos. Esses resultados se distribuem de acordo com uma família de distribuições de probabilidades (que também podem ser discretas ou contínuas) e podem ser pragmaticamente apresentados por uma expressão analítica (uma fórmula), tabelas ou gráficos. 
 
@@ -35,7 +35,7 @@ Dispersão | Expressa o afastamento do valor da localização | Amplitude, Vari�
 Formato | Apresenta como a variação ocorre em função da localização | Assimetria e curtose |  Histograma, Boxplot 
 
 
-A localização e a dispersão foram trabalhados no capítulo sobre estatística descritiva, que também apresentou resumidamente o Coeficiente de Assimetria e Curtose. Dessa maneira, o capítulo atual tem maior ênfase sobre os possíveis formatos de uma distribuição. 
+A localização e a dispersão foram trabalhadas no capítulo sobre estatística descritiva, que também apresentou resumidamente o Coeficiente de Assimetria e Curtose. Dessa maneira, o capítulo atual tem maior ênfase sobre os possíveis formatos de uma distribuição. 
 
 
 Em relação ao formato, as distribuições podem ser simétricas ou assimétricas. Quando assimétricas, a assimetria pode ser à direita ou à esquerda.
@@ -57,7 +57,7 @@ ggplot(., aes(x=x,y=y)) + #pegar variaveis
 
 ## Assimetria à direita
 
-Este tipo de assimetria é marcada por caudas longas à direita. Em distribuições que obedecem este padrão, os outliers ou pontos anômalos tem valores significativamente altos. Visualmente, esta distribuição tem o seguinte formato.
+Este tipo de assimetria é marcada por caudas longas à direita. Em distribuições que obedecem a este padrão, os outliers ou pontos anômalos tem valores significativamente altos. Visualmente, esta distribuição tem o seguinte formato.
 
 ```{r , echo = FALSE }
 set.seed(3)
@@ -71,15 +71,16 @@ ggplot(assimetria_positiva, aes(x)) +
   annotate(geom = "text", x = median(assimetria_positiva$x)-2.7, y = 0.05, label = "Mediana", color = "purple", size = 5) +
   theme_bw() 
 ```
-Entre as principais características, (1) a média é maior do que a mediana, (2) a quantidade de observações abaixo da média é superior à quantidade de observações acima da média e (3) o Coeficiente de Assimetria é positivo. No caso da imagem o valor é `r moments::skewness(assimetria_positiva$x)`.   
+
+Entre as principais características, (1) a média é maior do que a mediana, (2) a quantidade de observações abaixo da média é superior à quantidade de observações acima da média e (3) o Coeficiente de Assimetria é positivo. No caso da imagem o valor é `r round(moments::skewness(assimetria_positiva$x),1)`.   
 
 Entre as distribuições com este formato, estão a gamma e alguns casos particulares, como a exponencial e a qui-quadrado. 
 
-<mark>Exemplos reais</mark>: Tempo de espera em uma fila de banco, quilometragem de carros usados que estão à venda, tempo de reação em experimentos psicológicos, preço de casas à venda, número de acidentes de trânsito que uma pessoa se envolve durante um ano, quantidade de filhos que as família possuem
+<mark>Exemplos reais</mark>: Tempo de espera em uma fila de banco, quilometragem de carros usados que estão à venda, tempo de reação em experimentos psicológicos, preço de casas à venda, número de acidentes de trânsito que uma pessoa se envolve durante um ano, quantidade de filhos que as famílias possuem.  
 
 ## Assimetria à esquerda (ou negativa)
 
-Este tipo de assimetria é marcada por caudas longas à esquerda. Em distribuições que obedecem este padrão, os outliers ou pontos anômalos tem valores significativamente baixos Visualmente, esta distribuição tem o seguinte formato.
+Este tipo de assimetria é marcada por caudas longas à esquerda. Em distribuições que obedecem a este padrão, os outliers ou pontos anômalos tem valores significativamente baixos Visualmente, esta distribuição tem o seguinte formato.
 
 
 ```{r, echo = FALSE }
@@ -96,7 +97,8 @@ ggplot(assimetria_negativa, aes(x)) +
   annotate(geom = "text", x = median(assimetria_negativa$x)+1.1, y = 0.2, label = "Mediana", color = "purple", size = 5) +
   theme_bw() 
 ```
-Entre as principais características, (1) a média é menor do que a mediana, (2) a quantidade de observações abaixo da média é inferior à quantidade de observações acima da média e (3) o Coeficiente de Assimetria é negativo No caso da imagem o valor é `r moments::skewness(assimetria_negativa$x)`.   
+
+Entre as principais características, (1) a média é menor do que a mediana, (2) a quantidade de observações abaixo da média é inferior à quantidade de observações acima da média e (3) o Coeficiente de Assimetria é negativo. No caso da imagem o valor é `r round(moments::skewness(assimetria_negativa$x),1)`.   
 
 
 <mark>Exemplos reais</mark>: Idade da morte de brasileiros, quantidade de horas que as pessoas passam na internet, quantidade de dedos que a população tem nas mãos.
@@ -122,17 +124,17 @@ ggplot(normal, aes(x=x,y=y)) +
 
 Em relação aos aspectos visuais:  
 
-1) Ela é simétrica
-2) Há um único pico e duas caudas, uma à esquerda e outra à direita (o que gera um formato de sino)
-3) Apesar de contraintuitivo, essas caudas não se estendem infinitamente à esquerda e à direita 
+1) Ela é simétrica,  
+2) Há um único pico e duas caudas, uma à esquerda e outra à direita (o que gera um formato de sino),  
+3) Apesar de contraintuitivo, essas caudas não se estendem infinitamente à esquerda e à direita.   
 
 Em relação às características analíticas
 
 1) Ela integra a família das distribuições contínuas (e, portanto, tem uma função densidade de probabilidade), 
-2) Ela é definida por dois parâmetros (média e variância), o que significa que é possível construir infinitas distribuições normais   
-3) O ponto ao centro reúne o valor da média, moda e mediana, que são iguais
-4) O Coeficiente de Assimetria é igual a 0
-5) O Coeficiente de Curtose é igual a 3  
+2) Ela é definida por dois parâmetros (média e variância), o que significa que é possível construir infinitas distribuições normais,     
+3) O ponto ao centro reúne o valor da média, moda e mediana, que são iguais,  
+4) O Coeficiente de Assimetria é igual a 0,  
+5) O Coeficiente de Curtose é igual a 3.  
 
 
 ```{r, echo = FALSE }
@@ -233,7 +235,7 @@ lln <-data.frame(lancamento=seq(1:n),resultado=ifelse(x==1,"Cara","Coroa"), acum
 head(lln) %>% pander::pander()
 ```
 
-A medida que a quantidade de lançamentos aumenta, a probabilidade se aproxima à esperada, ilustrando a Lei dos Grandes Números. O gráfico a seguir demonstra esse resultado.  
+À medida que a quantidade de lançamentos aumenta, a probabilidade se aproxima à esperada, ilustrando a Lei dos Grandes Números. O gráfico a seguir demonstra esse resultado.  
 
 
 ```{r, echo = FALSE }

@@ -30,19 +30,19 @@ $\gamma$ representa os termos aleatórios (assumidos como normalmente distribuí
 $e$ representa o erro/resíduo
 
 
-Pragmaticamente, este modelo oferece mais flexibildiade à ANOVA de medidas repetidas e sua utilização vem ganhando mais espaço em Psicologia e áreas da saúde [@Gueorguieva2004]. 
+Pragmaticamente, este modelo oferece mais flexibilidade à ANOVA de medidas repetidas e sua utilização vem ganhando mais espaço em Psicologia e áreas da saúde [@Gueorguieva2004]. 
 
-Os efeitos fixos são compatilhados por todos os indivíduos, enquanto os aleatórios são especificos de cada um dos participantes. Com isso, a trajetória de cada indivíduo pode ser modelada, permitindo que um subconjunto dos parâmetros de regressão sejam definidos como aleatórios.
+Os efeitos fixos são compartilhados por todos os indivíduos, enquanto os aleatórios são específicos de cada um dos participantes. Com isso, a trajetória de cada indivíduo pode ser modelada, permitindo que um subconjunto dos parâmetros de regressão seja definido como aleatório.
 
 Tanto O LMM, como a ANOVa de Medidas Repetidas costumam ser utilizados em dados longitudinais. A tabela a seguir apresenta algumas das principais características de ambas as análises.   
 
-  | Característica                             | ANOVA (MR)     |   Modelo Linear Misto  |  
-  | :-----------                               | :-----------   | :-----------           |        
-  | Sujeitos medidos em vários momentos        | Sim            | Sim                    |   
-  | Dados completos em todos os segmentos      | Sim            | Não                    |   
-  | Estimativas de tendências individuais      | Não            | Sim                    |
-  | Covariáveis tempo-depenentes               | Não            | Sim                    |
-  | Complexidade computacional                 | Baixa          | Alta                   |
+  | Característica                          | ANOVA (MR)     |   Modelo Linear Misto  |  
+  | :----------                             | :-----------   | :-----------           |        
+  | Sujeitos medidos em vários momentos     | Sim            | Sim                    |   
+  | Dados completos em todos os segmentos   | Sim            | Não                    |   
+  | Estimativas de tendências individuais   | Não            | Sim                    |
+  | Covariáveis tempo-dependentes           | Não            | Sim                    |
+  | Complexidade computacional              | Baixa          | Alta                   |
 
 
 
@@ -145,7 +145,7 @@ Inicialmente, a `anova` permite uma visualização de todos os coeficientes do m
 anova(mod_lme) %>% pander::pander()
 ```
 
-Verifique que a tabela apresenta três os resultados: `tempo x grupo`, `grupo` e `tempo`. A técnica de Satterthwaite's method é utilizada para corrigir os valores do grau de liberdade e, consequentemente, os valores de p. Os resultados são virtualmente identicos aos obtidos pela ANOVA, com a diferença que os graus de liberdade do numerador de do denominador não foram corrigidos.  
+Verifique que a tabela apresenta três os resultados: `tempo x grupo`, `grupo` e `tempo`. A técnica de Satterthwaite's method é utilizada para corrigir os valores do grau de liberdade e, consequentemente, os valores de p. Os resultados são virtualmente idênticos aos obtidos pela ANOVA, com a diferença que os graus de liberdade do numerador de do denominador não foram corrigidos.  
 
 Para obter as informações completas do modelo, é necessário solicitar o `summary`. Essa função retorna 4 informações calculadas: `Scaled residuals`, `Random effects`, `Fixed effects` e `Correlation of Fixed Effect` e serve para aprofundar a interpretação dos resultados. Uma particular diferença entre esse relatório e o da ANOVA de Medidas Repetidas é o np2, que não faz parte do LMM.
 
@@ -155,9 +155,9 @@ summary(mod_lme)
 ## Execução no JASP  
 
 
-A base utilizada será a intitulada "csv Lidia Carprofeno longo". Essa base tem o formato longo. Isso significa que os resultados obtidos no decorrer do tempo serão apresentados em cada uma das linhas do conjunto de dados. Modelos Lineares Mistos tendem a solicitar que os dados sejam organizadaos desta maneira.  
+A base utilizada será a intitulada "csv Lidia Carprofeno longo". Essa base tem o formato longo. Isso significa que os resultados obtidos no decorrer do tempo serão apresentados em cada uma das linhas do conjunto de dados. Modelos Lineares Mistos tendem a solicitar que os dados sejam organizados desta maneira.  
 
-Após carregar a base no JASP, será necessário assegurar que a escala de medida de todas as variáveis são corretas. A variável <u>id</u> deverá ser definido como nominal e para fazer isso, clique no símbolo da régua ao lado dela.
+Após carregar a base no JASP, será necessário assegurar que a escala de medida de todas as variáveis está correta. A variável <u>id</u> deverá ser definido como nominal e para fazer isso, clique no símbolo da régua ao lado dela.
 
 ![](./img/cap_lmm_nivel_medida.png)
 
@@ -184,12 +184,12 @@ Gráficos permitem um entendimento mais facilitado dos resultados. Para fazer is
 
 ![](./img/cap_lmm_plots.png)
 
-Em seguida, será possível selecionar o `Boxplot` e `Boxplot element`. O gráfico aparecerá abaixo da tabela e irá apresentar diferentes informações estatísticas da distribuição dos resultados das variáveis em função do momenot da pesquisa.
+Em seguida, será possível selecionar o `Boxplot` e `Boxplot element`. O gráfico aparecerá abaixo da tabela e irá apresentar diferentes informações estatísticas da distribuição dos resultados das variáveis em função do momento da pesquisa.
 
 ![](./img/cap_lmm_boxplots1.png)
 
 
-Para gerar as estatísticas descritivas e a apresentação gráfica sobre a relação entre os <u>resultados</u> e os respectvos <u>grupos</u>, será necessário, substituir a variável <u>tempo</u> por <u>grupo</u> no espaço `Split`.
+Para gerar as estatísticas descritivas e a apresentação gráfica sobre a relação entre os <u>resultados</u> e os respectivos <u>grupos</u>, será necessário, substituir a variável <u>tempo</u> por <u>grupo</u> no espaço `Split`.
 
 ![](./img/cap_lmm_boxplots2.png)
 
@@ -215,7 +215,7 @@ Esses resultados são baseados na configuração padrão do JASP, que define tan
 
 ![](./img/cap_lmm_model.png)
 
-Todas as caixas de seleção na seção `Random effects` devem ser desmarcarcadas. 
+Todas as caixas de seleção na seção `Random effects` devem ser desmarcadas.   
 
 ![](./img/cap_lmm_model2.png)
 
@@ -232,7 +232,7 @@ Apresentações gráficas são extremamente importantes e para fazer isso, é ne
 
 ![](./img/cap_lmm_resultados_plots.png) 
 
-A variável `Tempo` deve ser inserida no eixo horizontal (`Horizontal axis`) e a variável `gruop` em `Separated lines`. As outras opções nào precisam ser alterada. O gráfico será gerado automaticamente e servirá como um recurso extra para entender os resultados.  
+A variável `Tempo` deve ser inserida no eixo horizontal (`Horizontal axis`) e a variável `grupo` em `Separated lines`. As outras opções não precisam ser alteradas. O gráfico será gerado automaticamente e servirá como um recurso extra para entender os resultados.  
 
 
 ![](./img/cap_lmm_resultados_plots2.png)
@@ -242,7 +242,7 @@ Notas: Infelizmente, o JASP não realiza um gráfico completo dessa maneira na s
 ## Escrita dos resultados
 
 
-um dos principais objetivos em delineamentos que contem com termos de interação é verificar se o efeito de uma variável depende dos níveis de outra. Nesta pesquisa, isso ocorreria caso os resultados obtidos dependessem da relação entre o tempo decorrido do tratamento e do grupo em que o participante tivesse sido alocado. No entanto, os resultados da interação não foram significativos, indicando que isso não parece ter ocorrido. Uma vez que o efeito principal do tempo foi significativo, é possível concluir que o tempo é um preditor significativo nos resultados, independente do grupo em que o participante se encontra.  
+Um dos principais objetivos em delineamentos que contem com termos de interação é verificar se o efeito de uma variável depende dos níveis de outra. Nesta pesquisa, isso ocorreria caso os resultados obtidos dependessem da relação entre o tempo decorrido do tratamento e do grupo em que o participante tivesse sido alocado. No entanto, os resultados da interação não foram significativos, indicando que isso não parece ter ocorrido. Uma vez que o efeito principal do tempo foi significativo, é possível concluir que o tempo é um preditor significativo nos resultados, independente do grupo em que o participante se encontra.  
 
 Abaixo uma sugestão de escrita baseada nas recomendações da American Psychological Association (APA).
 

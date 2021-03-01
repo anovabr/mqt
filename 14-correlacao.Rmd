@@ -90,14 +90,14 @@ Um dos objetivos dessa pesquisa foi verificar a relação entre percepção da i
 ## Execução no R  
 
 
-A primeira etapa da análise consite na apresentação de tabelas e gráficos que possam auxiliar na interpretação dos resultados. Abaixo há uma tabela inicial com os resultados das escalas.  
+A primeira etapa da análise consiste na apresentação de tabelas e gráficos que possam auxiliar na interpretação dos resultados. Abaixo há uma tabela inicial com os resultados das escalas.  
 
 ```{r, results = "asis" }
 arsenal::tableby(~eat_soma + bsq_soma, test = FALSE, dados_brasil) %>% summary() 
 ```
 
 
-Após isso realizado, a realização do gráfico de dispersão é fundamental para melhor entendimento do relacionamento entre as variáveis, especialmente para verificar se ele linear ou não. Apesar de técnicas correlacionais não elegerem, formalmente, uma VI e uma VD, com muita frequência, se usa o eixo X para colocar a variável que se assume como independente e Y para apresentar os resultados da variável assumida como dependente.    
+Após isso realizado, a apresentação do gráfico de dispersão é fundamental para melhor entendimento do relacionamento entre as variáveis, especialmente para verificar se ele linear ou não. Apesar de técnicas correlacionais não elegerem, formalmente, uma VI e uma VD, com muita frequência, se usa o eixo X para colocar a variável que se assume como independente e Y para apresentar os resultados da variável assumida como dependente.    
 
 ```{r}
 ggplot(dados_brasil, aes(x = bsq_soma, y = eat_soma)) +
@@ -127,7 +127,7 @@ Ao clicar nesta opção, será possível eleger as variáveis que irão ser anal
 
 
 ![](./img/cap_correlacao_descritivo2.png)
-Será necessário arrastar tanto <u>eat_soma</u> como <u>bsq_soma</u> para o espaço de `Variables`. Apenas para melhor apresentação dos resultados, é importante que a primeira variável da lista seja <u>bsq_soma</u>. Ao fazer isso, o JASP automaticamente irá preencher a tabela previamente exposta com os valores estatísticos obtidos. A média e o desvio-padrão indicam a posição típica dos dados e o afastamento esperado desta localização. .
+Será necessário arrastar tanto <u>eat_soma</u> como <u>bsq_soma</u> para o espaço de `Variables`. Apenas para melhor apresentação dos resultados, é importante que a primeira variável da lista seja <u>bsq_soma</u>. Ao fazer isso, o JASP automaticamente irá preencher a tabela previamente exposta com os valores estatísticos obtidos. A média e o desvio-padrão indicam a posição típica dos dados e o afastamento esperado desta localização.   
 
 
 ![](./img/cap_correlacao_descritivo3.png)
@@ -149,16 +149,16 @@ Por padrão, o JASP irá adicionar vários elementos extras no gráfico. Entreta
 Para execução da correlação, será necessário clicar em `Regression` e `Correlation`.
 
 ![](./img/cap_correlacao_interface.png)
-Ao realizar isso, a tela a ser exibida será próxima à imgaem abaixo. Por padrão, em `Sample Correlation`, o JASP já deixa marcada a opção `Pearson's r`. Além disso, em `Additional Options`, a opção  `Report significance` também estará previamente ativada`.
+Ao realizar isso, a tela a ser exibida será próxima à ìmagem abaixo. Por padrão, em `Sample Correlation`, o JASP já deixa marcada a opção `Pearson's r`. Além disso, em `Additional Options`, a opção  `Report significance` também estará previamente ativada`.
 
 ![](./img/cap_correlacao_interface2.png)
 
 O espaço `Variables` é o local onde todas as variáveis serão colocadas e o espaço `Condition on` não será utilizado no momento. Ao inserir o <u>eat_soma</u> e o <u>bsq_soma</u>, o JASP automaticamente irá realizar as contas e apresentar os resultados. 
 
-O coeficiente de correlação e o valor de p serão apresentados em uma lista. No entanto, algumas condições são imoprtantes neste resultado e devem ser explicadas:
+O coeficiente de correlação e o valor de p serão apresentados em uma lista. No entanto, algumas condições são importantes neste resultado e devem ser explicadas:
 
 1. As variáveis serão alocadas tanto nas linhas, como nas colunas  
-2. Todas as correlação de uma variável com ela própria será igual a 1 e o JASP não apresentará    
+2. Todas as correlações de uma variável com ela própria será igual a 1 e o JASP não apresentará    
 3. A ordem das correlações não interfere no resultado e o JASP somente apresentará uma correlação   
 
 A interpretação dos resultados deve ser feita com base no coeficiente de correlação e no valor de P. Há um grande debate na literatura sobre a necessidade de normalidade na Correlação de Pearson, com grande parte dos argumentos apontam que ela <u>não</u> depende estritamente da normalidade das variáveis. Dessa maneira, não há a necessidade de avaliar outros pressupostos além dos já discutidos no decorrer deste capítulo. 
@@ -169,7 +169,7 @@ A interpretação dos resultados deve ser feita com base no coeficiente de corre
 ## Escrita dos resultados
 
 
-Os resultados serão escritos apresentado os três principais ingredientes da correlação, que são o resultado e o sinal do coeficiente de correlação de Pearson, além do valor de p. O estilo da escrita é baseado nas recomendações da American Psychological Association (APA). Como os resultados do R e do JASP foram um pouco diferente nas comparações pareadas, o R será utilizado como principal.  
+Os resultados serão escritos apresentado os três principais ingredientes da correlação, que são o resultado e o sinal do coeficiente de correlação de Pearson, além do valor de p. O estilo da escrita é baseado nas recomendações da American Psychological Association (APA). Como os resultados do R e do JASP foram um pouco diferentes nas comparações pareadas, o R será utilizado como principal.  
 
 
 
@@ -183,7 +183,7 @@ A correlação entre o comportamento alimentar (EAT-26) e a percepção corporal
 ## Resumo  
 ::: {.explore}
 1. O termo correlação diz respeito a um conjunto de métodos que visa verificar a direção e a força do relacionamento entre duas variáveis   
-2. A correlação de Pearson assume que ambas tem um relacionamento linear     
+2. A correlação de Pearson assume que ambas têm um relacionamento linear     
 3. O coeficiente obtido indica a direção (por um sinal positivo ou negativo) e a força (por um número entre -1 e +1) do relacionamento bivariado  
 4. Correlação não indica causalidade  
 ::: 

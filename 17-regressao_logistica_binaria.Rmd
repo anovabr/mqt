@@ -47,11 +47,11 @@ Os seguintes pressupostos devem ser investigados:
 *(iv)* Há uma relação linear entre preditores contínuos e o logit do desfecho 
 
 
-Há muitas pesquisas em que modelos logísticos são utilizados. Em áreas de saúde, eles tendem a ser os modelos de primeira escolha para verificar condições clínicas e de agravo à saúde. Em Psicologia, por exemplo, ele é util para descrever e investigar os possíveis preditores de condições diagnósticas bem definidas, tal como TDAH e outros transtornos psiquiátricos. Em epidemiologia, eles são fundamentais em estudos do tipo caso-controle. 
+Há muitas pesquisas em que modelos logísticos são utilizados. Em áreas de saúde, eles tendem a ser os modelos de primeira escolha para verificar condições clínicas e de agravo à saúde. Em Psicologia, por exemplo, ele é útil para descrever e investigar os possíveis preditores de condições diagnósticas bem definidas, tal como TDAH e outros transtornos psiquiátricos. Em epidemiologia, eles são fundamentais em estudos do tipo caso-controle. 
 
 Algumas condições são importantes:   
 
-(1) A variável dependente nesta equação é um transformação logit do desfecho. Ela não é, por definição, uma probabilidade, mas sim uma função.   
+(1) A variável dependente nesta equação é uma transformação logit do desfecho. Ela não é, por definição, uma probabilidade, mas sim uma função.   
 (2) Não há a definição de um termo de erro (tal como nos modelos de regressão linear) e   
 (3) O desfecho é assumido seguir uma distribuição Bernoulli.   
 
@@ -105,7 +105,7 @@ Essa é uma pesquisa censitária, que contou com todos os 339 estudantes de uma 
 
 Para definir o tipo e a frequência da dor de cabeça, os participantes responderam a diferentes questionários médicos. Por sua vez, para verificar o possível baixo recurso psicológico, eles foram submetidos à escala *Resiliency Scales for Children and Adolescents*, que foi desenvolvida justamente para medir esta condição.
 
-Uma dos objetivos que tivemos na execução das análises foi verificar quais eram os preditores significativos que poderiam impactar na apresentação (ou não) de baixos recursos psicológicos. Os preditores de interesse foram a idade da criança (age), sua etnia (race), sexo (sex), classe socioeconômica (ses), problemas de sono (sleeping), prematuridade (premature), fumo durante a gestão (smoking), uso de álcool durante a gestação (alcohol) e possível TDAH (sdq_risk).
+Um dos objetivos que tivemos na execução das análises foi verificar quais eram os preditores significativos que poderiam impactar na apresentação (ou não) de baixos recursos psicológicos. Os preditores de interesse foram a idade da criança (age), sua etnia (race), sexo (sex), classe socioeconômica (ses), problemas de sono (sleeping), prematuridade (premature), fumo durante a gestão (smoking), uso de álcool durante a gestação (alcohol) e possível TDAH (sdq_risk).
 
 
 Para isso, modelos de regressão logística binária foram utilizados.  
@@ -159,7 +159,7 @@ mod_nulo <- base_uso %>%
 anova(mod_nulo, mod_risco, test = "LRT")
 ```
 
-O <u>segundo momento</u> é relacionado à anáise do $R^2$, disposto na parte inferior da tabela. Existem diferentes maneiras de calculá-lo e sua interpretação não é exatamente igual à feita na regressão linear. Enquanto na regressão linear, o $R^2$ se refere à proporção da variância explicada, em modelos logísticos, no geral, o $R^2$ indica o quanto o modelo testado é próximo de um modelo com ajuste perfeito aos dados (saturado) [@portugues2020]. 
+O <u>segundo momento</u> é relacionado à análise do $R^2$, disposto na parte inferior da tabela. Existem diferentes maneiras de calculá-lo e sua interpretação não é exatamente igual à feita na regressão linear. Enquanto na regressão linear, o $R^2$ se refere à proporção da variância explicada, em modelos logísticos, no geral, o $R^2$ indica o quanto o modelo testado é próximo de um modelo com ajuste perfeito aos dados (saturado) [@portugues2020]. 
 
 O $R^2 \, de \, Tjur$ é a medida utilizada nesta apresentação e seus valores variam entre 0 e 1. Ele computa a diferença entre os dados e os valores previstos pelo modelo testado. Quão maior o valor, mais discriminativo é o modelo testado. Neste caso, o o $R^2 \, de \, Tjur$ foi de 0.10. Não há uma regra geral para interpretar o $R^2$. Em Psicologia, por exemplo, é bastante difícil que ele chegue a 0.5.
 
@@ -241,7 +241,7 @@ Para a apresentação ficar adequada à escala de medida, é necessário marcar 
 ![](./img/cap_logistica_descriptives2.png)
 
 
-A tabela apresentada será bastante informativa e poderá ser utilizada também para uma apreensão inicial dos dados. Variáveis contínuas serão resumidas por suas médias e desvios-padrão e variáveis categórias serão apresentadas por contagens e proporções.   
+A tabela apresentada será bastante informativa e poderá ser utilizada também para uma apreensão inicial dos dados. Variáveis contínuas serão resumidas por suas médias e desvios-padrão e variáveis categóricas serão apresentadas por contagens e proporções.   
 
 Gráficos tendem a ser úteis também para verificar o formato da distribuição dos dados. o JASP permite realizá-los clicando em `Plots`.
 
@@ -284,7 +284,7 @@ O <u>segundo momento</u> consiste na interpretação de uma métrica análoga ao
 
 ![](./img/cap_logistica_resultado_2.png)
 
-O <u>terceiro momento</u> é a análise das estimativas obtidas em cada um dos preditores listados na seção `Coefficients`. No entanto, os valores que o JASP apresentam são o log(odds) dos resultados, cuja interpretação é pouco intuitiva. Antes de interpretar, é necessário adicionar o *Odds Ratio* à tabela. Para fazer isso, ao lado esquerdo da interface, é necessário clicar em `Statistics` e, em seguida `Odds Ratio`.
+O <u>terceiro momento</u> é a análise das estimativas obtidas em cada um dos preditores listados na seção `Coefficients`. No entanto, o JASP apresenta o log(odds) dos resultados, cuja interpretação é pouco intuitiva. Desta maneira, é necessário adicionar o *Odds Ratio* à tabela. Para fazer isso, ao lado esquerdo da interface, é necessário clicar em `Statistics` e, em seguida `Odds Ratio`.
 
 ![](./img/cap_logistica_resultado_3.png)
 
@@ -372,7 +372,7 @@ descr::CrossTable(base_uso$risk_cefaleia_resources, base_uso$sex, chisq = T)$CST
 
 
 
-Por esta mesma tabela, é possível calcular a chance (*Odds*) de um participante do sexo masculino estar estar no grupo de risco:
+Por esta mesma tabela, é possível calcular a chance (*Odds*) de um participante do sexo masculino estar no grupo de risco:
 
 $$8/150 = 0.053$$
 
@@ -380,7 +380,7 @@ Bem como a chance (*Odds*) de um participante do sexo feminino estar estar no gr
 
 $$19/162 = 0.117$$
 
-Os resultados obtidos às mulheres são superiores ao dos homens. Isso sugere que elas tem uma chance consideravelmente maior de estarem nesta esta condição negativa quando comparadas aos homens. O cálculo do *Odds Ratio*, neste sentido, é fundamental para indicar o quão maior é a chance. Como o nome indica, a conta é feita pela razão entre as chances, que indica OR = 2.2.  
+Os resultados obtidos às mulheres são superiores ao dos homens. Isso sugere que elas apresentam uma chance consideravelmente maior de estarem nesta esta condição negativa quando comparadas aos homens. O cálculo do *Odds Ratio*, neste sentido, é fundamental para indicar o quão maior é a chance. Como o nome indica, a conta é feita pela razão entre as chances, que indica OR = 2.2.  
 
 \[{\overbrace{\left ( \frac{19}{162}\right)}^\text{Odds Mulheres}}/{\underbrace{\left ( \frac{8}{150} \right)}_\text{Odds Homens}} \approx 2.2\]
 

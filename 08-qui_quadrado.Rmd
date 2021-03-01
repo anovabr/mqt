@@ -28,7 +28,7 @@ O Teste Qui-quadrado é um teste não-paramétrico utilizado, basicamente, para 
 (2) verificar se as distribuições das categorias são as mesmas para diferentes subpopulações de interesse (homogeneidade) e   
 (3) verificar se duas variáveis categóricas são independentes (independência).   
 
-Apesar da diferenças em relação às perguntas de pesquisa, o sistema matemático é o mesmo:
+Apesar das diferenças em relação às perguntas de pesquisa, o sistema matemático é o mesmo:
 
 
 
@@ -39,7 +39,7 @@ $O$ é o valor observado de uma determinada classe
 $E$ é o valor esperado desta classe  
 
 
-Pela fórmula, é possível deduzir que quanto maior for a discrepância entre as frequências observadas empiricamente (O) e as frequências esperadas (E), maior será a estatística de teste e, consequentemente, menor será o valor de P. É também possível entender o Qui-quadrado como um caso particular de uma regressão logística, o que será abordado em outro capítulo.  
+Pela fórmula, é possível deduzir que quanto maior for a discrepância entre as frequências observadas empiricamente (O) e as frequências esperadas (E), maior seráes a estatística de teste e, consequentemente, menor será o valor de P. Finalmente, é também possível entender o Qui-quadrado como um caso particular de uma regressão logística, o que será abordado em outro capítulo.  
 
 Se assume os seguintes pressupostos funcionais à execução de um Qui-quadrado:  
 
@@ -54,7 +54,7 @@ A tabela abaixo descreve as condições de análise, com exemplos ilustrativos:
 
   | Versão do teste | Variáveis         | Exemplo                                                                                       
   | :-----------    | :-----------      | :-----------                                                                                   
-  | Aderência (Goodness of fit) | 1 categórica | -Verificar se a proporção de caras e coroas é de 50% cada <br> -Verificar se a proporção das cores de chocolates M&M são aderentes ao que a empresa afirma                                  
+  | Aderência (*Goodness of fit*) | 1 categórica | -Verificar se a proporção de caras e coroas é de 50% cada <br> -Verificar se a proporção das cores de chocolates M&M são aderentes ao que a empresa afirma                                  
   | Homogeneidade   | 2 categóricas     | -Verificar se a proporção de homens e mulheres que gostam de uma marca de celular é similar<br>-Testar se o uso de anabolizante é homogêneo em atletas de diferentes modalidades esportivas        
   | Independência   | 2 categóricas     | -Verificar se o sexo e a escolha do curso de graduação são independentes<br>-Testar se classe social e local de interesse para uma viagem são independentes                         
 
@@ -93,9 +93,9 @@ $$H_0: Não\ há\ associação\ entre\ sexo\ e\ TDAH \\ H_a: Há\ associação\ 
 
 ## Execução no R
 
-A apresentação de tabelas e gráficos são fundamentais antes da realização formal do teste de hipótese. Para apresentar a possível relação entre ambas as variáveis, a tabela de contingência é adequada. O pacote `descr` é um bom recurso para esta apresentação.
+Inicialmente, é necessário carregar a base para o R. Em seguida, a apresentação de tabelas e gráficos é fundamental antes da realização formal do teste de hipótese e deve ser feita. Para apresentar o relacionamento entre ambas as variáveis, a tabela de contingência é adequada. O pacote `descr` é um bom recurso para esta apresentação.
 
-Apesar do Qui-quadrado não eleger uma VI e uma VD, quase sempre as linhas são utilizadas para apresentar a variável de maior interesse (neste caso, sexo) e as colunas para indicar o critério ou o eventual desfecho (neste caso, ter ou não TDAH).   
+Apesar do Qui-quadrado não estipular uma VI e uma VD, quase sempre as linhas são utilizadas para apresentar a variável de maior interesse (neste caso, sexo) e as colunas para indicar o critério ou o eventual desfecho (neste caso, ter ou não TDAH).   
 
 A porcentagem nas linhas e o valor esperado (em caso de independência entre as variáveis) auxiliam bastante na descrição dos resultados.   
 
@@ -135,7 +135,7 @@ No teste Qui-quadrado, os principais pressupostos a ser investigados são:
 
 Ambos podem ser checados na tabela exposta anteriormente e foram atendidos.  
    
-Eventualmente, quando os pressupostos são violados, há sugestão de fazer correções nos resultados, implementar técnicas de bootstrapping e contar com outros testes (Fisher's Exact Test, por exemplo) [@Campbell2007]. Eventualmente, colapsar categorias é uma prática comum, apesar de receber críticas da literatura.  
+Eventualmente, quando os pressupostos são violados, há sugestão de fazer correções nos resultados, implementar técnicas de bootstrapping e contar com outros testes, especialmente os que não pedem que os valores esperados sejam grandes (Fisher's Exact Test, por exemplo) [@Campbell2007]. Eventualmente, colapsar categorias é uma prática comum, apesar de receber críticas da literatura.  
 
 
 ## Tamanho do efeito  
@@ -218,7 +218,7 @@ A validade dos resultados depende dos pressupostos. Além disso, o tamanho do ef
 
 ![](./img/cap_x2_pressupostos.png)
 
-Há dois blocos específicos, `Counts` e `Percentages`. Em `Counts`, é necessário selecionar `Expected`. Em `Percenatges`, é necessário selecionar `Row`. Com isso feito, os resultados poderão ser melhor analisados.
+Há dois blocos específicos, `Counts` e `Percentages`. Em `Counts`, é necessário selecionar `Expected`. Em `Percentages`, é necessário selecionar `Row`. Com isso feito, os resultados poderão ser melhor analisados.
 
 ![](./img/cap_x2_pressupostos2.png)
 
@@ -270,3 +270,13 @@ Neste estudo, 1364 estudantes do ensino médio (na Suíça) responderam sobre su
 Nesta pesquisa, 2568 participantes de diferentes países participaram de uma atividade que consistia em jogar um dado dentro de um copo e falar o número que saiu para o pesquisador. Apenas o participante poderia ver o número e não havia nenhuma forma do pesquisador conferir se o número falado pelo participante era o número que, de fato, havia saído. Por características probabilísticas, se espera que cada uma das faces do dado seja igualmente selecionada. Assim, a ocorrência de uma alta proporção de valores altos indicaria desonestidade. O Qui-quadrado utilizado foi o de aderência.   
 
 
+## Questões  
+
+<div class="question">
+
+1. (Retirado de Analista Judiciário Estatística, TJ ES, CESPE, 2010) No teste qui-quadrado para aderência, a estatística de teste baseia-se na comparação entre o número observado e o número esperado de elementos em cada categoria. Nesse caso, sob a hipótese nula, a estatística desse teste segue aproximadamente uma distribuição qui-quadrado, desde que o número esperado de elementos em cada categoria seja suficientemente grande.<br>a) Certo.<br>b) Errado.   
+
+1. (Retirado de ANAC, Especialista em Regulação de Aviação Civil, CESPE, 2012) A diferença entre um teste qui-quadrado para a associação entre dois fatores e um teste qui-quadrado para a homogeneidade (das respostas de um fator em função de outro fator) é que, no primeiro, a estatística do teste é calculada supondo a independência entre os fatores, enquanto, no segundo, essa suposição não é necessária.<br>a) Certo.<br>b) Errado.</div>
+<div class="mirror">✂ Gabarito: 1-a; 2-b
+
+</div>

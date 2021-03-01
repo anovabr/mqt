@@ -26,17 +26,17 @@ O Teste T é um teste estatístico frequentemente utilizado para testar hipótes
 Como todo teste inferencial, o Teste T é um modelo estatístico, com os seguintes pressupostos:  
 
 *(i)* Os dados são aleatórios e representativos da população  
-*(ii)* a variável dependente é contínua  
+*(ii)* A variável dependente é contínua  
 *(iii)* Os resíduos do modelo são normalmente distribuídos      
 
 Quando há o interesse de utilizar o Teste T para comparar os resultados de dois grupos, é também necessário que: 
 
-*(iv)* ambos os grupos sejam independentes (ou seja, grupos exaustivos e excludentes)  
-*(v)* A variância residuais seja homogênea (princípio da homocedasticidade)  
+*(iv)* Ambos os grupos sejam independentes (ou seja, grupos exaustivos e excludentes)  
+*(v)* A variância residual seja homogênea (princípio da homocedasticidade)  
 
 Quando se utiliza o Teste T pareado, o princípio da independência não é mais solicitado, mas é necessário que:  
 
-*(vi)* o tamanho amostral seja o mesmo nos grupos   
+*(vi)* O tamanho amostral seja o mesmo nos grupos   
 
 
 Uma vez que o Teste T é adequado para diferentes objetivos de pesquisa, a tabela a seguir reúne alguns exemplos.
@@ -125,7 +125,7 @@ gridExtra::grid.arrange(
 )
 ```
 
-Os achados preliminares indicam que os resultados de meninos e meninas é ligeiramente diferente. No entanto, é necessário a execução da testagem formal desta hipótese. 
+Os achados preliminares indicam que os resultados de meninos e meninas são ligeiramente diferentes. No entanto, é necessário a execução da testagem formal desta hipótese. 
 
 A função `t.test` é nativa do R o vetor `t_test_12_m` será criado.
 
@@ -184,7 +184,7 @@ car::leveneTest(total_12 ~ sex, data = asq_12months) %>% pander::pander()
   
 Após testar estes pressupostos, é importante avaliar o quanto a interpretação originalmente deve ser mantida. Existem diferentes recomendações sobre o que fazer quando os pressupostos são violados. Entre elas, assumir essa condição e justificar a utilização do Teste T, transformar a distribuição da variável de interesse, usar versões robustas do Teste T, usar testes não-paramétricos com objetivos próximos ao Teste T ou eleger algum modelo estatístico mais adequado à distribuição empírica obtida pelos dados.   
 
-Parte dessas recomendações serão demonstradas a seguir.
+Parte dessas recomendações será demonstrada a seguir.
 
 ---
 
@@ -224,7 +224,7 @@ Diferentemente do anterior, agora o resultado foi significativo (p < 0.01), traz
 Isso posto, é importante ter uma atenção especial ao conceito subjacente à significância estatística. Um resultado que rejeita a hipótese nula, <u>de forma alguma</u>, deve ser entendido como "aceitação da hipótese alternativa" ou como evidência de causalidade, especialmente em delineamentos transversais.  
 
 ::: {.warning}
-**Atenção**: Nunca se aceita a hipótese nula ou a hipótese alternativa. Como Fisher (1931, p. 16) comenta, a hipótese nula nunca é provada ou estabelecida, mas é possivelmente refutada. Da mesma forma, rejeitar a hipótese nula não se refere à aceitar a alternativa, mas tão somente que os dados são incompatíveis à hipótese nula.    
+**Atenção**: Nunca se aceita a hipótese nula ou a hipótese alternativa. Como Fisher (1931, p. 16) comenta, a hipótese nula nunca é provada ou estabelecida, mas é possivelmente refutada. Da mesma forma, rejeitar a hipótese nula não se refere a aceitar a alternativa, mas tão somente que os dados são incompatíveis à hipótese nula.    
 :::
 
 É fundamental lembrar que o valor de P se refere à probabilidade de encontrar a estatística de teste calculada, ou uma ainda mais extrema, assumindo que a hipótese nula é verdadeira [@Wasserstein2016]. Apesar de algo contraintuitivo, é assim que a estatística frequentista funciona.
@@ -316,7 +316,7 @@ Com estas informações marcadas, agora os resultados podem ser analisados em co
 ![](./img/cap_testet_resultados.png)
 
 ::: {.warning}
-**Atenção**: Nunca se aceita a hipótese nula ou a hipótese alternativa. Como Fisher (1931, p. 16) comenta, a hipótese nula nunca é provada ou estabelecida, mas é possivelmente refutada. Da mesma forma, rejeitar a hipótese nula não se refere à aceitar a alternativa, mas tão somente que os dados são incompatíveis à hipótese nula.    
+**Atenção**: Nunca se aceita a hipótese nula ou a hipótese alternativa. Como Fisher (1931, p. 16) comenta, a hipótese nula nunca é provada ou estabelecida, mas é possivelmente refutada. Da mesma forma, rejeitar a hipótese nula não se refere a aceitar a alternativa, mas tão somente que os dados são incompatíveis à hipótese nula.    
 :::
 
 
@@ -445,7 +445,7 @@ lm(total_18 ~ sex, data = asq_18months) %>%
 ```
 
 
-Em função da ordem alfabética, o R atribuiu os meninos (`male`) como intercepto e, consequentemente, como grupo referência. Assim, o valor de $b_0$ é o valor médio obtido pelos dos meninos (`27.53`). A inclinação $b_1$ é a diferença entre os valores dos meninos e das meninas (`24.95-27.53`).Nesse caso, o valor é `-2.58`. A estatística F é equivalente a $t^2$ do Teste T em sua versão tradicional, que assume variâncias iguais entre grupos.
+Em função da ordem alfabética, o R atribuiu os meninos (`male`) como intercepto e, consequentemente, como grupo referência. Assim, o valor de $b_0$ é o valor médio obtido pelos dos meninos (`27.53`). A inclinação $b_1$ é a diferença entre os valores dos meninos e das meninas (`24.95-27.53`). Nesse caso, o valor é `-2.58`. A estatística F é equivalente a $t^2$ do Teste T em sua versão tradicional, que assume variâncias iguais entre grupos.
 
 Assim, torna-se mais intuitivo mostrar que a <u>normalidade no Teste T se refere à normalidade dos resíduos deste modelo de regressão</u>. Isso pode ser visualmente pela análise de um QQ plot, tal como a seguir.
 

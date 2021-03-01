@@ -38,7 +38,7 @@ library(pander)
 ```
 
 
-A ANOVA representa um conjunto de procedimentos estatísticos muito utilizado para verificar <u>diferenças médias entre diversos grupos</u> e, portanto, é considera um procedimento paramétrico. Pragmaticamente, é possível entender ANOVA como um super Teste T ou também um caso particular de um modelo de regressão. Uma vez que a ANOVA verifica a diferença entre todos os grupos e combinações lineares de maneira simultânea, ele é classificada como um *Omnibus test*. A relação entre a ANOVA e o Teste T será abordado na seção [Post hoc](#post-hoc).
+A ANOVA representa um conjunto de procedimentos estatísticos muito utilizado para verificar <u>diferenças médias entre diversos grupos</u> e, portanto, é considerada um procedimento paramétrico. Pragmaticamente, é possível entender ANOVA como um super Teste T ou também um caso particular de um modelo de regressão. Uma vez que a ANOVA verifica a diferença entre todos os grupos e combinações lineares de maneira simultânea, ela é classificada como um *Omnibus test*. A relação entre a ANOVA e o Teste T será abordado na seção [Post hoc](#post-hoc).
 
 Alguns autores indicam que a ANOVA é a técnica inferencial mais utilizada em Psicologia [@Chartier2008; @Howell2011]. Se por um aspecto, isso é extremamente vantajoso, uma vez que estreita a relação entre Psicologia e Estatística; por outro, isso parece ter contribuído para criação e manutenção de diferentes conceitos equivocados sobre a ANOVA. 
 
@@ -64,7 +64,7 @@ Os seguintes pressupostos dos modelos lineares são mantidos, que são:
 Operacionalmente, o erro representa <u>todos os fatores de pesquisa</u> e problemas de medição que afetam o resultado, além das variáveis independentes consideradas na modelagem.
 
 ::: {.warning}
-**Atenção**: Diferente de outros modelos, a linearidade dos resíduos não é formalmente um pressuposto a ser testado na ANOVA. Isso ocorre pois a VI é categórica em vez de contínua.
+**Atenção**: Diferente de outros modelos, a linearidade dos resíduos não é formalmente um pressuposto a ser testado na ANOVA. Isso ocorre pela VI ser categórica em vez de contínua.
 :::
 
 Eventualmente, quando os pressupostos do modelo são violados, a literatura mais tradicional recomenda que ajustes ou testes não-paramétricos com propostas parecidas possam ser implementados. A tabela abaixo concatena os testes estatísticos relacionados para fins de comparação com outros trabalhos. Há também autores que sugerem que se use sempre as versões não-paramétricas em resultados obtidos por processos de avaliação psicológica, argumentando que os dados têm nível de medida "ordinal".
@@ -237,7 +237,7 @@ car::leveneTest(mod_escolaridade)
 ```
 Os resultados indicaram que a homocedasticidade foi preservada.  
 
-<mark>Independência</mark>: Esse pressupostos frequentemente não é testado na ANOVA, apesar de ser uma exigência dos modelos lineares. De fato, uma vez que espera-se que os grupos sejam mutuamente excludentes, teria pouco sentido acreditar que os resíduos não fossem independentes. 
+<mark>Independência</mark>: Esse pressuposto frequentemente não é testado na ANOVA, apesar de ser uma exigência dos modelos lineares. De fato, uma vez que se espera que os grupos sejam mutuamente excludentes, teria pouco sentido acreditar que os resíduos não fossem independentes. 
 
 Após esses procedimentos feitos, é necessário calcular o tamanho do efeito.  
 
@@ -246,7 +246,7 @@ Após esses procedimentos feitos, é necessário calcular o tamanho do efeito.
 
 Resultados significativos não são informativos em relação ao tamanho do efeito. Esta última métrica tem mais contato com as perguntas originalmente realizadas em uma pesquisa e é entendida como uma medida objetiva e padronizada da magnitude de um efeito observado independente da significância estatística. Dessa maneira, o tamanho do efeito pode ser considerado um indicador da relevância clínica dos grupos, cujo uso é sempre importante em pesquisas em Psicologia e áreas da saúde.
 
-No ambiente da ANOVA, 3 medidas costumem ser utilizadas para tamanho do efeito, que são:  
+No ambiente da ANOVA, 3 medidas costumam ser utilizadas para tamanho do efeito, que são:  
 
 eta quadrado ($\eta^2$),  
 eta quadrado parcial ($\eta_p^2$) e   
@@ -374,11 +374,11 @@ Na verdade, é possível inclusive realizar qualquer comparação entre os níve
 :::
 
 
-Tendo em vista vez que realizar uma ANOVA não é tecnicamente necessário para comparações pareadas, é possível se perguntar qual é, então, a necessidade da realização da ANOVA ou, até mesmo, Por que não é possível testar as diferenças usando múltiplos Testes T ?    
+Tendo em vista vez que realizar uma ANOVA não é tecnicamente necessário para comparações pareadas, é possível se perguntar qual é, então, a necessidade da realização da ANOVA ou, até mesmo, por que não é possível testar as diferenças usando múltiplos Testes T ?    
 
 Historicamente, a ANOVA era um recurso muito importante em uma época em que o poder computacional era mais limitado. Seus resultados iriam indicar se comparações múltiplas deveriam ser feitas ou não. Hoje em dia, sua realização ocorre mais para que o pesquisador (i) consiga implementar computacionalmente todas as comparações pareadas entre as categorias da variável independente e, em seguida, (ii) corrija a distorção que o valor de P apresenta em cada comparação.  
 
-Quando se compara todos os níveis variável independente, é esperado que haja uma inflação do erro do tipo 1. Isso é chamado *experiment‑wise Type I error rate* e ocorre pela estrutura do nível de significância, que é a seguinte:
+Quando se compara todos os níveis da variável independente, é esperado que haja uma inflação do erro do tipo 1. Isso é chamado *experiment‑wise Type I error rate* e ocorre pela estrutura do nível de significância, que é a seguinte:
 $$\alpha_{total}=1-(1-\alpha)^C$$
 Onde:   
 
@@ -406,7 +406,7 @@ Existem muitas técnicas disponíveis para ajustar o valor de P. Elas costumam s
 
 ## Execução no R
 
-Para executar as comparações pareadas, o pacote `emmeans` será utilizado. A mecânica do por detrás do post hoc se dá em dois passos. Primeiro, o pacote compara todos os níveis presentes na VI dois a dois. Em seguida, o valor de P obtido é ajustado por alguma técnica específica. 
+Para executar as comparações pareadas, o pacote `emmeans` será utilizado. A mecânica por detrás do post hoc se dá em dois passos. Primeiro, o pacote compara todos os níveis presentes na VI dois a dois. Em seguida, o valor de P obtido é ajustado por alguma técnica específica. 
 
 
 Para fins práticos, vamos utilizar uma técnica considerada bastante conservadora, chamada de Bonferroni. Nesta correção, o valor de p encontrado em cada uma das comparações é multiplicado pela quantidade de comparações feitas. Este procedimento faz com que o Valor de P encontrado em cada comparação seja igual ao que seria obtido pelo nível de significância nominal. 
@@ -664,7 +664,7 @@ Da mesma forma que apresentado na ANOVA de 1 via, a validade da interpretação 
 olsrr::ols_plot_resid_qq(mod_escolaridade_faixa_etaria)
 ```
    
-O Shapiro-wilk, Anderson-Darling e Jarque Bera também podem ser utilizado neste caso. A hipótese nula desses testes assumem que os resíduos são normalmente distribuídos.
+O Shapiro-wilk, Anderson-Darling e Jarque Bera também podem ser utilizado neste caso. A hipótese nula desses testes assume que os resíduos são normalmente distribuídos.
 
 ```{r}
 shapiro.test(residuals(mod_escolaridade_faixa_etaria))
@@ -684,7 +684,7 @@ olsrr::ols_test_breusch_pagan(mod_escolaridade_faixa_etaria)
 ```
 Os resultados indicaram que a homocedasticidade foi preservada.  
 
-<mark>Independência</mark>:  Esse pressupostos frequentemente não é testado na ANOVA, apesar de ser uma exigência dos modelos lineares. De fato, uma vez que espera-se que os grupos sejam mutuamente excludentes, teria pouco sentido acreditar que os resíduos não fossem independentes. 
+<mark>Independência</mark>:  Esse pressuposto frequentemente não é testado na ANOVA, apesar de ser uma exigência dos modelos lineares. De fato, uma vez que se espera que os grupos sejam mutuamente excludentes, teria pouco sentido acreditar que os resíduos não fossem independentes. 
 
 
 ## Execução no JASP
@@ -832,7 +832,7 @@ Agora, a tabela apresenta os resultados das comparações etárias de maneira de
 post_hoc_twoway_faixaetaria %>% data.frame() %>% pander()
 ```
 
-Conforme previamente descrito, O gráfico é um recurso útil à visualização dos resultados, permitindo que as conclusões tornem-se mais fáceis de serem obtidas.    
+Conforme previamente descrito, O gráfico é um recurso útil à visualização dos resultados, permitindo que as conclusões se tornem mais fáceis de serem obtidas.    
 
 ```{r}
 CI <- confint(post_hoc_twoway_faixaetaria)
@@ -883,7 +883,7 @@ Os resultados obtidos agora indicam que tanto a escolaridade como a faixa etári
 ```{block, type="writing"}
 **Como escrever os resultados**  
 
-Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA de duas vias que investigou o efeito da escolaridade e da faixa etária nos resultados. Os achados permitiram concluir que tanto a escolaridade (F(2, 1427) = 7.58, p = 0.001, n2p = 0.01), como a faixa etária (F(4, 1427) = 32.972, p < 0.001, n2p = 0.08) tiveram efeito significativo nos resultados. Comparações pareadas foram realizadas e os valores de P foram corrigidos pela técnica de Bonferroni. Em relação à escolaridade, pessoas com nível fundamental, quando comparadas às pessoas de nível médio (Δ = -3.23, p < 0.001) e superior (Δ = -2.84, p < 0.001) apresentam performance significativamente menor. Não houve diferença entre participantes com ensino médio e ensino superior. Em relação à faixa etária, participantes entre 14 e 24 anos apresentam performance significativamente mais elevada do que participantes entre 35 e 44 (Δ = 4.21, p < 0.001), entre 45 e e 54 (Δ = 5.50, p < 0.001) e entre 55 e 64 anos (Δ = 5.50, p < 0.001).  Participantes entre 25 e 34 anos também apresentam performance significativamente superior do que participantes entre 35 e 44 anos (Δ = 4.03, p < 0.001), entre 45 e 54 (Δ = 5.32, p < 0.001) e entre 55 e 64 anos (Δ = 5.32, p < 0.001). Não houve diferença significativa na performance do grupo entre 14 e 24 anos do grupo entre 25 e 34, bem como entre o grupo entre 35 e 44 e 55 e 64. Também não houve diferença significativa entre os participantes com idades entre 45 e 54 daqueles com idade entre 55 e 64.
+Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA de duas vias que investigou o efeito da escolaridade e da faixa etária nos resultados. Os achados permitiram concluir que tanto a escolaridade (F(2, 1427) = 7.58, p = 0.001, n2p = 0.01), como a faixa etária (F(4, 1427) = 32.972, p < 0.001, n2p = 0.08) tiveram efeito significativo nos resultados. Comparações pareadas foram realizadas e os valores de P foram corrigidos pela técnica de Bonferroni. Em relação à escolaridade, pessoas com nível fundamental, quando comparadas às pessoas de nível médio (Δ = -3.23, p < 0.001) e superior (Δ = -2.84, p < 0.001) apresentam performance significativamente menor. Não houve diferença entre participantes com ensino médio e ensino superior. Em relação à faixa etária, participantes entre 14 e 24 anos apresentam performance significativamente mais elevada do que participantes entre 35 e 44 (Δ = 4.21, p < 0.001), entre 45 e 54 (Δ = 5.50, p < 0.001) e entre 55 e 64 anos (Δ = 5.50, p < 0.001).  Participantes entre 25 e 34 anos também apresentam performance significativamente superior do que participantes entre 35 e 44 anos (Δ = 4.03, p < 0.001), entre 45 e 54 (Δ = 5.32, p < 0.001) e entre 55 e 64 anos (Δ = 5.32, p < 0.001). Não houve diferença significativa na performance do grupo entre 14 e 24 anos do grupo entre 25 e 34, bem como entre o grupo entre 35 e 44 e 55 e 64. Também não houve diferença significativa entre os participantes com idades entre 45 e 54 daqueles com idade entre 55 e 64.
 
 ```  
 
@@ -1042,7 +1042,7 @@ Da mesma forma que apresentado no decorrer deste capítulo, a validade da interp
 olsrr::ols_plot_resid_qq(mod_escolaridade_faixa_etaria_fatorial)
 ```
    
-O Shapiro-wilk, Anderson-Darling e Jarque Bera também podem ser utilizado neste caso. A hipótese nula desses testes assumem que os resíduos são normalmente distribuídos.
+O Shapiro-wilk, Anderson-Darling e Jarque Bera também podem ser utilizado neste caso. A hipótese nula desses testes assume que os resíduos são normalmente distribuídos.
 
 ```{r}
 shapiro.test(residuals(mod_escolaridade_faixa_etaria_fatorial))
@@ -1062,7 +1062,7 @@ olsrr::ols_test_breusch_pagan(mod_escolaridade_faixa_etaria_fatorial)
 ```
 Os resultados obtidos pelo teste de ` Breusch Pagan Test` indicaram que a homocedasticidade foi preservada.  
 
-<mark>Independência</mark>:  Esse pressupostos frequentemente não é testado na ANOVA, apesar de ser uma exigência dos modelos lineares. De fato, uma vez que espera-se que os grupos sejam mutuamente excludentes, teria pouco sentido acreditar que os resíduos não fossem independentes. 
+<mark>Independência</mark>:  Esse pressuposto frequentemente não é testado na ANOVA, apesar de ser uma exigência dos modelos lineares. De fato, uma vez que espera-se que os grupos sejam mutuamente excludentes, teria pouco sentido acreditar que os resíduos não fossem independentes. 
 
 
 ## Execução no JASP
@@ -1145,7 +1145,7 @@ Infelizmente, o JASP não realiza um gráfico completo dessa maneira na seção 
 ## Escrita dos resultados  
 
 
-Os resultados serão escritos apresentado os achados principais da ANOVA, destacando se o efeito da interação foi significativo ou não. O estilo da escrita é baseado nas recomendações da American Psychological Association (APA).
+Os resultados serão escritos apresentando os achados principais da ANOVA, destacando se o efeito da interação foi significativo ou não. O estilo da escrita é baseado nas recomendações da American Psychological Association (APA).
 
 
 ```{block, type="writing"}
@@ -1216,13 +1216,13 @@ O gráfico feito anteriormente é um forte candidato a também ser inserido para
 ## Escrita dos resultados
 
 
-Os resultados serão escritos apresentado os achados principais da ANOVA, destacando se o efeito da interação foi significativo ou não e as comparações pareadas. O estilo da escrita é baseado nas recomendações da American Psychological Association (APA). Como os resultados do R e do JASP foram um pouco diferentes nas comparações pareadas, o R será utilizado como principal.  
+Os resultados serão escritos apresentando os achados principais da ANOVA, destacando se o efeito da interação foi significativo ou não e as comparações pareadas. O estilo da escrita é baseado nas recomendações da American Psychological Association (APA). Como os resultados do R e do JASP foram um pouco diferentes nas comparações pareadas, o R será utilizado como principal.  
 
 
 ```{block, type="writing"}
 **Como escrever os resultados**  
 
-Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA Fatorial para investigar o efeito da escolaridade, faixa etária, e de uma interação entre esses dois fatores nos resultados. Os resultados concluíram que a interação entre os fatores foi significativa (F(8, 1419) = 2.486, p = 0.011, n2p = 0.014), bem como a escolaridade (F(2, 1419) = 4.865, p = 0.008, n2p = 0.007) e a faixa etária (F(4, 1419) = 2.6.894, p < 0.001, n2p = 0.019). Em situações em que a interação é significativa os efeitos principais não são interpretados, já que os resultados podem depender de níveis específicos de cada uma das variáveis. As comparações pareadas foram feitas entre todos os níveis de escolaridade se mantendo a faixa etária constante e ajustando o valor de P pela técnica de Bonferroni. Pessoas entre 14 e 24 anos com ensino médio apresentam performance superior que seus pares com ensino superior (Δ = 1.145, p = 0.003). Pessoas ebtre 25 e 34 anos, com nível fundamental, têm performance significativamente mais baixa do que seus pares com ensino médio (Δ = -6.317, p < 0.001) e superior  (Δ = -5.46, p < 0.001). Finalmente, pessoas entre 35 e 44 anos com ensino superior tem performance significativamente maior do que aquelas com ensino fundamental  (Δ = 3.447, p < 0.001) e médio  (Δ = 2.365, p < 0.001). 
+Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA Fatorial para investigar o efeito da escolaridade, faixa etária, e de uma interação entre esses dois fatores nos resultados. Os resultados concluíram que a interação entre os fatores foi significativa (F(8, 1419) = 2.486, p = 0.011, n2p = 0.014), bem como a escolaridade (F(2, 1419) = 4.865, p = 0.008, n2p = 0.007) e a faixa etária (F(4, 1419) = 2.6.894, p < 0.001, n2p = 0.019). Em situações em que a interação é significativa os efeitos principais não são interpretados, já que os resultados podem depender de níveis específicos de cada uma das variáveis. As comparações pareadas foram feitas entre todos os níveis de escolaridade se mantendo a faixa etária constante e ajustando o valor de P pela técnica de Bonferroni. Pessoas entre 14 e 24 anos com ensino médio apresentam performance superior que seus pares com ensino superior (Δ = 1.145, p = 0.003). Pessoas entre 25 e 34 anos, com nível fundamental, têm performance significativamente mais baixa do que seus pares com ensino médio (Δ = -6.317, p < 0.001) e superior  (Δ = -5.46, p < 0.001). Finalmente, pessoas entre 35 e 44 anos com ensino superior tem performance significativamente maior do que aquelas com ensino fundamental  (Δ = 3.447, p < 0.001) e médio  (Δ = 2.365, p < 0.001). 
 
 ```  
 

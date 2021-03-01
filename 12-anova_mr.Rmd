@@ -18,9 +18,9 @@ load(file = "~/anovabr/mqt/bases/R - Base Lidia Carprofeno.RData")
 A ANOVA de medidas repetidas é um teste estatístico para a análise de dados longitudinais pareados. Isto significa que o mesmo conjunto de participantes foi acompanhado e avaliado no decorrer do tempo. Esta técnica pode ser entendida como uma expansão da ANOVA ou um caso especial do Modelo Linear de Efeitos Mistos (LMM). Os pressupostos deste teste são próximos aos discutidos em outros testes inferenciais:
 
 *(i)* Os dados são aleatórios e representativos da população  
-*(ii)* a variável dependente é contínua  
+*(ii)* A variável dependente é contínua  
 *(iii)* Os resíduos do modelo são normalmente distribuídos  
-*(iv)* há esfericidade dos grupos  
+*(iv)* Há esfericidade dos grupos  
 
 ## Pesquisa
 
@@ -45,7 +45,7 @@ Repare que esse tipo de delineamento contou com três elementos importantes em p
 
 ## Execução no R  
 
-A primeira etapa nesta análise será a consolidação da base de dados. No vetor `dados`, há todas as variáveis utilizadas na pesquisa em formato largo (wide). Apesar de ser possível trabalhar dessa maneira no R, o formato longo é o mais tipicamente encontrado para análises longitudinais e, por isso, será implementado a seguir. Um novo vetor será chamado de `tratamento` e irá armazenar os mesmos dados originais, só que agrupados neste novo formato.
+A primeira etapa nesta análise será a consolidação da base de dados. No vetor `dados`, há todas as variáveis utilizadas na pesquisa em formato largo (*wide*). Apesar de ser possível trabalhar dessa maneira no R, o formato longo é o mais tipicamente encontrado para análises longitudinais e, por isso, será implementado a seguir. Um novo vetor será chamado de `tratamento` e irá armazenar os mesmos dados originais, só que agrupados neste novo formato.
 
 ```{r}
 tratamento <- dados %>% 
@@ -66,14 +66,14 @@ tratamento <- dados %>%
   )))
 ```
 
-As variávies neste conjunto de dados são:
+As variáveis neste conjunto de dados são:
 
 ```{r }
 tratamento %>% names() %>% pander()
 ```
 
 `id` refere-se a uma identificação única de cada participante.  
-`gupo` refere-se ao grupo em que o participante foi alocado, tal como previamente apresentado (controle ou experimental).  
+`grupo` refere-se ao grupo em que o participante foi alocado, tal como previamente apresentado (controle ou experimental).  
 `tempo` diz respeito aos 5 pontos de medida e     
 `resultado` é uma variável aleatória contínua do valor obtido na escala utilizada.  
 
@@ -142,14 +142,14 @@ ez_outcome <- ezANOVA(
 
 A mensagem de aviso informa que os grupos estão desbalenceados em relação à quantidade de participantes, o que foi previamente descrito. 
 
-Abaixo esta o `ez_outcome`, que é dividido em 4 blocos diferentes: `ANOVA`, `Mauchly's Test for Sphericity`, `Sphericity Corrections` e `aov`. O tamanho do efeito é calculado pelo eta quadrado generalizado ($\eta^2_G$) e está na última coluna da primeira tabela.
+Abaixo está o `ez_outcome`, que é dividido em 4 blocos diferentes: `ANOVA`, `Mauchly's Test for Sphericity`, `Sphericity Corrections` e `aov`. O tamanho do efeito é calculado pelo eta quadrado generalizado ($\eta^2_G$) e está na última coluna da primeira tabela.
 
 ```{r }
 ez_outcome %>% pander::pander()
 ```
 
 
-A tabela gerada é bastante extensa e para interpretá-la adequadamente, será necessário testar os pressupostos do modelo a partir de testes estatísticos específicos. Estes testes irão tanto indicar <u>quais são os resultados que deverão ser verificados</u>, como se há segurança na interpretação dos achados Na ANOVA de Medidas Repetidas, é necessário verificar a <mark>normalidade</mark> e a <mark>esfericidade</mark>. 
+A tabela gerada é bastante extensa e para interpretá-la adequadamente, será necessário testar os pressupostos do modelo a partir de testes estatísticos específicos. Estes testes irão tanto indicar <u>quais são os resultados que deverão ser verificados</u>, como se há segurança na interpretação dos achados. Na ANOVA de Medidas Repetidas, é necessário verificar a <mark>normalidade</mark> e a <mark>esfericidade</mark>. 
 
 
 <mark>Normalidade</mark>: A ANOVA de tem como um dos pressupostos a normalidade da distribuição dos resíduos. Isso pode ser feito de diferentes maneiras e abaixo há um QQ plot. Caso ambas as linhas estejam sobrepostas, isso gera evidências que o pressuposto foi atendido. Neste caso, isso não ocorre.
@@ -162,7 +162,7 @@ tratamento %>%
   stat_qq_line()
 ```
    
-Apesar do gráfico ter sido bastante claro, testes como o Shapiro-wilk, Anderson-Darling e Jarque Bera também podem ser utilizado neste caso. A hipótese nula desses testes assumem que os resíduos são normalmente distribuídos.
+Apesar do gráfico ter sido bastante claro, testes como o Shapiro-wilk, Anderson-Darling e Jarque Bera também podem ser utilizados neste caso. A hipótese nula desses testes assume que os resíduos são normalmente distribuídos.
 
 ```{r}
 shapiro.test(proj(ez_outcome$aov)[[3]][, "Residuals"])
@@ -171,7 +171,7 @@ shapiro.test(proj(ez_outcome$aov)[[3]][, "Residuals"])
 Este último resultado foi convergente ao já visualizado na apresentação gráfica. Como o valor de p foi inferior ao alfa tipicamente estabelecido (0.05), não seria possível manter o pressuposto da normalidade. Quando isso acontece, é possível implementar ajustes nos dados, substituir o modelo analítico ou seguir a análise após justificar explicitamente essa violação. 
 
 
-<mark>Esfericidade</mark>: A esfericidade na ANOVA de Medidas Repetidas tem um conceito próximo à Homocedasticidade nas ANOVAs vistas anteriormente. Neste delineamento pareado, a esfericidade siginfica que a variância de todas as diferenças entre cada nível de fator é constante. Esse pressuposto é bastante difícil de ser assumido e existem ajustes possíveis em casos em que isso ocorre.
+<mark>Esfericidade</mark>: A esfericidade na ANOVA de Medidas Repetidas tem um conceito próximo à Homocedasticidade nas ANOVAs vistas anteriormente. Neste delineamento pareado, a esfericidade significa que a variância de todas as diferenças entre cada nível de fator é constante. Esse pressuposto é bastante difícil de ser assumido e existem ajustes possíveis em casos em que isso ocorre.
 
 Na tabela da ANOVA, o `Mauchly's Test for Sphericity` é o local que deve ser visualizado para verificar se a esfericidade foi violada ou não. A hipótese nula é definida como presença da esfericidade e idealmente não deve ser rejeitada. Abaixo, a reprodução desta parte da tabela.
 
@@ -181,9 +181,9 @@ ez_outcome$`Mauchly's Test for Sphericity` %>% pander()
 É possível concluir que a esfericidade foi violada mas há algumas saídas para isso. As correções Greenhouse-Geisser (p[GG]) e de Huynh-Feldt tentam corrigir essa violação a partir de ajustes nos graus de liberdade da ANOVA. Os resultados das duas correções costumam ser próximos e, frequentemenet, a correção de Greenhouse-Geisser é utilizada para interpretar os resultados.
 
 
-Com ambas as verificações feitas, é possível interpretar os resultados, que começam <u>sempre</u> pela interação. A interação `grupo x tempo` não foi significativa: F(4, 152) = 0.696, p = 0.59, p ajustado = 0.52). O efeito do `grupo` em que o participante foi alocado também não significativo: F(1, 38) = 0.706, p = 0.406). Por sua vez, o passar do `tempo` foi signicativo: F(4, 152) = 3.304, p = 0.012, p ajustado = 0.035).
+Com ambas as verificações feitas, é possível interpretar os resultados, que começam <u>sempre</u> pela interação. A interação `grupo x tempo` não foi significativa: F(4, 152) = 0.696, p = 0.59, p ajustado = 0.52). O efeito do `grupo` em que o participante foi alocado também não significativo: F(1, 38) = 0.706, p = 0.406). Por sua vez, o passar do `tempo` foi significativo: F(4, 152) = 3.304, p = 0.012, p ajustado = 0.035).
 
-Frequentemente, os resultados corrigidos e os não-corrigidos concluem na mesma direção. Isso é verdadeiro nesse caso. Repare que os resultados não corrigidos alcancariam as mesmas conclusões:
+Frequentemente, os resultados corrigidos e os não-corrigidos concluem na mesma direção. Isso é verdadeiro nesse caso. Repare que os resultados não corrigidos alcançariam as mesmas conclusões:
 
 ```{r }
 summary(ez_outcome$aov) %>% pander::pander()
@@ -273,7 +273,7 @@ Nesta tela, será necessário deixar todas as opções desmarcadas.
 
 Ao fazer isso, o JASP irá modificar as notas embaixo da tabela inicial de resultados, que agora podem ser interpretados.
 
-A interpretação dOs resultados deve começar pela interação. Caso este termo seja significativo, os outros resultados não devem ser interpretados diretamente. 
+A interpretação dos resultados deve começar pela interação. Caso este termo seja significativo, os outros resultados não devem ser interpretados diretamente. 
 
 
 ![](./img/cap_lmm_resultados.png)
@@ -289,7 +289,7 @@ Os dois principais pressupostos da ANOVA de Medidas Repetidas são a <mark>norma
 ![](./img/cap_anovarm_pressupostos.png)
 
 
-As opções `Sphericity tests` deverá ser assinaladas. Repare que o JASP não realiza a verificação da normalidade dos resíduos aqui, bem como deixa a opção de homogeneidade, que não precisa ser acessada agora, já que a esfericidade tende a indicar algo similar.  
+A opção `Sphericity tests` deverá ser assinalada. Repare que o JASP não realiza a verificação da normalidade dos resíduos aqui, bem como deixa a opção de homogeneidade, que não precisa ser acessada agora, já que a esfericidade tende a indicar algo similar.  
 
 ![](./img/cap_anovarm_esfericidade.png)
 
@@ -318,7 +318,7 @@ Notas: Infelizmente, o JASP não realiza um gráfico completo dessa maneira na s
 ```{block, type="writing"}
 **Como escrever os resultados**  
 
-Os dados foram analisados a partir de uma ANOVA de medidas repetidas investigando o efeito fixo do grupo e do tempo, bem como a interação entre ambos. O teste de Mauchly indicou a violação da esfericidade (w = 0.26, p < 0.01) e, portanto, os resultados foram ajustados pelo método de Greenhouse-geisser. Não houve interação significativa entre o grupo e o tempo (F(4, 152) = 0.69, p ajusatdo = 0.520), nem efeito do grupo (F(1, 38) = 0.061, p = 0.406). O passar de tempo foi significativo no resultado, apesar de apresentar um efeito pequeno (F(4, 152) = 3.30, p ajustado = 0.0351, ng2 = 0.01). 
+Os dados foram analisados a partir de uma ANOVA de medidas repetidas investigando o efeito fixo do grupo e do tempo, bem como a interação entre ambos. O teste de Mauchly indicou a violação da esfericidade (w = 0.26, p < 0.01) e, portanto, os resultados foram ajustados pelo método de Greenhouse-geisser. Não houve interação significativa entre o grupo e o tempo (F(4, 152) = 0.69, p ajustado = 0.520), nem efeito do grupo (F(1, 38) = 0.061, p = 0.406). O passar de tempo foi significativo no resultado, apesar de apresentar um efeito pequeno (F(4, 152) = 3.30, p ajustado = 0.0351, ng2 = 0.01). 
 ```
 
 

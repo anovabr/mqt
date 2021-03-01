@@ -38,9 +38,9 @@ O processo para estimar parâmetros envolve algumas etapas e, apesar de importan
 <U>**GLOSSÁRIO**</U>   
 **Parâmetro**: Valor que descreve uma característica da população. Esse valor é fixo e desconhecido. Sua representação é feita por letras gregas.  
 **Estatística**: Valor que descreve uma característica da amostra. Esse valor é aleatório e calculado através dos dados coletados.  É apresentado por letras romanas.  
-**Inferência**: Processo pelo qual, através de modelos estatísticos, se tiram-se conclusões sobre características da população a partir dos dados amostrais e permite fazer generalizações e previsões a respeito da população. Técnicas inferenciais permitem a estimativa dos parâmetros populacionais e testar hipóteses.  
+**Inferência**: Processo pelo qual, através de modelos estatísticos, se tiram conclusões sobre características da população a partir dos dados amostrais e permite fazer generalizações e previsões a respeito da população. Técnicas inferenciais permitem a estimativa dos parâmetros populacionais e testar hipóteses.  
 **Modelo estatístico**:  Sistema de equações que descreve ou representa o possível processo gerador de dados do conjunto de dados em análise.    
-**NHST**: Sigla que representa Teste de Significância de Hipótese Nula (em Inglês, Null Hypothesis Significance Testing)
+**NHST**: Sigla que representa Teste de Significância de Hipótese Nula (em Inglês, *Null Hypothesis Significance Testing*)
 ```
 
 
@@ -55,15 +55,15 @@ A sigla NHST se refere ao Teste de Significância de Hipótese Nula, que é o pr
 
 
 
-Existem diferentes maneiras de introduzir o tema e as subseções a seguir o apresentará descrevendo cada um dos termos que compõem a sigla por uma forma pragmática. Com algumas sutis diferenças, esses procedimentos e suas interpretações são similares em todas as áreas da teoria de decisão, tal como Teoria de Detecção de Sinal e diagnóstico médico, o que foi discutido por um trabalho meu recente.  
+Existem diferentes maneiras de introduzir o tema e as subseções a seguir o apresentará descrevendo cada um dos termos que compõe a sigla por uma forma pragmática. Com algumas sutis diferenças, esses procedimentos e suas interpretações são similares em todas as áreas da teoria de decisão, tal como Teoria de Detecção de Sinal e diagnóstico médico, o que foi discutido por um trabalho meu recente.  
 
-Algo colateral ao aspecto pragmático, a forma pela qual os testes de hipóteses são feitos hoje é uma mistura entre a forma pela qual Ronald Fisher pensava ser a correta e a maneira pela qual Jerzy Neyman e Egon Pearson defendia ser a adequada.  
+Algo colateral ao aspecto pragmático, a forma pela qual os testes de hipóteses são feitos hoje é uma mistura entre a forma pela qual Ronald Fisher pensava ser a correta e a maneira pela qual Jerzy Neyman e Egon Pearson defendiam ser a adequada.  
 
 ### A primeira etapa: a hipótese  
 
 Na maioria das vezes, quando uma pesquisa é feita, ela visa testar uma hipótese. Por sua vez, uma hipótese é uma conjectura, uma suposição sobre o estado das coisas feita pelo pesquisador e usualmente pensada no presente do indicativo (ex: há) ou no futuro do pretérito (ex: haveria). Em inglês, há o habito de tratar uma hipótese de pesquisa como *Educated Guess*, tendo em vista que ela costuma ser feita de maneira cuidadosa e após alguma reflexão sobre o tema de interesse. As hipóteses podem ser classificadas como substantivas ou estatísticas.   
 
-Uma hipótese substantiva é uma formulação textual e semântica sobre determinado fenômeno. Ou seja, é uma frase, tal como "haveria uma relação entre nível de atividade física e bem-estar psicológico", ou "o tratamento psicofarmacológico melhora quadros de depressão" ou ainda que "o tipo de colégio - público ou privado - influencia nos resultados de alunos em provas nacionais". A hipótese estatística, por sua vez, visa operacionalizar a hipótese substantiva e, com isso, é uma afirmação conjectural, em termos quantitativos, das relações estatísticas da hipótese substantiva (p. 46), o que será apresentado em seguida. 
+Uma hipótese substantiva é uma formulação textual e semântica sobre determinado fenômeno. Ou seja, é uma frase, tal como "haveria uma relação entre nível de atividade física e bem-estar psicológico", ou "o tratamento psicofarmacológico melhora quadros de depressão" ou ainda que "o tipo de colégio - público ou privado - influência nos resultados de alunos em provas nacionais". A hipótese estatística, por sua vez, visa operacionalizar a hipótese substantiva e, com isso, é uma afirmação conjectural, em termos quantitativos, das relações estatísticas da hipótese substantiva (p. 46), o que será apresentado em seguida. 
 
 ![](./img/cap_inferencia_tipos_hipoteses.png)
 
@@ -73,7 +73,7 @@ Muitas pesquisas podem ser feitas e, consequentemente, muitas hipóteses constru
 
 Em pesquisas com esta finalidade, a hipótese nula é a mais conservadora sobre determinado fenômeno. Ela advoga que pela ausência de padrões, pela inexistência de um relacionamento de causa e efeito, de associação entre variáveis ou de diferença entre grupos. Em termo gerais, a hipótese nula define que qualquer condição observada na população/natureza pode ser melhor explicada pelo acaso.   
 
-Por contraste, a hipótese alternativa apoia relação de causalidade entre variáveis, ou que determinado fator apresenta relacionamento com outro ou que existe diferenças entre grupos, etc. Em linhas gerais, a hipótese nula costuma ser definida como aquilo que o pesquisador não acredita (em ingles, chama-se de *Straw person Principle*) e a hipótese alternativa tende a ser a hipótese que o pesquisador previamente assumiu para motivar sua coleta de dados. 
+Por contraste, a hipótese alternativa apoia relação de causalidade entre variáveis, ou que determinado fator apresenta relacionamento com outro ou que existe diferenças entre grupos, etc. Em linhas gerais, a hipótese nula costuma ser definida como aquilo que o pesquisador não acredita (em inglês, chama-se de *Straw person Principle*) e a hipótese alternativa tende a ser a hipótese que o pesquisador previamente assumiu para motivar sua coleta de dados. 
 
 Em estatística frequentista, por um apoio epistemológico, a hipótese nula é assumida como verdadeira antes mesmo de qualquer procedimento de coleta e análise de dados. Note que ao assumi-la como verdadeira, isso não significa afirmar que ela seja, de fato, verdadeira. Essa suposição tem origem em discussões clássicas em estatística e, pragmaticamente, a hipótese nula é o que pesquisadores desejam falsear ou refutar na maioria das vezes em suas investigações [@Lecoutre2014]. 
 
@@ -92,7 +92,7 @@ Neste tipo de formulação estatística, a hipótese nula necessariamente será 
 **Atenção**: O pesquisador tende a fazer uma pesquisa para verificar a adequação de sua hipótese ($H_a$). Entretanto, o mecânica da estatística frequentista testa o quão os resultados são compatíveis ou não com a hipótese nula.     
 :::
 
-Com tais explicações feitas, a primeira parte da sigla "NH" (de Null Hypothesis Significance Testing) foi apresentada.
+Com tais explicações feitas, a primeira parte da sigla "NH" (de *Null Hypothesis Significance Testing*) foi apresentada.
 
 
 ## Nível de significância   
@@ -155,7 +155,7 @@ $$P<\alpha \Rightarrow \ Rejeitar \, H_0 \\P 	\geq \alpha \Rightarrow \ Falhar \
 
 
 
-É importante notar que rejeitar $H_0$ não significa aceitar $H_a$. Esse erro é frequente e é chamado de *Modus Tolens* [@Trafimow2019]. Repare que neste procedimento sequer há a necessidade de $H_a$. Além disso, os valores de P se referem às estatisticas de teste obtidas durante etapas analíticas. Eles não se referem à teoria científica que motivou a pesquisa e, desta forma, rejeitar $H_0$ também não significa falar que uma teoria foi provada.   
+É importante notar que rejeitar $H_0$ não significa aceitar $H_a$. Esse erro é frequente e é chamado de *Modus Tolens* [@Trafimow2019]. Repare que neste procedimento sequer há a necessidade de $H_a$. Além disso, os valores de P se referem às estatísticas de teste obtidas durante etapas analíticas. Eles não se referem à teoria científica que motivou a pesquisa e, desta forma, rejeitar $H_0$ também não significa falar que uma teoria foi provada.   
 
 Finalmente, falhar em rejeitar $H_0$ não prova que ela é verdadeira. É possível apenas concluir que ainda não existem evidências sólidas para rejeitá-la. Aceitá-la significa cair num erro chamado de *Argumentum ad Ignorantiam*, em que as pessoas tendem a achar que algo que não foi provado como falso é, consequentemente, algo verdadeiro. 
 
@@ -184,7 +184,7 @@ Dessa maneira, apesar de pequenas modificações de simbologia e nomenclatura, a
 
 Isso posto, exames médicos talvez representem a melhor forma de entender este processo de tomada de decisão. Imagine que duas pessoas resolvam fazer exame para verificar se estão ou não grávidas. O resultado do exame tem uma grande importância, já que ele servirá de evidência para que ambas as pessoas planejem suas vidas daqui para frente. 
 
-Apesar de assumirmos intuitivamente que exames médicos, no geral, são muito acurados, é importante introjetarmos que eles podem apresentar resultados incorretos ou distorcidos. Isso acontece pois estes exames não medem diretamente o fenômeno de interesse, mas apenas sinais mais ou menos específicos de determinada condição. No caso da gravidez, esses exames costumam verificar o nível do Beta HCG, que atua como um marcador bioquímico importante relacionado à gravidez e algumas outras condições.  
+Apesar de assumirmos intuitivamente que exames médicos, no geral, são muito acurados, é importante introjetarmos que eles podem apresentar resultados incorretos ou distorcidos. Isso acontece, pois estes exames não medem diretamente o fenômeno de interesse, mas apenas sinais mais ou menos específicos de determinada condição. No caso da gravidez, esses exames costumam verificar o nível do Beta HCG, que atua como um marcador bioquímico importante relacionado à gravidez e algumas outras condições.  
 
 É possível aproximar este exemplo pedagógico às hipóteses estatísticas descritas. Repare que <u>na realidade</u>, é possível estar ou não gravida. No entanto, na modelagem <u>estatística</u>, se assume inicialmente que a hipótese nula é verdadeira. Neste sentido, uma vez que a hipótese nula apoia a inexistência de padrões, sinais, eventos (etc), <u>não estar</u> grávida é a hipótese definida como verdadeira preliminarmente.  
 
@@ -216,14 +216,14 @@ Conforme previamente exposto, introduzir o conceito de teste de significância d
 
 - É necessário sempre checar os pressupostos dos modelos testados. Como diz Isaac Asimov, “Your assumptions are your windows on the world. Scrub them off every once in a while, or the light won’t come in.”
 
-- Tem pouco ou nenhum sentido verificar a normalidade da variável dependente antes de performar um teste estatístico. A grande maioria dos testes estatísticos são versões reduzidas de modelos lineares. Assim, testar a normalidade da variável dependente não é um pressuposto de Teste T ou ANOVA. A normalidade desses modelos estatísticos são assumidas aos resíduos.  
+- Tem pouco ou nenhum sentido verificar a normalidade da variável dependente antes de performar um teste estatístico. A grande maioria dos testes estatísticos são versões reduzidas de modelos lineares. Assim, testar a normalidade da variável dependente não é um pressuposto de Teste T ou ANOVA. A normalidade desses modelos estatísticos é assumida para os resíduos.  
 
 
-- O Teorema Central do Limite e a Lei dos Grandes Números são fundamentais na teoria da inferência, mesmo que não tenham sido abordado diretamente aqui.
+- O Teorema Central do Limite e a Lei dos Grandes Números são fundamentais na teoria da inferência, mesmo que não tenham sido abordados diretamente aqui.
 
 - Técnicas de bootstrapping e estatística robusta lidam bem com a violação de alguns pressupostos.   
 
-- Teste paramétrico não significa que a distribuição é normal, mas apenas que são caracterizados por uma família de distribuições indexada por um parâmetro. Neste testes, o formato da distribuição dos dados é importante e eles visam estimar parâmetros (populacionais). O modelo exponencial ou de Poisson, por exemplo, são paramétrico.
+- Teste paramétrico não significa que a distribuição é normal, mas apenas que são caracterizados por uma família de distribuições indexada por um parâmetro. Nestes testes, o formato da distribuição dos dados é importante e eles visam estimar parâmetros (populacionais). O modelo exponencial ou de Poisson, por exemplo, são paramétrico.
 
 - Testes não-paramétrico são melhores descritos como livres de distribuição, já que a distribuição dos dados não é uma preocupação de análise. 
 

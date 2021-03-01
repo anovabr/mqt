@@ -54,7 +54,7 @@ O objetivo dessa pesquisa foi explorar os fatores envolvidos em transtornos alim
 
 Uma das principais hipóteses era possíveis alterações na percepção da imagem corporal, bem como o índice de massa corporal (IMC) poderiam ser  preditores no desenvolvimento de transtornos alimentares. Neste sentido, pessoas com uma distorção na percepção de imagem corporal (dadas por resultados altos do BSQ), além de alto IMC tenderiam a fazer uma restrição alimentar mais intensa (obtidas pelos valores do EAT) 
 
-Da mesma forma que apresentado no capítulo de regressão linear simples, a definição estatística das hipóteses em modelos de regressão costumam ser feitas em cascata. Quase sempre, se compara o modelo de desenvolvido com um modelo mais simples. Em seguida, verifica-se cada preditor de forma individual e assim sucessivamente. Uma vez que a definição de cada hipótese ocuparia um espaço grande aqui, elas serão suprimidas.  
+Da mesma forma que apresentado no capítulo de regressão linear simples, a definição estatística das hipóteses em modelos de regressão costuma ser feita em cascata. Quase sempre, se compara o modelo de desenvolvido com um modelo mais simples. Em seguida, verifica-se cada preditor de forma individual e assim sucessivamente. Uma vez que a definição de cada hipótese ocuparia um espaço grande aqui, elas serão suprimidas.  
 
 
 ## Execução no R  
@@ -86,7 +86,7 @@ ols_regress(mod_linear_multiplo)
   
 Da mesma forma que exposto anteriormente, os resultados devem ser analisados aos poucos e de maneira cautelosa. 
 
-<u>Inicialmente</u>, deve-se olhar a seçao `ANOVA` e verificar se o modelo testado é significativo ou não. Neste caso, é possível concluir que o modelo foi globalmente significativo (F(2, 212) = 99.976, p < 0.001).   
+<u>Inicialmente</u>, deve-se olhar a seção `ANOVA` e verificar se o modelo testado é significativo ou não. Neste caso, é possível concluir que o modelo foi globalmente significativo (F(2, 212) = 99.976, p < 0.001).   
 
 Em <u>segundo momento</u>, verifica-se o $R^2$, que indicou que carca de 48.5% da variabilidade dos resultados do EAT-26 podem ser atribuídos aos preditores do modelo (BSQ-34 e IMC).   
 
@@ -121,7 +121,7 @@ Uma vez que o modelo já foi realizado, a interpretação dos resultados depende
 
 <mark> Normalidade</mark>: O pressuposto da Normalidade é atendido se os <u>resíduos</u> do modelo de regressão seguirem uma distribuição normal. Isso pode ser avaliado graficamente por QQ plots e também por testes específicos, como o Shapiro-wilk, Anderson-Darling e Jarque Bera.
 
-O QQ plot é um gráfico que reúne a distribuição empírica ordenada dos quantis contra os quantis da distribuição teórica (aqui, normal). Se os dados e a linha diagonal se soprepuserem, isso é uma evidencia de que a distribuição empírica é a mesma da distribuição teórica. Caso haja discrepância, isso aponta para desvio da normalidade.  Caso os pontos e a reta diagonal estejam superpostos, se considera que este pressuposto foi atendido
+O QQ plot é um gráfico que reúne a distribuição empírica ordenada dos quantis contra os quantis da distribuição teórica (aqui, normal). Se os dados e a linha diagonal se sobrepuserem, isso é uma evidencia de que a distribuição empírica é a mesma da distribuição teórica. Caso haja discrepância, isso aponta para desvio da normalidade.  Caso os pontos e a reta diagonal estejam superpostos, se considera que este pressuposto foi atendido
 
 
 ```{r}
@@ -136,7 +136,7 @@ ols_test_normality(mod_linear_multiplo)
 
 Tanto a visualização do QQ plot, como a maior parte dos testes estatísticos específicos convergiram, indicando que a normalidade foi violada. 
 
-<mark>Homocedasticidade</mark>: Este pressuposto de variâncias constantes pode ser analisada em um gráfico de dispersão dos resíduos (residual) contra os valores previstos (fitted).  
+<mark>Homocedasticidade</mark>: Este pressuposto de variâncias constantes pode ser analisado em um gráfico de dispersão dos resíduos (residual) contra os valores previstos (*fitted*).  
 
 ```{r}
 ols_plot_resid_fit(mod_linear_multiplo)
@@ -148,9 +148,9 @@ Caso haja padrões neste gráfico, isso sugere que este pressuposto foi violado.
 ```{r}
 ols_test_breusch_pagan(mod_linear_multiplo)
 ```
-Os resultados indicaram que a homocedasticidade foi violada (assumingo alfa = 0.05). Isso vai em direção distinta à percepção gráfica, o que pode ocorrer sem nenhum problema.  
+Os resultados indicaram que a homocedasticidade foi violada (assumindo alfa = 0.05). Isso vai em direção distinta à percepção gráfica, o que pode ocorrer sem nenhum problema.  
 
-<mark>Independência</mark>: A independência dos resíduos depende bastante do delineamento utilizado ser transversal ou longitudinal. O teste de Durbin Watson pode ser utilizado e a hipótees nula é de que os resíduos não são correlacionados. Este pressuposto foi atendido, o que já era esperado.  
+<mark>Independência</mark>: A independência dos resíduos depende bastante do delineamento utilizado ser transversal ou longitudinal. O teste de Durbin Watson pode ser utilizado e sua hipótese nula é de que os resíduos não são correlacionados. Este pressuposto foi atendido, o que já era esperado.  
 
 ```{r}
 car::durbinWatsonTest(mod_linear_multiplo)
@@ -205,11 +205,11 @@ Em <u>primeiro momento</u>, é necessário verificar o ajuste do modelo na seç�
 ![](./img/cap_reg_multipla_resultado_1.png)
 
 
-O <u>segundo momento</u> consiste na interpretação do $R^2$, que está localizado na parte superior, em `Model summary`. Como exposto no início do capítulo, essa indicador mensura a parte da variação da variável dependente (Y) que pode ser atribuída às variáveis independentes do modelo (X). Repare que ele é computado pela razão entre o SSR e o SST e indica que cerca de 48% dos resultados da variabilidade do EAT-26 podem ser explicados pelo modelo.  
+O <u>segundo momento</u> consiste na interpretação do $R^2$, que está localizado na parte superior, em `Model summary`. Como exposto no início do capítulo, esse indicador mensura a parte da variação da variável dependente (Y) que pode ser atribuída às variáveis independentes do modelo (X). Repare que ele é computado pela razão entre o SSR e o SST e indica que cerca de 48% dos resultados da variabilidade do EAT-26 podem ser explicados pelo modelo.  
 
 ![](./img/cap_reg_multipla_resultado_2.png)
 
-O <u>terceiro momento</u> é a análise do $R^2 ajustado$, que também está localizado na parte superior, em `Model summary`. Em modelos de regressão, modelos com mais parâmetros/preditores sempre vão ter $R^2$ maior do que modelos mais compactos, independente da signficância destes outros parâmetros. O $R^2 ajustado$ é uma medida que considera a complexidade do modelo e pune a entrada de novas variáveis.  
+O <u>terceiro momento</u> é a análise do $R^2 ajustado$, que também está localizado na parte superior, em `Model summary`. Em modelos de regressão, modelos com mais parâmetros/preditores sempre vão ter $R^2$ maior do que modelos mais compactos, independente da significância destes outros parâmetros. O $R^2 ajustado$ é uma medida que considera a complexidade do modelo e pune a entrada de novas variáveis.  
 
 ![](./img/cap_reg_multipla_resultado_3.png)
 
@@ -219,7 +219,7 @@ Finalmente, o <u>quarto momento</u> é análise dos preditores, que é feito na 
 
 Por exemplo, mais 1 ponto no BSQ-34, mais `0.190` pontos, em média, no EAT-26, controlando pelos resultados do IMC. Esse resultado é significativo, tal como é indicado na coluna `Sig`.  
 
-O intercepto é chamado de `constante` na maior parte dos programas e indica o valor médio (esperado) de Y quando `X=0`. Nesse caso, se alguém tivesse tirado o valor `0` na escala BSQ-34, o valor previsto para os resultados da Escala EAT-26 seria de 1.46. No entanto, o `Sig` indica que esse valor não é significativo, ou seja, não é diferente de `0`. O indicador de beta padronizado `Standardized` traz as mesmas informações, mas trabalha em unidades de desvios-padrão em todas as variáveis presentes no modelo. Eventualmente, o `Standardized` pode ser entendido como uma medida perliminar de tamanho do efeito [@fox2016].
+O intercepto é chamado de `constante` na maior parte dos programas e indica o valor médio (esperado) de Y quando `X=0`. Nesse caso, se alguém tivesse tirado o valor `0` na escala BSQ-34, o valor previsto para os resultados da Escala EAT-26 seria de 1.46. No entanto, o `Sig` indica que esse valor não é significativo, ou seja, não é diferente de `0`. O indicador de beta padronizado `Standardized` traz as mesmas informações, mas trabalha em unidades de desvios-padrão em todas as variáveis presentes no modelo. Eventualmente, o `Standardized` pode ser entendido como uma medida preliminar de tamanho do efeito [@fox2016].
 
 É importante notar que frequentemente o intercepto não tem interpretação lógica e, por isso, costuma ser desconsiderado. Para que ele tenha melhor capacidade de interpretação, algumas estratégias são possíveis, tal como centralizar os valores do preditor $(x_i-\bar{x})$. Caso isso seja feito, o intercepto irá ser o valor médio da variável dependente. 
 
@@ -234,12 +234,12 @@ Uma vez que o modelo já foi realizado, a interpretação dos resultados depende
 
 Para verificar os pressupostos, será necessário utilizar as opções dispostas na parte inferior à esquerda do programa. 
 
-A <mark>normalidade</mark> é testada ao clicar em `Plots` e `Q-Q plot standardized results`. O JASP irá apresentar um QQ plot com duas informações principais: uma diagonal e um conjunto de pontos/círculos. Caso os círculos estejam sobrepostos à linha, isso apoia que os resíduos se distrubem normalmente. No caso abaixo, isso não foi alcançado.  
+A <mark>normalidade</mark> é testada ao clicar em `Plots` e `Q-Q plot standardized results`. O JASP irá apresentar um QQ plot com duas informações principais: uma diagonal e um conjunto de pontos/círculos. Caso os círculos estejam sobrepostos à linha, isso apoia que os resíduos se distribuem normalmente. No caso abaixo, isso não foi alcançado.  
 
 ![](./img/cap_reg_multipla_normalidade.png)
-Diferente do R, esta versão do JASP não permite testar formalmente a hipótese de normalidade residual. Dessa forma, será necessário contar apenas com a perceção do gráfica para checar se o pressuposto foi respeitado ou violado.  
+Diferente do R, esta versão do JASP não permite testar formalmente a hipótese de normalidade residual. Dessa forma, será necessário contar apenas com a percepção do gráfico para checar se o pressuposto foi respeitado ou violado.  
 
-A <mark>homocedasticidade</mark> é também verificada graficamente. Ao clicar no `Residuals vs. Predicted`, o plano irá apresentar os valores dos resíduos em Y e os valores previstos em X. Nesse gráfico, é importânte não detectar nenhum padrão nos elementos apresentados. Os resultados parecem indicar uma violação deste pressuposto foi alcançado.  
+A <mark>homocedasticidade</mark> é também verificada graficamente. Ao clicar no `Residuals vs. Predicted`, o plano irá apresentar os valores dos resíduos em Y e os valores previstos em X. Nesse gráfico, é importante não detectar nenhum padrão nos elementos apresentados. Os resultados parecem indicar uma violação deste pressuposto foi alcançado.  
 
 ![](./img/cap_reg_multipla_homocedasticidade.png)
 
@@ -282,9 +282,9 @@ Um modelo de regressão múltipla foi calculado para verificar os resultados dos
 
 Entre os principais debates realizados na construção de modelos estatísticos, os critérios sobre quantas, quais e como eleger as variáveis independentes é um dos mais intensos.   
 
-Neste sentido, a seleção das VIs visa otimizar a acurácia do modelo, mas sem perder sua parcimônia, ou seja, simplicidade [@Unger1973; @Gaudio2001]. É possível inserir as variáveis por uma justificativa teórica alinhada com a área principal em que o pesquisador se insere, como também é possível implementar seleção automática a partir de algorítimos específicos. 
+Neste sentido, a seleção das VIs visa otimizar a acurácia do modelo, mas sem perder sua parcimônia, ou seja, simplicidade [@Unger1973; @Gaudio2001]. É possível inserir as variáveis por uma justificativa teórica alinhada com a área principal em que o pesquisador se insere, como também é possível implementar seleção automática a partir de algoritmos específicos. 
 
-Apesar do detalhamento das técnicas automáticas estar fora do escopo dete capítulo, a seguir são listadas algumas delas:  
+Apesar do detalhamento das técnicas automáticas estar fora do escopo deste capítulo, a seguir são listadas algumas delas:  
 
 1. Backward selection  
 2. Forward selection  
