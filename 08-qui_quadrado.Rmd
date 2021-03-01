@@ -7,8 +7,7 @@ output:
 
 ```{r base e pacotes qui quadrado, include = FALSE }
 
-load(file="~/anovabr/mqt/bases/Base R TDAH Arruda.RData") #base
-rm(list=setdiff(ls(), "ds_selected"))
+load(file="~/anovabr/mqt/bases/Base R TDAH Arruda_ds_selected.RData") #base
 
 
 library(tidyverse)
@@ -173,10 +172,12 @@ A interpretação é baseada nos graus de liberdade do Qui-quadrado e é feita d
 
 ## Execução no JASP
 
-Para executar o Qui-quadrado no JASP, será necessário carregar a base para o programa. Com os dados devidamente importados para o programa, a apresentação de tabelas e gráficos auxiliam o pesquisador a verificar padrões diferentes nos dados. Para executar isso, é necessário acessar a seção `Descriptives`:
+Para executar as rotinas no JASP, será necessário carregar a base para o programa. Com os dados devidamente importados para o programa, a apresentação de tabelas e gráficos auxiliam o pesquisador a verificar padrões diferentes nos dados. Para executar isso, é necessário acessar a seção `Descriptives`:
 
 
-![](./img/jasp_descriptives.png)
+![](./img/cap_x2_tela_inicial.png)
+
+
 Ao clicar nesta opção, será possível eleger as variáveis que irão ser analisadas e as variáveis que irão funcionar como agrupadoras. Apesar do Qui-quadrado não trabalhar com os conceitos de VI e VD, na prática, a lista `Variables` irá reunir a possível variável dependente, enquanto a possível variável independente será colocada na seção `Split`. É importante atentar à opção `Frequency tables (nominal and ordinal)`, que deve ser marcada quando o nível de medida da variável de interesse for nominal ou ordinal. 
 
 ![](./img/cap_x2_primeira_tabela.png)
@@ -204,7 +205,7 @@ Ao inserir a variável <u>sexo</u> para as linhas e a variável <u>diagnóstico<
 ![](./img/cap_x2_resultados.png)
 
 
-Os resultados inferenciais de interesse estão na parte inferior da apresentação e são os mesmos obtidos na etapa de execução com o R. A estatística Qui-quadrado foi `41.6`, com `1`  grau de liberdade e `p < 0.001`. Estes valores estão dispostos no retângulo roxo na imagem a seguir.  
+Os resultados inferenciais de interesse estão na parte inferior da apresentação e são os mesmos obtidos na etapa de execução com o R. A estatística Qui-quadrado foi `41.6`, com `1`  grau de liberdade e `p < 0.001`. Estes valores estão dispostos no retângulo roxo na imagem a seguir e podem ser, inicialmente, interpretados.  
 
 ![](./img/cap_x2_resultados2.png)
 
@@ -245,7 +246,7 @@ O principal achado desta pesquisa é que há uma associação entre o sexo da cr
 ```{block, type="writing"}
 **Como escrever os resultados**  
   
-A associação entre o sexo do participante e sua condição clínica (ter ou não TDAH) foi investigada por um Teste Qui-quadrado de independência. Os resultados indicaram que ambas as variáveis são associadas (X2(1) = 41.605). O tamanho do efeito foi calculado pelo V de Cramer, que se mostrou pequeno 0.07.
+A associação entre o sexo do participante e sua condição clínica (ter ou não TDAH) foi investigada por um Teste Qui-quadrado de independência. Os resultados indicaram que ambas as variáveis são associadas (X2(1) = 41.605, p < 0.01). O tamanho do efeito foi calculado pelo V de Cramer, que se mostrou pequeno 0.07.
 ```  
 
 
