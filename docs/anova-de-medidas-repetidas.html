@@ -613,7 +613,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb117-2"><a href="anova-de-medidas-repetidas.html#cb117-2"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun =</span> mean, <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>, <span class="dt">size=</span><span class="fl">1.0</span>, <span class="kw">aes</span>(<span class="dt">linetype =</span> grupo)) <span class="op">+</span><span class="st"> </span><span class="co">#linha</span></span>
 <span id="cb117-3"><a href="anova-de-medidas-repetidas.html#cb117-3"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun=</span><span class="st">&quot;mean&quot;</span>, <span class="dt">geom=</span><span class="st">&quot;point&quot;</span>, <span class="dt">size=</span><span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">shape =</span> grupo)) <span class="op">+</span><span class="st"> </span><span class="co">#pontos</span></span>
 <span id="cb117-4"><a href="anova-de-medidas-repetidas.html#cb117-4"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>,<span class="dt">size=</span><span class="dv">1</span>) <span class="co">#barra de erro</span></span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-156-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-152-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>É possível notar que as barras de erro estão superpostas, isto é, uma está contida na outra. Isso ocorre quando não há diferença significativa entre as condições. No entanto, o teste formal estatístico deve ser realizado.</p>
 <p>Para realizar a ANOVA de Medidas Repetidas, o pacote <code>ez</code> pode ser utilizado:</p>
 <div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="anova-de-medidas-repetidas.html#cb118-1"></a><span class="kw">library</span>(ez)</span></code></pre></div>
@@ -867,7 +867,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb121-3"><a href="anova-de-medidas-repetidas.html#cb121-3"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">sample=</span>residuos)) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb121-4"><a href="anova-de-medidas-repetidas.html#cb121-4"></a><span class="st">  </span><span class="kw">stat_qq</span>() <span class="op">+</span><span class="st"> </span></span>
 <span id="cb121-5"><a href="anova-de-medidas-repetidas.html#cb121-5"></a><span class="st">  </span><span class="kw">stat_qq_line</span>()</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-160-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-156-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Apesar do gráfico ter sido bastante claro, testes como o Shapiro-wilk, Anderson-Darling e Jarque Bera também podem ser utilizados neste caso. A hipótese nula desses testes assume que os resíduos são normalmente distribuídos.</p>
 <div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="anova-de-medidas-repetidas.html#cb122-1"></a><span class="kw">shapiro.test</span>(<span class="kw">proj</span>(ez_outcome<span class="op">$</span>aov)[[<span class="dv">3</span>]][, <span class="st">&quot;Residuals&quot;</span>])</span></code></pre></div>
 <pre><code>## 
@@ -985,7 +985,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="tamanho-do-efeito-4" class="section level2">
 <h2><span class="header-section-number">13.3</span> Tamanho do efeito</h2>
 <p>Resultados significativos não são informativos em relação ao tamanho do efeito. Esta última métrica tem mais contato com as perguntas originalmente realizadas em uma pesquisa e é entendida como uma medida objetiva e padronizada da magnitude de um efeito observado independente da significância estatística. Dessa maneira, o tamanho do efeito pode ser considerado um indicador da relevância clínica dos grupos, cujo uso é sempre importante em pesquisas em Psicologia e áreas da saúde.</p>
-<p>Na ANOVA de medidas repetidas o <u>eta quadrado parcial</u> (<span class="math inline">\(\eta_p^2\)</span>) e o <u>eta quadrado generalizado</u> (<span class="math inline">\(\eta^2_G\)</span>) podem ser calculados. A interpretação do <span class="math inline">\(\eta_p^2\)</span> é a mesma já apresentada no capítulo sobre ANOVA, enquanto o <span class="math inline">\(\eta^2_G\)</span> pode ser interpretado segundo a tabela disposta a seguir <span class="citation">(Draper, <a href="#ref-draper_2020" role="doc-biblioref">2020</a>)</span>:</p>
+<p>Na ANOVA de medidas repetidas o <u>eta quadrado parcial</u> (<span class="math inline">\(\eta_p^2\)</span>) e o <u>eta quadrado generalizado</u> (<span class="math inline">\(\eta^2_G\)</span>) podem ser calculados. A interpretação do <span class="math inline">\(\eta_p^2\)</span> é a mesma já apresentada no capítulo sobre ANOVA, enquanto o <span class="math inline">\(\eta^2_G\)</span> pode ser interpretado segundo a tabela disposta a seguir <span class="citation">(<span class="citeproc-not-found" data-reference-id="draper_2020"><strong>???</strong></span>)</span>:</p>
 <table>
 <thead>
 <tr class="header">
@@ -1090,12 +1090,6 @@ Os dados foram analisados a partir de uma ANOVA de medidas repetidas investigand
 </ol>
 </div>
 
-</div>
-</div>
-<h3> Referencias</h3>
-<div id="refs" class="references">
-<div id="ref-draper_2020">
-<p>Draper, S. (2020). In <em>Effect size</em>. <a href="https://www.psy.gla.ac.uk/~steve/best/effect.html">https://www.psy.gla.ac.uk/~steve/best/effect.html</a></p>
 </div>
 </div>
             </section>

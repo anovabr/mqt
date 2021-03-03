@@ -435,7 +435,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>O Coeficiente de Correlação de Pearson é um dos mais frequentemente calculados em Psicologia e outras áreas empíricas e será demonstrado neste capítulo. É importante, no entanto, ter em mente que algumas áreas específicas outros coeficientes tendem a ser utilizados. Como exemplo, é bem típico em Psicometria trabalhar com variáveis categóricas e, com isso, calcular correlações tetracóricas ou policóricas, que não serão abordadas aqui.</p>
-<p>A correlação de Pearson é apresentada por <span class="math inline">\(\rho\)</span> ou <code>r</code>, e é formada por um <u>valor numérico</u> e um <u>sinal</u>. Enquanto o valor numérico indica a força do relacionamento bivariado, o sinal indica a natureza proporcional ou inversamente proporcional desse relacionamento. A tabela abaixo descreve as possíveis interpretações <span class="citation">(Cohen, <a href="#ref-Cohen1988" role="doc-biblioref">1988</a>)</span>.</p>
+<p>A correlação de Pearson é apresentada por <span class="math inline">\(\rho\)</span> ou <code>r</code>, e é formada por um <u>valor numérico</u> e um <u>sinal</u>. Enquanto o valor numérico indica a força do relacionamento bivariado, o sinal indica a natureza proporcional ou inversamente proporcional desse relacionamento. A tabela abaixo descreve as possíveis interpretações <span class="citation">(<span class="citeproc-not-found" data-reference-id="Cohen1988"><strong>???</strong></span>)</span>.</p>
 <table>
 <thead>
 <tr class="header">
@@ -463,7 +463,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>O gráfico de dispersão é uma excelente forma de ilustrar o relacionamento bivariado e as imagens abaixo demonstram tais conceitos.</p>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-177-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-173-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Para realização da Correlação de Pearson, é necessário que ambas as variáveis sejam contínuas e apresentem relacionamento linear. O Coeficiente tem as seguintes propriedades:</p>
 <ol style="list-style-type: decimal">
 <li>É limitado entre -1 e +1, com 0 indicando ausência de correlação<br />
@@ -532,7 +532,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="correlação.html#cb137-1"></a><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> bsq_soma, <span class="dt">y =</span> eat_soma)) <span class="op">+</span></span>
 <span id="cb137-2"><a href="correlação.html#cb137-2"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Imagem corporal (BSQ)&quot;</span>, <span class="dt">Y =</span> <span class="st">&quot;Disfunção alimentar (EAT)&quot;</span>)<span class="op">+</span></span>
 <span id="cb137-3"><a href="correlação.html#cb137-3"></a><span class="st">  </span><span class="kw">geom_jitter</span>()</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-179-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-175-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O gráfico indica que as duas variáveis são relacionadas. Apesar do padrão deste relacionamento não ser estritamente linear, é possível testar formalmente a correlação entre ambas as variáveis,</p>
 <p>Isso pode ser feito pela função <code>cor.test</code>, que é nativa do R.</p>
 <div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="correlação.html#cb138-1"></a><span class="kw">cor.test</span>(dados_brasil<span class="op">$</span>eat_soma, dados_brasil<span class="op">$</span>bsq_soma) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
@@ -631,12 +631,6 @@ A correlação entre o comportamento alimentar (EAT-26) e a percepção corporal
 Nesse estudo, 393 participantes de idades variadas foram recrutados e viram uma imagem ambígua em que é possível identificar tanto uma moça jovem, como uma senhora de idade. Os participantes deveriam olhar a imagem e indicar a idade a pessoa. Com estes resultados, os pesquisadores calcularam a correlação entre a idade do participante e a idade que as pessoas deram à pessoa.</li>
 </ol>
 
-</div>
-</div>
-<h3> Referencias</h3>
-<div id="refs" class="references">
-<div id="ref-Cohen1988">
-<p>Cohen, J. (1988). <em>Statistical power analysis for the behavioral sciences</em>. Routledge. <a href="https://doi.org/10.4324/9780203771587">https://doi.org/10.4324/9780203771587</a></p>
 </div>
 </div>
             </section>

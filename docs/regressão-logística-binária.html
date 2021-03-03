@@ -451,7 +451,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Uma probabilidade é uma razão entre uma parte contra o todo (<em>Tudo o que tenho sobre tudo o que posso quero</em>, em jargão pedagógico). Quando se fala sobre riscos, implicitamente está se falando sobre probabilidades. Por sua vez, a chance é uma razão em que o numerador é uma probabilidade e o denominador é seu complemento. A figura a seguir ilustra essa diferença.</p>
 <p><img src="img/cap_reg_log_odds.PNG" /></p>
 <p>É legítimo ter dificuldade na interpretação do conceito, além de questionar o motivo pelo qual ele é tão utilizado nestas áreas, o que será apresentado ao fim do capítulo. No entanto, é importante perceber que quanto maior for a probabilidade, maior também serão as chances de um determinado evento e vice-versa. A relação entre ambos tem o seguinte formato.</p>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-220-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-216-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Por sua vez, a Razão de chances (<em>Odds Ratio</em> ou OR) é uma medida de tamanho de efeito que se dá pela comparação entre dois grupos. Para computá-la, é necessário verificar a chance do desfecho ocorrer em cada um dos grupos e, em seguida, dividir os resultados.</p>
 <p>Como em áreas de saúde, quase sempre, o interesse é verificar situações clínicas, quanto maior for o OR, maior será a chance da ocorrência de um desfecho negativo em um determinado grupo em comparação à outra e, consequentemente, maior será o risco.</p>
 <p>A tabela a seguir apresenta aos principais resultados de OR e suas interpretações:</p>
@@ -959,7 +959,7 @@ R<sup>2</sup> Tjur
 <span id="cb177-4"><a href="regressão-logística-binária.html#cb177-4"></a><span class="st">  </span><span class="kw">glm</span>(risk_cefaleia_resources <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>, <span class="dt">data =</span> .)</span>
 <span id="cb177-5"><a href="regressão-logística-binária.html#cb177-5"></a><span class="co">#comparar modelos</span></span>
 <span id="cb177-6"><a href="regressão-logística-binária.html#cb177-6"></a><span class="kw">anova</span>(mod_nulo, mod_risco, <span class="dt">test =</span> <span class="st">&quot;LRT&quot;</span>)</span></code></pre></div>
-<p>O <u>segundo momento</u> é relacionado à análise do <span class="math inline">\(R^2\)</span>, disposto na parte inferior da tabela. Existem diferentes maneiras de calculá-lo e sua interpretação não é exatamente igual à feita na regressão linear. Enquanto na regressão linear, o <span class="math inline">\(R^2\)</span> se refere à proporção da variância explicada, em modelos logísticos, no geral, o <span class="math inline">\(R^2\)</span> indica o quanto o modelo testado é próximo de um modelo com ajuste perfeito aos dados (saturado) <span class="citation">(Portugues, <a href="#ref-portugues2020" role="doc-biblioref">2020</a>)</span>.</p>
+<p>O <u>segundo momento</u> é relacionado à análise do <span class="math inline">\(R^2\)</span>, disposto na parte inferior da tabela. Existem diferentes maneiras de calculá-lo e sua interpretação não é exatamente igual à feita na regressão linear. Enquanto na regressão linear, o <span class="math inline">\(R^2\)</span> se refere à proporção da variância explicada, em modelos logísticos, no geral, o <span class="math inline">\(R^2\)</span> indica o quanto o modelo testado é próximo de um modelo com ajuste perfeito aos dados (saturado) <span class="citation">(<span class="citeproc-not-found" data-reference-id="portugues2020"><strong>???</strong></span>)</span>.</p>
 <p>O <span class="math inline">\(R^2 \, de \, Tjur\)</span> é a medida utilizada nesta apresentação e seus valores variam entre 0 e 1. Ele computa a diferença entre os dados e os valores previstos pelo modelo testado. Quão maior o valor, mais discriminativo é o modelo testado. Neste caso, o o <span class="math inline">\(R^2 \, de \, Tjur\)</span> foi de 0.10. Não há uma regra geral para interpretar o <span class="math inline">\(R^2\)</span>. Em Psicologia, por exemplo, é bastante difícil que ele chegue a 0.5.</p>
 <p>A <u>terceira</u> interpretação é baseada nos <em>Odds Ratio</em> (OR) e sugere alguma com atenção: o OR indica a <u>chance</u> de ocorrência de um desfecho caso o preditor analisado tenha ocorrido, em comparação com sua não ocorrência. Ele não indica diretamente sobre a probabilidade, apesar disso ser possível de ser feito.</p>
 <p>Os preditores <u>sex[female]</u> e <u>sqd_risk</u> foram significativos. A interpretação pode ser feita da seguinte maneira:</p>
@@ -981,12 +981,12 @@ R<sup>2</sup> Tjur
 <span id="cb178-6"><a href="regressão-logística-binária.html#cb178-6"></a><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">labels =</span> <span class="cf">function</span>(x) <span class="kw">str_wrap</span>(x, <span class="dt">width =</span> <span class="dv">10</span>)) <span class="op">+</span></span>
 <span id="cb178-7"><a href="regressão-logística-binária.html#cb178-7"></a><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span></span>
 <span id="cb178-8"><a href="regressão-logística-binária.html#cb178-8"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;top&quot;</span>)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-225-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-221-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Caso haja interesse, é também possível computar as probabilidades e adicioná-las à tabela aplicando <span class="math inline">\(Odds/(1+Odds)\)</span>. Ao fazer isso, uma nova informação será apresentada e poderá ter alguma utilidade para interpretar preditores variáveis categóricas. Tradicionalmente, isso não é feito.</p>
 <div class="warning">
 <p><strong>Atenção</strong>: A validade das inferências dos resultados depende da adequação ou não dos pressupostos dos testes estatísticos. A avaliação destas condições é parte de um procedimento diagnóstico que deve ser sempre feito.</p>
 </div>
-<p>Um aspecto importante é que a validade da interpretação dos resultados depende dos pressupostos do modelo estatístico. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(Barker &amp; Shaw, <a href="#ref-Barker2015" role="doc-biblioref">2015</a>; Ernst &amp; Albers, <a href="#ref-Ernst2017" role="doc-biblioref">2017</a>; Lix et al., <a href="#ref-Lix1996" role="doc-biblioref">1996</a>)</span>. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.</p>
+<p>Um aspecto importante é que a validade da interpretação dos resultados depende dos pressupostos do modelo estatístico. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(<span class="citeproc-not-found" data-reference-id="Lix1996"><strong>???</strong></span>; <span class="citeproc-not-found" data-reference-id="Barker2015"><strong>???</strong></span>; <span class="citeproc-not-found" data-reference-id="Ernst2017"><strong>???</strong></span>)</span>. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.</p>
 <p><mark>Multicolinearidade</mark>: A multicolinearidade pode ser investigada pela análise chamada <em>Variance Inflaction Factor</em> (VIF). Essa análise verifica o quão correlacionados são os preditores e gera um resultado numérico. Valores abaixo de 4 são tipicamente utilizados para indicar que os preditores <u>não</u> são fortemente correlacionados e, consequentemente, considerar este pressuposto atendido.</p>
 <div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="regressão-logística-binária.html#cb179-1"></a>car<span class="op">::</span><span class="kw">vif</span>(mod_risco) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>()</span></code></pre></div>
 <table style="width:65%;">
@@ -1063,7 +1063,7 @@ R<sup>2</sup> Tjur
 </table>
 <p><mark>Relação linear entre preditores contínuos e o logit</mark>: A regressão logística assume que há um relacionamento linear entre os preditores contínuos e o desfecho logit. O pacote <code>sjplot</code> também pode ser utilizado para testar este pressuposto. Não há um teste formal específico para este pressuposto e a decisão é baseada na visualização deste relacionamento.</p>
 <div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="regressão-logística-binária.html#cb180-1"></a>sjPlot<span class="op">::</span><span class="kw">plot_model</span>(mod_risco, <span class="dt">type =</span> <span class="st">&quot;pred&quot;</span>, <span class="dt">terms =</span>  <span class="st">&quot;age&quot;</span>)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-227-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-223-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O gráfico não sugere desvio da linearidade. Com isso, esse pressuposto é também considerado mantido.</p>
 <p>Após essas análises, é possível interpretar os resultados.</p>
 </div>
@@ -1113,7 +1113,7 @@ R<sup>2</sup> Tjur
 <div class="warning">
 <p><strong>Atenção</strong>: A validade das inferências dos resultados depende da adequação ou não dos pressupostos dos testes estatísticos. A avaliação destas condições é parte de um procedimento diagnóstico que deve ser sempre feito.</p>
 </div>
-<p>Uma vez que o modelo já foi realizado, a interpretação dos resultados depende da adequação de seus pressupostos. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(Barker &amp; Shaw, <a href="#ref-Barker2015" role="doc-biblioref">2015</a>; Ernst &amp; Albers, <a href="#ref-Ernst2017" role="doc-biblioref">2017</a>; Lix et al., <a href="#ref-Lix1996" role="doc-biblioref">1996</a>)</span>. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada.</p>
+<p>Uma vez que o modelo já foi realizado, a interpretação dos resultados depende da adequação de seus pressupostos. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(<span class="citeproc-not-found" data-reference-id="Lix1996"><strong>???</strong></span>; <span class="citeproc-not-found" data-reference-id="Barker2015"><strong>???</strong></span>; <span class="citeproc-not-found" data-reference-id="Ernst2017"><strong>???</strong></span>)</span>. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada.</p>
 <p>Nesta versão do JASP, não há testes formais para verificar a <mark>multicolinearidade</mark>, mas há para verificar a <mark>relação linear entre o logit e preditores contínuos</mark>. Para realizar esta análise, é necessário clicar em <code>Plots</code>, na parte esquerda da interface.</p>
 <p><img src="img/cap_logistica_assumptions_plot.PNG" /></p>
 <p>Um conjunto de opção irá ser exibida. É necessário marcar <code>Inferential Plots</code> e <code>Display conditional estimates plots</code>. O JASP irá fazer gráficos individuais para cada preditor. No entanto, é importante olhar apenas o relacionamento entre os preditores contínuos (por exemplo, <u>age</u>) e o desfecho. O ideal é que haja um relacionamento linear entre ambos, tal como ocorre neste caso.</p>
@@ -1318,21 +1318,6 @@ Este estudo visou identificar os preditores relacionados à sobrevivência/morta
 ✂ Gabarito: 1-b;2-a;3-a
 </div>
 
-</div>
-</div>
-<h3> Referencias</h3>
-<div id="refs" class="references">
-<div id="ref-Barker2015">
-<p>Barker, L. E., &amp; Shaw, K. M. (2015). Best (but oft-forgotten) practices: Checking assumptions concerning regression residuals. <em>The American Journal of Clinical Nutrition</em>, <em>102</em>(3), 533–539. <a href="https://doi.org/10.3945/ajcn.115.113498">https://doi.org/10.3945/ajcn.115.113498</a></p>
-</div>
-<div id="ref-Ernst2017">
-<p>Ernst, A. F., &amp; Albers, C. J. (2017). Regression assumptions in clinical psychology research practicea systematic review of common misconceptions. <em>PeerJ</em>, <em>5</em>, e3323. <a href="https://doi.org/10.7717/peerj.3323">https://doi.org/10.7717/peerj.3323</a></p>
-</div>
-<div id="ref-Lix1996">
-<p>Lix, L. M., Keselman, J. C., &amp; Keselman, H. J. (1996). Consequences of assumption violations revisited: A quantitative review of alternatives to the one-way analysis of variance "f" test. <em>Review of Educational Research</em>, <em>66</em>(4), 579. <a href="https://doi.org/10.2307/1170654">https://doi.org/10.2307/1170654</a></p>
-</div>
-<div id="ref-portugues2020">
-<p>Portugues, E. G. (2020). Lab notes for statistics for social sciences ii: Multivariate techniques. In <em>Statistics for Social Sciences II: Multivariate Techniques</em>. <a href="https://bookdown.org/egarpor/SSS2-UC3M/">https://bookdown.org/egarpor/SSS2-UC3M/</a></p>
 </div>
 </div>
             </section>
