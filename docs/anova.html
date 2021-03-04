@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Cap. 12 ANOVA | Conceitos e análises estatísticas com R e JASP</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Cap. 12 ANOVA | Conceitos e análises estatísticas com R e JASP" />
   <meta property="og:type" content="book" />
@@ -49,6 +49,7 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
@@ -236,6 +237,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.10" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html#o-cálculo-do-tamanho-amostral"><i class="fa fa-check"></i><b>6.10</b> O cálculo do tamanho amostral</a></li>
 <li class="chapter" data-level="6.11" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html#amostragem-e-sua-relação-com-os-resultados"><i class="fa fa-check"></i><b>6.11</b> Amostragem e sua relação com os resultados</a></li>
 <li class="chapter" data-level="6.12" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html#amostragem-delineamento-e-generalização"><i class="fa fa-check"></i><b>6.12</b> Amostragem, delineamento e generalização</a></li>
+<li class="chapter" data-level="6.13" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html#resumo-4"><i class="fa fa-check"></i><b>6.13</b> Resumo</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html"><i class="fa fa-check"></i><b>7</b> Estatística Inferencial</a><ul>
 <li class="chapter" data-level="7.1" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#nhst-teste-de-significância-de-hipótese-nula"><i class="fa fa-check"></i><b>7.1</b> NHST (Teste de Significância de Hipótese Nula)</a><ul>
@@ -247,8 +249,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#o-tamanho-do-efeito"><i class="fa fa-check"></i><b>7.5</b> O tamanho do efeito</a></li>
 <li class="chapter" data-level="7.6" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#um-exemplo-intuitivo"><i class="fa fa-check"></i><b>7.6</b> Um exemplo intuitivo</a></li>
 <li class="chapter" data-level="7.7" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#o-que-não-te-contaram-sobre-inferência-estatística"><i class="fa fa-check"></i><b>7.7</b> O que não te contaram sobre inferência estatística</a></li>
-<li class="chapter" data-level="7.8" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#questões-2"><i class="fa fa-check"></i><b>7.8</b> Questões</a></li>
-<li class="chapter" data-level="7.9" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#pesquisas-adicionais"><i class="fa fa-check"></i><b>7.9</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="7.8" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#pesquisas-adicionais"><i class="fa fa-check"></i><b>7.8</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="7.9" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#questões-2"><i class="fa fa-check"></i><b>7.9</b> Questões</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html"><i class="fa fa-check"></i><b>8</b> Um exemplo real de pesquisa</a><ul>
 <li class="chapter" data-level="8.1" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html#o-que-será-pesquisado"><i class="fa fa-check"></i><b>8.1</b> O que será pesquisado</a></li>
@@ -258,7 +260,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.5" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html#os-achados"><i class="fa fa-check"></i><b>8.5</b> Os achados</a></li>
 <li class="chapter" data-level="8.6" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html#divulgação-do-estudo"><i class="fa fa-check"></i><b>8.6</b> Divulgação do estudo</a></li>
 <li class="chapter" data-level="8.7" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html#fluxograma"><i class="fa fa-check"></i><b>8.7</b> Fluxograma</a></li>
-<li class="chapter" data-level="8.8" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html#resumo-4"><i class="fa fa-check"></i><b>8.8</b> Resumo</a></li>
+<li class="chapter" data-level="8.8" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html#resumo-5"><i class="fa fa-check"></i><b>8.8</b> Resumo</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="qui-quadrado.html"><a href="qui-quadrado.html"><i class="fa fa-check"></i><b>9</b> Qui quadrado</a><ul>
 <li class="chapter" data-level="9.1" data-path="qui-quadrado.html"><a href="qui-quadrado.html#pesquisa-1"><i class="fa fa-check"></i><b>9.1</b> Pesquisa</a></li>
@@ -266,7 +268,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="qui-quadrado.html"><a href="qui-quadrado.html#tamanho-do-efeito"><i class="fa fa-check"></i><b>9.3</b> Tamanho do efeito</a></li>
 <li class="chapter" data-level="9.4" data-path="qui-quadrado.html"><a href="qui-quadrado.html#execução-no-jasp-1"><i class="fa fa-check"></i><b>9.4</b> Execução no JASP</a></li>
 <li class="chapter" data-level="9.5" data-path="qui-quadrado.html"><a href="qui-quadrado.html#escrita-dos-resultados"><i class="fa fa-check"></i><b>9.5</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="9.6" data-path="qui-quadrado.html"><a href="qui-quadrado.html#resumo-5"><i class="fa fa-check"></i><b>9.6</b> Resumo</a></li>
+<li class="chapter" data-level="9.6" data-path="qui-quadrado.html"><a href="qui-quadrado.html#resumo-6"><i class="fa fa-check"></i><b>9.6</b> Resumo</a></li>
 <li class="chapter" data-level="9.7" data-path="qui-quadrado.html"><a href="qui-quadrado.html#pesquisas-adicionais-1"><i class="fa fa-check"></i><b>9.7</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="9.8" data-path="qui-quadrado.html"><a href="qui-quadrado.html#questões-3"><i class="fa fa-check"></i><b>9.8</b> Questões</a></li>
 </ul></li>
@@ -276,7 +278,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.3" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html#execução-no-jasp-2"><i class="fa fa-check"></i><b>10.3</b> Execução no JASP</a></li>
 <li class="chapter" data-level="10.4" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html#escrita-dos-resultados-1"><i class="fa fa-check"></i><b>10.4</b> Escrita dos resultados</a></li>
 <li class="chapter" data-level="10.5" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html#odds-ratio-e-regressão-logística"><i class="fa fa-check"></i><b>10.5</b> Odds Ratio e Regressão logística</a></li>
-<li class="chapter" data-level="10.6" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html#resumo-6"><i class="fa fa-check"></i><b>10.6</b> Resumo</a></li>
+<li class="chapter" data-level="10.6" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html#resumo-7"><i class="fa fa-check"></i><b>10.6</b> Resumo</a></li>
 <li class="chapter" data-level="10.7" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html#pesquisas-adicionais-2"><i class="fa fa-check"></i><b>10.7</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="10.8" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html#questões-4"><i class="fa fa-check"></i><b>10.8</b> Questões</a></li>
 </ul></li>
@@ -297,7 +299,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.7.4" data-path="teste-t.html"><a href="teste-t.html#escrita-dos-resultados-3"><i class="fa fa-check"></i><b>11.7.4</b> Escrita dos resultados</a></li>
 </ul></li>
 <li class="chapter" data-level="11.8" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>11.8</b> Teste T e regressão</a></li>
-<li class="chapter" data-level="11.9" data-path="teste-t.html"><a href="teste-t.html#resumo-7"><i class="fa fa-check"></i><b>11.9</b> Resumo</a></li>
+<li class="chapter" data-level="11.9" data-path="teste-t.html"><a href="teste-t.html#resumo-8"><i class="fa fa-check"></i><b>11.9</b> Resumo</a></li>
 <li class="chapter" data-level="11.10" data-path="teste-t.html"><a href="teste-t.html#pesquisas-adicionais-3"><i class="fa fa-check"></i><b>11.10</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="11.11" data-path="teste-t.html"><a href="teste-t.html#questões-5"><i class="fa fa-check"></i><b>11.11</b> Questões</a></li>
 </ul></li>
@@ -312,7 +314,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.8" data-path="anova.html"><a href="anova.html#execução-no-r-7"><i class="fa fa-check"></i><b>12.8</b> Execução no R</a></li>
 <li class="chapter" data-level="12.9" data-path="anova.html"><a href="anova.html#execução-no-jasp-7"><i class="fa fa-check"></i><b>12.9</b> Execução no JASP</a></li>
 <li class="chapter" data-level="12.10" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-5"><i class="fa fa-check"></i><b>12.10</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="12.11" data-path="anova.html"><a href="anova.html#resumo-8"><i class="fa fa-check"></i><b>12.11</b> Resumo</a></li>
+<li class="chapter" data-level="12.11" data-path="anova.html"><a href="anova.html#resumo-9"><i class="fa fa-check"></i><b>12.11</b> Resumo</a></li>
 <li class="chapter" data-level="12.12" data-path="anova.html"><a href="anova.html#pesquisas-adicionais-4"><i class="fa fa-check"></i><b>12.12</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="12.13" data-path="anova.html"><a href="anova.html#pesquisa-5"><i class="fa fa-check"></i><b>12.13</b> Pesquisa</a></li>
 <li class="chapter" data-level="12.14" data-path="anova.html"><a href="anova.html#anova-de-2-vias"><i class="fa fa-check"></i><b>12.14</b> ANOVA de 2 vias</a></li>
@@ -323,12 +325,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.19" data-path="anova.html"><a href="anova.html#execução-no-r-9"><i class="fa fa-check"></i><b>12.19</b> Execução no R</a></li>
 <li class="chapter" data-level="12.20" data-path="anova.html"><a href="anova.html#execução-no-jasp-9"><i class="fa fa-check"></i><b>12.20</b> Execução no JASP</a></li>
 <li class="chapter" data-level="12.21" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-7"><i class="fa fa-check"></i><b>12.21</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="12.22" data-path="anova.html"><a href="anova.html#resumo-9"><i class="fa fa-check"></i><b>12.22</b> Resumo</a></li>
+<li class="chapter" data-level="12.22" data-path="anova.html"><a href="anova.html#resumo-10"><i class="fa fa-check"></i><b>12.22</b> Resumo</a></li>
 <li class="chapter" data-level="12.23" data-path="anova.html"><a href="anova.html#anova-fatorial"><i class="fa fa-check"></i><b>12.23</b> ANOVA Fatorial</a></li>
 <li class="chapter" data-level="12.24" data-path="anova.html"><a href="anova.html#execução-no-r-10"><i class="fa fa-check"></i><b>12.24</b> Execução no R</a></li>
 <li class="chapter" data-level="12.25" data-path="anova.html"><a href="anova.html#execução-no-jasp-10"><i class="fa fa-check"></i><b>12.25</b> Execução no JASP</a></li>
 <li class="chapter" data-level="12.26" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-8"><i class="fa fa-check"></i><b>12.26</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="12.27" data-path="anova.html"><a href="anova.html#resumo-10"><i class="fa fa-check"></i><b>12.27</b> Resumo</a></li>
+<li class="chapter" data-level="12.27" data-path="anova.html"><a href="anova.html#resumo-11"><i class="fa fa-check"></i><b>12.27</b> Resumo</a></li>
 <li class="chapter" data-level="12.28" data-path="anova.html"><a href="anova.html#post-hoc-2"><i class="fa fa-check"></i><b>12.28</b> Post hoc</a></li>
 <li class="chapter" data-level="12.29" data-path="anova.html"><a href="anova.html#execução-no-jasp-11"><i class="fa fa-check"></i><b>12.29</b> Execução no JASP</a></li>
 <li class="chapter" data-level="12.30" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-9"><i class="fa fa-check"></i><b>12.30</b> Escrita dos resultados</a></li>
@@ -340,14 +342,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#tamanho-do-efeito-4"><i class="fa fa-check"></i><b>13.3</b> Tamanho do efeito</a></li>
 <li class="chapter" data-level="13.4" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#execução-no-jasp-12"><i class="fa fa-check"></i><b>13.4</b> Execução no JASP</a></li>
 <li class="chapter" data-level="13.5" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#escrita-dos-resultados-10"><i class="fa fa-check"></i><b>13.5</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="13.6" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#resumo-11"><i class="fa fa-check"></i><b>13.6</b> Resumo</a></li>
+<li class="chapter" data-level="13.6" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#resumo-12"><i class="fa fa-check"></i><b>13.6</b> Resumo</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html"><i class="fa fa-check"></i><b>14</b> Modelo linear misto</a><ul>
 <li class="chapter" data-level="14.1" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#pesquisa-7"><i class="fa fa-check"></i><b>14.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="14.2" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#execução-no-r-12"><i class="fa fa-check"></i><b>14.2</b> execução no R</a></li>
 <li class="chapter" data-level="14.3" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#execução-no-jasp-13"><i class="fa fa-check"></i><b>14.3</b> Execução no JASP</a></li>
 <li class="chapter" data-level="14.4" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#escrita-dos-resultados-11"><i class="fa fa-check"></i><b>14.4</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="14.5" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#resumo-12"><i class="fa fa-check"></i><b>14.5</b> Resumo</a></li>
+<li class="chapter" data-level="14.5" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#resumo-13"><i class="fa fa-check"></i><b>14.5</b> Resumo</a></li>
 <li class="chapter" data-level="14.6" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#pesquisas-adicionais-5"><i class="fa fa-check"></i><b>14.6</b> Pesquisas adicionais</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="correlação.html"><a href="correlação.html"><i class="fa fa-check"></i><b>15</b> Correlação</a><ul>
@@ -355,27 +357,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.2" data-path="correlação.html"><a href="correlação.html#execução-no-r-13"><i class="fa fa-check"></i><b>15.2</b> Execução no R</a></li>
 <li class="chapter" data-level="15.3" data-path="correlação.html"><a href="correlação.html#execução-no-jasp-14"><i class="fa fa-check"></i><b>15.3</b> Execução no JASP</a></li>
 <li class="chapter" data-level="15.4" data-path="correlação.html"><a href="correlação.html#escrita-dos-resultados-12"><i class="fa fa-check"></i><b>15.4</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="15.5" data-path="correlação.html"><a href="correlação.html#resumo-13"><i class="fa fa-check"></i><b>15.5</b> Resumo</a></li>
+<li class="chapter" data-level="15.5" data-path="correlação.html"><a href="correlação.html#resumo-14"><i class="fa fa-check"></i><b>15.5</b> Resumo</a></li>
 <li class="chapter" data-level="15.6" data-path="correlação.html"><a href="correlação.html#pesquisas-adicionais-6"><i class="fa fa-check"></i><b>15.6</b> Pesquisas adicionais</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html"><i class="fa fa-check"></i><b>16</b> Regressão linear múltipla</a><ul>
-<li class="chapter" data-level="16.1" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisa-9"><i class="fa fa-check"></i><b>16.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="16.2" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-r-14"><i class="fa fa-check"></i><b>16.2</b> Execução no R</a></li>
-<li class="chapter" data-level="16.3" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-jasp-15"><i class="fa fa-check"></i><b>16.3</b> Execução no JASP</a></li>
-<li class="chapter" data-level="16.4" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#escrita-dos-resultados-13"><i class="fa fa-check"></i><b>16.4</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="16.5" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#técnicas-automáticas-de-seleção-de-variáveis"><i class="fa fa-check"></i><b>16.5</b> Técnicas automáticas de seleção de variáveis</a></li>
-<li class="chapter" data-level="16.6" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#resumo-14"><i class="fa fa-check"></i><b>16.6</b> Resumo</a></li>
-<li class="chapter" data-level="16.7" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisas-adicionais-7"><i class="fa fa-check"></i><b>16.7</b> Pesquisas adicionais</a></li>
-<li class="chapter" data-level="16.8" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#questões-7"><i class="fa fa-check"></i><b>16.8</b> Questões</a></li>
+<li class="chapter" data-level="16" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>16</b> Regressão linear simples</a><ul>
+<li class="chapter" data-level="16.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#breve-explicação-conceitual"><i class="fa fa-check"></i><b>16.1</b> Breve explicação conceitual</a></li>
+<li class="chapter" data-level="16.2" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisa-9"><i class="fa fa-check"></i><b>16.2</b> Pesquisa</a></li>
+<li class="chapter" data-level="16.3" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-r-14"><i class="fa fa-check"></i><b>16.3</b> Execução no R</a></li>
+<li class="chapter" data-level="16.4" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-jasp-15"><i class="fa fa-check"></i><b>16.4</b> Execução no JASP</a></li>
+<li class="chapter" data-level="16.5" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#escrita-dos-resultados-13"><i class="fa fa-check"></i><b>16.5</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="16.6" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#resumo-15"><i class="fa fa-check"></i><b>16.6</b> Resumo</a></li>
+<li class="chapter" data-level="16.7" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisas-adicionais-7"><i class="fa fa-check"></i><b>16.7</b> Pesquisas adicionais</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>17</b> Regressão linear simples</a><ul>
-<li class="chapter" data-level="17.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#breve-explicação-conceitual"><i class="fa fa-check"></i><b>17.1</b> Breve explicação conceitual</a></li>
-<li class="chapter" data-level="17.2" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisa-10"><i class="fa fa-check"></i><b>17.2</b> Pesquisa</a></li>
-<li class="chapter" data-level="17.3" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-r-15"><i class="fa fa-check"></i><b>17.3</b> Execução no R</a></li>
-<li class="chapter" data-level="17.4" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-jasp-16"><i class="fa fa-check"></i><b>17.4</b> Execução no JASP</a></li>
-<li class="chapter" data-level="17.5" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#escrita-dos-resultados-14"><i class="fa fa-check"></i><b>17.5</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="17.6" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#resumo-15"><i class="fa fa-check"></i><b>17.6</b> Resumo</a></li>
-<li class="chapter" data-level="17.7" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisas-adicionais-8"><i class="fa fa-check"></i><b>17.7</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="17" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html"><i class="fa fa-check"></i><b>17</b> Regressão linear múltipla</a><ul>
+<li class="chapter" data-level="17.1" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisa-10"><i class="fa fa-check"></i><b>17.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="17.2" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-r-15"><i class="fa fa-check"></i><b>17.2</b> Execução no R</a></li>
+<li class="chapter" data-level="17.3" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-jasp-16"><i class="fa fa-check"></i><b>17.3</b> Execução no JASP</a></li>
+<li class="chapter" data-level="17.4" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#escrita-dos-resultados-14"><i class="fa fa-check"></i><b>17.4</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="17.5" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#técnicas-automáticas-de-seleção-de-variáveis"><i class="fa fa-check"></i><b>17.5</b> Técnicas automáticas de seleção de variáveis</a></li>
+<li class="chapter" data-level="17.6" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#resumo-16"><i class="fa fa-check"></i><b>17.6</b> Resumo</a></li>
+<li class="chapter" data-level="17.7" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisas-adicionais-8"><i class="fa fa-check"></i><b>17.7</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="17.8" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#questões-7"><i class="fa fa-check"></i><b>17.8</b> Questões</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html"><i class="fa fa-check"></i><b>18</b> Regressão logística binária</a><ul>
 <li class="chapter" data-level="18.1" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#pesquisa-11"><i class="fa fa-check"></i><b>18.1</b> Pesquisa</a></li>
@@ -383,7 +385,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18.3" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#execução-no-jasp-17"><i class="fa fa-check"></i><b>18.3</b> Execução no JASP</a></li>
 <li class="chapter" data-level="18.4" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#escrita-dos-resultados-15"><i class="fa fa-check"></i><b>18.4</b> Escrita dos resultados</a></li>
 <li class="chapter" data-level="18.5" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#regressão-logística-or-e-qui-quadrado"><i class="fa fa-check"></i><b>18.5</b> Regressão logística, OR e Qui-quadrado</a></li>
-<li class="chapter" data-level="18.6" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#resumo-16"><i class="fa fa-check"></i><b>18.6</b> Resumo</a></li>
+<li class="chapter" data-level="18.6" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#resumo-17"><i class="fa fa-check"></i><b>18.6</b> Resumo</a></li>
 <li class="chapter" data-level="18.7" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#pesquisas-adicionais-9"><i class="fa fa-check"></i><b>18.7</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="18.8" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#questões-8"><i class="fa fa-check"></i><b>18.8</b> Questões</a></li>
 </ul></li>
@@ -411,18 +413,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="anova" class="section level1">
 <h1><span class="header-section-number">Cap. 12</span> ANOVA</h1>
 <div class="objectives">
-<p>
-<strong>Objetivos do capítulo</strong><br />
+<p><strong>Objetivos do capítulo</strong><br />
 1. Apresentar a ANOVA<br />
 2. Discutir seus diferentes tipos, incluindo ANOVA de 1 via, 2 vias e Fatorial<br />
 3. Apresentar gráficos e tabelas com comparações de grupos<br />
 4. Apresentar e discutir testes Post hoc<br />
-5. Dar exemplos relacionados à escrita dos resultados
-</p>
+5. Dar exemplos relacionados à escrita dos resultados</p>
 </div>
 <div class="glossario">
-<p>
-<U><strong>GLOSSÁRIO</strong></U><br />
+<p><U><strong>GLOSSÁRIO</strong></U><br />
 <strong>ANOVA</strong>: Análise da variância.<br />
 <strong>Via</strong>: Variável independente, variável fonte, variável preditora, tratamento.<br />
 <strong>Fator</strong>: Sinônimo de via.<br />
@@ -432,8 +431,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <strong>Efeito de interação</strong>: Efeito do termo de interação entre duas ou mais variáveis independentes. Quando significativo, não se interpreta os efeitos principais.<br />
 <strong>Efeito simples</strong>: Efeito de uma variável independente em um nível (específico) de outra variável independente.<br />
 <strong>ANCOVA</strong>: Análise de covariância, onde se controla os resultados por uma variável contínua.<br />
-<strong>MANOVA</strong>: Análise multivariada de variância, onde se estende a ANOVA para incluir duas variáveis dependentes. É um modelo multivariado.
-</p>
+<strong>MANOVA</strong>: Análise multivariada de variância, onde se estende a ANOVA para incluir duas variáveis dependentes. É um modelo multivariado.</p>
 </div>
 <p>A ANOVA representa um conjunto de procedimentos estatísticos muito utilizado para verificar <u>diferenças médias entre diversos grupos</u> e, portanto, é considerada um procedimento paramétrico. Pragmaticamente, é possível entender ANOVA como um super Teste T ou também um caso particular de um modelo de regressão. Uma vez que a ANOVA verifica a diferença entre todos os grupos e combinações lineares de maneira simultânea, ela é classificada como um <em>Omnibus test</em>. A relação entre a ANOVA e o Teste T será abordado na seção <a href="anova.html#post-hoc">Post hoc</a>.</p>
 <p>Alguns autores indicam que a ANOVA é a técnica inferencial mais utilizada em Psicologia <span class="citation">(<span class="citeproc-not-found" data-reference-id="Chartier2008"><strong>???</strong></span>; <span class="citeproc-not-found" data-reference-id="Howell2011"><strong>???</strong></span>)</span>. Se por um aspecto, isso é extremamente vantajoso, uma vez que estreita a relação entre Psicologia e Estatística; por outro, isso parece ter contribuído para criação e manutenção de diferentes conceitos equivocados sobre a ANOVA.</p>
@@ -595,7 +593,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb64-2"><a href="anova.html#cb64-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">fun =</span> mean) <span class="op">+</span></span>
 <span id="cb64-3"><a href="anova.html#cb64-3"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>) <span class="op">+</span></span>
 <span id="cb64-4"><a href="anova.html#cb64-4"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-97-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-79-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Ambos os resultados já permitem identificar algumas características gerais. Primeiro, quão maior a escolaridade, maior o valor obtido na escala. Segundo, algumas barras de erros estão superpostas e outras não, o que nos leva à conclusão preliminar de que resultados significativos estarão presentes na próxima etapa, que é a modelagem formal dessa hipótese.</p>
 <p>Para realizar a ANOVA, é possível contar com a função <code>lm</code> ou <code>aov</code>. Aqui, a escolha da <code>lm</code> foi apenas por conveniência e o vetor <code>mod_escolaridade</code> irá armazenar os resultados.</p>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="anova.html#cb65-1"></a>mod_escolaridade &lt;-<span class="st"> </span><span class="kw">lm</span>(teg <span class="op">~</span><span class="st"> </span>escolaridade_fct, dados_teg)</span></code></pre></div>
@@ -712,7 +710,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Um aspecto importante é que a validade da interpretação dos resultados depende dos pressupostos do modelo estatístico. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(<span class="citeproc-not-found" data-reference-id="Lix1996"><strong>???</strong></span>; <span class="citeproc-not-found" data-reference-id="Barker2015"><strong>???</strong></span>; <span class="citeproc-not-found" data-reference-id="Ernst2017"><strong>???</strong></span>)</span>. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.</p>
 <p><mark>Normalidade</mark>: A ANOVA tem como um dos pressupostos a normalidade da distribuição dos resíduos. Isso pode ser feito de diferentes maneiras e abaixo há um QQ plot. Caso ambas as linhas estejam sobrepostas, isso gera evidências que o pressuposto foi atendido. Neste caso, se nota que os desvios não foram tão acentuados, apesar de existirem. Se a análise fosse apenas via QQ plot, provavelmente se consideraria este pressuposto como atendido.</p>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="anova.html#cb67-1"></a>olsrr<span class="op">::</span><span class="kw">ols_plot_resid_qq</span>(mod_escolaridade)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-100-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-82-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Além da apresentacão gráfica, existem testes estatísticos desenvolvidos especificamente para tal finalidade. Entre eles, há o Shapiro-wilk, Anderson-Darling e Jarque Bera. A hipótese nula de todos estes testes considera que os resíduos são normalmente distribuídos.</p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="anova.html#cb68-1"></a><span class="kw">shapiro.test</span>(<span class="kw">residuals</span>(mod_escolaridade))</span></code></pre></div>
 <pre><code>## 
@@ -723,7 +721,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>De maneira diferente à conclusão gráfica, o teste concluiu pela rejeição da normalidade.</p>
 <p><mark>Homocedasticidade</mark>: Este pressuposto pode ser testado por um gráfico dos resíduos contra os valores previstos. O ideal é não encontrar padrões no gráfico, tal como o gráfico a seguir.</p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="anova.html#cb70-1"></a>olsrr<span class="op">::</span><span class="kw">ols_plot_resid_fit</span>(mod_escolaridade)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-102-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-84-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O teste de Levene, de Bartlett ou de Breusch-Pagan podem também serem utilizados de maneira formal. Eles estipulam <span class="math inline">\(H_0\)</span> como homocedasticidade que, idealmente, não deve ser rejeitada.</p>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="anova.html#cb71-1"></a>car<span class="op">::</span><span class="kw">leveneTest</span>(mod_escolaridade)</span></code></pre></div>
 <pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = median)
@@ -812,12 +810,8 @@ Neste caso, há a impressão visual de que a normalidade está mantida, bem como
 <h2><span class="header-section-number">12.6</span> Escrita dos resultados</h2>
 <p>O principal achado foi que os resultados médios de empreendedorismo foram significativamente influenciados pelo nível de escolaridade dos participantes. Abaixo uma sugestão de escrita baseada nas recomendações da American Psychological Association (APA).</p>
 <div class="writing">
-<p>
-<strong>Como escrever os resultados</strong>
-</p>
-<p>
-Os dados foram analisados a partir de uma ANOVA de uma via que verificou o efeito da escolaridade no empreendedorismo, medido por um escala específica. Foi possível concluir que a escolaridade tem efeito significativo (F(3, 143) = 8.23, p &lt; 0.01, ηp2 = 0.15, 90% CI [.06, .22]) nos níveis de empreendedorismo.
-</p>
+<p><strong>Como escrever os resultados</strong></p>
+<p>Os dados foram analisados a partir de uma ANOVA de uma via que verificou o efeito da escolaridade no empreendedorismo, medido por um escala específica. Foi possível concluir que a escolaridade tem efeito significativo (F(3, 143) = 8.23, p &lt; 0.01, ηp2 = 0.15, 90% CI [.06, .22]) nos níveis de empreendedorismo.</p>
 </div>
 <p>Repare que este resultado é bastante informativo, mas não deixa claro quais são os níveis de escolaridade que impactam significativamente o nível de empreendedorismo Para responder à esta questão mais específica, é necessário realizar uma análise chamada de Post hoc, descrita a seguir.</p>
 </div>
@@ -933,7 +927,7 @@ onde:</p>
 <span id="cb75-5"><a href="anova.html#cb75-5"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb75-6"><a href="anova.html#cb75-6"></a><span class="st">  </span><span class="kw">scale_size</span>(<span class="dt">trans =</span> <span class="st">&quot;reverse&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb75-7"><a href="anova.html#cb75-7"></a><span class="st">  </span><span class="kw">coord_flip</span>()</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-107-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-88-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>De forma geral, as comparações <code>Superior - Primário</code>, <code>Superior - Ginásio</code> e <code>Superior - Colegial</code> são significativas. Em todas elas, os resultados da TEG foram mais elevados nos participantes com ensino superior.</p>
 <p>No início desta seção, foi comentando que o controle do erro do tipo 1 era uma vantagem da realização deste procedimento, que inclui não apenas fazer uma ANOVA, mas calcular quantas comparações existem entre os níveis da VI e corrigir os resultados dos valores de P.</p>
 <p>Um exemplo pode ser útil a este momento. A correção implementada no teste post hoc concluiu que a comparação entre <code>colegial - primário</code> não é significativa. Nesta comparação, o valor de p foi de <code>0.102</code>. No entanto, caso um Teste T tivesse sido realizado selecionando apenas esta comparação, os resultados seriam significativos (<code>0.01</code>), tal como demonstrado a seguir:</p>
@@ -964,15 +958,11 @@ onde:</p>
 <h2><span class="header-section-number">12.10</span> Escrita dos resultados</h2>
 <p>A escrita dos resultados deve informar os resultados da ANOVA e das comparações pareadas. É importante apresentar os valores de P corrigidos e, sempre que possível, as interpretações teóricas. Abaixo há uma sugestão com estilo baseado nas recomendações da American Psychological Association (APA).</p>
 <div class="writing">
-<p>
-<strong>Como escrever os resultados</strong>
-</p>
-<p>
-Os dados foram analisados a partir de uma ANOVA de uma via que verificou o efeito da escolaridade no empreendedorismo, medido por um escala específica. Foi possível concluir que a escolaridade é um fator significativo nos resultados (F(3, 143) = 8.23, p &lt; 0.01, ηp2 = 0.15, 90% CI [.06, .22]). As comparações pareadas foram ajustadas pela técnica de Bonferroni e mostraram que os participantes com ensino superior apresentam pontuação significativamente mais alta do que àqueles com o primário (Δ = 7.16, p &lt; 0.001), ginásio (Δ = 5.07, p &lt; 0.001) e colegial (Δ = 2.96, p &lt; 0.05).
-</p>
+<p><strong>Como escrever os resultados</strong></p>
+<p>Os dados foram analisados a partir de uma ANOVA de uma via que verificou o efeito da escolaridade no empreendedorismo, medido por um escala específica. Foi possível concluir que a escolaridade é um fator significativo nos resultados (F(3, 143) = 8.23, p &lt; 0.01, ηp2 = 0.15, 90% CI [.06, .22]). As comparações pareadas foram ajustadas pela técnica de Bonferroni e mostraram que os participantes com ensino superior apresentam pontuação significativamente mais alta do que àqueles com o primário (Δ = 7.16, p &lt; 0.001), ginásio (Δ = 5.07, p &lt; 0.001) e colegial (Δ = 2.96, p &lt; 0.05).</p>
 </div>
 </div>
-<div id="resumo-8" class="section level2">
+<div id="resumo-9" class="section level2">
 <h2><span class="header-section-number">12.11</span> Resumo</h2>
 <div class="explore">
 <ol style="list-style-type: decimal">
@@ -1136,13 +1126,13 @@ Nesta pesquisa, cerca de 150 estudantes foram apresentados a um filme e depois t
 <span id="cb80-7"><a href="anova.html#cb80-7"></a>  <span class="kw">ggplot</span>(ds, <span class="kw">aes</span>(<span class="dt">x =</span> faixa_etaria, <span class="dt">y =</span> memore_total, <span class="dt">group =</span> <span class="dv">1</span>)) <span class="op">+</span></span>
 <span id="cb80-8"><a href="anova.html#cb80-8"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>, <span class="dt">fun =</span> mean, <span class="dt">size=</span><span class="fl">1.0</span>) <span class="op">+</span></span>
 <span id="cb80-9"><a href="anova.html#cb80-9"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="dt">width =</span> <span class="fl">.2</span>))</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-114-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-94-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Por sua vez, gráficos mais complexos, que reúnem mais informações, também são úteis. Repare que a ideia principal da apresentação a seguir é descrever a influência da faixa etária e o nível de escolaridade nos resultados em um único gráfico. Conforme explicitado no capítulo sobre estatística descritiva, o eixo X é utilizado pela variável com mais níveis (faixa etária), enquanto o agrupador reúne a variável com menos níveis (escolaridade).</p>
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="anova.html#cb81-1"></a><span class="kw">ggplot</span>(ds, <span class="kw">aes</span>(<span class="dt">x =</span> faixa_etaria, <span class="dt">y =</span> memore_total, <span class="dt">color =</span> escolaridade_grupo, <span class="dt">group  =</span> escolaridade_grupo)) <span class="op">+</span></span>
 <span id="cb81-2"><a href="anova.html#cb81-2"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>, <span class="dt">fun =</span> mean, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
 <span id="cb81-3"><a href="anova.html#cb81-3"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="dt">width =</span> <span class="fl">.2</span>) <span class="op">+</span></span>
 <span id="cb81-4"><a href="anova.html#cb81-4"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-115-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-95-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>É importante ter atenção que este gráfico não é necessariamente o melhor para uma ANOVA de 2 vias (aditiva), uma vez que pode sugerir algum relacionamento entre as variáveis independentes. Esse aspecto será melhor debatido na seção de <a href="#anova_fatorial">ANOVA Fatorial</a>.</p>
 <p>É possível analisar descritivamente cada um dos resultados. Entretanto, para tomar decisões inferenciais, é necessário a realização da modelagem formal. Os passos devem ser exatamente os mesmos aos performados anteriormente, incluindo a verificação de pressupostos e interpretação dos resultados. Para realizar a ANOVA de duas vias, é possível contar com a função <code>lm</code> ou <code>aov</code>. Aqui, a escolha da <code>lm</code> foi apenas por conveniência. O vetor <code>mod_escolaridade_faixa_etaria</code> irá armazenar os resultados.</p>
 <div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="anova.html#cb82-1"></a>mod_escolaridade_faixa_etaria &lt;-<span class="st"> </span><span class="kw">lm</span>(memore_total <span class="op">~</span><span class="st"> </span>escolaridade_grupo <span class="op">+</span><span class="st"> </span>faixa_etaria, ds)</span></code></pre></div>
@@ -1266,7 +1256,7 @@ Nesta pesquisa, cerca de 150 estudantes foram apresentados a um filme e depois t
 <p>Da mesma forma que apresentado na ANOVA de 1 via, a validade da interpretação dos resultados depende dos pressupostos do modelo estatístico. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(<span class="citeproc-not-found" data-reference-id="Lix1996"><strong>???</strong></span>; <span class="citeproc-not-found" data-reference-id="Barker2015"><strong>???</strong></span>; <span class="citeproc-not-found" data-reference-id="Ernst2017"><strong>???</strong></span>)</span>.</p>
 <p><mark>Normalidade</mark>: O QQ plot abaixo apresenta os valores teóricos e empíricos. Caso ambas as linhas estejam sobrepostas, isso apoia que o pressuposto da normalidade foi atendido. Neste caso, isso não parece ocorrer.</p>
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="anova.html#cb85-1"></a>olsrr<span class="op">::</span><span class="kw">ols_plot_resid_qq</span>(mod_escolaridade_faixa_etaria)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-118-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-98-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O Shapiro-wilk, Anderson-Darling e Jarque Bera também podem ser utilizado neste caso. A hipótese nula desses testes assume que os resíduos são normalmente distribuídos.</p>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="anova.html#cb86-1"></a><span class="kw">shapiro.test</span>(<span class="kw">residuals</span>(mod_escolaridade_faixa_etaria))</span></code></pre></div>
 <pre><code>## 
@@ -1277,7 +1267,7 @@ Nesta pesquisa, cerca de 150 estudantes foram apresentados a um filme e depois t
 <p>Os resultados de ambas as técnicas foram similares, indicando a violação da normalidade dos resíduos.</p>
 <p><mark>Homocedasticidade</mark>: Este pressuposto pode ser testado por um gráfico dos resíduos contra os valores previstos. O ideal é não encontrar padrões no gráfico.</p>
 <div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="anova.html#cb88-1"></a>olsrr<span class="op">::</span><span class="kw">ols_plot_resid_fit</span>(mod_escolaridade_faixa_etaria)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-120-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-100-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O teste de Levene, de Bartlett ou de Breusch-Pagan podem também serem utilzados de maneira formal. Eles estipulam <span class="math inline">\(H_0\)</span> como homocedasticidade e, idealmente, não deve ser rejeitada.</p>
 <div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="anova.html#cb89-1"></a>olsrr<span class="op">::</span><span class="kw">ols_test_breusch_pagan</span>(mod_escolaridade_faixa_etaria)</span></code></pre></div>
 <pre><code>## 
@@ -1338,12 +1328,8 @@ As opções <code>Homogeneity tests</code> e <code>Q-Q plot of residuals</code> 
 <h2><span class="header-section-number">12.17</span> Escrita dos resultados</h2>
 <p>Após a execução de uma ANOVA de duas vias, foi possível concluir que ambas as variáveis foram significativas aos resultados da avaliação psicológica. Abaixo uma sugestão de escrita baseado nas recomendações da American Psychological Association (APA).</p>
 <div class="writing">
-<p>
-<strong>Como escrever os resultados</strong>
-</p>
-<p>
-Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA de duas vias para investigar o efeito da escolaridade e faixa etária nos resultados. Os achados permitiram concluir que tanto a escolaridade (F(2, 1427) = 7.58, p = 0.001, n2p = 0.01), como a faixa etária (F(4, 1427) = 32.972, p &lt; 0.001, n2p = 0.08) tiveram efeito significativo nos resultados.
-</p>
+<p><strong>Como escrever os resultados</strong></p>
+<p>Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA de duas vias para investigar o efeito da escolaridade e faixa etária nos resultados. Os achados permitiram concluir que tanto a escolaridade (F(2, 1427) = 7.58, p = 0.001, n2p = 0.01), como a faixa etária (F(4, 1427) = 32.972, p &lt; 0.001, n2p = 0.08) tiveram efeito significativo nos resultados.</p>
 </div>
 <p>De forma análoga ao que aconteceu na ANOVA de 1 via, os resultados não indicam os níveis em que as diferenças podem existir. Testes post hoc são, novamente, necessários para responder à esta pergunta.</p>
 </div>
@@ -1412,7 +1398,7 @@ Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA de d
 <span id="cb93-5"><a href="anova.html#cb93-5"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb93-6"><a href="anova.html#cb93-6"></a><span class="st">  </span><span class="kw">scale_size</span>(<span class="dt">trans =</span> <span class="st">&quot;reverse&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb93-7"><a href="anova.html#cb93-7"></a><span class="st">  </span><span class="kw">coord_flip</span>()</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-125-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-104-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>É possível concluir que pessoas com nível fundamental, quando comparadas às pessoas de nível médio (Δ = 3.23) e superior (Δ = 2.84), apresentam performance significativamente menor. Pessoas com ensino médio e ensino superior não tem resultados significativamente diferentes.</p>
 <p>Para comparar os resultados em função de todos os níveis de <u>faixa_etaria</u>, basta customizar um pouco a função.</p>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="anova.html#cb94-1"></a>post_hoc_twoway_faixaetaria &lt;-<span class="st"> </span><span class="kw">emmeans</span>(mod_escolaridade_faixa_etaria, <span class="st">&quot;faixa_etaria&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
@@ -1529,7 +1515,7 @@ Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA de d
 <span id="cb96-5"><a href="anova.html#cb96-5"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb96-6"><a href="anova.html#cb96-6"></a><span class="st">  </span><span class="kw">scale_size</span>(<span class="dt">trans =</span> <span class="st">&quot;reverse&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb96-7"><a href="anova.html#cb96-7"></a><span class="st">  </span><span class="kw">coord_flip</span>()</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-128-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-107-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>As conclusões indicam que pessoas mais novas (<code>Entre 14 e 24</code>) tem resultados mais elevados do que pessoas <code>Entre 35 e 44</code> , <code>Entre 45 e 54</code> e <code>Entre 55 e 64</code>. Participantes <code>Entre 25 e 34</code> também apresentam resultados maiores do que <code>Entre 35 e 44</code>, <code>Entre 45 e 54</code> e <code>Entre 55 e 64</code>. Não houve diferença significativa <code>Entre 14 e 24</code> e <code>Entre 25 e 34</code>, bem como <code>Entre 35 e 44</code> e <code>Entre 45 e 54</code> e <code>Entre 55 e 64</code>. Finalmente, participantes <code>Entre 45 e 54</code> e <code>Entre 55 e 64</code> também não tiveram resultados significativamente diferentes.</p>
 </div>
 <div id="execução-no-jasp-9" class="section level2">
@@ -1550,15 +1536,11 @@ Gráficos são recursos úteis para descrição destes resultados. Eles podem se
 <h2><span class="header-section-number">12.21</span> Escrita dos resultados</h2>
 <p>Os resultados obtidos agora indicam que tanto a escolaridade como a faixa etária são significativamente relacionadas aos resultados obtidos na avaliação psicológica. Esses achados são convergentes ao que vem sendo demonstrado na literatura. Os resultados devem trazer os achados principais da ANOVA e as comparações pareadas de ambos os fatores, destacando os valores de P corrigidos. O estilo da escrita é baseado nas recomendações da American Psychological Association (APA).</p>
 <div class="writing">
-<p>
-<strong>Como escrever os resultados</strong>
-</p>
-<p>
-Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA de duas vias que investigou o efeito da escolaridade e da faixa etária nos resultados. Os achados permitiram concluir que tanto a escolaridade (F(2, 1427) = 7.58, p = 0.001, n2p = 0.01), como a faixa etária (F(4, 1427) = 32.972, p &lt; 0.001, n2p = 0.08) tiveram efeito significativo nos resultados. Comparações pareadas foram realizadas e os valores de P foram corrigidos pela técnica de Bonferroni. Em relação à escolaridade, pessoas com nível fundamental, quando comparadas às pessoas de nível médio (Δ = -3.23, p &lt; 0.001) e superior (Δ = -2.84, p &lt; 0.001) apresentam performance significativamente menor. Não houve diferença entre participantes com ensino médio e ensino superior. Em relação à faixa etária, participantes entre 14 e 24 anos apresentam performance significativamente mais elevada do que participantes entre 35 e 44 (Δ = 4.21, p &lt; 0.001), entre 45 e 54 (Δ = 5.50, p &lt; 0.001) e entre 55 e 64 anos (Δ = 5.50, p &lt; 0.001). Participantes entre 25 e 34 anos também apresentam performance significativamente superior do que participantes entre 35 e 44 anos (Δ = 4.03, p &lt; 0.001), entre 45 e 54 (Δ = 5.32, p &lt; 0.001) e entre 55 e 64 anos (Δ = 5.32, p &lt; 0.001). Não houve diferença significativa na performance do grupo entre 14 e 24 anos do grupo entre 25 e 34, bem como entre o grupo entre 35 e 44 e 55 e 64. Também não houve diferença significativa entre os participantes com idades entre 45 e 54 daqueles com idade entre 55 e 64.
-</p>
+<p><strong>Como escrever os resultados</strong></p>
+<p>Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA de duas vias que investigou o efeito da escolaridade e da faixa etária nos resultados. Os achados permitiram concluir que tanto a escolaridade (F(2, 1427) = 7.58, p = 0.001, n2p = 0.01), como a faixa etária (F(4, 1427) = 32.972, p &lt; 0.001, n2p = 0.08) tiveram efeito significativo nos resultados. Comparações pareadas foram realizadas e os valores de P foram corrigidos pela técnica de Bonferroni. Em relação à escolaridade, pessoas com nível fundamental, quando comparadas às pessoas de nível médio (Δ = -3.23, p &lt; 0.001) e superior (Δ = -2.84, p &lt; 0.001) apresentam performance significativamente menor. Não houve diferença entre participantes com ensino médio e ensino superior. Em relação à faixa etária, participantes entre 14 e 24 anos apresentam performance significativamente mais elevada do que participantes entre 35 e 44 (Δ = 4.21, p &lt; 0.001), entre 45 e 54 (Δ = 5.50, p &lt; 0.001) e entre 55 e 64 anos (Δ = 5.50, p &lt; 0.001). Participantes entre 25 e 34 anos também apresentam performance significativamente superior do que participantes entre 35 e 44 anos (Δ = 4.03, p &lt; 0.001), entre 45 e 54 (Δ = 5.32, p &lt; 0.001) e entre 55 e 64 anos (Δ = 5.32, p &lt; 0.001). Não houve diferença significativa na performance do grupo entre 14 e 24 anos do grupo entre 25 e 34, bem como entre o grupo entre 35 e 44 e 55 e 64. Também não houve diferença significativa entre os participantes com idades entre 45 e 54 daqueles com idade entre 55 e 64.</p>
 </div>
 </div>
-<div id="resumo-9" class="section level2">
+<div id="resumo-10" class="section level2">
 <h2><span class="header-section-number">12.22</span> Resumo</h2>
 <div class="explore">
 <ol style="list-style-type: decimal">
@@ -1719,7 +1701,7 @@ Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA de d
 <div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="anova.html#cb102-1"></a><span class="kw">ggplot</span>(ds, <span class="kw">aes</span>(<span class="dt">x =</span> faixa_etaria, <span class="dt">y =</span> memore_total, <span class="dt">color =</span> escolaridade_grupo, <span class="dt">group =</span> escolaridade_grupo)) <span class="op">+</span></span>
 <span id="cb102-2"><a href="anova.html#cb102-2"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>, <span class="dt">fun =</span> mean, <span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span></span>
 <span id="cb102-3"><a href="anova.html#cb102-3"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Faixa etária&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Resultados&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;Escolaridade&quot;</span>)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-135-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-113-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O gráfico parece indicar que a performance no teste varia tanto em função da idade, como em função da escolaridade do participante. Por exemplo, pessoas <u>entre 14 e 24</u> anos, bem como <u>entre 25 e 34</u> anos com <u>ensino médio</u> apresentam o desempenho mais elevado quando comparadas com os outros participantes. No entanto, isso começa a se alterar aos 35 anos. Para estes participantes e aqueles mais velhos, o <u>ensino superior</u> parece ser o principal determinante.</p>
 <p>Agora, formalmente a modelagem estatística será feita. Os passos devem ser exatamente os mesmos executados anteriormente, incluindo a verificação de pressupostos e interpretação dos resultados. Para realizar a ANOVA Fatorial, é possível contar com a função <code>lm</code> ou <code>aov</code>. Aqui, a escolha da <code>lm</code> foi apenas por conveniência e o vetor <code>mod_escolaridade_faixa_etaria_fatorial</code> irá armazenar os resultados.</p>
 <div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="anova.html#cb103-1"></a>mod_escolaridade_faixa_etaria_fatorial &lt;-<span class="st"> </span><span class="kw">lm</span>(memore_total <span class="op">~</span><span class="st"> </span>escolaridade_grupo <span class="op">*</span><span class="st"> </span>faixa_etaria, ds)</span></code></pre></div>
@@ -1866,7 +1848,7 @@ faixa_etaria</td>
 <p>Da mesma forma que apresentado no decorrer deste capítulo, a validade da interpretação dos resultados depende dos pressupostos do modelo estatístico. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(<span class="citeproc-not-found" data-reference-id="Lix1996"><strong>???</strong></span>; <span class="citeproc-not-found" data-reference-id="Barker2015"><strong>???</strong></span>; <span class="citeproc-not-found" data-reference-id="Ernst2017"><strong>???</strong></span>)</span>.</p>
 <p><mark>Normalidade</mark>: O QQ plot abaixo apresenta os valores teóricos e empíricos. Caso ambas as linhas estejam sobrepostas, isso apoia que o pressuposto da normalidade foi atendido. Neste caso, isso não parece ocorrer.</p>
 <div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="anova.html#cb105-1"></a>olsrr<span class="op">::</span><span class="kw">ols_plot_resid_qq</span>(mod_escolaridade_faixa_etaria_fatorial)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-138-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-116-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O Shapiro-wilk, Anderson-Darling e Jarque Bera também podem ser utilizado neste caso. A hipótese nula desses testes assume que os resíduos são normalmente distribuídos.</p>
 <div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="anova.html#cb106-1"></a><span class="kw">shapiro.test</span>(<span class="kw">residuals</span>(mod_escolaridade_faixa_etaria_fatorial))</span></code></pre></div>
 <pre><code>## 
@@ -1877,7 +1859,7 @@ faixa_etaria</td>
 <p>Os resultados de ambas as técnicas foram similares, indicando a violação da normalidade dos resíduos.</p>
 <p><mark>Homocedasticidade</mark>: Este pressuposto pode ser testado por um gráfico dos resíduos contra os valores previstos. O ideal é não encontrar padrões no gráfico.</p>
 <div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="anova.html#cb108-1"></a>olsrr<span class="op">::</span><span class="kw">ols_plot_resid_fit</span>(mod_escolaridade_faixa_etaria_fatorial)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-140-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-118-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O teste de Levene, de Bartlett ou de Breusch-Pagan podem também serem utilzados de maneira formal. Eles estipulam <span class="math inline">\(H_0\)</span> como homocedasticidade e, idealmente, não deve ser rejeitada.</p>
 <div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="anova.html#cb109-1"></a>olsrr<span class="op">::</span><span class="kw">ols_test_breusch_pagan</span>(mod_escolaridade_faixa_etaria_fatorial)</span></code></pre></div>
 <pre><code>## 
@@ -1936,15 +1918,11 @@ faixa_etaria</td>
 <h2><span class="header-section-number">12.26</span> Escrita dos resultados</h2>
 <p>Os resultados serão escritos apresentando os achados principais da ANOVA, destacando se o efeito da interação foi significativo ou não. O estilo da escrita é baseado nas recomendações da American Psychological Association (APA).</p>
 <div class="writing">
-<p>
-<strong>Como escrever os resultados</strong>
-</p>
-<p>
-Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA Fatorial para investigar o efeito da escolaridade, faixa etária, e de uma interação entre esses dois fatores nos resultados. Os resultados concluíram que a interação entre os fatores foi significativa (F(8, 1419) = 2.486, p = 0.011, n2p = 0.014), bem como a escolaridade (F(2, 1419) = 4.865, p = 0.008, n2p = 0.007) e a faixa etária (F(4, 1419) = 2.6.894, p &lt; 0.001, n2p = 0.019).
-</p>
+<p><strong>Como escrever os resultados</strong></p>
+<p>Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA Fatorial para investigar o efeito da escolaridade, faixa etária, e de uma interação entre esses dois fatores nos resultados. Os resultados concluíram que a interação entre os fatores foi significativa (F(8, 1419) = 2.486, p = 0.011, n2p = 0.014), bem como a escolaridade (F(2, 1419) = 4.865, p = 0.008, n2p = 0.007) e a faixa etária (F(4, 1419) = 2.6.894, p &lt; 0.001, n2p = 0.019).</p>
 </div>
 </div>
-<div id="resumo-10" class="section level2">
+<div id="resumo-11" class="section level2">
 <h2><span class="header-section-number">12.27</span> Resumo</h2>
 <div class="explore">
 <ol style="list-style-type: decimal">
@@ -2126,7 +2104,7 @@ Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA Fato
 </table>
 <p>O gráfico dessa vez será feito pela função <code>emmip</code> do pacote <code>emmeans</code>, que deve apresentar os mesmos resultados obtidos na tabela.</p>
 <div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="anova.html#cb112-1"></a><span class="kw">emmip</span>(mod_escolaridade_faixa_etaria_fatorial, escolaridade_grupo <span class="op">~</span><span class="st"> </span>faixa_etaria, <span class="dt">CIs =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-144-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-121-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Entre as conclusões possíveis, se constata, de maneira contraintuitiva, que pessoas entre 14 e 24 anos com ensino médio apresentam performance maior do que pessoas com ensino superior (Δ = 1.145). Por sua vez, não há diferença na performance entre pessoas entre 25 e 34 anos que possuem o ensino médio ou ensino superior. No entanto, pessoas que tem essa idade, mas apresentam o ensino fundamental possuem performance significativamente menor do que seus pares com ensino médio (Δ = -6.317) ou superior (Δ = -5.46). Pessoas entre 35 e 44 anos com ensino superior apresentam performance mais elevada do que seus pares com ensino médio (Δ = 2.365) ou fundamental (Δ = 3.477).</p>
 </div>
 <div id="execução-no-jasp-11" class="section level2">
@@ -2145,12 +2123,8 @@ Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA Fato
 <h2><span class="header-section-number">12.30</span> Escrita dos resultados</h2>
 <p>Os resultados serão escritos apresentando os achados principais da ANOVA, destacando se o efeito da interação foi significativo ou não e as comparações pareadas. O estilo da escrita é baseado nas recomendações da American Psychological Association (APA). Como os resultados do R e do JASP foram um pouco diferentes nas comparações pareadas, o R será utilizado como principal.</p>
 <div class="writing">
-<p>
-<strong>Como escrever os resultados</strong>
-</p>
-<p>
-Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA Fatorial para investigar o efeito da escolaridade, faixa etária, e de uma interação entre esses dois fatores nos resultados. Os resultados concluíram que a interação entre os fatores foi significativa (F(8, 1419) = 2.486, p = 0.011, n2p = 0.014), bem como a escolaridade (F(2, 1419) = 4.865, p = 0.008, n2p = 0.007) e a faixa etária (F(4, 1419) = 2.6.894, p &lt; 0.001, n2p = 0.019). Em situações em que a interação é significativa os efeitos principais não são interpretados, já que os resultados podem depender de níveis específicos de cada uma das variáveis. As comparações pareadas foram feitas entre todos os níveis de escolaridade se mantendo a faixa etária constante e ajustando o valor de P pela técnica de Bonferroni. Pessoas entre 14 e 24 anos com ensino médio apresentam performance superior que seus pares com ensino superior (Δ = 1.145, p = 0.003). Pessoas entre 25 e 34 anos, com nível fundamental, têm performance significativamente mais baixa do que seus pares com ensino médio (Δ = -6.317, p &lt; 0.001) e superior (Δ = -5.46, p &lt; 0.001). Finalmente, pessoas entre 35 e 44 anos com ensino superior tem performance significativamente maior do que aquelas com ensino fundamental (Δ = 3.447, p &lt; 0.001) e médio (Δ = 2.365, p &lt; 0.001).
-</p>
+<p><strong>Como escrever os resultados</strong></p>
+<p>Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA Fatorial para investigar o efeito da escolaridade, faixa etária, e de uma interação entre esses dois fatores nos resultados. Os resultados concluíram que a interação entre os fatores foi significativa (F(8, 1419) = 2.486, p = 0.011, n2p = 0.014), bem como a escolaridade (F(2, 1419) = 4.865, p = 0.008, n2p = 0.007) e a faixa etária (F(4, 1419) = 2.6.894, p &lt; 0.001, n2p = 0.019). Em situações em que a interação é significativa os efeitos principais não são interpretados, já que os resultados podem depender de níveis específicos de cada uma das variáveis. As comparações pareadas foram feitas entre todos os níveis de escolaridade se mantendo a faixa etária constante e ajustando o valor de P pela técnica de Bonferroni. Pessoas entre 14 e 24 anos com ensino médio apresentam performance superior que seus pares com ensino superior (Δ = 1.145, p = 0.003). Pessoas entre 25 e 34 anos, com nível fundamental, têm performance significativamente mais baixa do que seus pares com ensino médio (Δ = -6.317, p &lt; 0.001) e superior (Δ = -5.46, p &lt; 0.001). Finalmente, pessoas entre 35 e 44 anos com ensino superior tem performance significativamente maior do que aquelas com ensino fundamental (Δ = 3.447, p &lt; 0.001) e médio (Δ = 2.365, p &lt; 0.001).</p>
 </div>
 <p>É importante ter em mente que as comparações e os sinais podem ser invertidos para que os resultados tornem-se mais facilmente interpretáveis.</p>
 </div>
@@ -2161,9 +2135,7 @@ Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA Fato
 <li>(Retirado de Médico do Trabalho, BANPARÁ, ESPP, 2012) Uma determinada empresa deseja comparar a média de idade de seus trabalhadores, em três de suas filiais. O melhor teste estatístico para essa comparação é:<br>a) Teste t de Student pareado.<br>b) Análise de variância.<br>c) Teste do Qui-quadrado.<br>d) Diagrama de Pareto.<br>e) Estatística descritiva</li>
 </ol>
 </div>
-<div class="mirror">
-✂ Gabarito: 1-b
-</div>
+<p>Gabarito: 1-b</p>
 
 </div>
 </div>

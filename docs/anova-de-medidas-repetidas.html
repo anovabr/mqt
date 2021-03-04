@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Cap. 13 ANOVA de medidas repetidas | Conceitos e análises estatísticas com R e JASP</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Cap. 13 ANOVA de medidas repetidas | Conceitos e análises estatísticas com R e JASP" />
   <meta property="og:type" content="book" />
@@ -49,6 +49,7 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
@@ -236,6 +237,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.10" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html#o-cálculo-do-tamanho-amostral"><i class="fa fa-check"></i><b>6.10</b> O cálculo do tamanho amostral</a></li>
 <li class="chapter" data-level="6.11" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html#amostragem-e-sua-relação-com-os-resultados"><i class="fa fa-check"></i><b>6.11</b> Amostragem e sua relação com os resultados</a></li>
 <li class="chapter" data-level="6.12" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html#amostragem-delineamento-e-generalização"><i class="fa fa-check"></i><b>6.12</b> Amostragem, delineamento e generalização</a></li>
+<li class="chapter" data-level="6.13" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html#resumo-4"><i class="fa fa-check"></i><b>6.13</b> Resumo</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html"><i class="fa fa-check"></i><b>7</b> Estatística Inferencial</a><ul>
 <li class="chapter" data-level="7.1" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#nhst-teste-de-significância-de-hipótese-nula"><i class="fa fa-check"></i><b>7.1</b> NHST (Teste de Significância de Hipótese Nula)</a><ul>
@@ -247,8 +249,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#o-tamanho-do-efeito"><i class="fa fa-check"></i><b>7.5</b> O tamanho do efeito</a></li>
 <li class="chapter" data-level="7.6" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#um-exemplo-intuitivo"><i class="fa fa-check"></i><b>7.6</b> Um exemplo intuitivo</a></li>
 <li class="chapter" data-level="7.7" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#o-que-não-te-contaram-sobre-inferência-estatística"><i class="fa fa-check"></i><b>7.7</b> O que não te contaram sobre inferência estatística</a></li>
-<li class="chapter" data-level="7.8" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#questões-2"><i class="fa fa-check"></i><b>7.8</b> Questões</a></li>
-<li class="chapter" data-level="7.9" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#pesquisas-adicionais"><i class="fa fa-check"></i><b>7.9</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="7.8" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#pesquisas-adicionais"><i class="fa fa-check"></i><b>7.8</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="7.9" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#questões-2"><i class="fa fa-check"></i><b>7.9</b> Questões</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html"><i class="fa fa-check"></i><b>8</b> Um exemplo real de pesquisa</a><ul>
 <li class="chapter" data-level="8.1" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html#o-que-será-pesquisado"><i class="fa fa-check"></i><b>8.1</b> O que será pesquisado</a></li>
@@ -258,7 +260,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.5" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html#os-achados"><i class="fa fa-check"></i><b>8.5</b> Os achados</a></li>
 <li class="chapter" data-level="8.6" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html#divulgação-do-estudo"><i class="fa fa-check"></i><b>8.6</b> Divulgação do estudo</a></li>
 <li class="chapter" data-level="8.7" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html#fluxograma"><i class="fa fa-check"></i><b>8.7</b> Fluxograma</a></li>
-<li class="chapter" data-level="8.8" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html#resumo-4"><i class="fa fa-check"></i><b>8.8</b> Resumo</a></li>
+<li class="chapter" data-level="8.8" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html#resumo-5"><i class="fa fa-check"></i><b>8.8</b> Resumo</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="qui-quadrado.html"><a href="qui-quadrado.html"><i class="fa fa-check"></i><b>9</b> Qui quadrado</a><ul>
 <li class="chapter" data-level="9.1" data-path="qui-quadrado.html"><a href="qui-quadrado.html#pesquisa-1"><i class="fa fa-check"></i><b>9.1</b> Pesquisa</a></li>
@@ -266,7 +268,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="qui-quadrado.html"><a href="qui-quadrado.html#tamanho-do-efeito"><i class="fa fa-check"></i><b>9.3</b> Tamanho do efeito</a></li>
 <li class="chapter" data-level="9.4" data-path="qui-quadrado.html"><a href="qui-quadrado.html#execução-no-jasp-1"><i class="fa fa-check"></i><b>9.4</b> Execução no JASP</a></li>
 <li class="chapter" data-level="9.5" data-path="qui-quadrado.html"><a href="qui-quadrado.html#escrita-dos-resultados"><i class="fa fa-check"></i><b>9.5</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="9.6" data-path="qui-quadrado.html"><a href="qui-quadrado.html#resumo-5"><i class="fa fa-check"></i><b>9.6</b> Resumo</a></li>
+<li class="chapter" data-level="9.6" data-path="qui-quadrado.html"><a href="qui-quadrado.html#resumo-6"><i class="fa fa-check"></i><b>9.6</b> Resumo</a></li>
 <li class="chapter" data-level="9.7" data-path="qui-quadrado.html"><a href="qui-quadrado.html#pesquisas-adicionais-1"><i class="fa fa-check"></i><b>9.7</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="9.8" data-path="qui-quadrado.html"><a href="qui-quadrado.html#questões-3"><i class="fa fa-check"></i><b>9.8</b> Questões</a></li>
 </ul></li>
@@ -276,7 +278,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.3" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html#execução-no-jasp-2"><i class="fa fa-check"></i><b>10.3</b> Execução no JASP</a></li>
 <li class="chapter" data-level="10.4" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html#escrita-dos-resultados-1"><i class="fa fa-check"></i><b>10.4</b> Escrita dos resultados</a></li>
 <li class="chapter" data-level="10.5" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html#odds-ratio-e-regressão-logística"><i class="fa fa-check"></i><b>10.5</b> Odds Ratio e Regressão logística</a></li>
-<li class="chapter" data-level="10.6" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html#resumo-6"><i class="fa fa-check"></i><b>10.6</b> Resumo</a></li>
+<li class="chapter" data-level="10.6" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html#resumo-7"><i class="fa fa-check"></i><b>10.6</b> Resumo</a></li>
 <li class="chapter" data-level="10.7" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html#pesquisas-adicionais-2"><i class="fa fa-check"></i><b>10.7</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="10.8" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html#questões-4"><i class="fa fa-check"></i><b>10.8</b> Questões</a></li>
 </ul></li>
@@ -297,7 +299,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.7.4" data-path="teste-t.html"><a href="teste-t.html#escrita-dos-resultados-3"><i class="fa fa-check"></i><b>11.7.4</b> Escrita dos resultados</a></li>
 </ul></li>
 <li class="chapter" data-level="11.8" data-path="teste-t.html"><a href="teste-t.html#teste-t-e-regressão"><i class="fa fa-check"></i><b>11.8</b> Teste T e regressão</a></li>
-<li class="chapter" data-level="11.9" data-path="teste-t.html"><a href="teste-t.html#resumo-7"><i class="fa fa-check"></i><b>11.9</b> Resumo</a></li>
+<li class="chapter" data-level="11.9" data-path="teste-t.html"><a href="teste-t.html#resumo-8"><i class="fa fa-check"></i><b>11.9</b> Resumo</a></li>
 <li class="chapter" data-level="11.10" data-path="teste-t.html"><a href="teste-t.html#pesquisas-adicionais-3"><i class="fa fa-check"></i><b>11.10</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="11.11" data-path="teste-t.html"><a href="teste-t.html#questões-5"><i class="fa fa-check"></i><b>11.11</b> Questões</a></li>
 </ul></li>
@@ -312,7 +314,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.8" data-path="anova.html"><a href="anova.html#execução-no-r-7"><i class="fa fa-check"></i><b>12.8</b> Execução no R</a></li>
 <li class="chapter" data-level="12.9" data-path="anova.html"><a href="anova.html#execução-no-jasp-7"><i class="fa fa-check"></i><b>12.9</b> Execução no JASP</a></li>
 <li class="chapter" data-level="12.10" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-5"><i class="fa fa-check"></i><b>12.10</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="12.11" data-path="anova.html"><a href="anova.html#resumo-8"><i class="fa fa-check"></i><b>12.11</b> Resumo</a></li>
+<li class="chapter" data-level="12.11" data-path="anova.html"><a href="anova.html#resumo-9"><i class="fa fa-check"></i><b>12.11</b> Resumo</a></li>
 <li class="chapter" data-level="12.12" data-path="anova.html"><a href="anova.html#pesquisas-adicionais-4"><i class="fa fa-check"></i><b>12.12</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="12.13" data-path="anova.html"><a href="anova.html#pesquisa-5"><i class="fa fa-check"></i><b>12.13</b> Pesquisa</a></li>
 <li class="chapter" data-level="12.14" data-path="anova.html"><a href="anova.html#anova-de-2-vias"><i class="fa fa-check"></i><b>12.14</b> ANOVA de 2 vias</a></li>
@@ -323,12 +325,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.19" data-path="anova.html"><a href="anova.html#execução-no-r-9"><i class="fa fa-check"></i><b>12.19</b> Execução no R</a></li>
 <li class="chapter" data-level="12.20" data-path="anova.html"><a href="anova.html#execução-no-jasp-9"><i class="fa fa-check"></i><b>12.20</b> Execução no JASP</a></li>
 <li class="chapter" data-level="12.21" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-7"><i class="fa fa-check"></i><b>12.21</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="12.22" data-path="anova.html"><a href="anova.html#resumo-9"><i class="fa fa-check"></i><b>12.22</b> Resumo</a></li>
+<li class="chapter" data-level="12.22" data-path="anova.html"><a href="anova.html#resumo-10"><i class="fa fa-check"></i><b>12.22</b> Resumo</a></li>
 <li class="chapter" data-level="12.23" data-path="anova.html"><a href="anova.html#anova-fatorial"><i class="fa fa-check"></i><b>12.23</b> ANOVA Fatorial</a></li>
 <li class="chapter" data-level="12.24" data-path="anova.html"><a href="anova.html#execução-no-r-10"><i class="fa fa-check"></i><b>12.24</b> Execução no R</a></li>
 <li class="chapter" data-level="12.25" data-path="anova.html"><a href="anova.html#execução-no-jasp-10"><i class="fa fa-check"></i><b>12.25</b> Execução no JASP</a></li>
 <li class="chapter" data-level="12.26" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-8"><i class="fa fa-check"></i><b>12.26</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="12.27" data-path="anova.html"><a href="anova.html#resumo-10"><i class="fa fa-check"></i><b>12.27</b> Resumo</a></li>
+<li class="chapter" data-level="12.27" data-path="anova.html"><a href="anova.html#resumo-11"><i class="fa fa-check"></i><b>12.27</b> Resumo</a></li>
 <li class="chapter" data-level="12.28" data-path="anova.html"><a href="anova.html#post-hoc-2"><i class="fa fa-check"></i><b>12.28</b> Post hoc</a></li>
 <li class="chapter" data-level="12.29" data-path="anova.html"><a href="anova.html#execução-no-jasp-11"><i class="fa fa-check"></i><b>12.29</b> Execução no JASP</a></li>
 <li class="chapter" data-level="12.30" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-9"><i class="fa fa-check"></i><b>12.30</b> Escrita dos resultados</a></li>
@@ -340,14 +342,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#tamanho-do-efeito-4"><i class="fa fa-check"></i><b>13.3</b> Tamanho do efeito</a></li>
 <li class="chapter" data-level="13.4" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#execução-no-jasp-12"><i class="fa fa-check"></i><b>13.4</b> Execução no JASP</a></li>
 <li class="chapter" data-level="13.5" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#escrita-dos-resultados-10"><i class="fa fa-check"></i><b>13.5</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="13.6" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#resumo-11"><i class="fa fa-check"></i><b>13.6</b> Resumo</a></li>
+<li class="chapter" data-level="13.6" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#resumo-12"><i class="fa fa-check"></i><b>13.6</b> Resumo</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html"><i class="fa fa-check"></i><b>14</b> Modelo linear misto</a><ul>
 <li class="chapter" data-level="14.1" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#pesquisa-7"><i class="fa fa-check"></i><b>14.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="14.2" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#execução-no-r-12"><i class="fa fa-check"></i><b>14.2</b> execução no R</a></li>
 <li class="chapter" data-level="14.3" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#execução-no-jasp-13"><i class="fa fa-check"></i><b>14.3</b> Execução no JASP</a></li>
 <li class="chapter" data-level="14.4" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#escrita-dos-resultados-11"><i class="fa fa-check"></i><b>14.4</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="14.5" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#resumo-12"><i class="fa fa-check"></i><b>14.5</b> Resumo</a></li>
+<li class="chapter" data-level="14.5" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#resumo-13"><i class="fa fa-check"></i><b>14.5</b> Resumo</a></li>
 <li class="chapter" data-level="14.6" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#pesquisas-adicionais-5"><i class="fa fa-check"></i><b>14.6</b> Pesquisas adicionais</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="correlação.html"><a href="correlação.html"><i class="fa fa-check"></i><b>15</b> Correlação</a><ul>
@@ -355,27 +357,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.2" data-path="correlação.html"><a href="correlação.html#execução-no-r-13"><i class="fa fa-check"></i><b>15.2</b> Execução no R</a></li>
 <li class="chapter" data-level="15.3" data-path="correlação.html"><a href="correlação.html#execução-no-jasp-14"><i class="fa fa-check"></i><b>15.3</b> Execução no JASP</a></li>
 <li class="chapter" data-level="15.4" data-path="correlação.html"><a href="correlação.html#escrita-dos-resultados-12"><i class="fa fa-check"></i><b>15.4</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="15.5" data-path="correlação.html"><a href="correlação.html#resumo-13"><i class="fa fa-check"></i><b>15.5</b> Resumo</a></li>
+<li class="chapter" data-level="15.5" data-path="correlação.html"><a href="correlação.html#resumo-14"><i class="fa fa-check"></i><b>15.5</b> Resumo</a></li>
 <li class="chapter" data-level="15.6" data-path="correlação.html"><a href="correlação.html#pesquisas-adicionais-6"><i class="fa fa-check"></i><b>15.6</b> Pesquisas adicionais</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html"><i class="fa fa-check"></i><b>16</b> Regressão linear múltipla</a><ul>
-<li class="chapter" data-level="16.1" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisa-9"><i class="fa fa-check"></i><b>16.1</b> Pesquisa</a></li>
-<li class="chapter" data-level="16.2" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-r-14"><i class="fa fa-check"></i><b>16.2</b> Execução no R</a></li>
-<li class="chapter" data-level="16.3" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-jasp-15"><i class="fa fa-check"></i><b>16.3</b> Execução no JASP</a></li>
-<li class="chapter" data-level="16.4" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#escrita-dos-resultados-13"><i class="fa fa-check"></i><b>16.4</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="16.5" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#técnicas-automáticas-de-seleção-de-variáveis"><i class="fa fa-check"></i><b>16.5</b> Técnicas automáticas de seleção de variáveis</a></li>
-<li class="chapter" data-level="16.6" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#resumo-14"><i class="fa fa-check"></i><b>16.6</b> Resumo</a></li>
-<li class="chapter" data-level="16.7" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisas-adicionais-7"><i class="fa fa-check"></i><b>16.7</b> Pesquisas adicionais</a></li>
-<li class="chapter" data-level="16.8" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#questões-7"><i class="fa fa-check"></i><b>16.8</b> Questões</a></li>
+<li class="chapter" data-level="16" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>16</b> Regressão linear simples</a><ul>
+<li class="chapter" data-level="16.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#breve-explicação-conceitual"><i class="fa fa-check"></i><b>16.1</b> Breve explicação conceitual</a></li>
+<li class="chapter" data-level="16.2" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisa-9"><i class="fa fa-check"></i><b>16.2</b> Pesquisa</a></li>
+<li class="chapter" data-level="16.3" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-r-14"><i class="fa fa-check"></i><b>16.3</b> Execução no R</a></li>
+<li class="chapter" data-level="16.4" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-jasp-15"><i class="fa fa-check"></i><b>16.4</b> Execução no JASP</a></li>
+<li class="chapter" data-level="16.5" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#escrita-dos-resultados-13"><i class="fa fa-check"></i><b>16.5</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="16.6" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#resumo-15"><i class="fa fa-check"></i><b>16.6</b> Resumo</a></li>
+<li class="chapter" data-level="16.7" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisas-adicionais-7"><i class="fa fa-check"></i><b>16.7</b> Pesquisas adicionais</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>17</b> Regressão linear simples</a><ul>
-<li class="chapter" data-level="17.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#breve-explicação-conceitual"><i class="fa fa-check"></i><b>17.1</b> Breve explicação conceitual</a></li>
-<li class="chapter" data-level="17.2" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisa-10"><i class="fa fa-check"></i><b>17.2</b> Pesquisa</a></li>
-<li class="chapter" data-level="17.3" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-r-15"><i class="fa fa-check"></i><b>17.3</b> Execução no R</a></li>
-<li class="chapter" data-level="17.4" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-jasp-16"><i class="fa fa-check"></i><b>17.4</b> Execução no JASP</a></li>
-<li class="chapter" data-level="17.5" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#escrita-dos-resultados-14"><i class="fa fa-check"></i><b>17.5</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="17.6" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#resumo-15"><i class="fa fa-check"></i><b>17.6</b> Resumo</a></li>
-<li class="chapter" data-level="17.7" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisas-adicionais-8"><i class="fa fa-check"></i><b>17.7</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="17" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html"><i class="fa fa-check"></i><b>17</b> Regressão linear múltipla</a><ul>
+<li class="chapter" data-level="17.1" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisa-10"><i class="fa fa-check"></i><b>17.1</b> Pesquisa</a></li>
+<li class="chapter" data-level="17.2" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-r-15"><i class="fa fa-check"></i><b>17.2</b> Execução no R</a></li>
+<li class="chapter" data-level="17.3" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-jasp-16"><i class="fa fa-check"></i><b>17.3</b> Execução no JASP</a></li>
+<li class="chapter" data-level="17.4" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#escrita-dos-resultados-14"><i class="fa fa-check"></i><b>17.4</b> Escrita dos resultados</a></li>
+<li class="chapter" data-level="17.5" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#técnicas-automáticas-de-seleção-de-variáveis"><i class="fa fa-check"></i><b>17.5</b> Técnicas automáticas de seleção de variáveis</a></li>
+<li class="chapter" data-level="17.6" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#resumo-16"><i class="fa fa-check"></i><b>17.6</b> Resumo</a></li>
+<li class="chapter" data-level="17.7" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisas-adicionais-8"><i class="fa fa-check"></i><b>17.7</b> Pesquisas adicionais</a></li>
+<li class="chapter" data-level="17.8" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#questões-7"><i class="fa fa-check"></i><b>17.8</b> Questões</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html"><i class="fa fa-check"></i><b>18</b> Regressão logística binária</a><ul>
 <li class="chapter" data-level="18.1" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#pesquisa-11"><i class="fa fa-check"></i><b>18.1</b> Pesquisa</a></li>
@@ -383,7 +385,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18.3" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#execução-no-jasp-17"><i class="fa fa-check"></i><b>18.3</b> Execução no JASP</a></li>
 <li class="chapter" data-level="18.4" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#escrita-dos-resultados-15"><i class="fa fa-check"></i><b>18.4</b> Escrita dos resultados</a></li>
 <li class="chapter" data-level="18.5" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#regressão-logística-or-e-qui-quadrado"><i class="fa fa-check"></i><b>18.5</b> Regressão logística, OR e Qui-quadrado</a></li>
-<li class="chapter" data-level="18.6" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#resumo-16"><i class="fa fa-check"></i><b>18.6</b> Resumo</a></li>
+<li class="chapter" data-level="18.6" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#resumo-17"><i class="fa fa-check"></i><b>18.6</b> Resumo</a></li>
 <li class="chapter" data-level="18.7" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#pesquisas-adicionais-9"><i class="fa fa-check"></i><b>18.7</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="18.8" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#questões-8"><i class="fa fa-check"></i><b>18.8</b> Questões</a></li>
 </ul></li>
@@ -411,13 +413,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="anova-de-medidas-repetidas" class="section level1">
 <h1><span class="header-section-number">Cap. 13</span> ANOVA de medidas repetidas</h1>
 <div class="objectives">
-<p>
-<strong>Objetivos do capítulo</strong><br />
+<p><strong>Objetivos do capítulo</strong><br />
 1. Apresentar a ANOVA de Medidas Repetidas<br />
 2. Realizar passo-a-passo a modelagem analítica<br />
 3. Verificar os pressupostos e implementar as correções sugeridas<br />
-4. Escrever os resultados
-</p>
+4. Escrever os resultados</p>
 </div>
 <p>A ANOVA de medidas repetidas é um teste estatístico para a análise de dados longitudinais pareados. Isto significa que o mesmo conjunto de participantes foi acompanhado e avaliado no decorrer do tempo. Esta técnica pode ser entendida como uma expansão da ANOVA ou um caso especial do Modelo Linear de Efeitos Mistos (LMM). Os pressupostos deste teste são próximos aos discutidos em outros testes inferenciais:</p>
 <p><em>(i)</em> Os dados são aleatórios e representativos da população<br />
@@ -613,7 +613,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb117-2"><a href="anova-de-medidas-repetidas.html#cb117-2"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun =</span> mean, <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>, <span class="dt">size=</span><span class="fl">1.0</span>, <span class="kw">aes</span>(<span class="dt">linetype =</span> grupo)) <span class="op">+</span><span class="st"> </span><span class="co">#linha</span></span>
 <span id="cb117-3"><a href="anova-de-medidas-repetidas.html#cb117-3"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun=</span><span class="st">&quot;mean&quot;</span>, <span class="dt">geom=</span><span class="st">&quot;point&quot;</span>, <span class="dt">size=</span><span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">shape =</span> grupo)) <span class="op">+</span><span class="st"> </span><span class="co">#pontos</span></span>
 <span id="cb117-4"><a href="anova-de-medidas-repetidas.html#cb117-4"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_se, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>,<span class="dt">size=</span><span class="dv">1</span>) <span class="co">#barra de erro</span></span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-152-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-127-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>É possível notar que as barras de erro estão superpostas, isto é, uma está contida na outra. Isso ocorre quando não há diferença significativa entre as condições. No entanto, o teste formal estatístico deve ser realizado.</p>
 <p>Para realizar a ANOVA de Medidas Repetidas, o pacote <code>ez</code> pode ser utilizado:</p>
 <div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="anova-de-medidas-repetidas.html#cb118-1"></a><span class="kw">library</span>(ez)</span></code></pre></div>
@@ -867,7 +867,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb121-3"><a href="anova-de-medidas-repetidas.html#cb121-3"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">sample=</span>residuos)) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb121-4"><a href="anova-de-medidas-repetidas.html#cb121-4"></a><span class="st">  </span><span class="kw">stat_qq</span>() <span class="op">+</span><span class="st"> </span></span>
 <span id="cb121-5"><a href="anova-de-medidas-repetidas.html#cb121-5"></a><span class="st">  </span><span class="kw">stat_qq_line</span>()</span></code></pre></div>
-<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-156-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="gitbook-demo_files/figure-html/unnamed-chunk-131-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Apesar do gráfico ter sido bastante claro, testes como o Shapiro-wilk, Anderson-Darling e Jarque Bera também podem ser utilizados neste caso. A hipótese nula desses testes assume que os resíduos são normalmente distribuídos.</p>
 <div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="anova-de-medidas-repetidas.html#cb122-1"></a><span class="kw">shapiro.test</span>(<span class="kw">proj</span>(ez_outcome<span class="op">$</span>aov)[[<span class="dv">3</span>]][, <span class="st">&quot;Residuals&quot;</span>])</span></code></pre></div>
 <pre><code>## 
@@ -1063,15 +1063,11 @@ Notas: Infelizmente, o JASP não realiza um gráfico completo dessa maneira na s
 <div id="escrita-dos-resultados-10" class="section level2">
 <h2><span class="header-section-number">13.5</span> Escrita dos resultados</h2>
 <div class="writing">
-<p>
-<strong>Como escrever os resultados</strong>
-</p>
-<p>
-Os dados foram analisados a partir de uma ANOVA de medidas repetidas investigando o efeito fixo do grupo e do tempo, bem como a interação entre ambos. O teste de Mauchly indicou a violação da esfericidade (w = 0.26, p &lt; 0.01) e, portanto, os resultados foram ajustados pelo método de Greenhouse-geisser. Não houve interação significativa entre o grupo e o tempo (F(4, 152) = 0.69, p ajustado = 0.520), nem efeito do grupo (F(1, 38) = 0.061, p = 0.406). O passar de tempo foi significativo no resultado, apesar de apresentar um efeito pequeno (F(4, 152) = 3.30, p ajustado = 0.0351, ng2 = 0.01).
-</p>
+<p><strong>Como escrever os resultados</strong></p>
+<p>Os dados foram analisados a partir de uma ANOVA de medidas repetidas investigando o efeito fixo do grupo e do tempo, bem como a interação entre ambos. O teste de Mauchly indicou a violação da esfericidade (w = 0.26, p &lt; 0.01) e, portanto, os resultados foram ajustados pelo método de Greenhouse-geisser. Não houve interação significativa entre o grupo e o tempo (F(4, 152) = 0.69, p ajustado = 0.520), nem efeito do grupo (F(1, 38) = 0.061, p = 0.406). O passar de tempo foi significativo no resultado, apesar de apresentar um efeito pequeno (F(4, 152) = 3.30, p ajustado = 0.0351, ng2 = 0.01).</p>
 </div>
 </div>
-<div id="resumo-11" class="section level2">
+<div id="resumo-12" class="section level2">
 <h2><span class="header-section-number">13.6</span> Resumo</h2>
 <div class="explore">
 <ol style="list-style-type: decimal">
