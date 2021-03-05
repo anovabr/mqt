@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: inline
+---
 # ANOVA
 
 
@@ -8,17 +13,16 @@ library(emmeans) #posthoc
 library(pander)
 ```
 
-::: {.objectives}
+:::{.objectives }
 **Objetivos do capítulo**  
 1. Apresentar a ANOVA   
 2. Discutir seus diferentes tipos, incluindo ANOVA de 1 via, 2 vias e Fatorial    
 3. Apresentar gráficos e tabelas com comparações de grupos   
 4. Apresentar e discutir testes Post hoc  
 5. Dar exemplos relacionados à escrita dos resultados  
-:::
+ 
 
-::: {.glossario}
-
+:::{.glossario }
 <U>**GLOSSÁRIO**</U>   
 **ANOVA**:  Análise da variância.    
 **Via**: Variável independente, variável fonte, variável preditora, tratamento.  
@@ -30,11 +34,12 @@ library(pander)
 **Efeito simples**: Efeito de uma variável independente em um nível (específico) de outra variável independente.  
 **ANCOVA**: Análise de covariância, onde se controla os resultados por uma variável contínua.  
 **MANOVA**: Análise multivariada de variância, onde se estende a ANOVA para incluir duas variáveis dependentes. É um modelo multivariado.    
-:::
+::: 
+
 
 A ANOVA representa um conjunto de procedimentos estatísticos muito utilizado para verificar <u>diferenças médias entre diversos grupos</u> e, portanto, é considerada um procedimento paramétrico. Pragmaticamente, é possível entender ANOVA como um super Teste T ou também um caso particular de um modelo de regressão. Uma vez que a ANOVA verifica a diferença entre todos os grupos e combinações lineares de maneira simultânea, ela é classificada como um *Omnibus test*. A relação entre a ANOVA e o Teste T será abordado na seção [Post hoc](#post-hoc).
 
-Alguns autores indicam que a ANOVA é a técnica inferencial mais utilizada em Psicologia [@Chartier2008; @Howell2011]. Se por um aspecto, isso é extremamente vantajoso, uma vez que estreita a relação entre Psicologia e Estatística; por outro, isso parece ter contribuído para criação e manutenção de diferentes conceitos equivocados sobre a ANOVA. 
+Alguns autores indicam que a ANOVA é a técnica inferencial mais utilizada em Psicologia [@Chartier2008]. Se por um aspecto, isso é extremamente vantajoso, uma vez que estreita a relação entre Psicologia e Estatística; por outro, isso parece ter contribuído para criação e manutenção de diferentes conceitos equivocados sobre a ANOVA. 
 
 Conceitualmente, a ANOVA é um modelo linear, tal que:
 
@@ -63,28 +68,28 @@ Operacionalmente, o erro representa <u>todos os fatores de pesquisa</u> e proble
 
 Eventualmente, quando os pressupostos do modelo são violados, a literatura mais tradicional recomenda que ajustes ou testes não-paramétricos com propostas parecidas possam ser implementados. A tabela abaixo concatena os testes estatísticos relacionados para fins de comparação com outros trabalhos. Há também autores que sugerem que se use sempre as versões não-paramétricas em resultados obtidos por processos de avaliação psicológica, argumentando que os dados têm nível de medida "ordinal".
 
+Eventualmente, quando os pressupostos do modelo são violados, a literatura mais tradicional recomenda que ajustes ou testes não-paramétricos com propostas parecidas possam ser implementados. A tabela abaixo concatena os testes estatísticos relacionados para fins de comparação com outros trabalhos. Há também autores que sugerem que se use sempre as versões não-paramétricas em resultados obtidos por processos de avaliação psicológica, argumentando que os dados têm nível de medida "ordinal".
 
-  | Estatística     | Um ou mais fatores            |  Medidas repetidas              |  
-  | :-----------    | :-----------                  | :-----------                    |        
-  | Paramétrica     | ANOVA de k via(s)/Fatorial    |  ANOVA de medidas repetidas     |   
-  | Não-paramétrica | Kruskal-Wallis                |  Teste de Friedman ou Page Test |   
-
-
-
+Estatística     | Um ou mais fatores        |  Medidas repetidas   
+:---------      | :-----------              | :-----------                
+Paramétrica     | ANOVA de k via(s)/Fatorial|  ANOVA de medidas repetidas   
+Não-paramétrica | Kruskal-Wallis            |  Teste de Friedman ou Page 
+  
+  
 Por heurística, se escreve os delineamentos estudados por uma ANOVA com $\eta$. Por exemplo, se o interesse for verificar o efeito da escolaridade (fundamental, médio e superior) em um determinado desfecho, isso é entendido como uma ANOVA de 1 via. Caso o interesse seja verificar o efeito da escolaridade, mas também do sexo (masculino ou feminino), a representação será $\eta =  3 \times 2$. Isso significa que a ANOVA tem dois fatores (escolaridade e sexo), o primeiro fator tem três níveis e o segundo tem 2 níveis. 
 
 
 A tabela a seguir resume as denominações encontradas na literatura:
 
+VDs      | Uma VI          |  2 ou mais VIs (sem interação)  | 2 ou mais VIs (com interação)  
+:------- | :-----------        | :----------                     | :-----------          
+1 VD     | ANOVA de 1 via<br>(*one way*) |  ANOVA 2 (ou mais)  vias <br>(*multi way*) |  ANOVA Fatorial
+2 ou mais| MANOVA
 
-  | Número de VDs | Uma VI                    |  2 ou mais VIs (sem interação)       | 2 ou mais VIs (com interação)  
-  | :-----------| :-----------              | :-----------                         | :-----------          
-  | 1 VD      | ANOVA de 1 via (*one way*)  |  ANOVA 2 (ou mais)  vias (*multi way*) |   ANOVA Fatorial
-  | 2 ou mais VDs | MANOVA     
 
 ## Pesquisa
   
-::: {.base }
+::: {.base}
   A base desta pesquisa está disponível em formato **R (Rdata)** e em **CSV**, que é lido pelo JASP. Clique na opção desejada.     
       
   <strong>Base R: </strong> [Livro - R - TEG](https://github.com/anovabr/mqt/raw/master/bases/Livro%20-%20R%20-%20TEG.RData)     
@@ -343,7 +348,8 @@ Após isso feito, o valor de P irá indicar se a hipótese nula foi rejeitada ou
 O principal achado foi que os resultados médios de empreendedorismo foram significativamente influenciados pelo nível de escolaridade dos participantes. Abaixo uma sugestão de escrita baseada nas recomendações da American Psychological Association (APA).
 
 
-::: {.writing }
+:::{.writing }
+
 **Como escrever os resultados**  
 
 Os dados foram analisados a partir de uma ANOVA de uma via que verificou o efeito da escolaridade no empreendedorismo, medido por um escala específica. Foi possível concluir que a escolaridade tem efeito significativo (F(3, 143) = 8.23, p < 0.01, ηp2 = 0.15, 90% CI [.06, .22]) nos níveis de empreendedorismo.
@@ -395,8 +401,6 @@ $$4*(\frac{3}{2})\\=6$$
 
 
 Existem muitas técnicas disponíveis para ajustar o valor de P. Elas costumam ser agrupadas em função da sua robustez à violação da homocedasticidade e por seu perfil ser liberal ou conservador. O termo liberal significa que a correção do valor de P é pequena ou quase nula, enquanto o termo conservado significa que a correção é mais rigorosa. É importante que a técnica consiga minimizar o erro do tipo 1 (falso positivo) sem maximizar o erro do tipo 2 (falso negativo).
-
-
 
 ## Execução no R
 
@@ -490,7 +494,7 @@ Em seguida, é necessário levar a variável <u>escolaridade_fct</u> para o `Hor
 A escrita dos resultados deve informar os resultados da ANOVA e das comparações pareadas. É importante apresentar os valores de P corrigidos e, sempre que possível, as interpretações teóricas. Abaixo há uma sugestão com estilo baseado nas recomendações da American Psychological Association (APA).
 
 
-::: {.writing }
+:::{.writing }
 **Como escrever os resultados**  
 
 Os dados foram analisados a partir de uma ANOVA de uma via que verificou o efeito da escolaridade no empreendedorismo, medido por um escala específica. Foi possível concluir que a escolaridade é um fator significativo nos resultados (F(3, 143) = 8.23, p < 0.01, ηp2 = 0.15, 90% CI [.06, .22]). As comparações pareadas foram ajustadas pela técnica de Bonferroni e mostraram que os participantes com ensino superior apresentam pontuação significativamente mais alta do que àqueles com o primário (Δ = 7.16, p < 0.001), ginásio (Δ = 5.07, p < 0.001) e colegial (Δ = 2.96, p < 0.05).
@@ -509,8 +513,6 @@ Os dados foram analisados a partir de uma ANOVA de uma via que verificou o efeit
 
 1. Cognitive Processes and Memory Differences in Recall and Recognition in Adults    
 Nesta pesquisa, cerca de 150 estudantes foram apresentados a um filme e depois tiveram que lembrar algumas cenas. Três grupos distintos foram formados. Em um grupo, uma recordação com pistas foi implementada, em outro, técnicas de reconhecimento foram utilizadas e o terceiro grupo teve de fazer uma recordação livre, sem nenhum suporte adicional. 
-
----
 
 ## Pesquisa
 
@@ -680,7 +682,6 @@ Os resultados indicaram que a homocedasticidade foi preservada.
 
 <mark>Independência</mark>:  Esse pressuposto frequentemente não é testado na ANOVA, apesar de ser uma exigência dos modelos lineares. De fato, uma vez que se espera que os grupos sejam mutuamente excludentes, teria pouco sentido acreditar que os resíduos não fossem independentes. 
 
-
 ## Execução no JASP
 
 Para executar a ANOVA de 2 vias no JASP, será necessário baixar a base [CSV file - MEMORE Cognitive measurement.csv](https://osf.io/4hdc2/). Após carregar os dados no programa, a seção `Descriptives` apresentará o gráfico inicial dos resultados.
@@ -762,11 +763,13 @@ A este momento, a interpretação pode ser feita integralmente. O valor de P ir�
 
 Após a execução de uma ANOVA de duas vias, foi possível concluir que ambas as variáveis foram significativas aos resultados da avaliação psicológica. Abaixo uma sugestão de escrita baseado nas recomendações da American Psychological Association (APA).
 
-::: {.writing }
+
+:::{.writing }
 **Como escrever os resultados**  
 
 Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA de duas vias para investigar o efeito da escolaridade e faixa etária nos resultados. Os achados permitiram concluir que tanto a escolaridade (F(2, 1427) = 7.58, p = 0.001, n2p = 0.01), como a faixa etária (F(4, 1427) = 32.972, p < 0.001, n2p = 0.08) tiveram efeito significativo nos resultados.
-:::
+:::   
+
 
 De forma análoga ao que aconteceu na ANOVA de 1 via, os resultados não indicam os níveis em que as diferenças podem existir. Testes post hoc são, novamente, necessários para responder à esta pergunta.
 
@@ -871,16 +874,15 @@ Infelizmente, o JASP não realiza um gráfico completo dessa maneira na seção 
 Os resultados obtidos agora indicam que tanto a escolaridade como a faixa etária são significativamente relacionadas aos resultados obtidos na avaliação psicológica. Esses achados são convergentes ao que vem sendo demonstrado na literatura. Os resultados devem trazer os achados principais da ANOVA e as comparações pareadas de ambos os fatores, destacando os valores de P corrigidos. O estilo da escrita é baseado nas recomendações da American Psychological Association (APA).
 
 
-::: {.writing }
+:::{.writing }
 **Como escrever os resultados**  
 
 Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA de duas vias que investigou o efeito da escolaridade e da faixa etária nos resultados. Os achados permitiram concluir que tanto a escolaridade (F(2, 1427) = 7.58, p = 0.001, n2p = 0.01), como a faixa etária (F(4, 1427) = 32.972, p < 0.001, n2p = 0.08) tiveram efeito significativo nos resultados. Comparações pareadas foram realizadas e os valores de P foram corrigidos pela técnica de Bonferroni. Em relação à escolaridade, pessoas com nível fundamental, quando comparadas às pessoas de nível médio (Δ = -3.23, p < 0.001) e superior (Δ = -2.84, p < 0.001) apresentam performance significativamente menor. Não houve diferença entre participantes com ensino médio e ensino superior. Em relação à faixa etária, participantes entre 14 e 24 anos apresentam performance significativamente mais elevada do que participantes entre 35 e 44 (Δ = 4.21, p < 0.001), entre 45 e 54 (Δ = 5.50, p < 0.001) e entre 55 e 64 anos (Δ = 5.50, p < 0.001).  Participantes entre 25 e 34 anos também apresentam performance significativamente superior do que participantes entre 35 e 44 anos (Δ = 4.03, p < 0.001), entre 45 e 54 (Δ = 5.32, p < 0.001) e entre 55 e 64 anos (Δ = 5.32, p < 0.001). Não houve diferença significativa na performance do grupo entre 14 e 24 anos do grupo entre 25 e 34, bem como entre o grupo entre 35 e 44 e 55 e 64. Também não houve diferença significativa entre os participantes com idades entre 45 e 54 daqueles com idade entre 55 e 64.
-
-:::
+::: 
 
 
 ## Resumo
-::: {.explore }
+::: {.explore}
 1. A ANOVA de duas vias pode ser modelada por um modelo aditivo ou não-aditivo
 2. O modelo aditivo não define interação entre os fatores, enquanto o não-aditivo sim    
 3. Gráficos podem ser feitos antes das análises para auxiliar na interpretação dos resultados  
@@ -1055,7 +1057,6 @@ Os resultados obtidos pelo teste de ` Breusch Pagan Test` indicaram que a homoce
 
 <mark>Independência</mark>:  Esse pressuposto frequentemente não é testado na ANOVA, apesar de ser uma exigência dos modelos lineares. De fato, uma vez que espera-se que os grupos sejam mutuamente excludentes, teria pouco sentido acreditar que os resíduos não fossem independentes. 
 
-
 ## Execução no JASP
 
 Para executar a ANOVA Fatorial no JASP, será necessário baixar a base intitulada CSV file - MEMORE Cognitive measurement.csv. Após carregar os dados no programa, a seção `Descriptives` apresentará o gráfico inicial dos resultados.
@@ -1139,11 +1140,11 @@ Infelizmente, o JASP não realiza um gráfico completo dessa maneira na seção 
 Os resultados serão escritos apresentando os achados principais da ANOVA, destacando se o efeito da interação foi significativo ou não. O estilo da escrita é baseado nas recomendações da American Psychological Association (APA).
 
 
-::: {.writing }
+:::{.writing }
 **Como escrever os resultados**  
 
 Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA Fatorial para investigar o efeito da escolaridade, faixa etária, e de uma interação entre esses dois fatores nos resultados. Os resultados concluíram que a interação entre os fatores foi significativa (F(8, 1419) = 2.486, p = 0.011, n2p = 0.014), bem como a escolaridade (F(2, 1419) = 4.865, p = 0.008, n2p = 0.007) e a faixa etária (F(4, 1419) = 2.6.894, p < 0.001, n2p = 0.019).
-:::
+:::     
 
 ## Resumo
 ::: {.explore}
@@ -1210,11 +1211,11 @@ O gráfico feito anteriormente é um forte candidato a também ser inserido para
 Os resultados serão escritos apresentando os achados principais da ANOVA, destacando se o efeito da interação foi significativo ou não e as comparações pareadas. O estilo da escrita é baseado nas recomendações da American Psychological Association (APA). Como os resultados do R e do JASP foram um pouco diferentes nas comparações pareadas, o R será utilizado como principal.  
 
 
-::: {.writing }
+:::{.writing }
 **Como escrever os resultados**  
 
 Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA Fatorial para investigar o efeito da escolaridade, faixa etária, e de uma interação entre esses dois fatores nos resultados. Os resultados concluíram que a interação entre os fatores foi significativa (F(8, 1419) = 2.486, p = 0.011, n2p = 0.014), bem como a escolaridade (F(2, 1419) = 4.865, p = 0.008, n2p = 0.007) e a faixa etária (F(4, 1419) = 2.6.894, p < 0.001, n2p = 0.019). Em situações em que a interação é significativa os efeitos principais não são interpretados, já que os resultados podem depender de níveis específicos de cada uma das variáveis. As comparações pareadas foram feitas entre todos os níveis de escolaridade se mantendo a faixa etária constante e ajustando o valor de P pela técnica de Bonferroni. Pessoas entre 14 e 24 anos com ensino médio apresentam performance superior que seus pares com ensino superior (Δ = 1.145, p = 0.003). Pessoas entre 25 e 34 anos, com nível fundamental, têm performance significativamente mais baixa do que seus pares com ensino médio (Δ = -6.317, p < 0.001) e superior  (Δ = -5.46, p < 0.001). Finalmente, pessoas entre 35 e 44 anos com ensino superior tem performance significativamente maior do que aquelas com ensino fundamental  (Δ = 3.447, p < 0.001) e médio  (Δ = 2.365, p < 0.001). 
-:::
+::: 
 
 
 É importante ter em mente que as comparações e os sinais podem ser invertidos para que os resultados tornem-se mais facilmente interpretáveis.
@@ -1224,7 +1225,7 @@ Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA Fato
 
 ## Questões  
 
-::: {.question }
+:::{. question }
 
 1. (Retirado de Médico do Trabalho, BANPARÁ, ESPP, 2012) Uma determinada empresa deseja comparar a média de idade de seus trabalhadores, em três de suas filiais. O melhor teste estatístico para essa comparação é:<br>a) Teste t de Student pareado.<br>b) Análise de variância.<br>c) Teste do Qui-quadrado.<br>d) Diagrama de Pareto.<br>e) Estatística descritiva
 :::
