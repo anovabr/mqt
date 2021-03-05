@@ -135,7 +135,8 @@ Até o momento, os resultados já indicam que a quantidade/proporção de menino
 Conforme exposto, o teste Qui-quadrado de independência costuma ser feito antes de verificar as principais medidas relacionadas ao risco. Isso se dá pois o Qui-quadrado oferece tanto o recurso necessário para verificar se as variáveis apresentam uma associação, como também para testar a significância de algumas dessas medidas. A relação entre o sexo do participante e seu diagnóstico se mostrou significativa: X2(1) = 41.6, p < 0.01
 
 ```{r}
-chisq.test(ds_selected$sex_male,ds_selected$adhd_parent, correct = F) %>% pander(., split.table = Inf, caption = "")
+chisq.test(ds_selected$sex_male,ds_selected$adhd_parent, correct = F) %>% 
+  pander(., split.table = Inf, caption = "")
 ```
 
 Para verificar o Risco Atribuível (RA), o Risco Relativo (RR) e o *Odds Ratio* (OR), tanto o pacote `epitools` como o `epiR` podem ser utilizados. Este último tem a vantagem de apresentar todas essas medidas de uma única vez, mas exige que a tabela seja formada pelo padrão descrito inicialmente.
@@ -143,7 +144,8 @@ Para verificar o Risco Atribuível (RA), o Risco Relativo (RR) e o *Odds Ratio* 
 A função `epi.2by2` é utilizada a seguir.  
 
 ```{r }
-table(ds_selected$sex_male,ds_selected$adhd_parent) %>% DescTools::Rev(.) %>% 
+table(ds_selected$sex_male,ds_selected$adhd_parent) %>% 
+  DescTools::Rev(.) %>% 
   epiR::epi.2by2(.)
 ```
 
@@ -262,8 +264,10 @@ Por exemplo, caso o modelo logístico fosse calculado para verificar o diagnóst
 
 
 ```{r}
-mod_logistico_simples <- glm(adhd_parent ~ sex_male, family = binomial, data = ds_selected)
-sjPlot::tab_model(mod_logistico_simples, transform = NULL, show.ci = F, digits = 3)
+mod_logistico_simples <- glm(adhd_parent ~ sex_male,
+                             family = binomial, data = ds_selected)
+sjPlot::tab_model(mod_logistico_simples,
+                  transform = NULL, show.ci = F, digits = 3)
 ```
 
 Para transformar o resultado em *Odds Ratio*, bastar aplicar o exponencial à estimativa. Neste caso, o resultado seria o mesmo previamente encontrado: $e^{(0.61)} = 1.84$,
@@ -278,8 +282,15 @@ Por via de regra, modelos que consideram mais variáveis possibilitam uma melhor
 
 
 ```{r}
-mod_logistico_maior <- glm(adhd_parent ~ sex_male + alcohol, family = binomial, data = ds_selected)
-sjPlot::tab_model(mod_logistico_simples, mod_logistico_maior, transform = NULL, show.ci = F,digits = 3)
+mod_logistico_maior <- glm(adhd_parent ~ sex_male + 
+                             alcohol, 
+                           family = binomial, 
+                           data = ds_selected)
+sjPlot::tab_model(mod_logistico_simples, 
+                  mod_logistico_maior, 
+                  transform = NULL, 
+                  show.ci = F,
+                  digits = 3)
 ```
 
 

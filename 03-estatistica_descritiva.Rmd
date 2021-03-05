@@ -207,7 +207,8 @@ Para dividir a distribuição em duas partes iguais, a realização da mediana p
 
 ```{r, echo = FALSE }
 set.seed(1)
-rnorm(11, mean = 100, sd = 15) %>% pander()
+rnorm(11, mean = 100, sd = 15) %>% 
+  pander()
 ```
 
 Para o cálculo da mediana, é necessário organizar essa série de valores de maneira ascendente (chamado de rol) e localizar o resultado ao centro. Nesse caso, o valor ao centro é `104.9` . Note que este valor divide os dados em duas partes iguais de elementos abaixo ou acima dele.
@@ -215,7 +216,8 @@ Para o cálculo da mediana, é necessário organizar essa série de valores de m
 
 ```{r, echo = FALSE }
 set.seed(1)
-rnorm(11, mean = 100, sd = 15) %>% sort(.) %>% pander()
+rnorm(11, mean = 100, sd = 15) %>% 
+  sort(.) %>% pander()
 ```
 
 Caso a quantidade de elementos seja ímpar, a localização da mediana é mais fácil. Caso esta quantidade seja par, a mediana será calculada pela média aritmética dos dois elementos centrais.
@@ -378,7 +380,9 @@ O R oferece muitos pacotes especializados em tabelas descritivas, cada qual com 
 De maneira análoga à construção da primeira tabela deste capítuo, os valores do BDI e do BAI serão apresentados em função do país do participante.
 
 ```{r, results = "asis" }
-arsenal::tableby(country ~ bdi_sum + bai_sum, test = FALSE, data = Dataset) %>% summary()
+arsenal::tableby(country ~ bdi_sum + bai_sum, 
+                 test = FALSE, data = Dataset) %>% 
+  summary()
 ```
 
 É também possível reunir tais resultados a partir do sexo do participante.
@@ -392,7 +396,8 @@ A apresentação agrupando pelo país e sexo do participante é possível e reú
 ```{r, results = "asis" }
 arsenal::tableby(interaction(sex ,country) ~ bdi_sum + bai_sum, 
                  control=arsenal::tableby.control(test=FALSE, total=FALSE),
-                 data = Dataset) %>% summary()
+                 data = Dataset) %>%
+  summary()
 ```
 
 
@@ -425,7 +430,8 @@ O gráfico de barras abaixo apresenta a contagem absoluta dos participantes pesq
 ```{r}
 ggplot(Dataset, aes(x = country)) +
   geom_bar() +
-  labs(x = "País", title = "Número de participantes nos países investigados")
+  labs(x = "País", 
+       title = "Número de participantes nos países investigados")
 ```
 
 Esse gráfico permite um primeiro entendimento da distribuição dos dados. No entanto, a simples contagem de valores pode gerar uma percepção diferente caso a pesquisa tenha muitos ou poucos sujeitos. Para evitar isso, sugere-se a apresentar as proporções em vez das contagens.  
@@ -437,9 +443,12 @@ A mudança da contagem para proporções pode ser feita por um recurso do pacote
 ggplot(Dataset, aes(x = country, y = ..prop.., group = 1)) + 
   geom_bar(stat = "count") +
   geom_text(aes(label=scales::percent(round(..prop..,2)), 
-                y=..prop..), stat= "count", color = "white", size = 3, position = position_stack(vjust = 0.5)) +
+                y=..prop..), 
+            stat= "count", color = "white", 
+            size = 3, position = position_stack(vjust = 0.5)) +
   scale_y_continuous(labels = scales::percent_format()) +
-  labs(x = "País", title = "Proporção de participantes em cada país investigado")
+  labs(x = "País",
+       title = "Proporção de participantes em cada país investigado")
 ```
 
 O gráfico de setor (as vezes chamado de polar, pizza ou torta) é também uma opção. O aspecto principal desse gráfico é o tamanho proporcional dos segmentos.
@@ -450,7 +459,8 @@ Dataset %>%
   mutate(pct = n/sum(n)) %>% 
   ggplot(., aes(x="", y= pct, fill=country)) +
   geom_col() +
-  geom_text(aes(label = scales::percent(round(pct,3))), position = position_stack(vjust = 0.5))+
+  geom_text(aes(label = scales::percent(round(pct,3))), 
+            position = position_stack(vjust = 0.5))+
   coord_polar(theta = "y") +
   labs(title = "Proporção de participantes em cada país")
 ```
@@ -590,7 +600,8 @@ Dataset %>%
   filter(!is.na(sex)) %>% 
   ggplot(., aes(x = country, y = bai_sum, fill = sex)) +
   geom_bar(stat = "summary", position = "dodge") +
-  stat_summary(geom="errorbar", fun.data = mean_se, position = position_dodge(0.95), width = .5) 
+  stat_summary(geom="errorbar", fun.data = mean_se, 
+               position = position_dodge(0.95), width = .5) 
 ```
    
 Este gráfico traz uma informação importante sobre os resultados de homens e mulheres nos três países. Além disso, as barras de erro ajudam em um primeiro entendimento de possíveis diferenças significativas. Esse conceito irá ser revisitado em capítulos subsequentes.   
@@ -612,7 +623,9 @@ Por sua vez, situações em que há uma grande quantidade de variáveis apresent
 ```{r}
 Dataset %>% 
   filter(!is.na(sex), !is.na(curso_ou_ano)) %>% 
-  ggplot(., aes(x = age, y = bai_sum, fill = factor(curso_ou_ano), color = sex, shape = country)) +
+  ggplot(., aes(x = age, y = bai_sum, 
+                fill = factor(curso_ou_ano), 
+                color = sex, shape = country)) +
   geom_jitter() +
   geom_smooth(method = "lm") 
 ```

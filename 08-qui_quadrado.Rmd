@@ -120,7 +120,8 @@ ggplot(ds_selected, aes(x= sex_male, fill = adhd_parent)) +
 Com isto feito, é possível proceder ao cálculo do Qui-quadrado, tal como feito a seguir.    
 
 ```{r}
-descr::CrossTable(ds_selected$sex_male,ds_selected$adhd_parent,chisq = T)$CST %>% pander::pander()
+descr::CrossTable(ds_selected$sex_male,ds_selected$adhd_parent,chisq = T)$CST %>%
+  pander::pander()
 ```
   
 Os resultados deixam claro que que é possível rejeitar a hipótese nula, uma vez que o valor de P é menor do que o nível de significância previamente estipulado (0.05). Isso sugere que existe uma associação entre o sexo do participante e o diagnóstico de TDAH.  

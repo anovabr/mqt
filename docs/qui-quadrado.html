@@ -567,7 +567,8 @@ Row(%)</td>
 <span id="cb26-4"><a href="qui-quadrado.html#cb26-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;sexo&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Proporção&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;TDAH&quot;</span>)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-46-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Com isto feito, é possível proceder ao cálculo do Qui-quadrado, tal como feito a seguir.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="qui-quadrado.html#cb27-1"></a>descr<span class="op">::</span><span class="kw">CrossTable</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent,<span class="dt">chisq =</span> T)<span class="op">$</span>CST <span class="op">%&gt;%</span><span class="st"> </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="qui-quadrado.html#cb27-1"></a>descr<span class="op">::</span><span class="kw">CrossTable</span>(ds_selected<span class="op">$</span>sex_male,ds_selected<span class="op">$</span>adhd_parent,<span class="dt">chisq =</span> T)<span class="op">$</span>CST <span class="op">%&gt;%</span></span>
+<span id="cb27-2"><a href="qui-quadrado.html#cb27-2"></a><span class="st">  </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
 <table style="width:56%;">
 <caption>Pearson’s Chi-squared test: <code>tab</code></caption>
 <colgroup>
