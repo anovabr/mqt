@@ -20,7 +20,7 @@ library(pander)
 3. Apresentar gráficos e tabelas com comparações de grupos   
 4. Apresentar e discutir testes Post hoc  
 5. Dar exemplos relacionados à escrita dos resultados  
- 
+::: 
 
 :::{.glossario }
 <U>**GLOSSÁRIO**</U>   
@@ -82,8 +82,8 @@ Por heurística, se escreve os delineamentos estudados por uma ANOVA com $\eta$.
 A tabela a seguir resume as denominações encontradas na literatura:
 
 VDs      | Uma VI          |  2 ou mais VIs (sem interação)  | 2 ou mais VIs (com interação)  
-:------- | :-----------        | :----------                     | :-----------          
-1 VD     | ANOVA de 1 via<br>(*one way*) |  ANOVA 2 (ou mais)  vias <br>(*multi way*) |  ANOVA Fatorial
+:------- | :-----------        | :----------                 | :-----------          
+1 VD     | ANOVA de 1 via<br>(*one way*) |  ANOVA 2 (ou mais) vias <br>(*multi way*) |  ANOVA Fatorial
 2 ou mais| MANOVA
 
 
@@ -415,7 +415,8 @@ O resultado das comparações dois a dois será armazenado em um objeto específ
 
 
 ```{r}
-post_hoc_escolaridade <- emmeans(mod_escolaridade, "escolaridade_fct") %>% 
+post_hoc_escolaridade <- emmeans(mod_escolaridade, 
+                                 "escolaridade_fct") %>% 
   pairs(., reverse = TRUE, adjust = "bonferroni")
 ```
 
@@ -423,7 +424,9 @@ post_hoc_escolaridade <- emmeans(mod_escolaridade, "escolaridade_fct") %>%
 A apresentação tabular é fundamental e traz as estatísticas inferenciais de interesse. Nesta tabela, o valor de P apresentado na coluna `p.value` é o corrigido pelas comparações feitas.
 
 ```{r}
-post_hoc_escolaridade %>% data.frame() %>% pander()
+post_hoc_escolaridade %>% 
+  data.frame() %>% 
+  pander()
 ```
 
 
@@ -448,8 +451,10 @@ Um exemplo pode ser útil a este momento. A correção implementada no teste pos
 
 ```{r}
 dados_teg %>% 
-  filter(escolaridade_fct == "Colegial" | escolaridade_fct == "ginasio") %>% 
-  {t.test(teg ~ escolaridade_fct, var.equal = T, data = .)$p.value} %>% pander()
+  filter(escolaridade_fct == "Colegial" | 
+           escolaridade_fct == "ginasio") %>% 
+  {t.test(teg ~ escolaridade_fct, var.equal = T, data = .)$p.value} %>% 
+  pander()
 ```
 
 
@@ -591,7 +596,8 @@ Gráficos específicos com relações bivariadas ajudam em uma primeira sondagem
 
 ```{r, message=FALSE}
 gridExtra::grid.arrange(
-  ggplot(ds, aes(x=escolaridade_grupo, y = memore_total, fill = escolaridade_grupo)) +
+  ggplot(ds, aes(x=escolaridade_grupo, y = memore_total, 
+                 fill = escolaridade_grupo)) +
     geom_bar(stat = "summary") +
     stat_summary(fun.data = mean_se, geom = "errorbar") +
     theme(legend.position = "none"),
@@ -605,9 +611,12 @@ gridExtra::grid.arrange(
 Por sua vez, gráficos mais complexos, que reúnem mais informações, também são úteis. Repare que a ideia principal da apresentação a seguir é descrever a influência da faixa etária e o nível de escolaridade nos resultados em um único gráfico. Conforme explicitado no capítulo sobre estatística descritiva, o eixo X é utilizado pela variável com mais níveis (faixa etária), enquanto o agrupador reúne a variável com menos níveis (escolaridade).    
 
 ```{r}
-ggplot(ds, aes(x = faixa_etaria, y = memore_total, color = escolaridade_grupo, group  = escolaridade_grupo)) +
+ggplot(ds, aes(x = faixa_etaria, y = memore_total, 
+               color = escolaridade_grupo, 
+               group  = escolaridade_grupo)) +
   stat_summary(geom = "line", fun = mean, size = 1) +
-  stat_summary(fun.data = mean_se, geom = "errorbar", width = .2) +
+  stat_summary(fun.data = mean_se, 
+               geom = "errorbar", width = .2) +
   theme(legend.position = "bottom")
 ```
   
@@ -624,11 +633,11 @@ mod_escolaridade_faixa_etaria <- lm(memore_total ~ escolaridade_grupo + faixa_et
 A tabela padronizada da ANOVA de duas vias, disponível na maioria dos programas comerciais, é a seguinte:
 
 
-  | Preditor      | Soma dos Quadrados| Graus de liberdade |  Quadrado médio             | Estat. F       | 
-  | :-----------  | :-----------      | :-----------       |  :-----------               | :-----------   |  
-  | Fator (A)     | Entre (SS(A))     | K(A)-1             |  MS(A) = SS(A)/(K-1)          | F = MS(A)/MSW  | 
-  | Fator (B)     | Entre (SS(B))     | K(B)-1             |  MS(B) = SS(B)/(K-1)          | F = MS(B)/MSW  | 
-  | Resíduo       | Dentro (SSW)      | N-1-(df(A)+df(B))  |  MSW = SSW/(N-1-(df(A)+df(B)))|                |
+Preditor    | Soma dos Quadrados| Graus de liberdade |  Quadrado médio             | Estat. F        
+:---------  | :-----------      | :-----------       |  :-----------               | :-----------    
+Fator (A)   | Entre (SS(A))     | K(A)-1             |  MS(A) = SS(A)/<br>(K-1)          | F = MS(A)/<br>MSW   
+Fator (B)   | Entre (SS(B))     | K(B)-1             |  MS(B) = SS(B)/<br>(K-1)          | F = MS(B)/<br>MSW    
+Resíduo     | Dentro (SSW)      | N-1-(df(A)+df(B))  |  MSW = SSW/<br>(N-1-(df(A)+df(B)))|                
 
 
 Posto isso, os resultados obtidos são:
@@ -783,7 +792,8 @@ Na ANOVA de duas vias, o post hoc será realizado para cada um dos níveis ou fa
 O pacote `emmeans` será utilizado para, inicialmente, verificar cada uma das comparações entre os níveis de <u>escolaridade</u>. É bom notar que os resultados são ajustados pelas outras variáveis que integram o modelo. O vetor `post_hoc_twoway_escolaridade` reunirá os resultados.
 
 ```{r}
-post_hoc_twoway_escolaridade <- emmeans(mod_escolaridade_faixa_etaria, "escolaridade_grupo") %>% 
+post_hoc_twoway_escolaridade <- emmeans(mod_escolaridade_faixa_etaria, 
+                                        "escolaridade_grupo") %>% 
   pairs(.,adj = "bonferroni")
 ```
 
@@ -792,7 +802,9 @@ A apresentação formal ocorre por tabelas, tal como a exposta a seguir. A últi
 
 
 ```{r}
-post_hoc_twoway_escolaridade %>% data.frame() %>% pander()
+post_hoc_twoway_escolaridade %>% 
+  data.frame() %>% 
+  pander()
 ```
 
 
@@ -816,14 +828,17 @@ Para comparar os resultados em função de todos os níveis de <u>faixa_etaria</
 
 
 ```{r}
-post_hoc_twoway_faixaetaria <- emmeans(mod_escolaridade_faixa_etaria, "faixa_etaria") %>% 
+post_hoc_twoway_faixaetaria <- emmeans(mod_escolaridade_faixa_etaria, 
+                                       "faixa_etaria") %>% 
   pairs(.,adj = "bonferroni")
 ```
 
 Agora, a tabela apresenta os resultados das comparações etárias de maneira detalhada.
 
 ```{r}
-post_hoc_twoway_faixaetaria %>% data.frame() %>% pander()
+post_hoc_twoway_faixaetaria %>% 
+  data.frame() %>% 
+  pander()
 ```
 
 Conforme previamente descrito, O gráfico é um recurso útil à visualização dos resultados, permitindo que as conclusões se tornem mais fáceis de serem obtidas.    
@@ -922,17 +937,26 @@ Graficamente, a interação é tipicamente vista pelo cruzamento das linhas. O g
 set.seed(1)
 data.frame(atribuicao = rnorm(200,10,0.5), 
            auto_estima = c("Embaixo d'agua","Em terra"),
-           resultado = c(rep("Embaixo d'agua", 100), rep("Em terra", 100))) %>%
+           resultado = c(rep("Embaixo d'agua", 100), 
+                         rep("Em terra", 100))) %>%
   mutate(atribuicao = case_when(
-    auto_estima == "Embaixo d'agua" & resultado == "Embaixo d'agua" ~ atribuicao*1.2,
-    auto_estima == "Em terra" & resultado == "Embaixo d'agua" ~ atribuicao*0.9,
-    auto_estima == "Embaixo d'agua" & resultado == "Em terra" ~ atribuicao*0.9,
-     auto_estima == "Em terra" & resultado == "Em terra" ~ atribuicao*1.2)) %>% 
-  ggplot(., aes(x = resultado, y = atribuicao, color = auto_estima, group = auto_estima)) + 
+    auto_estima == "Embaixo d'agua" & 
+      resultado == "Embaixo d'agua" ~ atribuicao*1.2,
+    auto_estima == "Em terra" & 
+      resultado == "Embaixo d'agua" ~ 
+      atribuicao*0.9,
+    auto_estima == "Embaixo d'agua" & 
+      resultado == "Em terra" ~ atribuicao*0.9,
+     auto_estima == "Em terra" & 
+      resultado == "Em terra" ~ atribuicao*1.2)) %>% 
+  ggplot(., aes(x = resultado, y = atribuicao, 
+                color = auto_estima, group = auto_estima)) + 
   geom_point(size = 2,alpha=0.2) +
   geom_line(size=1.2) +
   ylim(c(7,14)) +
-  labs(x = "Ambiente de aprendizagem", y = "Palavras lembradas", color = "Ambiente da recordação") +
+  labs(x = "Ambiente de aprendizagem", 
+       y = "Palavras lembradas", 
+       color = "Ambiente da recordação") +
   theme_bw()
 ```
 
@@ -978,9 +1002,12 @@ Diferente do proposto na ANOVA de 2 vias aditiva, o gráfico agora deve ser o ma
 
 
 ```{r}
-ggplot(ds, aes(x = faixa_etaria, y = memore_total, color = escolaridade_grupo, group = escolaridade_grupo)) +
+ggplot(ds, aes(x = faixa_etaria, y = memore_total, 
+               color = escolaridade_grupo, 
+               group = escolaridade_grupo)) +
   stat_summary(geom = "line", fun = mean, size=1.5) +
-  labs(x = "Faixa etária", y = "Resultados", color = "Escolaridade")
+  labs(x = "Faixa etária", y = "Resultados", 
+       color = "Escolaridade")
   
 ```
    
@@ -991,7 +1018,9 @@ Agora, formalmente a modelagem estatística será feita. Os passos devem ser exa
 
 
 ```{r}
-mod_escolaridade_faixa_etaria_fatorial <- lm(memore_total ~ escolaridade_grupo * faixa_etaria, ds)
+mod_escolaridade_faixa_etaria_fatorial <- lm(memore_total ~ 
+                                               escolaridade_grupo * 
+                                               faixa_etaria, ds)
 ```
 
 Repare que <u>não</u> é preciso descrever integralmente a equação na linha de código. Ao usar o símbolo `*`, o R já faz o restante.  
@@ -1001,10 +1030,10 @@ A tabela padronizada da ANOVA Fatorial, disponível na maioria dos pacotes comer
 
   | Fonte de variação | Soma dos Quadrados| Graus de liberdade |  Quadrado médio                   | Estat. F        | 
   | :-----------      | :-----------      | :-----------       |  :-----------                     | :-----------    |  
-  | Fator (A)         | Entre (SS(A))     | K(A)-1             |  MS(A) = SS(A)/K-1                | F = MS(A)/MSW   | 
-  | Fator (B)         | Entre (SS(B))     | K(B)-1             |  MS(B) = SS(B)/K-1                | F = MS(B)/MSW   | 
-  | Interação (AB)    | Entre (SS(AB))    | (K(A)-1)*(K(B)-1)  |  MS(AB) = SS(AB)/(K(A)-1)*(K(B)-1)| F = MS(AB)/MSW  |  
-  | Resíduo           | Dentro (SSW)      | N-(K(A)*K(B))      |  MSW = SSW/N-(K(A)*K(B))           |                |
+  | Fator (A)         | Entre (SS(A))     | K(A)-1             |  MS(A) = SS(A)/<br>K-1                | F = MS(A)/MSW   | 
+  | Fator (B)         | Entre (SS(B))     | K(B)-1             |  MS(B) = SS(B)/<br>K-1                | F = MS(B)/MSW   | 
+  | Interação (AB)    | Entre (SS(AB))    | (K(A)-1)*(K(B)-1)  |  MS(AB) = SS(AB)/<br>(K(A)-1)*(K(B)-1)| F = MS(AB)/MSW  |  
+  | Resíduo           | Dentro (SSW)      | N-(K(A)*K(B))      |  MSW = SSW/<br>N-(K(A)*K(B))           |                |
 
 
 Posto isso, os resultados obtidos são:  
@@ -1166,13 +1195,16 @@ Os programas estatísticos comerciais tendem a realizar o segundo formato de an�
 Neste caso, o post hoc será feito para todos os níveis de `escolaridade` com pessoas na faixa etária `Entre 14 e 24`. Em seguida, novamente todos os níveis de `escolaridade` serão comparados com pessoas na faixa etária `Entre 25 e 34` e assim por diante. Essa escolha reflete o que foi apresentado no gráfico introdutório desta seção. O vetor `post_hoc_fatorial` será computado e armazenará os resultados.    
 
 ```{r}
-post_hoc_fatorial <- emmeans(mod_escolaridade_faixa_etaria_fatorial, pairwise ~ escolaridade_grupo | faixa_etaria, adj = "bonferroni") 
+post_hoc_fatorial <- emmeans(mod_escolaridade_faixa_etaria_fatorial, 
+                             pairwise ~ escolaridade_grupo | 
+                               faixa_etaria, adj = "bonferroni") 
 post_hoc_fatorial$contrasts %>% data.frame %>% pander()
 ```
 O gráfico dessa vez será feito pela função `emmip` do pacote `emmeans`, que deve apresentar os mesmos resultados obtidos na tabela.  
 
 ```{r}
-emmip(mod_escolaridade_faixa_etaria_fatorial, escolaridade_grupo ~ faixa_etaria, CIs = TRUE)
+emmip(mod_escolaridade_faixa_etaria_fatorial, 
+      escolaridade_grupo ~ faixa_etaria, CIs = TRUE)
 ```
   
 Entre as conclusões possíveis, se constata, de maneira contraintuitiva, que pessoas entre 14 e 24 anos com ensino médio apresentam performance maior do que pessoas com ensino superior (Δ = 1.145). Por sua vez, não há diferença na performance entre pessoas entre 25 e 34 anos que possuem o ensino médio ou ensino superior. No entanto, pessoas que tem essa idade, mas apresentam o ensino fundamental possuem performance significativamente menor do que seus pares com ensino médio (Δ = -6.317) ou superior (Δ = -5.46). Pessoas entre 35 e 44 anos com ensino superior apresentam performance mais elevada do que seus pares com ensino médio (Δ = 2.365) ou fundamental (Δ = 3.477).  

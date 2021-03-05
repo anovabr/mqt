@@ -56,7 +56,8 @@ tratamento <- dados %>%
                values_to= "resultado") %>% 
   rename(grupo = grupo_dummy) %>% 
   filter(grupo < 3) %>% 
-  mutate(grupo = factor(if_else(grupo == 1, "Experimental", "Placebo"))) %>% 
+  mutate(grupo = factor(
+    if_else(grupo == 1, "Experimental", "Placebo"))) %>% 
   mutate(tempo = factor(case_when(
     tempo == "total_w4" ~ "antes",
     tempo == "total_w0" ~ "no_dia",
@@ -100,10 +101,14 @@ arsenal::tableby(tempo ~ resultado + grupo, test = FALSE, total = FALSE,tratamen
 O gráfico abaixo também apresenta as mesmas informações, mas insere uma barra com o erro padrão da média. Isso é útil para interpretação inferencial.
 
 ```{r,fig.align='center'}
-ggplot(tratamento, aes(x=tempo, y=resultado, group=grupo, color=grupo)) + #variaveis
-  stat_summary(fun = mean, geom = "line", size=1.0, aes(linetype = grupo)) + #linha
-  stat_summary(fun="mean", geom="point", size=2, aes(shape = grupo)) + #pontos
-  stat_summary(fun.data = mean_se, geom = "errorbar",size=1) #barra de erro
+ggplot(tratamento, aes(x=tempo, y=resultado, 
+                       group=grupo, color=grupo)) + #variaveis
+  stat_summary(fun = mean, geom = "line", 
+               size=1.0, aes(linetype = grupo)) + #linha
+  stat_summary(fun="mean", geom="point", 
+               size=2, aes(shape = grupo)) + #pontos
+  stat_summary(fun.data = mean_se, 
+               geom = "errorbar",size=1) #barra de erro
 ```
 
 É possível notar que as barras de erro estão superpostas, isto é, uma está contida na outra. Isso ocorre quando não há diferença significativa entre as condições. No entanto, o teste formal estatístico deve ser realizado. 
@@ -176,7 +181,8 @@ Este último resultado foi convergente ao já visualizado na apresentação grá
 Na tabela da ANOVA, o `Mauchly's Test for Sphericity` é o local que deve ser visualizado para verificar se a esfericidade foi violada ou não. A hipótese nula é definida como presença da esfericidade e idealmente não deve ser rejeitada. Abaixo, a reprodução desta parte da tabela.
 
 ```{r}
-ez_outcome$`Mauchly's Test for Sphericity` %>% pander()
+ez_outcome$`Mauchly's Test for Sphericity` %>% 
+  pander()
 ```
 É possível concluir que a esfericidade foi violada mas há algumas saídas para isso. As correções Greenhouse-Geisser (p[GG]) e de Huynh-Feldt tentam corrigir essa violação a partir de ajustes nos graus de liberdade da ANOVA. Os resultados das duas correções costumam ser próximos e, frequentemenet, a correção de Greenhouse-Geisser é utilizada para interpretar os resultados.
 
@@ -186,7 +192,8 @@ Com ambas as verificações feitas, é possível interpretar os resultados, que 
 Frequentemente, os resultados corrigidos e os não-corrigidos concluem na mesma direção. Isso é verdadeiro nesse caso. Repare que os resultados não corrigidos alcançariam as mesmas conclusões:
 
 ```{r }
-summary(ez_outcome$aov) %>% pander::pander()
+summary(ez_outcome$aov) %>% 
+  pander::pander()
 ```
 
 O valor de P do efeito do `tempo` saiu de 0.01 (sem correção) para 0.03 (com correção). Já a interação `grupo x semana` saiu de 0.598 (sem correção) para 0.529 (com correção).
@@ -322,9 +329,6 @@ Os dados foram analisados a partir de uma ANOVA de medidas repetidas investigand
 :::
 
 
-
-
-
 ## Resumo  
 ::: {.explore}
 1. A ANOVA de medidas repetidas é um teste bastante utilizado quando participantes de mesmos grupos são avaliados longitudinalmente  
@@ -334,4 +338,10 @@ Os dados foram analisados a partir de uma ANOVA de medidas repetidas investigand
 5. Os pacotes estatísticos oferecem correções automáticas para violação de alguns pressupostos  
 6. Gráficos são muito informativos para uma análise inicial dos dados  
 :::
+
+
+## Pesquisas adicionais  
+
+1. Physiotherapy Versus Physiotherapy Plus Cognitive Training on Cognition and Quality of Life in Parkinson Disease: Randomized Clinical Trial (DOI: 10.1097/PHM.0000000000001128)   
+Essa é uma pesquisa na área de fisioterapia. Os pesquisadores tiveram interesse de verificar a efetividade de dois tipos de tratamento (fisioterapia apenas vs. fisioterapia e reforço cognitivo) em 58 pacientes com Doeça de Parkinson. Os grupos foram compostos de maneira aleatória e acompanhados durante 3 meses. Não foram encontradas diferenças significativas entre as intervenções e ambos os grupos apresentaram melhoras clínicas.  
 
