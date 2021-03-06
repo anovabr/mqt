@@ -9,7 +9,7 @@ library(pander)
 
 
 
-::: {.objectives }
+::: {.objectives data-latex="" }
 **Objetivos do capítulo**  
 1. Apresentar características da regressão logística  
 2. Diferenciar o conceito de probabilidade e chance     
@@ -123,9 +123,11 @@ Inicialmente, é necessário carregar a base de dados ao R. Após isso feito, a 
 
 ```{r results="asis" }
 arsenal::tableby(risk_cefaleia_resources ~ 
-                   age + race +  sex + ses + sleeping + premature + smoking + alcohol + sdq_risk, 
+                   age + race +  sex + ses + sleeping + premature + 
+                   smoking + alcohol + sdq_risk, 
                  test = FALSE,
-                 base_uso) %>% summary() 
+                 base_uso) %>% 
+  summary() 
 ```
 
 Essa tabela oferece uma primeira informação sobre os dados. Gráficos também poderiam ser feitos com a mesma finalidade. 
@@ -140,13 +142,15 @@ O vetor `mod_risco` será criado e reunirá os resultados do modelo de regressã
 
 ```{r}
 mod_risco <- glm(risk_cefaleia_resources ~
-                   age + race +  sex + ses + sleeping + premature + smoking + alcohol + sdq_risk, 
-                 family = "binomial", data = base_uso)
+                   age + race +  sex + ses + sleeping + premature +
+                   smoking + alcohol + sdq_risk, 
+                 family = "binomial", 
+                 data = base_uso)
 ```
 
 Há muitas formas de apresentar os resultados e o pacote `sjPlot` tem bons recursos para isso. A função `tab_model` produz uma tabela com o *Odds Ratio* de cada preditor, seu intervalo de confiança, a estatística de teste, o valor de P, bem como a quantidade de observações utilizada e uma medida de ajuste ($R^2$). 
 
-```{r}
+```{r, results='asis'}
 sjPlot::tab_model(mod_risco, show.stat = TRUE)
 ```
 
@@ -157,7 +161,8 @@ A interpretação dos resultados costuma ser feita de maneira gradual, em que ca
 ```{r, eval = FALSE }
 #criar um null model
 mod_nulo <- base_uso %>% 
-  filter(across(c(age,race,sex,ses,sleeping,premature,smoking,alcohol,sdq_risk), ~!is.na(.x))) %>% 
+  filter(across(c(age,race,sex,ses,sleeping,premature,
+                  smoking,alcohol,sdq_risk), ~!is.na(.x))) %>% 
   glm(risk_cefaleia_resources ~ 1, family = "binomial", data = .)
 #comparar modelos
 anova(mod_nulo, mod_risco, test = "LRT")
@@ -370,7 +375,9 @@ base_uso %>%
 Essa tabela é particularmente útil e permite explorar possíveis associações entre as variáveis utilizando o teste Qui-quadrado de independência. Os resultados foram significativos, $X^2(1) = 3.398, p = 0.065$, indicando pela associação entre <u>sexo</u> e <u>risco</u>. No entanto, como o Qui-quadrado não trabalha com o conceito de variável independente e dependente, seus resultados não indicam em quais células os valores esperados e observados são significativamente diferentes.
 
 ```{r, echo = FALSE, eval = FALSE }
-descr::CrossTable(base_uso$risk_cefaleia_resources, base_uso$sex, chisq = T)$CST %>% pander()
+descr::CrossTable(base_uso$risk_cefaleia_resources, base_uso$sex, 
+                  chisq = T)$CST %>% 
+  pander()
 ```
 
 
@@ -397,7 +404,8 @@ Ao modelar esses dados por uma regressão logística, essas duas análises são 
 
 ```{r }
 base_uso %>% 
-  mutate(risk = if_else(risk_cefaleia_resources == "0",0,1)) %>% #nuneric for poisson 
+  mutate(risk = 
+           if_else(risk_cefaleia_resources == "0",0,1)) %>% #nuneric for poisson 
   count(risk, sex) %>% 
   {glm(n ~ risk * sex, data = .,family = poisson())} %>% 
   anova(., test = 'Rao') %>% 
@@ -412,10 +420,14 @@ Por sua vez, o *Odds Ratio* calculado previamente pela tabela de contingência t
 
 ```{r, echo = FALSE }
 cbind(
-glm(risk_cefaleia_resources ~ sex, family = binomial, data = base_uso) %>% 
+glm(risk_cefaleia_resources ~ sex, family = binomial, 
+    data = base_uso) %>% 
   summary(.) %>% .$coefficients,
-glm(risk_cefaleia_resources ~ sex, family = binomial, data = base_uso) %>% 
-  summary(.) %>% .$coefficients %>% data.frame() %>% mutate(OR = exp(Estimate)) %>% select(OR)) %>% 
+glm(risk_cefaleia_resources ~ sex, family = binomial, 
+    data = base_uso) %>% 
+  summary(.) %>% .$coefficients %>% 
+  data.frame() %>% 
+  mutate(OR = exp(Estimate)) %>% select(OR)) %>% 
   data.frame() %>%     
   rownames_to_column("Preditor") %>% 
   select(Preditor, Estimate, OR) %>% 

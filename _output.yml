@@ -13,12 +13,12 @@ bookdown::gitbook:
 bookdown::pdf_book:
   keep_tex: yes
   toc: yes
+  number_sections: true
+  highlight: tango
   includes:
     in_header: preamble.tex
   latex_engine: pdflatex
   citation_package: natbib
   pandoc_args: --top-level-division=chapter
-  toc_depth: 3
-  toc_unnumbered: no
 bookdown::epub_book: default
-bookdown::word_document: default
+bookdown::word_document2: default  # for cross-references

@@ -12,7 +12,7 @@ library(gridExtra) #plot together
 ```
 
 
-::: {.objectives }
+::: {.objectives data-latex="" }
 **Objetivos do capítulo**  
 1. Introduzir conceitos importantes em estatística descritiva  
 2. Apresentar tabelas e gráficos  
@@ -162,7 +162,8 @@ Caso uma tabela seja apresentada e nela seja calculada a distância de todos os 
 
 ```{r, echo = FALSE }
 set.seed(1)
-rnorm(11, mean = 100, sd = 15) %>% data.frame() %>% setNames(., c("Resultado")) %>% 
+rnorm(11, mean = 100, sd = 15) %>% 
+  data.frame() %>% setNames(., c("Resultado")) %>% 
 mutate(media = mean(Resultado)) %>% 
 mutate(distancia = Resultado-media) %>% 
 pander()
@@ -225,11 +226,11 @@ Caso a quantidade de elementos seja ímpar, a localização da mediana é mais f
 A tabela a seguir descreve algumas características vantajosas e possíveis limitações da mediana.
 
 
-  | Vantagem                                                   | Limitação                          |  
-  | :-----------                                               | :-----------                       | 
-  | Resistente a valor anômalos/Outliers                       | Não representa todos os valores    | 
-  | Adequada para dados ordinais, intervalares e de razão      | Não adequada a dados nominais      | 
-  |                                                            | Pouco adequada a tratamentos algébricos futuros     | 
+  | Vantagem                                              | Limitação                           
+  | :-----------                                          | :-----------                        
+  | Resistente a valor anômalos/Outliers                  | Não representa todos os valores    
+  | Adequada para dados ordinais, intervalares e de razão | Não adequada a dados nominais      
+  |                                                       | Pouco adequada a tratamentos algébricos futuros     
 
 
 <mark>Exemplo de aplicações</mark>: Situações em que a distribuição é muito assimétrica. Variáveis econômicas como salário e pobreza costumam trabalhar com a mediana dos dados.    
@@ -388,14 +389,18 @@ arsenal::tableby(country ~ bdi_sum + bai_sum,
 É também possível reunir tais resultados a partir do sexo do participante.
 
 ```{r, results = "asis" }
-arsenal::tableby(sex ~ bdi_sum + bai_sum, test = FALSE, data = Dataset) %>% summary()
+arsenal::tableby(sex ~ bdi_sum + bai_sum, 
+                 test = FALSE, 
+                 data = Dataset) %>%
+  summary()
 ```
 
 A apresentação agrupando pelo país e sexo do participante é possível e reúne mais informações. A tabela encontra-se abaixo:  
 
 ```{r, results = "asis" }
 arsenal::tableby(interaction(sex ,country) ~ bdi_sum + bai_sum, 
-                 control=arsenal::tableby.control(test=FALSE, total=FALSE),
+                 control=arsenal::tableby.control(test=FALSE, 
+                                                  total=FALSE),
                  data = Dataset) %>%
   summary()
 ```
@@ -448,7 +453,8 @@ ggplot(Dataset, aes(x = country, y = ..prop.., group = 1)) +
             size = 3, position = position_stack(vjust = 0.5)) +
   scale_y_continuous(labels = scales::percent_format()) +
   labs(x = "País",
-       title = "Proporção de participantes em cada país investigado")
+       title = 
+         "Proporção de participantes em cada país investigado")
 ```
 
 O gráfico de setor (as vezes chamado de polar, pizza ou torta) é também uma opção. O aspecto principal desse gráfico é o tamanho proporcional dos segmentos.

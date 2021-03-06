@@ -11,7 +11,7 @@ library(kableExtra) #tables with different styles
 
 ```
 
-::: {.objectives }
+::: {.objectives data-latex="" }
 **Objetivos do capítulo**  
 1. Apresentar o Teste T  
 2. Discutir os pressupostos de execução do Teste T  
@@ -92,10 +92,12 @@ No ambiente R, a primeira etapa importante é assegurar que a base de dados tenh
 
 ```{r}
 asq_12months <- asq_12months %>% 
-  mutate(total_12 = rowSums(select(., starts_with("q_")), na.rm = TRUE))
+  mutate(total_12 = rowSums(select(., starts_with("q_")), 
+                            na.rm = TRUE))
 
 asq_18months <- asq_18months %>% 
-  mutate(total_18 = rowSums(select(., starts_with("q_")), na.rm = TRUE))
+  mutate(total_18 = rowSums(select(., starts_with("q_")), 
+                            na.rm = TRUE))
 
 ```
 
@@ -105,7 +107,8 @@ Em seguida, <mark>iremos começar pelos 12 meses</mark>. O processo de testagem 
 ```{r}
 asq_12months %>%
   group_by(sex) %>% 
-  summarise_at(vars(total_12), lst(n=~n(),media=mean, DP=sd)) %>% pander()
+  summarise_at(vars(total_12), lst(n=~n(),media=mean, DP=sd)) %>% 
+  pander()
 ```
 
 Em seguida, a realização de um gráfico é bastante informativa para apresentação dos resultados. Apesar desse recurso não ser decisivo na tomada de decisão, ele auxilia a visualização da distribuição da variável que temos interesse, bem como oferece um entendimento inicial dos resultados.
@@ -118,7 +121,8 @@ gridExtra::grid.arrange(
   #plot 1 
   ggplot(asq_12months, aes(x = sex, y = total_12, fill = sex)) +
     geom_bar(stat = "summary", fun = mean) +
-    stat_summary(fun.data = mean_se, geom = "errorbar", width = .2),
+    stat_summary(fun.data = mean_se, geom = "errorbar", 
+                 width = .2),
   #plot 2
     ggplot(asq_12months, aes(x = total_12, fill = sex)) + 
     geom_density(color = NA, alpha=.6)
@@ -130,7 +134,8 @@ Os achados preliminares indicam que os resultados de meninos e meninas são lige
 A função `t.test` é nativa do R o vetor `t_test_12_m` será criado.
 
 ```{r}
-t_test_12m <- t.test(total_12 ~ sex, var.equal = T, data = asq_12months)
+t_test_12m <- t.test(total_12 ~ sex, var.equal = T, 
+                     data = asq_12months)
 ```
 
 A tabela a seguir apresenta os resultados.  
@@ -169,7 +174,8 @@ Apesar do gráfico já ter sido bastante claro e sugerir fortemente desvio da no
 ```{r}
 asq_12months %>% 
   group_by(sex) %>% 
-  summarise(shapiro = shapiro.test(total_12)$p.value) %>% pander::pander()
+  summarise(shapiro = shapiro.test(total_12)$p.value) %>% 
+  pander::pander()
 ```
 
 De maneira convergente ao gráfico, o Shapiro-wilk também apontou que o princípio da normalidade foi violado.  
@@ -179,7 +185,8 @@ De maneira convergente ao gráfico, o Shapiro-wilk também apontou que o princí
 
 
 ```{r}
-car::leveneTest(total_12 ~ sex, data = asq_12months) %>% pander::pander()
+car::leveneTest(total_12 ~ sex, data = asq_12months) %>% 
+  pander::pander()
 ```
   
 Após testar estes pressupostos, é importante avaliar o quanto a interpretação originalmente deve ser mantida. Existem diferentes recomendações sobre o que fazer quando os pressupostos são violados. Entre elas, assumir essa condição e justificar a utilização do Teste T, transformar a distribuição da variável de interesse, usar versões robustas do Teste T, usar testes não-paramétricos com objetivos próximos ao Teste T ou eleger algum modelo estatístico mais adequado à distribuição empírica obtida pelos dados.   
@@ -193,7 +200,8 @@ Com este teste inicial concluído, é também possível verificar se existem dif
 ```{r}
 asq_18months %>%
   group_by(sex) %>% 
-  summarise_at(vars(total_18), lst(n=~n(),media=mean, DP=sd)) %>% pander()
+  summarise_at(vars(total_18), lst(n=~n(),media=mean, DP=sd)) %>% 
+  pander()
 ```
 
 Por sua vez, o gráfico a seguir traz o padrão dos resultados aos 18 meses.  
@@ -215,7 +223,8 @@ Em relação aos resultados do Teste T, eles indicaram que ambos os grupos tem r
 
 
 ```{r}
-t_test_18m <- t.test(total_18 ~ sex, var.equal = T,data = asq_18months)
+t_test_18m <- t.test(total_18 ~ sex, var.equal = T,
+                     data = asq_18months)
 t_test_18m %>% pander::pander(., split.table = Inf)
 ```
 
@@ -405,7 +414,8 @@ mann_whiyney_18m %>% pander::pander()
 O tamanho do efeito também pode ser calculado por $Z/\sqrt{(n)}$. O output padrão do R não oferece a informação de `Z`, mas o pacote `coin` dispõe dessa métrica.
 
 ```{r}
-coin::statistic(coin::wilcox_test(total_18 ~ sex, data = asq_18months))
+coin::statistic(coin::wilcox_test(total_18 ~ sex, 
+                                  data = asq_18months))
 ```
 
 Plugando este valor na fórmula, o tamanho do efeito é aproximadamente `0.06`.
@@ -511,7 +521,7 @@ Nesta pesquisa, objetivou-se verificar a diferença no perfil cognitivo e padrã
 1. (Retirado de Laboratório de Estatística e Geoinformação-UFPR) Suponha que você tenha sido contratado para conduzir um estudo cujo objetivo seja descobrir qual dentre duas marcas de refrigerantes as pessoas acham que tem o melhor sabor. Em seu estudo, os participantes são submetidos a uma degustação às cegas. Eles pontuam uma marca e então pontuam a outra, em ordem aleatória. As notas são atribuídas numa escala de 1 (horrível) a 5 (delicioso). Qual tipo de teste seria o melhor para comparar estas notas? Justifique sua escolha.<br>a) Teste t para dois grupos pareados.<br>b) Teste t para dois grupos independentes<br>c) Teste qui-quadrado.<br>d) Teste de Mann-Whitney.<br>e) Teste de Wilcoxon.
 :::
 
-Gabarito: 1-b; 2-a<;3-e 
+Gabarito: 1-b; 2-a; 3-e 
 
 
 

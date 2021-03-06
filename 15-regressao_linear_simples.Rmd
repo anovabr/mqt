@@ -8,7 +8,7 @@ library(olsrr) #regression diagnostics
 library(pander)
 ```
 
-::: {.objectives }
+::: {.objectives data-latex="" }
 **Objetivos do capítulo**  
 1. Apresentar o modelo de regressão linear, especialmente a regressão linear simples    
 2. introduzir conceitos analíticos subjacentes à esta modelagem    
@@ -37,10 +37,10 @@ Em larga escala, eles substituem os outros testes paramétricos vistos até agor
 
 Existem diferentes nomenclaturas utilizadas para classificar tais modelos e a tabela abaixo apresenta uma classificação funcional.
 
-  | VI e VD      | VD Discreta    |  VD Contínua                 |  
-  | :----------- | :-----------   | :-----------                 |        
-  | VI Discreta  | Reg. logística |  Reg. linear (Teste T/ANOVA) |   
-  | VI Contínua  | Reg. logística |  Reg. linear                 | 
+ VI e VD      | VD Discreta    |  VD Contínua                   
+ :----------- | :-----------   | :-----------                         
+ VI Discreta  | Reg. logística |  Reg. linear (Teste T/ANOVA)     
+  VI Contínua  | Reg. logística|  Reg. linear                 
   
 
 Algumas conclusões são possíveis:  
@@ -155,7 +155,9 @@ ggplot(dados_brasil, aes(x = bsq_soma, y = eat_soma)) +
   geom_jitter() +
   labs(x = "X", y = "Y") +
   xlim(10,200) +
-  geom_abline(slope = c(rnorm(10,0.4,0.5), rnorm(10,0.2,0.15)),color = 1:20)
+  geom_abline(slope = c(rnorm(10,0.4,0.5), 
+                        rnorm(10,0.2,0.15)), 
+              color = 1:20)
 ```
 
 De maneira geral, todas as retas traçadas acertam alguns pontos e erram outros. Há aquelas que se saem melhores e outras que tem um desempenho muito ruim. O que isso demonstra é que encontrar o <u>melhor</u> modelo estatístico para este caso é um problema de otimização. Isso pode ser feito justamente resgatando um pouco o conceito de função de primeiro grau, aprendido no ensino médio:
@@ -212,7 +214,8 @@ interpretável ou não, tal como descrito no glossário, ao início do capítulo
 Implementando as fórmulas, agora é possível traçar a <u>melhor</u> reta para descrever o relacionamento entre as variáveis, tal como abaixo:
 
 ```{r, echo = FALSE }
-b1 <- cov(dados_brasil$bsq_soma, dados_brasil$eat_soma)/var(dados_brasil$bsq_soma)
+b1 <- cov(dados_brasil$bsq_soma, 
+          dados_brasil$eat_soma)/var(dados_brasil$bsq_soma)
 b0 <- mean(dados_brasil$eat_soma)-(b1*mean(dados_brasil$bsq_soma))
 ```
 
@@ -231,15 +234,18 @@ ggplot(dados_brasil, aes(x = bsq_soma, y = eat_soma)) +
   geom_jitter() +
   labs(x = "X", y = "Y") +
   geom_abline(intercept = b0, slope = b1) +
-  geom_vline(xintercept = mean(dados_brasil$bsq_soma), size=1.5, color = "red", linetype = "dashed") +
-  geom_hline(yintercept = mean(dados_brasil$eat_soma), size=1.5, color = "red", linetype = "dashed")
+  geom_vline(xintercept = mean(dados_brasil$bsq_soma), size=1.5, 
+             color = "red", linetype = "dashed") +
+  geom_hline(yintercept = mean(dados_brasil$eat_soma), size=1.5, 
+             color = "red", linetype = "dashed")
 ```
 
 
 Aproveitando o gráfico, agora é possível apresentar os dados reais, a linha de regressão e as distâncias entre ela e os pontos reais,
 
 ```{r, echo = FALSE, message=FALSE }
-eat_soma_2 <- transform(dados_brasil, Fitted = fitted(mod_linear_simples))
+eat_soma_2 <- transform(dados_brasil, 
+                        Fitted = fitted(mod_linear_simples))
 gridExtra::grid.arrange(
   ggplot(dados_brasil, aes(bsq_soma, eat_soma)) +
     geom_jitter(color ="darkgray"),
@@ -252,7 +258,8 @@ gridExtra::grid.arrange(
     geom_jitter(color ="darkgray") +
     geom_smooth(method="lm", se = FALSE) +
     geom_segment(aes(x = bsq_soma, y = eat_soma,
-                     xend = bsq_soma, yend = Fitted), color = "lightgrey"),
+                     xend = bsq_soma, yend = Fitted), 
+                 color = "lightgrey"),
   ncol=3
 )
 ```
@@ -337,7 +344,8 @@ Em modelos de regressão, as hipóteses costumam ser feitas em cascata. Quase se
 Inicialmente, é necessário carregar a base no R. Após isso, a primeira etapa analítica é realizada pela criação de tabelas e gráficos. Ambas as apresentações são importantes e oferecem um auxilio à interpretação dos resultados. De maneira similar à feita em outros capítulos, abaixo há uma tabela descritiva feita com o pacote `arsenal`.  
 
 ```{r results="asis" }
-arsenal::tableby(~eat_soma + bsq_soma, dados_brasil) %>% summary() 
+arsenal::tableby(~eat_soma + bsq_soma, dados_brasil) %>% 
+  summary() 
 ```
 
 
@@ -345,7 +353,8 @@ arsenal::tableby(~eat_soma + bsq_soma, dados_brasil) %>% summary()
 O cálculo da correlação entre ambas as variáveis também é importante, apesar de tecnicamente não ser necessário neste capítulo. Em linhas gerais, o coeficiente de correlação expressa a força e a direção do relacionamento entre as variáveis. A força pode ser interpretada como `fraca` (0.1), `moderada` (0.3) ou `forte` (0.5) [@Cohen1988] e a direção pode ser positiva ou negativa, a depender do sinal. A correlação entre as variáveis foi 0.675 e significativa (p < 0.001).
 
 ```{r}
-cor.test(dados_brasil$eat_soma, dados_brasil$bsq_soma) %>% pander()
+cor.test(dados_brasil$eat_soma, dados_brasil$bsq_soma) %>% 
+  pander()
 ```
    
 O gráfico de dispersão apresenta esse relacionamento. No eixo X deve-se inserir a VI (neste caso, os resultados da BSQ-34), enquanto a VD é inserida em Y.
@@ -406,7 +415,8 @@ Estes resultados obtidos são muito auxiliados pela apresentação de gráficos 
 ggplot(dados_brasil, aes(x = bsq_soma, y = eat_soma)) +
   geom_jitter() + geom_smooth(method = "lm") + 
   ggpubr::stat_regline_equation(label.x = 3, label.y = 40) +
-  ggpubr::stat_cor(aes(label =  ..rr.label..), method = "pearson", label.x = 3, label.y = 44)
+  ggpubr::stat_cor(aes(label =  ..rr.label..), method = "pearson", 
+                   label.x = 3, label.y = 44)
 ```
 
 

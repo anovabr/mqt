@@ -8,3 +8,14 @@
 }
 \DeclareUnicodeCharacter{03B7}{\textsuperscript{3}}
 \DeclareUnicodeCharacter{0394}{\textsuperscript{3}}
+
+\usepackage{color}
+\usepackage{framed}
+\setlength{\fboxsep}{.8em}
+
+\newenvironment{objectives}{
+  \definecolor{shadecolor}{rgb}{0.764,0.992,0.686}  % black
+  \color{black}
+  \begin{shaded}}
+ {\end{shaded}}
+

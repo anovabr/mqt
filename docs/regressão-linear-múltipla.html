@@ -392,7 +392,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18.7" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#pesquisas-adicionais-10"><i class="fa fa-check"></i><b>18.7</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="18.8" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#questões-10"><i class="fa fa-check"></i><b>18.8</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>19</b> Referencias</a></li>
 <li class="divider"></li>
 <li><a href="http://www.anovabr.com/" target="blank">ANOVA</a></li>
 
@@ -454,7 +453,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="execução-no-r-15" class="section level2">
 <h2><span class="header-section-number">17.2</span> Execução no R</h2>
 <p>A primeira etapa da análise é realizada pelo desenvolvimento de tabelas e gráficos que possam auxiliar na interpretação dos resultados. De maneira similar à feita em outros capítulos, abaixo há uma tabela descritiva.</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="regressão-linear-múltipla.html#cb154-1"></a>arsenal<span class="op">::</span><span class="kw">tableby</span>(<span class="op">~</span>eat_soma <span class="op">+</span><span class="st"> </span>bsq_soma <span class="op">+</span><span class="st"> </span>imc, dados_brasil) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summary</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="regressão-linear-múltipla.html#cb154-1"></a>arsenal<span class="op">::</span><span class="kw">tableby</span>(<span class="op">~</span>eat_soma <span class="op">+</span><span class="st"> </span>bsq_soma <span class="op">+</span><span class="st"> </span>imc, dados_brasil) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb154-2"><a href="regressão-linear-múltipla.html#cb154-2"></a><span class="st">  </span><span class="kw">summary</span>() </span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -549,15 +549,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Assumindo duas pessoas que <u>tem o mesmo IMC</u> (por exemplo, o IMC médio), cada ponto extra no BSQ gera, em média, 0.19 pontos a mais no EAT-26. A função <code>predict</code> do R permite essa demonstração.</p>
 <p>O valor estimado no <u>EAT-26</u> de Um participante que teve 45 pontos no <u>BSQ</u> e tem <u>IMC</u> de 23.2 (o IMC médio) é de 9.06.</p>
 <div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="regressão-linear-múltipla.html#cb158-1"></a>imc_medio &lt;-<span class="st"> </span><span class="kw">mean</span>(dados_brasil<span class="op">$</span>imc, <span class="dt">na.rm=</span>T)</span>
-<span id="cb158-2"><a href="regressão-linear-múltipla.html#cb158-2"></a><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">45</span>), <span class="dt">imc=</span>imc_medio))</span></code></pre></div>
+<span id="cb158-2"><a href="regressão-linear-múltipla.html#cb158-2"></a><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">45</span>), </span>
+<span id="cb158-3"><a href="regressão-linear-múltipla.html#cb158-3"></a>                                        <span class="dt">imc=</span>imc_medio))</span></code></pre></div>
 <pre><code>##        1 
 ## 9.059407</code></pre>
 <p>Já o valor estimado no <u>EAT-26</u> de um outro participante com 46 pontos no <u>BSQ</u> (ou seja, 1 ponto a mais) e mesmo <u>IMC</u> do primeiro participante (23.2) é de 9.25.</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="regressão-linear-múltipla.html#cb160-1"></a><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">46</span>), <span class="dt">imc=</span>imc_medio))</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="regressão-linear-múltipla.html#cb160-1"></a><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">46</span>), </span>
+<span id="cb160-2"><a href="regressão-linear-múltipla.html#cb160-2"></a>                                        <span class="dt">imc=</span>imc_medio))</span></code></pre></div>
 <pre><code>##        1 
 ## 9.249297</code></pre>
 <p>A diferença entre esses dois valores é exatamente igual ao coeficiente calculado na regressão (b = 0.19). Abaixo há duas linhas de código apresentando esses resultados.</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="regressão-linear-múltipla.html#cb162-1"></a><span class="kw">round</span>(<span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">46</span>), <span class="dt">imc=</span>imc_medio)) <span class="op">-</span><span class="st"> </span><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">45</span>), <span class="dt">imc=</span>imc_medio)),<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="regressão-linear-múltipla.html#cb162-1"></a><span class="kw">round</span>(<span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">46</span>), </span>
+<span id="cb162-2"><a href="regressão-linear-múltipla.html#cb162-2"></a>                                              <span class="dt">imc=</span>imc_medio)) <span class="op">-</span><span class="st"> </span></span>
+<span id="cb162-3"><a href="regressão-linear-múltipla.html#cb162-3"></a><span class="st">        </span><span class="kw">predict</span>(mod_linear_multiplo, <span class="kw">data.frame</span>(<span class="dt">bsq_soma=</span><span class="kw">c</span>(<span class="dv">45</span>), </span>
+<span id="cb162-4"><a href="regressão-linear-múltipla.html#cb162-4"></a>                                                <span class="dt">imc=</span>imc_medio)),<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##    1 
 ## 0.19</code></pre>
 <p>Esse formato analítico é similar para o resultado do <u>IMC</u>. Caso duas pessoas tenham o mesmo resultado do <u>BSQ</u>, uma unidade a mais no IMC impactará em uma redução de 0.447, em média, no <u>EAT-26</u>.</p>
@@ -719,15 +724,19 @@ Nesta pesquisa, 110 participantes foram recrutados para que os pesquisadores pud
 <h2><span class="header-section-number">17.8</span> Questões</h2>
 <div class="question">
 <ol style="list-style-type: decimal">
-<li>(ENADE, Economia - 2019) Com o objetivo de entender o impacto das internações causadas pela falta de saneamento básico, um pesquisador estimou o modelo apresentado na tabela a seguir, usando a quantidade de dias de internação de uma amostra de 7 260 pacientes do Sistema Único de Saúde como variável explicada. As variáveis explicativas são: (i) gênero do paciente, binária em que é 1 é utilizado para identificar as mulheres e 0 para identificar os homens; (ii) idade do paciente em anos de vida; e (iii) motivo da internação, também binária, em que recebe o valor 1 para identificar internações que são causadas por problemas de saneamento básico e o valor 0 para as demais internações<br><img src="img/exercicio_regressao.PNG" /><br>a) O coeficiente R-quadrado encontra-se abaixo de 30%, o que significa que o modelo deve ser descartado.<br>b) As internações causadas pela deficiência de saneamento básico tendem a gerar um aumento de 1,96% nos gastos de saúde.<br>c) A média de dias de internação para mulheres é estatisticamente maior que a de internação para homens.<br> d) A variável idade não é estatisticamente significativa para explicar o número de dias de internação.<br> e) O teste F mostra que as variáveis explicativas conjuntamente são estatisticamente significativas para explicar o número de dias de internação.<br />
+<li>(ENADE, Economia - 2019) Com o objetivo de entender o impacto das internações causadas pela falta de saneamento básico, um pesquisador estimou o modelo apresentado na tabela a seguir, usando a quantidade de dias de internação de uma amostra de 7 260 pacientes do Sistema Único de Saúde como variável explicada. As variáveis explicativas são: (i) gênero do paciente, binária em que é 1 é utilizado para identificar as mulheres e 0 para identificar os homens; (ii) idade do paciente em anos de vida; e (iii) motivo da internação, também binária, em que recebe o valor 1 para identificar internações que são causadas por problemas de saneamento básico e o valor 0 para as demais internações<br></li>
+</ol>
+<p><img src="img/exercicio_regressao.PNG" /></p>
+<ol style="list-style-type: lower-alpha">
+<li>O coeficiente R-quadrado encontra-se abaixo de 30%, o que significa que o modelo deve ser descartado.<br>b) As internações causadas pela deficiência de saneamento básico tendem a gerar um aumento de 1,96% nos gastos de saúde.<br>c) A média de dias de internação para mulheres é estatisticamente maior que a de internação para homens.<br> d) A variável idade não é estatisticamente significativa para explicar o número de dias de internação.<br>e) O teste F mostra que as variáveis explicativas conjuntamente são estatisticamente significativas para explicar o número de dias de internação.<br />
 </li>
 </ol>
 </div>
-<p>Gabarito: 1e</p>
+<p>Gabarito: 1-e</p>
 
 </div>
 </div>
-<h3> Referencias</h3>
+<h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-Barker2015">
 <p>Barker, L. E., &amp; Shaw, K. M. (2015). Best (but oft-forgotten) practices: Checking assumptions concerning regression residuals. <em>The American Journal of Clinical Nutrition</em>, <em>102</em>(3), 533–539. <a href="https://doi.org/10.3945/ajcn.115.113498">https://doi.org/10.3945/ajcn.115.113498</a></p>

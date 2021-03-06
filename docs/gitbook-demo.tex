@@ -117,6 +117,16 @@
 }
 \DeclareUnicodeCharacter{03B7}{\textsuperscript{3}}
 \DeclareUnicodeCharacter{0394}{\textsuperscript{3}}
+
+\usepackage{color}
+\usepackage{framed}
+\setlength{\fboxsep}{.8em}
+
+\newenvironment{objectives}{
+  \definecolor{shadecolor}{rgb}{0.764,0.992,0.686}  % black
+  \color{black}
+  \begin{shaded}}
+ {\end{shaded}}
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
@@ -142,7 +152,7 @@
 \maketitle
 
 {
-\setcounter{tocdepth}{2}
+\setcounter{tocdepth}{1}
 \tableofcontents
 }
 \hypertarget{prefuxe1cio}{%
@@ -154,7 +164,7 @@
 \section{Atenção}\label{atenuxe7uxe3o}}
 
 Atenção: Leia com cuidado. Este livro ainda está em sua fase de revisão.\\
-Última modificação: 05 March, 2021 às 14:22
+Última modificação: 06 March, 2021 às 20:09
 
 \hypertarget{a-proposta}{%
 \section{A proposta}\label{a-proposta}}
@@ -333,10 +343,13 @@ Alunos da PUC-Rio, UFRJ, IBNeuro e ANOVA
 \hypertarget{programas-estatuxedsticos}{%
 \chapter{Programas estatísticos}\label{programas-estatuxedsticos}}
 
+\begin{objectives}
 \textbf{Objetivos do capítulo}\\
 1. Apresentar os programas estatísticos utilizados durante o livro\\
 2. Discutir características do R, tidyverse e seus pacotes\\
 3. Discutir características do JASP
+
+\end{objectives}
 
 Programas estatísticos são ferramentas indispensáveis tanto na gestão, como na análise dos dados resultantes de uma pesquisa. Eles servem para otimizar o tempo gasto nas etapas analíticas de uma pesquisa, apesar de, em menor escala, permitirem a execução de análises inadequadas. No dia a dia de um pesquisador, apenas muito raramente as análises são feitas manualmente. Dessa maneira, o conhecimento de programas de análise de dados faz parte das competências esperadas para quem deseja ou precisa trabalhar com estatística.
 
@@ -501,11 +514,14 @@ Finalmente, para salvar o trabalho realizado em uma sessão, deve-se clicar na s
 \hypertarget{aspectos-gerais}{%
 \chapter{Aspectos gerais}\label{aspectos-gerais}}
 
+\begin{objectives}
 \textbf{Objetivos do capítulo}\\
 1. Apresentar conceitos transversais encontrados em pesquisa e estatística\\
 2. Descrever as variáveis em função de seu relacionamento, escala de medida e capacidade numérica\\
 3. Introduzir o debate sobre a escala de medida em Psicologia\\
 4. Apresentar as duas principais áreas da estatística
+
+\end{objectives}
 
 \textbf{GLOSSÁRIO}\\
 \textbf{Pesquisa}: Procedimento racional e sistemático de investigação que visa proporcionar respostas específicas a um conjunto de problemas propostos.\\
@@ -795,84 +811,13 @@ Uma vez que não há a formação de grupos específicos seguindo um rigoroso co
 
 Nota-se que, apesar de diversas técnicas estatísticas serem utilizadas neste delineamento, não é possível falar sobre relação de causa e efeito. Apesar desta limitação, há muitas situações em que apenas este delineamento é possível. Por exemplo, estudar os impactos de um desastre natural (furacão, terremoto, etc) na percepção de segurança das pessoas, avaliar o comportamento de grupos em instituições totais, como prisões e hospícios ou as condições relacionadas ao aleitamento materno.
 
-Uma vez que as eventuais variáveis estranhas foram previamente acessadas durante a coleta de dados, elas deixam de ser estranhas e tornam-se variáveis passíveis de análises A natureza e o local em que essas variáveis impactam no relacionamento entre a VI e a VD indicam se elas serão classificadas como intervenientes, mediadoras ou moderadoras \citep{Rooney2019, hayes2013}.
+Uma vez que as eventuais variáveis estranhas foram previamente acessadas durante a coleta de dados, elas deixam de ser estranhas e tornam-se variáveis passíveis de análises A natureza e o local em que essas variáveis impactam no relacionamento entre a VI e a VD indicam se elas serão classificadas como intervenientes, mediadoras ou moderadoras.
 
 O termo variável interveniente é bastante circunscrito à Psicologia. Ele tende a ser empregado para caracterizar condições psicológicas, como motivação ou neuroticismo. Assim, este é o termo empregado quando as variáveis estranhas são fatores psicológicos.
 
 Quando esta variável é uma consequência da VI e também impacta a VD, o termo variável mediadora costuma ser empregado. Por exemplo, ao se investigar a relação entre idade (VI) e acidentes de trânsito (VD), pode-se sugerir que pessoas mais velhas tendem a apresentar menor capacidade visual. Por sua vez, essa limitação visual pode gerar acidentes de trânsito \citep{Rhodes2011}. Neste sentido, a variável ``capacidade visual'' é uma variável mediadora.
 
 \includegraphics{./img/cap_mediacao.png}
-
-Quando esta variável interfere no relacionamento entre a VI e a VD, podendo alterar sua natureza e intensidade, mas não é gerada pela VI, o termo variável moderadora pode ser utilizado. Por exemplo, a relação entre a satisfação de um cliente (X) e sua lealdade à marca (Y) é moderada pela sua renda \citep{Sugianto2017}. Pessoas muito satisfeitas com um produto podem ser mais ou menos leais à marca a depender de sua renda disponível.
-
-A relação entre horas trabalhadas (X) e quantidade de produção (Y) é moderada pela qualidade do equipamento utilizado. É possível que alguém gaste muitas horas de trabalho, mas não consiga produzir absolutamente nada, se os equipamentos disponíveis funcionarem de maneira irregular. Com frequência, médicos sugerem que ao tomar medicamentos antigripais, não se deve ingerir álcool. Nesse sentido, os efeitos do medicamento (X) nos sintomas da gripe (Y) podem inclusive ser opostos em função do álcool, que age de forma moderadora.
-
-No exemplo prévio sobre o efeito da idade (X) em acidentes de trânsito (Y), sabe-se hoje que o sexo se comporta como uma variável moderadora neste relacionamento. A literatura indica que pessoas mais novas, quando homens, tem uma alta probabilidade de se envolverem em acidentes de trânsito, especialmente os mais intensos ou graves \citep{Amarasingha2014, PRB2006}.
-
-\includegraphics{./img/cap_moderacao.png}
-
-Finalmente, é também possível identificar variáveis estranhas que interfiram tanto na VI como na VD, mas que não foram previamente mapeadas ou acessadas durante a coleta de dados. Nestes casos, é típico chamá-las de ``terceira variável'' ou ``variável de confundimento'', bem como chamar a relação entre VI e VD de ``espúria''. Por exemplo, existe uma alta correlação entre venda de sorvete (X) e morte por mordida de tubarão (Y). No entanto, essa é uma relação espúria, uma vez que é a variável ``temperatura'' que impacta tanto na VI como na VD. Da mesma maneira, existe uma alta correlação entre quantidade de bares e igrejas nas cidades, mas ambos os fenômenos são explicados pela densidade populacional do local.
-
-\includegraphics{./img/cap_confundimento.png}
-
-Talvez quando mais novo(a), alguém tenha lhe dito que as cegonhas traziam os bebês. Isso não é verdade, apesar de ser um ótimo exemplo de variável de confundimento. A relação entre número de ninhos de cegonha (X) e número de bebes nascidos (Y) é confundida pela temperatura do local 9 meses atrás \citep{Matthews2000}. Cegonhas e seres humanos têm seus filhos ou filhotes na mesma época. Curiosamente, como as cegonhas por vezes constroem seus ninhos em telhados de casas, especialmente as com chaminés por conta do calor, as pessoas acreditavam que se uma cegonha fizesse o ninho em seu telhado, isso indicaria que o casal iria ter um filho. Em alguns países, se achava também que deixar doces na janela seria uma maneira de informar as cegonhas que a casa estava pronta para ter um bebê.
-
-\includegraphics{./img/cap_cegonha.png}
-
-A literatura é bastante rica de exemplos para tais condições, mas também de discussões e debates acadêmicos sobre esses conceitos. A tabela a seguir reúne esforços e exemplifica onde tais conceitos são implementados.
-
-\begin{longtable}[]{@{}ll@{}}
-\toprule
-\begin{minipage}[b]{0.10\columnwidth}\raggedright
-Relacionamento\strut
-\end{minipage} & \begin{minipage}[b]{0.84\columnwidth}\raggedright
-Exemplo\strut
-\end{minipage}\tabularnewline
-\midrule
-\endhead
-\begin{minipage}[t]{0.10\columnwidth}\raggedright
-Moderação\strut
-\end{minipage} & \begin{minipage}[t]{0.84\columnwidth}\raggedright
-Relação entre ansiedade (X) e performance (Y), o tipo de atividade poderia ser uma variável moderadora\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.10\columnwidth}\raggedright
-Moderação\strut
-\end{minipage} & \begin{minipage}[t]{0.84\columnwidth}\raggedright
-Relação entre efeito de um remédio (X) e sintomas de resfriado (Y), a ingestão de álcool poderia ser uma variável moderadora\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.10\columnwidth}\raggedright
-Moderação\strut
-\end{minipage} & \begin{minipage}[t]{0.84\columnwidth}\raggedright
-Relação entre idade (X) e problemas cognitivos (Y), a escolaridade poderia ser uma variável moderadora\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.10\columnwidth}\raggedright
-Moderação\strut
-\end{minipage} & \begin{minipage}[t]{0.84\columnwidth}\raggedright
-Relação entre stress (X) e depressão(Y), o suporte social poderia ser uma variável moderadora\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.10\columnwidth}\raggedright
-Mediação\strut
-\end{minipage} & \begin{minipage}[t]{0.84\columnwidth}\raggedright
-Relação entre idade (X) e uso de mídias sociais (Y), a quantidade de tempo livre pode ser mediadora\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.10\columnwidth}\raggedright
-Mediação\strut
-\end{minipage} & \begin{minipage}[t]{0.84\columnwidth}\raggedright
-Relação entre quantidade de hora de trabalho (X) e desgaste (Y), o retorno financeiro poderia ser mediador\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.10\columnwidth}\raggedright
-Mediação\strut
-\end{minipage} & \begin{minipage}[t]{0.84\columnwidth}\raggedright
-Relação entre conscienciosidade (X) e saúde (Y), comportamentos saudáveis poderiam ser mediadores\strut
-\end{minipage}\tabularnewline
-\bottomrule
-\end{longtable}
-
-\emph{Nota: A definição de variável mediadora e moderadora pode ser tornar mais difícil, como é visto no caso entre idade e problemas cognitivos, já que a escolaridade costuma depender também da idade}
-
-Em síntese, a principal característica de estudos com delineamentos observacionais é a não manipulação da VI por parte do pesquisador.
-
-Como outros exemplos, pode-se listar estudos em que se objetivou investigar os hábitos, práticas e produtividade de pesquisadores \citep{Wenke2017}, a alimentação durante a pandemia \citep{Amatori2020} ou aspectos epidemiológicos de transtornos mentais de universitários brasileiros, portugueses e espanhóis \citep{AfonsoJunior2020}.
 
 \hypertarget{delineamentos-experimentais}{%
 \subsection{Delineamentos experimentais}\label{delineamentos-experimentais}}
@@ -898,6 +843,7 @@ Quando as pesquisas são feitas em condições clínicas, a perda e morte experi
 Em epidemiologia e saúde pública, este delineamento é também chamado de \emph{Randomized Controlled Trial (RCT)} ou Ensaio Clínico Randomizado. Especialmente nestas áreas, existem diversas situações em que em a VI foi selecionada em vez de manipulada. Quando isso ocorre, o delineamento passa a ser chamado de quase-experimental.
 
 A literatura oferece bons exemplos sobre este delineamento. O psicólogo Albert Bandura \citeyearpar{Bandura1961} teve o interesse de estudar o efeito da exposição à violência no comportamento agressivo durante a interação social de crianças e, para isso, desenvolveu um delineamento experimental. Ele dividiu as crianças em grupos específicos, em que 1 grupo via uma televisão que passava adultos agredindo um boneco João Bobo e outro via cenas neutras. Os comportamentos agressivos eram avaliados durante o momento do recreio, que ocorria imediatamente após as crianças terem visto televisão. Um grupo de psicólogos visou comparar dois programas de intervenção escolar em um grupo de 164 crianças em vulnerabilidade econômica nos EUA e, para isso, uma parte frequentou aulas de apoio e outra continuou com o ensino usual \citep{Feil2020}.
+
 Finalmente, os economistas Redzo e Paul Frijters \citeyearpar{Mujcic2020} quiseram verificar o efeito da cor de pele na probabilidade de receber uma carona de ônibus. Para isso, eles utilizaram um delineamento quase-experimental, em que atores pretos e brancos entravam em ônibus de uma mesma empresa e perguntavam ao motorista, de uma maneira padronizada, se poderiam viajar de graça 2 estações. A concordância ou não dos motoristas foram tabuladas e, depois, comparadas.
 
 \hypertarget{considerauxe7uxf5es-sobre-escalas-de-medida-e-o-processo-de-mensurauxe7uxe3o-em-psicologia}{%
@@ -936,6 +882,7 @@ Tirando essas particularidades, é fundamental entender que os números atribuí
 Nessa escala, os números respeitam uma relação de ordem ranqueada e essa é a regra pela qual os números são atribuídos aos eventos ou objetos.
 
 É importante ter em perspectiva que essa escala pode ser utilizada pragmaticamente em uma pesquisa mesmo quando o fenômeno que está sendo estudado é facilmente compreendido dentro de uma escala superior, como será visto. Por exemplo, é plenamente possível que um psicólogo meça o tempo de reação de um grupo de pessoas e depois tenha criado categorias ordenadas, como ``lento (1)'', ``esperado (2)'' e ``rápido (3)''. Em função disso, alguns livros tentam dividir essa escala a partir de uma origem objeto ou evento que está sendo medido e utilizam de termos como ``origem natural'' e ``origem não natural'', que não serão utilizados aqui (Pasquali, 1998).
+
 Nessa escala, além da contagem, proporções e moda, é também possível identificar mínimo, máximo e amplitude. Exemplos concretos são a Escala de dureza dos metais (Escala de Mohs), o nível de satisfação de uma empresa, onde 1 é baixo, 2 é moderadamente satisfeito e 3 é alto e a posição ao fim de uma corrida, podendo ser o primeiro lugar, segundo ou terceiro.
 
 \hypertarget{escala-intervalar}{%
@@ -974,7 +921,7 @@ Como exposto logo ao início, os números presentes em cada uma das escalas pode
 
 Apesar de Stevens ter, fundamentalmente, criado quatro escalas em que sempre haverá números associados a objetos a partir de sua capacidade matemática, teóricos posteriores tentaram agrupar essas quatro escalas em dois conjuntos específicos que costumam ser feitos seguindo este critério: uma vez que as escalas nominal e ordinal utilizam os números de uma maneira assegurada apenas por convenção, muitos livros e autores as agrupam como ``qualitativas''. Por contraste, como a escala intervalar e de razão são obtidas, majoritariamente, por processos que contam com instrumentos de medida, elas quase sempre são agrupadas como ``quantitativas''.
 
-Mesmo que hoje em dia esse agrupamento seja bastante corriqueiro, origem desta iniciativa é algo incerta. Há sugestão que ela tenha começado pelo trabalho de investigação semiótica de Charles Sanders Peirce. Esse filósofo julgava que a ciência avançava em dez níveis distintos e progressivos, começando por um ícone possível (fancy), passando por um pensamento, um objeto, um símbolo numérico, uma quantidade e uma relação \citep[p.289]{smart1999}. Infelizmente, essa classificação pode gerar uma divisão desnecessária dentro do próprio conceito desenvolvido por Stevens, além de gerar bastante confusão, já que o termo ``pesquisa qualitativa'' não costuma se referir às escalas de medida, mas sim à uma área que mais recentemente emergiu com uma forma metodológica distinta e, eventualmente, até mesmo crítica às iniciativas de medida e mensuração. Além disso, o termo ``quantitativa'' atribuído apenas à escala intervalar e de razão pode dar a impressão inadequada de que não se usa números nas escalas nominais ou ordinais. Finalmente, é importante frisar que há livros que utilizam o termo ``categórica'' para ``qualitativa'' e ``propriamente numérico'' para ``quantitativa'', aumentando algo mais os cenários de confusão. A imagem a seguir apresenta esta tentativa.
+Mesmo que hoje em dia esse agrupamento seja bastante corriqueiro, origem desta iniciativa é algo incerta. Há sugestão que ela tenha começado pelo trabalho de investigação semiótica de Charles Sanders Peirce. Esse filósofo julgava que a ciência avançava em dez níveis distintos e progressivos, começando por um ícone possível (\emph{fancy}), passando por um pensamento, um objeto, um símbolo numérico, uma quantidade e uma relação \citep[p.289]{smart1999}. Infelizmente, essa classificação pode gerar uma divisão desnecessária dentro do próprio conceito desenvolvido por Stevens, além de gerar bastante confusão, já que o termo ``pesquisa qualitativa'' não costuma se referir às escalas de medida, mas sim à uma área que mais recentemente emergiu com uma forma metodológica distinta e, eventualmente, até mesmo crítica às iniciativas de medida e mensuração. Além disso, o termo ``quantitativa'' atribuído apenas à escala intervalar e de razão pode dar a impressão inadequada de que não se usa números nas escalas nominais ou ordinais. Finalmente, é importante frisar que há livros que utilizam o termo ``categórica'' para ``qualitativa'' e ``propriamente numérico'' para ``quantitativa'', aumentando algo mais os cenários de confusão. A imagem a seguir apresenta esta tentativa.
 
 \includegraphics{./img/cap_escala_medida_agrupamento.png}
 
@@ -1078,12 +1025,15 @@ Gabarito: 1b
 \hypertarget{estatuxedstica-descritiva}{%
 \chapter{Estatística Descritiva}\label{estatuxedstica-descritiva}}
 
+\begin{objectives}
 \textbf{Objetivos do capítulo}\\
 1. Introduzir conceitos importantes em estatística descritiva\\
 2. Apresentar tabelas e gráficos\\
 3. Apresentar funções do dplyr e ggplot\\
 4. Apresentar um módulo específico do JASP\\
 5. Sugerir heurísticas ou regras gerais na criação de gráficos
+
+\end{objectives}
 
 Quando pesquisadores e acadêmicos fazem seus estudos, com muita frequência, eles obtêm um grande conjunto de dados, sendo pouco informativo ou até mesmo inviável apresentar detalhadamente todos eles. A estatística descritiva oferece uma diversidade de ferramentas que auxiliam a organizar, descrever, resumir e apresentar os dados obtidos, de forma que os resultados sejam mais fáceis de serem compreendidos e analisados e, consequentemente, que a pesquisa possa ser melhor compreendida por todos os seus leitores.
 
@@ -1818,7 +1768,9 @@ De maneira análoga à construção da primeira tabela deste capítuo, os valore
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{arsenal}\OperatorTok{::}\KeywordTok{tableby}\NormalTok{(country }\OperatorTok{~}\StringTok{ }\NormalTok{bdi_sum }\OperatorTok{+}\StringTok{ }\NormalTok{bai_sum, }\DataTypeTok{test =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{data =}\NormalTok{ Dataset) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summary}\NormalTok{()}
+\NormalTok{arsenal}\OperatorTok{::}\KeywordTok{tableby}\NormalTok{(country }\OperatorTok{~}\StringTok{ }\NormalTok{bdi_sum }\OperatorTok{+}\StringTok{ }\NormalTok{bai_sum, }
+                 \DataTypeTok{test =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{data =}\NormalTok{ Dataset) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{summary}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1842,7 +1794,10 @@ De maneira análoga à construção da primeira tabela deste capítuo, os valore
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{arsenal}\OperatorTok{::}\KeywordTok{tableby}\NormalTok{(sex }\OperatorTok{~}\StringTok{ }\NormalTok{bdi_sum }\OperatorTok{+}\StringTok{ }\NormalTok{bai_sum, }\DataTypeTok{test =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{data =}\NormalTok{ Dataset) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summary}\NormalTok{()}
+\NormalTok{arsenal}\OperatorTok{::}\KeywordTok{tableby}\NormalTok{(sex }\OperatorTok{~}\StringTok{ }\NormalTok{bdi_sum }\OperatorTok{+}\StringTok{ }\NormalTok{bai_sum, }
+                 \DataTypeTok{test =} \OtherTok{FALSE}\NormalTok{, }
+                 \DataTypeTok{data =}\NormalTok{ Dataset) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summary}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1867,8 +1822,10 @@ A apresentação agrupando pelo país e sexo do participante é possível e reú
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{arsenal}\OperatorTok{::}\KeywordTok{tableby}\NormalTok{(}\KeywordTok{interaction}\NormalTok{(sex ,country) }\OperatorTok{~}\StringTok{ }\NormalTok{bdi_sum }\OperatorTok{+}\StringTok{ }\NormalTok{bai_sum, }
-                 \DataTypeTok{control=}\NormalTok{arsenal}\OperatorTok{::}\KeywordTok{tableby.control}\NormalTok{(}\DataTypeTok{test=}\OtherTok{FALSE}\NormalTok{, }\DataTypeTok{total=}\OtherTok{FALSE}\NormalTok{),}
-                 \DataTypeTok{data =}\NormalTok{ Dataset) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summary}\NormalTok{()}
+                 \DataTypeTok{control=}\NormalTok{arsenal}\OperatorTok{::}\KeywordTok{tableby.control}\NormalTok{(}\DataTypeTok{test=}\OtherTok{FALSE}\NormalTok{, }
+                                                  \DataTypeTok{total=}\OtherTok{FALSE}\NormalTok{),}
+                 \DataTypeTok{data =}\NormalTok{ Dataset) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summary}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2059,7 +2016,8 @@ O gráfico de barras abaixo apresenta a contagem absoluta dos participantes pesq
 \begin{Highlighting}[]
 \KeywordTok{ggplot}\NormalTok{(Dataset, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ country)) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_bar}\NormalTok{() }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"País"}\NormalTok{, }\DataTypeTok{title =} \StringTok{"Número de participantes nos países investigados"}\NormalTok{)}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"País"}\NormalTok{, }
+       \DataTypeTok{title =} \StringTok{"Número de participantes nos países investigados"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2074,9 +2032,13 @@ A mudança da contagem para proporções pode ser feita por um recurso do pacote
 \KeywordTok{ggplot}\NormalTok{(Dataset, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ country, }\DataTypeTok{y =}\NormalTok{ ..prop.., }\DataTypeTok{group =} \DecValTok{1}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"count"}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label=}\NormalTok{scales}\OperatorTok{::}\KeywordTok{percent}\NormalTok{(}\KeywordTok{round}\NormalTok{(..prop..,}\DecValTok{2}\NormalTok{)), }
-                \DataTypeTok{y=}\NormalTok{..prop..), }\DataTypeTok{stat=} \StringTok{"count"}\NormalTok{, }\DataTypeTok{color =} \StringTok{"white"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{3}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_stack}\NormalTok{(}\DataTypeTok{vjust =} \FloatTok{0.5}\NormalTok{)) }\OperatorTok{+}
+                \DataTypeTok{y=}\NormalTok{..prop..), }
+            \DataTypeTok{stat=} \StringTok{"count"}\NormalTok{, }\DataTypeTok{color =} \StringTok{"white"}\NormalTok{, }
+            \DataTypeTok{size =} \DecValTok{3}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_stack}\NormalTok{(}\DataTypeTok{vjust =} \FloatTok{0.5}\NormalTok{)) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{labels =}\NormalTok{ scales}\OperatorTok{::}\KeywordTok{percent_format}\NormalTok{()) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"País"}\NormalTok{, }\DataTypeTok{title =} \StringTok{"Proporção de participantes em cada país investigado"}\NormalTok{)}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"País"}\NormalTok{,}
+       \DataTypeTok{title =} 
+         \StringTok{"Proporção de participantes em cada país investigado"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2091,7 +2053,8 @@ O gráfico de setor (as vezes chamado de polar, pizza ou torta) é também uma o
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{pct =}\NormalTok{ n}\OperatorTok{/}\KeywordTok{sum}\NormalTok{(n)) }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\StringTok{""}\NormalTok{, }\DataTypeTok{y=}\NormalTok{ pct, }\DataTypeTok{fill=}\NormalTok{country)) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_col}\NormalTok{() }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =}\NormalTok{ scales}\OperatorTok{::}\KeywordTok{percent}\NormalTok{(}\KeywordTok{round}\NormalTok{(pct,}\DecValTok{3}\NormalTok{))), }\DataTypeTok{position =} \KeywordTok{position_stack}\NormalTok{(}\DataTypeTok{vjust =} \FloatTok{0.5}\NormalTok{))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =}\NormalTok{ scales}\OperatorTok{::}\KeywordTok{percent}\NormalTok{(}\KeywordTok{round}\NormalTok{(pct,}\DecValTok{3}\NormalTok{))), }
+            \DataTypeTok{position =} \KeywordTok{position_stack}\NormalTok{(}\DataTypeTok{vjust =} \FloatTok{0.5}\NormalTok{))}\OperatorTok{+}
 \StringTok{  }\KeywordTok{coord_polar}\NormalTok{(}\DataTypeTok{theta =} \StringTok{"y"}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Proporção de participantes em cada país"}\NormalTok{)}
 \end{Highlighting}
@@ -2277,7 +2240,8 @@ No exemplo abaixo, o gráfico dos resultados do Inventário Beck de Ansiedade en
 \StringTok{  }\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(sex)) }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ country, }\DataTypeTok{y =}\NormalTok{ bai_sum, }\DataTypeTok{fill =}\NormalTok{ sex)) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"summary"}\NormalTok{, }\DataTypeTok{position =} \StringTok{"dodge"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{geom=}\StringTok{"errorbar"}\NormalTok{, }\DataTypeTok{fun.data =}\NormalTok{ mean_se, }\DataTypeTok{position =} \KeywordTok{position_dodge}\NormalTok{(}\FloatTok{0.95}\NormalTok{), }\DataTypeTok{width =} \FloatTok{.5}\NormalTok{) }
+\StringTok{  }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{geom=}\StringTok{"errorbar"}\NormalTok{, }\DataTypeTok{fun.data =}\NormalTok{ mean_se, }
+               \DataTypeTok{position =} \KeywordTok{position_dodge}\NormalTok{(}\FloatTok{0.95}\NormalTok{), }\DataTypeTok{width =} \FloatTok{.5}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
 
@@ -2307,7 +2271,9 @@ Por sua vez, situações em que há uma grande quantidade de variáveis apresent
 \begin{Highlighting}[]
 \NormalTok{Dataset }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(sex), }\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(curso_ou_ano)) }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ age, }\DataTypeTok{y =}\NormalTok{ bai_sum, }\DataTypeTok{fill =} \KeywordTok{factor}\NormalTok{(curso_ou_ano), }\DataTypeTok{color =}\NormalTok{ sex, }\DataTypeTok{shape =}\NormalTok{ country)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ age, }\DataTypeTok{y =}\NormalTok{ bai_sum, }
+                \DataTypeTok{fill =} \KeywordTok{factor}\NormalTok{(curso_ou_ano), }
+                \DataTypeTok{color =}\NormalTok{ sex, }\DataTypeTok{shape =}\NormalTok{ country)) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_jitter}\NormalTok{() }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{) }
 \end{Highlighting}
@@ -2508,16 +2474,19 @@ Gabarito: 1-c; 2-b; 3-b
 \hypertarget{famuxedlia-de-distribuiuxe7uxf5es}{%
 \chapter{Família de distribuições}\label{famuxedlia-de-distribuiuxe7uxf5es}}
 
+\begin{objectives}
 \textbf{Objetivos do capítulo}\\
 1. Introduzir aspectos voltados ao formato das distribuições\\
 2. Apresentar a distribuição formal e suas características\\
 3. Apresentar dados simulados para ilustrar a Lei dos Grandes Números e o Teorema Central do Limite
 
+\end{objectives}
+
 \emph{Parcialmente adaptado de Anunciação, Portugal, Landeira-Fernandez (2021). Aspectos psicométricos de instrumentos neuropsicológicos: revisão conceitual, proposta de interpretação de percentis e classificações }
 
 Em estatística, uma variável aleatória é uma função que associa cada elemento de um dado espaço amostral a um número real (\(X:\Omega \rightarrow R\)). O mapeamento desses valores depende de um experimento aleatório, seguida pela análise do conjunto de valores obtidos, chamado de realizações. Apesar desses conceitos serem importantes, o atalho pedagógico utilizado para esta definição entende as variáveis como características que podem apresentar qualquer valor, tal como peso, inteligência e renda.
 
-Todas as variáveis apresentam resultados numéricos que podem ser contínuos ou discretos. Esses resultados se distribuem de acordo com uma família de distribuições de probabilidades (que também podem ser discretas ou contínuas) e podem ser pragmaticamente apresentados por uma expressão analítica (uma fórmula), tabelas ou gráficos.
+Todas as variáveis apresentam resultados numéricos que, por sua vez, podem ser contínuos ou discretos. Esses valores se distribuem de acordo com uma família de distribuições de probabilidades (que também podem ser discretas ou contínuas) e podem ser pragmaticamente apresentados por uma expressão analítica (uma fórmula), tabelas ou gráficos. Em síntese, fenômenos aleatórios que podem ser representados por distribuições de probabilidades.
 
 Os gráficos são muito úteis para indicar os três principais aspectos das distribuições, que são: a localização (ou centro), a dispersão e o formato. A tabela abaixo apresenta cada um desses componentes e uma definição.
 
@@ -2861,12 +2830,15 @@ Este capítulo introduziu aspectos relacionados ao formato da distribuição das
 \hypertarget{tipos-de-amostragem}{%
 \chapter{Tipos de amostragem}\label{tipos-de-amostragem}}
 
+\begin{objectives}
 \textbf{Objetivos do capítulo}\\
 1. Apresentar aspectos relacionados à população e amostra\\
 2. Introduzir as principais questões sobre processos de composição amostral\\
 3. Introduzir procedimentos probabilísticos e não-probabilísticos para composição amostral\\
 4. Apresentar o raciocínio geral do cálculo do tamanho amostral\\
 5. Descrever como processos de amostragem, delineamento e análises são importantes em uma pesquisa
+
+\end{objectives}
 
 \textbf{GLOSSÁRIO}\\
 \textbf{População}: Conjunto de objetos que apresenta, ao menos, uma característica em comum.\\
@@ -3143,11 +3115,14 @@ Em síntese, três condições são importantes em uma pesquisa:
 \hypertarget{estatuxedstica-inferencial}{%
 \chapter{Estatística Inferencial}\label{estatuxedstica-inferencial}}
 
+\begin{objectives}
 \textbf{Objetivos do capítulo}\\
-1. Introduzir alguns conceitos de estatística inferencial\\
+1. Introduzir diferentes conceitos de estatística inferencial\\
 2. Apresentar os procedimentos feitos durante o Teste de Significância de Hipótese Nula (NHST)\\
 3. Discutir condições particulares sobre valores de P\\
 4. Oferecer leituras complementares sobre os tópicos
+
+\end{objectives}
 
 Um dos principais objetivos ao se fazer uma pesquisa é conseguir generalizar as descobertas feitas no estudo para toda a população de onde os participantes pertencem Essa tarefa faz parte dos objetivos da estatística inferencial, que se ocupa majoritariamente com desenvolver estimativas sobre os parâmetros populacionais e testar hipóteses.
 
@@ -3410,19 +3385,22 @@ Gabarito: 1-b; 2-a; 3-b; 4-e; 5-b
 \hypertarget{um-exemplo-real-de-pesquisa}{%
 \chapter{Um exemplo real de pesquisa}\label{um-exemplo-real-de-pesquisa}}
 
+\begin{objectives}
 \textbf{Objetivos do capítulo}\\
 1. Apresentar uma pesquisa previamente publicada\\
 2. Discutir as principais características processuais de uma pesquisa\\
 3. Apresentar a relação entre objetivo, delineamento e coleta de dados\\
 4. Introduzir à forma de divulgação dos resultados
 
+\end{objectives}
+
 É particularmente difícil ter noção de todas as etapas envolvidas em uma pesquisa na ausência de uma apresentação concreta. Estudos reais, previamente conduzidos e publicados, tendem a fornecer uma base sólida que auxilia na integração dos aspectos conceituais e analíticos descritos no decorrer dos capítulos anteriores.
 
-De maneira geral, uma pesquisa é composta por 3 macro etapas \citep{Mayer2007}. A primeira se inicia antes mesmo da realização da coleta de dados e é voltada à definição dos objetivos, das principais perguntas e do delineamento. Com frequência, esta primeira macro etapa se encerra com a submissão de um projeto ou protocolo de pesquisa em Comitês de Ética em Pesquisa (CEPs), como a Plataforma Brasil.
+De maneira geral, uma pesquisa é composta por 3 macro etapas \citep{Mayer2007}. A primeira se inicia antes mesmo da realização da coleta de dados e é voltada à escolha do objeto ou fenômeno de interesse, bem como da definição dos objetivos, das principais perguntas e do delineamento. Com frequência, esta primeira macro etapa demanda muito tempo para escrita de um projeto e se encerra com a sua submissão a um Comitês de Ética em Pesquisa (CEPs), tal como a Plataforma Brasil.
 
-A segunda macro etapa ocorre durante a realização da pesquisa, com processos que tocam desde a coleta de dados até a escrita de um relatório formal, com resultados e discussões. Com frequência, a apresentação dos resultados a revistas científicas marca o fim desta segunda macro etapa.
+A segunda macro etapa se relaciona com a execução da pesquisa. Nesta etapa, há processos que vão desde a coleta de dados até a escrita de um relatório formal, com resultados e discussões. Com frequência, a apresentação dos resultados a revistas científicas marca o fim desta segunda macro etapa.
 
-Finalmente, a terceira macro etapa ocorre após a pesquisa ter se encerrado e é majoritariamente caracterizada pela divulgação dos resultados por diferentes meios, incluindo mídias sociais.
+Finalmente, a terceira macro etapa somente se inicia após a pesquisa ter sido encerrada e é intrinsicamente marcada pela divulgação dos resultados por diferentes meios, incluindo mídias sociais.
 
 Neste capítulo, a pesquisa intitulada \emph{``A Longitudinal Study of Child Development in Children Enrolled in Brazilian Public Daycare Centers''} será apresentada. Ela foi publicada em 2018 e foi assinada por mim (Luis Anunciação), Jane Squires e J. Landeira-Fernandez. A publicação foi feita em formato de artigo, em que estão presentes as seguintes seções: (1) introdução, (2) método - participantes, procedimentos, instrumentos, análises, consentimento ético - (3) discussão e (4) conclusão.
 
@@ -3518,12 +3496,15 @@ A imagem a seguir visa sumarizar as etapas apresentadas.
 \hypertarget{qui-quadrado}{%
 \chapter{Qui quadrado}\label{qui-quadrado}}
 
+\begin{objectives}
 \textbf{Objetivos do capítulo}\\
 1. Apresentar o teste Qui-quadrado\\
 2. Diferenciar o Qui-quadrado de aderência, homogeneidade e independência\\
 3. Realizar gráficos relacionados à distribuição de porcentagens\\
 4. Apresentar e interpretar métricas de tamanho do efeito\\
 5. Dar exemplos relacionados à escrita dos resultados
+
+\end{objectives}
 
 O Teste Qui-quadrado é um teste não-paramétrico utilizado, basicamente, para três finalidades específicas, que são:\\
 (1) verificar as distribuições de probabilidades de cada categoria de uma variável em relação a um valor teórico esperado (aderência),\\
@@ -3712,7 +3693,8 @@ Com isto feito, é possível proceder ao cálculo do Qui-quadrado, tal como feit
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{descr}\OperatorTok{::}\KeywordTok{CrossTable}\NormalTok{(ds_selected}\OperatorTok{$}\NormalTok{sex_male,ds_selected}\OperatorTok{$}\NormalTok{adhd_parent,}\DataTypeTok{chisq =}\NormalTok{ T)}\OperatorTok{$}\NormalTok{CST }\OperatorTok{%>%}\StringTok{ }\NormalTok{pander}\OperatorTok{::}\KeywordTok{pander}\NormalTok{()}
+\NormalTok{descr}\OperatorTok{::}\KeywordTok{CrossTable}\NormalTok{(ds_selected}\OperatorTok{$}\NormalTok{sex_male,ds_selected}\OperatorTok{$}\NormalTok{adhd_parent,}\DataTypeTok{chisq =}\NormalTok{ T)}\OperatorTok{$}\NormalTok{CST }\OperatorTok{%>%}
+\StringTok{  }\NormalTok{pander}\OperatorTok{::}\KeywordTok{pander}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3914,9 +3896,12 @@ Gabarito: 1-a; 2-b
 \hypertarget{fatores-de-risco}{%
 \chapter{Fatores de Risco}\label{fatores-de-risco}}
 
+\begin{objectives}
 \textbf{Objetivos do capítulo}\\
 1. Apresentar o conceito de fatores de risco\\
 2. Introduzir o Risco Atribuível, Risco Relativo e \emph{Odds Ratio}
+
+\end{objectives}
 
 \textbf{GLOSSÁRIO}\\
 \textbf{Epidemiologia}: Área que estuda a distribuição das doenças ou dos agravos à saúde na população e os seus fatores determinantes.\\
@@ -4140,7 +4125,9 @@ Apesar da tabela já ser bastante informativa, o gráfico de setor otimiza a vis
 \NormalTok{ggstatsplot}\OperatorTok{::}\KeywordTok{ggpiestats}\NormalTok{(}
     \DataTypeTok{data =}\NormalTok{ ds_selected,}
     \DataTypeTok{x =}\NormalTok{ sex_male,}
-    \DataTypeTok{y =}\NormalTok{ adhd_parent, }\DataTypeTok{results.subtitle =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{proportion.test =} \OtherTok{FALSE}\NormalTok{)}
+    \DataTypeTok{y =}\NormalTok{ adhd_parent, }
+    \DataTypeTok{results.subtitle =} \OtherTok{FALSE}\NormalTok{, }
+    \DataTypeTok{proportion.test =} \OtherTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4152,7 +4139,8 @@ Conforme exposto, o teste Qui-quadrado de independência costuma ser feito antes
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{chisq.test}\NormalTok{(ds_selected}\OperatorTok{$}\NormalTok{sex_male,ds_selected}\OperatorTok{$}\NormalTok{adhd_parent, }\DataTypeTok{correct =}\NormalTok{ F) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{pander}\NormalTok{(., }\DataTypeTok{split.table =} \OtherTok{Inf}\NormalTok{, }\DataTypeTok{caption =} \StringTok{""}\NormalTok{)}
+\KeywordTok{chisq.test}\NormalTok{(ds_selected}\OperatorTok{$}\NormalTok{sex_male,ds_selected}\OperatorTok{$}\NormalTok{adhd_parent, }\DataTypeTok{correct =}\NormalTok{ F) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{pander}\NormalTok{(., }\DataTypeTok{split.table =} \OtherTok{Inf}\NormalTok{, }\DataTypeTok{caption =} \StringTok{""}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4183,7 +4171,8 @@ A função \texttt{epi.2by2} é utilizada a seguir.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{table}\NormalTok{(ds_selected}\OperatorTok{$}\NormalTok{sex_male,ds_selected}\OperatorTok{$}\NormalTok{adhd_parent) }\OperatorTok{%>%}\StringTok{ }\NormalTok{DescTools}\OperatorTok{::}\KeywordTok{Rev}\NormalTok{(.) }\OperatorTok{%>%}\StringTok{ }
+\KeywordTok{table}\NormalTok{(ds_selected}\OperatorTok{$}\NormalTok{sex_male,ds_selected}\OperatorTok{$}\NormalTok{adhd_parent) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\NormalTok{DescTools}\OperatorTok{::}\KeywordTok{Rev}\NormalTok{(.) }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\NormalTok{epiR}\OperatorTok{::}\KeywordTok{epi.2by2}\NormalTok{(.)}
 \end{Highlighting}
 \end{Shaded}
@@ -4302,8 +4291,13 @@ Por exemplo, caso o modelo logístico fosse calculado para verificar o diagnóst
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{mod_logistico_simples <-}\StringTok{ }\KeywordTok{glm}\NormalTok{(adhd_parent }\OperatorTok{~}\StringTok{ }\NormalTok{sex_male, }\DataTypeTok{family =}\NormalTok{ binomial, }\DataTypeTok{data =}\NormalTok{ ds_selected)}
-\NormalTok{sjPlot}\OperatorTok{::}\KeywordTok{tab_model}\NormalTok{(mod_logistico_simples, }\DataTypeTok{transform =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{show.ci =}\NormalTok{ F, }\DataTypeTok{digits =} \DecValTok{3}\NormalTok{)}
+\NormalTok{mod_logistico_simples <-}\StringTok{ }\KeywordTok{glm}\NormalTok{(adhd_parent }\OperatorTok{~}\StringTok{ }\NormalTok{sex_male,}
+                             \DataTypeTok{family =}\NormalTok{ binomial, }
+                             \DataTypeTok{data =}\NormalTok{ ds_selected)}
+\NormalTok{sjPlot}\OperatorTok{::}\KeywordTok{tab_model}\NormalTok{(mod_logistico_simples,}
+                  \DataTypeTok{transform =} \OtherTok{NULL}\NormalTok{, }
+                  \DataTypeTok{show.ci =}\NormalTok{ F, }
+                  \DataTypeTok{digits =} \DecValTok{3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4347,8 +4341,15 @@ Por via de regra, modelos que consideram mais variáveis possibilitam uma melhor
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{mod_logistico_maior <-}\StringTok{ }\KeywordTok{glm}\NormalTok{(adhd_parent }\OperatorTok{~}\StringTok{ }\NormalTok{sex_male }\OperatorTok{+}\StringTok{ }\NormalTok{alcohol, }\DataTypeTok{family =}\NormalTok{ binomial, }\DataTypeTok{data =}\NormalTok{ ds_selected)}
-\NormalTok{sjPlot}\OperatorTok{::}\KeywordTok{tab_model}\NormalTok{(mod_logistico_simples, mod_logistico_maior, }\DataTypeTok{transform =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{show.ci =}\NormalTok{ F,}\DataTypeTok{digits =} \DecValTok{3}\NormalTok{)}
+\NormalTok{mod_logistico_maior <-}\StringTok{ }\KeywordTok{glm}\NormalTok{(adhd_parent }\OperatorTok{~}\StringTok{ }\NormalTok{sex_male }\OperatorTok{+}\StringTok{ }
+\StringTok{                             }\NormalTok{alcohol, }
+                           \DataTypeTok{family =}\NormalTok{ binomial, }
+                           \DataTypeTok{data =}\NormalTok{ ds_selected)}
+\NormalTok{sjPlot}\OperatorTok{::}\KeywordTok{tab_model}\NormalTok{(mod_logistico_simples, }
+\NormalTok{                  mod_logistico_maior, }
+                  \DataTypeTok{transform =} \OtherTok{NULL}\NormalTok{, }
+                  \DataTypeTok{show.ci =}\NormalTok{ F,}
+                  \DataTypeTok{digits =} \DecValTok{3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4460,6 +4461,7 @@ Gabarito: 1-a; 2-d; 3-b; 4-e
 \hypertarget{teste-t}{%
 \chapter{Teste T}\label{teste-t}}
 
+\begin{objectives}
 \textbf{Objetivos do capítulo}\\
 1. Apresentar o Teste T\\
 2. Discutir os pressupostos de execução do Teste T\\
@@ -4467,6 +4469,8 @@ Gabarito: 1-a; 2-d; 3-b; 4-e
 4. Apresentar e interpretar métricas de tamanho do efeito\\
 5. Dar exemplos relacionados à escrita dos resultados\\
 6. Apresentar testes robustos e não paramétricos
+
+\end{objectives}
 
 O Teste T é um teste estatístico frequentemente utilizado para testar hipóteses sobre diferenças entre até duas médias. É possível usar o Teste T para (1) comparar a média de uma amostra com a média populacional (\emph{one sample t test}), (2) para comparar duas médias amostrais (\emph{two sample t test}) ou (3) para comparar duas médias de uma mesma amostra que foi investigada em dois momentos do tempo (\emph{paired ou matched t test}). Por utilizar dados amostrais da média para estimar a média populacional (parâmetro \(\mu\)), ele é considerado um teste paramétrico.
 
@@ -4555,10 +4559,12 @@ No ambiente R, a primeira etapa importante é assegurar que a base de dados tenh
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{asq_12months <-}\StringTok{ }\NormalTok{asq_12months }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{total_12 =} \KeywordTok{rowSums}\NormalTok{(}\KeywordTok{select}\NormalTok{(., }\KeywordTok{starts_with}\NormalTok{(}\StringTok{"q_"}\NormalTok{)), }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{))}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{total_12 =} \KeywordTok{rowSums}\NormalTok{(}\KeywordTok{select}\NormalTok{(., }\KeywordTok{starts_with}\NormalTok{(}\StringTok{"q_"}\NormalTok{)), }
+                            \DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{))}
 
 \NormalTok{asq_18months <-}\StringTok{ }\NormalTok{asq_18months }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{total_18 =} \KeywordTok{rowSums}\NormalTok{(}\KeywordTok{select}\NormalTok{(., }\KeywordTok{starts_with}\NormalTok{(}\StringTok{"q_"}\NormalTok{)), }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{))}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{total_18 =} \KeywordTok{rowSums}\NormalTok{(}\KeywordTok{select}\NormalTok{(., }\KeywordTok{starts_with}\NormalTok{(}\StringTok{"q_"}\NormalTok{)), }
+                            \DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4568,7 +4574,8 @@ Em seguida, iremos começar pelos 12 meses. O processo de testagem da hipótese 
 \begin{Highlighting}[]
 \NormalTok{asq_12months }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{group_by}\NormalTok{(sex) }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{summarise_at}\NormalTok{(}\KeywordTok{vars}\NormalTok{(total_}\DecValTok{12}\NormalTok{), }\KeywordTok{lst}\NormalTok{(}\DataTypeTok{n=}\OperatorTok{~}\KeywordTok{n}\NormalTok{(),}\DataTypeTok{media=}\NormalTok{mean, }\DataTypeTok{DP=}\NormalTok{sd)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{pander}\NormalTok{()}
+\StringTok{  }\KeywordTok{summarise_at}\NormalTok{(}\KeywordTok{vars}\NormalTok{(total_}\DecValTok{12}\NormalTok{), }\KeywordTok{lst}\NormalTok{(}\DataTypeTok{n=}\OperatorTok{~}\KeywordTok{n}\NormalTok{(),}\DataTypeTok{media=}\NormalTok{mean, }\DataTypeTok{DP=}\NormalTok{sd)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{pander}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4616,7 +4623,8 @@ Uma vez que a VI é tratada como discreta e a VD é continua, tanto o gráfico d
   \CommentTok{#plot 1 }
   \KeywordTok{ggplot}\NormalTok{(asq_12months, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ sex, }\DataTypeTok{y =}\NormalTok{ total_}\DecValTok{12}\NormalTok{, }\DataTypeTok{fill =}\NormalTok{ sex)) }\OperatorTok{+}
 \StringTok{    }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"summary"}\NormalTok{, }\DataTypeTok{fun =}\NormalTok{ mean) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{fun.data =}\NormalTok{ mean_se, }\DataTypeTok{geom =} \StringTok{"errorbar"}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.2}\NormalTok{),}
+\StringTok{    }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{fun.data =}\NormalTok{ mean_se, }\DataTypeTok{geom =} \StringTok{"errorbar"}\NormalTok{, }
+                 \DataTypeTok{width =} \FloatTok{.2}\NormalTok{),}
   \CommentTok{#plot 2}
     \KeywordTok{ggplot}\NormalTok{(asq_12months, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ total_}\DecValTok{12}\NormalTok{, }\DataTypeTok{fill =}\NormalTok{ sex)) }\OperatorTok{+}\StringTok{ }
 \StringTok{    }\KeywordTok{geom_density}\NormalTok{(}\DataTypeTok{color =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha=}\NormalTok{.}\DecValTok{6}\NormalTok{)}
@@ -4632,7 +4640,8 @@ A função \texttt{t.test} é nativa do R o vetor \texttt{t\_test\_12\_m} será 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{t_test_12m <-}\StringTok{ }\KeywordTok{t.test}\NormalTok{(total_}\DecValTok{12} \OperatorTok{~}\StringTok{ }\NormalTok{sex, }\DataTypeTok{var.equal =}\NormalTok{ T, }\DataTypeTok{data =}\NormalTok{ asq_12months)}
+\NormalTok{t_test_12m <-}\StringTok{ }\KeywordTok{t.test}\NormalTok{(total_}\DecValTok{12} \OperatorTok{~}\StringTok{ }\NormalTok{sex, }\DataTypeTok{var.equal =}\NormalTok{ T, }
+                     \DataTypeTok{data =}\NormalTok{ asq_12months)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4725,7 +4734,8 @@ Apesar do gráfico já ter sido bastante claro e sugerir fortemente desvio da no
 \begin{Highlighting}[]
 \NormalTok{asq_12months }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{group_by}\NormalTok{(sex) }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{shapiro =} \KeywordTok{shapiro.test}\NormalTok{(total_}\DecValTok{12}\NormalTok{)}\OperatorTok{$}\NormalTok{p.value) }\OperatorTok{%>%}\StringTok{ }\NormalTok{pander}\OperatorTok{::}\KeywordTok{pander}\NormalTok{()}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{shapiro =} \KeywordTok{shapiro.test}\NormalTok{(total_}\DecValTok{12}\NormalTok{)}\OperatorTok{$}\NormalTok{p.value) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\NormalTok{pander}\OperatorTok{::}\KeywordTok{pander}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4757,7 +4767,8 @@ Homocedasticidade: A homogeneidade ou igualdade das variâncias pode ser testada
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{car}\OperatorTok{::}\KeywordTok{leveneTest}\NormalTok{(total_}\DecValTok{12} \OperatorTok{~}\StringTok{ }\NormalTok{sex, }\DataTypeTok{data =}\NormalTok{ asq_12months) }\OperatorTok{%>%}\StringTok{ }\NormalTok{pander}\OperatorTok{::}\KeywordTok{pander}\NormalTok{()}
+\NormalTok{car}\OperatorTok{::}\KeywordTok{leveneTest}\NormalTok{(total_}\DecValTok{12} \OperatorTok{~}\StringTok{ }\NormalTok{sex, }\DataTypeTok{data =}\NormalTok{ asq_12months) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\NormalTok{pander}\OperatorTok{::}\KeywordTok{pander}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4820,7 +4831,8 @@ Com este teste inicial concluído, é também possível verificar se existem dif
 \begin{Highlighting}[]
 \NormalTok{asq_18months }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{group_by}\NormalTok{(sex) }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{summarise_at}\NormalTok{(}\KeywordTok{vars}\NormalTok{(total_}\DecValTok{18}\NormalTok{), }\KeywordTok{lst}\NormalTok{(}\DataTypeTok{n=}\OperatorTok{~}\KeywordTok{n}\NormalTok{(),}\DataTypeTok{media=}\NormalTok{mean, }\DataTypeTok{DP=}\NormalTok{sd)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{pander}\NormalTok{()}
+\StringTok{  }\KeywordTok{summarise_at}\NormalTok{(}\KeywordTok{vars}\NormalTok{(total_}\DecValTok{18}\NormalTok{), }\KeywordTok{lst}\NormalTok{(}\DataTypeTok{n=}\OperatorTok{~}\KeywordTok{n}\NormalTok{(),}\DataTypeTok{media=}\NormalTok{mean, }\DataTypeTok{DP=}\NormalTok{sd)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{pander}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4880,7 +4892,8 @@ Em relação aos resultados do Teste T, eles indicaram que ambos os grupos tem r
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{t_test_18m <-}\StringTok{ }\KeywordTok{t.test}\NormalTok{(total_}\DecValTok{18} \OperatorTok{~}\StringTok{ }\NormalTok{sex, }\DataTypeTok{var.equal =}\NormalTok{ T,}\DataTypeTok{data =}\NormalTok{ asq_18months)}
+\NormalTok{t_test_18m <-}\StringTok{ }\KeywordTok{t.test}\NormalTok{(total_}\DecValTok{18} \OperatorTok{~}\StringTok{ }\NormalTok{sex, }\DataTypeTok{var.equal =}\NormalTok{ T,}
+                     \DataTypeTok{data =}\NormalTok{ asq_18months)}
 \NormalTok{t_test_18m }\OperatorTok{%>%}\StringTok{ }\NormalTok{pander}\OperatorTok{::}\KeywordTok{pander}\NormalTok{(., }\DataTypeTok{split.table =} \OtherTok{Inf}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -5197,7 +5210,8 @@ O tamanho do efeito também pode ser calculado por \(Z/\sqrt{(n)}\). O output pa
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{coin}\OperatorTok{::}\KeywordTok{statistic}\NormalTok{(coin}\OperatorTok{::}\KeywordTok{wilcox_test}\NormalTok{(total_}\DecValTok{18} \OperatorTok{~}\StringTok{ }\NormalTok{sex, }\DataTypeTok{data =}\NormalTok{ asq_18months))}
+\NormalTok{coin}\OperatorTok{::}\KeywordTok{statistic}\NormalTok{(coin}\OperatorTok{::}\KeywordTok{wilcox_test}\NormalTok{(total_}\DecValTok{18} \OperatorTok{~}\StringTok{ }\NormalTok{sex, }
+                                  \DataTypeTok{data =}\NormalTok{ asq_18months))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5390,7 +5404,7 @@ Os achados também concluem pela rejeição da homocedasticidade, tal como foi p
   (Retirado de Laboratório de Estatística e Geoinformação-UFPR) Suponha que você tenha sido contratado para conduzir um estudo cujo objetivo seja descobrir qual dentre duas marcas de refrigerantes as pessoas acham que tem o melhor sabor. Em seu estudo, os participantes são submetidos a uma degustação às cegas. Eles pontuam uma marca e então pontuam a outra, em ordem aleatória. As notas são atribuídas numa escala de 1 (horrível) a 5 (delicioso). Qual tipo de teste seria o melhor para comparar estas notas? Justifique sua escolha.a) Teste t para dois grupos pareados.b) Teste t para dois grupos independentesc) Teste qui-quadrado.d) Teste de Mann-Whitney.e) Teste de Wilcoxon.
 \end{enumerate}
 
-Gabarito: 1-b; 2-a\textless;3-e
+Gabarito: 1-b; 2-a; 3-e
 
 \hypertarget{anova}{%
 \chapter{ANOVA}\label{anova}}
@@ -5991,7 +6005,8 @@ O resultado das comparações dois a dois será armazenado em um objeto específ
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{post_hoc_escolaridade <-}\StringTok{ }\KeywordTok{emmeans}\NormalTok{(mod_escolaridade, }\StringTok{"escolaridade_fct"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\NormalTok{post_hoc_escolaridade <-}\StringTok{ }\KeywordTok{emmeans}\NormalTok{(mod_escolaridade, }
+                                 \StringTok{"escolaridade_fct"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{pairs}\NormalTok{(., }\DataTypeTok{reverse =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{adjust =} \StringTok{"bonferroni"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -6000,7 +6015,9 @@ A apresentação tabular é fundamental e traz as estatísticas inferenciais de 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{post_hoc_escolaridade }\OperatorTok{%>%}\StringTok{ }\KeywordTok{data.frame}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }\KeywordTok{pander}\NormalTok{()}
+\NormalTok{post_hoc_escolaridade }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{data.frame}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{pander}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -6127,8 +6144,10 @@ Um exemplo pode ser útil a este momento. A correção implementada no teste pos
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{dados_teg }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{filter}\NormalTok{(escolaridade_fct }\OperatorTok{==}\StringTok{ "Colegial"} \OperatorTok{|}\StringTok{ }\NormalTok{escolaridade_fct }\OperatorTok{==}\StringTok{ "ginasio"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\NormalTok{\{}\KeywordTok{t.test}\NormalTok{(teg }\OperatorTok{~}\StringTok{ }\NormalTok{escolaridade_fct, }\DataTypeTok{var.equal =}\NormalTok{ T, }\DataTypeTok{data =}\NormalTok{ .)}\OperatorTok{$}\NormalTok{p.value\} }\OperatorTok{%>%}\StringTok{ }\KeywordTok{pander}\NormalTok{()}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(escolaridade_fct }\OperatorTok{==}\StringTok{ "Colegial"} \OperatorTok{|}\StringTok{ }
+\StringTok{           }\NormalTok{escolaridade_fct }\OperatorTok{==}\StringTok{ "ginasio"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\NormalTok{\{}\KeywordTok{t.test}\NormalTok{(teg }\OperatorTok{~}\StringTok{ }\NormalTok{escolaridade_fct, }\DataTypeTok{var.equal =}\NormalTok{ T, }\DataTypeTok{data =}\NormalTok{ .)}\OperatorTok{$}\NormalTok{p.value\} }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{pander}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -6403,7 +6422,8 @@ Gráficos específicos com relações bivariadas ajudam em uma primeira sondagem
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{gridExtra}\OperatorTok{::}\KeywordTok{grid.arrange}\NormalTok{(}
-  \KeywordTok{ggplot}\NormalTok{(ds, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{escolaridade_grupo, }\DataTypeTok{y =}\NormalTok{ memore_total, }\DataTypeTok{fill =}\NormalTok{ escolaridade_grupo)) }\OperatorTok{+}
+  \KeywordTok{ggplot}\NormalTok{(ds, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{escolaridade_grupo, }\DataTypeTok{y =}\NormalTok{ memore_total, }
+                 \DataTypeTok{fill =}\NormalTok{ escolaridade_grupo)) }\OperatorTok{+}
 \StringTok{    }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"summary"}\NormalTok{) }\OperatorTok{+}
 \StringTok{    }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{fun.data =}\NormalTok{ mean_se, }\DataTypeTok{geom =} \StringTok{"errorbar"}\NormalTok{) }\OperatorTok{+}
 \StringTok{    }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{),}
@@ -6420,9 +6440,12 @@ Por sua vez, gráficos mais complexos, que reúnem mais informações, também s
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(ds, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ faixa_etaria, }\DataTypeTok{y =}\NormalTok{ memore_total, }\DataTypeTok{color =}\NormalTok{ escolaridade_grupo, }\DataTypeTok{group  =}\NormalTok{ escolaridade_grupo)) }\OperatorTok{+}
+\KeywordTok{ggplot}\NormalTok{(ds, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ faixa_etaria, }\DataTypeTok{y =}\NormalTok{ memore_total, }
+               \DataTypeTok{color =}\NormalTok{ escolaridade_grupo, }
+               \DataTypeTok{group  =}\NormalTok{ escolaridade_grupo)) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{geom =} \StringTok{"line"}\NormalTok{, }\DataTypeTok{fun =}\NormalTok{ mean, }\DataTypeTok{size =} \DecValTok{1}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{fun.data =}\NormalTok{ mean_se, }\DataTypeTok{geom =} \StringTok{"errorbar"}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.2}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{fun.data =}\NormalTok{ mean_se, }
+               \DataTypeTok{geom =} \StringTok{"errorbar"}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.2}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"bottom"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -6738,7 +6761,8 @@ O pacote \texttt{emmeans} será utilizado para, inicialmente, verificar cada uma
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{post_hoc_twoway_escolaridade <-}\StringTok{ }\KeywordTok{emmeans}\NormalTok{(mod_escolaridade_faixa_etaria, }\StringTok{"escolaridade_grupo"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\NormalTok{post_hoc_twoway_escolaridade <-}\StringTok{ }\KeywordTok{emmeans}\NormalTok{(mod_escolaridade_faixa_etaria, }
+                                        \StringTok{"escolaridade_grupo"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{pairs}\NormalTok{(.,}\DataTypeTok{adj =} \StringTok{"bonferroni"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -6747,7 +6771,9 @@ A apresentação formal ocorre por tabelas, tal como a exposta a seguir. A últi
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{post_hoc_twoway_escolaridade }\OperatorTok{%>%}\StringTok{ }\KeywordTok{data.frame}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }\KeywordTok{pander}\NormalTok{()}
+\NormalTok{post_hoc_twoway_escolaridade }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{data.frame}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{pander}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -6832,7 +6858,8 @@ Para comparar os resultados em função de todos os níveis de faixa\_etaria, ba
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{post_hoc_twoway_faixaetaria <-}\StringTok{ }\KeywordTok{emmeans}\NormalTok{(mod_escolaridade_faixa_etaria, }\StringTok{"faixa_etaria"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\NormalTok{post_hoc_twoway_faixaetaria <-}\StringTok{ }\KeywordTok{emmeans}\NormalTok{(mod_escolaridade_faixa_etaria, }
+                                       \StringTok{"faixa_etaria"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{pairs}\NormalTok{(.,}\DataTypeTok{adj =} \StringTok{"bonferroni"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -6841,7 +6868,9 @@ Agora, a tabela apresenta os resultados das comparações etárias de maneira de
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{post_hoc_twoway_faixaetaria }\OperatorTok{%>%}\StringTok{ }\KeywordTok{data.frame}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }\KeywordTok{pander}\NormalTok{()}
+\NormalTok{post_hoc_twoway_faixaetaria }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{data.frame}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{pander}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -7092,17 +7121,26 @@ Graficamente, a interação é tipicamente vista pelo cruzamento das linhas. O g
 \KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
 \KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{atribuicao =} \KeywordTok{rnorm}\NormalTok{(}\DecValTok{200}\NormalTok{,}\DecValTok{10}\NormalTok{,}\FloatTok{0.5}\NormalTok{), }
            \DataTypeTok{auto_estima =} \KeywordTok{c}\NormalTok{(}\StringTok{"Embaixo d'agua"}\NormalTok{,}\StringTok{"Em terra"}\NormalTok{),}
-           \DataTypeTok{resultado =} \KeywordTok{c}\NormalTok{(}\KeywordTok{rep}\NormalTok{(}\StringTok{"Embaixo d'agua"}\NormalTok{, }\DecValTok{100}\NormalTok{), }\KeywordTok{rep}\NormalTok{(}\StringTok{"Em terra"}\NormalTok{, }\DecValTok{100}\NormalTok{))) }\OperatorTok{%>%}
+           \DataTypeTok{resultado =} \KeywordTok{c}\NormalTok{(}\KeywordTok{rep}\NormalTok{(}\StringTok{"Embaixo d'agua"}\NormalTok{, }\DecValTok{100}\NormalTok{), }
+                         \KeywordTok{rep}\NormalTok{(}\StringTok{"Em terra"}\NormalTok{, }\DecValTok{100}\NormalTok{))) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{atribuicao =} \KeywordTok{case_when}\NormalTok{(}
-\NormalTok{    auto_estima }\OperatorTok{==}\StringTok{ "Embaixo d'agua"} \OperatorTok{&}\StringTok{ }\NormalTok{resultado }\OperatorTok{==}\StringTok{ "Embaixo d'agua"} \OperatorTok{~}\StringTok{ }\NormalTok{atribuicao}\OperatorTok{*}\FloatTok{1.2}\NormalTok{,}
-\NormalTok{    auto_estima }\OperatorTok{==}\StringTok{ "Em terra"} \OperatorTok{&}\StringTok{ }\NormalTok{resultado }\OperatorTok{==}\StringTok{ "Embaixo d'agua"} \OperatorTok{~}\StringTok{ }\NormalTok{atribuicao}\OperatorTok{*}\FloatTok{0.9}\NormalTok{,}
-\NormalTok{    auto_estima }\OperatorTok{==}\StringTok{ "Embaixo d'agua"} \OperatorTok{&}\StringTok{ }\NormalTok{resultado }\OperatorTok{==}\StringTok{ "Em terra"} \OperatorTok{~}\StringTok{ }\NormalTok{atribuicao}\OperatorTok{*}\FloatTok{0.9}\NormalTok{,}
-\NormalTok{     auto_estima }\OperatorTok{==}\StringTok{ "Em terra"} \OperatorTok{&}\StringTok{ }\NormalTok{resultado }\OperatorTok{==}\StringTok{ "Em terra"} \OperatorTok{~}\StringTok{ }\NormalTok{atribuicao}\OperatorTok{*}\FloatTok{1.2}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ resultado, }\DataTypeTok{y =}\NormalTok{ atribuicao, }\DataTypeTok{color =}\NormalTok{ auto_estima, }\DataTypeTok{group =}\NormalTok{ auto_estima)) }\OperatorTok{+}\StringTok{ }
+\NormalTok{    auto_estima }\OperatorTok{==}\StringTok{ "Embaixo d'agua"} \OperatorTok{&}\StringTok{ }
+\StringTok{      }\NormalTok{resultado }\OperatorTok{==}\StringTok{ "Embaixo d'agua"} \OperatorTok{~}\StringTok{ }\NormalTok{atribuicao}\OperatorTok{*}\FloatTok{1.2}\NormalTok{,}
+\NormalTok{    auto_estima }\OperatorTok{==}\StringTok{ "Em terra"} \OperatorTok{&}\StringTok{ }
+\StringTok{      }\NormalTok{resultado }\OperatorTok{==}\StringTok{ "Embaixo d'agua"} \OperatorTok{~}\StringTok{ }
+\StringTok{      }\NormalTok{atribuicao}\OperatorTok{*}\FloatTok{0.9}\NormalTok{,}
+\NormalTok{    auto_estima }\OperatorTok{==}\StringTok{ "Embaixo d'agua"} \OperatorTok{&}\StringTok{ }
+\StringTok{      }\NormalTok{resultado }\OperatorTok{==}\StringTok{ "Em terra"} \OperatorTok{~}\StringTok{ }\NormalTok{atribuicao}\OperatorTok{*}\FloatTok{0.9}\NormalTok{,}
+\NormalTok{     auto_estima }\OperatorTok{==}\StringTok{ "Em terra"} \OperatorTok{&}\StringTok{ }
+\StringTok{      }\NormalTok{resultado }\OperatorTok{==}\StringTok{ "Em terra"} \OperatorTok{~}\StringTok{ }\NormalTok{atribuicao}\OperatorTok{*}\FloatTok{1.2}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ resultado, }\DataTypeTok{y =}\NormalTok{ atribuicao, }
+                \DataTypeTok{color =}\NormalTok{ auto_estima, }\DataTypeTok{group =}\NormalTok{ auto_estima)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{size =} \DecValTok{2}\NormalTok{,}\DataTypeTok{alpha=}\FloatTok{0.2}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{size=}\FloatTok{1.2}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{ylim}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{,}\DecValTok{14}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"Ambiente de aprendizagem"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Palavras lembradas"}\NormalTok{, }\DataTypeTok{color =} \StringTok{"Ambiente da recordação"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"Ambiente de aprendizagem"}\NormalTok{, }
+       \DataTypeTok{y =} \StringTok{"Palavras lembradas"}\NormalTok{, }
+       \DataTypeTok{color =} \StringTok{"Ambiente da recordação"}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{theme_bw}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -7288,9 +7326,12 @@ Diferente do proposto na ANOVA de 2 vias aditiva, o gráfico agora deve ser o ma
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(ds, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ faixa_etaria, }\DataTypeTok{y =}\NormalTok{ memore_total, }\DataTypeTok{color =}\NormalTok{ escolaridade_grupo, }\DataTypeTok{group =}\NormalTok{ escolaridade_grupo)) }\OperatorTok{+}
+\KeywordTok{ggplot}\NormalTok{(ds, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ faixa_etaria, }\DataTypeTok{y =}\NormalTok{ memore_total, }
+               \DataTypeTok{color =}\NormalTok{ escolaridade_grupo, }
+               \DataTypeTok{group =}\NormalTok{ escolaridade_grupo)) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{geom =} \StringTok{"line"}\NormalTok{, }\DataTypeTok{fun =}\NormalTok{ mean, }\DataTypeTok{size=}\FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"Faixa etária"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Resultados"}\NormalTok{, }\DataTypeTok{color =} \StringTok{"Escolaridade"}\NormalTok{)}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"Faixa etária"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Resultados"}\NormalTok{, }
+       \DataTypeTok{color =} \StringTok{"Escolaridade"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -7302,7 +7343,9 @@ Agora, formalmente a modelagem estatística será feita. Os passos devem ser exa
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{mod_escolaridade_faixa_etaria_fatorial <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(memore_total }\OperatorTok{~}\StringTok{ }\NormalTok{escolaridade_grupo }\OperatorTok{*}\StringTok{ }\NormalTok{faixa_etaria, ds)}
+\NormalTok{mod_escolaridade_faixa_etaria_fatorial <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(memore_total }\OperatorTok{~}\StringTok{ }
+\StringTok{                                               }\NormalTok{escolaridade_grupo }\OperatorTok{*}\StringTok{ }
+\StringTok{                                               }\NormalTok{faixa_etaria, ds)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -7678,7 +7721,9 @@ Neste caso, o post hoc será feito para todos os níveis de \texttt{escolaridade
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{post_hoc_fatorial <-}\StringTok{ }\KeywordTok{emmeans}\NormalTok{(mod_escolaridade_faixa_etaria_fatorial, pairwise }\OperatorTok{~}\StringTok{ }\NormalTok{escolaridade_grupo }\OperatorTok{|}\StringTok{ }\NormalTok{faixa_etaria, }\DataTypeTok{adj =} \StringTok{"bonferroni"}\NormalTok{) }
+\NormalTok{post_hoc_fatorial <-}\StringTok{ }\KeywordTok{emmeans}\NormalTok{(mod_escolaridade_faixa_etaria_fatorial, }
+\NormalTok{                             pairwise }\OperatorTok{~}\StringTok{ }\NormalTok{escolaridade_grupo }\OperatorTok{|}\StringTok{ }
+\StringTok{                               }\NormalTok{faixa_etaria, }\DataTypeTok{adj =} \StringTok{"bonferroni"}\NormalTok{) }
 \NormalTok{post_hoc_fatorial}\OperatorTok{$}\NormalTok{contrasts }\OperatorTok{%>%}\StringTok{ }\NormalTok{data.frame }\OperatorTok{%>%}\StringTok{ }\KeywordTok{pander}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -7934,7 +7979,8 @@ O gráfico dessa vez será feito pela função \texttt{emmip} do pacote \texttt{
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{emmip}\NormalTok{(mod_escolaridade_faixa_etaria_fatorial, escolaridade_grupo }\OperatorTok{~}\StringTok{ }\NormalTok{faixa_etaria, }\DataTypeTok{CIs =} \OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{emmip}\NormalTok{(mod_escolaridade_faixa_etaria_fatorial, }
+\NormalTok{      escolaridade_grupo }\OperatorTok{~}\StringTok{ }\NormalTok{faixa_etaria, }\DataTypeTok{CIs =} \OtherTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -7977,8 +8023,6 @@ Os dados obtidos na avaliação psicológica foram analisados por uma ANOVA Fato
 \hypertarget{questuxf5es-6}{%
 \section{Questões}\label{questuxf5es-6}}
 
-:::\{. question \}
-
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
@@ -7991,11 +8035,14 @@ Gabarito: 1-b
 \hypertarget{anova-de-medidas-repetidas}{%
 \chapter{ANOVA de medidas repetidas}\label{anova-de-medidas-repetidas}}
 
+\begin{objectives}
 \textbf{Objetivos do capítulo}\\
 1. Apresentar a ANOVA de Medidas Repetidas\\
 2. Realizar passo-a-passo a modelagem analítica\\
 3. Verificar os pressupostos e implementar as correções sugeridas\\
 4. Escrever os resultados
+
+\end{objectives}
 
 A ANOVA de medidas repetidas é um teste estatístico para a análise de dados longitudinais pareados. Isto significa que o mesmo conjunto de participantes foi acompanhado e avaliado no decorrer do tempo. Esta técnica pode ser entendida como uma expansão da ANOVA ou um caso especial do Modelo Linear de Efeitos Mistos (LMM). Os pressupostos deste teste são próximos aos discutidos em outros testes inferenciais:
 
@@ -8038,7 +8085,8 @@ A primeira etapa nesta análise será a consolidação da base de dados. No veto
                \DataTypeTok{values_to=} \StringTok{"resultado"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{grupo =}\NormalTok{ grupo_dummy) }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{filter}\NormalTok{(grupo }\OperatorTok{<}\StringTok{ }\DecValTok{3}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{grupo =} \KeywordTok{factor}\NormalTok{(}\KeywordTok{if_else}\NormalTok{(grupo }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{, }\StringTok{"Experimental"}\NormalTok{, }\StringTok{"Placebo"}\NormalTok{))) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{grupo =} \KeywordTok{factor}\NormalTok{(}
+    \KeywordTok{if_else}\NormalTok{(grupo }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{, }\StringTok{"Experimental"}\NormalTok{, }\StringTok{"Placebo"}\NormalTok{))) }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{tempo =} \KeywordTok{factor}\NormalTok{(}\KeywordTok{case_when}\NormalTok{(}
 \NormalTok{    tempo }\OperatorTok{==}\StringTok{ "total_w4"} \OperatorTok{~}\StringTok{ "antes"}\NormalTok{,}
 \NormalTok{    tempo }\OperatorTok{==}\StringTok{ "total_w0"} \OperatorTok{~}\StringTok{ "no_dia"}\NormalTok{,}
@@ -8273,10 +8321,14 @@ O gráfico abaixo também apresenta as mesmas informações, mas insere uma barr
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(tratamento, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{tempo, }\DataTypeTok{y=}\NormalTok{resultado, }\DataTypeTok{group=}\NormalTok{grupo, }\DataTypeTok{color=}\NormalTok{grupo)) }\OperatorTok{+}\StringTok{ }\CommentTok{#variaveis}
-\StringTok{  }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{fun =}\NormalTok{ mean, }\DataTypeTok{geom =} \StringTok{"line"}\NormalTok{, }\DataTypeTok{size=}\FloatTok{1.0}\NormalTok{, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{linetype =}\NormalTok{ grupo)) }\OperatorTok{+}\StringTok{ }\CommentTok{#linha}
-\StringTok{  }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{fun=}\StringTok{"mean"}\NormalTok{, }\DataTypeTok{geom=}\StringTok{"point"}\NormalTok{, }\DataTypeTok{size=}\DecValTok{2}\NormalTok{, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{shape =}\NormalTok{ grupo)) }\OperatorTok{+}\StringTok{ }\CommentTok{#pontos}
-\StringTok{  }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{fun.data =}\NormalTok{ mean_se, }\DataTypeTok{geom =} \StringTok{"errorbar"}\NormalTok{,}\DataTypeTok{size=}\DecValTok{1}\NormalTok{) }\CommentTok{#barra de erro}
+\KeywordTok{ggplot}\NormalTok{(tratamento, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{tempo, }\DataTypeTok{y=}\NormalTok{resultado, }
+                       \DataTypeTok{group=}\NormalTok{grupo, }\DataTypeTok{color=}\NormalTok{grupo)) }\OperatorTok{+}\StringTok{ }\CommentTok{#variaveis}
+\StringTok{  }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{fun =}\NormalTok{ mean, }\DataTypeTok{geom =} \StringTok{"line"}\NormalTok{, }
+               \DataTypeTok{size=}\FloatTok{1.0}\NormalTok{, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{linetype =}\NormalTok{ grupo)) }\OperatorTok{+}\StringTok{ }\CommentTok{#linha}
+\StringTok{  }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{fun=}\StringTok{"mean"}\NormalTok{, }\DataTypeTok{geom=}\StringTok{"point"}\NormalTok{, }
+               \DataTypeTok{size=}\DecValTok{2}\NormalTok{, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{shape =}\NormalTok{ grupo)) }\OperatorTok{+}\StringTok{ }\CommentTok{#pontos}
+\StringTok{  }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{fun.data =}\NormalTok{ mean_se, }
+               \DataTypeTok{geom =} \StringTok{"errorbar"}\NormalTok{,}\DataTypeTok{size=}\DecValTok{1}\NormalTok{) }\CommentTok{#barra de erro}
 \end{Highlighting}
 \end{Shaded}
 
@@ -8665,7 +8717,8 @@ Na tabela da ANOVA, o \texttt{Mauchly\textquotesingle{}s\ Test\ for\ Sphericity}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{ez_outcome}\OperatorTok{$}\StringTok{`}\DataTypeTok{Mauchly's Test for Sphericity}\StringTok{`} \OperatorTok{%>%}\StringTok{ }\KeywordTok{pander}\NormalTok{()}
+\NormalTok{ez_outcome}\OperatorTok{$}\StringTok{`}\DataTypeTok{Mauchly's Test for Sphericity}\StringTok{`} \OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{pander}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -8717,7 +8770,8 @@ Frequentemente, os resultados corrigidos e os não-corrigidos concluem na mesma 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{summary}\NormalTok{(ez_outcome}\OperatorTok{$}\NormalTok{aov) }\OperatorTok{%>%}\StringTok{ }\NormalTok{pander}\OperatorTok{::}\KeywordTok{pander}\NormalTok{()}
+\KeywordTok{summary}\NormalTok{(ez_outcome}\OperatorTok{$}\NormalTok{aov) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\NormalTok{pander}\OperatorTok{::}\KeywordTok{pander}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -8943,14 +8997,28 @@ Os dados foram analisados a partir de uma ANOVA de medidas repetidas investigand
   Gráficos são muito informativos para uma análise inicial dos dados\\
 \end{enumerate}
 
+\hypertarget{pesquisas-adicionais-5}{%
+\section{Pesquisas adicionais}\label{pesquisas-adicionais-5}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Physiotherapy Versus Physiotherapy Plus Cognitive Training on Cognition and Quality of Life in Parkinson Disease: Randomized Clinical Trial (DOI: 10.1097/PHM.0000000000001128)\\
+  Essa é uma pesquisa na área de fisioterapia. Os pesquisadores tiveram interesse de verificar a efetividade de dois tipos de tratamento (fisioterapia apenas vs.~fisioterapia e reforço cognitivo) em 58 pacientes com Doeça de Parkinson. Os grupos foram compostos de maneira aleatória e acompanhados durante 3 meses. Não foram encontradas diferenças significativas entre as intervenções e ambos os grupos apresentaram melhoras clínicas.
+\end{enumerate}
+
 \hypertarget{modelo-linear-misto}{%
 \chapter{Modelo linear misto}\label{modelo-linear-misto}}
 
+\begin{objectives}
 \textbf{Objetivos do capítulo}\\
 1. Apresentar a ANOVA de Medidas Repetidas.\\
 2. Realizar passo-a-passo a modelagem analítica.\\
 3. Verificar os pressupostos e implementar as correções sugeridas.\\
 4. Escrever os resultados.
+
+\end{objectives}
 
 O modelo linear misto (LMM) é um modelo linear, frequentemente utilizado para trabalhar dados longitudinais ou de medidas repetidas, que possibilita definir tanto parâmetros populacionais (efeitos fixos), como coeficientes individuais (efeitos aleatórios), além do erro experimental. Conceitualmente, pode ser apresentado como:
 
@@ -9008,7 +9076,8 @@ A base \texttt{dados} reúne as varáveis da pesquisa. No entanto, ela está em 
                \DataTypeTok{values_to=} \StringTok{"resultado"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{grupo =}\NormalTok{ grupo_dummy) }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{filter}\NormalTok{(grupo }\OperatorTok{<}\StringTok{ }\DecValTok{3}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{grupo =} \KeywordTok{factor}\NormalTok{(}\KeywordTok{if_else}\NormalTok{(grupo }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{, }\StringTok{"Placebo"}\NormalTok{, }\StringTok{"Experimental"}\NormalTok{))) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{grupo =} \KeywordTok{factor}\NormalTok{(}
+    \KeywordTok{if_else}\NormalTok{(grupo }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{, }\StringTok{"Placebo"}\NormalTok{, }\StringTok{"Experimental"}\NormalTok{))) }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{tempo =} \KeywordTok{factor}\NormalTok{(}\KeywordTok{case_when}\NormalTok{(}
 \NormalTok{    tempo }\OperatorTok{==}\StringTok{ "total_w4"} \OperatorTok{~}\StringTok{ "antes"}\NormalTok{,}
 \NormalTok{    tempo }\OperatorTok{==}\StringTok{ "total_w0"} \OperatorTok{~}\StringTok{ "no_dia"}\NormalTok{,}
@@ -9042,7 +9111,9 @@ Como uma primeira etapa, é importante criar tabelas e gráficos. Esses dois rec
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{arsenal}\OperatorTok{::}\KeywordTok{tableby}\NormalTok{(tempo }\OperatorTok{~}\StringTok{ }\NormalTok{resultado }\OperatorTok{+}\StringTok{ }\NormalTok{grupo, }\DataTypeTok{test   =} \OtherTok{FALSE}\NormalTok{,tratamento) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summary}\NormalTok{() }
+\NormalTok{arsenal}\OperatorTok{::}\KeywordTok{tableby}\NormalTok{(tempo }\OperatorTok{~}\StringTok{ }\NormalTok{resultado }\OperatorTok{+}\StringTok{ }\NormalTok{grupo, }
+                 \DataTypeTok{test =} \OtherTok{FALSE}\NormalTok{,tratamento) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{summary}\NormalTok{() }
 \end{Highlighting}
 \end{Shaded}
 
@@ -9162,10 +9233,14 @@ O gráfico de linhas tende a ser utilizado para medidas longitudinais e encontra
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(tratamento, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{tempo, }\DataTypeTok{y=}\NormalTok{resultado, }\DataTypeTok{group=}\NormalTok{grupo, }\DataTypeTok{color=}\NormalTok{grupo)) }\OperatorTok{+}\StringTok{ }\CommentTok{#variaveis}
-\StringTok{  }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{fun =}\NormalTok{ mean, }\DataTypeTok{geom =} \StringTok{"line"}\NormalTok{, }\DataTypeTok{size=}\FloatTok{1.0}\NormalTok{, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{linetype =}\NormalTok{ grupo)) }\OperatorTok{+}\StringTok{ }\CommentTok{#linha}
-\StringTok{  }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{fun=}\StringTok{"mean"}\NormalTok{, }\DataTypeTok{geom=}\StringTok{"point"}\NormalTok{, }\DataTypeTok{size=}\DecValTok{2}\NormalTok{, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{shape =}\NormalTok{ grupo)) }\OperatorTok{+}\StringTok{ }\CommentTok{#pontos}
-\StringTok{  }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{fun.data =}\NormalTok{ mean_se, }\DataTypeTok{geom =} \StringTok{"errorbar"}\NormalTok{,}\DataTypeTok{size=}\DecValTok{1}\NormalTok{) }\CommentTok{#barra de erro}
+\KeywordTok{ggplot}\NormalTok{(tratamento, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{tempo, }\DataTypeTok{y=}\NormalTok{resultado, }
+                       \DataTypeTok{group=}\NormalTok{grupo, }\DataTypeTok{color=}\NormalTok{grupo)) }\OperatorTok{+}\StringTok{ }\CommentTok{#variaveis}
+\StringTok{  }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{fun =}\NormalTok{ mean, }\DataTypeTok{geom =} \StringTok{"line"}\NormalTok{, }\DataTypeTok{size=}\FloatTok{1.0}\NormalTok{, }
+               \KeywordTok{aes}\NormalTok{(}\DataTypeTok{linetype =}\NormalTok{ grupo)) }\OperatorTok{+}\StringTok{ }\CommentTok{#linha}
+\StringTok{  }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{fun=}\StringTok{"mean"}\NormalTok{, }\DataTypeTok{geom=}\StringTok{"point"}\NormalTok{, }\DataTypeTok{size=}\DecValTok{2}\NormalTok{, }
+               \KeywordTok{aes}\NormalTok{(}\DataTypeTok{shape =}\NormalTok{ grupo)) }\OperatorTok{+}\StringTok{ }\CommentTok{#pontos}
+\StringTok{  }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{fun.data =}\NormalTok{ mean_se, }
+               \DataTypeTok{geom =} \StringTok{"errorbar"}\NormalTok{,}\DataTypeTok{size=}\DecValTok{1}\NormalTok{) }\CommentTok{#barra de erro}
 \end{Highlighting}
 \end{Shaded}
 
@@ -9455,8 +9530,8 @@ Os dados foram analisados através de um Modelo Linear de Efeitos Mistos, que ve
   A escrita apresenta algumas particularidades relacionadas à cada modelo.\\
 \end{enumerate}
 
-\hypertarget{pesquisas-adicionais-5}{%
-\section{Pesquisas adicionais}\label{pesquisas-adicionais-5}}
+\hypertarget{pesquisas-adicionais-6}{%
+\section{Pesquisas adicionais}\label{pesquisas-adicionais-6}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -9468,6 +9543,14 @@ Os dados foram analisados através de um Modelo Linear de Efeitos Mistos, que ve
 
 \hypertarget{correlauxe7uxe3o}{%
 \chapter{Correlação}\label{correlauxe7uxe3o}}
+
+\begin{objectives}
+\textbf{Objetivos do capítulo}\\
+1. Apresentar apectos do relacionamento entre variáveis\\
+2. Demonstrar a correlação de Pearson\\
+3. Oferecer um guia de como interpretar as correlações
+
+\end{objectives}
 
 A correlação é um procedimento estatístico utilizado para verificar a relação entre duas variáveis. Há diferentes técnicas correlacionais e a maioria busca medir a força e a direção da associação linear desse relacionamento.
 
@@ -9544,7 +9627,9 @@ A primeira etapa da análise consiste na apresentação de tabelas e gráficos q
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{arsenal}\OperatorTok{::}\KeywordTok{tableby}\NormalTok{(}\OperatorTok{~}\NormalTok{eat_soma }\OperatorTok{+}\StringTok{ }\NormalTok{bsq_soma, }\DataTypeTok{test =} \OtherTok{FALSE}\NormalTok{, dados_brasil) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summary}\NormalTok{() }
+\NormalTok{arsenal}\OperatorTok{::}\KeywordTok{tableby}\NormalTok{(}\OperatorTok{~}\NormalTok{eat_soma }\OperatorTok{+}\StringTok{ }\NormalTok{bsq_soma, }
+                 \DataTypeTok{test =} \OtherTok{FALSE}\NormalTok{, dados_brasil) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{summary}\NormalTok{() }
 \end{Highlighting}
 \end{Shaded}
 
@@ -9567,7 +9652,8 @@ Após isso realizado, a apresentação do gráfico de dispersão é fundamental 
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{ggplot}\NormalTok{(dados_brasil, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ bsq_soma, }\DataTypeTok{y =}\NormalTok{ eat_soma)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"Imagem corporal (BSQ)"}\NormalTok{, }\DataTypeTok{Y =} \StringTok{"Disfunção alimentar (EAT)"}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"Imagem corporal (BSQ)"}\NormalTok{, }
+       \DataTypeTok{Y =} \StringTok{"Disfunção alimentar (EAT)"}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_jitter}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -9708,8 +9794,8 @@ A correlação entre o comportamento alimentar (EAT-26) e a percepção corporal
   Correlação não indica causalidade\\
 \end{enumerate}
 
-\hypertarget{pesquisas-adicionais-6}{%
-\section{Pesquisas adicionais}\label{pesquisas-adicionais-6}}
+\hypertarget{pesquisas-adicionais-7}{%
+\section{Pesquisas adicionais}\label{pesquisas-adicionais-7}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -9719,14 +9805,30 @@ A correlação entre o comportamento alimentar (EAT-26) e a percepção corporal
   Nesse estudo, 393 participantes de idades variadas foram recrutados e viram uma imagem ambígua em que é possível identificar tanto uma moça jovem, como uma senhora de idade. Os participantes deveriam olhar a imagem e indicar a idade a pessoa. Com estes resultados, os pesquisadores calcularam a correlação entre a idade do participante e a idade que as pessoas deram à pessoa.
 \end{enumerate}
 
+\hypertarget{questuxf5es-7}{%
+\section{Questões}\label{questuxf5es-7}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  (Retirado de Analista de Comercialização e Logística Júnior Transporte Marítimo, Petrobrás, CESGRANRIO, 2012) A fim de avaliar a correlação linear entre duas variáveis de interesse, X (covariável) e Y (variável resposta), um pesquisador conduz 10 experimentos, obtendo o coeficiente de correlação r = 0,8. Quanto da variabilidade da variável Y NÃO é explicada pela variável X?a) 80\%b) 64\%c) 36\%d) 20\%e) 2\%
+\item
+  (Retirado de Analista de Comercialização e Logística Júnior Transporte Marítimo, Petrobrás, CESGRANRIO, 2012) Se alguém deseja comparar a variabilidade de dois grupos de dados com variâncias e médias diferentes, a medida estatística apropriada para tal é a(o):a) covariância entre os grupos.b) comparação simples entre os dois desvios padrões dos grupos.c) média dos desvios padrões dos dois grupos ponderados pelos tamanhos das amostras.d) coeficiente de variação.e) coeficiente de correlação entre os grupos.
+\end{enumerate}
+
+Gabarito: 1-c; 2-d
+
 \hypertarget{regressuxe3o-linear-simples}{%
 \chapter{Regressão linear simples}\label{regressuxe3o-linear-simples}}
 
+\begin{objectives}
 \textbf{Objetivos do capítulo}\\
 1. Apresentar o modelo de regressão linear, especialmente a regressão linear simples\\
 2. introduzir conceitos analíticos subjacentes à esta modelagem\\
 3. Apresentar a utilidade desta modelagem em uma pesquisa\\
 4. Demonstrar algumas equivalências entre modelos de regressão e outros testes estatísticos
+
+\end{objectives}
 
 \textbf{GLOSSÁRIO}
 
@@ -9997,7 +10099,8 @@ Inicialmente, é necessário carregar a base no R. Após isso, a primeira etapa 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{arsenal}\OperatorTok{::}\KeywordTok{tableby}\NormalTok{(}\OperatorTok{~}\NormalTok{eat_soma }\OperatorTok{+}\StringTok{ }\NormalTok{bsq_soma, dados_brasil) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summary}\NormalTok{() }
+\NormalTok{arsenal}\OperatorTok{::}\KeywordTok{tableby}\NormalTok{(}\OperatorTok{~}\NormalTok{eat_soma }\OperatorTok{+}\StringTok{ }\NormalTok{bsq_soma, dados_brasil) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{summary}\NormalTok{() }
 \end{Highlighting}
 \end{Shaded}
 
@@ -10019,7 +10122,8 @@ O cálculo da correlação entre ambas as variáveis também é importante, apes
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{cor.test}\NormalTok{(dados_brasil}\OperatorTok{$}\NormalTok{eat_soma, dados_brasil}\OperatorTok{$}\NormalTok{bsq_soma) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{pander}\NormalTok{()}
+\KeywordTok{cor.test}\NormalTok{(dados_brasil}\OperatorTok{$}\NormalTok{eat_soma, dados_brasil}\OperatorTok{$}\NormalTok{bsq_soma) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{pander}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -10164,7 +10268,8 @@ Estes resultados obtidos são muito auxiliados pela apresentação de gráficos 
 \KeywordTok{ggplot}\NormalTok{(dados_brasil, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ bsq_soma, }\DataTypeTok{y =}\NormalTok{ eat_soma)) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_jitter}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\NormalTok{ggpubr}\OperatorTok{::}\KeywordTok{stat_regline_equation}\NormalTok{(}\DataTypeTok{label.x =} \DecValTok{3}\NormalTok{, }\DataTypeTok{label.y =} \DecValTok{40}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\NormalTok{ggpubr}\OperatorTok{::}\KeywordTok{stat_cor}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =}\NormalTok{  ..rr.label..), }\DataTypeTok{method =} \StringTok{"pearson"}\NormalTok{, }\DataTypeTok{label.x =} \DecValTok{3}\NormalTok{, }\DataTypeTok{label.y =} \DecValTok{44}\NormalTok{)}
+\StringTok{  }\NormalTok{ggpubr}\OperatorTok{::}\KeywordTok{stat_cor}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =}\NormalTok{  ..rr.label..), }\DataTypeTok{method =} \StringTok{"pearson"}\NormalTok{, }
+                   \DataTypeTok{label.x =} \DecValTok{3}\NormalTok{, }\DataTypeTok{label.y =} \DecValTok{44}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -10367,8 +10472,8 @@ Um modelo de regressão foi calculado para verificar os resultados dos comportam
   o diagnóstico é uma parte essencial desta modelagem e o mnemônico LINE pode ajudar na lembrança dos pressupostos.\\
 \end{enumerate}
 
-\hypertarget{pesquisas-adicionais-7}{%
-\section{Pesquisas adicionais}\label{pesquisas-adicionais-7}}
+\hypertarget{pesquisas-adicionais-8}{%
+\section{Pesquisas adicionais}\label{pesquisas-adicionais-8}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -10378,8 +10483,29 @@ Um modelo de regressão foi calculado para verificar os resultados dos comportam
   Nesta pesquisa, 110 participantes foram recrutados para que os pesquisadores pudessem produzir tabelas estatísticas para um novo exame neuropsicológico. Uma das análises feitas verificou o impacto dos anos de estudo no desempenho neste exame neuropsicológico, concluindo pelo seu efeito protetivo.
 \end{enumerate}
 
+\hypertarget{questuxf5es-8}{%
+\section{Questões}\label{questuxf5es-8}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  (Retirado de Biologia, Metodologia Científica, Biólogo, UFFS, FEPESE, 2012) Sobre Bioestatística, Regressão Linear e Correlação, assinale a alternativa correta. a) O coeficiente de correlação mede a força, ou grau, de relacionamento entre duas variáveis.b) O coeficiente de regressão simples descreve o relacionamento, em termos matemáticos, de duas ou mais variáveis.c) Em um diagrama de dispersão, duas variáveis são plotadas usando-se coordenadas x e y. Os pontos ligados formando uma linha curva não apontam correlação entre as duas variáveis.d) A finalidade de uma equação de regressão seria calcular acuradamente os valores de uma variável, com base em valores conhecidos da outra.e) A determinação da correlação entre duas variáveis, por meio de uma inspeção nos pares anotados ou no diagrama de dispersão correspondente, é precisa e independe do treinamento e da sensibilidade do observador.
+\end{enumerate}
+
+Gabarito: 1-a
+
 \hypertarget{regressuxe3o-linear-muxfaltipla}{%
 \chapter{Regressão linear múltipla}\label{regressuxe3o-linear-muxfaltipla}}
+
+\begin{objectives}
+\textbf{Objetivos do capítulo}\\
+1. Apresentar o modelo de regressão linear múltipla\\
+2. Mostrar o relacionamento entre este modelo e os modelos da família da ANOVA previamente exposta\\
+3. Introduzir testes diagnósticos sobre colinearidade\\
+4. Apresentar técnicas de seleção automática de variáveis
+
+\end{objectives}
 
 Os modelos de regressão linear múltipla são desenvolvidos para predizer os valores médios de uma variável resposta (Y) em função de duas ou mais variáveis independentes (X). Estes modelos tendem a ampliar a acurácia obtida por uma regressão linear simples, apesar de também aumentarem a complexidade de sua realização e interpretação. Nestes modelos, a VD deve ser contínua e as VIs podem ser tanto contínuas como categóricas. Tecnicamente, a família da ANOVA vista anteriormente são casos particulares de modelos de regressão múltipla.
 
@@ -10433,7 +10559,8 @@ A primeira etapa da análise é realizada pelo desenvolvimento de tabelas e grá
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{arsenal}\OperatorTok{::}\KeywordTok{tableby}\NormalTok{(}\OperatorTok{~}\NormalTok{eat_soma }\OperatorTok{+}\StringTok{ }\NormalTok{bsq_soma }\OperatorTok{+}\StringTok{ }\NormalTok{imc, dados_brasil) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summary}\NormalTok{() }
+\NormalTok{arsenal}\OperatorTok{::}\KeywordTok{tableby}\NormalTok{(}\OperatorTok{~}\NormalTok{eat_soma }\OperatorTok{+}\StringTok{ }\NormalTok{bsq_soma }\OperatorTok{+}\StringTok{ }\NormalTok{imc, dados_brasil) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{summary}\NormalTok{() }
 \end{Highlighting}
 \end{Shaded}
 
@@ -10526,7 +10653,8 @@ O valor estimado no EAT-26 de Um participante que teve 45 pontos no BSQ e tem IM
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{imc_medio <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(dados_brasil}\OperatorTok{$}\NormalTok{imc, }\DataTypeTok{na.rm=}\NormalTok{T)}
-\KeywordTok{predict}\NormalTok{(mod_linear_multiplo, }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{bsq_soma=}\KeywordTok{c}\NormalTok{(}\DecValTok{45}\NormalTok{), }\DataTypeTok{imc=}\NormalTok{imc_medio))}
+\KeywordTok{predict}\NormalTok{(mod_linear_multiplo, }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{bsq_soma=}\KeywordTok{c}\NormalTok{(}\DecValTok{45}\NormalTok{), }
+                                        \DataTypeTok{imc=}\NormalTok{imc_medio))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -10539,7 +10667,8 @@ Já o valor estimado no EAT-26 de um outro participante com 46 pontos no BSQ (ou
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{predict}\NormalTok{(mod_linear_multiplo, }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{bsq_soma=}\KeywordTok{c}\NormalTok{(}\DecValTok{46}\NormalTok{), }\DataTypeTok{imc=}\NormalTok{imc_medio))}
+\KeywordTok{predict}\NormalTok{(mod_linear_multiplo, }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{bsq_soma=}\KeywordTok{c}\NormalTok{(}\DecValTok{46}\NormalTok{), }
+                                        \DataTypeTok{imc=}\NormalTok{imc_medio))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -10552,7 +10681,10 @@ A diferença entre esses dois valores é exatamente igual ao coeficiente calcula
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{round}\NormalTok{(}\KeywordTok{predict}\NormalTok{(mod_linear_multiplo, }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{bsq_soma=}\KeywordTok{c}\NormalTok{(}\DecValTok{46}\NormalTok{), }\DataTypeTok{imc=}\NormalTok{imc_medio)) }\OperatorTok{-}\StringTok{ }\KeywordTok{predict}\NormalTok{(mod_linear_multiplo, }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{bsq_soma=}\KeywordTok{c}\NormalTok{(}\DecValTok{45}\NormalTok{), }\DataTypeTok{imc=}\NormalTok{imc_medio)),}\DecValTok{2}\NormalTok{)}
+\KeywordTok{round}\NormalTok{(}\KeywordTok{predict}\NormalTok{(mod_linear_multiplo, }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{bsq_soma=}\KeywordTok{c}\NormalTok{(}\DecValTok{46}\NormalTok{), }
+                                              \DataTypeTok{imc=}\NormalTok{imc_medio)) }\OperatorTok{-}\StringTok{ }
+\StringTok{        }\KeywordTok{predict}\NormalTok{(mod_linear_multiplo, }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{bsq_soma=}\KeywordTok{c}\NormalTok{(}\DecValTok{45}\NormalTok{), }
+                                                \DataTypeTok{imc=}\NormalTok{imc_medio)),}\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -10818,8 +10950,8 @@ Apesar do detalhamento das técnicas automáticas estar fora do escopo deste cap
   Existem diferentes métodos para adicionar preditores e maneiras manuais e automáticas são disponíveis\\
 \end{enumerate}
 
-\hypertarget{pesquisas-adicionais-8}{%
-\section{Pesquisas adicionais}\label{pesquisas-adicionais-8}}
+\hypertarget{pesquisas-adicionais-9}{%
+\section{Pesquisas adicionais}\label{pesquisas-adicionais-9}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -10829,25 +10961,37 @@ Apesar do detalhamento das técnicas automáticas estar fora do escopo deste cap
   Nesta pesquisa, 110 participantes foram recrutados para que os pesquisadores pudessem produzir tabelas estatísticas para um novo exame neuropsicológico. Uma das análises feitas verificou o impacto dos anos de estudo no desempenho neste exame neuropsicológico, concluindo pelo seu efeito protetivo.
 \end{enumerate}
 
-\hypertarget{questuxf5es-7}{%
-\section{Questões}\label{questuxf5es-7}}
+\hypertarget{questuxf5es-9}{%
+\section{Questões}\label{questuxf5es-9}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  (ENADE, Economia - 2019) Com o objetivo de entender o impacto das internações causadas pela falta de saneamento básico, um pesquisador estimou o modelo apresentado na tabela a seguir, usando a quantidade de dias de internação de uma amostra de 7 260 pacientes do Sistema Único de Saúde como variável explicada. As variáveis explicativas são: (i) gênero do paciente, binária em que é 1 é utilizado para identificar as mulheres e 0 para identificar os homens; (ii) idade do paciente em anos de vida; e (iii) motivo da internação, também binária, em que recebe o valor 1 para identificar internações que são causadas por problemas de saneamento básico e o valor 0 para as demais internações\includegraphics{./img/exercicio_regressao.png}a) O coeficiente R-quadrado encontra-se abaixo de 30\%, o que significa que o modelo deve ser descartado.b) As internações causadas pela deficiência de saneamento básico tendem a gerar um aumento de 1,96\% nos gastos de saúde.c) A média de dias de internação para mulheres é estatisticamente maior que a de internação para homens. d) A variável idade não é estatisticamente significativa para explicar o número de dias de internação. e) O teste F mostra que as variáveis explicativas conjuntamente são estatisticamente significativas para explicar o número de dias de internação.\\
+  (ENADE, Economia - 2019) Com o objetivo de entender o impacto das internações causadas pela falta de saneamento básico, um pesquisador estimou o modelo apresentado na tabela a seguir, usando a quantidade de dias de internação de uma amostra de 7 260 pacientes do Sistema Único de Saúde como variável explicada. As variáveis explicativas são: (i) gênero do paciente, binária em que é 1 é utilizado para identificar as mulheres e 0 para identificar os homens; (ii) idade do paciente em anos de vida; e (iii) motivo da internação, também binária, em que recebe o valor 1 para identificar internações que são causadas por problemas de saneamento básico e o valor 0 para as demais internações
 \end{enumerate}
 
-Gabarito: 1e
+\includegraphics{./img/exercicio_regressao.png}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  O coeficiente R-quadrado encontra-se abaixo de 30\%, o que significa que o modelo deve ser descartado.b) As internações causadas pela deficiência de saneamento básico tendem a gerar um aumento de 1,96\% nos gastos de saúde.c) A média de dias de internação para mulheres é estatisticamente maior que a de internação para homens. d) A variável idade não é estatisticamente significativa para explicar o número de dias de internação.e) O teste F mostra que as variáveis explicativas conjuntamente são estatisticamente significativas para explicar o número de dias de internação.\\
+\end{enumerate}
+
+Gabarito: 1-e
 
 \hypertarget{regressuxe3o-loguxedstica-binuxe1ria}{%
 \chapter{Regressão logística binária}\label{regressuxe3o-loguxedstica-binuxe1ria}}
 
+\begin{objectives}
 \textbf{Objetivos do capítulo}\\
 1. Apresentar características da regressão logística\\
 2. Diferenciar o conceito de probabilidade e chance\\
 3. Integrar o teste Qui-quadrado, \textbf{Odds Ratio} e regressão logística
+
+\end{objectives}
 
 \textbf{GLOSSÁRIO}
 
@@ -10948,9 +11092,11 @@ Inicialmente, é necessário carregar a base de dados ao R. Após isso feito, a 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{arsenal}\OperatorTok{::}\KeywordTok{tableby}\NormalTok{(risk_cefaleia_resources }\OperatorTok{~}\StringTok{ }
-\StringTok{                   }\NormalTok{age }\OperatorTok{+}\StringTok{ }\NormalTok{race }\OperatorTok{+}\StringTok{  }\NormalTok{sex }\OperatorTok{+}\StringTok{ }\NormalTok{ses }\OperatorTok{+}\StringTok{ }\NormalTok{sleeping }\OperatorTok{+}\StringTok{ }\NormalTok{premature }\OperatorTok{+}\StringTok{ }\NormalTok{smoking }\OperatorTok{+}\StringTok{ }\NormalTok{alcohol }\OperatorTok{+}\StringTok{ }\NormalTok{sdq_risk, }
+\StringTok{                   }\NormalTok{age }\OperatorTok{+}\StringTok{ }\NormalTok{race }\OperatorTok{+}\StringTok{  }\NormalTok{sex }\OperatorTok{+}\StringTok{ }\NormalTok{ses }\OperatorTok{+}\StringTok{ }\NormalTok{sleeping }\OperatorTok{+}\StringTok{ }\NormalTok{premature }\OperatorTok{+}\StringTok{ }
+\StringTok{                   }\NormalTok{smoking }\OperatorTok{+}\StringTok{ }\NormalTok{alcohol }\OperatorTok{+}\StringTok{ }\NormalTok{sdq_risk, }
                  \DataTypeTok{test =} \OtherTok{FALSE}\NormalTok{,}
-\NormalTok{                 base_uso) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summary}\NormalTok{() }
+\NormalTok{                 base_uso) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{summary}\NormalTok{() }
 \end{Highlighting}
 \end{Shaded}
 
@@ -11008,8 +11154,10 @@ O vetor \texttt{mod\_risco} será criado e reunirá os resultados do modelo de r
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{mod_risco <-}\StringTok{ }\KeywordTok{glm}\NormalTok{(risk_cefaleia_resources }\OperatorTok{~}
-\StringTok{                   }\NormalTok{age }\OperatorTok{+}\StringTok{ }\NormalTok{race }\OperatorTok{+}\StringTok{  }\NormalTok{sex }\OperatorTok{+}\StringTok{ }\NormalTok{ses }\OperatorTok{+}\StringTok{ }\NormalTok{sleeping }\OperatorTok{+}\StringTok{ }\NormalTok{premature }\OperatorTok{+}\StringTok{ }\NormalTok{smoking }\OperatorTok{+}\StringTok{ }\NormalTok{alcohol }\OperatorTok{+}\StringTok{ }\NormalTok{sdq_risk, }
-                 \DataTypeTok{family =} \StringTok{"binomial"}\NormalTok{, }\DataTypeTok{data =}\NormalTok{ base_uso)}
+\StringTok{                   }\NormalTok{age }\OperatorTok{+}\StringTok{ }\NormalTok{race }\OperatorTok{+}\StringTok{  }\NormalTok{sex }\OperatorTok{+}\StringTok{ }\NormalTok{ses }\OperatorTok{+}\StringTok{ }\NormalTok{sleeping }\OperatorTok{+}\StringTok{ }\NormalTok{premature }\OperatorTok{+}
+\StringTok{                   }\NormalTok{smoking }\OperatorTok{+}\StringTok{ }\NormalTok{alcohol }\OperatorTok{+}\StringTok{ }\NormalTok{sdq_risk, }
+                 \DataTypeTok{family =} \StringTok{"binomial"}\NormalTok{, }
+                 \DataTypeTok{data =}\NormalTok{ base_uso)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -11161,7 +11309,8 @@ Inicialmente, é importante verificar se o modelo testado é significativamente 
 \begin{Highlighting}[]
 \CommentTok{#criar um null model}
 \NormalTok{mod_nulo <-}\StringTok{ }\NormalTok{base_uso }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{filter}\NormalTok{(}\KeywordTok{across}\NormalTok{(}\KeywordTok{c}\NormalTok{(age,race,sex,ses,sleeping,premature,smoking,alcohol,sdq_risk), }\OperatorTok{~!}\KeywordTok{is.na}\NormalTok{(.x))) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\KeywordTok{across}\NormalTok{(}\KeywordTok{c}\NormalTok{(age,race,sex,ses,sleeping,premature,}
+\NormalTok{                  smoking,alcohol,sdq_risk), }\OperatorTok{~!}\KeywordTok{is.na}\NormalTok{(.x))) }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{glm}\NormalTok{(risk_cefaleia_resources }\OperatorTok{~}\StringTok{ }\DecValTok{1}\NormalTok{, }\DataTypeTok{family =} \StringTok{"binomial"}\NormalTok{, }\DataTypeTok{data =}\NormalTok{ .)}
 \CommentTok{#comparar modelos}
 \KeywordTok{anova}\NormalTok{(mod_nulo, mod_risco, }\DataTypeTok{test =} \StringTok{"LRT"}\NormalTok{)}
@@ -11521,7 +11670,8 @@ Ao modelar esses dados por uma regressão logística, essas duas análises são 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{base_uso }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{risk =} \KeywordTok{if_else}\NormalTok{(risk_cefaleia_resources }\OperatorTok{==}\StringTok{ "0"}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }\CommentTok{#nuneric for poisson }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{risk =} 
+           \KeywordTok{if_else}\NormalTok{(risk_cefaleia_resources }\OperatorTok{==}\StringTok{ "0"}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }\CommentTok{#nuneric for poisson }
 \StringTok{  }\KeywordTok{count}\NormalTok{(risk, sex) }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\NormalTok{\{}\KeywordTok{glm}\NormalTok{(n }\OperatorTok{~}\StringTok{ }\NormalTok{risk }\OperatorTok{*}\StringTok{ }\NormalTok{sex, }\DataTypeTok{data =}\NormalTok{ .,}\DataTypeTok{family =} \KeywordTok{poisson}\NormalTok{())\} }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{anova}\NormalTok{(., }\DataTypeTok{test =} \StringTok{'Rao'}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
@@ -11678,8 +11828,8 @@ sex1\strut
   O Qui-quadrado é um caso particular de uma regressão logística com uma única VI categórica\\
 \end{enumerate}
 
-\hypertarget{pesquisas-adicionais-9}{%
-\section{Pesquisas adicionais}\label{pesquisas-adicionais-9}}
+\hypertarget{pesquisas-adicionais-10}{%
+\section{Pesquisas adicionais}\label{pesquisas-adicionais-10}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -11691,8 +11841,8 @@ sex1\strut
   Este estudo visou identificar os preditores relacionados à sobrevivência/mortalidade infantil em Gana, um país africano. O modelo da regressão logística foi utilizado e entre os preditores relacionados à maior chance de sobrevivência estão o sexo da criança e a escolaridade da mãe. Meninas e filhos(as) de mães não-analfabeta tem chance maior de sobrevivência.
 \end{enumerate}
 
-\hypertarget{questuxf5es-8}{%
-\section{Questões}\label{questuxf5es-8}}
+\hypertarget{questuxf5es-10}{%
+\section{Questões}\label{questuxf5es-10}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -11706,9 +11856,6 @@ sex1\strut
 \end{enumerate}
 
 Gabarito: 1-b;2-a;3-a
-
-\hypertarget{referencias}{%
-\chapter{Referencias}\label{referencias}}
 
   \bibliography{book.bib}
 

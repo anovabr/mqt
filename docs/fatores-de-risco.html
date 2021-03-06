@@ -392,7 +392,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18.7" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#pesquisas-adicionais-10"><i class="fa fa-check"></i><b>18.7</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="18.8" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#questões-10"><i class="fa fa-check"></i><b>18.8</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>19</b> Referencias</a></li>
 <li class="divider"></li>
 <li><a href="http://www.anovabr.com/" target="blank">ANOVA</a></li>
 
@@ -603,7 +602,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="fatores-de-risco.html#cb31-1"></a>ggstatsplot<span class="op">::</span><span class="kw">ggpiestats</span>(</span>
 <span id="cb31-2"><a href="fatores-de-risco.html#cb31-2"></a>    <span class="dt">data =</span> ds_selected,</span>
 <span id="cb31-3"><a href="fatores-de-risco.html#cb31-3"></a>    <span class="dt">x =</span> sex_male,</span>
-<span id="cb31-4"><a href="fatores-de-risco.html#cb31-4"></a>    <span class="dt">y =</span> adhd_parent, <span class="dt">results.subtitle =</span> <span class="ot">FALSE</span>, <span class="dt">proportion.test =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<span id="cb31-4"><a href="fatores-de-risco.html#cb31-4"></a>    <span class="dt">y =</span> adhd_parent, </span>
+<span id="cb31-5"><a href="fatores-de-risco.html#cb31-5"></a>    <span class="dt">results.subtitle =</span> <span class="ot">FALSE</span>, </span>
+<span id="cb31-6"><a href="fatores-de-risco.html#cb31-6"></a>    <span class="dt">proportion.test =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-50-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Até o momento, os resultados já indicam que a quantidade/proporção de meninos com TDAH é bastante superior à de meninas com o diagnóstico. Esses indicadores são importantes, mas precisam ser submetidos à modelagem estatística formal.</p>
 <p>Conforme exposto, o teste Qui-quadrado de independência costuma ser feito antes de verificar as principais medidas relacionadas ao risco. Isso se dá pois o Qui-quadrado oferece tanto o recurso necessário para verificar se as variáveis apresentam uma associação, como também para testar a significância de algumas dessas medidas. A relação entre o sexo do participante e seu diagnóstico se mostrou significativa: X2(1) = 41.6, p &lt; 0.01</p>
@@ -711,9 +712,12 @@ Nesta seção, será necessário inserir a variável <u>sexo</u> para as linhas 
 <p>Quando uma regressão logística é modelada entre uma variável dependente binária e apenas uma variável independente categórica, suas estimativas são apresentadas em log(odds). Isso significa que os resultados obtidos pelas tabelas de contingências previamente apresentadas também são obtidos pela regressão.</p>
 <p>Por exemplo, caso o modelo logístico fosse calculado para verificar o diagnóstico de TDAH (sim ou não) e o sexo do participante (masculino ou feminino), suas estimativas seriam em unidades log(odds) ou logit. Os resultados abaixo demonstram isso.</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="fatores-de-risco.html#cb35-1"></a>mod_logistico_simples &lt;-<span class="st"> </span><span class="kw">glm</span>(adhd_parent <span class="op">~</span><span class="st"> </span>sex_male,</span>
-<span id="cb35-2"><a href="fatores-de-risco.html#cb35-2"></a>                             <span class="dt">family =</span> binomial, <span class="dt">data =</span> ds_selected)</span>
-<span id="cb35-3"><a href="fatores-de-risco.html#cb35-3"></a>sjPlot<span class="op">::</span><span class="kw">tab_model</span>(mod_logistico_simples,</span>
-<span id="cb35-4"><a href="fatores-de-risco.html#cb35-4"></a>                  <span class="dt">transform =</span> <span class="ot">NULL</span>, <span class="dt">show.ci =</span> F, <span class="dt">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
+<span id="cb35-2"><a href="fatores-de-risco.html#cb35-2"></a>                             <span class="dt">family =</span> binomial, </span>
+<span id="cb35-3"><a href="fatores-de-risco.html#cb35-3"></a>                             <span class="dt">data =</span> ds_selected)</span>
+<span id="cb35-4"><a href="fatores-de-risco.html#cb35-4"></a>sjPlot<span class="op">::</span><span class="kw">tab_model</span>(mod_logistico_simples,</span>
+<span id="cb35-5"><a href="fatores-de-risco.html#cb35-5"></a>                  <span class="dt">transform =</span> <span class="ot">NULL</span>, </span>
+<span id="cb35-6"><a href="fatores-de-risco.html#cb35-6"></a>                  <span class="dt">show.ci =</span> F, </span>
+<span id="cb35-7"><a href="fatores-de-risco.html#cb35-7"></a>                  <span class="dt">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
 <table style="border-collapse:collapse; border:none;">
 <tr>
 <th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
@@ -930,7 +934,7 @@ Esta é uma pesquisa de larga escala, feita para verificar a prevalência de pro
 
 </div>
 </div>
-<h3> Referencias</h3>
+<h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-Endruweit2019">
 <p>Battisti, I. D. E., &amp; Silva Smolski, F. M. da. (2019). <em>Software r: Analise estatistica de dados utilizando um programa livre</em>. Faith.</p>

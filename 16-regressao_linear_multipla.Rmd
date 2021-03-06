@@ -13,7 +13,7 @@ library(stargazer) #presenting results
 ```
 
 
-::: {.objectives }
+::: {.objectives data-latex="" }
 **Objetivos do capítulo**  
 1. Apresentar o modelo de regressão linear múltipla       
 2. Mostrar o relacionamento entre este modelo e os modelos da família da ANOVA previamente exposta       
@@ -71,7 +71,8 @@ Da mesma forma que apresentado no capítulo de regressão linear simples, a defi
 A primeira etapa da análise é realizada pelo desenvolvimento de tabelas e gráficos que possam auxiliar na interpretação dos resultados. De maneira similar à feita em outros capítulos, abaixo há uma tabela descritiva. 
 
 ```{r results="asis" }
-arsenal::tableby(~eat_soma + bsq_soma + imc, dados_brasil) %>% summary() 
+arsenal::tableby(~eat_soma + bsq_soma + imc, dados_brasil) %>% 
+  summary() 
 ```
 
 
@@ -111,18 +112,23 @@ O valor estimado no <u>EAT-26</u> de Um participante que teve 45 pontos no <u>BS
 
 ```{r}
 imc_medio <- mean(dados_brasil$imc, na.rm=T)
-predict(mod_linear_multiplo, data.frame(bsq_soma=c(45), imc=imc_medio))
+predict(mod_linear_multiplo, data.frame(bsq_soma=c(45), 
+                                        imc=imc_medio))
 ```
 
 Já o valor estimado no <u>EAT-26</u> de um outro participante com 46 pontos no <u>BSQ</u> (ou seja, 1 ponto a mais) e mesmo <u>IMC</u> do primeiro participante (23.2) é de 9.25. 
 
 ```{r}
-predict(mod_linear_multiplo, data.frame(bsq_soma=c(46), imc=imc_medio))
+predict(mod_linear_multiplo, data.frame(bsq_soma=c(46), 
+                                        imc=imc_medio))
 ```
 A diferença entre esses dois valores é exatamente igual ao coeficiente calculado na regressão (b = 0.19). Abaixo há duas linhas de código apresentando esses resultados.
 
 ```{r}
-round(predict(mod_linear_multiplo, data.frame(bsq_soma=c(46), imc=imc_medio)) - predict(mod_linear_multiplo, data.frame(bsq_soma=c(45), imc=imc_medio)),2)
+round(predict(mod_linear_multiplo, data.frame(bsq_soma=c(46), 
+                                              imc=imc_medio)) - 
+        predict(mod_linear_multiplo, data.frame(bsq_soma=c(45), 
+                                                imc=imc_medio)),2)
 ```
 Esse formato analítico é similar para o resultado do <u>IMC</u>. Caso duas pessoas tenham o mesmo resultado do <u>BSQ</u>, uma unidade a mais no IMC impactará em uma redução de 0.447, em média, no <u>EAT-26</u>. 
 
@@ -320,10 +326,14 @@ Nesta pesquisa, 110 participantes foram recrutados para que os pesquisadores pud
 
 ::: {.question }
 
-1. (ENADE, Economia - 2019) Com o objetivo de entender o impacto das internações causadas pela falta de saneamento básico, um pesquisador estimou o modelo apresentado na tabela a seguir, usando a quantidade de dias de internação de uma amostra de 7 260 pacientes do Sistema Único de Saúde como variável explicada. As variáveis explicativas são: (i) gênero do paciente, binária em que é 1 é utilizado para identificar as mulheres e 0 para identificar os homens; (ii) idade do paciente em anos de vida; e (iii) motivo da internação, também binária, em que recebe o valor 1 para identificar internações que são causadas por problemas de saneamento básico e o valor 0 para as demais internações<br>![](./img/exercicio_regressao.png)<br>a) O coeficiente R-quadrado encontra-se abaixo de 30%, o que significa que o modelo deve ser descartado.<br>b) As internações causadas pela deficiência de saneamento básico tendem a gerar um aumento de 1,96% nos gastos de saúde.<br>c) A média de dias de internação para mulheres é estatisticamente maior que a de internação para homens.<br> d) A variável idade não é estatisticamente significativa para explicar o número de dias de internação.<br> e) O teste F mostra que as variáveis explicativas conjuntamente são estatisticamente significativas para explicar o número de dias de internação.   
+1. (ENADE, Economia - 2019) Com o objetivo de entender o impacto das internações causadas pela falta de saneamento básico, um pesquisador estimou o modelo apresentado na tabela a seguir, usando a quantidade de dias de internação de uma amostra de 7 260 pacientes do Sistema Único de Saúde como variável explicada. As variáveis explicativas são: (i) gênero do paciente, binária em que é 1 é utilizado para identificar as mulheres e 0 para identificar os homens; (ii) idade do paciente em anos de vida; e (iii) motivo da internação, também binária, em que recebe o valor 1 para identificar internações que são causadas por problemas de saneamento básico e o valor 0 para as demais internações<br>
+
+![](./img/exercicio_regressao.png)     
+
+a) O coeficiente R-quadrado encontra-se abaixo de 30%, o que significa que o modelo deve ser descartado.<br>b) As internações causadas pela deficiência de saneamento básico tendem a gerar um aumento de 1,96% nos gastos de saúde.<br>c) A média de dias de internação para mulheres é estatisticamente maior que a de internação para homens.<br> d) A variável idade não é estatisticamente significativa para explicar o número de dias de internação.<br>e) O teste F mostra que as variáveis explicativas conjuntamente são estatisticamente significativas para explicar o número de dias de internação.   
 :::  
 
-Gabarito: 1e
+Gabarito: 1-e
 
 
 

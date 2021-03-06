@@ -11,7 +11,7 @@ library(janitor)
 
 ```
 
-::: {.objectives }
+::: {.objectives data-latex="" }
 **Objetivos do capítulo**  
 1. Apresentar o conceito de fatores de risco    
 2. Introduzir o Risco Atribuível, Risco Relativo e *Odds Ratio*  
@@ -126,7 +126,9 @@ Apesar da tabela já ser bastante informativa, o gráfico de setor otimiza a vis
 ggstatsplot::ggpiestats(
     data = ds_selected,
     x = sex_male,
-    y = adhd_parent, results.subtitle = FALSE, proportion.test = FALSE)
+    y = adhd_parent, 
+    results.subtitle = FALSE, 
+    proportion.test = FALSE)
 ```
 
 Até o momento, os resultados já indicam que a quantidade/proporção de meninos com TDAH é bastante superior à de meninas com o diagnóstico. Esses indicadores são importantes, mas precisam ser submetidos à modelagem estatística formal.
@@ -265,9 +267,12 @@ Por exemplo, caso o modelo logístico fosse calculado para verificar o diagnóst
 
 ```{r}
 mod_logistico_simples <- glm(adhd_parent ~ sex_male,
-                             family = binomial, data = ds_selected)
+                             family = binomial, 
+                             data = ds_selected)
 sjPlot::tab_model(mod_logistico_simples,
-                  transform = NULL, show.ci = F, digits = 3)
+                  transform = NULL, 
+                  show.ci = F, 
+                  digits = 3)
 ```
 
 Para transformar o resultado em *Odds Ratio*, bastar aplicar o exponencial à estimativa. Neste caso, o resultado seria o mesmo previamente encontrado: $e^{(0.61)} = 1.84$,

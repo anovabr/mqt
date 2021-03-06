@@ -11,7 +11,7 @@ library(gridExtra) #plot together
 ```
 
 
-::: {.objectives }
+::: {.objectives data-latex="" }
 **Objetivos do capítulo**  
 1. Apresentar apectos do relacionamento entre variáveis      
 2. Demonstrar a correlação de Pearson      
@@ -101,7 +101,9 @@ Um dos objetivos dessa pesquisa foi verificar a relação entre percepção da i
 A primeira etapa da análise consiste na apresentação de tabelas e gráficos que possam auxiliar na interpretação dos resultados. Abaixo há uma tabela inicial com os resultados das escalas.  
 
 ```{r, results = "asis" }
-arsenal::tableby(~eat_soma + bsq_soma, test = FALSE, dados_brasil) %>% summary() 
+arsenal::tableby(~eat_soma + bsq_soma, 
+                 test = FALSE, dados_brasil) %>% 
+  summary() 
 ```
 
 
@@ -109,7 +111,8 @@ Após isso realizado, a apresentação do gráfico de dispersão é fundamental 
 
 ```{r}
 ggplot(dados_brasil, aes(x = bsq_soma, y = eat_soma)) +
-  labs(x = "Imagem corporal (BSQ)", Y = "Disfunção alimentar (EAT)")+
+  labs(x = "Imagem corporal (BSQ)", 
+       Y = "Disfunção alimentar (EAT)") +
   geom_jitter()
 ```
   
@@ -117,7 +120,7 @@ O gráfico indica que as duas variáveis são relacionadas. Apesar do padrão de
 
 Isso pode ser feito pela função `cor.test`, que é nativa do R.  
 
-```{r}
+```{r, tidy=TRUE}
 cor.test(dados_brasil$eat_soma, dados_brasil$bsq_soma) %>% pander()
 ```
 

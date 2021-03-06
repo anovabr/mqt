@@ -392,7 +392,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18.7" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#pesquisas-adicionais-10"><i class="fa fa-check"></i><b>18.7</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="18.8" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#questões-10"><i class="fa fa-check"></i><b>18.8</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>19</b> Referencias</a></li>
 <li class="divider"></li>
 <li><a href="http://www.anovabr.com/" target="blank">ANOVA</a></li>
 
@@ -504,7 +503,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="execução-no-r-13" class="section level2">
 <h2><span class="header-section-number">15.2</span> Execução no R</h2>
 <p>A primeira etapa da análise consiste na apresentação de tabelas e gráficos que possam auxiliar na interpretação dos resultados. Abaixo há uma tabela inicial com os resultados das escalas.</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="correlação.html#cb136-1"></a>arsenal<span class="op">::</span><span class="kw">tableby</span>(<span class="op">~</span>eat_soma <span class="op">+</span><span class="st"> </span>bsq_soma, <span class="dt">test =</span> <span class="ot">FALSE</span>, dados_brasil) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summary</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="correlação.html#cb136-1"></a>arsenal<span class="op">::</span><span class="kw">tableby</span>(<span class="op">~</span>eat_soma <span class="op">+</span><span class="st"> </span>bsq_soma, </span>
+<span id="cb136-2"><a href="correlação.html#cb136-2"></a>                 <span class="dt">test =</span> <span class="ot">FALSE</span>, dados_brasil) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb136-3"><a href="correlação.html#cb136-3"></a><span class="st">  </span><span class="kw">summary</span>() </span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -541,8 +542,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>Após isso realizado, a apresentação do gráfico de dispersão é fundamental para melhor entendimento do relacionamento entre as variáveis, especialmente para verificar se ele linear ou não. Apesar de técnicas correlacionais não elegerem, formalmente, uma VI e uma VD, com muita frequência, se usa o eixo X para colocar a variável que se assume como independente e Y para apresentar os resultados da variável assumida como dependente.</p>
 <div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="correlação.html#cb137-1"></a><span class="kw">ggplot</span>(dados_brasil, <span class="kw">aes</span>(<span class="dt">x =</span> bsq_soma, <span class="dt">y =</span> eat_soma)) <span class="op">+</span></span>
-<span id="cb137-2"><a href="correlação.html#cb137-2"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Imagem corporal (BSQ)&quot;</span>, <span class="dt">Y =</span> <span class="st">&quot;Disfunção alimentar (EAT)&quot;</span>)<span class="op">+</span></span>
-<span id="cb137-3"><a href="correlação.html#cb137-3"></a><span class="st">  </span><span class="kw">geom_jitter</span>()</span></code></pre></div>
+<span id="cb137-2"><a href="correlação.html#cb137-2"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Imagem corporal (BSQ)&quot;</span>, </span>
+<span id="cb137-3"><a href="correlação.html#cb137-3"></a>       <span class="dt">Y =</span> <span class="st">&quot;Disfunção alimentar (EAT)&quot;</span>) <span class="op">+</span></span>
+<span id="cb137-4"><a href="correlação.html#cb137-4"></a><span class="st">  </span><span class="kw">geom_jitter</span>()</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-146-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O gráfico indica que as duas variáveis são relacionadas. Apesar do padrão deste relacionamento não ser estritamente linear, é possível testar formalmente a correlação entre ambas as variáveis,</p>
 <p>Isso pode ser feito pela função <code>cor.test</code>, que é nativa do R.</p>
@@ -650,7 +652,7 @@ Nesse estudo, 393 participantes de idades variadas foram recrutados e viram uma 
 
 </div>
 </div>
-<h3> Referencias</h3>
+<h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-Cohen1988">
 <p>Cohen, J. (1988). <em>Statistical power analysis for the behavioral sciences</em>. Routledge. <a href="https://doi.org/10.4324/9780203771587">https://doi.org/10.4324/9780203771587</a></p>

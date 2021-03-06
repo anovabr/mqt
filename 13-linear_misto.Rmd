@@ -9,7 +9,7 @@ library(tidyverse)
 ```
 
 
-::: {.objectives }
+::: {.objectives data-latex="" }
 **Objetivos do capítulo**  
 1. Apresentar a ANOVA de Medidas Repetidas.    
 2. Realizar passo-a-passo a modelagem analítica.    
@@ -74,7 +74,8 @@ tratamento <- dados %>%
                values_to= "resultado") %>% 
   rename(grupo = grupo_dummy) %>% 
   filter(grupo < 3) %>% 
-  mutate(grupo = factor(if_else(grupo == 1, "Placebo", "Experimental"))) %>% 
+  mutate(grupo = factor(
+    if_else(grupo == 1, "Placebo", "Experimental"))) %>% 
   mutate(tempo = factor(case_when(
     tempo == "total_w4" ~ "antes",
     tempo == "total_w0" ~ "no_dia",
@@ -101,16 +102,22 @@ Dessa forma:
 Como uma primeira etapa, é importante criar tabelas e gráficos. Esses dois recursos apresentam as principais características dos grupos, bem como seus resultados.
 
 ```{r results="asis" }
-arsenal::tableby(tempo ~ resultado + grupo, test   = FALSE,tratamento) %>% summary() 
+arsenal::tableby(tempo ~ resultado + grupo, 
+                 test = FALSE,tratamento) %>% 
+  summary() 
 ```
 
 O gráfico de linhas tende a ser utilizado para medidas longitudinais e encontra-se a seguir.  
 
 ```{r}
-ggplot(tratamento, aes(x=tempo, y=resultado, group=grupo, color=grupo)) + #variaveis
-  stat_summary(fun = mean, geom = "line", size=1.0, aes(linetype = grupo)) + #linha
-  stat_summary(fun="mean", geom="point", size=2, aes(shape = grupo)) + #pontos
-  stat_summary(fun.data = mean_se, geom = "errorbar",size=1) #barra de erro
+ggplot(tratamento, aes(x=tempo, y=resultado, 
+                       group=grupo, color=grupo)) + #variaveis
+  stat_summary(fun = mean, geom = "line", size=1.0, 
+               aes(linetype = grupo)) + #linha
+  stat_summary(fun="mean", geom="point", size=2, 
+               aes(shape = grupo)) + #pontos
+  stat_summary(fun.data = mean_se, 
+               geom = "errorbar",size=1) #barra de erro
 ```
    
 Os resultados já deixam a impressão de que ambos os grupos tiveram desfechos próximos durante toda a pesquisa. Entretanto, testes formais precisam ser feitos para se chegar a esta conclusão. O R oferece alguns pacotes específicos para modelos mistos. Os pacotes `lme4` e `lmerTest` serão utilizados aqui.  
@@ -254,7 +261,7 @@ Os dados foram analisados através de um Modelo Linear de Efeitos Mistos, que ve
 
 
 ## Resumo  
-::: {.explore}
+::: {.explore }
 1. O Modelo Linear de Efeitos Mistos (LMM) oferece maior versatilidade à ANOVA de medidas repetidas    
 2. A ANOVA tem como pressuposto Normalidade e Esfericidade, enquanto o LMM apenas Normalidade dos resíduos
 3. Os resultados frequentemente encontrados em ambos os modelos vão na mesma direção  
