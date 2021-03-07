@@ -4,7 +4,6 @@ author: '[Luis Anunciação (PUC-Rio), PhD](mailto: luisfca@puc-rio.br)'
 always_allow_html: yes
 output: pdf_document
 documentclass: book
-github-repo: cjvanlissa/gitbook-demo
 link-citations: yes
 bibliography: book.bib
 csl: apa.csl
@@ -30,7 +29,7 @@ knitr::opts_chunk$set(echo = TRUE,
 
 # Prefácio
 
-![](./img/capa_jolie.png)
+![](./img/capa_jolie.png){width=50%}
 
 ## Atenção
 
@@ -42,34 +41,32 @@ knitr::opts_chunk$set(echo = TRUE,
 
 Este livro nasceu como um dos principais e mais frutíferos resultados das aulas de graduação e pós-graduação ministradas por mim em alguns locais, mas com maior intensidade na PUC-Rio, UFRJ e IBNeuro. Por bastante tempo, nas aulas de estatística aplicada à Psicologia e Bioestatística, eu recorri a diferentes livros que, cada qual a sua maneira, apresentavam conceitos de pesquisa, técnicas estatísticas e análise de dados. 
 
-No entanto, acabei percebendo (ou tendo a impressão) de que eles apresentam a estatística por diferentes atalhos pedagógicos, (1) sugerindo que pesquisa e estatística eram áreas distantes, (2) que toda estatística podia ser resumida por testes de hipóteses independentes entre si e que (3) situações envolvendo dados reais não tinham tanto interesse. No geral, parece-me que para eles apresentarem a <u>estatística na ciência</u>, era necessário se distorcer pesadamente a <u>ciência da estatística</u>.   
+No entanto, acabei percebendo (ou tendo a impressão) de que eles apresentam a estatística por diferentes atalhos pedagógicos, (1) sugerindo que pesquisa e estatística eram áreas distantes, (2) que toda estatística podia ser resumida por testes de hipóteses independentes entre si e que (3) situações envolvendo dados reais não tinham tanto interesse. No geral, parece-me que para eles apresentarem a <u>estatística na ciência</u>, era necessário se distorcer pesadamente a <u>ciência da estatística</u>. Em função disso, nos últimos anos, eu fui sentindo necessidade de apresentar os conceitos de pesquisa e técnicas estatísticas de forma integrada e contanto com dados reais.   
 
-Em função disso, nos últimos anos, eu fui sentindo necessidade de apresentar os conceitos de pesquisa e técnicas estatísticas de forma integrada, contanto com dados reais e seguindo por uma metodologia de aula que pudesse ser pragmática, mas sem reforçar vícios inadequados sobre conceitos de estatística. 
+Conciliar essas condições em um único livro de maneira adequada é bastante improvável. Dessa forma, esse livro opta por uma abordagem majoritariamente pragmática, mas que evita se distanciar de conceitos teóricos. O pragmatismo é fundamental para que o estudante consiga, rapidamente, entender os procedimentos relacionados à análise de dados e implementar técnicas estatísticas para tomar decisões. Quão antes o estudante entender a utilidade da estatística para resolver problemas, maior é a probabilidade dele vir a gostar da área. Por sua vez, os aspectos teóricos são os alicerces para que o estudante possa perceber também que a Estatística é uma ciência que, ao longo do tempo, conforme a tecnologia avançou, mais sólida e robusta foi se tornando.  
 
-Conciliar essas condições em um único livro de maneira adequada é bastante improvável. Dessa forma, esse livro opta por uma abordagem majoritariamente pragmática, mas que evita se distanciar de conceitos teóricos. O pragmatismo é fundamental para que o estudante consiga, rapidamente, entender os procedimentos relacionados à análise de dados e implementar técnicas estatísticas para tomar decisões. Quão antes o estudante entender a utilidade da estatística para resolver problemas, maior é a probabilidade dele vir a gostar da área. Por sua vez, os aspectos teóricos são os alicerces para que o estudante possa perceber também que a utilidade que a estatística tem na ciência só é possível por ela ser uma disciplina sólida e robusta e que veio se aprimorando nas últimas décadas.
+Isso posto, este livro é fruto de um grande esforço que tem a proposta de ser um manual técnico, em que são apresentados conceitos de pesquisa e análises estatísticas utilizando os ambientes R e JASP e com especial aplicação em Psicologia e Bioestatística. Em cada capítulo, o estudante terá a oportunidade de acessar:  
 
-Isso posto, este livro é fruto de um grande esforço que tem a proposta de ser um manual técnico, em que são apresentados conceitos de pesquisa e análises estatísticas realizadas no R e no JASP e com especial aplicação em Psicologia e Bioestatística. Em cada capítulo, o estudante terá a oportunidade de acessar:  
+1. Uma pesquisa científica, explicitando o problema e as hipóteses que a guiaram;          
+2. O artigo publicado com os resultados;      
+3. A base de dados em formato R ou CSV desidentificadas para recriar os cenários dos artigos e poder ilustrar os novos conceitos discutidos;      
+4. Os métodos e as técnicas estatísticas pautadas na teoria discutida que possa responder às perguntas apresentadas nos cenários dos artigos  e leve à uma tomada de decisão.    
+5. Recursos extras para aprofundamento em tópicos específicos;     
+6.	Resolução de problemas de fixação do conteúdo discutido, ilustrados por provas externas da área da psicologia.   
 
-1. Uma pesquisa científica, explicitando o problema e as hipóteses que a guiaram       
-2. O artigo publicado com os resultados   
-3. A base de dados em formato R ou CSV para reprodução das análises  
-4. O conjunto de procedimentos estatísticos utilizados  
-5. Recursos extras para aprofundamento em tópicos específicos  
-6. Exercícios que auxiliem no entendimento do conteúdo, quase sempre retirados de provas externas    
-
-Com isso, o livro oferece ao estudante um ambiente em que ele possa resolver um problema real, utilizando as técnicas e métodos estatísticos como ferramentas para tomada de decisão. Apesar do foco ser mais no problema de pesquisa do que nas ferramentas analíticas, em todos os capítulos, a aplicação da <u>estatística na ciência</u> será reforçada pela apresentação de alguns conceitos da <u>ciência da estatística</u>.
+Com isso, o livro oferece ao estudante um convite para uma trilha de aprendizado dentro do ecossistema da psicologia, que o faça resolver problemas para uma tomada de decisão real, pautadas pelo referencial teórico discutido e pelos métodos e técnicas já oferecidos. Assim, o foco do livro estará na resolução de problemas da área da psicologia, a fim de tomar uma decisão mais acurada.     
 
 Espero que este livro possa ser útil a estudantes de graduação e pós-graduação, agradável a leitores de estatística como de Psicologia e um recurso importante para outros docentes que, eventualmente, precisem de um material de apoio.  
 
 
 ## Objetivo 
 
-O livro tem como objetivos (1) apresentar, (2) discutir e (3) operacionalizar conceitos de pesquisa e análises estatística de dados a partir de pesquisas publicadas e dados reais. Espera-se que qualquer o estudante consiga realizar todas as ações descritas no decorrer dos capítulos de maneira guiada e intuitiva. As sintaxes utilizadas no ambiente R e as telas de execução do JASP são integralmente disponíveis.  
+O livro tem como objetivos (1) apresentar, (2) discutir e (3) operacionalizar conceitos de pesquisa e análises estatística de estudos publicados e de dados reais. Espera-se que qualquer o estudante consiga realizar todas as ações descritas no decorrer dos capítulos de maneira guiada e intuitiva. As sintaxes utilizadas no ambiente R e as telas de execução do JASP são integralmente disponíveis.  
 
 
 ## Público-alvo
 
-Este livro foi desenvolvido de maneira mais focada a estudantes de Psicologia e Bioestatística. As pesquisas e exemplos utilizados são mais aderentes a essas duas áreas. No entanto, como parte dos conceitos e análises implementadas no livro são interdisciplinares, espera-se que estudantes de áreas como educação, administração e economia também possam também ter proveito do livro.  
+Este livro foi desenvolvido de maneira mais focada a estudantes de Psicologia e Bioestatística. As pesquisas e exemplos utilizados são mais aderentes a essas duas áreas. No entanto, os conceitos, métodos e técnicas estatísticas do livro são interdisciplinares, espera-se que estudantes de áreas como educação, administração e economia também possam também ter proveito do livro.   
 
 
 ## Formato do livro
@@ -82,9 +79,9 @@ Muitos capítulos recebem o nome de testes de hipóteses (ex: Teste T ou Regress
 
 ## Como usar este livro  
 
-O livro é formado por dois componentes: capítulos teóricos e capítulos voltados à análise de dados. Os capítulos teóricos reúnem alguns conceitos fundamentais de pesquisa e estatística, tais como tipos de variáveis, delineamento de pesquisa e técnicas de amostragem. Estes capítulos foram escritos pensando em alunos de graduação do curso de Psicologia. Tenho a impressão que esses capítulos serão pouco acessados, apesar de importantes.     
+O livro é formado por dois componentes: capítulos teóricos e capítulos voltados à análise de dados. Os capítulos teóricos reúnem alguns conceitos fundamentais de pesquisa e estatística, tais como tipos de variáveis, delineamento de pesquisa e técnicas de amostragem. Estes capítulos foram escritos pensando em alunos de graduação do curso de Psicologia.        
 
-Os capítulos analíticos são focados em testes de hipóteses e contam com uma metodologia direta ao ponto, em que atividades similares às realizadas nos artigos são demonstradas. Estes capítulos foram desenvolvidos para estudantes de pós-graduação. Acredito que esses capítulos serão bastante acessados.  
+Os capítulos analíticos são focados em testes de hipóteses e contam com uma metodologia direta ao ponto, em que atividades similares às realizadas nos artigos são demonstradas. Estes capítulos foram desenvolvidos para estudantes de pós-graduação.    
 
 A figura abaixo diagrama os dois componentes de forma aproximada.  
 
@@ -115,7 +112,7 @@ Neste livro, as seguintes pesquisas e seus materiais são utilizados:
 As bases são *Open Science*. Isso significa que elas são gratuitas e universalmente acessíveis para finalidades acadêmicas. Em cada capítulo, as bases irão aparecer na seção "Pesquisa", da seguinte maneira:
 
 
-:::{.base }
+:::{.base data-latex="" }
   A base desta pesquisa está disponível em formato **R (Rdata)** e em **CSV**, que é lido pelo JASP. Clique na opção desejada.     
       
   <strong>Base R: </strong> [Base R]()   
@@ -141,6 +138,8 @@ O JASP é um programa gratuito que tem sido cada vez mais utilizado em Psicologi
 
 Em todos os capítulos, telas do JASP serão apresentadas para que seja possível a reprodução integral de algumas análises. Da mesma forma que qualquer pacote estatístico, o JASP é atualizado frequentemente. Esse livro contou com a versão 0.14.1 e espero que futuras atualizações não comprometam a proposta do livro.  
 
+Atualizações pontuais de capítulos serão feitas visando parear o conteúdo do livro com as mudanças nos programas.  
+
 ## Outros recursos
 
 Em cada um dos capítulos, aplicações da estatística e referências bibliográficas serão apresentadas. Tenha em mente que há um debate intenso em diferentes conceitos de estatística, da mesma forma que muitas condições computacionais podem aparecer durante a execução das análises propostas. Eu recomendo fortemente a comunidade [stackoverflow](https://stackoverflow.com/) como um recurso pedagógico para auxiliar em ambos os cenários.  
@@ -157,9 +156,10 @@ Por tradição, livros de Ciência de Dados e Estatística utilizam a imagem de 
 
 Como todos os livros, este também tem uma história de desenvolvimento. A tabela abaixo apresenta a versão, a data de lançamento e algumas características importantes.   
 
-| Versão   |      Data         |  Características
-|:---------|:-------------     | :-------------
-| Beta 1   |  Fevereiro, 2020 | Primeira versão. Baixa revisão textual e dos conceitos estatísticos. Erros são esperados. A utilização deve ser feita apenas de maneira incipiente   
+Versão  |      Data    |  Características
+:------ |:------------ | :-------------
+Beta 2  |  Março, 2021 | Revisão textual parcialmente concluída     
+Beta 1  |  Fevereiro, 2021 | Primeira versão. Baixa revisão textual e dos conceitos estatísticos. <br>Erros são esperados. A utilização deve ser feita apenas de maneira incipiente   
 
 ## Autor  
 

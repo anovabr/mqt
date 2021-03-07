@@ -127,6 +127,12 @@
   \color{black}
   \begin{shaded}}
  {\end{shaded}}
+
+\newenvironment{base}{
+  \definecolor{shadecolor}{rgb}{0.972,0.972,0.972}  % black
+  \color{black}
+  \begin{shaded}}
+ {\end{shaded}}
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
@@ -158,57 +164,55 @@
 \hypertarget{prefuxe1cio}{%
 \chapter{Prefácio}\label{prefuxe1cio}}
 
-\includegraphics{./img/capa_jolie.png}
+\includegraphics[width=0.5\textwidth,height=\textheight]{./img/capa_jolie.png}
 
 \hypertarget{atenuxe7uxe3o}{%
 \section{Atenção}\label{atenuxe7uxe3o}}
 
 Atenção: Leia com cuidado. Este livro ainda está em sua fase de revisão.\\
-Última modificação: 06 March, 2021 às 20:09
+Última modificação: 06 March, 2021 às 22:07
 
 \hypertarget{a-proposta}{%
 \section{A proposta}\label{a-proposta}}
 
 Este livro nasceu como um dos principais e mais frutíferos resultados das aulas de graduação e pós-graduação ministradas por mim em alguns locais, mas com maior intensidade na PUC-Rio, UFRJ e IBNeuro. Por bastante tempo, nas aulas de estatística aplicada à Psicologia e Bioestatística, eu recorri a diferentes livros que, cada qual a sua maneira, apresentavam conceitos de pesquisa, técnicas estatísticas e análise de dados.
 
-No entanto, acabei percebendo (ou tendo a impressão) de que eles apresentam a estatística por diferentes atalhos pedagógicos, (1) sugerindo que pesquisa e estatística eram áreas distantes, (2) que toda estatística podia ser resumida por testes de hipóteses independentes entre si e que (3) situações envolvendo dados reais não tinham tanto interesse. No geral, parece-me que para eles apresentarem a estatística na ciência, era necessário se distorcer pesadamente a ciência da estatística.
+No entanto, acabei percebendo (ou tendo a impressão) de que eles apresentam a estatística por diferentes atalhos pedagógicos, (1) sugerindo que pesquisa e estatística eram áreas distantes, (2) que toda estatística podia ser resumida por testes de hipóteses independentes entre si e que (3) situações envolvendo dados reais não tinham tanto interesse. No geral, parece-me que para eles apresentarem a estatística na ciência, era necessário se distorcer pesadamente a ciência da estatística. Em função disso, nos últimos anos, eu fui sentindo necessidade de apresentar os conceitos de pesquisa e técnicas estatísticas de forma integrada e contanto com dados reais.
 
-Em função disso, nos últimos anos, eu fui sentindo necessidade de apresentar os conceitos de pesquisa e técnicas estatísticas de forma integrada, contanto com dados reais e seguindo por uma metodologia de aula que pudesse ser pragmática, mas sem reforçar vícios inadequados sobre conceitos de estatística.
+Conciliar essas condições em um único livro de maneira adequada é bastante improvável. Dessa forma, esse livro opta por uma abordagem majoritariamente pragmática, mas que evita se distanciar de conceitos teóricos. O pragmatismo é fundamental para que o estudante consiga, rapidamente, entender os procedimentos relacionados à análise de dados e implementar técnicas estatísticas para tomar decisões. Quão antes o estudante entender a utilidade da estatística para resolver problemas, maior é a probabilidade dele vir a gostar da área. Por sua vez, os aspectos teóricos são os alicerces para que o estudante possa perceber também que a Estatística é uma ciência que, ao longo do tempo, conforme a tecnologia avançou, mais sólida e robusta foi se tornando.
 
-Conciliar essas condições em um único livro de maneira adequada é bastante improvável. Dessa forma, esse livro opta por uma abordagem majoritariamente pragmática, mas que evita se distanciar de conceitos teóricos. O pragmatismo é fundamental para que o estudante consiga, rapidamente, entender os procedimentos relacionados à análise de dados e implementar técnicas estatísticas para tomar decisões. Quão antes o estudante entender a utilidade da estatística para resolver problemas, maior é a probabilidade dele vir a gostar da área. Por sua vez, os aspectos teóricos são os alicerces para que o estudante possa perceber também que a utilidade que a estatística tem na ciência só é possível por ela ser uma disciplina sólida e robusta e que veio se aprimorando nas últimas décadas.
-
-Isso posto, este livro é fruto de um grande esforço que tem a proposta de ser um manual técnico, em que são apresentados conceitos de pesquisa e análises estatísticas realizadas no R e no JASP e com especial aplicação em Psicologia e Bioestatística. Em cada capítulo, o estudante terá a oportunidade de acessar:
+Isso posto, este livro é fruto de um grande esforço que tem a proposta de ser um manual técnico, em que são apresentados conceitos de pesquisa e análises estatísticas utilizando os ambientes R e JASP e com especial aplicação em Psicologia e Bioestatística. Em cada capítulo, o estudante terá a oportunidade de acessar:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Uma pesquisa científica, explicitando o problema e as hipóteses que a guiaram\\
+  Uma pesquisa científica, explicitando o problema e as hipóteses que a guiaram;\\
 \item
-  O artigo publicado com os resultados\\
+  O artigo publicado com os resultados;\\
 \item
-  A base de dados em formato R ou CSV para reprodução das análises\\
+  A base de dados em formato R ou CSV desidentificadas para recriar os cenários dos artigos e poder ilustrar os novos conceitos discutidos;\\
 \item
-  O conjunto de procedimentos estatísticos utilizados\\
+  Os métodos e as técnicas estatísticas pautadas na teoria discutida que possa responder às perguntas apresentadas nos cenários dos artigos e leve à uma tomada de decisão.\\
 \item
-  Recursos extras para aprofundamento em tópicos específicos\\
+  Recursos extras para aprofundamento em tópicos específicos;\\
 \item
-  Exercícios que auxiliem no entendimento do conteúdo, quase sempre retirados de provas externas
+  Resolução de problemas de fixação do conteúdo discutido, ilustrados por provas externas da área da psicologia.
 \end{enumerate}
 
-Com isso, o livro oferece ao estudante um ambiente em que ele possa resolver um problema real, utilizando as técnicas e métodos estatísticos como ferramentas para tomada de decisão. Apesar do foco ser mais no problema de pesquisa do que nas ferramentas analíticas, em todos os capítulos, a aplicação da estatística na ciência será reforçada pela apresentação de alguns conceitos da ciência da estatística.
+Com isso, o livro oferece ao estudante um convite para uma trilha de aprendizado dentro do ecossistema da psicologia, que o faça resolver problemas para uma tomada de decisão real, pautadas pelo referencial teórico discutido e pelos métodos e técnicas já oferecidos. Assim, o foco do livro estará na resolução de problemas da área da psicologia, a fim de tomar uma decisão mais acurada.
 
 Espero que este livro possa ser útil a estudantes de graduação e pós-graduação, agradável a leitores de estatística como de Psicologia e um recurso importante para outros docentes que, eventualmente, precisem de um material de apoio.
 
 \hypertarget{objetivo}{%
 \section{Objetivo}\label{objetivo}}
 
-O livro tem como objetivos (1) apresentar, (2) discutir e (3) operacionalizar conceitos de pesquisa e análises estatística de dados a partir de pesquisas publicadas e dados reais. Espera-se que qualquer o estudante consiga realizar todas as ações descritas no decorrer dos capítulos de maneira guiada e intuitiva. As sintaxes utilizadas no ambiente R e as telas de execução do JASP são integralmente disponíveis.
+O livro tem como objetivos (1) apresentar, (2) discutir e (3) operacionalizar conceitos de pesquisa e análises estatística de estudos publicados e de dados reais. Espera-se que qualquer o estudante consiga realizar todas as ações descritas no decorrer dos capítulos de maneira guiada e intuitiva. As sintaxes utilizadas no ambiente R e as telas de execução do JASP são integralmente disponíveis.
 
 \hypertarget{puxfablico-alvo}{%
 \section{Público-alvo}\label{puxfablico-alvo}}
 
-Este livro foi desenvolvido de maneira mais focada a estudantes de Psicologia e Bioestatística. As pesquisas e exemplos utilizados são mais aderentes a essas duas áreas. No entanto, como parte dos conceitos e análises implementadas no livro são interdisciplinares, espera-se que estudantes de áreas como educação, administração e economia também possam também ter proveito do livro.
+Este livro foi desenvolvido de maneira mais focada a estudantes de Psicologia e Bioestatística. As pesquisas e exemplos utilizados são mais aderentes a essas duas áreas. No entanto, os conceitos, métodos e técnicas estatísticas do livro são interdisciplinares, espera-se que estudantes de áreas como educação, administração e economia também possam também ter proveito do livro.
 
 \hypertarget{formato-do-livro}{%
 \section{Formato do livro}\label{formato-do-livro}}
@@ -222,9 +226,9 @@ Muitos capítulos recebem o nome de testes de hipóteses (ex: Teste T ou Regress
 \hypertarget{como-usar-este-livro}{%
 \section{Como usar este livro}\label{como-usar-este-livro}}
 
-O livro é formado por dois componentes: capítulos teóricos e capítulos voltados à análise de dados. Os capítulos teóricos reúnem alguns conceitos fundamentais de pesquisa e estatística, tais como tipos de variáveis, delineamento de pesquisa e técnicas de amostragem. Estes capítulos foram escritos pensando em alunos de graduação do curso de Psicologia. Tenho a impressão que esses capítulos serão pouco acessados, apesar de importantes.
+O livro é formado por dois componentes: capítulos teóricos e capítulos voltados à análise de dados. Os capítulos teóricos reúnem alguns conceitos fundamentais de pesquisa e estatística, tais como tipos de variáveis, delineamento de pesquisa e técnicas de amostragem. Estes capítulos foram escritos pensando em alunos de graduação do curso de Psicologia.
 
-Os capítulos analíticos são focados em testes de hipóteses e contam com uma metodologia direta ao ponto, em que atividades similares às realizadas nos artigos são demonstradas. Estes capítulos foram desenvolvidos para estudantes de pós-graduação. Acredito que esses capítulos serão bastante acessados.
+Os capítulos analíticos são focados em testes de hipóteses e contam com uma metodologia direta ao ponto, em que atividades similares às realizadas nos artigos são demonstradas. Estes capítulos foram desenvolvidos para estudantes de pós-graduação.
 
 A figura abaixo diagrama os dois componentes de forma aproximada.
 
@@ -256,10 +260,13 @@ Neste livro, as seguintes pesquisas e seus materiais são utilizados:
 
 As bases são \emph{Open Science}. Isso significa que elas são gratuitas e universalmente acessíveis para finalidades acadêmicas. Em cada capítulo, as bases irão aparecer na seção ``Pesquisa'', da seguinte maneira:
 
+\begin{base}
 A base desta pesquisa está disponível em formato \textbf{R (Rdata)} e em \textbf{CSV}, que é lido pelo JASP. Clique na opção desejada.
 
 Base R: \href{}{Base R}\\
 Base JASP: \href{}{Base CSV}
+
+\end{base}
 
 As bases em R tem formato .RData e as bases para o JASP tem formato .CSV.
 
@@ -278,6 +285,8 @@ O JASP é um programa gratuito que tem sido cada vez mais utilizado em Psicologi
 \includegraphics{./img/capa_r_jasp.png}
 
 Em todos os capítulos, telas do JASP serão apresentadas para que seja possível a reprodução integral de algumas análises. Da mesma forma que qualquer pacote estatístico, o JASP é atualizado frequentemente. Esse livro contou com a versão 0.14.1 e espero que futuras atualizações não comprometam a proposta do livro.
+
+Atualizações pontuais de capítulos serão feitas visando parear o conteúdo do livro com as mudanças nos programas.
 
 \hypertarget{outros-recursos}{%
 \section{Outros recursos}\label{outros-recursos}}
@@ -298,20 +307,27 @@ Como todos os livros, este também tem uma história de desenvolvimento. A tabel
 
 \begin{longtable}[]{@{}lll@{}}
 \toprule
-\begin{minipage}[b]{0.24\columnwidth}\raggedright
+\begin{minipage}[b]{0.19\columnwidth}\raggedright
 Versão\strut
-\end{minipage} & \begin{minipage}[b]{0.34\columnwidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{0.35\columnwidth}\raggedright
 Data\strut
-\end{minipage} & \begin{minipage}[b]{0.34\columnwidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{0.38\columnwidth}\raggedright
 Características\strut
 \end{minipage}\tabularnewline
 \midrule
 \endhead
-\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+Beta 2\strut
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright
+Março, 2021\strut
+\end{minipage} & \begin{minipage}[t]{0.38\columnwidth}\raggedright
+Revisão textual parcialmente concluída\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
 Beta 1\strut
-\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
-Fevereiro, 2020\strut
-\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright
+Fevereiro, 2021\strut
+\end{minipage} & \begin{minipage}[t]{0.38\columnwidth}\raggedright
 Primeira versão. Baixa revisão textual e dos conceitos estatísticos. Erros são esperados. A utilização deve ser feita apenas de maneira incipiente\strut
 \end{minipage}\tabularnewline
 \bottomrule
@@ -1569,10 +1585,13 @@ Coletaral a apresentação, o surgimento do termo ``momentos estatísticos'' par
 \hypertarget{pesquisa}{%
 \section{Pesquisa}\label{pesquisa}}
 
+\begin{base}
 A base desta pesquisa está disponível em formato \textbf{R (Rdata)} e em \textbf{CSV}, que é lido pelo JASP. Clique na opção desejada.
 
 Base R: \href{https://github.com/anovabr/mqt/raw/master/bases/Base\%20R\%20-\%20Pesquisa\%20mapfre.RData}{Base R - Pesquisa mapfre.RData}\\
 Base JASP: \href{https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip}{Base CSV - dataset\_mapfre}
+
+\end{base}
 
 Neste capítulo, vamos utilizar a pesquisa intitulada \href{https://doi.org/10.1590/0102.3772e36412}{``Depression and Anxiety Symptoms in a Representative Sample of Undergraduate Students in Spain, Portugal, and Brazil''}. Nessa pesquisa, sou o coautor e o pesquisador responsável para correspondência. O objetivo deste estudo foi desenvolver um mapa epidemiológico de sintomas de ansiedade e depressão em universitários em três países, bem como investigar possíveis relações entre tais condições de saúde e fatores sociodemográficos. Para acessar eventuais transtornos depressivos, o Inventário Beck de Depressão (BDI) foi utilizado e para acessar condições de ansiedade, o Inventário Beck de Ansiedade (BAI) foi utilizado. Em ambos os inventários, valores altos sugerem que condições de agravo à saúde mental podem estar presentes.
 
@@ -4040,11 +4059,14 @@ O cálculo do OR é adequado para estudos do tipo caso-controle, em que se come�
 \hypertarget{pesquisa-2}{%
 \section{Pesquisa}\label{pesquisa-2}}
 
+\begin{base}
 A base desta pesquisa está disponível em formato \textbf{R (Rdata)} e em \textbf{CSV}, que é lido pelo JASP. Clique na opção desejada.
 
 Base R: \href{https://github.com/anovabr/mqt/raw/master/bases/Base\%20R\%20TDAH\%20Arruda.RData}{Base R TDAH Arruda.Rdata}
 
 Base JASP: \href{https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip}{Base CSV - Base CSV - ADHD 2020 after processing}
+
+\end{base}
 
 Neste capítulo, vamos utilizar a pesquisa intitulada ``Parent-reported diagnosis of Attention Deficit Hyperactivity Disorder and psychostimulant use among children and adolescents: a population-based nationwide study'', que está em avaliação pela revista ``Social Psychiatry and Psychiatric Epidemiology (SPPE)''. Neste trabalho, tivemos o objetivo de mapear aspectos epidemiológicos do Transtorno do Déficit de Atenção com Hiperatividade (TDAH) em uma amostra representativa de crianças e adolescentes brasileiros, bem como verificar o risco que meninos apresentam no diagnóstico quando comparados às meninas.
 
@@ -4539,11 +4561,14 @@ Apenas por um preâmbulo histórico, a origem do Teste T remonta o artigo public
 \hypertarget{pesquisa-3}{%
 \section{Pesquisa}\label{pesquisa-3}}
 
+\begin{base}
 A base desta pesquisa está disponível em formato \textbf{R (Rdata)} e em \textbf{CSV}, que é lido pelo JASP. Clique na opção desejada.
 
 Base R: \href{https://github.com/anovabr/mqt/raw/master/bases/Livro\%20-\%20R\%20-\%20ASQ\%20SE\%2012\%20e\%2018.RData}{Livro - R - ASQ SE 12 e 18}
 
 Base JASP: \href{https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip}{Base CSV - ds\_18}
+
+\end{base}
 
 Neste capítulo, vamos utilizar a pesquisa intitulada \href{https://onlinelibrary.wiley.com/doi/abs/10.1111/cch.12649}{``Confirmatory analysis and normative tables for the Brazilian Ages and Stages Questionnaires: Social--Emotional''}, publicada em 2019 na Child Care Health Development. Esse trabalho teve dois objetivos. O primeiro visou confirmar a estrutura fatorial de um instrumento utilizado para avaliar possíveis atrasos no desenvolvimento de competências sociais e emocionais (ASQ:SE) e o segundo visou desenvolver tabelas normativas para comparar meninos e meninas. Essa é uma pesquisa muito importante, visto que conta com uma base de dados robusta (mais de 50 mil participantes) e faz interface entre psicometria, avaliação psicológica e políticas públicas.
 
@@ -5409,12 +5434,15 @@ Gabarito: 1-b; 2-a; 3-e
 \hypertarget{anova}{%
 \chapter{ANOVA}\label{anova}}
 
+\begin{objectives}
 \textbf{Objetivos do capítulo}\\
 1. Apresentar a ANOVA\\
 2. Discutir seus diferentes tipos, incluindo ANOVA de 1 via, 2 vias e Fatorial\\
 3. Apresentar gráficos e tabelas com comparações de grupos\\
 4. Apresentar e discutir testes Post hoc\\
 5. Dar exemplos relacionados à escrita dos resultados
+
+\end{objectives}
 
 \textbf{GLOSSÁRIO}\\
 \textbf{ANOVA}: Análise da variância.\\
@@ -5509,11 +5537,14 @@ MANOVA\strut
 \hypertarget{pesquisa-4}{%
 \section{Pesquisa}\label{pesquisa-4}}
 
+\begin{base}
 A base desta pesquisa está disponível em formato \textbf{R (Rdata)} e em \textbf{CSV}, que é lido pelo JASP. Clique na opção desejada.
 
 Base R: \href{https://github.com/anovabr/mqt/raw/master/bases/Livro\%20-\%20R\%20-\%20TEG.RData}{Livro - R - TEG}
 
 Base JASP: \href{https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip}{Base CSV - base\_csv\_teg\_processed}
+
+\end{base}
 
 Neste capítulo, vamos utilizar a pesquisa intitulada \href{https://www.metodista.br/revistas/revistas-metodista/index.php/REGS/article/view/6453}{``A relação entre o nível de Empreendedorismo (TEG) e os aspectos sociodemográficos dos Taxistas cooperados da cidade de Santo André/São Paulo, Brasil''}, publicada em 2016 na Revista Eletrônica de Gestão e Serviços, em que sou coautor. O objetivo dessa pesquisa foi identificar o nível de empreendedorismo em 147 taxistas de Santo André/SP, bem como averiguá-lo em associação aos aspectos sociodemográficos. Muitas perguntas teóricas foram feitas neste trabalho e uma foi verificar o quanto os níveis de escolaridade poderiam impactar o empreendedorismo.
 
@@ -6219,11 +6250,14 @@ Os dados foram analisados a partir de uma ANOVA de uma via que verificou o efeit
 \hypertarget{pesquisa-5}{%
 \section{Pesquisa}\label{pesquisa-5}}
 
+\begin{base}
 A base desta pesquisa está disponível em formato \textbf{R (Rdata)} e em \textbf{CSV}, que é lido pelo JASP. Clique na opção desejada.
 
 Base R: \href{https://github.com/anovabr/mqt/raw/master/bases/Base\%20-\%20MEMORE\%202020\%20Automated\%20model\%20selection.RData}{Base - MEMORE 2020 Automated model selection}
 
 Base JASP: \href{https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip}{Base CSV - CSV file - MEMORE Cognitive measurement (1)}
+
+\end{base}
 
 Nas próximas seções, a pesquisa intitulada \href{https://www.neuropsicolatina.org/index.php/Neuropsicologia_Latinoamericana/article/view/545}{Psychometric properties of a short-term visual memory test (MEMORE)"} será parcialmente utilizada. Esse artigo foi publicado em 2020 e eu sou o primeiro autor. Nesta pesquisa, apresentamos algumas propriedades psicométricas de um teste psicológico desenvolvido para avaliar aspectos da memória de curto prazo (MEMORE), bem como análises estatísticas que visaram investigar o efeito de características psicológicas nos resultados obtidos pelos participantes neste teste específico.
 
@@ -8054,11 +8088,14 @@ A ANOVA de medidas repetidas é um teste estatístico para a análise de dados l
 \hypertarget{pesquisa-6}{%
 \section{Pesquisa}\label{pesquisa-6}}
 
+\begin{base}
 A base desta pesquisa está disponível em formato \textbf{R (Rdata)} e em \textbf{CSV}, que é lido pelo JASP. Clique na opção desejada.
 
 Base R: \href{https://github.com/anovabr/mqt/raw/master/bases/R\%20-\%20Base\%20Lidia\%20Carprofeno.RData}{R - Base Lidia Carprofeno}
 
 Base JASP: \href{https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip}{Base CSV - Lidia Carprofeno largo}
+
+\end{base}
 
 A esse momento, vamos ter como referência de análise a pesquisa intitulada \href{https://www.scielo.br/scielo.php?script=sci_arttext\&pid=S0102-09352019000100109}{``Avaliação psicométrica em português do indicador de dor crônica de Helsinki em cães com sinais crônicos de osteoartrite''}, que tem como primeira autora Lídia Matsubara e eu sou coautor. Essa pesquisa foi publicada no ``Arquivo Brasileiro de Medicina Veterinária e Zootecnia'' em 2019 e objetivou tanto verificar o efeito do medicamento Carprofeno em sintomas relacionados à dor crônica, como apresentar estudos psicométricos de uma nova medida clínica.
 
@@ -9051,11 +9088,14 @@ Complexidade computacional & Baixa & Alta\tabularnewline
 \hypertarget{pesquisa-7}{%
 \section{Pesquisa}\label{pesquisa-7}}
 
+\begin{base}
 A base desta pesquisa está disponível em formato \textbf{R (Rdata)} e em \textbf{CSV}, que é lido pelo JASP. Clique na opção desejada.
 
 Base R: \href{https://github.com/anovabr/mqt/raw/master/bases/R\%20-\%20Base\%20Lidia\%20Carprofeno.RData}{R - Base Lidia Carprofeno}
 
 Base JASP : \href{https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip}{Base CSV - Lidia Carprofeno longo}
+
+\end{base}
 
 A esse momento, vamos ter como referência de análise a pesquisa intitulada \href{https://www.scielo.br/scielo.php?script=sci_arttext\&pid=S0102-09352019000100109}{``Avaliação psicométrica em português do indicador de dor crônica de Helsinki em cães com sinais crônicos de osteoartrite''}, que tem como primeira autora Lídia Matsubara e eu sou coautor. Os dados dessa pesquisa foram previamente utilizados no capítulo de ANOVA de medidas repetidas.
 
@@ -9610,11 +9650,14 @@ Para realização da Correlação de Pearson, é necessário que ambas as variá
 \hypertarget{pesquisa-8}{%
 \section{Pesquisa}\label{pesquisa-8}}
 
+\begin{base}
 A base desta pesquisa está disponível em formato \textbf{R (Rdata)} e em \textbf{CSV}, que é lido pelo JASP. Clique na opção desejada.
 
 R Base: \href{https://github.com/anovabr/mqt/raw/master/bases/Base\%20R\%20-\%20imagem\%20corporal.RData}{Imagem corporal}
 
 Base JASP : \href{https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip}{Base CSV - csv eat bsq brasil}
+
+\end{base}
 
 Vamos utilizar a pesquisa intitulada \href{https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students}{``Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students''}, publicada em 2018 no Global Journal of Educational Studies, que sou coautor.
 
@@ -10078,11 +10121,14 @@ Regression and Other Stories, de Andrew Gelman
 \hypertarget{pesquisa-9}{%
 \section{Pesquisa}\label{pesquisa-9}}
 
+\begin{base}
 A base desta pesquisa está disponível em formato \textbf{R (Rdata)} e em \textbf{CSV}, que é lido pelo JASP. Clique na opção desejada.
 
 Base R: \href{https://github.com/anovabr/mqt/raw/master/bases/Base\%20R\%20-\%20imagem\%20corporal.RData}{Imagem corporal}
 
 Base JASP: \href{https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip}{Base CSV - csv eat bsq brasil}
+
+\end{base}
 
 Neste capítulo, vamos utilizar a pesquisa intitulada \href{https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students}{``Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students''}, publicada em 2018 no \emph{Global Journal of Educational Studies}, que sou coautor.
 
@@ -10538,11 +10584,14 @@ O mnemônico LINE (linearity, independence, normality, equal variance) talvez aj
 \hypertarget{pesquisa-10}{%
 \section{Pesquisa}\label{pesquisa-10}}
 
+\begin{base}
 A base desta pesquisa está disponível em formato \textbf{R (Rdata)} e em \textbf{CSV}, que é lido pelo JASP. Clique na opção desejada.
 
 Base R: \href{https://github.com/anovabr/mqt/raw/master/bases/Base\%20R\%20-\%20imagem\%20corporal.RData}{Imagem corporal}
 
 Base JASP: \href{https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip}{Base CSV - csv eat bsq brasil}
+
+\end{base}
 
 Neste capítulo, vamos utilizar a pesquisa intitulada \href{https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students}{``Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students''}, publicada em 2018 no Global Journal of Educational Studies, que sou coautor.
 
@@ -11069,10 +11118,13 @@ Chance & Probabilidade & Interpretação\tabularnewline
 \hypertarget{pesquisa-11}{%
 \section{Pesquisa}\label{pesquisa-11}}
 
+\begin{base}
 A base desta pesquisa está disponível em formato \textbf{R (Rdata)} e em \textbf{CSV}, que é lido pelo JASP. Clique na opção desejada.
 
 Base R: \href{https://github.com/anovabr/mqt/raw/master/bases/Base\%20R\%20-\%20Headache\%20anonymous.RData}{Base R - Headache anonymous}\\
 Base JASP: \href{https://github.com/anovabr/mqt/raw/master/bases/bases_csv_jasp.zip}{Base CSV - headache (no names)}
+
+\end{base}
 
 Neste capítulo, vamos utilizar a pesquisa intitulada \href{www.google.com}{``Resilience and vulnerability in adolescents with primary headaches: a cross-sectional population-based study''}, publicada em 2021 no Headache, que sou coautor.
 
