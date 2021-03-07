@@ -32,6 +32,7 @@
   
 <link rel="prev" href="família-de-distribuições.html"/>
 <link rel="next" href="estatística-inferencial.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -49,22 +50,21 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -84,7 +84,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -134,7 +134,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Conceitos e análises estatísticas com R e JASP</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prefácio</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prefácio</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#atenção"><i class="fa fa-check"></i><b>1.1</b> Atenção</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#a-proposta"><i class="fa fa-check"></i><b>1.2</b> A proposta</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#objetivo"><i class="fa fa-check"></i><b>1.3</b> Objetivo</a></li>
@@ -151,7 +152,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.14" data-path="index.html"><a href="index.html#revisão-técnica"><i class="fa fa-check"></i><b>1.14</b> Revisão técnica</a></li>
 <li class="chapter" data-level="1.15" data-path="index.html"><a href="index.html#agradecimentos"><i class="fa fa-check"></i><b>1.15</b> Agradecimentos</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html"><i class="fa fa-check"></i><b>2</b> Programas estatísticos</a><ul>
+<li class="chapter" data-level="2" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html"><i class="fa fa-check"></i><b>2</b> Programas estatísticos</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-r"><i class="fa fa-check"></i><b>2.1</b> O R</a></li>
 <li class="chapter" data-level="2.2" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#tidyverse"><i class="fa fa-check"></i><b>2.2</b> Tidyverse</a></li>
 <li class="chapter" data-level="2.3" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#dificuldades-esperadas"><i class="fa fa-check"></i><b>2.3</b> Dificuldades esperadas</a></li>
@@ -159,17 +161,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-jasp"><i class="fa fa-check"></i><b>2.5</b> O JASP</a></li>
 <li class="chapter" data-level="2.6" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#resumo"><i class="fa fa-check"></i><b>2.6</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html"><i class="fa fa-check"></i><b>3</b> Aspectos gerais</a><ul>
+<li class="chapter" data-level="3" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html"><i class="fa fa-check"></i><b>3</b> Aspectos gerais</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#os-objetivos-de-uma-pesquisa"><i class="fa fa-check"></i><b>3.1</b> Os objetivos de uma pesquisa</a></li>
 <li class="chapter" data-level="3.2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#a-dimensão-temporal-de-uma-pesquisa"><i class="fa fa-check"></i><b>3.2</b> A dimensão temporal de uma pesquisa</a></li>
-<li class="chapter" data-level="3.3" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#conceitos-fundamentais"><i class="fa fa-check"></i><b>3.3</b> conceitos fundamentais</a><ul>
+<li class="chapter" data-level="3.3" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#conceitos-fundamentais"><i class="fa fa-check"></i><b>3.3</b> conceitos fundamentais</a>
+<ul>
 <li class="chapter" data-level="3.3.1" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#modelos-científicos"><i class="fa fa-check"></i><b>3.3.1</b> Modelos científicos</a></li>
 <li class="chapter" data-level="3.3.2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#variáveis"><i class="fa fa-check"></i><b>3.3.2</b> Variáveis</a></li>
 <li class="chapter" data-level="3.3.3" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#delineamentos-de-pesquisa"><i class="fa fa-check"></i><b>3.3.3</b> Delineamentos de pesquisa</a></li>
 <li class="chapter" data-level="3.3.4" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#delineamentos-observacionais-e-correlacionais"><i class="fa fa-check"></i><b>3.3.4</b> Delineamentos observacionais (e correlacionais)</a></li>
 <li class="chapter" data-level="3.3.5" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#delineamentos-experimentais"><i class="fa fa-check"></i><b>3.3.5</b> Delineamentos experimentais</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#considerações-sobre-escalas-de-medida-e-o-processo-de-mensuração-em-psicologia"><i class="fa fa-check"></i><b>3.4</b> Considerações sobre escalas de medida e o processo de mensuração em Psicologia</a><ul>
+<li class="chapter" data-level="3.4" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#considerações-sobre-escalas-de-medida-e-o-processo-de-mensuração-em-psicologia"><i class="fa fa-check"></i><b>3.4</b> Considerações sobre escalas de medida e o processo de mensuração em Psicologia</a>
+<ul>
 <li class="chapter" data-level="3.4.1" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#escala-nominal"><i class="fa fa-check"></i><b>3.4.1</b> Escala nominal</a></li>
 <li class="chapter" data-level="3.4.2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#escala-ordinal"><i class="fa fa-check"></i><b>3.4.2</b> Escala ordinal</a></li>
 <li class="chapter" data-level="3.4.3" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#escala-intervalar"><i class="fa fa-check"></i><b>3.4.3</b> Escala intervalar</a></li>
@@ -184,7 +189,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.6" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#resumo-1"><i class="fa fa-check"></i><b>3.6</b> Resumo</a></li>
 <li class="chapter" data-level="3.7" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#questões"><i class="fa fa-check"></i><b>3.7</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html"><i class="fa fa-check"></i><b>4</b> Estatística Descritiva</a><ul>
+<li class="chapter" data-level="4" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html"><i class="fa fa-check"></i><b>4</b> Estatística Descritiva</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#tabelas"><i class="fa fa-check"></i><b>4.1</b> Tabelas</a></li>
 <li class="chapter" data-level="4.2" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#gráficos"><i class="fa fa-check"></i><b>4.2</b> Gráficos</a></li>
 <li class="chapter" data-level="4.3" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#medidas-de-posição-e-dispersão"><i class="fa fa-check"></i><b>4.3</b> Medidas de posição e dispersão</a></li>
@@ -214,7 +220,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.27" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#resumo-2"><i class="fa fa-check"></i><b>4.27</b> Resumo</a></li>
 <li class="chapter" data-level="4.28" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#questões-1"><i class="fa fa-check"></i><b>4.28</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html"><i class="fa fa-check"></i><b>5</b> Família de distribuições</a><ul>
+<li class="chapter" data-level="5" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html"><i class="fa fa-check"></i><b>5</b> Família de distribuições</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html#distribuição-simétrica"><i class="fa fa-check"></i><b>5.1</b> Distribuição simétrica</a></li>
 <li class="chapter" data-level="5.2" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html#assimetria-à-direita"><i class="fa fa-check"></i><b>5.2</b> Assimetria à direita</a></li>
 <li class="chapter" data-level="5.3" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html#assimetria-à-esquerda-ou-negativa"><i class="fa fa-check"></i><b>5.3</b> Assimetria à esquerda (ou negativa)</a></li>
@@ -224,7 +231,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.7" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html#importância-inferencial"><i class="fa fa-check"></i><b>5.7</b> Importância inferencial</a></li>
 <li class="chapter" data-level="5.8" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html#resumo-3"><i class="fa fa-check"></i><b>5.8</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html"><i class="fa fa-check"></i><b>6</b> Tipos de amostragem</a><ul>
+<li class="chapter" data-level="6" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html"><i class="fa fa-check"></i><b>6</b> Tipos de amostragem</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html#amostragem-aleatória-simples"><i class="fa fa-check"></i><b>6.1</b> Amostragem aleatória simples</a></li>
 <li class="chapter" data-level="6.2" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html#amostragem-aleatória-sistemática"><i class="fa fa-check"></i><b>6.2</b> Amostragem aleatória sistemática</a></li>
 <li class="chapter" data-level="6.3" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html#amostragem-estratificada"><i class="fa fa-check"></i><b>6.3</b> Amostragem estratificada</a></li>
@@ -239,8 +247,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.12" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html#amostragem-delineamento-e-generalização"><i class="fa fa-check"></i><b>6.12</b> Amostragem, delineamento e generalização</a></li>
 <li class="chapter" data-level="6.13" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html#resumo-4"><i class="fa fa-check"></i><b>6.13</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html"><i class="fa fa-check"></i><b>7</b> Estatística Inferencial</a><ul>
-<li class="chapter" data-level="7.1" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#nhst-teste-de-significância-de-hipótese-nula"><i class="fa fa-check"></i><b>7.1</b> NHST (Teste de Significância de Hipótese Nula)</a><ul>
+<li class="chapter" data-level="7" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html"><i class="fa fa-check"></i><b>7</b> Estatística Inferencial</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#nhst-teste-de-significância-de-hipótese-nula"><i class="fa fa-check"></i><b>7.1</b> NHST (Teste de Significância de Hipótese Nula)</a>
+<ul>
 <li class="chapter" data-level="7.1.1" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#a-primeira-etapa-a-hipótese"><i class="fa fa-check"></i><b>7.1.1</b> A primeira etapa: a hipótese</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#nível-de-significância"><i class="fa fa-check"></i><b>7.2</b> Nível de significância</a></li>
@@ -252,7 +262,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.8" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#pesquisas-adicionais"><i class="fa fa-check"></i><b>7.8</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="7.9" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#questões-2"><i class="fa fa-check"></i><b>7.9</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html"><i class="fa fa-check"></i><b>8</b> Um exemplo real de pesquisa</a><ul>
+<li class="chapter" data-level="8" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html"><i class="fa fa-check"></i><b>8</b> Um exemplo real de pesquisa</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html#o-que-será-pesquisado"><i class="fa fa-check"></i><b>8.1</b> O que será pesquisado</a></li>
 <li class="chapter" data-level="8.2" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html#como-os-dados-serão-coletados"><i class="fa fa-check"></i><b>8.2</b> Como os dados serão coletados</a></li>
 <li class="chapter" data-level="8.3" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html#de-onde-os-dados-vêm"><i class="fa fa-check"></i><b>8.3</b> De onde os dados vêm</a></li>
@@ -262,7 +273,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.7" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html#fluxograma"><i class="fa fa-check"></i><b>8.7</b> Fluxograma</a></li>
 <li class="chapter" data-level="8.8" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html#resumo-5"><i class="fa fa-check"></i><b>8.8</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="qui-quadrado.html"><a href="qui-quadrado.html"><i class="fa fa-check"></i><b>9</b> Qui quadrado</a><ul>
+<li class="chapter" data-level="9" data-path="qui-quadrado.html"><a href="qui-quadrado.html"><i class="fa fa-check"></i><b>9</b> Qui quadrado</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="qui-quadrado.html"><a href="qui-quadrado.html#pesquisa-1"><i class="fa fa-check"></i><b>9.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="9.2" data-path="qui-quadrado.html"><a href="qui-quadrado.html#execução-no-r-1"><i class="fa fa-check"></i><b>9.2</b> Execução no R</a></li>
 <li class="chapter" data-level="9.3" data-path="qui-quadrado.html"><a href="qui-quadrado.html#tamanho-do-efeito"><i class="fa fa-check"></i><b>9.3</b> Tamanho do efeito</a></li>
@@ -272,7 +284,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.7" data-path="qui-quadrado.html"><a href="qui-quadrado.html#pesquisas-adicionais-1"><i class="fa fa-check"></i><b>9.7</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="9.8" data-path="qui-quadrado.html"><a href="qui-quadrado.html#questões-3"><i class="fa fa-check"></i><b>9.8</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html"><i class="fa fa-check"></i><b>10</b> Fatores de Risco</a><ul>
+<li class="chapter" data-level="10" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html"><i class="fa fa-check"></i><b>10</b> Fatores de Risco</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html#pesquisa-2"><i class="fa fa-check"></i><b>10.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="10.2" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html#execução-no-r-2"><i class="fa fa-check"></i><b>10.2</b> Execução no R</a></li>
 <li class="chapter" data-level="10.3" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html#execução-no-jasp-2"><i class="fa fa-check"></i><b>10.3</b> Execução no JASP</a></li>
@@ -282,17 +295,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.7" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html#pesquisas-adicionais-2"><i class="fa fa-check"></i><b>10.7</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="10.8" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html#questões-4"><i class="fa fa-check"></i><b>10.8</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="teste-t.html"><a href="teste-t.html"><i class="fa fa-check"></i><b>11</b> Teste T</a><ul>
+<li class="chapter" data-level="11" data-path="teste-t.html"><a href="teste-t.html"><i class="fa fa-check"></i><b>11</b> Teste T</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="teste-t.html"><a href="teste-t.html#pesquisa-3"><i class="fa fa-check"></i><b>11.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="11.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-r-3"><i class="fa fa-check"></i><b>11.2</b> Execução no R</a></li>
 <li class="chapter" data-level="11.3" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito-1"><i class="fa fa-check"></i><b>11.3</b> Tamanho do efeito</a></li>
 <li class="chapter" data-level="11.4" data-path="teste-t.html"><a href="teste-t.html#execução-no-jasp-3"><i class="fa fa-check"></i><b>11.4</b> Execução no JASP</a></li>
 <li class="chapter" data-level="11.5" data-path="teste-t.html"><a href="teste-t.html#escrita-dos-resultados-2"><i class="fa fa-check"></i><b>11.5</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="11.6" data-path="teste-t.html"><a href="teste-t.html#versão-robusta-do-teste-t"><i class="fa fa-check"></i><b>11.6</b> Versão robusta do Teste T</a><ul>
+<li class="chapter" data-level="11.6" data-path="teste-t.html"><a href="teste-t.html#versão-robusta-do-teste-t"><i class="fa fa-check"></i><b>11.6</b> Versão robusta do Teste T</a>
+<ul>
 <li class="chapter" data-level="11.6.1" data-path="teste-t.html"><a href="teste-t.html#execução-no-r-4"><i class="fa fa-check"></i><b>11.6.1</b> Execução no R</a></li>
 <li class="chapter" data-level="11.6.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-jasp-4"><i class="fa fa-check"></i><b>11.6.2</b> Execução no JASP</a></li>
 </ul></li>
-<li class="chapter" data-level="11.7" data-path="teste-t.html"><a href="teste-t.html#mann-whitney"><i class="fa fa-check"></i><b>11.7</b> Mann-whitney</a><ul>
+<li class="chapter" data-level="11.7" data-path="teste-t.html"><a href="teste-t.html#mann-whitney"><i class="fa fa-check"></i><b>11.7</b> Mann-whitney</a>
+<ul>
 <li class="chapter" data-level="11.7.1" data-path="teste-t.html"><a href="teste-t.html#execução-no-r-5"><i class="fa fa-check"></i><b>11.7.1</b> Execução No R</a></li>
 <li class="chapter" data-level="11.7.2" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito-2"><i class="fa fa-check"></i><b>11.7.2</b> Tamanho do efeito</a></li>
 <li class="chapter" data-level="11.7.3" data-path="teste-t.html"><a href="teste-t.html#execução-no-jasp-5"><i class="fa fa-check"></i><b>11.7.3</b> Execução no JASP</a></li>
@@ -303,7 +319,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.10" data-path="teste-t.html"><a href="teste-t.html#pesquisas-adicionais-3"><i class="fa fa-check"></i><b>11.10</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="11.11" data-path="teste-t.html"><a href="teste-t.html#questões-5"><i class="fa fa-check"></i><b>11.11</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>12</b> ANOVA</a><ul>
+<li class="chapter" data-level="12" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>12</b> ANOVA</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="anova.html"><a href="anova.html#pesquisa-4"><i class="fa fa-check"></i><b>12.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="12.2" data-path="anova.html"><a href="anova.html#anova-de-1-via"><i class="fa fa-check"></i><b>12.2</b> ANOVA de 1 via</a></li>
 <li class="chapter" data-level="12.3" data-path="anova.html"><a href="anova.html#execução-no-r-6"><i class="fa fa-check"></i><b>12.3</b> Execução no R</a></li>
@@ -336,7 +353,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.30" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-9"><i class="fa fa-check"></i><b>12.30</b> Escrita dos resultados</a></li>
 <li class="chapter" data-level="12.31" data-path="anova.html"><a href="anova.html#questões-6"><i class="fa fa-check"></i><b>12.31</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html"><i class="fa fa-check"></i><b>13</b> ANOVA de medidas repetidas</a><ul>
+<li class="chapter" data-level="13" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html"><i class="fa fa-check"></i><b>13</b> ANOVA de medidas repetidas</a>
+<ul>
 <li class="chapter" data-level="13.1" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pesquisa-6"><i class="fa fa-check"></i><b>13.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="13.2" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#execução-no-r-11"><i class="fa fa-check"></i><b>13.2</b> Execução no R</a></li>
 <li class="chapter" data-level="13.3" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#tamanho-do-efeito-4"><i class="fa fa-check"></i><b>13.3</b> Tamanho do efeito</a></li>
@@ -345,7 +363,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.6" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#resumo-12"><i class="fa fa-check"></i><b>13.6</b> Resumo</a></li>
 <li class="chapter" data-level="13.7" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pesquisas-adicionais-5"><i class="fa fa-check"></i><b>13.7</b> Pesquisas adicionais</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html"><i class="fa fa-check"></i><b>14</b> Modelo linear misto</a><ul>
+<li class="chapter" data-level="14" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html"><i class="fa fa-check"></i><b>14</b> Modelo linear misto</a>
+<ul>
 <li class="chapter" data-level="14.1" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#pesquisa-7"><i class="fa fa-check"></i><b>14.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="14.2" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#execução-no-r-12"><i class="fa fa-check"></i><b>14.2</b> execução no R</a></li>
 <li class="chapter" data-level="14.3" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#execução-no-jasp-13"><i class="fa fa-check"></i><b>14.3</b> Execução no JASP</a></li>
@@ -353,7 +372,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.5" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#resumo-13"><i class="fa fa-check"></i><b>14.5</b> Resumo</a></li>
 <li class="chapter" data-level="14.6" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#pesquisas-adicionais-6"><i class="fa fa-check"></i><b>14.6</b> Pesquisas adicionais</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="correlação.html"><a href="correlação.html"><i class="fa fa-check"></i><b>15</b> Correlação</a><ul>
+<li class="chapter" data-level="15" data-path="correlação.html"><a href="correlação.html"><i class="fa fa-check"></i><b>15</b> Correlação</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="correlação.html"><a href="correlação.html#pesquisa-8"><i class="fa fa-check"></i><b>15.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="15.2" data-path="correlação.html"><a href="correlação.html#execução-no-r-13"><i class="fa fa-check"></i><b>15.2</b> Execução no R</a></li>
 <li class="chapter" data-level="15.3" data-path="correlação.html"><a href="correlação.html#execução-no-jasp-14"><i class="fa fa-check"></i><b>15.3</b> Execução no JASP</a></li>
@@ -362,7 +382,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.6" data-path="correlação.html"><a href="correlação.html#pesquisas-adicionais-7"><i class="fa fa-check"></i><b>15.6</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="15.7" data-path="correlação.html"><a href="correlação.html#questões-7"><i class="fa fa-check"></i><b>15.7</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>16</b> Regressão linear simples</a><ul>
+<li class="chapter" data-level="16" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>16</b> Regressão linear simples</a>
+<ul>
 <li class="chapter" data-level="16.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#breve-explicação-conceitual"><i class="fa fa-check"></i><b>16.1</b> Breve explicação conceitual</a></li>
 <li class="chapter" data-level="16.2" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisa-9"><i class="fa fa-check"></i><b>16.2</b> Pesquisa</a></li>
 <li class="chapter" data-level="16.3" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-r-14"><i class="fa fa-check"></i><b>16.3</b> Execução no R</a></li>
@@ -372,7 +393,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.7" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisas-adicionais-8"><i class="fa fa-check"></i><b>16.7</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="16.8" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#questões-8"><i class="fa fa-check"></i><b>16.8</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html"><i class="fa fa-check"></i><b>17</b> Regressão linear múltipla</a><ul>
+<li class="chapter" data-level="17" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html"><i class="fa fa-check"></i><b>17</b> Regressão linear múltipla</a>
+<ul>
 <li class="chapter" data-level="17.1" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisa-10"><i class="fa fa-check"></i><b>17.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="17.2" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-r-15"><i class="fa fa-check"></i><b>17.2</b> Execução no R</a></li>
 <li class="chapter" data-level="17.3" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-jasp-16"><i class="fa fa-check"></i><b>17.3</b> Execução no JASP</a></li>
@@ -382,7 +404,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17.7" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisas-adicionais-9"><i class="fa fa-check"></i><b>17.7</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="17.8" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#questões-9"><i class="fa fa-check"></i><b>17.8</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html"><i class="fa fa-check"></i><b>18</b> Regressão logística binária</a><ul>
+<li class="chapter" data-level="18" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html"><i class="fa fa-check"></i><b>18</b> Regressão logística binária</a>
+<ul>
 <li class="chapter" data-level="18.1" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#pesquisa-11"><i class="fa fa-check"></i><b>18.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="18.2" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#execução-no-r-16"><i class="fa fa-check"></i><b>18.2</b> Execução no R</a></li>
 <li class="chapter" data-level="18.3" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#execução-no-jasp-17"><i class="fa fa-check"></i><b>18.3</b> Execução no JASP</a></li>
@@ -412,7 +435,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tipos-de-amostragem" class="section level1">
+<div id="tipos-de-amostragem" class="section level1" number="6">
 <h1><span class="header-section-number">Cap. 6</span> Tipos de amostragem</h1>
 <div class="objectives">
 <p><strong>Objetivos do capítulo</strong><br />
@@ -490,21 +513,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div id="amostragem-aleatória-simples" class="section level2">
+<div id="amostragem-aleatória-simples" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> Amostragem aleatória simples</h2>
 <p>É o processo mais elementar. O método se fundamenta no princípio de que todos os membros de uma população têm a mesma probabilidade de serem incluídos na amostra. Para fazer este tipo de procedimento, cada participante da população “recebe” um número. Este número é sorteado em um procedimento que, as vezes, é chamado de loteria. A amostra é formada pelos participantes sorteados.</p>
 <p><img src="img/cap_aas.PNG" /></p>
 <p><strong>Vantagens</strong>: Evita o erro sistemático e viés de seleção. Tende a ser simples de se planejar e comunicar aos outros.<br />
 <strong>Desvantagens</strong>: Tende a ter execução complexa e cara. Eventualmente, pode não representar bem subgrupos populacionais.</p>
 </div>
-<div id="amostragem-aleatória-sistemática" class="section level2">
+<div id="amostragem-aleatória-sistemática" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> Amostragem aleatória sistemática</h2>
 <p>É uma variação da amostragem simples. Após a identificação dos participantes, um determinado critério é eleito (por exemplo, a cada 5) e a seleção segue este formato.</p>
 <p><img src="img/cap_a_sistematica.PNG" /></p>
 <p><strong>Vantagens</strong>: Mais rápida de se implementar do que a amostragem aleatória simples<br />
 <strong>Desvantagem</strong>: Eventualmente, pode não representar bem subgrupos populacionais. A ordenação dos participantes pode ser igual a uma ordenação existente, mas desconhecida, na população. Por exemplo, em uma lista de colégio, todos os estudantes com algum tipo de dificuldade recebem números ímpares e o critério de seleção da amostra seja feita, também, por números ímpares.</p>
 </div>
-<div id="amostragem-estratificada" class="section level2">
+<div id="amostragem-estratificada" class="section level2" number="6.3">
 <h2><span class="header-section-number">6.3</span> Amostragem estratificada</h2>
 <p>Neste tipo de amostragem, a população é dividida em subpopulações em função de características em comum, o que é chamado de estrato. Em seguida, cada participante recebe uma identificação dentro de seu estrato e o processo de amostragem aleatória simples é feito dentro em cada estrato. Atente que é possível que os participantes recebam os mesmos números. Por exemplo, se no estrato 1 há 100 pessoas, os números irão de 1 a 100 dentro deste estrato. Se no segundo estrato há também 100 pessoas, os participantes deste estrato também receberão números de 1 a 100. Com muita frequência, as características de interesse na população são desbalanceadas e, com isso, os estratos e a amostra também serão desbalanceados. Por exemplo, se há cerca de 80% de mulheres em uma determinada população, é esperado que a amostra tenha proporção similares de mulheres.</p>
 <p><img src="img/cap_a_estratificada.PNG" /></p>
@@ -513,44 +536,44 @@ of Undergraduate Students in Spain, Portugal, and Brazil</em>. Em alguns capítu
 <p><strong>Vantagens</strong>:<br />
 <strong>Desvantagem</strong>:</p>
 </div>
-<div id="amostragem-por-conglomerados" class="section level2">
+<div id="amostragem-por-conglomerados" class="section level2" number="6.4">
 <h2><span class="header-section-number">6.4</span> Amostragem por conglomerados</h2>
 <p>Neste tipo de amostragem, a população encontra-se localizada - naturalmente - em conglomerados. Estes conglomerados podem ser ruas, bairros ou empresas, por exemplo e são assumidos como heterogêneos. Os conglomerados recebem identificações que, por sua vez, são sorteadas. Todos os participantes dos conglomerados sorteados devem ser acessados.</p>
 <p><img src="img/cap_a_conglomerado.PNG" /></p>
 <p><strong>Vantagens</strong>: Quando a identificação dos elementos da população é difícil, os conglomerados aparecem como solução. A população já está dividida naturalmente.<br />
 <strong>Desvantagens</strong>: Os estratos não serem homogêneos entre eles.</p>
 </div>
-<div id="amostragem-por-conveniência" class="section level2">
+<div id="amostragem-por-conveniência" class="section level2" number="6.5">
 <h2><span class="header-section-number">6.5</span> Amostragem por conveniência</h2>
 <p>Neste tipo de amostragem, a amostra é feita pelos participantes que o pesquisador tem maior acesso.</p>
 <p><strong>Vantagens</strong>: Fácil de se coletar, acessível e tende a crescer rapidamente.<br />
 <strong>Desvantagens</strong>: Pode representar mal a população e, consequentemente, ter viés. Apesar de possível, a generalização é desaconselhada.</p>
 </div>
-<div id="amostragem-por-auto-seleção" class="section level2">
+<div id="amostragem-por-auto-seleção" class="section level2" number="6.6">
 <h2><span class="header-section-number">6.6</span> Amostragem por auto-seleção</h2>
 <p>Neste tipo de amostragem, os participantes voluntariamente solicitam participar da pesquisa. Isso tende a acontecer em pesquisas em que a coleta de dados é feita online (ex: <em>google survey</em> ou <em>survey monkey</em>) e também em estudos sobre novos medicamentos.</p>
 <p>Vantagens: Relativamente mais fácil de se coletar.<br />
 Desvantagem: similar à amostragem por conveniência.</p>
 </div>
-<div id="amostragem-intencional" class="section level2">
+<div id="amostragem-intencional" class="section level2" number="6.7">
 <h2><span class="header-section-number">6.7</span> Amostragem intencional</h2>
 <p>Neste tipo de amostragem, o pesquisador decide quem irá compor a amostra. É bem frequente em estudos psicométricos de validação de testes psicológicos. Neste tipo de pesquisa, existe uma etapa em que especialistas são convidados para opinar sobre características dos testes.</p>
 <p>Vantagens: Relativamente fácil de se identificar os juízes.<br />
 <strong>Desvantagens</strong>: similar à amostragem por conveniência. Além disso, o tamanho amostral tende a ser baixo.</p>
 </div>
-<div id="amostragem-por-bola-de-neve" class="section level2">
+<div id="amostragem-por-bola-de-neve" class="section level2" number="6.8">
 <h2><span class="header-section-number">6.8</span> Amostragem por bola de neve</h2>
 <p>Neste tipo de amostragem, o pesquisador identifica um participante de interesse que, consequentemente, indica outros participantes para pesquisa. Por exemplo, caso deseje-se avaliar a saúde mental de usuários de cocaína, o pesquisador poderia identificar a primeira pessoa a ser avaliada que, em seguida, indicaria outras possíveis participantes.</p>
 <p><strong>Vantagens</strong>: Pode ser implementada de maneira fácil e o crescimento amostral tende a ocorrer rapidamente.<br />
 <strong>Desvantagens</strong>: similar à amostragem por conveniência.</p>
 </div>
-<div id="amostragem-por-quotas" class="section level2">
+<div id="amostragem-por-quotas" class="section level2" number="6.9">
 <h2><span class="header-section-number">6.9</span> Amostragem por quotas</h2>
 <p>Este tipo de amostragem tende a ter um rigor mais elevado dentro das técnicas não-probabilísticas. Na amostragem por quotas (ou cotas), o pesquisador define classes populacionais e, em seguida, determinar a proporção da população para cada classe. Pode ser utilizada em situações em que não se tem muitas informações sobre características populacionais para fazer uma técnica probabilística, mas sabe-se o suficiente para criar classes. Eventualmente, pesquisas eleitorais e análise de mercado podem contar com esta técnica.</p>
 <p><strong>Vantagens</strong>: Pode ser implementada de maneira fácil e tende a ser executada rapidamente. Apresenta um maior rigor dentro do conjunto dos métodos não-probabilísticos.<br />
 <strong>Desvantagens</strong>: similar à amostragem por conveniência.</p>
 </div>
-<div id="o-cálculo-do-tamanho-amostral" class="section level2">
+<div id="o-cálculo-do-tamanho-amostral" class="section level2" number="6.10">
 <h2><span class="header-section-number">6.10</span> O cálculo do tamanho amostral</h2>
 <p>Após decidir qual é o tipo de plano amostral, é necessário que o pesquisador defina quantos participantes irão compor a amostra. Se relativamente poucos participantes de uma população forem amostrados, os resultados podem distorcer o fenômeno investigado. Por contraste, se uma quantidade maior do que a necessária de participantes for amostrada, este excesso pode representar custos desnecessários e também distorcer as conclusões de algumas análises que serão apresentadas no decorrer do livro.</p>
 <p>Existem diferentes formas de se realizar o cálculo do tamanho da amostra. No entanto, todas as maneiras costumam depender das seguintes condições:</p>
@@ -569,7 +592,7 @@ Desvantagem: similar à amostragem por conveniência.</p>
 <li>Das possíveis perdas de elementos da amostra.</li>
 </ul>
 <p>Uma das principais características da população que entra em cena para computar um tamanho amostral é a <u>variabilidade do fenômeno a ser investigado</u>. Populações homogêneas tendem a precisar de amostras com menos elementos. Por oposição, fenômenos heterogêneos solicitam que o tamanho amostral seja maior. A variabilidade pode ser determinada pela literatura prévia e estudo piloto.</p>
-<p>O <u>interesse do pesquisador</u> pode ser apenas descritivo ou guiado pela execução de testes de hipótese. Quando descritivo, há um sistema fechado de equações que auxiliam no cálculo amostral. Quando teste de hipóteses são desejados, quase sempre, pesquisadores contam com heurísticas acadêmicas e também fazem um cálculo chamado “de poder do teste”. Este cálculo visa otimizar o tamanho da amostra para que nem erros do tipo 1 ou 2 ocorram.</p>
+<p>O <u>interesse do pesquisador</u> pode ser apenas descritivo ou guiado pela execução de testes de hipótese. Quando descritivo, há um sistema fechado de equações que auxiliam no cálculo amostral. Quando teste de hipóteses são desejados, quase sempre, pesquisadores contam com heurísticas acadêmicas e também fazem um cálculo chamado “de poder do teste.” Este cálculo visa otimizar o tamanho da amostra para que nem erros do tipo 1 ou 2 ocorram.</p>
 <p>O <u>tamanho populacional</u> é uma importante característica para definição da amostra. Para populações pequenas, a amostra abrange quase que a totalidade dos elementos. Em populações maiores isso não costuma ocorrer. A relação entre tamanho populacional e tamanho amostral costuma ser apresentado por uma função logarítmica, tal como descrito abaixo.</p>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-44-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O <u>nível de confiança</u> é a probabilidade que o intervalo estimado contenha o parâmetro populacional.</p>
@@ -577,7 +600,7 @@ Desvantagem: similar à amostragem por conveniência.</p>
 <p>O <u>tipo de amostragem</u> e as <u> possíveis perdas de elementos da amostra</u> também impactam o tamanho amostral. Frequentemente, amostras são calculadas assumindo a Amostragem Aleatória Simples e, em seguida, os números são ajustados por tipos específicos. Finalmente, perdas amostrais são esperadas e tenta-se acrescentar este número ao plano amostral antes da coleta de dados.</p>
 <p>É possível unir todos os conceitos em equações específicas para o cálculo do tamanho amostral. As fórmulas variam e seria pouco efetivo tentar apresentar todas as fórmulas ou eleger uma ou outra equação de maior uso para colocar nesta parte. Desta maneira, deixo o artigo intitulado “A lógica da determinação do tamanho da amostra em investigações Epidemiológicas” como principal referência deste tópico.</p>
 </div>
-<div id="amostragem-e-sua-relação-com-os-resultados" class="section level2">
+<div id="amostragem-e-sua-relação-com-os-resultados" class="section level2" number="6.11">
 <h2><span class="header-section-number">6.11</span> Amostragem e sua relação com os resultados</h2>
 <div class="glossario">
 <p><U><strong>GLOSSÁRIO</strong></U><br />
@@ -588,17 +611,17 @@ Desvantagem: similar à amostragem por conveniência.</p>
 <p>Quando uma pesquisa é feita, raramente sua finalidade é apenas descritiva, ou seja, de detalhamento dos resultados somente para os participantes amostrados. Com muita frequência, o interesse do pesquisador é conseguir generalizar os resultados obtidos pela amostra à população que ela representa. A capacidade de generalizar os resultados é chamado de <u>Validade externa</u> de uma pesquisa e depende pesadamente do tipo de amostragem definido. Na verdade, toda mecânica por detrás de análises inferenciais assume que os dados vieram de uma amostra aleatória (representativa). Quando amostras não representativas são acessadas, vieses são esperados.</p>
 <p>Um exemplo bastante ilustrativo é o relatório intitulado <em>“The Hite Report”</em>, de Shere Hite, que foi conduzido e publicado na década de 1970 nos Estados Unidos. Este trabalho visou oferecer uma radiografia sobre a sexualidade e a vida conjugal feminina das norte americanas e se tornou um <em>best-seller</em> quase que imediatamente após publicado.</p>
 <p><img src="img/cap_importancia_amostragem.PNG" /></p>
-<p>Nesta pesquisa, Shere Hite enviou carca de 100.000 cartas para mulheres localizadas em todos os Estados Unidos perguntando questões sobre “Satisfação conjugal” e “Traição”. Os resultados indicaram que 98% das mulheres estavam insatisfeitas em seus casamentos e que 75% delas estavam tendo ou tiveram relações extraconjugal enquanto casadas.</p>
+<p>Nesta pesquisa, Shere Hite enviou carca de 100.000 cartas para mulheres localizadas em todos os Estados Unidos perguntando questões sobre “Satisfação conjugal” e “Traição.” Os resultados indicaram que 98% das mulheres estavam insatisfeitas em seus casamentos e que 75% delas estavam tendo ou tiveram relações extraconjugal enquanto casadas.</p>
 <p>Quando o trabalho foi cuidadosamente analisado, foi identificado que dos 100.000 questionários enviados, cerca de 4% retornou. Esse cenário deixou claro que, além da amostra não ter sido representativa da população de mulheres americanas, os resultados foram pesadamente influenciados pelo <u>viés de não-resposta</u>. Em outras palavras, é possível sugerir que apenas o grupo de pessoas insatisfeitas respondeu ao questionário e seus resultados são significativamente diferentes daquele grupo que não foi representado, que é a maioria e, provavelmente, formado por pessoas felizes em seus casamentos.</p>
 </div>
-<div id="amostragem-delineamento-e-generalização" class="section level2">
+<div id="amostragem-delineamento-e-generalização" class="section level2" number="6.12">
 <h2><span class="header-section-number">6.12</span> Amostragem, delineamento e generalização</h2>
 <div class="glossario">
 <p><U><strong>GLOSSÁRIO</strong></U><br />
 <strong>Validade interna</strong>: Grau em que os resultados de um estudo possam ser atribuídos ao delineamento e não a erros ou outros fatores não controlados.<br />
 <strong>Riscos à validade interna</strong>: Tipo de amostragem utilizada, ausência de randomização dos participantes, ausência de duplo-cego, maturação e histórico dos participantes.</p>
 </div>
-<p>É bastante típico que pesquisadores iniciem uma pesquisa para explorar ou responder um problema específico. Em Psicologia, os problemas tendem a se dividir naqueles em que características individuais são o alvo e naqueles em que aspectos sociais recebem maior atenção. Por exemplo, explorar as características de personalidade de pessoas que decidem não ter filho <span class="citation">(Neal &amp; Neal, <a href="#ref-Neal2021" role="doc-biblioref">2021</a>)</span>, as atitudes sociais sobre a participação feminina em alguns trabalhoso <span class="citation">(Bursztyn et al., <a href="#ref-Bursztyn2018" role="doc-biblioref">2018</a>)</span> ou a relação ente nível socioeconômico e empatia social <span class="citation">(Piff et al., <a href="#ref-Piff2012" role="doc-biblioref">2012</a>)</span>, parcialmente exemplificam tais iniciativas.</p>
+<p>É bastante típico que pesquisadores iniciem uma pesquisa para explorar ou responder um problema específico. Em Psicologia, os problemas tendem a se dividir naqueles em que características individuais são o alvo e naqueles em que aspectos sociais recebem maior atenção. Por exemplo, explorar as características de personalidade de pessoas que decidem não ter filho <span class="citation">(<a href="regressão-logística-binária.html#ref-Neal2021" role="doc-biblioref">Neal &amp; Neal, 2021</a>)</span>, as atitudes sociais sobre a participação feminina em alguns trabalhoso <span class="citation">(<a href="regressão-logística-binária.html#ref-Bursztyn2018" role="doc-biblioref">Bursztyn et al., 2018</a>)</span> ou a relação ente nível socioeconômico e empatia social <span class="citation">(<a href="regressão-logística-binária.html#ref-Piff2012" role="doc-biblioref">Piff et al., 2012</a>)</span>, parcialmente exemplificam tais iniciativas.</p>
 <p>Apesar dos interesses diferirem, a grande maioria dos pesquisadores tem muito cuidado na hora de eleger o delineamento da pesquisa, fazer a coleta de dados e, em seguida, analisá-los. Erros ou fragilidades metodológicas durante tais etapa podem limitar ou impossibilitar a validade dos resultados. No entanto, esta validade em questão é chamada de <u>Validade interna</u>, que se relaciona majoritariamente com o nível de controle imposto durante a coleta de dados e a possibilidade de estabelecer relações entre variáveis, especialmente relações de causalidade.</p>
 <p>Dessa maneira, assumindo que o interesse de uma pesquisa seja conseguir explicar um determinado problema científico, mas também generalizar os resultados obtidos à população, <u>tão importante como ter um delineamento de pesquisa adequado para coletar os dados</u> (validade interna) é ter um <u>plano amostral que possibilite a generalização dos achados</u> (validade externa). Não é possível maximizar, ao mesmo tempo, a validade interna e a validade externa. Entretanto, o balanceamento de ambas as condições deve ser feito em função das perguntas de pesquisa propostas.</p>
 <p>A imagem a seguir visa integrar os conceitos de amostragem, delineamento e generalização.</p>
@@ -611,7 +634,7 @@ Desvantagem: similar à amostragem por conveniência.</p>
 <li>O tipo de análise estatística implementada, que como a pergunta de pesquisa será trabalhada por modelos probabilísticos.</li>
 </ol>
 </div>
-<div id="resumo-4" class="section level2">
+<div id="resumo-4" class="section level2" number="6.13">
 <h2><span class="header-section-number">6.13</span> Resumo</h2>
 <div class="explore">
 <ol style="list-style-type: decimal">
@@ -626,18 +649,6 @@ Desvantagem: similar à amostragem por conveniência.</p>
 </ol>
 </div>
 
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-Bursztyn2018">
-<p>Bursztyn, L., González, A., &amp; Yanagizawa-Drott, D. (2018). <em>Misperceived social norms: Female labor force participation in saudi arabia</em>. National Bureau of Economic Research. <a href="https://doi.org/10.3386/w24736">https://doi.org/10.3386/w24736</a></p>
-</div>
-<div id="ref-Neal2021">
-<p>Neal, J. W., &amp; Neal, Z. (2021). <em>Who are the childfree?</em> <a href="https://doi.org/10.31234/osf.io/57bjr">https://doi.org/10.31234/osf.io/57bjr</a></p>
-</div>
-<div id="ref-Piff2012">
-<p>Piff, P. K., Stancato, D. M., Cote, S., Mendoza-Denton, R., &amp; Keltner, D. (2012). Higher social class predicts increased unethical behavior. <em>Proceedings of the National Academy of Sciences</em>, <em>109</em>(11), 4086–4091. <a href="https://doi.org/10.1073/pnas.1118373109">https://doi.org/10.1073/pnas.1118373109</a></p>
 </div>
 </div>
             </section>

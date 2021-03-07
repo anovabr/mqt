@@ -32,6 +32,7 @@
   
 <link rel="prev" href="aspectos-gerais.html"/>
 <link rel="next" href="família-de-distribuições.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -49,22 +50,21 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -84,7 +84,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -134,7 +134,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Conceitos e análises estatísticas com R e JASP</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prefácio</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prefácio</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#atenção"><i class="fa fa-check"></i><b>1.1</b> Atenção</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#a-proposta"><i class="fa fa-check"></i><b>1.2</b> A proposta</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#objetivo"><i class="fa fa-check"></i><b>1.3</b> Objetivo</a></li>
@@ -151,7 +152,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.14" data-path="index.html"><a href="index.html#revisão-técnica"><i class="fa fa-check"></i><b>1.14</b> Revisão técnica</a></li>
 <li class="chapter" data-level="1.15" data-path="index.html"><a href="index.html#agradecimentos"><i class="fa fa-check"></i><b>1.15</b> Agradecimentos</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html"><i class="fa fa-check"></i><b>2</b> Programas estatísticos</a><ul>
+<li class="chapter" data-level="2" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html"><i class="fa fa-check"></i><b>2</b> Programas estatísticos</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-r"><i class="fa fa-check"></i><b>2.1</b> O R</a></li>
 <li class="chapter" data-level="2.2" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#tidyverse"><i class="fa fa-check"></i><b>2.2</b> Tidyverse</a></li>
 <li class="chapter" data-level="2.3" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#dificuldades-esperadas"><i class="fa fa-check"></i><b>2.3</b> Dificuldades esperadas</a></li>
@@ -159,17 +161,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-jasp"><i class="fa fa-check"></i><b>2.5</b> O JASP</a></li>
 <li class="chapter" data-level="2.6" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#resumo"><i class="fa fa-check"></i><b>2.6</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html"><i class="fa fa-check"></i><b>3</b> Aspectos gerais</a><ul>
+<li class="chapter" data-level="3" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html"><i class="fa fa-check"></i><b>3</b> Aspectos gerais</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#os-objetivos-de-uma-pesquisa"><i class="fa fa-check"></i><b>3.1</b> Os objetivos de uma pesquisa</a></li>
 <li class="chapter" data-level="3.2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#a-dimensão-temporal-de-uma-pesquisa"><i class="fa fa-check"></i><b>3.2</b> A dimensão temporal de uma pesquisa</a></li>
-<li class="chapter" data-level="3.3" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#conceitos-fundamentais"><i class="fa fa-check"></i><b>3.3</b> conceitos fundamentais</a><ul>
+<li class="chapter" data-level="3.3" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#conceitos-fundamentais"><i class="fa fa-check"></i><b>3.3</b> conceitos fundamentais</a>
+<ul>
 <li class="chapter" data-level="3.3.1" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#modelos-científicos"><i class="fa fa-check"></i><b>3.3.1</b> Modelos científicos</a></li>
 <li class="chapter" data-level="3.3.2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#variáveis"><i class="fa fa-check"></i><b>3.3.2</b> Variáveis</a></li>
 <li class="chapter" data-level="3.3.3" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#delineamentos-de-pesquisa"><i class="fa fa-check"></i><b>3.3.3</b> Delineamentos de pesquisa</a></li>
 <li class="chapter" data-level="3.3.4" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#delineamentos-observacionais-e-correlacionais"><i class="fa fa-check"></i><b>3.3.4</b> Delineamentos observacionais (e correlacionais)</a></li>
 <li class="chapter" data-level="3.3.5" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#delineamentos-experimentais"><i class="fa fa-check"></i><b>3.3.5</b> Delineamentos experimentais</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#considerações-sobre-escalas-de-medida-e-o-processo-de-mensuração-em-psicologia"><i class="fa fa-check"></i><b>3.4</b> Considerações sobre escalas de medida e o processo de mensuração em Psicologia</a><ul>
+<li class="chapter" data-level="3.4" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#considerações-sobre-escalas-de-medida-e-o-processo-de-mensuração-em-psicologia"><i class="fa fa-check"></i><b>3.4</b> Considerações sobre escalas de medida e o processo de mensuração em Psicologia</a>
+<ul>
 <li class="chapter" data-level="3.4.1" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#escala-nominal"><i class="fa fa-check"></i><b>3.4.1</b> Escala nominal</a></li>
 <li class="chapter" data-level="3.4.2" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#escala-ordinal"><i class="fa fa-check"></i><b>3.4.2</b> Escala ordinal</a></li>
 <li class="chapter" data-level="3.4.3" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#escala-intervalar"><i class="fa fa-check"></i><b>3.4.3</b> Escala intervalar</a></li>
@@ -184,7 +189,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.6" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#resumo-1"><i class="fa fa-check"></i><b>3.6</b> Resumo</a></li>
 <li class="chapter" data-level="3.7" data-path="aspectos-gerais.html"><a href="aspectos-gerais.html#questões"><i class="fa fa-check"></i><b>3.7</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html"><i class="fa fa-check"></i><b>4</b> Estatística Descritiva</a><ul>
+<li class="chapter" data-level="4" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html"><i class="fa fa-check"></i><b>4</b> Estatística Descritiva</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#tabelas"><i class="fa fa-check"></i><b>4.1</b> Tabelas</a></li>
 <li class="chapter" data-level="4.2" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#gráficos"><i class="fa fa-check"></i><b>4.2</b> Gráficos</a></li>
 <li class="chapter" data-level="4.3" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#medidas-de-posição-e-dispersão"><i class="fa fa-check"></i><b>4.3</b> Medidas de posição e dispersão</a></li>
@@ -214,7 +220,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.27" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#resumo-2"><i class="fa fa-check"></i><b>4.27</b> Resumo</a></li>
 <li class="chapter" data-level="4.28" data-path="estatística-descritiva.html"><a href="estatística-descritiva.html#questões-1"><i class="fa fa-check"></i><b>4.28</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html"><i class="fa fa-check"></i><b>5</b> Família de distribuições</a><ul>
+<li class="chapter" data-level="5" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html"><i class="fa fa-check"></i><b>5</b> Família de distribuições</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html#distribuição-simétrica"><i class="fa fa-check"></i><b>5.1</b> Distribuição simétrica</a></li>
 <li class="chapter" data-level="5.2" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html#assimetria-à-direita"><i class="fa fa-check"></i><b>5.2</b> Assimetria à direita</a></li>
 <li class="chapter" data-level="5.3" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html#assimetria-à-esquerda-ou-negativa"><i class="fa fa-check"></i><b>5.3</b> Assimetria à esquerda (ou negativa)</a></li>
@@ -224,7 +231,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.7" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html#importância-inferencial"><i class="fa fa-check"></i><b>5.7</b> Importância inferencial</a></li>
 <li class="chapter" data-level="5.8" data-path="família-de-distribuições.html"><a href="família-de-distribuições.html#resumo-3"><i class="fa fa-check"></i><b>5.8</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html"><i class="fa fa-check"></i><b>6</b> Tipos de amostragem</a><ul>
+<li class="chapter" data-level="6" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html"><i class="fa fa-check"></i><b>6</b> Tipos de amostragem</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html#amostragem-aleatória-simples"><i class="fa fa-check"></i><b>6.1</b> Amostragem aleatória simples</a></li>
 <li class="chapter" data-level="6.2" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html#amostragem-aleatória-sistemática"><i class="fa fa-check"></i><b>6.2</b> Amostragem aleatória sistemática</a></li>
 <li class="chapter" data-level="6.3" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html#amostragem-estratificada"><i class="fa fa-check"></i><b>6.3</b> Amostragem estratificada</a></li>
@@ -239,8 +247,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.12" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html#amostragem-delineamento-e-generalização"><i class="fa fa-check"></i><b>6.12</b> Amostragem, delineamento e generalização</a></li>
 <li class="chapter" data-level="6.13" data-path="tipos-de-amostragem.html"><a href="tipos-de-amostragem.html#resumo-4"><i class="fa fa-check"></i><b>6.13</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html"><i class="fa fa-check"></i><b>7</b> Estatística Inferencial</a><ul>
-<li class="chapter" data-level="7.1" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#nhst-teste-de-significância-de-hipótese-nula"><i class="fa fa-check"></i><b>7.1</b> NHST (Teste de Significância de Hipótese Nula)</a><ul>
+<li class="chapter" data-level="7" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html"><i class="fa fa-check"></i><b>7</b> Estatística Inferencial</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#nhst-teste-de-significância-de-hipótese-nula"><i class="fa fa-check"></i><b>7.1</b> NHST (Teste de Significância de Hipótese Nula)</a>
+<ul>
 <li class="chapter" data-level="7.1.1" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#a-primeira-etapa-a-hipótese"><i class="fa fa-check"></i><b>7.1.1</b> A primeira etapa: a hipótese</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#nível-de-significância"><i class="fa fa-check"></i><b>7.2</b> Nível de significância</a></li>
@@ -252,7 +262,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.8" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#pesquisas-adicionais"><i class="fa fa-check"></i><b>7.8</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="7.9" data-path="estatística-inferencial.html"><a href="estatística-inferencial.html#questões-2"><i class="fa fa-check"></i><b>7.9</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html"><i class="fa fa-check"></i><b>8</b> Um exemplo real de pesquisa</a><ul>
+<li class="chapter" data-level="8" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html"><i class="fa fa-check"></i><b>8</b> Um exemplo real de pesquisa</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html#o-que-será-pesquisado"><i class="fa fa-check"></i><b>8.1</b> O que será pesquisado</a></li>
 <li class="chapter" data-level="8.2" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html#como-os-dados-serão-coletados"><i class="fa fa-check"></i><b>8.2</b> Como os dados serão coletados</a></li>
 <li class="chapter" data-level="8.3" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html#de-onde-os-dados-vêm"><i class="fa fa-check"></i><b>8.3</b> De onde os dados vêm</a></li>
@@ -262,7 +273,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.7" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html#fluxograma"><i class="fa fa-check"></i><b>8.7</b> Fluxograma</a></li>
 <li class="chapter" data-level="8.8" data-path="um-exemplo-real-de-pesquisa.html"><a href="um-exemplo-real-de-pesquisa.html#resumo-5"><i class="fa fa-check"></i><b>8.8</b> Resumo</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="qui-quadrado.html"><a href="qui-quadrado.html"><i class="fa fa-check"></i><b>9</b> Qui quadrado</a><ul>
+<li class="chapter" data-level="9" data-path="qui-quadrado.html"><a href="qui-quadrado.html"><i class="fa fa-check"></i><b>9</b> Qui quadrado</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="qui-quadrado.html"><a href="qui-quadrado.html#pesquisa-1"><i class="fa fa-check"></i><b>9.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="9.2" data-path="qui-quadrado.html"><a href="qui-quadrado.html#execução-no-r-1"><i class="fa fa-check"></i><b>9.2</b> Execução no R</a></li>
 <li class="chapter" data-level="9.3" data-path="qui-quadrado.html"><a href="qui-quadrado.html#tamanho-do-efeito"><i class="fa fa-check"></i><b>9.3</b> Tamanho do efeito</a></li>
@@ -272,7 +284,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.7" data-path="qui-quadrado.html"><a href="qui-quadrado.html#pesquisas-adicionais-1"><i class="fa fa-check"></i><b>9.7</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="9.8" data-path="qui-quadrado.html"><a href="qui-quadrado.html#questões-3"><i class="fa fa-check"></i><b>9.8</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html"><i class="fa fa-check"></i><b>10</b> Fatores de Risco</a><ul>
+<li class="chapter" data-level="10" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html"><i class="fa fa-check"></i><b>10</b> Fatores de Risco</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html#pesquisa-2"><i class="fa fa-check"></i><b>10.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="10.2" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html#execução-no-r-2"><i class="fa fa-check"></i><b>10.2</b> Execução no R</a></li>
 <li class="chapter" data-level="10.3" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html#execução-no-jasp-2"><i class="fa fa-check"></i><b>10.3</b> Execução no JASP</a></li>
@@ -282,17 +295,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.7" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html#pesquisas-adicionais-2"><i class="fa fa-check"></i><b>10.7</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="10.8" data-path="fatores-de-risco.html"><a href="fatores-de-risco.html#questões-4"><i class="fa fa-check"></i><b>10.8</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="teste-t.html"><a href="teste-t.html"><i class="fa fa-check"></i><b>11</b> Teste T</a><ul>
+<li class="chapter" data-level="11" data-path="teste-t.html"><a href="teste-t.html"><i class="fa fa-check"></i><b>11</b> Teste T</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="teste-t.html"><a href="teste-t.html#pesquisa-3"><i class="fa fa-check"></i><b>11.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="11.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-r-3"><i class="fa fa-check"></i><b>11.2</b> Execução no R</a></li>
 <li class="chapter" data-level="11.3" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito-1"><i class="fa fa-check"></i><b>11.3</b> Tamanho do efeito</a></li>
 <li class="chapter" data-level="11.4" data-path="teste-t.html"><a href="teste-t.html#execução-no-jasp-3"><i class="fa fa-check"></i><b>11.4</b> Execução no JASP</a></li>
 <li class="chapter" data-level="11.5" data-path="teste-t.html"><a href="teste-t.html#escrita-dos-resultados-2"><i class="fa fa-check"></i><b>11.5</b> Escrita dos resultados</a></li>
-<li class="chapter" data-level="11.6" data-path="teste-t.html"><a href="teste-t.html#versão-robusta-do-teste-t"><i class="fa fa-check"></i><b>11.6</b> Versão robusta do Teste T</a><ul>
+<li class="chapter" data-level="11.6" data-path="teste-t.html"><a href="teste-t.html#versão-robusta-do-teste-t"><i class="fa fa-check"></i><b>11.6</b> Versão robusta do Teste T</a>
+<ul>
 <li class="chapter" data-level="11.6.1" data-path="teste-t.html"><a href="teste-t.html#execução-no-r-4"><i class="fa fa-check"></i><b>11.6.1</b> Execução no R</a></li>
 <li class="chapter" data-level="11.6.2" data-path="teste-t.html"><a href="teste-t.html#execução-no-jasp-4"><i class="fa fa-check"></i><b>11.6.2</b> Execução no JASP</a></li>
 </ul></li>
-<li class="chapter" data-level="11.7" data-path="teste-t.html"><a href="teste-t.html#mann-whitney"><i class="fa fa-check"></i><b>11.7</b> Mann-whitney</a><ul>
+<li class="chapter" data-level="11.7" data-path="teste-t.html"><a href="teste-t.html#mann-whitney"><i class="fa fa-check"></i><b>11.7</b> Mann-whitney</a>
+<ul>
 <li class="chapter" data-level="11.7.1" data-path="teste-t.html"><a href="teste-t.html#execução-no-r-5"><i class="fa fa-check"></i><b>11.7.1</b> Execução No R</a></li>
 <li class="chapter" data-level="11.7.2" data-path="teste-t.html"><a href="teste-t.html#tamanho-do-efeito-2"><i class="fa fa-check"></i><b>11.7.2</b> Tamanho do efeito</a></li>
 <li class="chapter" data-level="11.7.3" data-path="teste-t.html"><a href="teste-t.html#execução-no-jasp-5"><i class="fa fa-check"></i><b>11.7.3</b> Execução no JASP</a></li>
@@ -303,7 +319,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.10" data-path="teste-t.html"><a href="teste-t.html#pesquisas-adicionais-3"><i class="fa fa-check"></i><b>11.10</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="11.11" data-path="teste-t.html"><a href="teste-t.html#questões-5"><i class="fa fa-check"></i><b>11.11</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>12</b> ANOVA</a><ul>
+<li class="chapter" data-level="12" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>12</b> ANOVA</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="anova.html"><a href="anova.html#pesquisa-4"><i class="fa fa-check"></i><b>12.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="12.2" data-path="anova.html"><a href="anova.html#anova-de-1-via"><i class="fa fa-check"></i><b>12.2</b> ANOVA de 1 via</a></li>
 <li class="chapter" data-level="12.3" data-path="anova.html"><a href="anova.html#execução-no-r-6"><i class="fa fa-check"></i><b>12.3</b> Execução no R</a></li>
@@ -336,7 +353,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.30" data-path="anova.html"><a href="anova.html#escrita-dos-resultados-9"><i class="fa fa-check"></i><b>12.30</b> Escrita dos resultados</a></li>
 <li class="chapter" data-level="12.31" data-path="anova.html"><a href="anova.html#questões-6"><i class="fa fa-check"></i><b>12.31</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html"><i class="fa fa-check"></i><b>13</b> ANOVA de medidas repetidas</a><ul>
+<li class="chapter" data-level="13" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html"><i class="fa fa-check"></i><b>13</b> ANOVA de medidas repetidas</a>
+<ul>
 <li class="chapter" data-level="13.1" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pesquisa-6"><i class="fa fa-check"></i><b>13.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="13.2" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#execução-no-r-11"><i class="fa fa-check"></i><b>13.2</b> Execução no R</a></li>
 <li class="chapter" data-level="13.3" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#tamanho-do-efeito-4"><i class="fa fa-check"></i><b>13.3</b> Tamanho do efeito</a></li>
@@ -345,7 +363,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.6" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#resumo-12"><i class="fa fa-check"></i><b>13.6</b> Resumo</a></li>
 <li class="chapter" data-level="13.7" data-path="anova-de-medidas-repetidas.html"><a href="anova-de-medidas-repetidas.html#pesquisas-adicionais-5"><i class="fa fa-check"></i><b>13.7</b> Pesquisas adicionais</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html"><i class="fa fa-check"></i><b>14</b> Modelo linear misto</a><ul>
+<li class="chapter" data-level="14" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html"><i class="fa fa-check"></i><b>14</b> Modelo linear misto</a>
+<ul>
 <li class="chapter" data-level="14.1" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#pesquisa-7"><i class="fa fa-check"></i><b>14.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="14.2" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#execução-no-r-12"><i class="fa fa-check"></i><b>14.2</b> execução no R</a></li>
 <li class="chapter" data-level="14.3" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#execução-no-jasp-13"><i class="fa fa-check"></i><b>14.3</b> Execução no JASP</a></li>
@@ -353,7 +372,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.5" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#resumo-13"><i class="fa fa-check"></i><b>14.5</b> Resumo</a></li>
 <li class="chapter" data-level="14.6" data-path="modelo-linear-misto.html"><a href="modelo-linear-misto.html#pesquisas-adicionais-6"><i class="fa fa-check"></i><b>14.6</b> Pesquisas adicionais</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="correlação.html"><a href="correlação.html"><i class="fa fa-check"></i><b>15</b> Correlação</a><ul>
+<li class="chapter" data-level="15" data-path="correlação.html"><a href="correlação.html"><i class="fa fa-check"></i><b>15</b> Correlação</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="correlação.html"><a href="correlação.html#pesquisa-8"><i class="fa fa-check"></i><b>15.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="15.2" data-path="correlação.html"><a href="correlação.html#execução-no-r-13"><i class="fa fa-check"></i><b>15.2</b> Execução no R</a></li>
 <li class="chapter" data-level="15.3" data-path="correlação.html"><a href="correlação.html#execução-no-jasp-14"><i class="fa fa-check"></i><b>15.3</b> Execução no JASP</a></li>
@@ -362,7 +382,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.6" data-path="correlação.html"><a href="correlação.html#pesquisas-adicionais-7"><i class="fa fa-check"></i><b>15.6</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="15.7" data-path="correlação.html"><a href="correlação.html#questões-7"><i class="fa fa-check"></i><b>15.7</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>16</b> Regressão linear simples</a><ul>
+<li class="chapter" data-level="16" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html"><i class="fa fa-check"></i><b>16</b> Regressão linear simples</a>
+<ul>
 <li class="chapter" data-level="16.1" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#breve-explicação-conceitual"><i class="fa fa-check"></i><b>16.1</b> Breve explicação conceitual</a></li>
 <li class="chapter" data-level="16.2" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisa-9"><i class="fa fa-check"></i><b>16.2</b> Pesquisa</a></li>
 <li class="chapter" data-level="16.3" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#execução-no-r-14"><i class="fa fa-check"></i><b>16.3</b> Execução no R</a></li>
@@ -372,7 +393,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.7" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#pesquisas-adicionais-8"><i class="fa fa-check"></i><b>16.7</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="16.8" data-path="regressão-linear-simples.html"><a href="regressão-linear-simples.html#questões-8"><i class="fa fa-check"></i><b>16.8</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html"><i class="fa fa-check"></i><b>17</b> Regressão linear múltipla</a><ul>
+<li class="chapter" data-level="17" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html"><i class="fa fa-check"></i><b>17</b> Regressão linear múltipla</a>
+<ul>
 <li class="chapter" data-level="17.1" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisa-10"><i class="fa fa-check"></i><b>17.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="17.2" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-r-15"><i class="fa fa-check"></i><b>17.2</b> Execução no R</a></li>
 <li class="chapter" data-level="17.3" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#execução-no-jasp-16"><i class="fa fa-check"></i><b>17.3</b> Execução no JASP</a></li>
@@ -382,7 +404,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17.7" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#pesquisas-adicionais-9"><i class="fa fa-check"></i><b>17.7</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="17.8" data-path="regressão-linear-múltipla.html"><a href="regressão-linear-múltipla.html#questões-9"><i class="fa fa-check"></i><b>17.8</b> Questões</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html"><i class="fa fa-check"></i><b>18</b> Regressão logística binária</a><ul>
+<li class="chapter" data-level="18" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html"><i class="fa fa-check"></i><b>18</b> Regressão logística binária</a>
+<ul>
 <li class="chapter" data-level="18.1" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#pesquisa-11"><i class="fa fa-check"></i><b>18.1</b> Pesquisa</a></li>
 <li class="chapter" data-level="18.2" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#execução-no-r-16"><i class="fa fa-check"></i><b>18.2</b> Execução no R</a></li>
 <li class="chapter" data-level="18.3" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#execução-no-jasp-17"><i class="fa fa-check"></i><b>18.3</b> Execução no JASP</a></li>
@@ -412,7 +435,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="estatística-descritiva" class="section level1">
+<div id="estatística-descritiva" class="section level1" number="4">
 <h1><span class="header-section-number">Cap. 4</span> Estatística Descritiva</h1>
 <div class="objectives">
 <p><strong>Objetivos do capítulo</strong><br />
@@ -481,16 +504,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>É importante atentar que em todas estas técnicas, mas especialmente nas gráficas, deve-se evitar gerar distorções ao entendimento e interpretação dos resultados. Há casos de pessoas e profissionais que chegaram a sofrer sanções jurídicas por distorções intencionais em apresentação estatísticas. Há recomendações nacionais e internacionais que visam auxiliar no desenvolvimento de gráficos e tabelas e, com grande frequência, periódicos e editoras também exigem formatos específicos na apresentação dos resultados.</p>
-<div id="tabelas" class="section level2">
+<div id="tabelas" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Tabelas</h2>
 <p>As tabelas são recursos estatísticos que permitem a apresentação dos resultados de uma pesquisa de maneira resumida, reunida e objetiva. É possível utilizá-las para apresentação de apenas uma ou múltiplas variáveis, que podem ser categóricas ou contínuas. Todas as tabelas precisam de títulos e, eventualmente, algumas notas podem auxiliar no entendimento dos resultados.</p>
 <p>O formato padronizado para desenvolvimento de tabelas costuma variar de revista para revista No entanto, é possível notar que, quase sempre, os números são arredondados em 2 casas decimais e apenas as linhas possuem bordas. A imagem abaixo apresenta uma tabela construída pelas recomendações da American Psychological Association (APA).</p>
 <p><img src="img/cap_desc_tabela.PNG" /></p>
 </div>
-<div id="gráficos" class="section level2">
+<div id="gráficos" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Gráficos</h2>
 <p>Gráficos são representações visuais utilizadas para exibir dados. Da mesma forma que tabelas, eles podem ser formados por uma ou múltiplas variáveis. Quando uma única variável é apresentada em um gráfico, sua finalidade tende a ser apenas descritiva. Quando duas ou mais variáveis são apresentadas, eles auxiliam a comparar os resultados entre grupos ou explorar o relacionamento entre variáveis.</p>
-<p>Se bem feitos, os gráficos são extremamente úteis e auxiliam o rápido entendimento dos resultados obtidos em uma pesquisa. Como aponta Morettin e Bussab <span class="citation">(<a href="#ref-morettin_bussab_2010" role="doc-biblioref">2010</a>)</span>, eles possibilitam:</p>
+<p>Se bem feitos, os gráficos são extremamente úteis e auxiliam o rápido entendimento dos resultados obtidos em uma pesquisa. Como aponta Morettin e Bussab <span class="citation">(<a href="regressão-logística-binária.html#ref-morettin_bussab_2010" role="doc-biblioref">2010</a>)</span>, eles possibilitam:</p>
 <ol style="list-style-type: lower-alpha">
 <li>Buscar padrões e relações;<br />
 </li>
@@ -520,7 +543,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="img/cap_graficos.PNG" /></p>
 <p>A apresentação de gráficos tende a seguir um desenvolvimento hierárquico. Inicialmente, gráficos univariados para variáveis categóricas e contínuas são criados. Em seguida, gráficos apresentando diferenças e relações entre grupos e variáveis são feitos. Na seção <a href="estatística-descritiva.html#pesquisa">Pesquisa</a>, diferentes gráficos serão gerados para ilustrar o processo.</p>
 </div>
-<div id="medidas-de-posição-e-dispersão" class="section level2">
+<div id="medidas-de-posição-e-dispersão" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> Medidas de posição e dispersão</h2>
 <p>Uma vez que é pragmaticamente inviável apresentar detalhadamente todos os dados obtidos em uma pesquisa, há um conjunto de números podem ser utilizados para <u>resumir</u> todo o conjunto. Eles costumam ser chamados de números-síntese, medidas resumo, medidas estatísticas ou apenas estatísticas e podem ser agrupados em <u>medidas de posição</u> e <u>medidas de dispersão</u>, que serão descritas a seguir.</p>
 <p><mark>Medidas de posição</mark>: São valores que representam a concentração dos dados observados. Podem ser divididas em medidas de tendência central, medidas separatrizes e medidas de posição relativa.</p>
@@ -535,7 +558,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="img/cap_desc_medidas_posicao_dispersao2.PNG" /></p>
 <p>As principais medidas serão agora apresentadas de uma maneira simples. Esse formato é proposital, uma vez que a proposta do livro é discutir tais conceitos pela apresentação de pesquisas específicas e previamente publicadas.</p>
 </div>
-<div id="média" class="section level2">
+<div id="média" class="section level2" number="4.4">
 <h2><span class="header-section-number">4.4</span> Média</h2>
 <p>A média é a MTC mais comum e mais intuitiva. Seu valor representa o “centro de gravidade” da distribuição, descrevendo a maior concentração dos valores em torno dela. Assim, ela resume o conjunto de dados e pode ser utilizada para substituir os outros valores, o que é especialmente útil quando há casos ausentes.</p>
 <p>Para ilustrar, imagine a seguinte situação: 10 pacientes foram avaliados por um teste de inteligência e apresentaram os resultados abaixo descritos:</p>
@@ -721,9 +744,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><em>Nota: Uma medida sensível significa que ela é influenciada por todos os outros valores.</em></p>
 <p><mark>Exemplo de aplicações</mark>: Praticamente, em todas as pesquisas se utiliza a média para resumir o volume de dados obtidos. Como exemplos em Psicologia, a média de valores de inventários e testes psicológicos, a média do tempo de reação que um participante demora para responder à uma atividade específica e a média de consultas clínicas que em média um profissional realiza.</p>
 </div>
-<div id="mediana" class="section level2">
+<div id="mediana" class="section level2" number="4.5">
 <h2><span class="header-section-number">4.5</span> Mediana</h2>
-<p>A mediana é uma medida que representa o centro do conjunto de dados quando se considera a quantidade de elementos presentes. Portanto, a mediana divide a quantidade de dados em duas partes iguais, em que 50% dos dados estão abaixo dela e 50% dos dados estão acima dela. A mediana pode ser classificada tanto como uma medida de tendência central, como uma separatriz <span class="citation">(Aguiar Neto, <a href="#ref-neto2010" role="doc-biblioref">2010</a>)</span>.</p>
+<p>A mediana é uma medida que representa o centro do conjunto de dados quando se considera a quantidade de elementos presentes. Portanto, a mediana divide a quantidade de dados em duas partes iguais, em que 50% dos dados estão abaixo dela e 50% dos dados estão acima dela. A mediana pode ser classificada tanto como uma medida de tendência central, como uma separatriz <span class="citation">(<a href="regressão-logística-binária.html#ref-neto2010" role="doc-biblioref">Aguiar Neto, 2010</a>)</span>.</p>
 <p>Dessa forma, os resultados da mediana são iguais aos resultados do 2º quartil, 5º decil e percentil 50. Comparada com a média, os resultados obtido pela mediana são mais robustos ou resistentes aos valores atípicos ou anômalos, apesar de menos intuitivos.</p>
 <p>Para dividir a distribuição em duas partes iguais, a realização da mediana precisa de alguns procedimentos. Repare que abaixo estão os mesmos resultados apresentados na seção da média:</p>
 <p><em>90.6</em>, <em>102.8</em>, <em>87.47</em>, <em>123.9</em>, <em>104.9</em>, <em>87.69</em>, <em>107.3</em>, <em>111.1</em>, <em>108.6</em>, <em>95.42</em> and <em>122.7</em></p>
@@ -759,22 +782,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p><mark>Exemplo de aplicações</mark>: Situações em que a distribuição é muito assimétrica. Variáveis econômicas como salário e pobreza costumam trabalhar com a mediana dos dados.</p>
 </div>
-<div id="moda" class="section level2">
+<div id="moda" class="section level2" number="4.6">
 <h2><span class="header-section-number">4.6</span> Moda</h2>
 <p>A moda é a realização mais frequente de um conjunto de dados. Salvo algumas exceções, a moda não costuma ser utilizada em análises estatísticas, uma vez que representa mal o conjunto de dados.</p>
 <p><mark>Exemplo de aplicações</mark>: Situações em saúde pública, como a idade mais típica que uma menina tem o primeiro filho, dia e/ou horário modal de admissão em um hospital. Situações econômicas de determinação de salários mínimos, eventualmente, também pode contar com resultados modais.</p>
 </div>
-<div id="amplitude" class="section level2">
+<div id="amplitude" class="section level2" number="4.7">
 <h2><span class="header-section-number">4.7</span> Amplitude</h2>
 <p>A amplitude é uma medida de dispersão que indica a variabilidade dos dados. O procedimento para seu cálculo é a subtração entre o maior e o menor valor de um conjunto de dados.</p>
 </div>
-<div id="amplitude-interquartil" class="section level2">
+<div id="amplitude-interquartil" class="section level2" number="4.8">
 <h2><span class="header-section-number">4.8</span> Amplitude interquartil</h2>
 <p>A amplitude interquartil também é chamada de intervalo interquartil. Essa medida apresenta a variabilidade dos dados de maneira insensível a valores extremos. Ela é computada pela subtração do primeiro quartil (Q1) pelo terceiro quartil (Q3), ou seja, <code>Q3-Q1</code>. Os quartis são medidas que indicam posições de separação no conjunto ordenado de dados.</p>
 <p>O primeiro quartil indica o valor onde estão até 25% dos dados, o segundo quartil tem o mesmo valor da mediana e o terceiro quartil indica o valor onde estão até 75% dos dados.</p>
 <p>Como a amplitude interquartil considera apenas a variabilidade em torno do centro, ela é uma medida considerada mais estável ou robusta quando comparada a outras medidas de dispersão.</p>
 </div>
-<div id="variância-e-desvio-padrão" class="section level2">
+<div id="variância-e-desvio-padrão" class="section level2" number="4.9">
 <h2><span class="header-section-number">4.9</span> Variância e Desvio-padrão</h2>
 <p>A variância e o desvio-padrão são duas medidas de dispersão frequentemente utilizadas em estatística de maneira intercambiável.</p>
 <p>A variância indica a variabilidade quadrática de um conjunto de dados, considerando todos os valores da distribuição. Pela sua estrutura matemática, seu resultado expressa o desvio <u>quadrático</u> médio e, com isso, seu valor <u>não</u> está na mesma unidade dos dados originais.</p>
@@ -792,9 +815,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \end{equation}\]</span></p>
 <p>Após estas apresentações teóricas, espera-se que seja possível apresentar a pesquisa a seguir, bem como implementar parte dos conceitos nos dados obtidos.</p>
 </div>
-<div id="momentos-estatísticos" class="section level2">
+<div id="momentos-estatísticos" class="section level2" number="4.10">
 <h2><span class="header-section-number">4.10</span> Momentos estatísticos</h2>
-<p>O conceito de momentos em estatística é bastante útil para destacar um conjunto de fórmulas que permitem descrever o conjunto de dados obtidos em uma pesquisa <span class="citation">(Jenkins-Smith et al., <a href="#ref-JenkinsSmith2017" role="doc-biblioref">2017</a>)</span>. Tecnicamente, ele resume o que foi apresentado separadamente nas medidas de posição e dispersão. Por eles serem descritos em formato analítico, acabam sendo pouco comentados em Psicologia, infelizmente.</p>
+<p>O conceito de momentos em estatística é bastante útil para destacar um conjunto de fórmulas que permitem descrever o conjunto de dados obtidos em uma pesquisa <span class="citation">(<a href="regressão-logística-binária.html#ref-JenkinsSmith2017" role="doc-biblioref">Jenkins-Smith et al., 2017</a>)</span>. Tecnicamente, ele resume o que foi apresentado separadamente nas medidas de posição e dispersão. Por eles serem descritos em formato analítico, acabam sendo pouco comentados em Psicologia, infelizmente.</p>
 <ol style="list-style-type: decimal">
 <li>A média (valor esperado) <span class="math inline">\(E[X]\)</span>:</li>
 </ol>
@@ -814,9 +837,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>Indica o achatamento. Caso o Coeficiente de Kurtose seja igual a 3, o formato da distribuição é simétrico ou Mesocúrtica. Caso seja menor do que 3, ela tem formato platicurtico (baixa com caudas curtas) e acima de 3 o formato é leptocurtico (alta com caudas longas).</p>
 <p><img src="img/cap_desc_curtose.PNG" /></p>
-<p>Coletaral a apresentação, o surgimento do termo “momentos estatísticos” parece ter surgido de trabalhos de Pearson em física, especialmente sobre elasticidade, inércia e momentos de ruptura <span class="citation">(David, <a href="#ref-David1998" role="doc-biblioref">1998</a>)</span></p>
+<p>Coletaral a apresentação, o surgimento do termo “momentos estatísticos” parece ter surgido de trabalhos de Pearson em física, especialmente sobre elasticidade, inércia e momentos de ruptura <span class="citation">(<a href="regressão-logística-binária.html#ref-David1998" role="doc-biblioref">David, 1998</a>)</span></p>
 </div>
-<div id="pesquisa" class="section level2">
+<div id="pesquisa" class="section level2" number="4.11">
 <h2><span class="header-section-number">4.11</span> Pesquisa</h2>
 <div class="base">
 <p>A base desta pesquisa está disponível em formato <strong>R (Rdata)</strong> e em <strong>CSV</strong>, que é lido pelo JASP. Clique na opção desejada.</p>
@@ -826,15 +849,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Neste capítulo, vamos utilizar a pesquisa intitulada <a href="https://doi.org/10.1590/0102.3772e36412">“Depression and Anxiety Symptoms in a Representative Sample of Undergraduate Students in Spain, Portugal, and Brazil”</a>. Nessa pesquisa, sou o coautor e o pesquisador responsável para correspondência. O objetivo deste estudo foi desenvolver um mapa epidemiológico de sintomas de ansiedade e depressão em universitários em três países, bem como investigar possíveis relações entre tais condições de saúde e fatores sociodemográficos. Para acessar eventuais transtornos depressivos, o Inventário Beck de Depressão (BDI) foi utilizado e para acessar condições de ansiedade, o Inventário Beck de Ansiedade (BAI) foi utilizado. Em ambos os inventários, valores altos sugerem que condições de agravo à saúde mental podem estar presentes.</p>
 <p>Um diferencial importante do trabalho foi a seleção amostral. Partiu-se de uma amostra estratificada (probabilística) dos estudantes de três universidades, PUC-Rio (Brasil), Universidade de Extremadura (Espanha) e Universidade de Coimbra (Portugal). Isso permitiu ter maior validade externa dos resultados.</p>
 </div>
-<div id="execução-no-r" class="section level2">
+<div id="execução-no-r" class="section level2" number="4.12">
 <h2><span class="header-section-number">4.12</span> Execução no R</h2>
 <p>Inicialmente, é necessário carregar a base de dados previamente descrita para o ambiente R. Este procedimento será necessário para todos os capítulos do livro.</p>
 <p>Frequentemente, uma primeira tabela informativa começa descrevendo as variáveis categóricas, que deve apresentar suas contagens e proporções. Nesta pesquisa de agora, tanto a variável <u>country</u> como <u>sex</u> são categóricas e serão utilizadas.</p>
 <p>como três países fizeram parte da pesquisa, os dados serão agrupados por eles. O desenvolvimento desta tabela pode ser feito com pacote <code>janitor</code>, tal como demonstrado a seguir.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="estatística-descritiva.html#cb1-1"></a>Dataset <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1-2"><a href="estatística-descritiva.html#cb1-2"></a><span class="st">  </span><span class="kw">tabyl</span>(country) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1-3"><a href="estatística-descritiva.html#cb1-3"></a><span class="st">  </span><span class="kw">adorn_totals</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1-4"><a href="estatística-descritiva.html#cb1-4"></a><span class="st">  </span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="estatística-descritiva.html#cb1-1" aria-hidden="true" tabindex="-1"></a>Dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb1-2"><a href="estatística-descritiva.html#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(country) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-3"><a href="estatística-descritiva.html#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_totals</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb1-4"><a href="estatística-descritiva.html#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pander</span>()</span></code></pre></div>
 <table style="width:39%;">
 <colgroup>
 <col width="15%" />
@@ -872,11 +895,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>A adição de um outro agrupador relacionado ao sexo é também importante. Note que existem casos ausentes nesta variável. Isso ocorre com bastante frequência e há diferentes estratégias para lidar com isso, que serão discutidas em momento oportuno. Para que valores ausentes não sejam apresentados, a função <code>filter</code> será implementada. É importante atentar que os dados ausentes <u>não</u> foram excluídos. Eles apenas não são apresentados.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="estatística-descritiva.html#cb2-1"></a>Dataset <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb2-2"><a href="estatística-descritiva.html#cb2-2"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(sex)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb2-3"><a href="estatística-descritiva.html#cb2-3"></a><span class="st">  </span><span class="kw">tabyl</span>(sex, country) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb2-4"><a href="estatística-descritiva.html#cb2-4"></a><span class="st">  </span><span class="kw">adorn_totals</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb2-5"><a href="estatística-descritiva.html#cb2-5"></a><span class="st">  </span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="estatística-descritiva.html#cb2-1" aria-hidden="true" tabindex="-1"></a>Dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="estatística-descritiva.html#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="estatística-descritiva.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(sex, country) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-4"><a href="estatística-descritiva.html#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_totals</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb2-5"><a href="estatística-descritiva.html#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pander</span>()</span></code></pre></div>
 <table style="width:53%;">
 <colgroup>
 <col width="11%" />
@@ -914,14 +937,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Para apresentar a quantidade total de participantes, bem como a quantidade e a porcentagem de homens e mulheres por país, a codificação torna-se um pouco mais densa. A tabela a seguir reproduz parcialmente a tabela 1 do artigo publicado.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="estatística-descritiva.html#cb3-1"></a>Dataset <span class="op">%&gt;%</span></span>
-<span id="cb3-2"><a href="estatística-descritiva.html#cb3-2"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(sex)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb3-3"><a href="estatística-descritiva.html#cb3-3"></a><span class="st">  </span><span class="kw">tabyl</span>(country, sex) <span class="op">%&gt;%</span></span>
-<span id="cb3-4"><a href="estatística-descritiva.html#cb3-4"></a><span class="st">  </span><span class="kw">adorn_totals</span>(<span class="kw">c</span>(<span class="st">&quot;row&quot;</span>, <span class="st">&quot;col&quot;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb3-5"><a href="estatística-descritiva.html#cb3-5"></a><span class="st">  </span><span class="kw">adorn_percentages</span>(<span class="st">&quot;row&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb3-6"><a href="estatística-descritiva.html#cb3-6"></a><span class="st">  </span><span class="kw">adorn_pct_formatting</span>(<span class="dt">rounding =</span> <span class="st">&quot;half up&quot;</span>, <span class="dt">digits =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span></span>
-<span id="cb3-7"><a href="estatística-descritiva.html#cb3-7"></a><span class="st">  </span><span class="kw">adorn_ns</span>() <span class="op">%&gt;%</span></span>
-<span id="cb3-8"><a href="estatística-descritiva.html#cb3-8"></a><span class="st">  </span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="estatística-descritiva.html#cb3-1" aria-hidden="true" tabindex="-1"></a>Dataset <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="estatística-descritiva.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-3"><a href="estatística-descritiva.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(country, sex) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="estatística-descritiva.html#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_totals</span>(<span class="fu">c</span>(<span class="st">&quot;row&quot;</span>, <span class="st">&quot;col&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-5"><a href="estatística-descritiva.html#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_percentages</span>(<span class="st">&quot;row&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-6"><a href="estatística-descritiva.html#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_pct_formatting</span>(<span class="at">rounding =</span> <span class="st">&quot;half up&quot;</span>, <span class="at">digits =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-7"><a href="estatística-descritiva.html#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_ns</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-8"><a href="estatística-descritiva.html#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pander</span>()</span></code></pre></div>
 <table style="width:69%;">
 <colgroup>
 <col width="15%" />
@@ -967,9 +990,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Enquanto as tabelas com variáveis categóricas apresentam contagens e suas respectivas porcentagens, tabelas para variáveis contínuas costumam utilizar medidas de posição e dispersão. A média e a mediana são os sumários mais utilizados para indicar a posição ou a concentração dos dados. Por sua vez, o desvio-padrão e a amplitude ou intervalo interquartil são utilizados para indicar o afastamento dos dados dessas medidas de posição.</p>
 <p>O R oferece muitos pacotes especializados em tabelas descritivas, cada qual com características positivas e limitadoras. Neste capítulo, o pacote <code>arsenal</code> será utilizado.</p>
 <p>De maneira análoga à construção da primeira tabela deste capítuo, os valores do BDI e do BAI serão apresentados em função do país do participante.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="estatística-descritiva.html#cb4-1"></a>arsenal<span class="op">::</span><span class="kw">tableby</span>(country <span class="op">~</span><span class="st"> </span>bdi_sum <span class="op">+</span><span class="st"> </span>bai_sum, </span>
-<span id="cb4-2"><a href="estatística-descritiva.html#cb4-2"></a>                 <span class="dt">test =</span> <span class="ot">FALSE</span>, <span class="dt">data =</span> Dataset) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb4-3"><a href="estatística-descritiva.html#cb4-3"></a><span class="st">  </span><span class="kw">summary</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="estatística-descritiva.html#cb4-1" aria-hidden="true" tabindex="-1"></a>arsenal<span class="sc">::</span><span class="fu">tableby</span>(country <span class="sc">~</span> bdi_sum <span class="sc">+</span> bai_sum, </span>
+<span id="cb4-2"><a href="estatística-descritiva.html#cb4-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">test =</span> <span class="cn">FALSE</span>, <span class="at">data =</span> Dataset) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-3"><a href="estatística-descritiva.html#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1040,10 +1063,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>É também possível reunir tais resultados a partir do sexo do participante.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="estatística-descritiva.html#cb5-1"></a>arsenal<span class="op">::</span><span class="kw">tableby</span>(sex <span class="op">~</span><span class="st"> </span>bdi_sum <span class="op">+</span><span class="st"> </span>bai_sum, </span>
-<span id="cb5-2"><a href="estatística-descritiva.html#cb5-2"></a>                 <span class="dt">test =</span> <span class="ot">FALSE</span>, </span>
-<span id="cb5-3"><a href="estatística-descritiva.html#cb5-3"></a>                 <span class="dt">data =</span> Dataset) <span class="op">%&gt;%</span></span>
-<span id="cb5-4"><a href="estatística-descritiva.html#cb5-4"></a><span class="st">  </span><span class="kw">summary</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="estatística-descritiva.html#cb5-1" aria-hidden="true" tabindex="-1"></a>arsenal<span class="sc">::</span><span class="fu">tableby</span>(sex <span class="sc">~</span> bdi_sum <span class="sc">+</span> bai_sum, </span>
+<span id="cb5-2"><a href="estatística-descritiva.html#cb5-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">test =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb5-3"><a href="estatística-descritiva.html#cb5-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> Dataset) <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="estatística-descritiva.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1105,11 +1128,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>A apresentação agrupando pelo país e sexo do participante é possível e reúne mais informações. A tabela encontra-se abaixo:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="estatística-descritiva.html#cb6-1"></a>arsenal<span class="op">::</span><span class="kw">tableby</span>(<span class="kw">interaction</span>(sex ,country) <span class="op">~</span><span class="st"> </span>bdi_sum <span class="op">+</span><span class="st"> </span>bai_sum, </span>
-<span id="cb6-2"><a href="estatística-descritiva.html#cb6-2"></a>                 <span class="dt">control=</span>arsenal<span class="op">::</span><span class="kw">tableby.control</span>(<span class="dt">test=</span><span class="ot">FALSE</span>, </span>
-<span id="cb6-3"><a href="estatística-descritiva.html#cb6-3"></a>                                                  <span class="dt">total=</span><span class="ot">FALSE</span>),</span>
-<span id="cb6-4"><a href="estatística-descritiva.html#cb6-4"></a>                 <span class="dt">data =</span> Dataset) <span class="op">%&gt;%</span></span>
-<span id="cb6-5"><a href="estatística-descritiva.html#cb6-5"></a><span class="st">  </span><span class="kw">summary</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="estatística-descritiva.html#cb6-1" aria-hidden="true" tabindex="-1"></a>arsenal<span class="sc">::</span><span class="fu">tableby</span>(<span class="fu">interaction</span>(sex ,country) <span class="sc">~</span> bdi_sum <span class="sc">+</span> bai_sum, </span>
+<span id="cb6-2"><a href="estatística-descritiva.html#cb6-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">control=</span>arsenal<span class="sc">::</span><span class="fu">tableby.control</span>(<span class="at">test=</span><span class="cn">FALSE</span>, </span>
+<span id="cb6-3"><a href="estatística-descritiva.html#cb6-3" aria-hidden="true" tabindex="-1"></a>                                                  <span class="at">total=</span><span class="cn">FALSE</span>),</span>
+<span id="cb6-4"><a href="estatística-descritiva.html#cb6-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> Dataset) <span class="sc">%&gt;%</span></span>
+<span id="cb6-5"><a href="estatística-descritiva.html#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code></pre></div>
 <table>
 <colgroup>
 <col width="20%" />
@@ -1207,7 +1230,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="gráficos-1" class="section level2">
+<div id="gráficos-1" class="section level2" number="4.13">
 <h2><span class="header-section-number">4.13</span> Gráficos</h2>
 <p>Como previamente exposto, os gráficos são excelentes recursos visuais para apresentação dos resultados obtidos em uma pesquisa. No R, a principal máquina gráfica é o <code>ggplot.</code> Para executar um gráfico, pelo menos 3 argumentos são necessários:</p>
 <ol style="list-style-type: decimal">
@@ -1229,60 +1252,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>É importante notar que apesar dos argumentos utilizados na sintaxe serem similares aos utilizados em toda família tidyverse, a ligação <code>%&gt;%</code> é substituída pelo <code>+</code>.</p>
 </div>
-<div id="variável-discreta" class="section level2">
+<div id="variável-discreta" class="section level2" number="4.14">
 <h2><span class="header-section-number">4.14</span> 1 variável discreta</h2>
 <p>Quando há apenas uma variável discreta (incluindo aqui as categóricas), os gráficos apresentam a distribuição dos dados por contagens e/ou proporções. Para esta apresentação, se recomenda a utilização do <u>gráfico de barras</u>, <u>colunas</u> ou <u>setor</u>.</p>
 <p>O gráfico de barras abaixo apresenta a contagem absoluta dos participantes pesquisados em cada país.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="estatística-descritiva.html#cb7-1"></a><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> country)) <span class="op">+</span></span>
-<span id="cb7-2"><a href="estatística-descritiva.html#cb7-2"></a><span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span></span>
-<span id="cb7-3"><a href="estatística-descritiva.html#cb7-3"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;País&quot;</span>, </span>
-<span id="cb7-4"><a href="estatística-descritiva.html#cb7-4"></a>       <span class="dt">title =</span> <span class="st">&quot;Número de participantes nos países investigados&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="estatística-descritiva.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Dataset, <span class="fu">aes</span>(<span class="at">x =</span> country)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="estatística-descritiva.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb7-3"><a href="estatística-descritiva.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;País&quot;</span>, </span>
+<span id="cb7-4"><a href="estatística-descritiva.html#cb7-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Número de participantes nos países investigados&quot;</span>)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Esse gráfico permite um primeiro entendimento da distribuição dos dados. No entanto, a simples contagem de valores pode gerar uma percepção diferente caso a pesquisa tenha muitos ou poucos sujeitos. Para evitar isso, sugere-se a apresentar as proporções em vez das contagens.</p>
 <p>A mudança da contagem para proporções pode ser feita por um recurso do pacote <code>scales</code>. A adição dos valores textuais às colunas tende e auxiliar a visualização.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="estatística-descritiva.html#cb8-1"></a><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> country, <span class="dt">y =</span> ..prop.., <span class="dt">group =</span> <span class="dv">1</span>)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb8-2"><a href="estatística-descritiva.html#cb8-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;count&quot;</span>) <span class="op">+</span></span>
-<span id="cb8-3"><a href="estatística-descritiva.html#cb8-3"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span>scales<span class="op">::</span><span class="kw">percent</span>(<span class="kw">round</span>(..prop..,<span class="dv">2</span>)), </span>
-<span id="cb8-4"><a href="estatística-descritiva.html#cb8-4"></a>                <span class="dt">y=</span>..prop..), </span>
-<span id="cb8-5"><a href="estatística-descritiva.html#cb8-5"></a>            <span class="dt">stat=</span> <span class="st">&quot;count&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>, </span>
-<span id="cb8-6"><a href="estatística-descritiva.html#cb8-6"></a>            <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">position =</span> <span class="kw">position_stack</span>(<span class="dt">vjust =</span> <span class="fl">0.5</span>)) <span class="op">+</span></span>
-<span id="cb8-7"><a href="estatística-descritiva.html#cb8-7"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> scales<span class="op">::</span><span class="kw">percent_format</span>()) <span class="op">+</span></span>
-<span id="cb8-8"><a href="estatística-descritiva.html#cb8-8"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;País&quot;</span>,</span>
-<span id="cb8-9"><a href="estatística-descritiva.html#cb8-9"></a>       <span class="dt">title =</span> </span>
-<span id="cb8-10"><a href="estatística-descritiva.html#cb8-10"></a>         <span class="st">&quot;Proporção de participantes em cada país investigado&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="estatística-descritiva.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Dataset, <span class="fu">aes</span>(<span class="at">x =</span> country, <span class="at">y =</span> ..prop.., <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span> </span>
+<span id="cb8-2"><a href="estatística-descritiva.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;count&quot;</span>) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="estatística-descritiva.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>scales<span class="sc">::</span><span class="fu">percent</span>(<span class="fu">round</span>(..prop..,<span class="dv">2</span>)), </span>
+<span id="cb8-4"><a href="estatística-descritiva.html#cb8-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">y=</span>..prop..), </span>
+<span id="cb8-5"><a href="estatística-descritiva.html#cb8-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">stat=</span> <span class="st">&quot;count&quot;</span>, <span class="at">color =</span> <span class="st">&quot;white&quot;</span>, </span>
+<span id="cb8-6"><a href="estatística-descritiva.html#cb8-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">3</span>, <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="estatística-descritiva.html#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>()) <span class="sc">+</span></span>
+<span id="cb8-8"><a href="estatística-descritiva.html#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;País&quot;</span>,</span>
+<span id="cb8-9"><a href="estatística-descritiva.html#cb8-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> </span>
+<span id="cb8-10"><a href="estatística-descritiva.html#cb8-10" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;Proporção de participantes em cada país investigado&quot;</span>)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O gráfico de setor (as vezes chamado de polar, pizza ou torta) é também uma opção. O aspecto principal desse gráfico é o tamanho proporcional dos segmentos.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="estatística-descritiva.html#cb9-1"></a>Dataset <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb9-2"><a href="estatística-descritiva.html#cb9-2"></a><span class="st">  </span><span class="kw">count</span>(country) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb9-3"><a href="estatística-descritiva.html#cb9-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">pct =</span> n<span class="op">/</span><span class="kw">sum</span>(n)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb9-4"><a href="estatística-descritiva.html#cb9-4"></a><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x=</span><span class="st">&quot;&quot;</span>, <span class="dt">y=</span> pct, <span class="dt">fill=</span>country)) <span class="op">+</span></span>
-<span id="cb9-5"><a href="estatística-descritiva.html#cb9-5"></a><span class="st">  </span><span class="kw">geom_col</span>() <span class="op">+</span></span>
-<span id="cb9-6"><a href="estatística-descritiva.html#cb9-6"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> scales<span class="op">::</span><span class="kw">percent</span>(<span class="kw">round</span>(pct,<span class="dv">3</span>))), </span>
-<span id="cb9-7"><a href="estatística-descritiva.html#cb9-7"></a>            <span class="dt">position =</span> <span class="kw">position_stack</span>(<span class="dt">vjust =</span> <span class="fl">0.5</span>))<span class="op">+</span></span>
-<span id="cb9-8"><a href="estatística-descritiva.html#cb9-8"></a><span class="st">  </span><span class="kw">coord_polar</span>(<span class="dt">theta =</span> <span class="st">&quot;y&quot;</span>) <span class="op">+</span></span>
-<span id="cb9-9"><a href="estatística-descritiva.html#cb9-9"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Proporção de participantes em cada país&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="estatística-descritiva.html#cb9-1" aria-hidden="true" tabindex="-1"></a>Dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="estatística-descritiva.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(country) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="estatística-descritiva.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> n<span class="sc">/</span><span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-4"><a href="estatística-descritiva.html#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x=</span><span class="st">&quot;&quot;</span>, <span class="at">y=</span> pct, <span class="at">fill=</span>country)) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="estatística-descritiva.html#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb9-6"><a href="estatística-descritiva.html#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(<span class="fu">round</span>(pct,<span class="dv">3</span>))), </span>
+<span id="cb9-7"><a href="estatística-descritiva.html#cb9-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>))<span class="sc">+</span></span>
+<span id="cb9-8"><a href="estatística-descritiva.html#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb9-9"><a href="estatística-descritiva.html#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Proporção de participantes em cada país&quot;</span>)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
-<div id="variável-contínua" class="section level2">
+<div id="variável-contínua" class="section level2" number="4.15">
 <h2><span class="header-section-number">4.15</span> 1 variável contínua</h2>
 <p>Quando uma única variável deve ser apresentada e ela é continua, os melhores gráficos para apresentar a distribuição dos dados são o histograma, densidade (kernel) e o boxplot.</p>
 <p>Abaixo um histograma da idade dos participantes.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="estatística-descritiva.html#cb10-1"></a><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> age)) <span class="op">+</span></span>
-<span id="cb10-2"><a href="estatística-descritiva.html#cb10-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">30</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;#56B4E9&quot;</span>) <span class="op">+</span></span>
-<span id="cb10-3"><a href="estatística-descritiva.html#cb10-3"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Distribuição da idade dos participantes&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="estatística-descritiva.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Dataset, <span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="estatística-descritiva.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">30</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#56B4E9&quot;</span>) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="estatística-descritiva.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distribuição da idade dos participantes&quot;</span>)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-18-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O histograma é formado por diversas barras unidas, possibilitando ter um entendimento dos intervalos entre cada um dos valores.</p>
 <p>Abaixo um gráfico de densidade da idade:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="estatística-descritiva.html#cb11-1"></a><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> age)) <span class="op">+</span></span>
-<span id="cb11-2"><a href="estatística-descritiva.html#cb11-2"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">fill =</span> <span class="st">&quot;#56B4E9&quot;</span>) <span class="op">+</span></span>
-<span id="cb11-3"><a href="estatística-descritiva.html#cb11-3"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Distribuição da idade dos participantes&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="estatística-descritiva.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Dataset, <span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="estatística-descritiva.html#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">&quot;#56B4E9&quot;</span>) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="estatística-descritiva.html#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distribuição da idade dos participantes&quot;</span>)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>De maneira um pouco distinta do histograma, o gráfico de densidade ajusta uma curva aos dados. Com isso, este gráfico permite explorar a distribuição de probabilidade subjacente aos dados, o que será discutido futuramente.</p>
 <p>Todas as distribuições de variáveis possuem uma localização, uma dispersão e um formato. De uma maneira mais direta, tanto o histograma como o gráfico de densidade retratam bem o <u>formato</u> da distribuição. Nesse caso, trata-se de uma assimetria positiva ou à direita. Esse tipo de assimetria é reconhecido pela cauda arrastada à direita.</p>
 <p>Por sua vez, o boxplot dessa mesma variável pode ser criado:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="estatística-descritiva.html#cb12-1"></a><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">y =</span> age, <span class="dt">x =</span> <span class="st">&quot;&quot;</span>)) <span class="op">+</span></span>
-<span id="cb12-2"><a href="estatística-descritiva.html#cb12-2"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">fill =</span> <span class="st">&quot;#56B4E9&quot;</span>) <span class="op">+</span></span>
-<span id="cb12-3"><a href="estatística-descritiva.html#cb12-3"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Distribuição da idade dos participantes&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="estatística-descritiva.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Dataset, <span class="fu">aes</span>(<span class="at">y =</span> age, <span class="at">x =</span> <span class="st">&quot;&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="estatística-descritiva.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">&quot;#56B4E9&quot;</span>) <span class="sc">+</span></span>
+<span id="cb12-3"><a href="estatística-descritiva.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distribuição da idade dos participantes&quot;</span>)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O boxplot é também chamado de “diagrama de caixa e bigode” e foi desenvolvido pelo matemático John W. Tukey na década de 1960. Este gráfico apresenta vantagens em comparação com os outros apresentados até agora, que são:</p>
 <ul>
@@ -1302,94 +1325,94 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>O cálculo da linha vertical que forma o bigode do gráfico é feito por <code>Q1 - 1.5*IQR</code> e <code>Q3 + 1.5*IQR</code>. Considera-se que os valores acima ou abaixo deste ponto são anômalos. Por definição, os <em>outliers</em> são sempre poucos, mesmo que isso possa ser um pouco contraintuitivo nesta apresentação de agora.</p>
 <p>Apesar de ser um pouco difícil de se visualizar ao início, os resultados apresentados nesses três gráficos são os mesmos, tal como demonstrado a seguir.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="estatística-descritiva.html#cb13-1"></a>gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(</span>
-<span id="cb13-2"><a href="estatística-descritiva.html#cb13-2"></a>  <span class="co">#Grafico 1</span></span>
-<span id="cb13-3"><a href="estatística-descritiva.html#cb13-3"></a>  <span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> age)) <span class="op">+</span></span>
-<span id="cb13-4"><a href="estatística-descritiva.html#cb13-4"></a><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">y=</span>..density..), <span class="dt">alpha=</span><span class="fl">0.5</span>, </span>
-<span id="cb13-5"><a href="estatística-descritiva.html#cb13-5"></a>                   <span class="dt">position=</span><span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb13-6"><a href="estatística-descritiva.html#cb13-6"></a><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">alpha=</span>.<span class="dv">8</span>, <span class="dt">fill =</span> <span class="st">&quot;#56B4E9&quot;</span>),</span>
-<span id="cb13-7"><a href="estatística-descritiva.html#cb13-7"></a>  <span class="co">#Grafico 2</span></span>
-<span id="cb13-8"><a href="estatística-descritiva.html#cb13-8"></a>  <span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">y =</span> age, <span class="dt">x =</span> <span class="st">&quot;&quot;</span>)) <span class="op">+</span></span>
-<span id="cb13-9"><a href="estatística-descritiva.html#cb13-9"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">fill =</span> <span class="st">&quot;#56B4E9&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span></span>
-<span id="cb13-10"><a href="estatística-descritiva.html#cb13-10"></a><span class="st">  </span><span class="kw">coord_flip</span>(),</span>
-<span id="cb13-11"><a href="estatística-descritiva.html#cb13-11"></a>  <span class="dt">top =</span> <span class="st">&quot;Distribuição da idade dos participantes&quot;</span> <span class="co">#título</span></span>
-<span id="cb13-12"><a href="estatística-descritiva.html#cb13-12"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="estatística-descritiva.html#cb13-1" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(</span>
+<span id="cb13-2"><a href="estatística-descritiva.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Grafico 1</span></span>
+<span id="cb13-3"><a href="estatística-descritiva.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(Dataset, <span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span></span>
+<span id="cb13-4"><a href="estatística-descritiva.html#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y=</span>..density..), <span class="at">alpha=</span><span class="fl">0.5</span>, </span>
+<span id="cb13-5"><a href="estatística-descritiva.html#cb13-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">position=</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb13-6"><a href="estatística-descritiva.html#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">alpha=</span>.<span class="dv">8</span>, <span class="at">fill =</span> <span class="st">&quot;#56B4E9&quot;</span>),</span>
+<span id="cb13-7"><a href="estatística-descritiva.html#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Grafico 2</span></span>
+<span id="cb13-8"><a href="estatística-descritiva.html#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(Dataset, <span class="fu">aes</span>(<span class="at">y =</span> age, <span class="at">x =</span> <span class="st">&quot;&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb13-9"><a href="estatística-descritiva.html#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">&quot;#56B4E9&quot;</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
+<span id="cb13-10"><a href="estatística-descritiva.html#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>(),</span>
+<span id="cb13-11"><a href="estatística-descritiva.html#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">top =</span> <span class="st">&quot;Distribuição da idade dos participantes&quot;</span> <span class="co">#título</span></span>
+<span id="cb13-12"><a href="estatística-descritiva.html#cb13-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
-<div id="variáveis-com-vi-discreta-e-vd-contínua" class="section level2">
+<div id="variáveis-com-vi-discreta-e-vd-contínua" class="section level2" number="4.16">
 <h2><span class="header-section-number">4.16</span> 2 variáveis com VI discreta (e VD contínua)</h2>
 <p>Quando duas variáveis são apresentadas, os gráficos permitem explorar diferenças entre grupos ou relação entre variáveis. Quando a VI é discreta, gráficos de barras, colunas ou boxplots apresentam as <u>diferenças</u> entre os grupos.</p>
 <p>O gráfico de colunas abaixo apresenta os resultados médios do Inventário Beck de Ansiedade nos 3 países investigados.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="estatística-descritiva.html#cb14-1"></a><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> country, <span class="dt">y =</span> bai_sum)) <span class="op">+</span></span>
-<span id="cb14-2"><a href="estatística-descritiva.html#cb14-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">fun =</span> mean,<span class="dt">fill =</span> <span class="st">&quot;#56B4E9&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="estatística-descritiva.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Dataset, <span class="fu">aes</span>(<span class="at">x =</span> country, <span class="at">y =</span> bai_sum)) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="estatística-descritiva.html#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="at">fun =</span> mean,<span class="at">fill =</span> <span class="st">&quot;#56B4E9&quot;</span>) </span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-22-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Tal como exposto, é possível adicionar outros elementos a este gráfico para que uma primeira apreensão inferencial seja possível. Nesse sentido, o gráfico abaixo apresenta também as barras de erro.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="estatística-descritiva.html#cb15-1"></a><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> country, <span class="dt">y =</span> bai_sum)) <span class="op">+</span></span>
-<span id="cb15-2"><a href="estatística-descritiva.html#cb15-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">fun =</span> mean,<span class="dt">fill =</span> <span class="st">&quot;#56B4E9&quot;</span>) <span class="op">+</span></span>
-<span id="cb15-3"><a href="estatística-descritiva.html#cb15-3"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>,<span class="dt">fun.data =</span> mean_se, <span class="dt">width =</span> <span class="fl">.5</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="estatística-descritiva.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Dataset, <span class="fu">aes</span>(<span class="at">x =</span> country, <span class="at">y =</span> bai_sum)) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="estatística-descritiva.html#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="at">fun =</span> mean,<span class="at">fill =</span> <span class="st">&quot;#56B4E9&quot;</span>) <span class="sc">+</span></span>
+<span id="cb15-3"><a href="estatística-descritiva.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>,<span class="at">fun.data =</span> mean_se, <span class="at">width =</span> .<span class="dv">5</span>) </span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>O boxplot a seguir também é um gráfico indicado. É importante notar que esse gráfico, em um primeiro momento, <u>não</u> traz informações sobre a média dos grupos, mas sim sobre a <u>distribuição</u> dos resultados. No entanto, como esse gráfico é bastante informativo, uma primeira noção inferencial já pode também ser feita.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="estatística-descritiva.html#cb16-1"></a><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> country, <span class="dt">y =</span> bai_sum)) <span class="op">+</span></span>
-<span id="cb16-2"><a href="estatística-descritiva.html#cb16-2"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">fill =</span> <span class="st">&quot;#56B4E9&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="estatística-descritiva.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Dataset, <span class="fu">aes</span>(<span class="at">x =</span> country, <span class="at">y =</span> bai_sum)) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="estatística-descritiva.html#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">&quot;#56B4E9&quot;</span>)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
-<div id="variáveis-com-vi-contínua-e-vd-contínua" class="section level2">
+<div id="variáveis-com-vi-contínua-e-vd-contínua" class="section level2" number="4.17">
 <h2><span class="header-section-number">4.17</span> 2 variáveis com VI contínua (e VD contínua)</h2>
 <p>Quando tanto a VI como a VD são contínuas, os gráficos apresentam a relação entre as variáveis. Tanto o gráfico de pontos como o de dispersão são indicados, uma vez que eles são virtualmente idênticos No <code>ggplot</code>, o argumento <code>geom_point</code> (à esquerda) e <code>geom_jitter</code> (à direita) são possíveis.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="estatística-descritiva.html#cb17-1"></a>gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(</span>
-<span id="cb17-2"><a href="estatística-descritiva.html#cb17-2"></a>  <span class="co">#Grafico 1</span></span>
-<span id="cb17-3"><a href="estatística-descritiva.html#cb17-3"></a>  <span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> bai_sum)) <span class="op">+</span></span>
-<span id="cb17-4"><a href="estatística-descritiva.html#cb17-4"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;#56B4E9&quot;</span>),</span>
-<span id="cb17-5"><a href="estatística-descritiva.html#cb17-5"></a>  </span>
-<span id="cb17-6"><a href="estatística-descritiva.html#cb17-6"></a>  <span class="co">#Grafico 2</span></span>
-<span id="cb17-7"><a href="estatística-descritiva.html#cb17-7"></a>  <span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> bai_sum)) <span class="op">+</span></span>
-<span id="cb17-8"><a href="estatística-descritiva.html#cb17-8"></a><span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">color=</span> <span class="st">&quot;#56B4E9&quot;</span>),</span>
-<span id="cb17-9"><a href="estatística-descritiva.html#cb17-9"></a>  <span class="dt">nrow=</span><span class="dv">1</span></span>
-<span id="cb17-10"><a href="estatística-descritiva.html#cb17-10"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="estatística-descritiva.html#cb17-1" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(</span>
+<span id="cb17-2"><a href="estatística-descritiva.html#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Grafico 1</span></span>
+<span id="cb17-3"><a href="estatística-descritiva.html#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(Dataset, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> bai_sum)) <span class="sc">+</span></span>
+<span id="cb17-4"><a href="estatística-descritiva.html#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;#56B4E9&quot;</span>),</span>
+<span id="cb17-5"><a href="estatística-descritiva.html#cb17-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-6"><a href="estatística-descritiva.html#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Grafico 2</span></span>
+<span id="cb17-7"><a href="estatística-descritiva.html#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(Dataset, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> bai_sum)) <span class="sc">+</span></span>
+<span id="cb17-8"><a href="estatística-descritiva.html#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">color=</span> <span class="st">&quot;#56B4E9&quot;</span>),</span>
+<span id="cb17-9"><a href="estatística-descritiva.html#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow=</span><span class="dv">1</span></span>
+<span id="cb17-10"><a href="estatística-descritiva.html#cb17-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>De maneira análoga aos elementos extras que podem ser apresentados em gráficos com VIs discretas, uma reta de regressão amostral (FRA) costuma ser adicionadas em gráficos em que a VI é contínua. Essa reta oferece uma primeira apreensão inferencial. No capítulo sobre modelos de regressão, esse conceito será novamente revisitado. A seguir, segue um exemplo.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="estatística-descritiva.html#cb18-1"></a><span class="kw">ggplot</span>(Dataset, <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> bai_sum)) <span class="op">+</span></span>
-<span id="cb18-2"><a href="estatística-descritiva.html#cb18-2"></a><span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">color =</span> <span class="st">&quot;#56B4E9&quot;</span>) <span class="op">+</span></span>
-<span id="cb18-3"><a href="estatística-descritiva.html#cb18-3"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="estatística-descritiva.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Dataset, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> bai_sum)) <span class="sc">+</span></span>
+<span id="cb18-2"><a href="estatística-descritiva.html#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">color =</span> <span class="st">&quot;#56B4E9&quot;</span>) <span class="sc">+</span></span>
+<span id="cb18-3"><a href="estatística-descritiva.html#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
-<div id="outros-gráficos-e-configurações" class="section level2">
+<div id="outros-gráficos-e-configurações" class="section level2" number="4.18">
 <h2><span class="header-section-number">4.18</span> Outros gráficos e configurações</h2>
 <p>Os gráficos demonstrados costumam a ser os mais frequentes. Entretanto, é possível construir gráficos com uma maior complexidade, que reúnam diversas variáveis ao mesmo tempo. Evidentemente, a realização destes gráficos só tem sentido quando eles são relacionados ao problema de pesquisa estudado e não sobrecarreguem ou distorçam a visualização e entendimento dos resultados.</p>
 <p>Frequentemente, essas informações adicionais são feitas pela inclusão de <u>clusters</u> ou <u>agrupamentos</u>. Isso é tanto possível em gráficos cuja VI seja discreta quanto contínua.</p>
 <p>No exemplo abaixo, o gráfico dos resultados do Inventário Beck de Ansiedade entre os 3 países investigados (VI discreta) agora está agrupado pelo sexo do participante.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="estatística-descritiva.html#cb19-1"></a>Dataset <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb19-2"><a href="estatística-descritiva.html#cb19-2"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(sex)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb19-3"><a href="estatística-descritiva.html#cb19-3"></a><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> country, <span class="dt">y =</span> bai_sum, <span class="dt">fill =</span> sex)) <span class="op">+</span></span>
-<span id="cb19-4"><a href="estatística-descritiva.html#cb19-4"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="op">+</span></span>
-<span id="cb19-5"><a href="estatística-descritiva.html#cb19-5"></a><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">geom=</span><span class="st">&quot;errorbar&quot;</span>, <span class="dt">fun.data =</span> mean_se, </span>
-<span id="cb19-6"><a href="estatística-descritiva.html#cb19-6"></a>               <span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="fl">0.95</span>), <span class="dt">width =</span> <span class="fl">.5</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="estatística-descritiva.html#cb19-1" aria-hidden="true" tabindex="-1"></a>Dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="estatística-descritiva.html#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex)) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-3"><a href="estatística-descritiva.html#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> country, <span class="at">y =</span> bai_sum, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
+<span id="cb19-4"><a href="estatística-descritiva.html#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
+<span id="cb19-5"><a href="estatística-descritiva.html#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">geom=</span><span class="st">&quot;errorbar&quot;</span>, <span class="at">fun.data =</span> mean_se, </span>
+<span id="cb19-6"><a href="estatística-descritiva.html#cb19-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.95</span>), <span class="at">width =</span> .<span class="dv">5</span>) </span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Este gráfico traz uma informação importante sobre os resultados de homens e mulheres nos três países. Além disso, as barras de erro ajudam em um primeiro entendimento de possíveis diferenças significativas. Esse conceito irá ser revisitado em capítulos subsequentes.</p>
 <p>No exemplo abaixo, a relação entre idade e pontuação no Inventário Beck de Ansiedade está agora agrupada pelo sexo do participante.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="estatística-descritiva.html#cb20-1"></a>Dataset <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb20-2"><a href="estatística-descritiva.html#cb20-2"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(sex)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb20-3"><a href="estatística-descritiva.html#cb20-3"></a><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> bai_sum, <span class="dt">color =</span> sex)) <span class="op">+</span></span>
-<span id="cb20-4"><a href="estatística-descritiva.html#cb20-4"></a><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></span>
-<span id="cb20-5"><a href="estatística-descritiva.html#cb20-5"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="estatística-descritiva.html#cb20-1" aria-hidden="true" tabindex="-1"></a>Dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="estatística-descritiva.html#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex)) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-3"><a href="estatística-descritiva.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> bai_sum, <span class="at">color =</span> sex)) <span class="sc">+</span></span>
+<span id="cb20-4"><a href="estatística-descritiva.html#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb20-5"><a href="estatística-descritiva.html#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) </span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-28-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Neste gráfico de agora, é possível perceber que os a relação entre a idade e os resultados do Inventário Beck de Ansiedade é muito pequena e isso parece valer tanto para homens como para mulheres. Especialmente no capítulo de correlação, esse assunto será revisitado e parte dos termos utilizados aqui será alterado.</p>
 <p>Por sua vez, situações em que há uma grande quantidade de variáveis apresentadas tendem a tornar os resultados difíceis de serem entendidos. O gráfico abaixo tenta traduzir essa condição, criando uma visualização de difícil entendimento justamente pelo excesso de variáveis presentes.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="estatística-descritiva.html#cb21-1"></a>Dataset <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb21-2"><a href="estatística-descritiva.html#cb21-2"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(sex), <span class="op">!</span><span class="kw">is.na</span>(curso_ou_ano)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb21-3"><a href="estatística-descritiva.html#cb21-3"></a><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> bai_sum, </span>
-<span id="cb21-4"><a href="estatística-descritiva.html#cb21-4"></a>                <span class="dt">fill =</span> <span class="kw">factor</span>(curso_ou_ano), </span>
-<span id="cb21-5"><a href="estatística-descritiva.html#cb21-5"></a>                <span class="dt">color =</span> sex, <span class="dt">shape =</span> country)) <span class="op">+</span></span>
-<span id="cb21-6"><a href="estatística-descritiva.html#cb21-6"></a><span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span></span>
-<span id="cb21-7"><a href="estatística-descritiva.html#cb21-7"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="estatística-descritiva.html#cb21-1" aria-hidden="true" tabindex="-1"></a>Dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="estatística-descritiva.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex), <span class="sc">!</span><span class="fu">is.na</span>(curso_ou_ano)) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a href="estatística-descritiva.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> bai_sum, </span>
+<span id="cb21-4"><a href="estatística-descritiva.html#cb21-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> <span class="fu">factor</span>(curso_ou_ano), </span>
+<span id="cb21-5"><a href="estatística-descritiva.html#cb21-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">color =</span> sex, <span class="at">shape =</span> country)) <span class="sc">+</span></span>
+<span id="cb21-6"><a href="estatística-descritiva.html#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb21-7"><a href="estatística-descritiva.html#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) </span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Espera-se que seja possível constatar que este gráfico é <mark>totalmente inadequado</mark>. Ele é carregado de informações, permite um baixo entendimento dos resultados da pesquisa e, eventualmente, pode gerar conclusões incorretas ou viesadas.</p>
 </div>
-<div id="execução-no-jasp" class="section level2">
+<div id="execução-no-jasp" class="section level2" number="4.19">
 <h2><span class="header-section-number">4.19</span> Execução no JASP</h2>
 <p>Da mesma forma que feito no R, será necessário carregar a base para o JASP. Durante todos os capítulos, esse procedimento de importação será requisitado.</p>
 </div>
-<div id="tabelas-1" class="section level2">
+<div id="tabelas-1" class="section level2" number="4.20">
 <h2><span class="header-section-number">4.20</span> Tabelas</h2>
 <p>Após ter a base disposta no JASP, para gerar tabelas e gráficos, será necessário acessar a opção <code>Descriptives</code>. O JASP tratará todas as variáveis com um símbolo de diagrama de venn ou barras como categóricas e todas as variáveis com símbolo de régua como contínuas.</p>
 <p><img src="img/cap_desc_jasp_descritivo.PNG" /></p>
@@ -1411,13 +1434,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="img/cap_desc_jasp_proporcao_duas_variaveis_split3.PNG" /></p>
 <p>Nesta versão do JASP, não é possível colocar duas variáveis como agrupadoras. Dessa maneira, a reprodução das tabelas feitas anteriormente no ambiente R é apenas parcial.</p>
 </div>
-<div id="gráficos-2" class="section level2">
+<div id="gráficos-2" class="section level2" number="4.21">
 <h2><span class="header-section-number">4.21</span> Gráficos</h2>
 <p>O JASP é um excelente programa para gerar gráficos. Tal como previamente apresentado, a criação de um gráfico apropriado dependerá da finalidade desejada, bem como da quantidade de variáveis que devem ser apresentadas e o nível de medida da VI, especialmente em análises bi ou multivariadas.</p>
 <p>O JASP pode fazer gráficos tanto seção <code>Descriptives</code> como após análise de dados específicas. Na seção <code>Descriptives</code>, será necessário primeiro arrastar as variáveis de interesse para seus respectivos lugares e, em seguida, clicar na opção <code>Plot</code>.</p>
 <p><img src="img/cap_desc_jasp_graficos.PNG" /></p>
 </div>
-<div id="variável-discreta-1" class="section level2">
+<div id="variável-discreta-1" class="section level2" number="4.22">
 <h2><span class="header-section-number">4.22</span> 1 variável discreta</h2>
 <p>Para este tipo de variável, gráfico de barras, colunas e setor são indicados. Para realizar um gráfico de barras, é necessário colocar a variável de interesse em <code>Variables</code> e, dentro de <code>Plots</code>, clicar em <code>Distribuiton plots</code>. O JASP organiza as barras de ordem crescente. No exemplo abaixo, a variável <u>country</u> é apresentada.</p>
 <p><img src="img/cap_desc_jasp_grafico_barras.PNG" /></p>
@@ -1426,7 +1449,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>O JASP permite customizar as cores de alguns gráficos. Para fazer isso, basta clicar em <code>Color Palette</code> e escolher entre as opções disponíveis. Existem algumas possibilidades e recomendo optar por aquelas que permitem que pessoas com limitações visuais possam também se beneficiar. Entretanto, apenas como demonstração, o tema <code>ggplot2</code> é apresentado abaixo.</p>
 <p><img src="img/cap_desc_jasp_grafico_setor2.PNG" /></p>
 </div>
-<div id="variável-contínua-1" class="section level2">
+<div id="variável-contínua-1" class="section level2" number="4.23">
 <h2><span class="header-section-number">4.23</span> 1 variável contínua</h2>
 <p>Histogramas, gráficos de densidade e boxplots costumam ser indicados para variáveis contínuas. Para o JASP fazer tais gráficos, é necessário que o espaço <code>Variables</code> seja preenchido por alguma variável que tenha o símbolo da régua ao lado. A variável <u>age</u> é um bom exemplo.</p>
 <p>Ao colocá-la neste local e marcar a opção <code>Distribution plots</code>, um histograma será automaticamente apresentado.</p>
@@ -1453,12 +1476,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Os valores acima ou abaixo da linhas indicam dados anômalos.</li>
 </ul>
 </div>
-<div id="variáveis-com-vi-discreta-e-vd-contínua-1" class="section level2">
+<div id="variáveis-com-vi-discreta-e-vd-contínua-1" class="section level2" number="4.24">
 <h2><span class="header-section-number">4.24</span> 2 variáveis com VI discreta (e VD contínua)</h2>
 <p>Para situações em que há duas variáveis, a VI é tratada como discreta e a VD é contínua, gráficos de barras, colunas ou boxplots são indicados. Esses gráficos permitem verificar diferenças entre grupos. Nesta versão do JASP, apenas o boxplot pode ser feito. Para verificar, por exemplo, a distribuição dos resultados do <u>bai_sum</u> em função do <u>país</u>, é necessário levar às variáveis a seus respectivos locais e, em seguida, solicitar ao JASP o boxplot.</p>
 <p><img src="img/cap_desc_jasp_grafico_boxplot_grupo.PNG" /></p>
 </div>
-<div id="variáveis-com-vi-contínua-e-vd-contínua-1" class="section level2">
+<div id="variáveis-com-vi-contínua-e-vd-contínua-1" class="section level2" number="4.25">
 <h2><span class="header-section-number">4.25</span> 2 variáveis com VI contínua (e VD contínua)</h2>
 <p>Quando há duas variáveis contínuas, tanto o gráfico de pontos como de dispersão são possíveis. Esses gráficos permitem verificar o relacionamento entre variáveis. Para fazer isso, é necessário incluir ambas as variáveis de interesse para o espaço <code>Variables</code>. Por exemplo, <u>age</u> e <u>bai_sum</u>.</p>
 <p><img src="img/cap_desc_jasp_grafico_scatter1.PNG" /></p>
@@ -1468,7 +1491,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Um aspecto visualmente importante é a eleição de qual variável irá em X. Com bastante frequência, deve-se inserir a VI (mesmo que teórica) em X, enquanto a VD em Y. Isso é feito alterando a ordem das variáveis em <code>Variables</code>.</p>
 <p><img src="img/cap_desc_jasp_grafico_scatter3.PNG" /></p>
 </div>
-<div id="outros-gráficos-e-configurações-1" class="section level2">
+<div id="outros-gráficos-e-configurações-1" class="section level2" number="4.26">
 <h2><span class="header-section-number">4.26</span> Outros gráficos e configurações</h2>
 <p>O JASP é bastante versátil na realização de gráficos e permite que mais variáveis sejam inseridas. Há também um módulo (<code>Module</code>) chamado <code>Visual Modeling</code>, que permite uma grande customização de gráficos. Para acessá-lo, é necessário clicar na cruz azul, tal como destacado no quadrado roxo da imagem abaixo.</p>
 <p><img src="img/cap_desc_jasp_modules.PNG" /></p>
@@ -1478,7 +1501,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="img/cap_desc_jasp_flexplot.PNG" /></p>
 <p>Uma série de outras opções e combinações podem ser feitas ao clicar em <code>Options</code> e <code>Plot Labels</code>. Elas não serão apresentadas nesta seção.</p>
 </div>
-<div id="resumo-2" class="section level2">
+<div id="resumo-2" class="section level2" number="4.27">
 <h2><span class="header-section-number">4.27</span> Resumo</h2>
 <div class="explore">
 <p>Este capítulo apresentou os aspectos tabulares e gráficos corriqueiramente encontrados em pesquisas de Psicologia e áreas congêneres. Entre os pontos principais, estão os seguintes:</p>
@@ -1498,7 +1521,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </div>
 </div>
-<div id="questões-1" class="section level2">
+<div id="questões-1" class="section level2" number="4.28">
 <h2><span class="header-section-number">4.28</span> Questões</h2>
 <div class="question">
 <ol style="list-style-type: decimal">
@@ -1509,21 +1532,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Gabarito: 1-c; 2-b; 3-b</p>
 
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-neto2010">
-<p>Aguiar Neto, R. R. de. (2010). <em>Estatistica basica aplicada a administracao judiciaria</em>. Colecao Administracao Judiciaria.</p>
-</div>
-<div id="ref-David1998">
-<p>David, H. A. (1998). First (?) Occurrence of common terms in probability and statistics-a second list, with corrections. <em>The American Statistician</em>, <em>52</em>(1), 36. <a href="https://doi.org/10.2307/2685564">https://doi.org/10.2307/2685564</a></p>
-</div>
-<div id="ref-JenkinsSmith2017">
-<p>Jenkins-Smith, H., Ripberger, J., Copeland, G., Nowlin, M., Hughes, T., Fister, A., &amp; Wehde, W. (2017). <em>Quantitative research methods for political science, public policy and public administration</em>. self-published. <a href="https://doi.org/10.15763/11244/52244">https://doi.org/10.15763/11244/52244</a></p>
-</div>
-<div id="ref-morettin_bussab_2010">
-<p>Morettin, P. A., &amp; Bussab, W. de O. (2010). <em>Estatistica basica</em>. Saraiva.</p>
 </div>
 </div>
             </section>
