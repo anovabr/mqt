@@ -415,6 +415,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18.7" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#pesquisas-adicionais-10"><i class="fa fa-check"></i><b>18.7</b> Pesquisas adicionais</a></li>
 <li class="chapter" data-level="18.8" data-path="regressão-logística-binária.html"><a href="regressão-logística-binária.html#questões-10"><i class="fa fa-check"></i><b>18.8</b> Questões</a></li>
 </ul></li>
+<li class="chapter" data-level="19" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>19</b> Referencias</a></li>
 <li class="divider"></li>
 <li><a href="http://www.anovabr.com/" target="blank">ANOVA</a></li>
 
@@ -450,7 +451,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span class="math inline">\(\beta\)</span> representa todos os termos fixos<br />
 <span class="math inline">\(\gamma\)</span> representa os termos aleatórios (assumidos como normalmente distribuídos)<br />
 <span class="math inline">\(e\)</span> representa o erro/resíduo</p>
-<p>Pragmaticamente, este modelo oferece mais flexibilidade à ANOVA de medidas repetidas e sua utilização vem ganhando mais espaço em Psicologia e áreas da saúde <span class="citation">(<a href="regressão-logística-binária.html#ref-Gueorguieva2004" role="doc-biblioref">Gueorguieva &amp; Krystal, 2004</a>)</span>.</p>
+<p>Pragmaticamente, este modelo oferece mais flexibilidade à ANOVA de medidas repetidas e sua utilização vem ganhando mais espaço em Psicologia e áreas da saúde <span class="citation">(<a href="referencias.html#ref-Gueorguieva2004" role="doc-biblioref">Gueorguieva &amp; Krystal, 2004</a>)</span>.</p>
 <p>Os efeitos fixos são compartilhados por todos os indivíduos, enquanto os aleatórios são específicos de cada um dos participantes. Com isso, a trajetória de cada indivíduo pode ser modelada, permitindo que um subconjunto dos parâmetros de regressão seja definido como aleatório.</p>
 <p>Tanto O LMM, como a ANOVa de Medidas Repetidas costumam ser utilizados em dados longitudinais. A tabela a seguir apresenta algumas das principais características de ambas as análises.</p>
 <table>
@@ -631,7 +632,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 3. efeito fixo do <code>grupo</code>,<br />
 4. efeito fixo da interação <code>tempo x grupo</code><br />
 5. efeito aleatório do <code>id</code>, indicando um intercepto aleatório e específico por participante</p>
-<p>Uma vez que o modelo já foi criado, agora é necessário recuperar seus resultados. É importante notar que O pressuposto da normalidade é necessário e ele já foi acessado (e aceito) anteriormente. Conforme dito ao início do capítulo, O LMM relaxa o pressuposto esfericidadde e, por consequência, também o da homogeneidade <span class="citation">(<a href="regressão-logística-binária.html#ref-Quen2004" role="doc-biblioref">Quené &amp; Bergh, 2004</a>)</span>.</p>
+<p>Uma vez que o modelo já foi criado, agora é necessário recuperar seus resultados. É importante notar que O pressuposto da normalidade é necessário e ele já foi acessado (e aceito) anteriormente. Conforme dito ao início do capítulo, O LMM relaxa o pressuposto esfericidadde e, por consequência, também o da homogeneidade <span class="citation">(<a href="referencias.html#ref-Quen2004" role="doc-biblioref">Quené &amp; Bergh, 2004</a>)</span>.</p>
 <p>Inicialmente, a <code>anova</code> permite uma visualização de todos os coeficientes do modelo. Isso é importante para verificar cada um dos preditores estipulados e sua significância. A interpretação dos resultados é similar à realizada em modelos de regressão e totalmente convergente ao resultado obtido na ANOVA. Novamente, a leitura da tabela deve começar pela interação.</p>
 <div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="modelo-linear-misto.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod_lme) <span class="sc">%&gt;%</span> pander<span class="sc">::</span><span class="fu">pander</span>()</span></code></pre></div>
 <table>
