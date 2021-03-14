@@ -25,165 +25,147 @@ knitr::opts_chunk$set(echo = TRUE,
 
 ```
 
-
-
 # Prefácio
 
-![](./img/capa_jolie.png){width=50%}
+![](./img/capa_jolie.png){width="50%"}
 
 ## Atenção
 
-<mark>Atenção: Leia com cuidado. Este livro ainda está em sua fase de revisão.</mark>   
+<mark>Atenção: Leia com cuidado. Este livro ainda está em sua fase de revisão.</mark>\
 Última modificação: `r format(Sys.time(), '%d %B, %Y às %H:%M')`
 
 ## A proposta
-  
 
-Este livro nasceu como um dos principais e mais frutíferos resultados das aulas de graduação e pós-graduação ministradas por mim em alguns locais, mas com maior intensidade na PUC-Rio, UFRJ e IBNeuro. Por bastante tempo, nas aulas de estatística aplicada à Psicologia e Bioestatística, eu recorri a diferentes livros que, cada qual a sua maneira, apresentavam conceitos de pesquisa, técnicas estatísticas e análise de dados. 
+Este livro nasceu como um dos principais e mais frutíferos resultados das aulas de graduação e pós-graduação ministradas por mim em alguns locais, mas com maior intensidade na PUC-Rio, UFRJ e IBNeuro. Por bastante tempo, nas aulas de estatística aplicada à Psicologia e Bioestatística, eu recorri a diferentes livros que, cada qual a sua maneira, apresentavam conceitos de pesquisa, técnicas estatísticas e análise de dados.
 
-No entanto, acabei percebendo (ou tendo a impressão) de que eles apresentam a estatística por diferentes atalhos pedagógicos, (1) sugerindo que pesquisa e estatística eram áreas distantes, (2) que toda estatística podia ser resumida por testes de hipóteses independentes entre si e que (3) situações envolvendo dados reais não tinham tanto interesse. No geral, parece-me que para eles apresentarem a <u>estatística na ciência</u>, era necessário se distorcer pesadamente a <u>ciência da estatística</u>. Em função disso, nos últimos anos, eu fui sentindo necessidade de apresentar os conceitos de pesquisa e técnicas estatísticas de forma integrada e contanto com dados reais.   
+No entanto, acabei percebendo (ou tendo a impressão) de que eles apresentam a estatística por diferentes atalhos pedagógicos, (1) sugerindo que pesquisa e estatística eram áreas distantes, (2) que toda estatística podia ser resumida por testes de hipóteses independentes entre si e que (3) situações envolvendo dados reais não tinham tanto interesse. No geral, parece-me que para eles apresentarem a <u>estatística na ciência</u>, era necessário se distorcer pesadamente a <u>ciência da estatística</u>. Em função disso, nos últimos anos, eu fui sentindo necessidade de apresentar os conceitos de pesquisa e técnicas estatísticas de forma integrada e contanto com dados reais.
 
-Conciliar essas condições em um único livro de maneira adequada é bastante improvável. Dessa forma, esse livro opta por uma abordagem majoritariamente pragmática, mas que evita se distanciar de conceitos teóricos. O pragmatismo é fundamental para que o estudante consiga, rapidamente, entender os procedimentos relacionados à análise de dados e implementar técnicas estatísticas para tomar decisões. Quão antes o estudante entender a utilidade da estatística para resolver problemas, maior é a probabilidade dele vir a gostar da área. Por sua vez, os aspectos teóricos são os alicerces para que o estudante possa perceber também que a Estatística é uma ciência que, ao longo do tempo, conforme a tecnologia avançou, mais sólida e robusta foi se tornando.  
+Conciliar essas condições em um único livro de maneira adequada é bastante improvável. Dessa forma, esse livro opta por uma abordagem majoritariamente pragmática, mas que evita se distanciar de conceitos teóricos. O pragmatismo é fundamental para que o estudante consiga, rapidamente, entender os procedimentos relacionados à análise de dados e implementar técnicas estatísticas para tomar decisões. Quão antes o estudante entender a utilidade da estatística para resolver problemas, maior é a probabilidade dele vir a gostar da área. Por sua vez, os aspectos teóricos são os alicerces para que o estudante possa perceber também que a Estatística é uma ciência que, ao longo do tempo, conforme a tecnologia avançou, mais sólida e robusta foi se tornando.
 
-Isso posto, este livro é fruto de um grande esforço que tem a proposta de ser um manual técnico, em que são apresentados conceitos de pesquisa e análises estatísticas utilizando os ambientes R e JASP e com especial aplicação em Psicologia e Bioestatística. Em cada capítulo, o estudante terá a oportunidade de acessar:  
+Isso posto, este livro é fruto de um grande esforço que tem a proposta de ser um manual técnico, em que são apresentados conceitos de pesquisa e análises estatísticas utilizando os ambientes R e JASP e com especial aplicação em Psicologia e Bioestatística. Em cada capítulo, o estudante terá a oportunidade de acessar:
 
-1. Uma pesquisa científica, explicitando o problema e as hipóteses que a guiaram;          
-2. O artigo publicado com os resultados;      
-3. A base de dados em formato R ou CSV desidentificadas para recriar os cenários dos artigos e poder ilustrar os novos conceitos discutidos;      
-4. Os métodos e as técnicas estatísticas pautadas na teoria discutida que possa responder às perguntas apresentadas nos cenários dos artigos  e leve à uma tomada de decisão.    
-5. Recursos extras para aprofundamento em tópicos específicos;     
-6.	Resolução de problemas de fixação do conteúdo discutido, ilustrados por provas externas da área da psicologia.   
+1.  Uma pesquisa científica, explicitando o problema e as hipóteses que a guiaram;\
+2.  O artigo publicado com os resultados;\
+3.  A base de dados em formato R ou CSV desidentificadas para recriar os cenários dos artigos e poder ilustrar os novos conceitos discutidos;\
+4.  Os métodos e as técnicas estatísticas pautadas na teoria discutida que possa responder às perguntas apresentadas nos cenários dos artigos e leve à uma tomada de decisão.\
+5.  Recursos extras para aprofundamento em tópicos específicos;\
+6.  Resolução de problemas de fixação do conteúdo discutido, ilustrados por provas externas da área da psicologia.
 
-Com isso, o livro oferece ao estudante um convite para uma trilha de aprendizado dentro do ecossistema da psicologia, que o faça resolver problemas para uma tomada de decisão real, pautadas pelo referencial teórico discutido e pelos métodos e técnicas já oferecidos. Assim, o foco do livro estará na resolução de problemas da área da psicologia, a fim de tomar uma decisão mais acurada.     
+Com isso, o livro oferece ao estudante um convite para uma trilha de aprendizado dentro do ecossistema da psicologia, que o faça resolver problemas para uma tomada de decisão real, pautadas pelo referencial teórico discutido e pelos métodos e técnicas já oferecidos. Assim, o foco do livro estará na resolução de problemas da área da psicologia, a fim de tomar uma decisão mais acurada.
 
-Espero que este livro possa ser útil a estudantes de graduação e pós-graduação, agradável a leitores de estatística como de Psicologia e um recurso importante para outros docentes que, eventualmente, precisem de um material de apoio.  
+Espero que este livro possa ser útil a estudantes de graduação e pós-graduação, agradável a leitores de estatística como de Psicologia e um recurso importante para outros docentes que, eventualmente, precisem de um material de apoio.
 
+## Objetivo
 
-## Objetivo 
-
-O livro tem como objetivos (1) apresentar, (2) discutir e (3) operacionalizar conceitos de pesquisa e análises estatística de estudos publicados e de dados reais. Espera-se que qualquer o estudante consiga realizar todas as ações descritas no decorrer dos capítulos de maneira guiada e intuitiva. As sintaxes utilizadas no ambiente R e as telas de execução do JASP são integralmente disponíveis.  
-
+O livro tem como objetivos (1) apresentar, (2) discutir e (3) operacionalizar conceitos de pesquisa e análises estatística de estudos publicados e de dados reais. Espera-se que qualquer o estudante consiga realizar todas as ações descritas no decorrer dos capítulos de maneira guiada e intuitiva. As sintaxes utilizadas no ambiente R e as telas de execução do JASP são integralmente disponíveis.
 
 ## Público-alvo
 
-Este livro foi desenvolvido de maneira mais focada a estudantes de Psicologia e Bioestatística. As pesquisas e exemplos utilizados são mais aderentes a essas duas áreas. No entanto, os conceitos, métodos e técnicas estatísticas do livro são interdisciplinares, espera-se que estudantes de áreas como educação, administração e economia também possam também ter proveito do livro.   
-
+Este livro foi desenvolvido de maneira mais focada a estudantes de Psicologia e Bioestatística. As pesquisas e exemplos utilizados são mais aderentes a essas duas áreas. No entanto, os conceitos, métodos e técnicas estatísticas do livro são interdisciplinares, espera-se que estudantes de áreas como educação, administração e economia também possam também ter proveito do livro.
 
 ## Formato do livro
 
-O livro foi pensado para ter uma estrutura (1) organizada, (2) linear e (3) formada por capítulos autossuficientes escritos para responder questões específicas. Acredito que, assim, ele possa atender tanto estudantes interessados em ler a obra inteira, como aqueles que buscam informações mais específicas sobre um tópico particular.  
+O livro foi pensado para ter uma estrutura (1) organizada, (2) linear e (3) formada por capítulos autossuficientes escritos para responder questões específicas. Acredito que, assim, ele possa atender tanto estudantes interessados em ler a obra inteira, como aqueles que buscam informações mais específicas sobre um tópico particular.
 
-Esse formato adotado tende a gerar uma percepção diferente entre aqueles que consultarem apenas um capítulo ou outro e aqueles que lerem o conteúdo por completo. Há uma maior chance disso ocorrer em capítulos sobre testes estatísticos. Uma vez que diversos testes estatísticos são casos particulares de outros, alguns assuntos que parecem destoantes em uma leitura inicial, tornam-se articulados em outros capítulos.  
+Esse formato adotado tende a gerar uma percepção diferente entre aqueles que consultarem apenas um capítulo ou outro e aqueles que lerem o conteúdo por completo. Há uma maior chance disso ocorrer em capítulos sobre testes estatísticos. Uma vez que diversos testes estatísticos são casos particulares de outros, alguns assuntos que parecem destoantes em uma leitura inicial, tornam-se articulados em outros capítulos.
 
-Muitos capítulos recebem o nome de testes de hipóteses (ex: Teste T ou Regressão). Isso foi intencional e visa auxiliar estudantes que precisem apenas de informações pontuais, bem como tende a enfraquecer a ideia de uma relação ponto a ponto tipicamente feita entre testes estatísticos e delineamentos específicos.  
+Muitos capítulos recebem o nome de testes de hipóteses (ex: Teste T ou Regressão). Isso foi intencional e visa auxiliar estudantes que precisem apenas de informações pontuais, bem como tende a enfraquecer a ideia de uma relação ponto a ponto tipicamente feita entre testes estatísticos e delineamentos específicos.
 
-## Como usar este livro  
+## Como usar este livro
 
-O livro é formado por dois componentes: capítulos teóricos e capítulos voltados à análise de dados. Os capítulos teóricos reúnem alguns conceitos fundamentais de pesquisa e estatística, tais como tipos de variáveis, delineamento de pesquisa e técnicas de amostragem. Estes capítulos foram escritos pensando em alunos de graduação do curso de Psicologia.        
+O livro é formado por dois componentes: capítulos teóricos e capítulos voltados à análise de dados. Os capítulos teóricos reúnem alguns conceitos fundamentais de pesquisa e estatística, tais como tipos de variáveis, delineamento de pesquisa e técnicas de amostragem. Estes capítulos foram escritos pensando em alunos de graduação do curso de Psicologia.
 
-Os capítulos analíticos são focados em testes de hipóteses e contam com uma metodologia direta ao ponto, em que atividades similares às realizadas nos artigos são demonstradas. Estes capítulos foram desenvolvidos para estudantes de pós-graduação.    
+Os capítulos analíticos são focados em testes de hipóteses e contam com uma metodologia direta ao ponto, em que atividades similares às realizadas nos artigos são demonstradas. Estes capítulos foram desenvolvidos para estudantes de pós-graduação.
 
-A figura abaixo diagrama os dois componentes de forma aproximada.  
+A figura abaixo diagrama os dois componentes de forma aproximada.
 
 ![](./img/proposta.png)
-
-
 
 ## Pesquisas e dados
 
 Neste livro, as seguintes pesquisas e seus materiais são utilizados:
 
-- ["Depression and Anxiety Symptoms in a Representative Sample of Undergraduate Students in Spain, Portugal, and Brazil"](https://doi.org/10.1590/0102.3772e36412)
+-   ["Depression and Anxiety Symptoms in a Representative Sample of Undergraduate Students in Spain, Portugal, and Brazil"](https://doi.org/10.1590/0102.3772e36412)
 
-- [“Confirmatory analysis and normative tables for the Brazilian Ages and Stages Questionnaires: Social–Emotional”](https://onlinelibrary.wiley.com/doi/abs/10.1111/cch.12649)
+-   ["Confirmatory analysis and normative tables for the Brazilian Ages and Stages Questionnaires: Social--Emotional"](https://onlinelibrary.wiley.com/doi/abs/10.1111/cch.12649)
 
-- [Psychometric properties of a short-term visual memory test (MEMORE)"](https://www.neuropsicolatina.org/index.php/Neuropsicologia_Latinoamericana/article/view/545)
- 
-- ["A relação entre o nível de Empreendedorismo (TEG) e os aspectos sociodemográficos dos Taxistas cooperados da cidade de Santo André/São Paulo, Brasil"](https://www.metodista.br/revistas/revistas-metodista/index.php/REGS/article/view/6453)
+-   [Psychometric properties of a short-term visual memory test (MEMORE)"](https://www.neuropsicolatina.org/index.php/Neuropsicologia_Latinoamericana/article/view/545)
 
-- ["Avaliação psicométrica em português do indicador de dor crônica de Helsinki em cães com sinais crônicos de osteoartrite"](https://www.scielo.br/scielo.php?script=sci_arttext&pid=S0102-09352019000100109)
+-   ["A relação entre o nível de Empreendedorismo (TEG) e os aspectos sociodemográficos dos Taxistas cooperados da cidade de Santo André/São Paulo, Brasil"](https://www.metodista.br/revistas/revistas-metodista/index.php/REGS/article/view/6453)
 
-- ["Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students"](https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students)
+-   ["Avaliação psicométrica em português do indicador de dor crônica de Helsinki em cães com sinais crônicos de osteoartrite"](https://www.scielo.br/scielo.php?script=sci_arttext&pid=S0102-09352019000100109)
 
-- "Parent-reported diagnosis of Attention Deficit Hyperactivity Disorder and psychostimulant use among children and adolescents: a population-based nationwide study"
+-   ["Aspects Related to Body Image and Eating Behaviors in Healthy Brazilian Undergraduate Students"](https://www.researchgate.net/publication/323729370_Aspects_Related_to_Body_Image_and_Eating_Behaviors_in_Healthy_Brazilian_Undergraduate_Students)
 
-- "Resilience and vulnerability in adolescents with primary headaches: a cross-sectional population-based study"
+-   "Parent-reported diagnosis of Attention Deficit Hyperactivity Disorder and psychostimulant use among children and adolescents: a population-based nationwide study"
+
+-   "Resilience and vulnerability in adolescents with primary headaches: a cross-sectional population-based study"
 
 As bases são *Open Science*. Isso significa que elas são gratuitas e universalmente acessíveis para finalidades acadêmicas. Em cada capítulo, as bases irão aparecer na seção "Pesquisa", da seguinte maneira:
 
+::: {.base data-latex=""}
+A base desta pesquisa está disponível em formato **R (Rdata)** e em **CSV**, que é lido pelo JASP. Clique na opção desejada.
 
-:::{.base data-latex="" }
-  A base desta pesquisa está disponível em formato **R (Rdata)** e em **CSV**, que é lido pelo JASP. Clique na opção desejada.     
-      
-  <strong>Base R: </strong> [Base R]()   
-  <strong>Base JASP: </strong> [Base CSV]()
+<strong>Base R: </strong> [Base R]()\
+<strong>Base JASP: </strong> [Base CSV]()
 :::
 
+As bases em R tem formato .RData e as bases para o JASP tem formato .CSV.
 
-As bases em R tem formato .RData e as bases para o JASP tem formato .CSV.  
+## O R e os pacotes
 
-
-## O R e os pacotes  
-
-O livro é integralmente desenvolvido pelo recurso de "programação letrada" no R Markdown, ou seja, ele entrelaça aspectos textuais e linhas de código. Em todos os capítulos, as funções nativas do R e do Tidyverse serão utilizadas. Caso alguém queira reproduzir as análises, será necessário apenas executar as linhas de código disponíveis no decorrer do livro.  
+O livro é integralmente desenvolvido pelo recurso de "programação letrada" no R Markdown, ou seja, ele entrelaça aspectos textuais e linhas de código. Em todos os capítulos, as funções nativas do R e do Tidyverse serão utilizadas. Caso alguém queira reproduzir as análises, será necessário apenas executar as linhas de código disponíveis no decorrer do livro.
 
 O `tidyverse` costuma ter atualizações frequentes. Caso um alerta de `deprecated` seja apresentado, isso significa que a função utilizada foi parcialmente desativada, o que não costuma impactar nas análises.
 
+## JASP
 
-## JASP   
-
-O JASP é um programa gratuito que tem sido cada vez mais utilizado em Psicologia. Ele é feito integralmente por código aberto e sua interface é bastante amigável e intuitiva. Ao instalar o JASP, o R também será instalado em seu computador e ficará no pano de fundo. Dessa maneira, todas as ações feitas por *Point and Click* no JASP, serão convertidas em linhas de código no R e apresentadas de maneira dinâmica no JASP. 
+O JASP é um programa gratuito que tem sido cada vez mais utilizado em Psicologia. Ele é feito integralmente por código aberto e sua interface é bastante amigável e intuitiva. Ao instalar o JASP, o R também será instalado em seu computador e ficará no pano de fundo. Dessa maneira, todas as ações feitas por *Point and Click* no JASP, serão convertidas em linhas de código no R e apresentadas de maneira dinâmica no JASP.
 
 ![](./img/capa_r_jasp.png)
 
-Em todos os capítulos, telas do JASP serão apresentadas para que seja possível a reprodução integral de algumas análises. Da mesma forma que qualquer pacote estatístico, o JASP é atualizado frequentemente. Esse livro contou com a versão 0.14.1 e espero que futuras atualizações não comprometam a proposta do livro.  
+Em todos os capítulos, telas do JASP serão apresentadas para que seja possível a reprodução integral de algumas análises. Da mesma forma que qualquer pacote estatístico, o JASP é atualizado frequentemente. Esse livro contou com a versão 0.14.1 e espero que futuras atualizações não comprometam a proposta do livro.
 
-Atualizações pontuais de capítulos serão feitas visando parear o conteúdo do livro com as mudanças nos programas.  
+Atualizações pontuais de capítulos serão feitas visando parear o conteúdo do livro com as mudanças nos programas.
 
 ## Outros recursos
 
-Em cada um dos capítulos, aplicações da estatística e referências bibliográficas serão apresentadas. Tenha em mente que há um debate intenso em diferentes conceitos de estatística, da mesma forma que muitas condições computacionais podem aparecer durante a execução das análises propostas. Eu recomendo fortemente a comunidade [stackoverflow](https://stackoverflow.com/) como um recurso pedagógico para auxiliar em ambos os cenários.  
+Em cada um dos capítulos, aplicações da estatística e referências bibliográficas serão apresentadas. Tenha em mente que há um debate intenso em diferentes conceitos de estatística, da mesma forma que muitas condições computacionais podem aparecer durante a execução das análises propostas. Eu recomendo fortemente a comunidade [stackoverflow](https://stackoverflow.com/) como um recurso pedagógico para auxiliar em ambos os cenários.
 
-Questões relacionadas aos capítulos são listadas de forma a conectar o conteúdo do livro com exigências balizadas por critérios externos, tal como o ENADE e bancas de concurso.  
+Questões relacionadas aos capítulos são listadas de forma a conectar o conteúdo do livro com exigências balizadas por critérios externos, tal como o ENADE e bancas de concurso.
 
+## Capa
 
-## Capa   
- 
-Por tradição, livros de Ciência de Dados e Estatística utilizam a imagem de algum animal na capa. Há livros com cachorros, papagaios, peixes, carangueijos, lagartos, etc. Esse livro não foge dessa regra e tem como capa a Jolie, a minha cachorrinha com a Anna. Ela foi indispensável para o <u>atraso</u> ao término deste livro.  
-
+Por tradição, livros de Ciência de Dados e Estatística utilizam a imagem de algum animal na capa. Há livros com cachorros, papagaios, peixes, carangueijos, lagartos, etc. Esse livro não foge dessa regra e tem como capa a Jolie, a minha cachorrinha com a Anna. Ela foi indispensável para o <u>atraso</u> ao término deste livro.
 
 ## Versão do livro
 
-Como todos os livros, este também tem uma história de desenvolvimento. A tabela abaixo apresenta a versão, a data de lançamento e algumas características importantes.   
+Como todos os livros, este também tem uma história de desenvolvimento. A tabela abaixo apresenta a versão, a data de lançamento e algumas características importantes.
 
-Versão  |      Data    |  Características
-:------ |:------------ | :-------------
-Beta 2  |  Março, 2021 | Revisão textual parcialmente concluída     
-Beta 1  |  Fevereiro, 2021 | Primeira versão. Baixa revisão textual e dos conceitos estatísticos. <br>Erros são esperados. A utilização deve ser feita apenas de maneira incipiente   
++--------+-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Versão | Data            | Características                                                                                                                                        |
++:=======+:================+:=======================================================================================================================================================+
+| Beta 2 | Março, 2021     | Revisão textual parcialmente concluída. Fechado parceria com a Nila Press para comercialização da versão final do livro.                               |
++--------+-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Beta 1 | Fevereiro, 2021 | Primeira versão. Baixa revisão textual e dos conceitos estatísticos. <br>Erros são esperados. A utilização deve ser feita apenas de maneira incipiente |
++--------+-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-## Autor  
+## Autor
 
-[Luis Anunciação](http://lattes.cnpq.br/3982200733248687) é doutor em Psicometria pela Pontifícia Universidade Católica do Rio de Janeiro (PUC-Rio), com intercâmbio na University of Oregon, mestre em saúde pública pela Universidade do Estado do Rio de Janeiro e especialista em Neuropsicologia (IBNeuro) e Bioestatística (Johns Hopkins University). Atualmente, é professor do Departamento de Psicologia da PUC-Rio, coordenador da ANOVA e psicometrista da Nila Press, uma editora especialzada no desenvolvimento de instrumentos psicológicos.  
+[Luis Anunciação](http://lattes.cnpq.br/3982200733248687) é doutor em Psicometria pela Pontifícia Universidade Católica do Rio de Janeiro (PUC-Rio), com intercâmbio na University of Oregon, mestre em saúde pública pela Universidade do Estado do Rio de Janeiro e especialista em Neuropsicologia (IBNeuro) e Bioestatística (Johns Hopkins University). Atualmente, é professor do Departamento de Psicologia da PUC-Rio, coordenador da ANOVA e psicometrista da Nila Press, uma editora especialzada no desenvolvimento de instrumentos psicológicos.
 
+## Revisão técnica
 
-## Revisão técnica  
+Este livro contou com a revisão técnica do Dr. J. Landeira-Fernandez (Doutor em Neurociências pela University of California - UCLA, Pesquisador 1A do CNPq) e Ms. Regina Albanense (Graduada em Matemática e Estatística e Mestre em Ciências). Dr. Landeira foi fundamental em tópicos envolvendo aspectos de pesquisa e análises estatísticas e Ms. Regina foi fundamental para revisão da modelagem matemática e revisão conceitual.
 
-Este livro contou com a revisão técnica do Dr. J. Landeira-Fernandez (Doutor em Neurociências pela University of California - UCLA, Pesquisador 1A do CNPq) e Ms. Regina Albanense (Graduada em Matemática e Estatística e Mestre em Ciências). Dr. Landeira foi fundamental em tópicos envolvendo aspectos de pesquisa e análises estatísticas e Ms. Regina foi fundamental para revisão da modelagem matemática e revisão conceitual. 
+## Agradecimentos
 
+Nenhum homem é uma ilha. Este livro só foi possível graças a um conjunto de pessoas que auxiliaram e fizeram uma profunda revisão do texto. Meus sinceros agradecimentos a (ao):
 
-## Agradecimentos 
-
-Nenhum homem é uma ilha. Este livro só foi possível graças a um conjunto de pessoas que auxiliaram e fizeram uma profunda revisão do texto. Meus sinceros agradecimentos a (ao):  
-
-J. Landeira-Fernandez, PUC-Rio  
-Regina Albanense, CONRE  
-Cristiano Fernandes, PUC-Rio  
-Danilo Assis Pereira, IBNeuro  
-Anna Carolina de Almeida Portugal, UFRJ   
-Emanuel Cordeiro, UFPE   
-Alunos da PUC-Rio, UFRJ, IBNeuro e ANOVA  
-
-
-
-
-
+J. Landeira-Fernandez, PUC-Rio\
+Regina Albanense, CONRE\
+Cristiano Fernandes, PUC-Rio\
+Danilo Assis Pereira, IBNeuro\
+Anna Carolina de Almeida Portugal, UFRJ\
+Emanuel Cordeiro, UFPE\
+Alunos da PUC-Rio, UFRJ, IBNeuro e ANOVA
