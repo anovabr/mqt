@@ -175,7 +175,7 @@
 \section{Atenção}\label{atenuxe7uxe3o}}
 
 Atenção: Leia com cuidado. Este livro ainda está em sua fase de revisão.\\
-Última modificação: 08 March, 2021 às 09:40
+Última modificação: 21 March, 2021 às 12:37
 
 \hypertarget{a-proposta}{%
 \section{A proposta}\label{a-proposta}}
@@ -311,14 +311,14 @@ Por tradição, livros de Ciência de Dados e Estatística utilizam a imagem de 
 Como todos os livros, este também tem uma história de desenvolvimento. A tabela abaixo apresenta a versão, a data de lançamento e algumas características importantes.
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.21}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.38}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.41}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.05}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.10}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.85}}@{}}
 \toprule
 Versão & Data & Características \\
 \midrule
 \endhead
-Beta 2 & Março, 2021 & Revisão textual parcialmente concluída \\
+Beta 2 & Março, 2021 & Revisão textual parcialmente concluída. Fechado parceria com a Nila Press para comercialização da versão final do livro. \\
 Beta 1 & Fevereiro, 2021 & Primeira versão. Baixa revisão textual e dos conceitos estatísticos. Erros são esperados. A utilização deve ser feita apenas de maneira incipiente \\
 \bottomrule
 \end{longtable}
@@ -533,7 +533,7 @@ Finalmente, para salvar o trabalho realizado em uma sessão, deve-se clicar na s
 \textbf{Pesquisa}: Procedimento racional e sistemático de investigação que visa proporcionar respostas específicas a um conjunto de problemas propostos.\\
 \textbf{Modelo teórico}: Representação visual, matemática, computacional ou experimental de um sistema de ideias, eventos ou fenômenos.\\
 \textbf{Instrumentos científicos}: Ferramentas que permitem amplificar o fenômeno de interesse, além de acessar aspectos da realidade que não podem ser percebidos diretamente.\\
-\textbf{Variável aleatória}: É uma variável que está associada a uma distribuição de probabilidade.\\
+\textbf{Variável aleatória}: É uma variável que está associada a uma distribuição de probabilidade. Descreve características numéricas específicas dos resultados de um processo aleatório.\\
 \textbf{Variável}: Termo genérico usado para se referir às características que estão sendo investigadas ou para se referir às variáveis aleatórias.\\
 \textbf{Variável Independente (VI)}: Característica que está sendo manipulada. Entende-se que ela influencia, afeta ou determina outras variáveis.\\
 \textbf{Variável dependente (VD)}: Variável que sofre efeito da VI. Seus valores dependem dos níveis da VI.\\
@@ -742,6 +742,47 @@ O termo variável interveniente é bastante circunscrito à Psicologia. Ele tend
 Quando esta variável é uma consequência da VI e também impacta a VD, o termo variável mediadora costuma ser empregado. Por exemplo, ao se investigar a relação entre idade (VI) e acidentes de trânsito (VD), pode-se sugerir que pessoas mais velhas tendem a apresentar menor capacidade visual. Por sua vez, essa limitação visual pode gerar acidentes de trânsito \citep{Rhodes2011}. Neste sentido, a variável ``capacidade visual'' é uma variável mediadora.
 
 \includegraphics{./img/cap_mediacao.png}
+
+Quando esta variável interfere no relacionamento entre a VI e a VD, podendo alterar sua natureza e intensidade, mas não é gerada pela VI, o termo variável moderadora pode ser utilizado. Por exemplo, a relação entre a satisfação de um cliente (X) e sua lealdade à marca (Y) é moderada pela sua renda \citep{Sugianto2017}. Pessoas muito satisfeitas com um produto podem ser mais ou menos leais à marca a depender de sua renda disponível.
+
+A relação entre horas trabalhadas (X) e quantidade de produção (Y) é moderada pela qualidade do equipamento utilizado. É possível que alguém gaste muitas horas de trabalho, mas não consiga produzir absolutamente nada, se os equipamentos disponíveis funcionarem de maneira irregular. Com frequência, médicos sugerem que ao tomar medicamentos antigripais, não se deve ingerir álcool. Nesse sentido, os efeitos do medicamento (X) nos sintomas da gripe (Y) podem inclusive ser opostos em função do álcool, que age de forma moderadora.
+
+No exemplo prévio sobre o efeito da idade (X) em acidentes de trânsito (Y), sabe-se hoje que o sexo se comporta como uma variável moderadora neste relacionamento. A literatura indica que pessoas mais novas, quando homens, tem uma alta probabilidade de se envolverem em acidentes de trânsito, especialmente os mais intensos ou graves \citep{Amarasingha2014, PRB2006}.
+
+\includegraphics{./img/cap_moderacao.png}
+
+Finalmente, é também possível identificar variáveis estranhas que interfiram tanto na VI como na VD, mas que não foram previamente mapeadas ou acessadas durante a coleta de dados. Nestes casos, é típico chamá-las de ``terceira variável'' ou ``variável de confundimento'', bem como chamar a relação entre VI e VD de ``espúria''. Por exemplo, existe uma alta correlação entre venda de sorvete (X) e morte por mordida de tubarão (Y). No entanto, essa é uma relação espúria, uma vez que é a variável ``temperatura'' que impacta tanto na VI como na VD. Da mesma maneira, existe uma alta correlação entre quantidade de bares e igrejas nas cidades, mas ambos os fenômenos são explicados pela densidade populacional do local.
+
+\includegraphics{./img/cap_confundimento.png}
+
+Talvez quando mais novo(a), alguém tenha lhe dito que as cegonhas traziam os bebês. Isso não é verdade, apesar de ser um ótimo exemplo de variável de confundimento. A relação entre número de ninhos de cegonha (X) e número de bebes nascidos (Y) é confundida pela temperatura do local 9 meses atrás \citep{Matthews2000}. Cegonhas e seres humanos têm seus filhos ou filhotes na mesma época. Curiosamente, como as cegonhas por vezes constroem seus ninhos em telhados de casas, especialmente as com chaminés por conta do calor, as pessoas acreditavam que se uma cegonha fizesse o ninho em seu telhado, isso indicaria que o casal iria ter um filho. Em alguns países, se achava também que deixar doces na janela seria uma maneira de informar as cegonhas que a casa estava pronta para ter um bebê.
+
+\includegraphics{./img/cap_cegonha.png}
+
+A literatura é bastante rica de exemplos para tais condições, mas também de discussões e debates acadêmicos sobre esses conceitos. A tabela a seguir reúne esforços e exemplifica onde tais conceitos são implementados.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.16}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.84}}@{}}
+\toprule
+Relacionamento & Exemplo \\
+\midrule
+\endhead
+Moderação & Relação entre ansiedade (X) e performance (Y), o tipo de atividade poderia ser uma variável moderadora \\
+Moderação & Relação entre efeito de um remédio (X) e sintomas de resfriado (Y), a ingestão de álcool poderia ser uma variável moderadora \\
+Moderação & Relação entre idade (X) e problemas cognitivos (Y), a escolaridade poderia ser uma variável moderadora \\
+Moderação & Relação entre stress (X) e depressão(Y), o suporte social poderia ser uma variável moderadora \\
+Mediação & Relação entre idade (X) e uso de mídias sociais (Y), a quantidade de tempo livre pode ser mediadora \\
+Mediação & Relação entre quantidade de hora de trabalho (X) e desgaste (Y), o retorno financeiro poderia ser mediador \\
+Mediação & Relação entre conscienciosidade (X) e saúde (Y), comportamentos saudáveis poderiam ser mediadores \\
+\bottomrule
+\end{longtable}
+
+\emph{Nota: A definição de variável mediadora e moderadora pode ser tornar mais difícil, como é visto no caso entre idade e problemas cognitivos, já que a escolaridade costuma depender também da idade}
+
+Em síntese, a principal característica de estudos com delineamentos observacionais é a não manipulação da VI por parte do pesquisador.
+
+Como outros exemplos, pode-se listar estudos em que se objetivou investigar os hábitos, práticas e produtividade de pesquisadores \citep{Wenke2017}, a alimentação durante a pandemia \citep{Amatori2020} ou aspectos epidemiológicos de transtornos mentais de universitários brasileiros, portugueses e espanhóis \citep{AfonsoJunior2020}.
 
 \hypertarget{delineamentos-experimentais}{%
 \subsection{Delineamentos experimentais}\label{delineamentos-experimentais}}
