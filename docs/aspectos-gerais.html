@@ -52,70 +52,6 @@
 
 
 
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 <link rel="stylesheet" href="lab.css" type="text/css" />
@@ -453,7 +389,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <strong>Instrumentos científicos</strong>: Ferramentas que permitem amplificar o fenômeno de interesse, além de acessar aspectos da realidade que não podem ser percebidos diretamente.<br />
 <strong>Variável aleatória</strong>: É uma variável que está associada a uma distribuição de probabilidade. Descreve características numéricas específicas dos resultados de um processo aleatório.<br />
 <strong>Variável</strong>: Termo genérico usado para se referir às características que estão sendo investigadas ou para se referir às variáveis aleatórias.<br />
-<strong>Variável Independente (VI)</strong>: Característica que está sendo manipulada. Entende-se que ela influencia, afeta ou determina outras variáveis.<br />
+<strong>Variável Independente (VI)</strong>: Característica que está sendo manipulada ou assume-se como causal em uma rede de relacionamentos. Entende-se que ela influencia, afeta ou determina outras variáveis.<br />
 <strong>Variável dependente (VD)</strong>: Variável que sofre efeito da VI. Seus valores dependem dos níveis da VI.<br />
 <strong>Delineamento de pesquisa</strong> Forma de esquematizar o planejamento da pesquisa, especialmente considerando o acesso e controle das variáveis, bem como a coleta e análise de dados.</p>
 </div>
@@ -487,7 +423,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <tr class="odd">
 <td align="left">Exploratória</td>
 <td align="left">Há pouco ou nenhum conhecimento sobre o tema de interesse.</td>
-<td align="left">Não há hipóteses definidas previamente. Os resultados proporcionam maior familiaridade com o problema, apesar de frágeis e pouco generalizáveis.</td>
+<td align="left">Não há hipóteses definidas previamente. Os resultados proporcionam maior familiaridade com o problema, apesar de frágeis e pouco generalizáveis. Há maior flexibilidade metodológica.</td>
 </tr>
 <tr class="even">
 <td align="left">Descritiva</td>
@@ -496,7 +432,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 <tr class="odd">
 <td align="left">Explicativa</td>
-<td align="left">Há maior conhecimento sobre o tema de interesse e a finalidade é indicar possíveis relações de causa e efeito</td>
+<td align="left">Tem preocupação central em identificar os fatores que determinam, contribuem, mantém ou extinguem um determinado fenômeno. . Há maior conhecimento sobre o tema de interesse e a finalidade é indicar possíveis relações de causa e efeito</td>
 <td align="left">O delineamento experimental tende a ser implementado, o que será explicado posteriormente</td>
 </tr>
 </tbody>
@@ -504,7 +440,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>É possível notar que o objetivo da pesquisa indica um pouco a maturidade da área cientifica em questão e a recenticidade que o fenômeno a ser estudado representa. Apesar de não ser uma regra geral, pesquisas exploratórias tendem a ser feitas por ciências mais novas e/ou para estudar fenômenos e objetos em que há pouco conhecimento científico sobre. Tenha atenção que a baixa quantidade de conhecimento se refere a aspectos acadêmicos e científicos, e não a quantidade de conhecimento que os autores da pesquisa apresentam sobre seu objeto de investigação.</p>
 <p>Muitas pesquisas em Psicologia são exploratórias. Explorar quantas e quais funções executivas estão presentes em crianças com autismo <span class="citation">(<a href="referencias.html#ref-Skogli2020" role="doc-biblioref">Skogli et al., 2020</a>)</span> ou quais são as atitudes de professores em relação ao ensino de ciência <span class="citation">(<a href="referencias.html#ref-Jones1994" role="doc-biblioref">Jones &amp; Levin, 1994</a>)</span> retratam bem pesquisas exploratórias. No entanto, mesmo áreas com maior maturidade científica podem realizar pesquisas exploratórias quando o fenômeno a ser estudado é recente. Por exemplo, a eventual relação entre o Zica Vírus e o desenvolvimento de microcefalia nos anos 2015 proporcionou a realização de muitas pesquisas exploratórias em biologia e medicina.</p>
 <p>Pesquisas com objetivos descritivos indicam que o fenômeno ou objeto investigado já é mais conhecido pela comunidade científica. Elas são úteis para apresentar o perfil de determinado fenômeno ou objeto, bem como verificar a relação entre variáveis. As pesquisas de intenção de votos, survey sobre opiniões e atitudes sociais e indicadores de prevalência de condições de saúde retratam bem este tipo de pesquisa.</p>
-<p>Pesquisas explicativas visam identificar os fatores que determinam ou que contribuem para a ocorrência dos fenômenos <span class="citation">(<a href="referencias.html#ref-gil2002" role="doc-biblioref">Gil, 2002</a>)</span>. Esse é o tipo de pesquisa que mais aprofunda o conhecimento da realidade e, consequentemente, é a mais complexa de ser realizada. Estudar fenômenos termodinâmicos, tal como a transformação de um tipo de energia em outra, ou como o processo de detecção de um estímulo se dá [Madsen1988] ou qual é o efeito de programas de televisão na agressividade de crianças <span class="citation">(<a href="referencias.html#ref-Bandura1961" role="doc-biblioref">1961</a>)</span> retratam pesquisas explicativas.</p>
+<p>Pesquisas explicativas visam identificar os fatores que determinam ou que contribuem para a ocorrência dos fenômenos <span class="citation">(<a href="referencias.html#ref-gil2002" role="doc-biblioref">Gil, 2002</a>)</span>. Esse é o tipo de pesquisa que mais aprofunda o conhecimento da realidade e, consequentemente, é a mais complexa de ser realizada. Estudar fenômenos termodinâmicos, tal como a transformação de um tipo de energia em outra, ou como o processo de detecção de um estímulo se dá <span class="citation">(<a href="referencias.html#ref-Madsen1988" role="doc-biblioref">Madsen, 1988</a>)</span> ou qual é o efeito de programas de televisão na agressividade de crianças <span class="citation">(<a href="referencias.html#ref-Bandura1961" role="doc-biblioref">1961</a>)</span> retratam pesquisas explicativas.</p>
 </div>
 <div id="a-dimensão-temporal-de-uma-pesquisa" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> A dimensão temporal de uma pesquisa</h2>
@@ -575,7 +511,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Dessa maneira, a principal proposta dos instrumentos de medida é a captura da realidade sem interferência ou ruídos e, em seguida, a produção de dados confiáveis sobre o fenômeno ou objeto estudado. Existe uma grande translação entre modelos teóricos e instrumentos de medida. Apesar de não ser uma regra geral, muitas áreas científicas primeiro constroem modelos teóricos e o processo de medida ocorre nestes modelos. Por exemplo, há um conjunto de modelos psicológicos visando entender como ocorre o esquecimento que, por sua vez, permitiram desenvolver testes e escalas específicas para isso.</p>
 <p>Um dos exemplos mais interessantes sobre a limitação que nossos sentidos possuem ao capturar a realidade e a importância do desenvolvimento de instrumentos de medida é percepção que temos do sol. A maioria das representações feitas do sol o apresentam como amarelo, quando na verdade ele é branco. Isso ocorre em função da atmosfera do planeta Terra e de diferentes gases presentes no céu.</p>
 <p><img src="img/cap_sol.PNG" /></p>
-<p>Isso posto, o desenvolvimento de modelos teóricos e de instrumentos de medida são atividades essenciais de pesquisadores e cientistas para lidar com a impossibilidade ou improbabilidade de acessar a realidade de forma direta, bem como pela limitação perceptual que temos. Como Popper comenta no livro “Os dois problemas fundamentais da teoria do conhecimento,” essas características fazem com que cientistas quase nunca digam que estão em busca da verdade, mas sim que estão em busca de evidências sobre um determinado fenômeno ou objeto.</p>
+<p>Isso posto, o desenvolvimento de modelos teóricos e de instrumentos de medida são atividades essenciais de pesquisadores e cientistas para lidar com a impossibilidade ou improbabilidade de acessar a realidade de forma direta, bem como pela limitação perceptual que temos. Como Popper <span class="citation">(<a href="referencias.html#ref-Popper2009-POPTTF" role="doc-biblioref">Popper, 2009</a>)</span> comenta no livro “Os dois problemas fundamentais da teoria do conhecimento,” essas características fazem com que cientistas quase nunca digam que estão em busca da verdade, mas sim que estão em busca de evidências sobre um determinado fenômeno ou objeto.</p>
 </div>
 <div id="variáveis" class="section level3" number="3.3.2">
 <h3><span class="header-section-number">3.3.2</span> Variáveis</h3>
@@ -910,20 +846,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
