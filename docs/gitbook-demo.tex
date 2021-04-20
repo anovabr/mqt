@@ -123,18 +123,18 @@
 \usepackage{framed}
 \setlength{\fboxsep}{.8em}
 
-\newenvironment{objectives}{
+\newenvironment{base}{
   \definecolor{shadecolor}{rgb}{0.764,0.992,0.686}  % black
   \color{black}
   \begin{shaded}}
  {\end{shaded}}
 
-\newenvironment{base}{
-  \definecolor{shadecolor}{rgb}{0.972,0.972,0.972}  % black
-  \color{black}
+
+\newenvironment{objectives}{
+  \definecolor{shadecolor}{rgb}{0, 0, 0}  % black
+  \color{white}
   \begin{shaded}}
  {\end{shaded}}
-
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
@@ -175,18 +175,32 @@
 \section{Atenção}\label{atenuxe7uxe3o}}
 
 Atenção: Leia com cuidado. Este livro ainda está em sua fase de revisão.\\
-Última modificação: 21 March, 2021 às 12:37
+Última modificação: 20 April, 2021 às 20:18
+
+Disciplinas do conjunto das ciências humanas e da saúde costumam fazer pesquisas extremamente complexas, em que a diferenciação dos fenômenos de interesse (sinal) daqueles que o distorcem ou o atrapalham (ruído) é, por vezes, bastante sutil e complicada. Uma vez que incerteza é sempre presente, é justamente nestas áreas que a estatística assume um importante papel. Métodos estatísticos permitem que os pesquisadores possam implementar maior robustez metodológica em seus estudos e com isso, terem maior segurança tanto nos resultados alcançados, como nas discussões e conclusões sugeridas.
+
+No entanto, apesar da inegável contribuição que a estatística traz para estas áreas, a ansiedade e o receio que ela gera em estudantes é um fato bem consolidado e conhecido pelos docentes não apenas de estatística, mas de métodos quantitativos no geral. Esse fenômeno traz um paradoxo bastante peculiar, podendo até mesmo fazer com que os estudantes de ciências humanas e da saúde -- que são os que mais precisam dos recursos estatísticos em suas pesquisas -- também sejam aqueles que têm menor interesse ou até mesmo a maior resistência em aprender esta matéria.
+
+A saída para este impasse não é fácil, mas um dos objetivos deste livro é providenciar uma possível solução. Durante todos os capítulos, o estudante será apresentado à uma pesquisa previamente publicada, em que as perguntas científicas se tornam o centro das atenções e as análises estatísticas aparecem como um enorme auxílio e suporte para que as respostas possam ser elaboradas. Dessa maneira, o estudante será estimulado a pensar e agir como um pesquisador, encontrando suas próprias soluções ou, ainda, aperfeiçoando aquelas que o livro propõe.
+
+O livro é integralmente feito no R e no JASP. Todos os seus códigos estão disponíveis para uso caso o estudante queira reproduzir as análises no R. Todas as telas do JASP também estão disponíveis visando guiar o estudante em cada etapa analítica. Acredito que essa abordagem mais pragmática possa despertar no estudante o interesse na utilização da estatística como uma importante ferramenta da ciência, mas também plantar uma primeira semente para que alguns também queiram entender como a ciência da estatística é formada.
+
+Este livro não seria possível sem a participação dos alunos da PUC-Rio, UFRJ e IBNeuro. Cada um, à sua maneira, contribuiu compartilhando suas dúvidas, questionamentos e reflexões, recursos valiosos para qualquer professor. O suporte e apoio dado por minha esposa também foram fundamentais em cada passo, seja os para frente ou também uns poucos para trás. Finalmente, se eu pude ver mais longe, foi por estar sobre ombros de um gigante, que tem nome e história. O Professor J. Landeira-Fernandez foi (e é) uma pessoa importante em cada etapa do processo, me oferecendo sempre um incentivo para continuar a seguir em frente e me apresentando às vias mais seguras.
+Finalmente, apesar de grande ênfase em estudantes de graduação e pós-graduação, espero que este livro possa se tornar um importante recurso metodológico para os colegas que trabalham nesta batalha tão difícil, mas tão recompensante, que é ensinar Estatística.
+
+Luis Anunciação,
+Rio de Janeiro, 20 de abril de 2021
 
 \hypertarget{a-proposta}{%
 \section{A proposta}\label{a-proposta}}
 
-Este livro nasceu como um dos principais e mais frutíferos resultados das aulas de graduação e pós-graduação ministradas por mim em alguns locais, mas com maior intensidade na PUC-Rio, UFRJ e IBNeuro. Por bastante tempo, nas aulas de estatística aplicada à Psicologia e Bioestatística, eu recorri a diferentes livros que, cada qual a sua maneira, apresentavam conceitos de pesquisa, técnicas estatísticas e análise de dados.
+Este livro nasceu como um dos principais e mais frutíferos resultados das aulas de graduação e pós-graduação ministradas por mim em alguns locais, mas com maior intensidade na PUC-Rio, UFRJ e IBNeuro. Por muito tempo, durante as aulas de Estatística aplicada à Psicologia e Bioestatística recorri a diferentes livros que, cada qual de forma particular, apresentavam conceitos de pesquisa, técnicas estatísticas e análise de dados.
 
-No entanto, acabei percebendo (ou tendo a impressão) de que eles apresentam a estatística por diferentes atalhos pedagógicos, (1) sugerindo que pesquisa e estatística eram áreas distantes, (2) que toda estatística podia ser resumida por testes de hipóteses independentes entre si e que (3) situações envolvendo dados reais não tinham tanto interesse. No geral, parece-me que para eles apresentarem a estatística na ciência, era necessário se distorcer pesadamente a ciência da estatística. Em função disso, nos últimos anos, eu fui sentindo necessidade de apresentar os conceitos de pesquisa e técnicas estatísticas de forma integrada e contanto com dados reais.
+No entanto, acabei percebendo (ou tendo a impressão) de que eles apresentavam a estatística por diferentes atalhos pedagógicos, (1) sugerindo que pesquisa e estatística eram áreas distantes, (2) que toda estatística podia ser resumida por testes de hipóteses independentes entre si e que (3) situações envolvendo dados reais não tinham tanto interesse. No geral, pareceu-me que para eles apresentarem a estatística na ciência, era necessário distorcer pesadamente a ciência da estatística. Em função disso, nos últimos anos, eu fui sentindo necessidade de apresentar os conceitos de pesquisa e técnicas estatísticas de forma integrada, coesa e contando com dados reais.
 
-Conciliar essas condições em um único livro de maneira adequada é bastante improvável. Dessa forma, esse livro opta por uma abordagem majoritariamente pragmática, mas que evita se distanciar de conceitos teóricos. O pragmatismo é fundamental para que o estudante consiga, rapidamente, entender os procedimentos relacionados à análise de dados e implementar técnicas estatísticas para tomar decisões. Quão antes o estudante entender a utilidade da estatística para resolver problemas, maior é a probabilidade dele vir a gostar da área. Por sua vez, os aspectos teóricos são os alicerces para que o estudante possa perceber também que a Estatística é uma ciência que, ao longo do tempo, conforme a tecnologia avançou, mais sólida e robusta foi se tornando.
+Conciliar estas condições em um único livro de maneira adequada é bastante improvável e esse livro opta por uma abordagem majoritariamente pragmática, mas que evita se distanciar de conceitos teóricos. O pragmatismo é fundamental para que o estudante consiga, rapidamente, entender os procedimentos relacionados à análise de dados e implementar técnicas estatísticas para tomar decisões. Quão antes o estudante entender a utilidade da estatística para resolver problemas, maior é a probabilidade de ele vir a gostar da área. Por sua vez, os aspectos teóricos são os alicerces para que o estudante possa perceber também que a estatística é uma ciência que, ao longo do tempo, conforme a tecnologia avançou, mais sólida e robusta foi se tornando.
 
-Isso posto, este livro é fruto de um grande esforço que tem a proposta de ser um manual técnico, em que são apresentados conceitos de pesquisa e análises estatísticas utilizando os ambientes R e JASP e com especial aplicação em Psicologia e Bioestatística. Em cada capítulo, o estudante terá a oportunidade de acessar:
+Isso posto, este livro tem a proposta de ser um manual ou guia técnico, em que são apresentados conceitos de pesquisa e análises estatísticas utilizando os ambientes de programação R e o JASP e com especial aplicação em Psicologia e Bioestatística. Em cada capítulo, o estudante terá a oportunidade de acessar:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -196,18 +210,17 @@ Isso posto, este livro é fruto de um grande esforço que tem a proposta de ser 
 \item
   O artigo publicado com os resultados;\\
 \item
-  A base de dados em formato R ou CSV desidentificadas para recriar os cenários dos artigos e poder ilustrar os novos conceitos discutidos;\\
+  A base de dados em formato R ou CSV sem identificação para recriar os cenários dos artigos e poder ilustrar os novos conceitos discutidos;\\
 \item
-  Os métodos e as técnicas estatísticas pautadas na teoria discutida que possa responder às perguntas apresentadas nos cenários dos artigos e leve à uma tomada de decisão.\\
+  Os métodos e as técnicas estatísticas pautadas na teoria discutida que possa responder às perguntas apresentadas nos cenários dos artigos e leve à uma tomada de decisão;\\
 \item
   Recursos extras para aprofundamento em tópicos específicos;\\
 \item
-  Resolução de problemas de fixação do conteúdo discutido, ilustrados por provas externas da área da psicologia.
+  Resolução de problemas par fixação do conteúdo discutido, ilustrados por provas externas da Área da Psicologia.
 \end{enumerate}
 
-Com isso, o livro oferece ao estudante um convite para uma trilha de aprendizado dentro do ecossistema da psicologia, que o faça resolver problemas para uma tomada de decisão real, pautadas pelo referencial teórico discutido e pelos métodos e técnicas já oferecidos. Assim, o foco do livro estará na resolução de problemas da área da psicologia, a fim de tomar uma decisão mais acurada.
-
-Espero que este livro possa ser útil a estudantes de graduação e pós-graduação, agradável a leitores de estatística como de Psicologia e um recurso importante para outros docentes que, eventualmente, precisem de um material de apoio.
+Com isso, o livro oferece ao estudante um convite para uma trilha de aprendizado dentro do ecossistema da Psicologia, que o faça resolver problemas para uma tomada de decisão real, pautadas pelo referencial teórico discutido e pelos métodos e técnicas já oferecidos. Em função desses elementos, o foco do livro estará na resolução de problemas da área da Psicologia, a fim de tomar uma decisão mais acurada.
+Espero que este livro possa ser útil a estudantes de graduação e pós-graduação, agradável a leitores de Estatística como de Psicologia e um recurso importante para outros docentes que, eventualmente, precisem de um material de apoio.
 
 \hypertarget{objetivo}{%
 \section{Objetivo}\label{objetivo}}
@@ -217,14 +230,14 @@ O livro tem como objetivos (1) apresentar, (2) discutir e (3) operacionalizar co
 \hypertarget{puxfablico-alvo}{%
 \section{Público-alvo}\label{puxfablico-alvo}}
 
-Este livro foi desenvolvido de maneira mais focada a estudantes de Psicologia e Bioestatística. As pesquisas e exemplos utilizados são mais aderentes a essas duas áreas. No entanto, os conceitos, métodos e técnicas estatísticas do livro são interdisciplinares, espera-se que estudantes de áreas como educação, administração e economia também possam também ter proveito do livro.
+Estudantes de Psicologia e Bioestatística. As pesquisas e exemplos utilizados são mais aderentes a estas duas áreas. No entanto, os conceitos, métodos e técnicas estatísticas são interdisciplinares e, com isso, espera-se que estudantes de áreas como Educação, Administração e Economia também possam aprender com o livro.
 
 \hypertarget{formato-do-livro}{%
 \section{Formato do livro}\label{formato-do-livro}}
 
-O livro foi pensado para ter uma estrutura (1) organizada, (2) linear e (3) formada por capítulos autossuficientes escritos para responder questões específicas. Acredito que, assim, ele possa atender tanto estudantes interessados em ler a obra inteira, como aqueles que buscam informações mais específicas sobre um tópico particular.
+O livro foi pensado para ter uma estrutura (1) organizada, (2) linear e (3) formada por capítulos autossuficientes escritos para responder questões pontuais. Acredito que, assim, ele possa atender tanto estudantes interessados em ler a obra inteira, como aqueles que buscam informações mais específicas sobre um tópico particular.
 
-Esse formato adotado tende a gerar uma percepção diferente entre aqueles que consultarem apenas um capítulo ou outro e aqueles que lerem o conteúdo por completo. Há uma maior chance disso ocorrer em capítulos sobre testes estatísticos. Uma vez que diversos testes estatísticos são casos particulares de outros, alguns assuntos que parecem destoantes em uma leitura inicial, tornam-se articulados em outros capítulos.
+Este formato adotado tende a gerar uma percepção diferente entre aqueles que consultarem apenas um capítulo ou outro e aqueles que lerem o conteúdo por completo. Há uma maior chance de isto ocorrer em capítulos sobre testes estatísticos, uma vez que diversos testes estatísticos são casos particulares de outros. Alguns assuntos que parecem destoantes em uma leitura inicial, tornam-se articulados em outros capítulos.
 
 Muitos capítulos recebem o nome de testes de hipóteses (ex: Teste T ou Regressão). Isso foi intencional e visa auxiliar estudantes que precisem apenas de informações pontuais, bem como tende a enfraquecer a ideia de uma relação ponto a ponto tipicamente feita entre testes estatísticos e delineamentos específicos.
 
@@ -260,18 +273,15 @@ Neste livro, as seguintes pesquisas e seus materiais são utilizados:
 \item
   ``Parent-reported diagnosis of Attention Deficit Hyperactivity Disorder and psychostimulant use among children and adolescents: a population-based nationwide study''
 \item
-  ``Resilience and vulnerability in adolescents with primary headaches: a cross-sectional population-based study''
+  ``\href{https://pubmed.ncbi.nlm.nih.gov/33720394/}{Resilience and vulnerability in adolescents with primary headaches: a cross-sectional population-based study}''
 \end{itemize}
 
 As bases são \emph{Open Science}. Isso significa que elas são gratuitas e universalmente acessíveis para finalidades acadêmicas. Em cada capítulo, as bases irão aparecer na seção ``Pesquisa'', da seguinte maneira:
 
-\begin{base}
 A base desta pesquisa está disponível em formato \textbf{R (Rdata)} e em \textbf{CSV}, que é lido pelo JASP. Clique na opção desejada.
 
 Base R: \href{}{Base R}\\
 Base JASP: \href{}{Base CSV}
-
-\end{base}
 
 As bases em R tem formato .RData e as bases para o JASP tem formato .CSV.
 
@@ -326,7 +336,7 @@ Beta 1 & Fevereiro, 2021 & Primeira versão. Baixa revisão textual e dos concei
 \hypertarget{autor}{%
 \section{Autor}\label{autor}}
 
-\href{http://lattes.cnpq.br/3982200733248687}{Luis Anunciação} é doutor em Psicometria pela Pontifícia Universidade Católica do Rio de Janeiro (PUC-Rio), com intercâmbio na University of Oregon, mestre em saúde pública pela Universidade do Estado do Rio de Janeiro e especialista em Neuropsicologia (IBNeuro) e Bioestatística (Johns Hopkins University). Atualmente, é professor do Departamento de Psicologia da PUC-Rio, coordenador da ANOVA e psicometrista da Nila Press, uma editora especialzada no desenvolvimento de instrumentos psicológicos.
+\href{http://lattes.cnpq.br/3982200733248687}{Luis Anunciação} é doutor em Psicometria pela Pontifícia Universidade Católica do Rio de Janeiro (PUC-Rio), com intercâmbio na University of Oregon, mestre em saúde pública pela Universidade do Estado do Rio de Janeiro e especialista em Neuropsicologia (IBNeuro) e Bioestatística (Johns Hopkins University). Atualmente, é professor do Departamento de Psicologia da PUC-Rio, coordenador da ANOVA e psicometrista da Nila Press, uma editora especialzada no desenvolvimento de instrumentos psicológicos. Desde 2016, trabalha intensamente com metodos estatísticos e análise de dados, sendo autor de mais de 30 artigos científicos sobre o tema, publicados majoritariamente em periódicos internacionais.
 
 \hypertarget{revisuxe3o-tuxe9cnica}{%
 \section{Revisão técnica}\label{revisuxe3o-tuxe9cnica}}
@@ -535,7 +545,7 @@ Finalmente, para salvar o trabalho realizado em uma sessão, deve-se clicar na s
 \textbf{Instrumentos científicos}: Ferramentas que permitem amplificar o fenômeno de interesse, além de acessar aspectos da realidade que não podem ser percebidos diretamente.\\
 \textbf{Variável aleatória}: É uma variável que está associada a uma distribuição de probabilidade. Descreve características numéricas específicas dos resultados de um processo aleatório.\\
 \textbf{Variável}: Termo genérico usado para se referir às características que estão sendo investigadas ou para se referir às variáveis aleatórias.\\
-\textbf{Variável Independente (VI)}: Característica que está sendo manipulada. Entende-se que ela influencia, afeta ou determina outras variáveis.\\
+\textbf{Variável Independente (VI)}: Característica que está sendo manipulada ou assume-se como causal em uma rede de relacionamentos. Entende-se que ela influencia, afeta ou determina outras variáveis.\\
 \textbf{Variável dependente (VD)}: Variável que sofre efeito da VI. Seus valores dependem dos níveis da VI.\\
 \textbf{Delineamento de pesquisa} Forma de esquematizar o planejamento da pesquisa, especialmente considerando o acesso e controle das variáveis, bem como a coleta e análise de dados.
 
@@ -568,9 +578,9 @@ A tabela a seguir sintetiza as principais características de cada um desses tip
 Tipo de Pesquisa & Quando é feita & Características principais \\
 \midrule
 \endhead
-Exploratória & Há pouco ou nenhum conhecimento sobre o tema de interesse. & Não há hipóteses definidas previamente. Os resultados proporcionam maior familiaridade com o problema, apesar de frágeis e pouco generalizáveis. \\
+Exploratória & Há pouco ou nenhum conhecimento sobre o tema de interesse. & Não há hipóteses definidas previamente. Os resultados proporcionam maior familiaridade com o problema, apesar de frágeis e pouco generalizáveis. Há maior flexibilidade metodológica. \\
 Descritiva & Os fenômenos e objetos já são mais conhecidos. Hipóteses sobre suas características e eventuais relacionamentos podem ser feitas. & Técnicas de coleta de dados mais padronizadas tendem a ser empregadas. Testes de hipóteses são feitos, bem como técnicas estatísticas descritivas e que visem comparar características entre grupos e pessoas diferentes. \\
-Explicativa & Há maior conhecimento sobre o tema de interesse e a finalidade é indicar possíveis relações de causa e efeito & O delineamento experimental tende a ser implementado, o que será explicado posteriormente \\
+Explicativa & Tem preocupação central em identificar os fatores que determinam, contribuem, mantém ou extinguem um determinado fenômeno. . Há maior conhecimento sobre o tema de interesse e a finalidade é indicar possíveis relações de causa e efeito & O delineamento experimental tende a ser implementado, o que será explicado posteriormente \\
 \bottomrule
 \end{longtable}
 
@@ -580,7 +590,7 @@ Muitas pesquisas em Psicologia são exploratórias. Explorar quantas e quais fun
 
 Pesquisas com objetivos descritivos indicam que o fenômeno ou objeto investigado já é mais conhecido pela comunidade científica. Elas são úteis para apresentar o perfil de determinado fenômeno ou objeto, bem como verificar a relação entre variáveis. As pesquisas de intenção de votos, survey sobre opiniões e atitudes sociais e indicadores de prevalência de condições de saúde retratam bem este tipo de pesquisa.
 
-Pesquisas explicativas visam identificar os fatores que determinam ou que contribuem para a ocorrência dos fenômenos \citep{gil2002}. Esse é o tipo de pesquisa que mais aprofunda o conhecimento da realidade e, consequentemente, é a mais complexa de ser realizada. Estudar fenômenos termodinâmicos, tal como a transformação de um tipo de energia em outra, ou como o processo de detecção de um estímulo se dá {[}Madsen1988{]} ou qual é o efeito de programas de televisão na agressividade de crianças \citeyearpar{Bandura1961} retratam pesquisas explicativas.
+Pesquisas explicativas visam identificar os fatores que determinam ou que contribuem para a ocorrência dos fenômenos \citep{gil2002}. Esse é o tipo de pesquisa que mais aprofunda o conhecimento da realidade e, consequentemente, é a mais complexa de ser realizada. Estudar fenômenos termodinâmicos, tal como a transformação de um tipo de energia em outra, ou como o processo de detecção de um estímulo se dá \citep{Madsen1988} ou qual é o efeito de programas de televisão na agressividade de crianças \citeyearpar{Bandura1961} retratam pesquisas explicativas.
 
 \hypertarget{a-dimensuxe3o-temporal-de-uma-pesquisa}{%
 \section{A dimensão temporal de uma pesquisa}\label{a-dimensuxe3o-temporal-de-uma-pesquisa}}
@@ -649,12 +659,12 @@ Um dos exemplos mais interessantes sobre a limitação que nossos sentidos possu
 
 \includegraphics{./img/cap_sol.png}
 
-Isso posto, o desenvolvimento de modelos teóricos e de instrumentos de medida são atividades essenciais de pesquisadores e cientistas para lidar com a impossibilidade ou improbabilidade de acessar a realidade de forma direta, bem como pela limitação perceptual que temos. Como Popper comenta no livro ``Os dois problemas fundamentais da teoria do conhecimento'', essas características fazem com que cientistas quase nunca digam que estão em busca da verdade, mas sim que estão em busca de evidências sobre um determinado fenômeno ou objeto.
+Isso posto, o desenvolvimento de modelos teóricos e de instrumentos de medida são atividades essenciais de pesquisadores e cientistas para lidar com a impossibilidade ou improbabilidade de acessar a realidade de forma direta, bem como pela limitação perceptual que temos. Como Popper \citep{Popper2009-POPTTF} comenta no livro ``Os dois problemas fundamentais da teoria do conhecimento'', essas características fazem com que cientistas quase nunca digam que estão em busca da verdade, mas sim que estão em busca de evidências sobre um determinado fenômeno ou objeto.
 
 \hypertarget{variuxe1veis}{%
 \subsection{Variáveis}\label{variuxe1veis}}
 
-O segundo conceito fundamental pode ser entendido pela dicotomia entre variáveis e constantes. De maneira geral, um fenômeno constante não apresenta dispersão em seus valores. Basta uma única medição para que o comportamento de um fenômeno constante possa ser capturado. Em oposição, fenômenos variáveis podem assumir quaisquer valores em suas características. Enquanto a velocidade da luz e do som é, respectivamente, 324 m/s e 299.792 m/s; a renda, altura ou inteligência das pessoas pode variar bastante. Essa dicotomia poderia também ser vista pelo conceito de modelos determinísticos e probabilísticos ou, superficialmente, em diferenças entre ciências naturais e ciências humanas. Modelos determinísticos são aqueles que as condições iniciais determinam os resultados, enquanto modelos probabilísticos são os que associam probabilidades aos resultados. Em ciências naturais recorre-se menos à noção de probabilidade, enquanto em ciências humanas este é um conceito central.
+O segundo conceito fundamental pode ser entendido pela dicotomia entre variáveis e constantes. De maneira geral, um fenômeno constante não apresenta dispersão em seus valores. Basta uma única medição para que o comportamento de um fenômeno constante possa ser capturado. Em oposição, as características de fenômenos variáveis podem assumir quaisquer valores. Tornando essa diferença mais concreta, enquanto a velocidade da luz e do som são, respectivamente, 324 m/s e 299.792 m/s; a renda, altura ou inteligência das pessoas podem variar bastante. Essa dicotomia poderia também ser vista pelo conceito de modelos determinísticos e probabilísticos ou, superficialmente, em diferenças entre ciências naturais e ciências humanas. Modelos determinísticos são aqueles que as condições iniciais determinam os resultados, enquanto modelos probabilísticos são os que associam probabilidades aos resultados. Em ciências naturais recorre-se menos à noção de probabilidade, enquanto em ciências humanas este é um conceito central.
 
 Em estatística e pesquisa, o termo variável pode ser entendido tanto de uma maneira bastante informal, como de uma forma mais rigorosa. Informalmente, uma variável é um símbolo que representa uma característica de um determinado objeto, tal como peso, altura, inteligência ou renda. Como essa característica pode apresentar quaisquer, dá-se o nome de variável. No entanto, formalmente em estatística, quando o termo variável é utilizado, o que está em jogo é o conceito de variável aleatória. Por sua vez, este conceito se refere à uma classe de variáveis em que o conjunto possível de suas realizações (ou seja, seus valores ou desfechos) ocorrem de acordo com uma distribuição de probabilidade \citep{everitt2002cambridge}. Em estatística, uma variável aleatória é uma função que associa elementos do espaço amostral ao conjunto de números reais.
 
@@ -3938,6 +3948,13 @@ Homocedasticidade: A homogeneidade ou igualdade das variâncias pode ser testada
 \NormalTok{  pander}\SpecialCharTok{::}\FunctionTok{pander}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
+
+Registered S3 methods overwritten by `car':
+method from
+influence.merMod lme4
+cooks.distance.influence.merMod lme4
+dfbeta.influence.merMod lme4
+dfbetas.influence.merMod lme4
 
 \begin{longtable}[]{@{}
   >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.17}}
@@ -9043,6 +9060,23 @@ sex1 & 0.4 & 1.5 \\
 \end{enumerate}
 
 Gabarito: 1-b;2-a;3-a
+
+\hypertarget{quarta-capa}{%
+\chapter{Quarta capa}\label{quarta-capa}}
+
+Estatística é uma disciplina que, quase sempre, desperta uma preocupação em estudantes de ciências humanas, certamente não apenas aqueles matriculados em Psicologia. No entanto, em sentido oposto à ansiedade que essa disciplina pode provocar, há cada vez mais um reconhecimento sobre a importância de métodos e análises estatísticas no campo das ciências, especialmente nas áreas empíricas.
+
+Neste livro, o Professor Luis Anunciação (PUC-Rio) se propõe a uma tarefa arriscada, mas muito pioneira: ensinar estatística e análise de dados através de pesquisas previamente publicadas na área da Psicologia e Epidemiologia, com dados abertos e acessíveis tanto para utilização no programa estatístico R e no JASP.
+
+O livro consegue tocar em três aspectos essenciais em uma pesquisa, que são (1) como elaborar e estruturar uma pesquisa, (2) como analisar os dados decorrentes da pesquisa e tomar decisões probabilísticas e (3) como interpretar os resultados, integrando a modelagem estatística e as questões teóricas que, originalmente, motivaram à execução da pesquisa.
+
+A leitura deste livro é bastante prazerosa. O conteúdo é passado de forma leve, sem sobrecarregar em aspectos matemáticos, mas também sem ignorá-los ou escondê-los. Na minha opinião, a forma utilizada para apresentar o conteúdo proposto é adequada e tende a agradar leitores de diferentes formações e interesses.
+
+Anna Carolina de Almeida Portugal
+
+Doutora em Fisiologia,
+
+Professora da Universidade Federal do Rio de Janeiro (UFRJ)
 
 \hypertarget{referencias}{%
 \chapter{Referencias}\label{referencias}}
