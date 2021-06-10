@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Cap. 17 Regressão linear múltipla | Conceitos e análises estatísticas com R e JASP</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Cap. 17 Regressão linear múltipla | Conceitos e análises estatísticas com R e JASP" />
   <meta property="og:type" content="book" />
@@ -50,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -115,6 +117,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -591,7 +616,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>##    1 
 ## 0.19</code></pre>
 <p>Esse formato analítico é similar para o resultado do <u>IMC</u>. Caso duas pessoas tenham o mesmo resultado do <u>BSQ</u>, uma unidade a mais no IMC impactará em uma redução de 0.447, em média, no <u>EAT-26</u>.</p>
-<p>Uma vez que o modelo já foi realizado, a interpretação dos resultados depende da adequação de seus pressupostos. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(<a href="referencias.html#ref-Barker2015" role="doc-biblioref">Barker &amp; Shaw, 2015</a>; <a href="referencias.html#ref-Ernst2017" role="doc-biblioref">Ernst &amp; Albers, 2017</a>; <a href="referencias.html#ref-Lix1996" role="doc-biblioref">Lix et al., 1996</a>)</span>. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.</p>
+<p>Uma vez que o modelo já foi realizado, a interpretação dos resultados depende da adequação de seus pressupostos. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(<a href="#ref-Barker2015" role="doc-biblioref">Barker &amp; Shaw, 2015</a>; <a href="#ref-Ernst2017" role="doc-biblioref">Ernst &amp; Albers, 2017</a>; <a href="#ref-Lix1996" role="doc-biblioref">Lix et al., 1996</a>)</span>. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.</p>
 <p><mark> Normalidade</mark>: O pressuposto da Normalidade é atendido se os <u>resíduos</u> do modelo de regressão seguirem uma distribuição normal. Isso pode ser avaliado graficamente por QQ plots e também por testes específicos, como o Shapiro-wilk, Anderson-Darling e Jarque Bera.</p>
 <p>O QQ plot é um gráfico que reúne a distribuição empírica ordenada dos quantis contra os quantis da distribuição teórica (aqui, normal). Se os dados e a linha diagonal se sobrepuserem, isso é uma evidencia de que a distribuição empírica é a mesma da distribuição teórica. Caso haja discrepância, isso aponta para desvio da normalidade. Caso os pontos e a reta diagonal estejam superpostos, se considera que este pressuposto foi atendido</p>
 <div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="regressão-linear-múltipla.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_plot_resid_qq</span>(mod_linear_multiplo)</span></code></pre></div>
@@ -676,12 +701,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="img/cap_reg_multipla_resultado_3.PNG" /></p>
 <p>Finalmente, o <u>quarto momento</u> é análise dos preditores, que é feito na seção <code>Coefficients</code>. Para isso, deve-se identificar os preditores um a um, seus valores <code>Unstandardized</code> e de <code>P</code>. O <code>Unstandardized</code> indica a diferença média em unidades da <u>variável dependente</u> quando se altera uma unidade de X.</p>
 <p>Por exemplo, mais 1 ponto no BSQ-34, mais <code>0.190</code> pontos, em média, no EAT-26, controlando pelos resultados do IMC. Esse resultado é significativo, tal como é indicado na coluna <code>Sig</code>.</p>
-<p>O intercepto é chamado de <code>constante</code> na maior parte dos programas e indica o valor médio (esperado) de Y quando <code>X=0</code>. Nesse caso, se alguém tivesse tirado o valor <code>0</code> na escala BSQ-34, o valor previsto para os resultados da Escala EAT-26 seria de 1.46. No entanto, o <code>Sig</code> indica que esse valor não é significativo, ou seja, não é diferente de <code>0</code>. O indicador de beta padronizado <code>Standardized</code> traz as mesmas informações, mas trabalha em unidades de desvios-padrão em todas as variáveis presentes no modelo. Eventualmente, o <code>Standardized</code> pode ser entendido como uma medida preliminar de tamanho do efeito <span class="citation">(<a href="referencias.html#ref-fox2016" role="doc-biblioref">Fox, 2016</a>)</span>.</p>
+<p>O intercepto é chamado de <code>constante</code> na maior parte dos programas e indica o valor médio (esperado) de Y quando <code>X=0</code>. Nesse caso, se alguém tivesse tirado o valor <code>0</code> na escala BSQ-34, o valor previsto para os resultados da Escala EAT-26 seria de 1.46. No entanto, o <code>Sig</code> indica que esse valor não é significativo, ou seja, não é diferente de <code>0</code>. O indicador de beta padronizado <code>Standardized</code> traz as mesmas informações, mas trabalha em unidades de desvios-padrão em todas as variáveis presentes no modelo. Eventualmente, o <code>Standardized</code> pode ser entendido como uma medida preliminar de tamanho do efeito <span class="citation">(<a href="#ref-fox2016" role="doc-biblioref">Fox, 2016</a>)</span>.</p>
 <p>É importante notar que frequentemente o intercepto não tem interpretação lógica e, por isso, costuma ser desconsiderado. Para que ele tenha melhor capacidade de interpretação, algumas estratégias são possíveis, tal como centralizar os valores do preditor <span class="math inline">\((x_i-\bar{x})\)</span>. Caso isso seja feito, o intercepto irá ser o valor médio da variável dependente.</p>
 <p><img src="img/cap_reg_multipla_resultado_4.PNG" /></p>
 <p>Em síntese, cada uma das etapas deve ser feita de maneira sequencial. A imagem a seguir apresenta um sumário com todos os passos expostos.</p>
 <p><img src="img/cap_reg_multipla_resultado_5.PNG" /></p>
-<p>Uma vez que o modelo já foi realizado, a interpretação dos resultados depende da adequação de seus pressupostos. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(<a href="referencias.html#ref-Barker2015" role="doc-biblioref">Barker &amp; Shaw, 2015</a>; <a href="referencias.html#ref-Ernst2017" role="doc-biblioref">Ernst &amp; Albers, 2017</a>; <a href="referencias.html#ref-Lix1996" role="doc-biblioref">Lix et al., 1996</a>)</span>. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.</p>
+<p>Uma vez que o modelo já foi realizado, a interpretação dos resultados depende da adequação de seus pressupostos. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(<a href="#ref-Barker2015" role="doc-biblioref">Barker &amp; Shaw, 2015</a>; <a href="#ref-Ernst2017" role="doc-biblioref">Ernst &amp; Albers, 2017</a>; <a href="#ref-Lix1996" role="doc-biblioref">Lix et al., 1996</a>)</span>. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.</p>
 <p>Para verificar os pressupostos, será necessário utilizar as opções dispostas na parte inferior à esquerda do programa.</p>
 <p>A <mark>normalidade</mark> é testada ao clicar em <code>Plots</code> e <code>Q-Q plot standardized results</code>. O JASP irá apresentar um QQ plot com duas informações principais: uma diagonal e um conjunto de pontos/círculos. Caso os círculos estejam sobrepostos à linha, isso apoia que os resíduos se distribuem normalmente. No caso abaixo, isso não foi alcançado.</p>
 <p><img src="img/cap_reg_multipla_normalidade.PNG" />
@@ -710,7 +735,7 @@ Diferente do R, esta versão do JASP não permite testar formalmente a hipótese
 <div id="técnicas-automáticas-de-seleção-de-variáveis" class="section level2" number="17.5">
 <h2><span class="header-section-number">17.5</span> Técnicas automáticas de seleção de variáveis</h2>
 <p>Entre os principais debates realizados na construção de modelos estatísticos, os critérios sobre quantas, quais e como eleger as variáveis independentes é um dos mais intensos.</p>
-<p>Neste sentido, a seleção das VIs visa otimizar a acurácia do modelo, mas sem perder sua parcimônia, ou seja, simplicidade <span class="citation">(<a href="referencias.html#ref-Gaudio2001" role="doc-biblioref">Gaudio &amp; Zandonade, 2001</a>; <a href="referencias.html#ref-Unger1973" role="doc-biblioref">Unger &amp; Hansch, 1973</a>)</span>. É possível inserir as variáveis por uma justificativa teórica alinhada com a área principal em que o pesquisador se insere, como também é possível implementar seleção automática a partir de algoritmos específicos.</p>
+<p>Neste sentido, a seleção das VIs visa otimizar a acurácia do modelo, mas sem perder sua parcimônia, ou seja, simplicidade <span class="citation">(<a href="#ref-Gaudio2001" role="doc-biblioref">Gaudio &amp; Zandonade, 2001</a>; <a href="#ref-Unger1973" role="doc-biblioref">Unger &amp; Hansch, 1973</a>)</span>. É possível inserir as variáveis por uma justificativa teórica alinhada com a área principal em que o pesquisador se insere, como também é possível implementar seleção automática a partir de algoritmos específicos.</p>
 <p>Apesar do detalhamento das técnicas automáticas estar fora do escopo deste capítulo, a seguir são listadas algumas delas:</p>
 <ol style="list-style-type: decimal">
 <li>Backward selection<br />
@@ -761,6 +786,27 @@ Nesta pesquisa, 110 participantes foram recrutados para que os pesquisadores pud
 
 </div>
 </div>
+<h3> Referencias</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
+<div id="ref-Barker2015" class="csl-entry">
+Barker, L. E., &amp; Shaw, K. M. (2015). Best (but oft-forgotten) practices: Checking assumptions concerning regression residuals. <em>The American Journal of Clinical Nutrition</em>, <em>102</em>(3), 533–539. <a href="https://doi.org/10.3945/ajcn.115.113498">https://doi.org/10.3945/ajcn.115.113498</a>
+</div>
+<div id="ref-Ernst2017" class="csl-entry">
+Ernst, A. F., &amp; Albers, C. J. (2017). Regression assumptions in clinical psychology research practice<span><span></span></span>a systematic review of common misconceptions. <em><span>PeerJ</span></em>, <em>5</em>, e3323. <a href="https://doi.org/10.7717/peerj.3323">https://doi.org/10.7717/peerj.3323</a>
+</div>
+<div id="ref-fox2016" class="csl-entry">
+Fox, J. (2016). <em>Applied regression analysis and generalized linear models (3th edition)</em>. SAGE.
+</div>
+<div id="ref-Gaudio2001" class="csl-entry">
+Gaudio, A. C., &amp; Zandonade, E. (2001). Proposicao, validacao e analise dos modelos que correlacionam estrutura quimica e atividade biologica. <em>Quimica Nova</em>, <em>24</em>(5), 658–671. <a href="https://doi.org/10.1590/s0100-40422001000500013">https://doi.org/10.1590/s0100-40422001000500013</a>
+</div>
+<div id="ref-Lix1996" class="csl-entry">
+Lix, L. M., Keselman, J. C., &amp; Keselman, H. J. (1996). Consequences of assumption violations revisited: A quantitative review of alternatives to the one-way analysis of variance "f" test. <em>Review of Educational Research</em>, <em>66</em>(4), 579. <a href="https://doi.org/10.2307/1170654">https://doi.org/10.2307/1170654</a>
+</div>
+<div id="ref-Unger1973" class="csl-entry">
+Unger, S. H., &amp; Hansch, C. (1973). Model building in structure-activity relations. Reexamination of adrenergic blocking activity of .beta.-halo-.beta.-arylalkylamines. <em>Journal of Medicinal Chemistry</em>, <em>16</em>(7), 745–749. <a href="https://doi.org/10.1021/jm00265a001">https://doi.org/10.1021/jm00265a001</a>
+</div>
+</div>
             </section>
 
           </div>
@@ -790,6 +836,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

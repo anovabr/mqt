@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Cap. 13 ANOVA de medidas repetidas | Conceitos e análises estatísticas com R e JASP</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Cap. 13 ANOVA de medidas repetidas | Conceitos e análises estatísticas com R e JASP" />
   <meta property="og:type" content="book" />
@@ -50,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -115,6 +117,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -1019,7 +1044,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="tamanho-do-efeito-4" class="section level2" number="13.3">
 <h2><span class="header-section-number">13.3</span> Tamanho do efeito</h2>
 <p>Resultados significativos não são informativos em relação ao tamanho do efeito. Esta última métrica tem mais contato com as perguntas originalmente realizadas em uma pesquisa e é entendida como uma medida objetiva e padronizada da magnitude de um efeito observado independente da significância estatística. Dessa maneira, o tamanho do efeito pode ser considerado um indicador da relevância clínica dos grupos, cujo uso é sempre importante em pesquisas em Psicologia e áreas da saúde.</p>
-<p>Na ANOVA de medidas repetidas o <u>eta quadrado parcial</u> (<span class="math inline">\(\eta_p^2\)</span>) e o <u>eta quadrado generalizado</u> (<span class="math inline">\(\eta^2_G\)</span>) podem ser calculados. A interpretação do <span class="math inline">\(\eta_p^2\)</span> é a mesma já apresentada no capítulo sobre ANOVA, enquanto o <span class="math inline">\(\eta^2_G\)</span> pode ser interpretado segundo a tabela disposta a seguir <span class="citation">(<a href="referencias.html#ref-draper_2020" role="doc-biblioref">Draper, 2020</a>)</span>:</p>
+<p>Na ANOVA de medidas repetidas o <u>eta quadrado parcial</u> (<span class="math inline">\(\eta_p^2\)</span>) e o <u>eta quadrado generalizado</u> (<span class="math inline">\(\eta^2_G\)</span>) podem ser calculados. A interpretação do <span class="math inline">\(\eta_p^2\)</span> é a mesma já apresentada no capítulo sobre ANOVA, enquanto o <span class="math inline">\(\eta^2_G\)</span> pode ser interpretado segundo a tabela disposta a seguir <span class="citation">(<a href="#ref-draper_2020" role="doc-biblioref">Draper, 2020</a>)</span>:</p>
 <table>
 <thead>
 <tr class="header">
@@ -1129,6 +1154,12 @@ Essa é uma pesquisa na área de fisioterapia. Os pesquisadores tiveram interess
 
 </div>
 </div>
+<h3> Referencias</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
+<div id="ref-draper_2020" class="csl-entry">
+Draper, S. (2020). In <em>Effect size</em>. <a href="https://www.psy.gla.ac.uk/~steve/best/effect.html">https://www.psy.gla.ac.uk/~steve/best/effect.html</a>
+</div>
+</div>
             </section>
 
           </div>
@@ -1158,6 +1189,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

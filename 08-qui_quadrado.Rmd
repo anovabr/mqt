@@ -82,7 +82,8 @@ Neste capítulo, vamos utilizar a pesquisa intitulada "Parent-reported diagnosis
 Neste momento, vamos seguir apenas com o Qui-quadrado de independência, que foi o utilizado neste artigo. Como exposto no decorrer de outros capítulos, o teste de hipóteses começa pela formulação conceitual das hipóteses. Apesar de ser possível estipular $H_0$ e $H_a$ a partir de equações específicas, a apresentação será textual/substantiva.
 
 
-$$H_0: Não\ há\ associação\ entre\ sexo\ e\ TDAH \\ H_a: Há\ associação\ entre\ sexo\ e\ TDAH \\ \alpha = 0.05$$
+$$H_0: Não\ há\ associação\ entre\ sexo\ e\ TDAH$$  
+$$H_a: Há\ associação\ entre\ sexo\ e\ TDAH \\ \alpha = 0.05$$
 
 
 
@@ -145,11 +146,13 @@ Como apresentado no decorrer dos outros capítulos, os valores de P quase nunca 
 
 O tamanho do efeito mais utilizado no ambiente das análises de Qui-quadrado é o V de Cramer. Esta estatística gera valores 0-1 e é dada da seguinte maneira:
 
-$$V=\sqrt\frac{\chi^2}{n*df^`}$$
+$ V=\sqrt\frac{\chi^2}{n*df}$
+
 Em que:  
+
 $\chi^2$ = valor do Qui quadrado obtido  
 $n$ = tamanho da amostra  
-$df^`$ menor valor entre (Linhas - 1) ou (Colunas - 1) da tabela de contingências  
+$df$ menor valor entre (Linhas - 1) ou (Colunas - 1) da tabela de contingências  
 
 
 A função `CramerV`do pacote `rcompanion` gera esses resultados.
@@ -168,7 +171,7 @@ A interpretação é baseada nos graus de liberdade do Qui-quadrado e é feita d
   | 2                   | 0.07        | 0.21       |  0.35        
   | 3                   | 0.06        | 0.17       |  0.29        
 
-*Nota: $^*$ Na maioria das vezes, o Teste Qui-quadrado conta com tabelas 2x2, o que gera 1 grau de liberdade. Assim, essa é a  interpretação mais utilizada na literatura.*  
+*Nota: Na maioria das vezes, o Teste Qui-quadrado conta com tabelas 2x2, o que gera 1 grau de liberdade. Assim, essa é a  interpretação mais utilizada na literatura.*  
 
 
 ## Execução no JASP

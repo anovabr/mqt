@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Cap. 9 Qui quadrado | Conceitos e análises estatísticas com R e JASP</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Cap. 9 Qui quadrado | Conceitos e análises estatísticas com R e JASP" />
   <meta property="og:type" content="book" />
@@ -50,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -115,6 +117,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -496,7 +521,7 @@ onde:<br />
 </tbody>
 </table>
 <p><em>Nota: O Qui-quadrado de aderência também é chamado de “qualidade do ajuste” ou “bondade.” Estas são traduções tipicamente feitas para “goodnes of fit.” Como todas as análises são realizadas de uma maneira virtualmente idêntica, essas distinções são mais teóricas do que práticas. O Qui-quadrado de aderência tem uma proposta parecida com a ANOVA de uma via.</em></p>
-<p>Apesar de colateral à esta apresentação, o teste Qui-quadrado tem uma curiosidade que remonta o seu desenvolvimento e explica parte da desavença que Pearson tinha com Fisher. As primeiras publicações do Qui-quadrado ocorreram em 1900 e 1904 por Karl Pearson <span class="citation">(<a href="referencias.html#ref-Pearson1900" role="doc-biblioref">Pearson, 1900</a>)</span>. Ronald Fisher detectou um erro no cálculo dos graus de liberdade e rapidamente divulgou isso, o que gerou um enorme descontentamento de Pearson <span class="citation">(<a href="referencias.html#ref-BAIRD1983" role="doc-biblioref">Baird, 1983</a>)</span>.</p>
+<p>Apesar de colateral à esta apresentação, o teste Qui-quadrado tem uma curiosidade que remonta o seu desenvolvimento e explica parte da desavença que Pearson tinha com Fisher. As primeiras publicações do Qui-quadrado ocorreram em 1900 e 1904 por Karl Pearson <span class="citation">(<a href="#ref-Pearson1900" role="doc-biblioref">Pearson, 1900</a>)</span>. Ronald Fisher detectou um erro no cálculo dos graus de liberdade e rapidamente divulgou isso, o que gerou um enorme descontentamento de Pearson <span class="citation">(<a href="#ref-BAIRD1983" role="doc-biblioref">Baird, 1983</a>)</span>.</p>
 <div id="pesquisa-1" class="section level2" number="9.1">
 <h2><span class="header-section-number">9.1</span> Pesquisa</h2>
 <div class="base">
@@ -506,7 +531,8 @@ onde:<br />
 </div>
 <p>Neste capítulo, vamos utilizar a pesquisa intitulada “Parent-reported diagnosis of Attention Deficit Hyperactivity Disorder and psychostimulant use among children and adolescents: a population-based nationwide study,” que está em avaliação pela revista “Social Psychiatry and Psychiatric Epidemiology (SPPE).” Neste trabalho, tivemos o objetivo de verificar aspectos epidemiológicos do Transtorno do Déficit de Atenção com Hiperatividade (TDAH) em uma amostra representativa de crianças e adolescentes brasileiros, bem como explorar eventuais associações entre o sexo do participante e o diagnóstico de TDAH.</p>
 <p>Neste momento, vamos seguir apenas com o Qui-quadrado de independência, que foi o utilizado neste artigo. Como exposto no decorrer de outros capítulos, o teste de hipóteses começa pela formulação conceitual das hipóteses. Apesar de ser possível estipular <span class="math inline">\(H_0\)</span> e <span class="math inline">\(H_a\)</span> a partir de equações específicas, a apresentação será textual/substantiva.</p>
-<p><span class="math display">\[H_0: Não\ há\ associação\ entre\ sexo\ e\ TDAH \\ H_a: Há\ associação\ entre\ sexo\ e\ TDAH \\ \alpha = 0.05\]</span></p>
+<p><span class="math display">\[H_0: Não\ há\ associação\ entre\ sexo\ e\ TDAH\]</span><br />
+<span class="math display">\[H_a: Há\ associação\ entre\ sexo\ e\ TDAH \\ \alpha = 0.05\]</span></p>
 <div class="warning">
 <p><strong>Atenção</strong>: Com frequência, testes de hipóteses são divididos naqueles que verificam “associação” entre variáveis e naqueles que verificam “diferenças” entre grupos. Conceitualmente, o Qui-quadrado investiga associação entre variáveis, mesmo que sua formulação matemática seja feita computando a diferença entre o valor observado e o valor esperado. A apresentação das hipóteses de forma apenas textual visou também evitar possíveis confusões.</p>
 </div>
@@ -623,17 +649,17 @@ Row(%)</td>
 <mark>Inexistência de células com valores esperados iguais a 0</mark> e<br />
 <mark>No máximo 20% dos valores esperados serem inferiores a 5</mark>.</p>
 <p>Ambos podem ser checados na tabela exposta anteriormente e foram atendidos.</p>
-<p>Eventualmente, quando os pressupostos são violados, há sugestão de fazer correções nos resultados, implementar técnicas de bootstrapping e contar com outros testes, especialmente os que não pedem que os valores esperados sejam grandes (Fisher’s Exact Test, por exemplo) <span class="citation">(<a href="referencias.html#ref-Campbell2007" role="doc-biblioref">Campbell, 2007</a>)</span>. Eventualmente, colapsar categorias é uma prática comum, apesar de receber críticas da literatura.</p>
+<p>Eventualmente, quando os pressupostos são violados, há sugestão de fazer correções nos resultados, implementar técnicas de bootstrapping e contar com outros testes, especialmente os que não pedem que os valores esperados sejam grandes (Fisher’s Exact Test, por exemplo) <span class="citation">(<a href="#ref-Campbell2007" role="doc-biblioref">Campbell, 2007</a>)</span>. Eventualmente, colapsar categorias é uma prática comum, apesar de receber críticas da literatura.</p>
 </div>
 <div id="tamanho-do-efeito" class="section level2" number="9.3">
 <h2><span class="header-section-number">9.3</span> Tamanho do efeito</h2>
 <p>Como apresentado no decorrer dos outros capítulos, os valores de P quase nunca são informativos sobre a <u>relevância</u> dos resultados. Por sua vez, o tamanho do efeito é uma medida objetiva e padronizada sobre um efeito observado e, com isso, é mais atrelada à importância da descoberta na pesquisa.</p>
 <p>O tamanho do efeito mais utilizado no ambiente das análises de Qui-quadrado é o V de Cramer. Esta estatística gera valores 0-1 e é dada da seguinte maneira:</p>
-<p><span class="math display">\[V=\sqrt\frac{\chi^2}{n*df^`}\]</span>
-Em que:<br />
-<span class="math inline">\(\chi^2\)</span> = valor do Qui quadrado obtido<br />
+<p>$ V=$</p>
+<p>Em que:</p>
+<p><span class="math inline">\(\chi^2\)</span> = valor do Qui quadrado obtido<br />
 <span class="math inline">\(n\)</span> = tamanho da amostra<br />
-<span class="math inline">\(df^`\)</span> menor valor entre (Linhas - 1) ou (Colunas - 1) da tabela de contingências</p>
+<span class="math inline">\(df\)</span> menor valor entre (Linhas - 1) ou (Colunas - 1) da tabela de contingências</p>
 <p>A função <code>CramerV</code>do pacote <code>rcompanion</code> gera esses resultados.</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="qui-quadrado.html#cb28-1" aria-hidden="true" tabindex="-1"></a>rcompanion<span class="sc">::</span><span class="fu">cramerV</span>(ds_selected<span class="sc">$</span>sex_male,ds_selected<span class="sc">$</span>adhd_parent)</span></code></pre></div>
 <pre><code>## Cramer V 
@@ -669,7 +695,7 @@ Em que:<br />
 </tr>
 </tbody>
 </table>
-<p><em>Nota: <span class="math inline">\(^*\)</span> Na maioria das vezes, o Teste Qui-quadrado conta com tabelas 2x2, o que gera 1 grau de liberdade. Assim, essa é a interpretação mais utilizada na literatura.</em></p>
+<p><em>Nota: Na maioria das vezes, o Teste Qui-quadrado conta com tabelas 2x2, o que gera 1 grau de liberdade. Assim, essa é a interpretação mais utilizada na literatura.</em></p>
 </div>
 <div id="execução-no-jasp-1" class="section level2" number="9.4">
 <h2><span class="header-section-number">9.4</span> Execução no JASP</h2>
@@ -747,6 +773,18 @@ Nesta pesquisa, 2568 participantes de diferentes países participaram de uma ati
 
 </div>
 </div>
+<h3> Referencias</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
+<div id="ref-BAIRD1983" class="csl-entry">
+Baird, D. (1983). The fisher/pearson chi-squared controversy: A turning point for inductive inference. <em>The British Journal for the Philosophy of Science</em>, <em>34</em>(2), 105–118. <a href="https://doi.org/10.1093/bjps/34.2.105">https://doi.org/10.1093/bjps/34.2.105</a>
+</div>
+<div id="ref-Campbell2007" class="csl-entry">
+Campbell, I. (2007). Chi-squared and fisher<span><span></span></span>irwin tests of two-by-two tables with small sample recommendations. <em>Statistics in Medicine</em>, <em>26</em>(19), 3661–3675. <a href="https://doi.org/10.1002/sim.2832">https://doi.org/10.1002/sim.2832</a>
+</div>
+<div id="ref-Pearson1900" class="csl-entry">
+Pearson, K. (1900). X. On the criterion that a given system of deviations from the probable in the case of a correlated system of variables is such that it can be reasonably supposed to have arisen from random sampling. <em>The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science</em>, <em>50</em>(302), 157–175. <a href="https://doi.org/10.1080/14786440009463897">https://doi.org/10.1080/14786440009463897</a>
+</div>
+</div>
             </section>
 
           </div>
@@ -776,6 +814,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

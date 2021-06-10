@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Cap. 12 ANOVA | Conceitos e análises estatísticas com R e JASP</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Cap. 12 ANOVA | Conceitos e análises estatísticas com R e JASP" />
   <meta property="og:type" content="book" />
@@ -50,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -115,6 +117,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -461,7 +486,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <strong>MANOVA</strong>: Análise multivariada de variância, onde se estende a ANOVA para incluir duas variáveis dependentes. É um modelo multivariado.</p>
 </div>
 <p>A ANOVA representa um conjunto de procedimentos estatísticos muito utilizado para verificar <u>diferenças médias entre diversos grupos</u> e, portanto, é considerada um procedimento paramétrico. Pragmaticamente, é possível entender ANOVA como um super Teste T ou também um caso particular de um modelo de regressão. Uma vez que a ANOVA verifica a diferença entre todos os grupos e combinações lineares de maneira simultânea, ela é classificada como um <em>Omnibus test</em>. A relação entre a ANOVA e o Teste T será abordado na seção <a href="anova.html#post-hoc">Post hoc</a>.</p>
-<p>Alguns autores indicam que a ANOVA é a técnica inferencial mais utilizada em Psicologia <span class="citation">(<a href="referencias.html#ref-Chartier2008" role="doc-biblioref">Chartier &amp; Faulkner, 2008</a>)</span>. Se por um aspecto, isso é extremamente vantajoso, uma vez que estreita a relação entre Psicologia e Estatística; por outro, isso parece ter contribuído para criação e manutenção de diferentes conceitos equivocados sobre a ANOVA.</p>
+<p>Alguns autores indicam que a ANOVA é a técnica inferencial mais utilizada em Psicologia <span class="citation">(<a href="#ref-Chartier2008" role="doc-biblioref">Chartier &amp; Faulkner, 2008</a>)</span>. Se por um aspecto, isso é extremamente vantajoso, uma vez que estreita a relação entre Psicologia e Estatística; por outro, isso parece ter contribuído para criação e manutenção de diferentes conceitos equivocados sobre a ANOVA.</p>
 <p>Conceitualmente, a ANOVA é um modelo linear, tal que:</p>
 <p><span class="math display">\[y_i = b_0 + b_1X{_1}_i + \dots + b_pX{_p}_i + e_i\]</span></p>
 <p><span class="math inline">\(y_i\)</span> representa a variável dependente<br />
@@ -735,7 +760,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="warning">
 <p><strong>Atenção</strong>: A validade das inferências dos resultados depende da adequação ou não dos pressupostos dos testes estatísticos. A avaliação destas condições é parte de um procedimento diagnóstico que deve ser sempre feito.</p>
 </div>
-<p>Um aspecto importante é que a validade da interpretação dos resultados depende dos pressupostos do modelo estatístico. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(<a href="referencias.html#ref-Barker2015" role="doc-biblioref">Barker &amp; Shaw, 2015</a>; <a href="referencias.html#ref-Ernst2017" role="doc-biblioref">Ernst &amp; Albers, 2017</a>; <a href="referencias.html#ref-Lix1996" role="doc-biblioref">Lix et al., 1996</a>)</span>. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.</p>
+<p>Um aspecto importante é que a validade da interpretação dos resultados depende dos pressupostos do modelo estatístico. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(<a href="#ref-Barker2015" role="doc-biblioref">Barker &amp; Shaw, 2015</a>; <a href="#ref-Ernst2017" role="doc-biblioref">Ernst &amp; Albers, 2017</a>; <a href="#ref-Lix1996" role="doc-biblioref">Lix et al., 1996</a>)</span>. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.</p>
 <p><mark>Normalidade</mark>: A ANOVA tem como um dos pressupostos a normalidade da distribuição dos resíduos. Isso pode ser feito de diferentes maneiras e abaixo há um QQ plot. Caso ambas as linhas estejam sobrepostas, isso gera evidências que o pressuposto foi atendido. Neste caso, se nota que os desvios não foram tão acentuados, apesar de existirem. Se a análise fosse apenas via QQ plot, provavelmente se consideraria este pressuposto como atendido.</p>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="anova.html#cb67-1" aria-hidden="true" tabindex="-1"></a>olsrr<span class="sc">::</span><span class="fu">ols_plot_resid_qq</span>(mod_escolaridade)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-81-1.png" width="672" style="display: block; margin: auto;" /></p>
@@ -1289,7 +1314,7 @@ Nesta pesquisa, cerca de 150 estudantes foram apresentados a um filme e depois t
 <div class="warning">
 <p><strong>Atenção</strong>: A validade das inferências dos resultados depende da adequação ou não dos pressupostos dos testes estatísticos. A avaliação destas condições é parte de um procedimento diagnóstico que deve ser sempre feito.</p>
 </div>
-<p>Da mesma forma que apresentado na ANOVA de 1 via, a validade da interpretação dos resultados depende dos pressupostos do modelo estatístico. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(<a href="referencias.html#ref-Barker2015" role="doc-biblioref">Barker &amp; Shaw, 2015</a>; <a href="referencias.html#ref-Ernst2017" role="doc-biblioref">Ernst &amp; Albers, 2017</a>; <a href="referencias.html#ref-Lix1996" role="doc-biblioref">Lix et al., 1996</a>)</span>.</p>
+<p>Da mesma forma que apresentado na ANOVA de 1 via, a validade da interpretação dos resultados depende dos pressupostos do modelo estatístico. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(<a href="#ref-Barker2015" role="doc-biblioref">Barker &amp; Shaw, 2015</a>; <a href="#ref-Ernst2017" role="doc-biblioref">Ernst &amp; Albers, 2017</a>; <a href="#ref-Lix1996" role="doc-biblioref">Lix et al., 1996</a>)</span>.</p>
 <p><mark>Normalidade</mark>: O QQ plot abaixo apresenta os valores teóricos e empíricos. Caso ambas as linhas estejam sobrepostas, isso apoia que o pressuposto da normalidade foi atendido. Neste caso, isso não parece ocorrer.</p>
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="anova.html#cb85-1" aria-hidden="true" tabindex="-1"></a>olsrr<span class="sc">::</span><span class="fu">ols_plot_resid_qq</span>(mod_escolaridade_faixa_etaria)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-97-1.png" width="672" style="display: block; margin: auto;" /></p>
@@ -1901,7 +1926,7 @@ faixa_etaria</td>
 </ol>
 <p>No caso de agora, os achados indicam que o efeito da interação entre escolaridade e faixa etária é significativo (F(8, 1419) = 2.49, p = 0.011, n2p = 0.1, 90% CI [.00 .02]), bem como são também significativos os efeitos da escolaridade (F(2, 1419) = 4.87, p = 0.008, n2p = 01, 90% CI [.00 .01]) e da faixa etária (F(4, 1419) = 6.89, p &lt; 0.001, n2p = 02, 90% CI [.01 .03]). Como a interação foi significativa, deve-se evitar a interpretação dos efeitos principais, uma vez que os níveis de um fator podem impactar na interpretação de outro.</p>
 <p>Note que a métrica do <u>tamanho do efeito</u> é o <span class="math inline">\(\eta_p^2\)</span> e já está na tabela. Sua interpretação é a mesma dos modelos mostrados anteriormente neste capítulo.</p>
-<p>Da mesma forma que apresentado no decorrer deste capítulo, a validade da interpretação dos resultados depende dos pressupostos do modelo estatístico. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(<a href="referencias.html#ref-Barker2015" role="doc-biblioref">Barker &amp; Shaw, 2015</a>; <a href="referencias.html#ref-Ernst2017" role="doc-biblioref">Ernst &amp; Albers, 2017</a>; <a href="referencias.html#ref-Lix1996" role="doc-biblioref">Lix et al., 1996</a>)</span>.</p>
+<p>Da mesma forma que apresentado no decorrer deste capítulo, a validade da interpretação dos resultados depende dos pressupostos do modelo estatístico. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(<a href="#ref-Barker2015" role="doc-biblioref">Barker &amp; Shaw, 2015</a>; <a href="#ref-Ernst2017" role="doc-biblioref">Ernst &amp; Albers, 2017</a>; <a href="#ref-Lix1996" role="doc-biblioref">Lix et al., 1996</a>)</span>.</p>
 <p><mark>Normalidade</mark>: O QQ plot abaixo apresenta os valores teóricos e empíricos. Caso ambas as linhas estejam sobrepostas, isso apoia que o pressuposto da normalidade foi atendido. Neste caso, isso não parece ocorrer.</p>
 <div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="anova.html#cb105-1" aria-hidden="true" tabindex="-1"></a>olsrr<span class="sc">::</span><span class="fu">ols_plot_resid_qq</span>(mod_escolaridade_faixa_etaria_fatorial)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-115-1.png" width="672" style="display: block; margin: auto;" /></p>
@@ -2198,6 +2223,21 @@ faixa_etaria</td>
 
 </div>
 </div>
+<h3> Referencias</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
+<div id="ref-Barker2015" class="csl-entry">
+Barker, L. E., &amp; Shaw, K. M. (2015). Best (but oft-forgotten) practices: Checking assumptions concerning regression residuals. <em>The American Journal of Clinical Nutrition</em>, <em>102</em>(3), 533–539. <a href="https://doi.org/10.3945/ajcn.115.113498">https://doi.org/10.3945/ajcn.115.113498</a>
+</div>
+<div id="ref-Chartier2008" class="csl-entry">
+Chartier, S., &amp; Faulkner, A. (2008). General linear models: An integrated approach to statistics. <em>Tutorials in Quantitative Methods for Psychology</em>, <em>4</em>(2), 65–78. <a href="https://doi.org/10.20982/tqmp.04.2.p065">https://doi.org/10.20982/tqmp.04.2.p065</a>
+</div>
+<div id="ref-Ernst2017" class="csl-entry">
+Ernst, A. F., &amp; Albers, C. J. (2017). Regression assumptions in clinical psychology research practice<span><span></span></span>a systematic review of common misconceptions. <em><span>PeerJ</span></em>, <em>5</em>, e3323. <a href="https://doi.org/10.7717/peerj.3323">https://doi.org/10.7717/peerj.3323</a>
+</div>
+<div id="ref-Lix1996" class="csl-entry">
+Lix, L. M., Keselman, J. C., &amp; Keselman, H. J. (1996). Consequences of assumption violations revisited: A quantitative review of alternatives to the one-way analysis of variance "f" test. <em>Review of Educational Research</em>, <em>66</em>(4), 579. <a href="https://doi.org/10.2307/1170654">https://doi.org/10.2307/1170654</a>
+</div>
+</div>
             </section>
 
           </div>
@@ -2227,6 +2267,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

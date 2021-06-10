@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Cap. 18 Regressão logística binária | Conceitos e análises estatísticas com R e JASP</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Cap. 18 Regressão logística binária | Conceitos e análises estatísticas com R e JASP" />
   <meta property="og:type" content="book" />
@@ -50,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -115,6 +117,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -995,7 +1020,7 @@ R<sup>2</sup> Tjur
 <span id="cb177-5"><a href="regressão-logística-binária.html#cb177-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glm</span>(risk_cefaleia_resources <span class="sc">~</span> <span class="dv">1</span>, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>, <span class="at">data =</span> .)</span>
 <span id="cb177-6"><a href="regressão-logística-binária.html#cb177-6" aria-hidden="true" tabindex="-1"></a><span class="co">#comparar modelos</span></span>
 <span id="cb177-7"><a href="regressão-logística-binária.html#cb177-7" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod_nulo, mod_risco, <span class="at">test =</span> <span class="st">&quot;LRT&quot;</span>)</span></code></pre></div>
-<p>O <u>segundo momento</u> é relacionado à análise do <span class="math inline">\(R^2\)</span>, disposto na parte inferior da tabela. Existem diferentes maneiras de calculá-lo e sua interpretação não é exatamente igual à feita na regressão linear. Enquanto na regressão linear, o <span class="math inline">\(R^2\)</span> se refere à proporção da variância explicada, em modelos logísticos, no geral, o <span class="math inline">\(R^2\)</span> indica o quanto o modelo testado é próximo de um modelo com ajuste perfeito aos dados (saturado) <span class="citation">(<a href="referencias.html#ref-portugues2020" role="doc-biblioref">Portugues, 2020</a>)</span>.</p>
+<p>O <u>segundo momento</u> é relacionado à análise do <span class="math inline">\(R^2\)</span>, disposto na parte inferior da tabela. Existem diferentes maneiras de calculá-lo e sua interpretação não é exatamente igual à feita na regressão linear. Enquanto na regressão linear, o <span class="math inline">\(R^2\)</span> se refere à proporção da variância explicada, em modelos logísticos, no geral, o <span class="math inline">\(R^2\)</span> indica o quanto o modelo testado é próximo de um modelo com ajuste perfeito aos dados (saturado) <span class="citation">(<a href="#ref-portugues2020" role="doc-biblioref">Portugues, 2020</a>)</span>.</p>
 <p>O <span class="math inline">\(R^2 \, de \, Tjur\)</span> é a medida utilizada nesta apresentação e seus valores variam entre 0 e 1. Ele computa a diferença entre os dados e os valores previstos pelo modelo testado. Quão maior o valor, mais discriminativo é o modelo testado. Neste caso, o o <span class="math inline">\(R^2 \, de \, Tjur\)</span> foi de 0.10. Não há uma regra geral para interpretar o <span class="math inline">\(R^2\)</span>. Em Psicologia, por exemplo, é bastante difícil que ele chegue a 0.5.</p>
 <p>A <u>terceira</u> interpretação é baseada nos <em>Odds Ratio</em> (OR) e sugere alguma com atenção: o OR indica a <u>chance</u> de ocorrência de um desfecho caso o preditor analisado tenha ocorrido, em comparação com sua não ocorrência. Ele não indica diretamente sobre a probabilidade, apesar disso ser possível de ser feito.</p>
 <p>Os preditores <u>sex[female]</u> e <u>sqd_risk</u> foram significativos. A interpretação pode ser feita da seguinte maneira:</p>
@@ -1022,7 +1047,7 @@ R<sup>2</sup> Tjur
 <div class="warning">
 <p><strong>Atenção</strong>: A validade das inferências dos resultados depende da adequação ou não dos pressupostos dos testes estatísticos. A avaliação destas condições é parte de um procedimento diagnóstico que deve ser sempre feito.</p>
 </div>
-<p>Um aspecto importante é que a validade da interpretação dos resultados depende dos pressupostos do modelo estatístico. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(<a href="referencias.html#ref-Barker2015" role="doc-biblioref">Barker &amp; Shaw, 2015</a>; <a href="referencias.html#ref-Ernst2017" role="doc-biblioref">Ernst &amp; Albers, 2017</a>; <a href="referencias.html#ref-Lix1996" role="doc-biblioref">Lix et al., 1996</a>)</span>. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.</p>
+<p>Um aspecto importante é que a validade da interpretação dos resultados depende dos pressupostos do modelo estatístico. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(<a href="#ref-Barker2015" role="doc-biblioref">Barker &amp; Shaw, 2015</a>; <a href="#ref-Ernst2017" role="doc-biblioref">Ernst &amp; Albers, 2017</a>; <a href="#ref-Lix1996" role="doc-biblioref">Lix et al., 1996</a>)</span>. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.</p>
 <p><mark>Multicolinearidade</mark>: A multicolinearidade pode ser investigada pela análise chamada <em>Variance Inflaction Factor</em> (VIF). Essa análise verifica o quão correlacionados são os preditores e gera um resultado numérico. Valores abaixo de 4 são tipicamente utilizados para indicar que os preditores <u>não</u> são fortemente correlacionados e, consequentemente, considerar este pressuposto atendido.</p>
 <div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="regressão-logística-binária.html#cb179-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">vif</span>(mod_risco) <span class="sc">%&gt;%</span> <span class="fu">pander</span>()</span></code></pre></div>
 <table style="width:65%;">
@@ -1149,7 +1174,7 @@ R<sup>2</sup> Tjur
 <div class="warning">
 <p><strong>Atenção</strong>: A validade das inferências dos resultados depende da adequação ou não dos pressupostos dos testes estatísticos. A avaliação destas condições é parte de um procedimento diagnóstico que deve ser sempre feito.</p>
 </div>
-<p>Uma vez que o modelo já foi realizado, a interpretação dos resultados depende da adequação de seus pressupostos. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(<a href="referencias.html#ref-Barker2015" role="doc-biblioref">Barker &amp; Shaw, 2015</a>; <a href="referencias.html#ref-Ernst2017" role="doc-biblioref">Ernst &amp; Albers, 2017</a>; <a href="referencias.html#ref-Lix1996" role="doc-biblioref">Lix et al., 1996</a>)</span>. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada.</p>
+<p>Uma vez que o modelo já foi realizado, a interpretação dos resultados depende da adequação de seus pressupostos. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(<a href="#ref-Barker2015" role="doc-biblioref">Barker &amp; Shaw, 2015</a>; <a href="#ref-Ernst2017" role="doc-biblioref">Ernst &amp; Albers, 2017</a>; <a href="#ref-Lix1996" role="doc-biblioref">Lix et al., 1996</a>)</span>. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada.</p>
 <p>Nesta versão do JASP, não há testes formais para verificar a <mark>multicolinearidade</mark>, mas há para verificar a <mark>relação linear entre o logit e preditores contínuos</mark>. Para realizar esta análise, é necessário clicar em <code>Plots</code>, na parte esquerda da interface.</p>
 <p><img src="img/cap_logistica_assumptions_plot.PNG" /></p>
 <p>Um conjunto de opção irá ser exibida. É necessário marcar <code>Inferential Plots</code> e <code>Display conditional estimates plots</code>. O JASP irá fazer gráficos individuais para cada preditor. No entanto, é importante olhar apenas o relacionamento entre os preditores contínuos (por exemplo, <u>age</u>) e o desfecho. O ideal é que haja um relacionamento linear entre ambos, tal como ocorre neste caso.</p>
@@ -1351,6 +1376,21 @@ Este estudo visou identificar os preditores relacionados à sobrevivência/morta
 
 </div>
 </div>
+<h3> Referencias</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
+<div id="ref-Barker2015" class="csl-entry">
+Barker, L. E., &amp; Shaw, K. M. (2015). Best (but oft-forgotten) practices: Checking assumptions concerning regression residuals. <em>The American Journal of Clinical Nutrition</em>, <em>102</em>(3), 533–539. <a href="https://doi.org/10.3945/ajcn.115.113498">https://doi.org/10.3945/ajcn.115.113498</a>
+</div>
+<div id="ref-Ernst2017" class="csl-entry">
+Ernst, A. F., &amp; Albers, C. J. (2017). Regression assumptions in clinical psychology research practice<span><span></span></span>a systematic review of common misconceptions. <em><span>PeerJ</span></em>, <em>5</em>, e3323. <a href="https://doi.org/10.7717/peerj.3323">https://doi.org/10.7717/peerj.3323</a>
+</div>
+<div id="ref-Lix1996" class="csl-entry">
+Lix, L. M., Keselman, J. C., &amp; Keselman, H. J. (1996). Consequences of assumption violations revisited: A quantitative review of alternatives to the one-way analysis of variance "f" test. <em>Review of Educational Research</em>, <em>66</em>(4), 579. <a href="https://doi.org/10.2307/1170654">https://doi.org/10.2307/1170654</a>
+</div>
+<div id="ref-portugues2020" class="csl-entry">
+Portugues, E. G. (2020). Lab notes for statistics for social sciences II: Multivariate techniques. In <em>Statistics for Social Sciences II: Multivariate Techniques</em>. <a href="https://bookdown.org/egarpor/SSS2-UC3M/">https://bookdown.org/egarpor/SSS2-UC3M/</a>
+</div>
+</div>
             </section>
 
           </div>
@@ -1380,6 +1420,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

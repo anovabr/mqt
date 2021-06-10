@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Cap. 11 Teste T | Conceitos e análises estatísticas com R e JASP</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Cap. 11 Teste T | Conceitos e análises estatísticas com R e JASP" />
   <meta property="og:type" content="book" />
@@ -50,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -115,6 +117,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -512,7 +537,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p><em>Nota: Existe um intenso debate sobre a utilização de testes paramétricos e não-paramétricos em Psicologia. Algo pouco comentado, apesar de ser o aspecto mais importante em minha opinião, é que a hipótese testada em um teste paramétrico é diferente da teste da testada em um não-paramétrico. Ou seja, a substituição de um teste estatístico por outro, necessariamente, muda a hipótese de pesquisa investigada. O Teste T não assume normalidade da variável dependente, mas sim normalidade dos resíduos do modelo probabilístico, que será explicado em seguida</em></p>
 <p>Apenas por um preâmbulo histórico, a origem do Teste T remonta o artigo publicado em 1908 por William Gosset. Na época, em função de seu trabalho na cervejaria Guiness, ele não assinou o artigo. Na publicação, ele utilizou o pseudônimo <em>Student</em>, motivo pelo qual o Teste T também é chamado de Teste T de Student. Há muitas versões sobre o que levou Gosset a se apresentar como <em>Student</em>, mas parece que isso se deu em função de um caderno em que ele tomava notas, cuja capa tinha escrito <em>The Student’s Notebook</em>.</p>
-<p>É importante notar que estudantes de Psicologia e profissionais que trabalham com avaliação psicológica costumam ser deparados com uma métrica chamada “T score” (Escore T, as vezes), desenvolvido em 1939 por um professor de Psicologia (William Anderson McCall). Tenha em mente que essa métrica não tem relação com os procedimentos inferenciais relacionados ao Teste T a não ser uma similaridade de nome <span class="citation">(<a href="referencias.html#ref-Krus1977" role="doc-biblioref">Krus &amp; Krus, 1977</a>)</span>.</p>
+<p>É importante notar que estudantes de Psicologia e profissionais que trabalham com avaliação psicológica costumam ser deparados com uma métrica chamada “T score” (Escore T, as vezes), desenvolvido em 1939 por um professor de Psicologia (William Anderson McCall). Tenha em mente que essa métrica não tem relação com os procedimentos inferenciais relacionados ao Teste T a não ser uma similaridade de nome <span class="citation">(<a href="#ref-Krus1977" role="doc-biblioref">Krus &amp; Krus, 1977</a>)</span>.</p>
 <div id="pesquisa-3" class="section level2" number="11.1">
 <h2><span class="header-section-number">11.1</span> Pesquisa</h2>
 <div class="base">
@@ -522,7 +547,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Neste capítulo, vamos utilizar a pesquisa intitulada <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/cch.12649">“Confirmatory analysis and normative tables for the Brazilian Ages and Stages Questionnaires: Social–Emotional”</a>, publicada em 2019 na Child Care Health Development. Esse trabalho teve dois objetivos. O primeiro visou confirmar a estrutura fatorial de um instrumento utilizado para avaliar possíveis atrasos no desenvolvimento de competências sociais e emocionais (ASQ:SE) e o segundo visou desenvolver tabelas normativas para comparar meninos e meninas. Essa é uma pesquisa muito importante, visto que conta com uma base de dados robusta (mais de 50 mil participantes) e faz interface entre psicometria, avaliação psicológica e políticas públicas.</p>
 <p>Abaixo, há a escrita de hipóteses utilizada para comparar os resultados de meninos e meninas, bem como o nível de significância adotado na análise.</p>
-<p><span class="math display">\[H_0: \mu_{meninos} - \mu_{meninas} = 0 \\ H_a: \mu_{meninos} - \mu_{meninas} \neq 0 \\ \alpha = 0.05\]</span></p>
+<p><span class="math display">\[H_0: \mu_{meninos} - \mu_{meninas} = 0\]</span><br />
+<span class="math display">\[H_a: \mu_{meninos} - \mu_{meninas} \neq 0\]</span><br />
+<span class="math display">\[\alpha = 0.05\]</span></p>
 </div>
 <div id="execução-no-r-3" class="section level2" number="11.2">
 <h2><span class="header-section-number">11.2</span> Execução no R</h2>
@@ -624,7 +651,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="warning">
 <p><strong>Atenção</strong>: A validade das inferências dos resultados depende da adequação ou não dos pressupostos dos testes estatísticos. A avaliação destas condições é parte de um procedimento diagnóstico que deve ser sempre feito.</p>
 </div>
-<p>Um aspecto importante é que a validade da interpretação dos resultados depende dos pressupostos do modelo estatístico. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(<a href="referencias.html#ref-Barker2015" role="doc-biblioref">Barker &amp; Shaw, 2015</a>; <a href="referencias.html#ref-Ernst2017" role="doc-biblioref">Ernst &amp; Albers, 2017</a>; <a href="referencias.html#ref-Lix1996" role="doc-biblioref">Lix et al., 1996</a>)</span>. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.</p>
+<p>Um aspecto importante é que a validade da interpretação dos resultados depende dos pressupostos do modelo estatístico. A violação destes pressupostos distorce, limita ou invalida as interpretações teóricas propostas, uma vez que tanto o aumento do erro do tipo 1 (falso positivo), como do tipo 2 (falso negativo) podem ocorrer <span class="citation">(<a href="#ref-Barker2015" role="doc-biblioref">Barker &amp; Shaw, 2015</a>; <a href="#ref-Ernst2017" role="doc-biblioref">Ernst &amp; Albers, 2017</a>; <a href="#ref-Lix1996" role="doc-biblioref">Lix et al., 1996</a>)</span>. Corriqueiramente, testar os pressupostos é uma etapa <u>anterior</u> à própria realização do teste inferencial. Entretanto, <u>pedagogicamente</u> a apresentação deles após a execução do teste parece mais adequada. Assim, eles serão testados a seguir.</p>
 <p><mark> Normalidade</mark>: O Teste T é um caso especial de um modelo de regressão, o que será detalhado em outro capítulo. Dessa maneira, a normalidade que deve ser testada é a dos <u>resíduos</u> deste modelo. Isso pode ser aproximado testando a distribuição <u>condicional</u> dos resultados, ou seja, testando cada grupo independentemente. Tenha atenção que não é necessário testar a variável dependente como um todo. Caso os resultados sejam significativos, os dados serão aproximadamente bimodais e, consequentemente, não serão normalmente distribuídos.</p>
 <p>A normalidade pode ser avaliada graficamente por QQ plots e por testes específicos, como o Shapiro-wilk, Anderson-Darling e Jarque Bera.</p>
 <p>O QQ plot é um gráfico que reúne a distribuição empírica ordenada dos quantis contra os quantis da distribuição teórica (aqui, normal). Se os dados e a linha diagonal se sobrepuserem, isso é uma evidencia de que a distribuição empírica é a mesma da distribuição teórica. Caso haja discrepância, isso aponta para desvio da normalidade.</p>
@@ -633,7 +660,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb42-3"><a href="teste-t.html#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
 <span id="cb42-4"><a href="teste-t.html#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>sex)</span></code></pre></div>
 <p><img src="gitbook-demo_files/figure-html/unnamed-chunk-60-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Apesar do gráfico já ter sido bastante claro e sugerir fortemente desvio da normalidade em ambos os grupos, o teste formal é importante. O Shapiro-wilk costuma ser utilizado neste caso, uma vez que ele reúne diferentes características positivas no balanço entre erro do tipo 1 e 2 <span class="citation">(<a href="referencias.html#ref-Yap2011" role="doc-biblioref">Yap &amp; Sim, 2011</a>)</span>. A hipótese nula desse teste assume que a variável de interesse tem distribuição (aproximadamente) normal. Assim, rejeitar a hipótese nula sugere que esse princípio foi violado e, com isso, o Teste T pode gerar resultados distorcidos.</p>
+<p>Apesar do gráfico já ter sido bastante claro e sugerir fortemente desvio da normalidade em ambos os grupos, o teste formal é importante. O Shapiro-wilk costuma ser utilizado neste caso, uma vez que ele reúne diferentes características positivas no balanço entre erro do tipo 1 e 2 <span class="citation">(<a href="#ref-Yap2011" role="doc-biblioref">Yap &amp; Sim, 2011</a>)</span>. A hipótese nula desse teste assume que a variável de interesse tem distribuição (aproximadamente) normal. Assim, rejeitar a hipótese nula sugere que esse princípio foi violado e, com isso, o Teste T pode gerar resultados distorcidos.</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="teste-t.html#cb43-1" aria-hidden="true" tabindex="-1"></a>asq_12months <span class="sc">%&gt;%</span> </span>
 <span id="cb43-2"><a href="teste-t.html#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> </span>
 <span id="cb43-3"><a href="teste-t.html#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">shapiro =</span> <span class="fu">shapiro.test</span>(total_12)<span class="sc">$</span>p.value) <span class="sc">%&gt;%</span> </span>
@@ -664,6 +691,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><mark>Homocedasticidade</mark>: A homogeneidade ou igualdade das variâncias pode ser testada visualmente, pelo teste Breusch-pagan, Levene ou Bartlett. De maneira análoga ao Shapiro-wilk, estes últimos assumem como hipótese nula a homogeneidade das variâncias. Consequentemente, a rejeição desse pressuposto pode também trazer resultados distorcidos ao resultado do Teste T. Diferentemente do pressuposto da normalidade, o pressuposto da homocedasticidade foi preservado, tal como apresentado abaixo:</p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="teste-t.html#cb44-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">leveneTest</span>(total_12 <span class="sc">~</span> sex, <span class="at">data =</span> asq_12months) <span class="sc">%&gt;%</span> </span>
 <span id="cb44-2"><a href="teste-t.html#cb44-2" aria-hidden="true" tabindex="-1"></a>  pander<span class="sc">::</span><span class="fu">pander</span>()</span></code></pre></div>
+<p>Registered S3 methods overwritten by ‘car’:
+method from
+influence.merMod lme4
+cooks.distance.influence.merMod lme4
+dfbeta.influence.merMod lme4
+dfbetas.influence.merMod lme4</p>
 <table style="width:54%;">
 <caption>Levene’s Test for Homogeneity of Variance (center = median)</caption>
 <colgroup>
@@ -783,7 +816,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="warning">
 <p><strong>Atenção</strong>: Nunca se aceita a hipótese nula ou a hipótese alternativa. Como Fisher (1931, p. 16) comenta, a hipótese nula nunca é provada ou estabelecida, mas é possivelmente refutada. Da mesma forma, rejeitar a hipótese nula não se refere a aceitar a alternativa, mas tão somente que os dados são incompatíveis à hipótese nula.</p>
 </div>
-<p>É fundamental lembrar que o valor de P se refere à probabilidade de encontrar a estatística de teste calculada, ou uma ainda mais extrema, assumindo que a hipótese nula é verdadeira <span class="citation">(<a href="referencias.html#ref-Wasserstein2016" role="doc-biblioref">Wasserstein &amp; Lazar, 2016</a>)</span>. Apesar de algo contraintuitivo, é assim que a estatística frequentista funciona.</p>
+<p>É fundamental lembrar que o valor de P se refere à probabilidade de encontrar a estatística de teste calculada, ou uma ainda mais extrema, assumindo que a hipótese nula é verdadeira <span class="citation">(<a href="#ref-Wasserstein2016" role="doc-biblioref">Wasserstein &amp; Lazar, 2016</a>)</span>. Apesar de algo contraintuitivo, é assim que a estatística frequentista funciona.</p>
 </div>
 <div id="tamanho-do-efeito-1" class="section level2" number="11.3">
 <h2><span class="header-section-number">11.3</span> Tamanho do efeito</h2>
@@ -878,7 +911,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="warning">
 <p><strong>Atenção</strong>: Um aspecto importante e que não costuma ser discutido com tanta frequência é que a modificação do teste estatístico utilizado pode modificar a hipótese da pesquisa. A decisão de alterar ou não o teste inferencial deve ser feita com justificativa teórica por parte do pesquisador.</p>
 </div>
-<p>Em muitas situações, os pressupostos do Teste T são violados. Parte da literatura argumenta que o Teste T é robusto o suficiente para lidar com isso <span class="citation">(<a href="referencias.html#ref-Lumley2002" role="doc-biblioref">Lumley et al., 2002</a>)</span>, enquanto outra parte sugere que é melhor optar por versões com médias aparadas, técnicas não-paramétricas <span class="citation">(<a href="referencias.html#ref-Field2017" role="doc-biblioref">Field &amp; Wilcox, 2017</a>)</span> ou outros modelos estatísticos.</p>
+<p>Em muitas situações, os pressupostos do Teste T são violados. Parte da literatura argumenta que o Teste T é robusto o suficiente para lidar com isso <span class="citation">(<a href="#ref-Lumley2002" role="doc-biblioref">Lumley et al., 2002</a>)</span>, enquanto outra parte sugere que é melhor optar por versões com médias aparadas, técnicas não-paramétricas <span class="citation">(<a href="#ref-Field2017" role="doc-biblioref">Field &amp; Wilcox, 2017</a>)</span> ou outros modelos estatísticos.</p>
 <p>Quando a homocedasticidade é violada, o <u>Welch test</u> pode ser utilizado. Este teste é considerado uma versão robusta do Teste T, já que lida bem com variâncias distintas nos grupos.</p>
 <p>O tamanho do efeito do Welch test é também o d de Cohen e, por isso, não será novamente calculado nesta seção.</p>
 <div id="execução-no-r-4" class="section level3" number="11.6.1">
@@ -1095,6 +1128,33 @@ Nesta pesquisa, objetivou-se verificar a diferença no perfil cognitivo e padrã
 
 </div>
 </div>
+<h3> Referencias</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
+<div id="ref-Barker2015" class="csl-entry">
+Barker, L. E., &amp; Shaw, K. M. (2015). Best (but oft-forgotten) practices: Checking assumptions concerning regression residuals. <em>The American Journal of Clinical Nutrition</em>, <em>102</em>(3), 533–539. <a href="https://doi.org/10.3945/ajcn.115.113498">https://doi.org/10.3945/ajcn.115.113498</a>
+</div>
+<div id="ref-Ernst2017" class="csl-entry">
+Ernst, A. F., &amp; Albers, C. J. (2017). Regression assumptions in clinical psychology research practice<span><span></span></span>a systematic review of common misconceptions. <em><span>PeerJ</span></em>, <em>5</em>, e3323. <a href="https://doi.org/10.7717/peerj.3323">https://doi.org/10.7717/peerj.3323</a>
+</div>
+<div id="ref-Field2017" class="csl-entry">
+Field, A. P., &amp; Wilcox, R. R. (2017). Robust statistical methods: A primer for clinical psychology and experimental psychopathology researchers. <em>Behaviour Research and Therapy</em>, <em>98</em>, 19–38. <a href="https://doi.org/10.1016/j.brat.2017.05.013">https://doi.org/10.1016/j.brat.2017.05.013</a>
+</div>
+<div id="ref-Krus1977" class="csl-entry">
+Krus, D. J., &amp; Krus, P. H. (1977). Lost: <span>McCall</span><span><span></span></span>s t scores: why? <em>Educational and Psychological Measurement</em>, <em>37</em>(1), 257–261. <a href="https://doi.org/10.1177/001316447703700134">https://doi.org/10.1177/001316447703700134</a>
+</div>
+<div id="ref-Lix1996" class="csl-entry">
+Lix, L. M., Keselman, J. C., &amp; Keselman, H. J. (1996). Consequences of assumption violations revisited: A quantitative review of alternatives to the one-way analysis of variance "f" test. <em>Review of Educational Research</em>, <em>66</em>(4), 579. <a href="https://doi.org/10.2307/1170654">https://doi.org/10.2307/1170654</a>
+</div>
+<div id="ref-Lumley2002" class="csl-entry">
+Lumley, T., Diehr, P., Emerson, S., &amp; Chen, L. (2002). The importance of the normality assumption in large public health data sets. <em>Annual Review of Public Health</em>, <em>23</em>(1), 151–169. <a href="https://doi.org/10.1146/annurev.publhealth.23.100901.140546">https://doi.org/10.1146/annurev.publhealth.23.100901.140546</a>
+</div>
+<div id="ref-Wasserstein2016" class="csl-entry">
+Wasserstein, R. L., &amp; Lazar, N. A. (2016). The <span>ASA</span> statement on p-values: Context, process, and purpose. <em>The American Statistician</em>, <em>70</em>(2), 129–133. <a href="https://doi.org/10.1080/00031305.2016.1154108">https://doi.org/10.1080/00031305.2016.1154108</a>
+</div>
+<div id="ref-Yap2011" class="csl-entry">
+Yap, B. W., &amp; Sim, C. H. (2011). Comparisons of various types of normality tests. <em>Journal of Statistical Computation and Simulation</em>, <em>81</em>(12), 2141–2155. <a href="https://doi.org/10.1080/00949655.2010.520163">https://doi.org/10.1080/00949655.2010.520163</a>
+</div>
+</div>
             </section>
 
           </div>
@@ -1124,6 +1184,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

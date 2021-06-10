@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Cap. 10 Fatores de Risco | Conceitos e análises estatísticas com R e JASP</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Cap. 10 Fatores de Risco | Conceitos e análises estatísticas com R e JASP" />
   <meta property="og:type" content="book" />
@@ -50,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -115,6 +117,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -451,14 +476,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <strong>Incidência</strong>: Fração de um grupo que inicialmente não apresenta uma doença e a desenvolve após algum tempo. Dessa maneira, refere-se aos novos casos da condição clínica.<br />
 <strong>Risco</strong>: Possibilidade da ocorrência de eventos adversos, tais como doenças ou transtornos.</p>
 </div>
-<p>Fatores de risco é um termo amplo e muito utilizado em epidemiologia e bioestatística para apresentar algumas medidas estatísticas que verificam a associação entre situação de exposição, contextuais, psicológicas ou atitudinais e possíveis desfechos clínicos <span class="citation">(<a href="referencias.html#ref-Wagener1998" role="doc-biblioref">Wagner &amp; Callegari-Jacques, 1998</a>)</span>. Nessas medidas, as condições de exposição formam as variáveis independentes, enquanto o desfecho forma a variável dependente. Os resultados obtidos por tais medidas indicam a força e a direção da associação entre as variáveis e são consideradas tamanho do efeito.</p>
+<p>Fatores de risco é um termo amplo e muito utilizado em epidemiologia e bioestatística para apresentar algumas medidas estatísticas que verificam a associação entre situação de exposição, contextuais, psicológicas ou atitudinais e possíveis desfechos clínicos <span class="citation">(<a href="#ref-Wagener1998" role="doc-biblioref">Wagner &amp; Callegari-Jacques, 1998</a>)</span>. Nessas medidas, as condições de exposição formam as variáveis independentes, enquanto o desfecho forma a variável dependente. Os resultados obtidos por tais medidas indicam a força e a direção da associação entre as variáveis e são consideradas tamanho do efeito.</p>
 <p>Com muita frequência, o desfecho de interesse é relacionado tanto à apresentação ou desenvolvimento de uma doença específica, como a ter risco de vir apresentá-la ou desenvolvê-la.</p>
-<p>Quando os fatores de risco lidam com variáveis categóricas, eles tem uma proximidade grande do teste Qui-quadrado, que também costuma ser utilizado para testar a significância estatística dos resultados. Quando há variáveis contínuas envolvidas, seus resultados podem ser alcançados por modelos de regressão logística <span class="citation">(<a href="referencias.html#ref-DeMaris1995" role="doc-biblioref">DeMaris, 1995</a>)</span>.</p>
-<p>Entre as principais medidas utilizadas para estimar fatores de risco estão o Risco Atribuível ou Diferença de Riscos (RA), Risco Relativo ou Razão de Riscos (RR) e <em>Odds Ratio</em> ou Razão de Chances (OR). Estas medidas costumam ser calculadas em função do delineamento de pesquisa. Estudos de coorte costumam contar com o Risco Relativo, estudos caso-controle, contam com o <em>Odds Ratio</em> e estudos observacionais transversais tendem a adotar uma medida de razão de prevalência <span class="citation">(<a href="referencias.html#ref-Endruweit2019" role="doc-biblioref">Battisti &amp; Silva Smolski, 2019</a>)</span>.</p>
+<p>Quando os fatores de risco lidam com variáveis categóricas, eles tem uma proximidade grande do teste Qui-quadrado, que também costuma ser utilizado para testar a significância estatística dos resultados. Quando há variáveis contínuas envolvidas, seus resultados podem ser alcançados por modelos de regressão logística <span class="citation">(<a href="#ref-DeMaris1995" role="doc-biblioref">DeMaris, 1995</a>)</span>.</p>
+<p>Entre as principais medidas utilizadas para estimar fatores de risco estão o Risco Atribuível ou Diferença de Riscos (RA), Risco Relativo ou Razão de Riscos (RR) e <em>Odds Ratio</em> ou Razão de Chances (OR). Estas medidas costumam ser calculadas em função do delineamento de pesquisa. Estudos de coorte costumam contar com o Risco Relativo, estudos caso-controle, contam com o <em>Odds Ratio</em> e estudos observacionais transversais tendem a adotar uma medida de razão de prevalência <span class="citation">(<a href="#ref-Endruweit2019" role="doc-biblioref">Battisti &amp; Silva Smolski, 2019</a>)</span>.</p>
 <p>Essas medidas costumam ser descritas por uma tabela de contingência, tal como a seguir:</p>
 <p><img src="img/cap_risco_tabela_decisao.PNG" /></p>
 <p>Nessa tabela, as linhas marcam condições que (quase sempre) podem ser controladas pelo pesquisador, tal como a exposição dos participantes à um fator específico ou a seleção intencional dos participantes. Por sua vez, as colunas indicam os desfechos que, com muita frequência, são formados por uma doença ou algum transtorno mental.</p>
-<p>Apesar dessa apresentação tabular ser a mais frequente, é possível encontrar alguns autores que recomendam inverter as linhas e as colunas <span class="citation">(<a href="referencias.html#ref-Schoenbach2000" role="doc-biblioref">Schoenbach, 2000</a>)</span>. No entanto, a maioria dos pacotes estatísticos solicita que a tabela seja criada desta forma para que os resultados possam ser corretamente calculados.</p>
+<p>Apesar dessa apresentação tabular ser a mais frequente, é possível encontrar alguns autores que recomendam inverter as linhas e as colunas <span class="citation">(<a href="#ref-Schoenbach2000" role="doc-biblioref">Schoenbach, 2000</a>)</span>. No entanto, a maioria dos pacotes estatísticos solicita que a tabela seja criada desta forma para que os resultados possam ser corretamente calculados.</p>
 <p>As características da principais medidas estão expostas a seguir:</p>
 <table>
 <colgroup>
@@ -959,6 +984,21 @@ Esta é uma pesquisa de larga escala, feita para verificar a prevalência de pro
 
 </div>
 </div>
+<h3> Referencias</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
+<div id="ref-Endruweit2019" class="csl-entry">
+Battisti, I. D. E., &amp; Silva Smolski, F. M. da. (2019). <em>Software r: Analise estatistica de dados utilizando um programa livre</em>. Faith.
+</div>
+<div id="ref-DeMaris1995" class="csl-entry">
+DeMaris, A. (1995). A tutorial in logistic regression. <em>Journal of Marriage and the Family</em>, <em>57</em>(4), 956. <a href="https://doi.org/10.2307/353415">https://doi.org/10.2307/353415</a>
+</div>
+<div id="ref-Schoenbach2000" class="csl-entry">
+Schoenbach, V. J. (2000). Chapter 7: Relating risk factors to health outcomes. In <em>Understanding the fundamentals of epidemiology: An evolving text</em>. Chapel Hill.
+</div>
+<div id="ref-Wagener1998" class="csl-entry">
+Wagner, M. B., &amp; Callegari-Jacques, S. M. (1998). Measures of association in epidemiological studies: Relative risk and odds ratio. <em>Journal of Pediatrics</em>, <em>74</em>(3), 247–251.
+</div>
+</div>
             </section>
 
           </div>
@@ -988,6 +1028,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
