@@ -32,7 +32,7 @@
   
 <link rel="prev" href="qui-quadrado.html"/>
 <link rel="next" href="teste-t.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -179,7 +179,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html"><i class="fa fa-check"></i><b>2</b> Programas estatísticos</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-r"><i class="fa fa-check"></i><b>2.1</b> O R</a></li>
+<li class="chapter" data-level="2.1" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-r-e-seu-ambiente"><i class="fa fa-check"></i><b>2.1</b> O R e seu ambiente</a></li>
 <li class="chapter" data-level="2.2" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#tidyverse"><i class="fa fa-check"></i><b>2.2</b> Tidyverse</a></li>
 <li class="chapter" data-level="2.3" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#dificuldades-esperadas"><i class="fa fa-check"></i><b>2.3</b> Dificuldades esperadas</a></li>
 <li class="chapter" data-level="2.4" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>2.4</b> Verbos do dplyr</a></li>
@@ -585,6 +585,10 @@ div.csl-indent {
 </table>
 <p>É importante distinguir o conceito de risco e chance. Risco é análogo à probabilidade, ou seja, uma razão entre uma parte contra o todo. Por sua vez, a chance é uma razão em que o numerador é uma probabilidade e o denominador é seu complemento. A figura a seguir ilustra essa diferença.</p>
 <p><img src="img/cap_reg_log_odds.PNG" /></p>
+<details>
+<summary>
+Fim da versão gratuita
+</summary>
 <div id="pesquisa-2" class="section level2" number="10.1">
 <h2><span class="header-section-number">10.1</span> Pesquisa</h2>
 <div class="base">
@@ -695,15 +699,30 @@ div.csl-indent {
 ## -------------------------------------------------------------------
 ## Inc risk ratio                               1.76 (1.48, 2.10)
 ## Odds ratio                                   1.84 (1.53, 2.22)
-## Attrib risk *                                3.93 (2.74, 5.12)
+## Attrib risk in exposed *                     3.93 (2.74, 5.12)
+## Attrib fraction in exposed (%)              43.33 (32.46, 52.44)
 ## Attrib risk in population *                  1.96 (1.02, 2.90)
-## Attrib fraction in exposed (%)               43.33 (32.46, 52.44)
-## Attrib fraction in population (%)            27.63 (19.05, 35.30)
+## Attrib fraction in population (%)           27.63 (19.05, 35.30)
 ## -------------------------------------------------------------------
-##  Test that OR = 1: chi2(1) = 41.605 Pr&gt;chi2 = &lt;0.001
+## Uncorrected chi2 test that OR = 1: chi2(1) = 41.605 Pr&gt;chi2 = &lt;0.001
+## Fisher exact test that OR = 1: Pr&gt;chi2 = &lt;0.001
 ##  Wald confidence limits
 ##  CI: confidence interval
-##  * Outcomes per 100 population units</code></pre>
+##  * Outcomes per 100 population units 
+## 
+##  Measures of association strength:
+##  The outcome risk among the exposed was 1.76 (95% CI 1.48 to 2.1) times greater than the outcome risk among the unexposed. 
+##  
+##  The outcome odds among the exposed was 1.84 (95% CI 1.53 to 2.22) times greater than the outcome odds among the unexposed. 
+## 
+##  Measures of effect in the exposed:
+##  Exposure changed outcome risk in the exposed by 3.93 (95% CI 2.74 to 5.12) per 100 population units. 43.3% of outcomes in the exposed were attributable to exposure (95% CI 32.5% to 52.4%). 
+## 
+##  Number needed to treat for benefit (NNTB) and harm (NNTH):
+##  The number needed to treat for one subject to benefit (NNTB) is 25 (95% CI 20 to 37). 
+## 
+##  Measures of effect in the population:
+##  Exposure changed outcome risk in the population by 1.96 (95% CI 1.02 to 2.9) per 100 population units. 27.6% of outcomes in the population were attributable to exposure (95% CI 19% to 35.3%).</code></pre>
 <p>Os resultados apresentam indicam que há um maior risco em meninos apresentarem TDAH quando comparados às meninas. Conforme esperado, todas as medidas computadas foram convergentes, indicando AR = 3.93, RR = 1.74 e OR = 1.84.</p>
 <p>É importante ter atenção em dois elementos: (1) A significância do OR é obtida pelo teste Qui-quadrado, que já havia sido calculado. (2) Na literatura, há também a recomendação de aplicar o logaritmo natural no OR para ter os resultados mais próximos do encontrado em modelos de <a href="#17_regressao_logistica_binaria">Regressão logística</a>, tal como ilustrado em capítulo específico. Neste caso, o OR de 1.84 viraria 0.61.</p>
 <div class="warning">
@@ -796,7 +815,7 @@ p
 -2.916
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-<strong>&lt;0.001
+<strong>&lt;0.001</strong>
 </td>
 </tr>
 <tr>
@@ -807,7 +826,7 @@ sex_male [male]
 0.610
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-<strong>&lt;0.001
+<strong>&lt;0.001</strong>
 </td>
 </tr>
 <tr>
@@ -877,13 +896,13 @@ p
 -2.916
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-<strong>&lt;0.001
+<strong>&lt;0.001</strong>
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 -2.950
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-<strong>&lt;0.001
+<strong>&lt;0.001</strong>
 </td>
 </tr>
 <tr>
@@ -894,13 +913,13 @@ sex_male [male]
 0.610
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-<strong>&lt;0.001
+<strong>&lt;0.001</strong>
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 0.607
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-<strong>&lt;0.001
+<strong>&lt;0.001</strong>
 </td>
 </tr>
 <tr>
@@ -915,7 +934,7 @@ alcohol [yes]
 0.543
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-<strong>&lt;0.001
+<strong>&lt;0.001</strong>
 </td>
 </tr>
 <tr>
@@ -981,6 +1000,11 @@ Esta é uma pesquisa de larga escala, feita para verificar a prevalência de pro
 </ol>
 </div>
 <p>Gabarito: 1-a; 2-d; 3-b; 4-e</p>
+</details>
+<div class="amazon">
+<p>Este livro pode ser adquirido no site da Amazon, clicando <a href="https://www.amazon.com.br/gp/product/B097CP7T9M?pf_rd_r=RDZC8XYMBC1WY69T0J8K&amp;pf_rd_p=abb22e6b-8812-4b76-a424-5f0b098d2c90&amp;pd_rd_r=ceec1911-f409-4acd-ac8f-2d5bc68dac43&amp;pd_rd_w=wMUzJ&amp;pd_rd_wg=ZK85a&amp;ref_=pd_gw_unk">aqui</a>.</p>
+<p>Ao comprar a obra, você auxilia este projeto e ajuda a execução de novos. Qualquer dúvida, entre em contato por <a href="mailto:luisfca@puc-rio.br" class="email">luisfca@puc-rio.br</a></p>
+</div>
 
 </div>
 </div>
@@ -1048,7 +1072,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["gitbook-demo.pdf", "gitbook-demo.epub"],
+"download": "book.epub",
 "toc": {
 "collapse": "subsection"
 }

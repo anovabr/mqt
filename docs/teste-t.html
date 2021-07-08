@@ -32,7 +32,7 @@
   
 <link rel="prev" href="fatores-de-risco.html"/>
 <link rel="next" href="anova.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -179,7 +179,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html"><i class="fa fa-check"></i><b>2</b> Programas estatísticos</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-r"><i class="fa fa-check"></i><b>2.1</b> O R</a></li>
+<li class="chapter" data-level="2.1" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-r-e-seu-ambiente"><i class="fa fa-check"></i><b>2.1</b> O R e seu ambiente</a></li>
 <li class="chapter" data-level="2.2" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#tidyverse"><i class="fa fa-check"></i><b>2.2</b> Tidyverse</a></li>
 <li class="chapter" data-level="2.3" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#dificuldades-esperadas"><i class="fa fa-check"></i><b>2.3</b> Dificuldades esperadas</a></li>
 <li class="chapter" data-level="2.4" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>2.4</b> Verbos do dplyr</a></li>
@@ -538,6 +538,10 @@ div.csl-indent {
 <p><em>Nota: Existe um intenso debate sobre a utilização de testes paramétricos e não-paramétricos em Psicologia. Algo pouco comentado, apesar de ser o aspecto mais importante em minha opinião, é que a hipótese testada em um teste paramétrico é diferente da teste da testada em um não-paramétrico. Ou seja, a substituição de um teste estatístico por outro, necessariamente, muda a hipótese de pesquisa investigada. O Teste T não assume normalidade da variável dependente, mas sim normalidade dos resíduos do modelo probabilístico, que será explicado em seguida</em></p>
 <p>Apenas por um preâmbulo histórico, a origem do Teste T remonta o artigo publicado em 1908 por William Gosset. Na época, em função de seu trabalho na cervejaria Guiness, ele não assinou o artigo. Na publicação, ele utilizou o pseudônimo <em>Student</em>, motivo pelo qual o Teste T também é chamado de Teste T de Student. Há muitas versões sobre o que levou Gosset a se apresentar como <em>Student</em>, mas parece que isso se deu em função de um caderno em que ele tomava notas, cuja capa tinha escrito <em>The Student’s Notebook</em>.</p>
 <p>É importante notar que estudantes de Psicologia e profissionais que trabalham com avaliação psicológica costumam ser deparados com uma métrica chamada “T score” (Escore T, as vezes), desenvolvido em 1939 por um professor de Psicologia (William Anderson McCall). Tenha em mente que essa métrica não tem relação com os procedimentos inferenciais relacionados ao Teste T a não ser uma similaridade de nome <span class="citation">(<a href="#ref-Krus1977" role="doc-biblioref">Krus &amp; Krus, 1977</a>)</span>.</p>
+<details>
+<summary>
+Fim da versão gratuita
+</summary>
 <div id="pesquisa-3" class="section level2" number="11.1">
 <h2><span class="header-section-number">11.1</span> Pesquisa</h2>
 <div class="base">
@@ -691,12 +695,6 @@ div.csl-indent {
 <p><mark>Homocedasticidade</mark>: A homogeneidade ou igualdade das variâncias pode ser testada visualmente, pelo teste Breusch-pagan, Levene ou Bartlett. De maneira análoga ao Shapiro-wilk, estes últimos assumem como hipótese nula a homogeneidade das variâncias. Consequentemente, a rejeição desse pressuposto pode também trazer resultados distorcidos ao resultado do Teste T. Diferentemente do pressuposto da normalidade, o pressuposto da homocedasticidade foi preservado, tal como apresentado abaixo:</p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="teste-t.html#cb44-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">leveneTest</span>(total_12 <span class="sc">~</span> sex, <span class="at">data =</span> asq_12months) <span class="sc">%&gt;%</span> </span>
 <span id="cb44-2"><a href="teste-t.html#cb44-2" aria-hidden="true" tabindex="-1"></a>  pander<span class="sc">::</span><span class="fu">pander</span>()</span></code></pre></div>
-<p>Registered S3 methods overwritten by ‘car’:
-method from
-influence.merMod lme4
-cooks.distance.influence.merMod lme4
-dfbeta.influence.merMod lme4
-dfbetas.influence.merMod lme4</p>
 <table style="width:54%;">
 <caption>Levene’s Test for Homogeneity of Variance (center = median)</caption>
 <colgroup>
@@ -1125,6 +1123,11 @@ Nesta pesquisa, objetivou-se verificar a diferença no perfil cognitivo e padrã
 </ol>
 </div>
 <p>Gabarito: 1-b; 2-a; 3-e</p>
+</details>
+<div class="amazon">
+<p>Este livro pode ser adquirido no site da Amazon, clicando <a href="https://www.amazon.com.br/gp/product/B097CP7T9M?pf_rd_r=RDZC8XYMBC1WY69T0J8K&amp;pf_rd_p=abb22e6b-8812-4b76-a424-5f0b098d2c90&amp;pd_rd_r=ceec1911-f409-4acd-ac8f-2d5bc68dac43&amp;pd_rd_w=wMUzJ&amp;pd_rd_wg=ZK85a&amp;ref_=pd_gw_unk">aqui</a>.</p>
+<p>Ao comprar a obra, você auxilia este projeto e ajuda a execução de novos. Qualquer dúvida, entre em contato por <a href="mailto:luisfca@puc-rio.br" class="email">luisfca@puc-rio.br</a></p>
+</div>
 
 </div>
 </div>
@@ -1204,7 +1207,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["gitbook-demo.pdf", "gitbook-demo.epub"],
+"download": "book.epub",
 "toc": {
 "collapse": "subsection"
 }

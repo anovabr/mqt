@@ -33,7 +33,7 @@ div.objectives2 {
   padding: 15px 20px;
   background: #fafafa;
 }
-div.warning, div.tip, div.tryit, div.challenge, div.explore, div.base {
+div.warning, div.tip, div.tryit, div.challenge, div.explore, div.base, div.amazon {
   border: 4px #dfedff; /* very light blue */
   border-style: solid;
   padding: 1em;
@@ -86,4 +86,15 @@ div.glossario {
   box-shadow: 5px 5px 10px -2px rgba(33,33,33,.3);
   transform: skew(-.05deg,.05deg);
 }
-
+/* Details unclickable */
+details {
+  padding: 0 var(--padding);
+  box-shadow: inset 1 1 1 4px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  box-shadow: 5px 5px 10px -2px rgba(33,33,33,.3);
+  pointer-events: none; /* Make unclickable */
+}
+div.amazon {
+  background-image: url("https://m.media-amazon.com/images/I/51dA-p4XRES.jpg"); 
+}

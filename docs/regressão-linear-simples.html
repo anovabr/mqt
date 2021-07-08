@@ -32,7 +32,7 @@
   
 <link rel="prev" href="correlação.html"/>
 <link rel="next" href="regressão-linear-múltipla.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -179,7 +179,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html"><i class="fa fa-check"></i><b>2</b> Programas estatísticos</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-r"><i class="fa fa-check"></i><b>2.1</b> O R</a></li>
+<li class="chapter" data-level="2.1" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#o-r-e-seu-ambiente"><i class="fa fa-check"></i><b>2.1</b> O R e seu ambiente</a></li>
 <li class="chapter" data-level="2.2" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#tidyverse"><i class="fa fa-check"></i><b>2.2</b> Tidyverse</a></li>
 <li class="chapter" data-level="2.3" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#dificuldades-esperadas"><i class="fa fa-check"></i><b>2.3</b> Dificuldades esperadas</a></li>
 <li class="chapter" data-level="2.4" data-path="programas-estatísticos.html"><a href="programas-estatísticos.html#verbos-do-dplyr"><i class="fa fa-check"></i><b>2.4</b> Verbos do dplyr</a></li>
@@ -545,6 +545,10 @@ div.csl-indent {
 <li>A variância dos resíduos é constante</li>
 </ol>
 <p>O mnemônico <u>LINE</u> talvez ajude a lembrar destes pressupostos. Ele se refere à <u><em>linearity</em></u>, <u><em>independence</em></u>, <u><em>normality</em></u> e <u><em>equal variance</em></u>.</p>
+<details>
+<summary>
+Fim da versão gratuita
+</summary>
 <div id="breve-explicação-conceitual" class="section level2" number="16.1">
 <h2><span class="header-section-number">16.1</span> Breve explicação conceitual</h2>
 <p>Conforme descrito, modelos de regressão conseguem substituir a maior parte dos testes estatísticos realizados para testar hipóteses. Neste sentido, a maior parte dos livros tenta fazer uma introdução a estes modelos de forma que tanto aspectos conceituais, como algumas características analíticas possam ser melhor entendidas. Nesta seção, essa apresentação será feita de uma forma mais intuitiva. Caso você queira pular esta seção e ir direto à <a href="##pesquisa">pesquisa</a>, não há problema.</p>
@@ -852,7 +856,7 @@ Regression and Other Stories, de Andrew Gelman</p>
 <p><mark>Independência</mark>: A independência dos resíduos depende bastante do delineamento utilizado ser transversal ou longitudinal. O teste de Durbin Watson pode ser utilizado e sua hipótese nula é de que os resíduos não são correlacionados. Este pressuposto foi atendido, o que já era esperado.</p>
 <div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="regressão-linear-simples.html#cb152-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">durbinWatsonTest</span>(mod_linear_simples)</span></code></pre></div>
 <pre><code>##  lag Autocorrelation D-W Statistic p-value
-##    1      0.07254389      1.845067   0.232
+##    1      0.07254389      1.845067   0.242
 ##  Alternative hypothesis: rho != 0</code></pre>
 <p>Isso posto, os diagnósticos executados indicaram que o modelo violou a normalidade e a homocedasticidade e preservou a linearidade e a independência dos resíduos. Apesar desse tipo de resultado ser frequente em Psicologia, a interpretação dos resultados é limitada e deve ser feita de forma apenas preliminar.</p>
 </div>
@@ -939,6 +943,11 @@ Nesta pesquisa, 110 participantes foram recrutados para que os pesquisadores pud
 </ol>
 </div>
 <p>Gabarito: 1-a</p>
+</details>
+<div class="amazon">
+<p>Este livro pode ser adquirido no site da Amazon, clicando <a href="https://www.amazon.com.br/gp/product/B097CP7T9M?pf_rd_r=RDZC8XYMBC1WY69T0J8K&amp;pf_rd_p=abb22e6b-8812-4b76-a424-5f0b098d2c90&amp;pd_rd_r=ceec1911-f409-4acd-ac8f-2d5bc68dac43&amp;pd_rd_w=wMUzJ&amp;pd_rd_wg=ZK85a&amp;ref_=pd_gw_unk">aqui</a>.</p>
+<p>Ao comprar a obra, você auxilia este projeto e ajuda a execução de novos. Qualquer dúvida, entre em contato por <a href="mailto:luisfca@puc-rio.br" class="email">luisfca@puc-rio.br</a></p>
+</div>
 
 </div>
 </div>
@@ -1012,7 +1021,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["gitbook-demo.pdf", "gitbook-demo.epub"],
+"download": "book.epub",
 "toc": {
 "collapse": "subsection"
 }
