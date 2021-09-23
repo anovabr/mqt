@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Conceitos e análises estatísticas com R e JASP</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Conceitos e análises estatísticas com R e JASP" />
   <meta property="og:type" content="book" />
@@ -32,8 +32,8 @@
   
 
 <link rel="next" href="programas-estatísticos.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -472,7 +472,7 @@ div.csl-indent {
 <div id="atenção" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> Atenção</h2>
 <div class="amazon">
-<p>Atenção: Os capítulos estão apenas parcialmente disponíveis.<br> Você pode adquirir o livro no site da Amazon, clicando <a href="https://www.amazon.com.br/gp/product/B097CP7T9M?pf_rd_r=RDZC8XYMBC1WY69T0J8K&amp;pf_rd_p=abb22e6b-8812-4b76-a424-5f0b098d2c90&amp;pd_rd_r=ceec1911-f409-4acd-ac8f-2d5bc68dac43&amp;pd_rd_w=wMUzJ&amp;pd_rd_wg=ZK85a&amp;ref_=pd_gw_unk">aqui</a>.<br> Ao fazer isso, você estará apoiando este projeto e auxiliando no desenvolvimento de outros.<br> Última modificação: 08 July, 2021 às 19:40<br></p>
+<p>Atenção: Os capítulos estão apenas parcialmente disponíveis.<br> Você pode adquirir o livro no site da Amazon, clicando <a href="https://www.amazon.com.br/gp/product/B097CP7T9M?pf_rd_r=RDZC8XYMBC1WY69T0J8K&amp;pf_rd_p=abb22e6b-8812-4b76-a424-5f0b098d2c90&amp;pd_rd_r=ceec1911-f409-4acd-ac8f-2d5bc68dac43&amp;pd_rd_w=wMUzJ&amp;pd_rd_wg=ZK85a&amp;ref_=pd_gw_unk">aqui</a>.<br> Ao fazer isso, você estará apoiando este projeto e auxiliando no desenvolvimento de outros.<br> Última modificação: 23 September, 2021 às 16:18<br></p>
 </div>
 <p>Disciplinas do conjunto das ciências humanas e da saúde costumam fazer pesquisas extremamente complexas, em que a diferenciação dos fenômenos de interesse (sinal) daqueles que o distorcem ou o atrapalham (ruído) é, por vezes, bastante sutil e complicada. Uma vez que incerteza é sempre presente, é justamente nestas áreas que a estatística assume um importante papel. Métodos estatísticos permitem que os pesquisadores possam implementar maior robustez metodológica em seus estudos e com isso, terem maior segurança tanto nos resultados alcançados, como nas discussões e conclusões sugeridas.</p>
 <p>No entanto, apesar da inegável contribuição que a estatística traz para estas áreas, a ansiedade e o receio que ela gera em estudantes é um fato bem consolidado e conhecido pelos docentes não apenas de estatística, mas de métodos quantitativos no geral. Esse fenômeno traz um paradoxo bastante peculiar, podendo até mesmo fazer com que os estudantes de ciências humanas e da saúde – que são os que mais precisam dos recursos estatísticos em suas pesquisas – também sejam aqueles que têm menor interesse ou até mesmo a maior resistência em aprender esta matéria.</p>
@@ -616,6 +616,7 @@ Danilo Assis Pereira, IBNeuro<br />
 Anna Carolina de Almeida Portugal, UFRJ<br />
 Emanuel Cordeiro, UFPE<br />
 Jeovani Schmitt, Catarinense Federal Institute of Education, Science and Technology (IFC)<br />
+Pedro Fernandez Tonso, aluno de graduação em Psicologia<br />
 Alunos da PUC-Rio, UFRJ, IBNeuro e ANOVA</p>
 <div align="center">
 <a href='https://www.free-website-hit-counter.com'><img src='https://www.free-website-hit-counter.com/c.php?d=9&id=127612&s=10' border='0' alt='Free Website Hit Counter'></a><br / ><small><a href='https://www.free-website-hit-counter.com' title="Free Website Hit Counter">Free website hit counter</a></small>
@@ -673,6 +674,10 @@ gitbook.start({
 "text": null
 },
 "download": "book.epub",
+"search": {
+"engine": "lunr",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

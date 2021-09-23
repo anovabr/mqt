@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Cap. 7 Estatística Inferencial | Conceitos e análises estatísticas com R e JASP</title>
+  <title>Page not found | Conceitos e análises estatísticas com R e JASP</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Cap. 7 Estatística Inferencial | Conceitos e análises estatísticas com R e JASP" />
+  <meta property="og:title" content="Page not found | Conceitos e análises estatísticas com R e JASP" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Cap. 7 Estatística Inferencial | Conceitos e análises estatísticas com R e JASP" />
+  <meta name="twitter:title" content="Page not found | Conceitos e análises estatísticas com R e JASP" />
   
   <meta name="twitter:description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="tipos-de-amostragem.html"/>
-<link rel="next" href="um-exemplo-real-de-pesquisa.html"/>
+
+
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -462,234 +462,19 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="estatística-inferencial" class="section level1" number="7">
-<h1><span class="header-section-number">Cap. 7</span> Estatística Inferencial</h1>
-<div class="objectives">
-<p><strong>Objetivos do capítulo</strong><br />
-1. Introduzir diferentes conceitos de estatística inferencial<br />
-2. Apresentar os procedimentos feitos durante o Teste de Significância de Hipótese Nula (NHST)<br />
-3. Discutir condições particulares sobre valores de P<br />
-4. Oferecer leituras complementares sobre os tópicos</p>
-</div>
-<p>Um dos principais objetivos ao se fazer uma pesquisa é conseguir generalizar as descobertas feitas no estudo para toda a população de onde os participantes pertencem Essa tarefa faz parte dos objetivos da estatística inferencial, que se ocupa majoritariamente com desenvolver estimativas sobre os parâmetros populacionais e testar hipóteses.</p>
-<p>Como apresentado em outros capítulos, a população pode ser formada por indivíduos, famílias, etc e é frequentemente classificada em “população-alvo” e “população externa.” A população-alvo é formada por aqueles indivíduos não amostrados, mas que o estudo pode generalizar os resultados. A população externa é formada por todos aqueles em que há a intenção de generalizar os resultados, mesmo que apresente características algo distintas dos indivíduos amostrados.</p>
-<p>Em uma pesquisa de nosso grupo <span class="citation">(<a href="#ref-AfonsoJunior2020" role="doc-biblioref">Junior et al., 2020</a>)</span>, nós contamos com uma amostra aleatória de estudantes universitários de uma universidade do Rio de Janeiro e estudamos algumas de suas características epidemiológicas. Neste caso, a população-alvo poderia ser entendida como todos os estudantes universitários da cidade do Rio de Janeiro, enquanto a população externa poderia ser formada por todos os estudantes universitários do Brasil.</p>
-<p><img src="img/cap_inferencia_amostra_populacao.PNG" /></p>
-<p>O processo para estimar parâmetros envolve algumas etapas e, apesar de importantes, são quase sempre secundários em Psicologia e muitas áreas científicas. Na grande maioria dos casos, Psicólogos e outros profissionais de áreas científicas fazem uma pesquisa visando testar hipóteses sobre seu objeto de investigação. Dessa forma, como testes de hipóteses figuram como os principais protagonistas da estatística inferencial, eles terão também destaque neste capítulo.</p>
-<details>
-<summary>
-Fim da versão gratuita
-</summary>
-<div id="nhst-teste-de-significância-de-hipótese-nula" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> NHST (Teste de Significância de Hipótese Nula)</h2>
-<div class="glossario">
-<p><U><strong>GLOSSÁRIO</strong></U><br />
-<strong>Parâmetro</strong>: Valor que descreve uma característica da população. Esse valor é fixo e desconhecido. Sua representação é feita por letras gregas.<br />
-<strong>Estatística</strong>: Valor que descreve uma característica da amostra. Esse valor é aleatório e calculado através dos dados coletados. É apresentado por letras romanas.<br />
-<strong>Inferência</strong>: Processo pelo qual, através de modelos estatísticos, se tiram conclusões sobre características da população a partir dos dados amostrais e permite fazer generalizações e previsões a respeito da população. Técnicas inferenciais permitem a estimativa dos parâmetros populacionais e testar hipóteses.<br />
-<strong>Modelo estatístico</strong>: Sistema de equações que descreve ou representa o possível processo gerador de dados do conjunto de dados em análise.<br />
-<strong>NHST</strong>: Sigla que representa Teste de Significância de Hipótese Nula (em Inglês, <em>Null Hypothesis Significance Testing</em>)</p>
-</div>
-<div class="warning">
-<p><strong>Atenção</strong>: É extremamente difícil conseguir falar sobre este conceito em uma linguagem simples para todos, mas ao mesmo tempo sem inconsistências estatísticas. Algumas notas são deixadas durante a seção visando atingir este objetivo.</p>
-</div>
-<p>A sigla NHST se refere ao Teste de Significância de Hipótese Nula, que é o procedimento mais utilizado quando pesquisadores desejam testar hipóteses de pesquisa utilizando recursos da estatística. Subjacente a todo o processo, está o pressuposto de que é possível transformar perguntas científicas em modelos probabilísticos e, com isso, utilizar a linguagem estatística para lidar com tais questões <span class="citation">(<a href="#ref-Curley013" role="doc-biblioref">Curley, 2013</a>)</span>.</p>
-<p><img src="img/cap_inferencia_modelos_estatisticos.PNG" /></p>
-<p>Existem diferentes maneiras de introduzir o tema e as subseções a seguir o apresentará descrevendo cada um dos termos que compõe a sigla por uma forma pragmática. Com algumas sutis diferenças, esses procedimentos e suas interpretações são similares em todas as áreas da teoria de decisão, tal como Teoria de Detecção de Sinal e diagnóstico médico, o que foi discutido por um trabalho meu recente.</p>
-<p>Algo colateral ao aspecto pragmático, a forma pela qual os testes de hipóteses são feitos hoje é uma mistura entre a forma pela qual Ronald Fisher pensava ser a correta e a maneira pela qual Jerzy Neyman e Egon Pearson defendiam ser a adequada.</p>
-<div id="a-primeira-etapa-a-hipótese" class="section level3" number="7.1.1">
-<h3><span class="header-section-number">7.1.1</span> A primeira etapa: a hipótese</h3>
-<p>Na maioria das vezes, quando uma pesquisa é feita, ela visa testar uma hipótese. Por sua vez, uma hipótese é uma conjectura, uma suposição sobre o estado das coisas feita pelo pesquisador e usualmente pensada no presente do indicativo (ex: há) ou no futuro do pretérito (ex: haveria). Em inglês, há o habito de tratar uma hipótese de pesquisa como <em>Educated Guess</em>, tendo em vista que ela costuma ser feita de maneira cuidadosa e após alguma reflexão sobre o tema de interesse. As hipóteses podem ser classificadas como substantivas ou estatísticas.</p>
-<p>Uma hipótese substantiva é uma formulação textual e semântica sobre determinado fenômeno. Ou seja, é uma frase, tal como “haveria uma relação entre nível de atividade física e bem-estar psicológico,” ou “o tratamento psicofarmacológico melhora quadros de depressão” ou ainda que “o tipo de colégio - público ou privado - influência nos resultados de alunos em provas nacionais.” A hipótese estatística, por sua vez, visa operacionalizar a hipótese substantiva e, com isso, é uma afirmação conjectural, em termos quantitativos, das relações estatísticas da hipótese substantiva (p. 46), o que será apresentado em seguida.</p>
-<p><img src="img/cap_inferencia_tipos_hipoteses.PNG" /></p>
-<p>Ao se fazer uma pesquisa, as hipóteses estatísticas podem ser divididas em Hipótese nula, representada por <span class="math inline">\(H_0\)</span> e Hipótese alternativa, representada por <span class="math inline">\(H_1\)</span> ou <span class="math inline">\(H_a\)</span>.</p>
-<p>Muitas pesquisas podem ser feitas e, consequentemente, muitas hipóteses construídas. Em Psicologia, quase sempre as hipóteses de interesse verificam diferenças entre grupos ou relacionamento entre variáveis e, por sua frequência na literatura, serão apresentadas aqui.</p>
-<p>Em pesquisas com esta finalidade, a hipótese nula é a mais conservadora sobre determinado fenômeno. Ela advoga que pela ausência de padrões, pela inexistência de um relacionamento de causa e efeito, de associação entre variáveis ou de diferença entre grupos. Em termo gerais, a hipótese nula define que qualquer condição observada na população/natureza pode ser melhor explicada pelo acaso.</p>
-<p>Por contraste, a hipótese alternativa apoia relação de causalidade entre variáveis, ou que determinado fator apresenta relacionamento com outro ou que existe diferenças entre grupos, etc. Em linhas gerais, a hipótese nula costuma ser definida como aquilo que o pesquisador não acredita (em inglês, chama-se de <em>Straw person Principle</em>) e a hipótese alternativa tende a ser a hipótese que o pesquisador previamente assumiu para motivar sua coleta de dados.</p>
-<p>Em estatística frequentista, por um apoio epistemológico, a hipótese nula é assumida como verdadeira antes mesmo de qualquer procedimento de coleta e análise de dados. Note que ao assumi-la como verdadeira, isso não significa afirmar que ela seja, de fato, verdadeira. Essa suposição tem origem em discussões clássicas em estatística e, pragmaticamente, a hipótese nula é o que pesquisadores desejam falsear ou refutar na maioria das vezes em suas investigações <span class="citation">(<a href="#ref-Lecoutre2014" role="doc-biblioref">Lecoutre &amp; Poitevineau, 2014</a>)</span>.</p>
-<p>Apesar da definição textual da hipótese ser de fácil entendimento para todos, ele não tem utilidade para etapa de coleta de dados. Dessa forma, esse formato textual é substituído pelo formato estatístico. Por exemplo, se uma determinada pesquisa é feita sob hipótese de que “um determinado antidepressivo auxilia na melhora de pacientes deprimidos,” isso tende a gerar a hipótese alternativa que pode ser lida como: “em média, pessoas deprimidas do grupo que usou o medicamento tem resultados mais baixos em uma escala de depressão quando contrastado com o grupo que não usou o medicamento.” Conceitualmente:</p>
-<p><span class="math display">\[\underbrace{O \,grupo \,que \,tomou \,antidepressivo \,terá \,menos \,depressão}_\text{Hipótese  substantiva}\]</span></p>
-<p><span class="math display">\[H_0: \mu_{grupo (1)} = \mu_{grupo (2)}\]</span>
-<span class="math display">\[\underbrace{H_a: \mu_{grupo (1)} &lt; \mu_{grupo (2)}}_\text{Hipóteses estatísticas}\]</span></p>
-<p>Neste tipo de formulação estatística, a hipótese nula necessariamente será formada pelo sinal de igual (<span class="math inline">\(=\)</span>), enquanto a hipótese alternativa poderá ser diferente (<span class="math inline">\(\neq\)</span>), maior (<span class="math inline">\(&gt;\)</span>) ou menor (<span class="math inline">\(&lt;\)</span>). Tecnicamente, isso costuma alterar levemente etapas analíticas, que são descritas em outros capítulos.</p>
-<p>É importante introjetar duas condições. A primeira é que o pesquisador não testa diretamente a hipótese substantiva, mas sim a hipótese estatística, que tenta operacionalizar a primeira. A segunda característica é que, em estatística frequentista, por mais importante que seja a hipótese alternativa – afinal, foi ela que motivou a pesquisa – ela não é testada diretamente De fato, se assume que a hipótese nula seja verdadeira por princípio e, em seguida, compara-se o quão compatível os resultados obtidos são à tal hipótese.</p>
-<div class="warning">
-<p><strong>Atenção</strong>: O pesquisador tende a fazer uma pesquisa para verificar a adequação de sua hipótese (<span class="math inline">\(H_a\)</span>). Entretanto, o mecânica da estatística frequentista testa o quão os resultados são compatíveis ou não com a hipótese nula.</p>
-</div>
-<p>Com tais explicações feitas, a primeira parte da sigla “NH” (de <em>Null Hypothesis Significance Testing</em>) foi apresentada.</p>
-</div>
-</div>
-<div id="nível-de-significância" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span> Nível de significância</h2>
-<p>Toda pesquisa tem erros. Como visto anteriormente, em estatística frequentista, a hipótese nula é definida como verdadeira inicialmente. Dessa maneira, o nível de significância (denotado pela letra <span class="math inline">\(\alpha\)</span>) é definido como o máximo erro tolerável <span class="citation">(<a href="#ref-Greenland2019" role="doc-biblioref">Greenland, 2019</a>)</span> da probabilidade de se rejeitar a hipótese nula quando ela é, de fato, verdadeira. Ele deve ser estipulado <u>antes</u> da coleta e análise de dados e, por ser uma probabilidade, compreende valores entre 0 e 1.</p>
-<p>Apesar deste nível ser uma escolha do pesquisador, quanto maior ele for, mais facilmente a hipótese nula será rejeitada. No extremo, se o nível de significância for 1, todos os resultados irão concluir pela rejeição da hipótese nula. Por oposição, se o nível de significância for igual a 0, a hipótese nula jamais seria rejeitada, mesmo quando falsa.</p>
-<p>Em estatística frequentista, é convencional estipular o nível de significância em 5% (0.05) ou 1% (0.01). Em algumas ocasiões, 10% (0.1) como nível de significância é aceito, mesmo que isso possa gerar uma maior dificuldade na publicação. Apesar desses números não serem mágicos, a origem dos 5% remonta a Ronald Fisher, que no trabalho “<em>Statistical Methods for Research Workers</em>” (1925), deixou uma tabela com indicando quais seriam os resultados esperados tendo como critério este nível.</p>
-<p>O nível de significância é importante pois ele é associado com o conceito de erros. Quando se rejeita uma hipótese nula verdadeira, dá-se o nome de erro do tipo I. Em pesquisas médicas, esse é erro é chamado de “falso positivo” e, em psicofísica, de “falso alarme.”</p>
-<p>Entende-se também que é possível que a hipótese nula não seja rejeitada mesmo quando ela é falsa. Esse é o erro do tipo II (2), que também é chamado de “falso negativo” em pesquisas médicas ou “perda” em psicofísica. Note que o erro do tipo 2 e alguns conceitos derivados não se conectam tão diretamente com o conceito de nível de significância. Isso ocorre pois esse conceito não é bem uma defesa de Ronald Fisher, mas foi introjetado posteriormente por Jerzy Neyman e Egon Pearson <span class="citation">(<a href="#ref-cohen2013explaining" role="doc-biblioref">B. Cohen, 2013</a>)</span>.</p>
-<p>A tabela de tomada de decisão a seguir, uma matriz de confusão, é a mais tradicionalmente usada para ilustrar esse conceito.</p>
-<p><img src="img/cap_inferencia_tabela_decisao.PNG" />
-<em>Nota: Ronald Fisher tinha bastante resistência à ideia do erro do tipo II ou também aos intervalos de confiança. Essa tabela é uma junção pragmática de sua forma de entender testes de hipóteses e da forma de Jerzy Neyman e Egan Pearson. A hipótese nula é assumida como verdadeira e não <u>provada</u> ou <u>refutada</u> como tal.</em></p>
-<p>Existe um <em>trade-off</em>, ou relação de perde-ganha, entre o erro do tipo I e o erro do tipo II. Aumentar o erro do tipo I leva à diminuição do erro do tipo II. Desta forma, o pesquisador deverá pesar as consequências do erro do tipo I (falsos positivos) e também as consequências do erro do tipo II (falsos negativos) durante a testagem de hipótese.</p>
-<p>Ao fim desta seção, outro exemplo será dado para tornar esta tabela mais palatável. Com isto posto, a terceira parte da sigla “S” é considerada apresentada.</p>
-</div>
-<div id="o-teste-estatístico" class="section level2" number="7.3">
-<h2><span class="header-section-number">7.3</span> O teste estatístico</h2>
-<p>A testagem estatística pode ser entendida como uma maneira formal de modelar os dados e verificar a probabilidade de se obter determinados resultados assumindo a hipótese nula como verdadeira. De maneira mais direta, é uma ferramenta de auxílio para contrastar hipóteses, permitindo rejeitar ou não a hipótese nula, a partir de um nível de significância fixo previamente definido <span class="citation">(<a href="#ref-Lecoutre2014" role="doc-biblioref">Lecoutre &amp; Poitevineau, 2014</a>)</span>. Com isso, ao se implementar testes estatísticos, se possibilita ter inferências sobre aspectos populacionais a partir dos resultados amostrais.</p>
-<p>Pragmaticamente, após a definição da hipótese nula e alternativa, bem como o nível de significância, testes estatísticos são calculados com base nos dados e seus resultados auxiliam a rejeitar ou falhar em rejeitar a hipótese nula. A estatística dispõe de um exército de testes estatísticos (ex: Teste T, Teste de Kruskal-Walis, etc), que tendem a ser classificados por muitos critérios, como o tipo de distribuição de algumas variáveis ou a natureza da VI/VD, etc.</p>
-<p>Apesar dessa estratégia ser costumeiramente feita não apenas em Psicologia, ela pode levar à falsa percepção de que os testes estatísticos são mutuamente exclusivos e que há uma fórmula de bolo padronizada em que cada situação de pesquisa necessita de um teste específico e não outro.</p>
-<p>Neste livro, mesmo nos capítulos em que testes estatísticos são descritos, essas condições serão um pouco desafiadas. O que é fundamental ter conhecimento é que:</p>
-<ol style="list-style-type: decimal">
-<li>Todo teste estatístico assume alguns pressupostos, que devem ser sempre testados;<br />
-</li>
-<li>Os testes produzirão um valor numérico, que é um sumário estatístico chamado de estatística de teste, representado por letras como T ou <span class="math inline">\(\chi^2\)</span>;<br />
-</li>
-<li>Esta estatística de teste é uma variável aleatória com algumas propriedades específicas;<br />
-</li>
-<li>Apesar da importância destes resultados, eles são sempre transformados em um valor de P. Por sua vez,<br />
-</li>
-<li>O valor de P é usado como critério de tomada de decisão.</li>
-</ol>
-</div>
-<div id="o-valor-de-p" class="section level2" number="7.4">
-<h2><span class="header-section-number">7.4</span> O valor de P</h2>
-<p>Após definir da hipótese nula e alternativa, bem como o nível de significância e execução do teste estatístico, um valor de P será apresentado. Ele é o critério mais comumente empregado para tomada de decisão em estatística frequentista e apresenta as seguintes condições:</p>
-<ol style="list-style-type: decimal">
-<li>Seu valor é uma probabilidade e, portanto, compreende valores entre 0 e 1;<br />
-</li>
-<li>Seu valor é obtido por um modelo estatístico que é assumido como adequado e bem especificado;<br />
-</li>
-<li>Seu valor indica a probabilidade de se obter uma estatística de teste igual ou ainda mais extrema que observada assumindo a hipótese nula como verdadeira;<br />
-</li>
-<li>Seu valor indica a compatibilidade dos resultados obtidos e os esperados assumindo a hipótese nula verdadeira;<br />
-</li>
-<li>Quando o valor de P é baixo, isso possibilita que o pesquisador conclua pela rejeição da hipótese nula;<br />
-</li>
-<li>Quando o valor de P é alto, isso impede que a hipótese nula seja rejeitada.</li>
-</ol>
-<p>Como valores baixos ou altos são relativos, em estatística frequentista, se considera que a rejeição da hipótese nula ocorre apenas quando o valor de p é menor do que o valor previamente estipulado no nível de significância. Neste sentido, a tomada de decisão segue uma regra discreta, que é:</p>
-<p><span class="math display">\[P&lt;\alpha \Rightarrow \ Rejeitar \, H_0 \]</span>
-<span class="math display">\[P     \geq \alpha \Rightarrow \ Falhar \,em \,Rejeitar \]</span></p>
-<p>É importante notar que rejeitar <span class="math inline">\(H_0\)</span> não significa aceitar <span class="math inline">\(H_a\)</span>. Esse erro é frequente e é chamado de <em>Modus Tolens</em> <span class="citation">(<a href="#ref-Trafimow2019" role="doc-biblioref">Trafimow, 2019</a>)</span>. Repare que neste procedimento sequer há a necessidade de <span class="math inline">\(H_a\)</span>. Além disso, os valores de P se referem às estatísticas de teste obtidas durante etapas analíticas. Eles não se referem à teoria científica que motivou a pesquisa e, desta forma, rejeitar <span class="math inline">\(H_0\)</span> também não significa falar que uma teoria foi provada.</p>
-<p>Finalmente, falhar em rejeitar <span class="math inline">\(H_0\)</span> não prova que ela é verdadeira. É possível apenas concluir que ainda não existem evidências sólidas para rejeitá-la. Aceitá-la significa cair num erro chamado de <em>Argumentum ad Ignorantiam</em>, em que as pessoas tendem a achar que algo que não foi provado como falso é, consequentemente, algo verdadeiro.</p>
-<p>Com isso, a última letra “T” de NHST, foi descrita.</p>
-</div>
-<div id="o-tamanho-do-efeito" class="section level2" number="7.5">
-<h2><span class="header-section-number">7.5</span> O tamanho do efeito</h2>
-<p>Os valores de P são importantes como uma medida de força de evidência contra a hipótese nula, bem como permitem que os parâmetros (populacionais) sejam estimados pelos resultados amostrais. Por estas características, eles são importantes em testes de hipóteses e devem sempre ser relatados. No entanto, pragmaticamente, seus resultados são discretos (sim ou não) e <u>não</u> respondem diretamente as questões ou hipóteses que motivaram a execução da pesquisa, apesar de auxiliarem na tomada de decisão <span class="citation">(<a href="#ref-Goodman1999" role="doc-biblioref">Goodman, 1999</a>)</span>.</p>
-<p>Medidas chamadas de Tamanho do efeito foram mais recentemente desenvolvidas tentando oferecer um indicador <u>contínuo</u> que visam responder a magnitude, relevância ou importância dos resultados, especialmente, quando se investiga diferenças entre dois grupos.</p>
-<p>Em todas as pesquisas amostrais, apenas uma parte da população foi acessada. Neste sentido, como parte da população não foi investigada, qualquer processo de generalização dos resultados pode incorrer em erros inferenciais. Uma vez que a estatística assume que a hipótese nula é, a priori, verdadeira, o erro que primeiro pode aparecer no processo de inferência ocorre quando o pesquisador rejeita a hipótese nula de maneira incorreta. Como a hipótese nula tende a apoiar, por exemplo, que não há diferença entre grupos, ao rejeitar incorretamente</p>
-</div>
-<div id="um-exemplo-intuitivo" class="section level2" number="7.6">
-<h2><span class="header-section-number">7.6</span> Um exemplo intuitivo</h2>
-<p>Muitas áreas que trabalham com a noção de incerteza e erro fazem uso de recursos da Teoria da Decisão. A Teoria da Decisão é uma área interdisciplinar que visa descrever e explicar os processos subjacentes à escolha, com larga aplicação em testes de hipótese, detecção de sinal, exames médicos e avaliação psicológica.</p>
-<p>Dessa maneira, apesar de pequenas modificações de simbologia e nomenclatura, a tabela de tomada de decisão apresentada anteriormente costuma se repetir em todas essas áreas para a mesma finalidade: equacionar os custos dos erros e acertos possíveis.</p>
-<p>Isso posto, exames médicos talvez representem a melhor forma de entender este processo de tomada de decisão. Imagine que duas pessoas resolvam fazer exame para verificar se estão ou não grávidas. O resultado do exame tem uma grande importância, já que ele servirá de evidência para que ambas as pessoas planejem suas vidas daqui para frente.</p>
-<p>Apesar de assumirmos intuitivamente que exames médicos, no geral, são muito acurados, é importante introjetarmos que eles podem apresentar resultados incorretos ou distorcidos. Isso acontece, pois estes exames não medem diretamente o fenômeno de interesse, mas apenas sinais mais ou menos específicos de determinada condição. No caso da gravidez, esses exames costumam verificar o nível do Beta HCG, que atua como um marcador bioquímico importante relacionado à gravidez e algumas outras condições.</p>
-<p>É possível aproximar este exemplo pedagógico às hipóteses estatísticas descritas. Repare que <u>na realidade</u>, é possível estar ou não gravida. No entanto, na modelagem <u>estatística</u>, se assume inicialmente que a hipótese nula é verdadeira. Neste sentido, uma vez que a hipótese nula apoia a inexistência de padrões, sinais, eventos (etc), <u>não estar</u> grávida é a hipótese definida como verdadeira preliminarmente.</p>
-<p>O resultado do exame pode indicar que a pessoa está gravida ou que não está grávida. No jargão metrológico, esses resultados são chamados de “Positivo” e “Negativo,” respectivamente. Conectando este elemento com a modelagem estatística, se o exame concluir que a pessoa está gravida, isso significa que ele <u>rejeitou a hipótese nula</u>. Em outras palavras, resultados positivos neste exemplo são resultados que rejeitam a hipótese nula. Por oposição, se o exame concluir que a pessoa não está grávida, ele teve um resultado negativo. Pela modelagem estatística, esse tipo de resultado <u>falhou em rejeitar a hipótese nula</u>.</p>
-<p><img src="img/cap_inferencia_tabela_decisao2.PNG" /></p>
-</div>
-<div id="o-que-não-te-contaram-sobre-inferência-estatística" class="section level2" number="7.7">
-<h2><span class="header-section-number">7.7</span> O que não te contaram sobre inferência estatística</h2>
-<p>Conforme previamente exposto, introduzir o conceito de teste de significância de hipótese nula em uma linguagem que seja estatisticamente correta e, ao mesmo tempo, facilmente capturável por todos é uma tarefa que parece já nascer fracassada. Há farta literatura indicando isso. Cerca de 90% dos principais livros-texto em Psicologia apresentam conceitos equivocados sobre teste de hipóteses <span class="citation">(<a href="#ref-Cassidy2019" role="doc-biblioref">Cassidy et al., 2019</a>)</span>, o que também é frequente em escolas médicas [<span class="citation"><a href="#ref-OcaaRiola2016" role="doc-biblioref">Ocaña-Riola</a> (<a href="#ref-OcaaRiola2016" role="doc-biblioref">2016</a>)</span>; Greenwood2015] e uma das justificativas da dificuldade em reproduzir ou replicar resultados previamente publicados <span class="citation">(<a href="#ref-Motulsky2014" role="doc-biblioref">Motulsky, 2014</a>)</span>.</p>
-<p>É provável que tais entraves quase universais e já bem enraizados na docência de estatística aplicada ocorram também em outras áreas e, provavelmente, uma revisão crítica deste próprio texto tal como está apontaria limitações ou inadequações. Tendo essa condição como base, a listagem de tópicos a seguir visa, ao menos, reduzir que algumas inconsistências sobre testes de hipóteses sejam mantidas ou reforçadas.</p>
-<p><strong>Condições metodológicas</strong></p>
-<ul>
-<li><p>De acordo com a teoria Popperiana, uma teoria ou hipótese jamais podem ser provadas. Só é possível gerar evidências que a corroborem provisoriamente ou a rejeitem. Como diz Einstein “No amount of experimentation can ever prove me right, but a single experiment can prove me wrong.” Assim, nenhum resultado obtido em pesquisas deve ser visto como uma prova cabal ou perfeita de uma teoria.</p></li>
-<li><p>A hipótese nula não necessariamente é zero. É possível que ela defina outros valores. O termo <em>Nil</em> é usado para expressar <span class="math inline">\(H_0\)</span> quando ela é zero.</p></li>
-<li><p>O valor de P não pressupõe hipótese alternativa. Ele é uma medida de quão compatível são os dados assumindo a hipótese nula como verdadeira.</p></li>
-<li><p>A maioria dos testes inferenciais nada mais são do que modelos de regressão. As chamadas variações ou alternativas não-paramétricas tendem a ser modelos de regressão em dados ordenados.</p></li>
-<li><p>O valor de P depende exclusivamente da hipótese nula e pode ser representado tanto em sentido <em>possibilístico</em> ou, com restrições e muitas discussões acadêmicas, como uma probabilidade condicional.</p></li>
-<li><p>É necessário sempre checar os pressupostos dos modelos testados. Como diz Isaac Asimov, “Your assumptions are your windows on the world. Scrub them off every once in a while, or the light won’t come in.”</p></li>
-<li><p>Tem pouco ou nenhum sentido verificar a normalidade da variável dependente antes de performar um teste estatístico. A grande maioria dos testes estatísticos são versões reduzidas de modelos lineares. Assim, testar a normalidade da variável dependente não é um pressuposto de Teste T ou ANOVA. A normalidade desses modelos estatísticos é assumida para os resíduos.</p></li>
-<li><p>O Teorema Central do Limite e a Lei dos Grandes Números são fundamentais na teoria da inferência, mesmo que não tenham sido abordados diretamente aqui.</p></li>
-<li><p>Técnicas de bootstrapping e estatística robusta lidam bem com a violação de alguns pressupostos.</p></li>
-<li><p>Teste paramétrico não significa que a distribuição é normal, mas apenas que são caracterizados por uma família de distribuições indexada por um parâmetro. Nestes testes, o formato da distribuição dos dados é importante e eles visam estimar parâmetros (populacionais). O modelo exponencial ou de Poisson, por exemplo, são paramétrico.</p></li>
-<li><p>Testes não-paramétrico são melhores descritos como livres de distribuição, já que a distribuição dos dados não é uma preocupação de análise.</p></li>
-</ul>
-<p><strong>Condições históricas</strong></p>
-<ul>
-<li>A proposta de uma tabela de confusão para equacionar o processo de tomada de decisão é uma mistura estranha entre as formas de entender os testes de significância de Ronald Fisher e o Teste de Hipóteses de Neyman e Pearson. Há um excelente capítulo intitulado <em>The Fisher, Neyman–Pearson and Jeffreys Views of Statistical Tests</em> indicando passagens históricas sobre a relação agressiva e conturbada entre eles <span class="citation">(<a href="#ref-Lecoutre2014" role="doc-biblioref">Lecoutre &amp; Poitevineau, 2014</a>)</span>.</li>
-</ul>
-<p><strong>Grandes debates</strong></p>
-<ul>
-<li><p>A violação dos modelos estatísticos costuma ocorrer com relativa frequência em Psicologia. Há uma intensa discussão sobre as consequências disso, incluindo posicionamentos que sugerem que a crise de replicação é em função disso e posicionamentos que julgam que a violação dos pressupostos tem pouco ou nenhum impacto na maioria das vezes.</p></li>
-<li><p>Parece haver uma ênfase muito grande em verificar pressupostos de modelos compactos (Teste T), que não é acompanhada em modelos mais complexos.</p></li>
-</ul>
-</div>
-<div id="pesquisas-adicionais" class="section level2" number="7.8">
-<h2><span class="header-section-number">7.8</span> Pesquisas adicionais</h2>
-<p>Como este capítulo apresentou tanto aspectos pragmáticos, como alguns eventos históricos sobre inferência estatística e testes de hipótese, seria possível listar inúmeras referências de qualidade como recursos adicionais. Entretanto, vou optar por apenas algumas obras que eu costumo acessar várias vezes para reler.</p>
-<ol style="list-style-type: decimal">
-<li><p>On some assumptions of the null hypothesis statistical testing (DOI: 10.1177/0013164416667979)
-Este é um trabalho de Alexandre Patriota que é uma referência na aplicação e docência em estatística. A discussão sobre valor de P como probabilidade condicional é importante e merece uma atenção.</p></li>
-<li><p>Fisher,Neyman-PearsonorNHST?Atutorialforteachingdatatesting (DOI: 10.3389/fpsyg.2015.00223)<br />
-Este é um trabalho interessante que oferece algumas estratégias de docência sobre testes de hipótese. Uma característica bastante positiva deste trabalho é sua diferenciação dos procedimentos do teste de significância de Fisher e o teste de hipóteses de Neyman-Pearson</p></li>
-<li><p>Statistical tests, P values, confidence intervals, and power: a guide to misinterpretations (10.1007/s10654-016-0149-3)
-Este é um trabalho muito interessante que descreve as principais rotinas feitas em testes de hipóteses, mas também 25 equívocos frequentes que pesquisadores fazem ao interpretar os valores de P.</p></li>
-</ol>
-</div>
-<div id="questões-2" class="section level2" number="7.9">
-<h2><span class="header-section-number">7.9</span> Questões</h2>
-<div class="question">
-<ol style="list-style-type: decimal">
-<li><p>(Retirado de Business Statistics) Qual das sentenças é verdadeira<br>a) A hipótese nula não é testada. A hipótese alternativa é testada.<br>b) A hipótese nula é testada. A hipótese alternativa não é testada.<br>c) Ambas as hipóteses (nula e alternativa) são testadas.<br>d) Ambas as hipóteses (nula e alternativa) não são testadas<br>e) Todas as opções.</p></li>
-<li><p>(Retirado de TJ-MS, Técnico de Nível Superior - Estatístico). Teste de Hipótese compõe um conjunto de regras de decisão para aceitar ou rejeitar uma hipótese estatística com base em dados amostrais. A respeito do Teste de Hipótese, avalie as considerações a seguir.<br>I. A hipótese utilizada como referência no teste é a hipótese nula, representada pela sigla H0.<br>II. A construção da região crítica é feita sob a premissa de que a hipótese utilizada como referência é falsa.<br>III. Ao se testar a hipótese utilizada como referência, está sujeito a cometer dois tipos de erros: rejeitar a hipótese quando ela é verdadeira, ou não rejeitar a hipótese quando ela é falsa.<br>IV. Em caso de teste para diferença entre médias de duas populações normais, a hipótese alternativa assumira a igualdade entre as duas médias.<br> V. Na construção da região crítica com teste bilateral, o nível de significância deve ser dividido entre as duas áreas de rejeição.<br />
-É CORRETO apenas o que se afirma em:<br>a) I, III e V.<br>B) II, III e V.<br>C) I, II e III.<br>D) III, IV e V.<br>E) IV e V.</p></li>
-<li><p>(Retirado de Business Statistics) O nível de significância é<br>a) A probabilidade mínima de rejeição da hipótese nula.<br>b) A probabilidade máxima de rejeição da hipótese nula.<br>c) A probabilidade mínima da rejeição da hipótese alternativa.<br>d) A probabilidade máxima da rejeição da hipótese alternativa.<br>e) Todas as opções.</p></li>
-<li><p>(Retirado de Analista Estatística, CNMP, FCC, 2014) Com relação a testes de hipóteses estatísticas e denominando H0 como sendo a hipótese nula e H1 a hipótese alternativa, a definição de potência de um teste corresponde à probabilidade de:<br>a) não rejeitar H0, quando H0 é verdadeira.<br>b) não rejeitar H0, quando H0 é falsa.<br>c) não rejeitar H0, independentemente de H0 ser falsa ou verdadeira.<br>d) rejeitar H0, quando H0 é verdadeira.<br>e) rejeitar H0, quando H0 é falsa.</p></li>
-<li><p>(Retirado de Economista, Petrobrás, CESGRANRIO, 2010) No caso de um teste estatístico clássico, com a hipótese nula H0 e a alternativa H1, cometer o erro do tipo II consiste em:<br>a) rejeitar H0, sendo H0 verdadeiro.<br>b) aceitar H0, sendo H0 falso.<br>c) aceitar H1, sendo H1 verdadeiro.<br>d) rejeitar H1, sendo H1 falso.<br>e) aceitar H0 e aceitar H1.</p></li>
-</ol>
-</div>
-<p>Gabarito: 1-b; 2-a; 3-b; 4-e; 5-b</p>
-</details>
-<div class="amazon">
-<p>Este livro pode ser adquirido no site da Amazon, clicando <a href="https://www.amazon.com.br/gp/product/B097CP7T9M?pf_rd_r=RDZC8XYMBC1WY69T0J8K&amp;pf_rd_p=abb22e6b-8812-4b76-a424-5f0b098d2c90&amp;pd_rd_r=ceec1911-f409-4acd-ac8f-2d5bc68dac43&amp;pd_rd_w=wMUzJ&amp;pd_rd_wg=ZK85a&amp;ref_=pd_gw_unk">aqui</a>.</p>
-<p>Ao comprar a obra, você auxilia este projeto e ajuda a execução de novos. Qualquer dúvida, entre em contato por <a href="mailto:luisfca@puc-rio.br" class="email">luisfca@puc-rio.br</a></p>
-</div>
-
-</div>
-</div>
-<h3> Referencias</h3>
-<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
-<div id="ref-Cassidy2019" class="csl-entry">
-Cassidy, S. A., Dimova, R., Giguère, B., Spence, J. R., &amp; Stanley, D. J. (2019). Failing grade: 89<span>%</span> of introduction-to-psychology textbooks that define or explain statistical significance do so incorrectly. <em>Advances in Methods and Practices in Psychological Science</em>, <em>2</em>(3), 233–239. <a href="https://doi.org/10.1177/2515245919858072">https://doi.org/10.1177/2515245919858072</a>
-</div>
-<div id="ref-cohen2013explaining" class="csl-entry">
-Cohen, B. (2013). <em>Explaining psychological statistics</em>. John Wiley &amp; Sons.
-</div>
-<div id="ref-Curley013" class="csl-entry">
-Curley, K. (2013). Testing the assumptions of assumptions testing. <em>Casualty Actuarial Society</em>. <a href="https://www.casact.org/pubs/forum/13fforum/07-Curley.pdf">https://www.casact.org/pubs/forum/13fforum/07-Curley.pdf</a>
-</div>
-<div id="ref-Goodman1999" class="csl-entry">
-Goodman, S. N. (1999). Toward evidence-based medical statistics. 1: The p value fallacy. <em>Annals of Internal Medicine</em>, <em>130</em>(12), 995. <a href="https://doi.org/10.7326/0003-4819-130-12-199906150-00008">https://doi.org/10.7326/0003-4819-130-12-199906150-00008</a>
-</div>
-<div id="ref-Greenland2019" class="csl-entry">
-Greenland, S. (2019). Valid p-values behave exactly as they should: Some misleading criticisms of p-values and their resolution with s-values. <em>The American Statistician</em>, <em>73</em>(sup1), 106–114. <a href="https://doi.org/10.1080/00031305.2018.1529625">https://doi.org/10.1080/00031305.2018.1529625</a>
-</div>
-<div id="ref-AfonsoJunior2020" class="csl-entry">
-Junior, A. A., Almeida Portugal, A. C. de, Landeira-Fernandez, J., Bullón, F. F., Santos, E. J. R. dos, Vilhena, J. de, &amp; Anunciação, L. (2020). Depression and anxiety symptoms in a representative sample of undergraduate students in spain, portugal, and brazil. <em>Psicologia: Teoria e Pesquisa</em>, <em>36</em>. <a href="https://doi.org/10.1590/0102.3772e36412">https://doi.org/10.1590/0102.3772e36412</a>
-</div>
-<div id="ref-Lecoutre2014" class="csl-entry">
-Lecoutre, B., &amp; Poitevineau, J. (2014). <em>The significance test controversy revisited</em>. Springer Berlin Heidelberg. <a href="https://doi.org/10.1007/978-3-662-44046-9">https://doi.org/10.1007/978-3-662-44046-9</a>
-</div>
-<div id="ref-Motulsky2014" class="csl-entry">
-Motulsky, H. J. (2014). Common misconceptions about data analysis and statistics. <em>Naunyn-Schmiedeberg<span><span></span></span>s Archives of Pharmacology</em>, <em>387</em>(11), 1017–1023. <a href="https://doi.org/10.1007/s00210-014-1037-6">https://doi.org/10.1007/s00210-014-1037-6</a>
-</div>
-<div id="ref-OcaaRiola2016" class="csl-entry">
-Ocaña-Riola, R. (2016). The use of statistics in health sciences: Situation analysis and perspective. <em>Statistics in Biosciences</em>, <em>8</em>(2), 204–219. <a href="https://doi.org/10.1007/s12561-015-9138-4">https://doi.org/10.1007/s12561-015-9138-4</a>
-</div>
-<div id="ref-Trafimow2019" class="csl-entry">
-Trafimow, D. (2019). A frequentist alternative to significance testing, p-values, and confidence intervals. <em>Econometrics</em>, <em>7</em>(2), 26. <a href="https://doi.org/10.3390/econometrics7020026">https://doi.org/10.3390/econometrics7020026</a>
-</div>
+<div id="page-not-found" class="section level1">
+<h1>Page not found</h1>
+<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
+<p>You may want to try searching to find the page's new location, or use
+the table of contents to find the page you are looking for.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="tipos-de-amostragem.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="um-exemplo-real-de-pesquisa.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -721,7 +506,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "http://github.com/anovabr/mqt/edit/master/06-estatistica_inferencial.Rmd",
+"link": "http://github.com/anovabr/mqt/edit/master/%s",
 "text": "Edit"
 },
 "history": {

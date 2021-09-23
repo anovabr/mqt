@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Cap. 10 Fatores de Risco | Conceitos e análises estatísticas com R e JASP</title>
   <meta name="description" content="This book was written for undergraduate level students on Quantitative Methods at the Pontifical Catholic University of Rio de Janeiro (PUC-Rio). The primary goal of this book is to provide a short and to-the-point exposition on the essentials of statistics. To a lesser degree, the mathematical modeling of statistical questions will be addressed. I expect this book can also help students who enroll for laboratory-based statistics and anyone who wants to learn R." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Cap. 10 Fatores de Risco | Conceitos e análises estatísticas com R e JASP" />
   <meta property="og:type" content="book" />
@@ -32,8 +32,8 @@
   
 <link rel="prev" href="qui-quadrado.html"/>
 <link rel="next" href="teste-t.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -697,32 +697,18 @@ Fim da versão gratuita
 ## 
 ## Point estimates and 95% CIs:
 ## -------------------------------------------------------------------
-## Inc risk ratio                               1.76 (1.48, 2.10)
-## Odds ratio                                   1.84 (1.53, 2.22)
-## Attrib risk in exposed *                     3.93 (2.74, 5.12)
-## Attrib fraction in exposed (%)              43.33 (32.46, 52.44)
-## Attrib risk in population *                  1.96 (1.02, 2.90)
-## Attrib fraction in population (%)           27.63 (19.05, 35.30)
+## Inc risk ratio                                 1.76 (1.48, 2.10)
+## Odds ratio                                     1.84 (1.53, 2.22)
+## Attrib risk in the exposed *                   3.93 (2.74, 5.12)
+## Attrib fraction in the exposed (%)            43.33 (32.46, 52.44)
+## Attrib risk in the population *                1.96 (1.02, 2.90)
+## Attrib fraction in the population (%)         27.63 (19.05, 35.30)
 ## -------------------------------------------------------------------
 ## Uncorrected chi2 test that OR = 1: chi2(1) = 41.605 Pr&gt;chi2 = &lt;0.001
 ## Fisher exact test that OR = 1: Pr&gt;chi2 = &lt;0.001
 ##  Wald confidence limits
 ##  CI: confidence interval
-##  * Outcomes per 100 population units 
-## 
-##  Measures of association strength:
-##  The outcome risk among the exposed was 1.76 (95% CI 1.48 to 2.1) times greater than the outcome risk among the unexposed. 
-##  
-##  The outcome odds among the exposed was 1.84 (95% CI 1.53 to 2.22) times greater than the outcome odds among the unexposed. 
-## 
-##  Measures of effect in the exposed:
-##  Exposure changed outcome risk in the exposed by 3.93 (95% CI 2.74 to 5.12) per 100 population units. 43.3% of outcomes in the exposed were attributable to exposure (95% CI 32.5% to 52.4%). 
-## 
-##  Number needed to treat for benefit (NNTB) and harm (NNTH):
-##  The number needed to treat for one subject to benefit (NNTB) is 25 (95% CI 20 to 37). 
-## 
-##  Measures of effect in the population:
-##  Exposure changed outcome risk in the population by 1.96 (95% CI 1.02 to 2.9) per 100 population units. 27.6% of outcomes in the population were attributable to exposure (95% CI 19% to 35.3%).</code></pre>
+##  * Outcomes per 100 population units</code></pre>
 <p>Os resultados apresentam indicam que há um maior risco em meninos apresentarem TDAH quando comparados às meninas. Conforme esperado, todas as medidas computadas foram convergentes, indicando AR = 3.93, RR = 1.74 e OR = 1.84.</p>
 <p>É importante ter atenção em dois elementos: (1) A significância do OR é obtida pelo teste Qui-quadrado, que já havia sido calculado. (2) Na literatura, há também a recomendação de aplicar o logaritmo natural no OR para ter os resultados mais próximos do encontrado em modelos de <a href="#17_regressao_logistica_binaria">Regressão logística</a>, tal como ilustrado em capítulo específico. Neste caso, o OR de 1.84 viraria 0.61.</p>
 <div class="warning">
@@ -1073,6 +1059,10 @@ gitbook.start({
 "text": null
 },
 "download": "book.epub",
+"search": {
+"engine": "lunr",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
